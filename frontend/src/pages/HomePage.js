@@ -53,9 +53,21 @@ const HomePage = () => {
       const height = parseFloat(formData.height);
       const age = parseInt(formData.age);
       
-      const bmi = calculateBMI(weight, height, units);
+      // Convert to consistent units for calculation
+      let weightInKg = weight;
+      let heightInCm = height;
+      
+      if (formData.weightUnit === 'lbs') {
+        weightInKg = weight * 0.453592;
+      }
+      
+      if (formData.heightUnit === 'inches') {
+        heightInCm = height * 2.54;
+      }
+      
+      const bmi = calculateBMI(weightInKg, heightInCm, 'metric');
       const bodyFat = calculateBodyFat(bmi, age, formData.gender);
-      const idealWeight = calculateIdealWeight(height, age, formData.gender, units);
+      const idealWeight = calculateIdealWeight(heightInCm, age, formData.gender, 'metric');
       const recommendations = getHealthRecommendations(bmi, bodyFat, age, formData.gender);
       
       const resultData = {
