@@ -138,7 +138,7 @@ const AdvancedMetrics = ({ result }) => {
                 <h4 className={`font-semibold mb-2 ${headingClass}`}>BMI Prime Categories:</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span>< 0.74</span>
+                    <span>&lt; 0.74</span>
                     <Badge variant="outline" className="bg-blue-500 text-white border-none">Underweight</Badge>
                   </div>
                   <div className="flex justify-between">
@@ -150,7 +150,7 @@ const AdvancedMetrics = ({ result }) => {
                     <Badge variant="outline" className="bg-yellow-500 text-white border-none">Overweight</Badge>
                   </div>
                   <div className="flex justify-between">
-                    <span>> 1.2</span>
+                    <span>&gt; 1.2</span>
                     <Badge variant="outline" className="bg-red-500 text-white border-none">Obese</Badge>
                   </div>
                 </div>
