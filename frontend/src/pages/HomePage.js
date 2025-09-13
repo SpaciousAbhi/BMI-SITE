@@ -368,6 +368,30 @@ const HomePage = () => {
             </CardContent>
           </Card>
         </div>
+
+        {/* Comprehensive BMI Information Sections */}
+        <div className="mt-16 max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}>
+              Complete BMI Guide & Health Information
+            </h2>
+            <p className={`text-lg max-w-3xl mx-auto ${
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+            }`}>
+              Comprehensive information about BMI, health risks, limitations, and special considerations.
+            </p>
+          </div>
+
+          {/* BMI Information Sections */}
+          <BMIInformation />
+          
+          {/* Children BMI Information */}
+          <div className="mt-12">
+            <ChildrenBMIInfo />
+          </div>
+        </div>
       </main>
       
       <Footer />
