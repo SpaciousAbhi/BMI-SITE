@@ -209,6 +209,7 @@ const HomePage = () => {
                     <SelectContent>
                       <SelectItem value="cm">cm</SelectItem>
                       <SelectItem value="inches">in</SelectItem>
+                      <SelectItem value="feet">ft</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
