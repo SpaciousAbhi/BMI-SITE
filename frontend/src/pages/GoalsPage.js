@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Badge } from '../components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../components/ui/dialog';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { useTheme } from '../contexts/ThemeContext';
 import { useBMI } from '../contexts/BMIContext';
 import { useToast } from '../hooks/use-toast';
