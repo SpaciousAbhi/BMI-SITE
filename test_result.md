@@ -122,13 +122,16 @@ frontend:
     implemented: true
     working: true
     file: "/app/frontend/public/_redirects"
-    stuck_count: 0
+    stuck_count: 1
     priority: "high"
     needs_retesting: false
     status_history:
+        - working: false
+          agent: "main"
+          comment: "Initial _redirects file created but still getting 404 errors"
         - working: true
           agent: "main"
-          comment: "Created _redirects file and netlify.toml for proper SPA routing configuration. Build tested successfully."
+          comment: "FIXED: Added homepage field to package.json and replaced hardcoded URLs in index.html with %PUBLIC_URL% placeholders. Root cause was missing homepage configuration causing React Router base URL issues."
 
 metadata:
   created_by: "main_agent"
