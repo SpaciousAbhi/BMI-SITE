@@ -24,6 +24,8 @@ const HomePage = () => {
     height: '',
     age: '',
     gender: '',
+    weightUnit: 'kg',
+    heightUnit: 'cm',
   });
   
   const [result, setResult] = useState(null);
