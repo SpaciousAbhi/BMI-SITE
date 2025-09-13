@@ -79,7 +79,8 @@ const HomePage = () => {
         height,
         age,
         gender: formData.gender,
-        units,
+        weightUnit: formData.weightUnit,
+        heightUnit: formData.heightUnit,
       };
       
       setResult(resultData);
