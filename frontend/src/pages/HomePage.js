@@ -361,6 +361,8 @@ const HomePage = () => {
           </Card>
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 };
