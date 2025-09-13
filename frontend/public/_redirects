@@ -1,1 +1,6 @@
+# Redirect all routes to index.html for React Router SPA
 /*    /index.html   200
+
+# Optional: Handle specific file extensions if needed
+/static/*  /static/:splat  200
+/api/*     /api/:splat     404
