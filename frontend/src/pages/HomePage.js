@@ -181,20 +181,35 @@ const HomePage = () => {
                   theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
                 }`}>
                   <Ruler className="h-4 w-4" />
-                  Height ({units === 'metric' ? 'cm' : 'inches'})
+                  Height
                 </Label>
-                <Input
-                  id="height"
-                  type="number"
-                  placeholder={units === 'metric' ? 'Enter height in cm' : 'Enter height in inches'}
-                  value={formData.height}
-                  onChange={(e) => handleInputChange('height', e.target.value)}
-                  className={`transition-all duration-300 focus:scale-105 ${
-                    theme === 'dark' 
-                      ? 'bg-white/20 border-white/30 text-white placeholder:text-gray-400' 
-                      : 'bg-white/50 border-gray-300'
-                  }`}
-                />
+                <div className="flex gap-2">
+                  <Input
+                    id="height"
+                    type="number"
+                    placeholder={`Enter height in ${formData.heightUnit}`}
+                    value={formData.height}
+                    onChange={(e) => handleInputChange('height', e.target.value)}
+                    className={`flex-1 transition-all duration-300 focus:scale-105 ${
+                      theme === 'dark' 
+                        ? 'bg-white/20 border-white/30 text-white placeholder:text-gray-400' 
+                        : 'bg-white/50 border-gray-300'
+                    }`}
+                  />
+                  <Select value={formData.heightUnit} onValueChange={(value) => handleInputChange('heightUnit', value)}>
+                    <SelectTrigger className={`w-24 transition-all duration-300 ${
+                      theme === 'dark' 
+                        ? 'bg-white/20 border-white/30 text-white' 
+                        : 'bg-white/50 border-gray-300'
+                    }`}>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="cm">cm</SelectItem>
+                      <SelectItem value="inches">in</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
 
               {/* Age Input */}
