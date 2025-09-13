@@ -294,7 +294,12 @@ const HomePage = () => {
           </Card>
 
           {/* Results Display */}
-          {result && <BMIResult result={result} />}
+          {result && (
+            <div className="space-y-6">
+              <BMIResult result={result} />
+              <AdvancedMetrics result={result} />
+            </div>
+          )}
         </div>
 
         {/* Features Section */}
