@@ -144,20 +144,35 @@ const HomePage = () => {
                   theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
                 }`}>
                   <Weight className="h-4 w-4" />
-                  Weight ({units === 'metric' ? 'kg' : 'lbs'})
+                  Weight
                 </Label>
-                <Input
-                  id="weight"
-                  type="number"
-                  placeholder={units === 'metric' ? 'Enter weight in kg' : 'Enter weight in lbs'}
-                  value={formData.weight}
-                  onChange={(e) => handleInputChange('weight', e.target.value)}
-                  className={`transition-all duration-300 focus:scale-105 ${
-                    theme === 'dark' 
-                      ? 'bg-white/20 border-white/30 text-white placeholder:text-gray-400' 
-                      : 'bg-white/50 border-gray-300'
-                  }`}
-                />
+                <div className="flex gap-2">
+                  <Input
+                    id="weight"
+                    type="number"
+                    placeholder={`Enter weight in ${formData.weightUnit}`}
+                    value={formData.weight}
+                    onChange={(e) => handleInputChange('weight', e.target.value)}
+                    className={`flex-1 transition-all duration-300 focus:scale-105 ${
+                      theme === 'dark' 
+                        ? 'bg-white/20 border-white/30 text-white placeholder:text-gray-400' 
+                        : 'bg-white/50 border-gray-300'
+                    }`}
+                  />
+                  <Select value={formData.weightUnit} onValueChange={(value) => handleInputChange('weightUnit', value)}>
+                    <SelectTrigger className={`w-20 transition-all duration-300 ${
+                      theme === 'dark' 
+                        ? 'bg-white/20 border-white/30 text-white' 
+                        : 'bg-white/50 border-gray-300'
+                    }`}>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="kg">kg</SelectItem>
+                      <SelectItem value="lbs">lbs</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
 
               {/* Height Input */}
