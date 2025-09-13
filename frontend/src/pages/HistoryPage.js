@@ -278,6 +278,8 @@ const HistoryPage = () => {
           )}
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 };
