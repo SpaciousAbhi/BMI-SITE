@@ -42,8 +42,9 @@ Your BMI Calculator app has been configured to work with Netlify deployments. Th
 
 If configuring manually in Netlify dashboard:
 - **Build Command:** `yarn install && yarn build`
-- **Publish Directory:** `frontend/build`
+- **Publish Directory:** `build` (relative to base directory)
 - **Base Directory:** `frontend`
+- **Node.js Version:** `20` (required for react-router-dom v7+)
 
 ## Verification
 
