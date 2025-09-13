@@ -87,7 +87,7 @@ const GoalsPage = () => {
     switch (type) {
       case 'weight_loss':
       case 'weight_gain':
-        return units === 'metric' ? 'kg' : 'lbs';
+        return 'kg/lbs';
       case 'bmi_target':
         return 'BMI';
       case 'body_fat':
