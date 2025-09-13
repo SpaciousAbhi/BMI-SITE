@@ -69,7 +69,7 @@ const BMIResult = ({ result }) => {
               Ideal Weight
             </div>
             <div className={`text-2xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-              {formatWeight(idealWeight, units)}
+              {idealWeight.toFixed(1)} {weightUnit}
             </div>
           </div>
         </div>
