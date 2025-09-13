@@ -45,9 +45,10 @@ const AdvancedMetrics = ({ result }) => {
   
   // BMI Prime categories
   const getBMIPrimeCategory = (prime) => {
-    if (prime < 0.74) return { category: 'Underweight', color: 'text-blue-500', bg: 'bg-blue-500' };
-    if (prime >= 0.74 && prime <= 1.0) return { category: 'Normal', color: 'text-green-500', bg: 'bg-green-500' };
-    if (prime > 1.0 && prime <= 1.2) return { category: 'Overweight', color: 'text-yellow-500', bg: 'bg-yellow-500' };
+    const primeNum = parseFloat(prime);
+    if (primeNum < 0.74) return { category: 'Underweight', color: 'text-blue-500', bg: 'bg-blue-500' };
+    if (primeNum >= 0.74 && primeNum <= 1.0) return { category: 'Normal', color: 'text-green-500', bg: 'bg-green-500' };
+    if (primeNum > 1.0 && primeNum <= 1.2) return { category: 'Overweight', color: 'text-yellow-500', bg: 'bg-yellow-500' };
     return { category: 'Obese', color: 'text-red-500', bg: 'bg-red-500' };
   };
   
