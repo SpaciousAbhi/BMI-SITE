@@ -60,8 +60,24 @@ All routes should load without 404 errors and show the correct page content. The
 
 ## Troubleshooting
 
-If you still see 404 errors:
+### If you still see 404 errors:
 1. Check that the `_redirects` file exists in your deployed build
 2. Verify the build directory structure matches expectations
 3. Ensure the build command completed successfully in Netlify logs
-4. Contact support if the issue persists
+
+### If build fails with Node.js version errors:
+- The `netlify.toml` specifies Node.js v20 (required for React Router v7+)
+- If you see compatibility errors, the Node version should automatically be used
+- Verify in build logs that Node v20+ is being used
+
+### If build fails with dependency errors:
+1. Check that `yarn.lock` file is committed to your repository
+2. Ensure all dependencies are compatible with Node.js v20
+3. Clear Netlify cache and retry deploy
+
+### Common Build Issues:
+- **"No build steps found"** → Ensure `netlify.toml` is in repository root
+- **"react-router-dom incompatible"** → Node.js version must be 20+
+- **"404 on routes"** → Ensure `_redirects` file is included in build output
+
+Contact support if issues persist after following these steps.
