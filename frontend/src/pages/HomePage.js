@@ -95,7 +95,7 @@ const HomePage = () => {
   };
 
   const resetForm = () => {
-    setFormData({ weight: '', height: '', age: '', gender: '' });
+    setFormData({ weight: '', height: '', age: '', gender: '', weightUnit: 'kg', heightUnit: 'cm' });
     setResult(null);
   };
 
