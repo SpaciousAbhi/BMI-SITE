@@ -12,6 +12,7 @@ import { useBMI } from '../contexts/BMIContext';
 import { useToast } from '../hooks/use-toast';
 import BMIResult from '../components/BMIResult';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { calculateBMI, calculateBodyFat, calculateIdealWeight, getHealthRecommendations } from '../utils/bmiCalculations';
 
 const HomePage = () => {
