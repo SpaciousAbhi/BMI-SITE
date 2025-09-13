@@ -8,7 +8,7 @@ import { getBMICategory, formatWeight, formatHeight } from '../utils/bmiCalculat
 
 const BMIResult = ({ result }) => {
   const { theme } = useTheme();
-  const { bmi, bodyFat, idealWeight, recommendations, weight, height, gender, units } = result;
+  const { bmi, bodyFat, idealWeight, recommendations, weight, height, gender, weightUnit, heightUnit } = result;
   const category = getBMICategory(bmi);
 
   const getRecommendationIcon = (type) => {
