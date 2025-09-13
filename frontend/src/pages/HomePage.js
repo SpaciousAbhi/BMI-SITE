@@ -189,7 +189,12 @@ const HomePage = () => {
                   <Input
                     id="height"
                     type="number"
-                    placeholder={`Enter height in ${formData.heightUnit}`}
+                    step={formData.heightUnit === 'feet' ? '0.1' : '1'}
+                    placeholder={
+                      formData.heightUnit === 'feet' 
+                        ? 'Enter height (e.g., 5.9 for 5\'9")' 
+                        : `Enter height in ${formData.heightUnit}`
+                    }
                     value={formData.height}
                     onChange={(e) => handleInputChange('height', e.target.value)}
                     className={`flex-1 transition-all duration-300 focus:scale-105 ${
