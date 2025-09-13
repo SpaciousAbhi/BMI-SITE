@@ -1,0 +1,6 @@
+# AdSense Configuration
+# Replace pub-0000000000000000 with your actual AdSense publisher ID
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+
+# This file should be updated when you get your AdSense account
+# Format: domain.com, publisher-id, relationship, certification-authority-id
