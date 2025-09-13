@@ -8,7 +8,7 @@ import { useBMI } from '../contexts/BMIContext';
 
 const Header = () => {
   const { theme, toggleTheme } = useTheme();
-  const { units, toggleUnits } = useBMI();
+  const {} = useBMI();
   const location = useLocation();
 
   const navItems = [
