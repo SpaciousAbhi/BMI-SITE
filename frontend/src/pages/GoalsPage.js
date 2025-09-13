@@ -467,6 +467,8 @@ const GoalsPage = () => {
           )}
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 };
