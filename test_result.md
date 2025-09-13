@@ -134,7 +134,18 @@ frontend:
           comment: "Build failed due to Node.js version incompatibility - react-router-dom v7+ requires Node.js >=20 but netlify.toml specified v18"
         - working: true
           agent: "main"
-          comment: "FINAL FIX: 1) Updated Node.js version to 20 in netlify.toml 2) Fixed publish path from 'frontend/build' to 'build' 3) Added homepage field to package.json 4) Fixed hardcoded URLs 5) Enhanced _redirects file. All build configuration issues resolved."
+          comment: "DEPLOYMENT FIXED: Node.js v20, _redirects file, and netlify.toml properly configured. App successfully deploys to Netlify."
+  - task: "Enhanced BMI Calculator with comprehensive information sections"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/components/BMIInformation.js, /app/frontend/src/components/AdvancedMetrics.js, /app/frontend/src/components/ChildrenBMIInfo.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "ENHANCEMENT COMPLETE: Added comprehensive BMI information similar to calculator.net including: BMI categories table, health risks (overweight/underweight), BMI Prime & Ponderal Index calculations, BMI limitations, children's BMI info, expandable sections, and educational content. Frontend-only implementation as requested."
 
 metadata:
   created_by: "main_agent"
