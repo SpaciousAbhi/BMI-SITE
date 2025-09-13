@@ -65,23 +65,6 @@ const Header = () => {
 
           {/* Controls */}
           <div className="flex items-center gap-3">
-            {/* Units Toggle */}
-            <Button
-              onClick={toggleUnits}
-              variant="outline"
-              size="sm"
-              className={`gap-2 transform hover:scale-105 transition-all duration-300 ${
-                theme === 'dark' 
-                  ? 'border-white/30 text-white hover:bg-white/10' 
-                  : 'border-gray-300 hover:bg-gray-50'
-              }`}
-            >
-              {units === 'metric' ? <ToggleLeft className="h-4 w-4" /> : <ToggleRight className="h-4 w-4" />}
-              <span className="hidden sm:inline">
-                {units === 'metric' ? 'Metric' : 'Imperial'}
-              </span>
-            </Button>
-
             {/* Theme Toggle */}
             <Button
               onClick={toggleTheme}
