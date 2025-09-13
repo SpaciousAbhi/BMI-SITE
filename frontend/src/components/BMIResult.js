@@ -96,7 +96,7 @@ const BMIResult = ({ result }) => {
               weight > idealWeight ? 'text-red-500' : 
               weight < idealWeight ? 'text-blue-500' : 'text-green-500'
             }`}>
-              {Math.abs(weight - idealWeight).toFixed(1)} {units === 'metric' ? 'kg' : 'lbs'}
+              {Math.abs(weight - idealWeight).toFixed(1)} {weightUnit}
             </span>
           </div>
         </div>
