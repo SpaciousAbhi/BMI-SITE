@@ -6,6 +6,9 @@ import { BMIProvider } from "./contexts/BMIContext";
 import HomePage from "./pages/HomePage";
 import HistoryPage from "./pages/HistoryPage";
 import GoalsPage from "./pages/GoalsPage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import ContactPage from "./pages/ContactPage";
 import { Toaster } from "./components/ui/toaster";
 
 function App() {
