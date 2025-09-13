@@ -242,7 +242,7 @@ const HistoryPage = () => {
                               Weight
                             </div>
                             <div className={`font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                              {formatWeight(record.weight, record.units)}
+                              {record.weight} {record.weightUnit || 'kg'}
                             </div>
                           </div>
                           
