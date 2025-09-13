@@ -142,12 +142,15 @@ export const formatWeight = (weight, units) => {
   return `${weight} ${units === 'metric' ? 'kg' : 'lbs'}`;
 };
 
-export const formatHeight = (height, units) => {
-  if (units === 'metric') {
+export const formatHeight = (height, heightUnit) => {
+  if (heightUnit === 'cm') {
     return `${height} cm`;
-  } else {
+  } else if (heightUnit === 'inches') {
     const feet = Math.floor(height / 12);
     const inches = height % 12;
     return `${feet}'${inches}"`;
+  } else if (heightUnit === 'feet') {
+    return `${height} ft`;
   }
+  return `${height} ${heightUnit}`;
 };
