@@ -95,7 +95,7 @@ const TermsOfService = () => {
           }`}>
             <CardContent className="p-6">
               <p className={`text-lg leading-relaxed ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                Welcome to Advanced BMI Calculator Ultra Pro Max by Venom Stone. These Terms of Service govern your use of our website and BMI calculation services. 
+                Welcome to Advanced BMI Calculator. These Terms of Service govern your use of our website and BMI calculation services. 
                 By using our service, you agree to comply with and be bound by these terms.
               </p>
             </CardContent>
