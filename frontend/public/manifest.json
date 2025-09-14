@@ -1,7 +1,7 @@
 {
   "short_name": "BMI Calculator",
-  "name": "Advanced BMI Calculator - Health & Fitness Tool",
-  "description": "Calculate your BMI with advanced health insights, body fat estimation, and personalized recommendations",
+  "name": "Free BMI Calculator - Body Mass Index Calculator Online",
+  "description": "Free BMI calculator online - Calculate your Body Mass Index instantly with our advanced BMI calculator. Includes body fat estimation, ideal weight, and health recommendations.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -15,14 +15,17 @@
     },
     {
       "src": "logo512.png",
-      "type": "image/png",
+      "type": "image/png", 
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "./",
   "display": "standalone",
   "theme_color": "#3b82f6",
   "background_color": "#ffffff",
-  "categories": ["health", "fitness", "lifestyle", "medical"],
-  "orientation": "portrait-primary"
+  "categories": ["health", "fitness", "medical", "productivity"],
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
+  "scope": "/"
 }

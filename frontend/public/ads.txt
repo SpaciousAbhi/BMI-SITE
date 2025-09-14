@@ -1,6 +1,15 @@
-# AdSense Configuration
-# Replace pub-0000000000000000 with your actual AdSense publisher ID
+# Ads.txt file for BMI Calculator
+# This file ensures ad inventory authenticity
+
+# Example Google AdSense entry (replace with actual publisher ID when ready)
 # google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
 
-# This file should be updated when you get your AdSense account
-# Format: domain.com, publisher-id, relationship, certification-authority-id
+# Placeholder - Update with actual advertising partner information
+# Format: <Field 1>, <Field 2>, <Field 3>, <Field 4>
+# <domain of advertising system>, <publisher account ID>, <type of account/relationship>, <certification authority ID>
+
+# AdSense
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# Add other advertising partners as needed
+# For now, this serves as a placeholder to establish the file's presence for SEO purposes
