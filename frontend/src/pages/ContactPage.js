@@ -114,7 +114,7 @@ const ContactPage = () => {
               </h1>
             </div>
             <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-              Have questions about BMI Pro? We're here to help!
+              Have questions about Advanced BMI Calculator Ultra Pro Max by Venom Stone? We're here to help!
             </p>
           </div>
 
