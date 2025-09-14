@@ -619,71 +619,204 @@ const HomePage = () => {
           )}
         </div>
 
-        {/* Features Section */}
-        <div className="mt-16 grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          <Link to="/history" className="group">
-            <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
-              theme === 'dark' 
-                ? 'bg-white/10 hover:bg-white/15' 
-                : 'bg-white/70 hover:bg-white/80'
+        {/* Enhanced Calculators Section */}
+        <div className="mt-16 max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
+              theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
-              <CardContent className="p-6 text-center">
-                <History className={`h-12 w-12 mx-auto mb-4 ${
-                  theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
-                }`} />
-                <h3 className={`text-xl font-semibold mb-2 ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-900'
-                }`}>
-                  BMI History
-                </h3>
-                <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
-                  Track your BMI progress over time
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link to="/goals" className="group">
-            <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
-              theme === 'dark' 
-                ? 'bg-white/10 hover:bg-white/15' 
-                : 'bg-white/70 hover:bg-white/80'
+              Enhanced Health Calculators
+            </h2>
+            <p className={`text-lg max-w-3xl mx-auto ${
+              theme === 'white' ? 'text-gray-600' : 'text-gray-300'
             }`}>
-              <CardContent className="p-6 text-center">
-                <Target className={`h-12 w-12 mx-auto mb-4 ${
-                  theme === 'dark' ? 'text-green-400' : 'text-green-600'
-                }`} />
-                <h3 className={`text-xl font-semibold mb-2 ${
-                  theme === 'dark' ? 'text-white' : 'text-gray-900'
-                }`}>
-                  Health Goals
-                </h3>
-                <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
-                  Set and track your fitness goals
-                </p>
-              </CardContent>
-            </Card>
-          </Link>
+              Complete suite of health and fitness calculators for comprehensive body analysis.
+            </p>
+          </div>
 
-          <Card className={`backdrop-blur-md border-0 shadow-xl transform hover:scale-105 transition-all duration-300 ${
-            theme === 'dark' 
-              ? 'bg-white/10 hover:bg-white/15' 
-              : 'bg-white/70 hover:bg-white/80'
-          }`}>
-            <CardContent className="p-6 text-center">
-              <Calculator className={`h-12 w-12 mx-auto mb-4 ${
-                theme === 'dark' ? 'text-purple-400' : 'text-purple-600'
-              }`} />
-              <h3 className={`text-xl font-semibold mb-2 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
+          {/* Primary Calculator Cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            {/* Body Fat Calculator */}
+            <Link to="/body-fat" className="group">
+              <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                theme === 'white' 
+                  ? 'bg-white/80 hover:bg-white/90 border-teal-200/20' 
+                  : theme === 'dark'
+                  ? 'bg-gray-800/80 hover:bg-gray-800/90 border-purple-500/20'
+                  : 'bg-black/80 hover:bg-gray-900/50 border-green-500/20'
               }`}>
-                Advanced Analytics
-              </h3>
-              <p className={theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}>
-                Body fat estimation & health insights
-              </p>
-            </CardContent>
-          </Card>
+                <CardContent className="p-6 text-center">
+                  <Target className={`h-12 w-12 mx-auto mb-4 transition-colors duration-300 ${
+                    theme === 'white' ? 'text-red-600 group-hover:text-red-700' : 
+                    theme === 'dark' ? 'text-red-400 group-hover:text-red-300' : 
+                    'text-red-400 group-hover:text-red-300'
+                  }`} />
+                  <h3 className={`text-xl font-semibold mb-2 ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    Body Fat %
+                  </h3>
+                  <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                    US Navy method using waist, neck & hip measurements
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            {/* Calorie Calculator */}
+            <Link to="/calories" className="group">
+              <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                theme === 'white' 
+                  ? 'bg-white/80 hover:bg-white/90 border-teal-200/20' 
+                  : theme === 'dark'
+                  ? 'bg-gray-800/80 hover:bg-gray-800/90 border-purple-500/20'
+                  : 'bg-black/80 hover:bg-gray-900/50 border-green-500/20'
+              }`}>
+                <CardContent className="p-6 text-center">
+                  <Zap className={`h-12 w-12 mx-auto mb-4 transition-colors duration-300 ${
+                    theme === 'white' ? 'text-orange-600 group-hover:text-orange-700' : 
+                    theme === 'dark' ? 'text-orange-400 group-hover:text-orange-300' : 
+                    'text-orange-400 group-hover:text-orange-300'
+                  }`} />
+                  <h3 className={`text-xl font-semibold mb-2 ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    Calorie Needs
+                  </h3>
+                  <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                    TDEE/BMR calculator for weight goals
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            {/* Macros Calculator */}
+            <Link to="/macros" className="group">
+              <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                theme === 'white' 
+                  ? 'bg-white/80 hover:bg-white/90 border-teal-200/20' 
+                  : theme === 'dark'
+                  ? 'bg-gray-800/80 hover:bg-gray-800/90 border-purple-500/20'
+                  : 'bg-black/80 hover:bg-gray-900/50 border-green-500/20'
+              }`}>
+                <CardContent className="p-6 text-center">
+                  <Utensils className={`h-12 w-12 mx-auto mb-4 transition-colors duration-300 ${
+                    theme === 'white' ? 'text-green-600 group-hover:text-green-700' : 
+                    theme === 'dark' ? 'text-green-400 group-hover:text-green-300' : 
+                    'text-green-400 group-hover:text-green-300'
+                  }`} />
+                  <h3 className={`text-xl font-semibold mb-2 ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    Macros Breakdown
+                  </h3>
+                  <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                    Protein, carbs & fats for your goals
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            {/* Workout Plans */}
+            <Link to="/workout" className="group">
+              <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                theme === 'white' 
+                  ? 'bg-white/80 hover:bg-white/90 border-teal-200/20' 
+                  : theme === 'dark'
+                  ? 'bg-gray-800/80 hover:bg-gray-800/90 border-purple-500/20'
+                  : 'bg-black/80 hover:bg-gray-900/50 border-green-500/20'
+              }`}>
+                <CardContent className="p-6 text-center">
+                  <Activity className={`h-12 w-12 mx-auto mb-4 transition-colors duration-300 ${
+                    theme === 'white' ? 'text-blue-600 group-hover:text-blue-700' : 
+                    theme === 'dark' ? 'text-blue-400 group-hover:text-blue-300' : 
+                    'text-blue-400 group-hover:text-blue-300'
+                  }`} />
+                  <h3 className={`text-xl font-semibold mb-2 ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    Workout Plans
+                  </h3>
+                  <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                    Personalized exercise routines
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
+
+          {/* Secondary Features */}
+          <div className="grid md:grid-cols-3 gap-6">
+            <Link to="/history" className="group">
+              <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                theme === 'white' 
+                  ? 'bg-white/70 hover:bg-white/80' 
+                  : theme === 'dark'
+                  ? 'bg-white/10 hover:bg-white/15'
+                  : 'bg-white/10 hover:bg-white/15'
+              }`}>
+                <CardContent className="p-6 text-center">
+                  <History className={`h-10 w-10 mx-auto mb-4 ${
+                    theme === 'white' ? 'text-purple-600' : 'text-purple-400'
+                  }`} />
+                  <h3 className={`text-lg font-semibold mb-2 ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    Progress Tracking
+                  </h3>
+                  <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                    Track your health metrics over time
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/goals" className="group">
+              <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                theme === 'white' 
+                  ? 'bg-white/70 hover:bg-white/80' 
+                  : theme === 'dark'
+                  ? 'bg-white/10 hover:bg-white/15'
+                  : 'bg-white/10 hover:bg-white/15'
+              }`}>
+                <CardContent className="p-6 text-center">
+                  <Target className={`h-10 w-10 mx-auto mb-4 ${
+                    theme === 'white' ? 'text-teal-600' : 'text-teal-400'
+                  }`} />
+                  <h3 className={`text-lg font-semibold mb-2 ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    Health Goals
+                  </h3>
+                  <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                    Set and track your fitness goals
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Card className={`backdrop-blur-md border-0 shadow-xl transform hover:scale-105 transition-all duration-300 ${
+              theme === 'white' 
+                ? 'bg-white/70 hover:bg-white/80' 
+                : theme === 'dark'
+                ? 'bg-white/10 hover:bg-white/15'
+                : 'bg-white/10 hover:bg-white/15'
+            }`}>
+              <CardContent className="p-6 text-center">
+                <Calculator className={`h-10 w-10 mx-auto mb-4 ${
+                  theme === 'white' ? 'text-indigo-600' : 'text-indigo-400'
+                }`} />
+                <h3 className={`text-lg font-semibold mb-2 ${
+                  theme === 'white' ? 'text-gray-900' : 'text-white'
+                }`}>
+                  PDF Reports
+                </h3>
+                <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                  Download detailed health reports
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         {/* Comprehensive BMI Information Sections */}
