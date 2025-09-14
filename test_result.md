@@ -218,6 +218,8 @@ metadata:
 
 test_plan:
   current_focus:
+    - "Health Resources Pages (About BMI, Health Tips, Nutrition Guide)"
+    - "Enhanced Routing and Navigation"
     - "Enhanced Theme System (3 Dynamic Themes)"
     - "Enhanced Color Schemes & CSS Variables"
     - "Enhanced Header Component with Theme Toggle"
