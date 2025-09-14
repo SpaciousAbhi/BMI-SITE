@@ -174,10 +174,14 @@ const HomePage = () => {
               : 'bg-black/80 hover:bg-gray-900/50 border-green-500/20'
           }`}>
             <CardHeader>
-              <CardTitle className={`flex items-center gap-2 text-2xl ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              <CardTitle className={`flex items-center gap-3 text-2xl transition-colors duration-500 ${
+                theme === 'white' ? 'text-gray-900' : 'text-white'
               }`}>
-                <Calculator className="h-6 w-6" />
+                <Calculator className={`h-6 w-6 transition-colors duration-500 ${
+                  theme === 'white' ? 'text-teal-600' : 
+                  theme === 'dark' ? 'text-purple-400' : 
+                  'text-green-400'
+                }`} />
                 BMI Calculator
               </CardTitle>
             </CardHeader>
