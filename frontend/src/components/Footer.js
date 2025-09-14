@@ -138,20 +138,36 @@ const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.resources.map((link, index) => (
                 <li key={link.name} className="animate-slide-in" style={{ animationDelay: `${400 + index * 50}ms` }}>
-                  <a
-                    href={link.href}
-                    className={`flex items-center gap-2 text-sm transition-all duration-300 hover:scale-105 hover:translate-x-1 ${
-                      theme === 'white' 
-                        ? 'text-gray-600 hover:text-teal-600' 
-                        : theme === 'dark'
-                        ? 'text-gray-400 hover:text-purple-400'
-                        : 'text-gray-400 hover:text-green-400'
-                    }`}
-                    {...(link.external && { target: '_blank', rel: 'noopener noreferrer' })}
-                  >
-                    {link.name}
-                    {link.external && <ExternalLink className="h-3 w-3" />}
-                  </a>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      className={`flex items-center gap-2 text-sm transition-all duration-300 hover:scale-105 hover:translate-x-1 ${
+                        theme === 'white' 
+                          ? 'text-gray-600 hover:text-teal-600' 
+                          : theme === 'dark'
+                          ? 'text-gray-400 hover:text-purple-400'
+                          : 'text-gray-400 hover:text-green-400'
+                      }`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.name}
+                      <ExternalLink className="h-3 w-3" />
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className={`flex items-center gap-2 text-sm transition-all duration-300 hover:scale-105 hover:translate-x-1 ${
+                        theme === 'white' 
+                          ? 'text-gray-600 hover:text-teal-600' 
+                          : theme === 'dark'
+                          ? 'text-gray-400 hover:text-purple-400'
+                          : 'text-gray-400 hover:text-green-400'
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
