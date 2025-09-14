@@ -27,34 +27,44 @@ const Footer = () => {
   };
 
   return (
-    <footer className={`mt-16 backdrop-blur-md border-t transition-all duration-300 ${
-      theme === 'dark' 
-        ? 'bg-black/20 border-white/10' 
-        : 'bg-white/30 border-black/10'
+    <footer className={`mt-16 backdrop-blur-md border-t transition-all duration-500 glass-effect ${
+      theme === 'white' 
+        ? 'bg-white/70 border-teal-200/30' 
+        : theme === 'dark'
+        ? 'bg-gray-900/70 border-purple-500/20'
+        : 'bg-black/70 border-green-500/20'
     }`}>
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8">
-          {/* Brand Section */}
-          <div className="space-y-4">
+          {/* Enhanced Brand Section */}
+          <div className="space-y-4 animate-fade-in">
             <Link to="/" className="flex items-center gap-2 group">
-              <Scale className={`h-8 w-8 transform group-hover:scale-110 transition-transform duration-300 ${
-                theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+              <Scale className={`h-8 w-8 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 ${
+                theme === 'white' ? 'text-teal-600' : 
+                theme === 'dark' ? 'text-purple-400' : 
+                'text-green-400'
               }`} />
-              <span className={`text-xl font-bold ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              <span className={`text-xl font-bold transition-colors duration-300 ${
+                theme === 'white' ? 'text-gray-900' : 'text-white'
               }`}>
                 Advanced BMI Calculator Ultra Pro Max by Venom Stone
               </span>
             </Link>
-            <p className={`text-sm leading-relaxed ${
-              theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+            <p className={`text-sm leading-relaxed transition-colors duration-300 ${
+              theme === 'white' ? 'text-gray-600' : 'text-gray-400'
             }`}>
               Advanced BMI calculator with health insights, body fat estimation, and personalized recommendations. 
               Your privacy-focused health companion.
             </p>
-            <div className="flex items-center gap-2">
-              <Heart className={`h-4 w-4 ${theme === 'dark' ? 'text-red-400' : 'text-red-500'}`} />
-              <span className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+            <div className="flex items-center gap-2 animate-pulse-glow">
+              <Heart className={`h-4 w-4 ${
+                theme === 'white' ? 'text-red-500' : 
+                theme === 'dark' ? 'text-red-400' : 
+                'text-red-400'
+              }`} />
+              <span className={`text-sm transition-colors duration-300 ${
+                theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+              }`}>
                 Made with care for your health
               </span>
             </div>
