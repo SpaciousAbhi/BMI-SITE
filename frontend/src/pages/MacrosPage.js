@@ -162,6 +162,20 @@ const MacrosPage = () => {
 
   return (
     <div className={`min-h-screen transition-all duration-700 ${getBackgroundGradient()}`}>
+      <SEOHead 
+        title="Free Macros Calculator | Macronutrient Calculator - Protein, Carbs, Fat"
+        description="Free macros calculator for protein, carbs, and fat breakdown. Calculate macronutrients for keto, high protein, low carb, and other diet types. Personalized macro calculator with meal planning."
+        keywords="macros calculator, macronutrient calculator, protein calculator, carbs calculator, keto macros, high protein diet, macro breakdown, free macros calculator, diet macros"
+        canonical="/macros"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Macros Calculator - Macronutrient Calculator",
+          "description": "Calculate your daily macronutrient needs with our free macros calculator. Get protein, carbs, and fat breakdown for your diet goals.",
+          "url": "https://bmicalculator.com/macros", 
+          "applicationCategory": "HealthApplication"
+        }}
+      />
       <Header />
       
       <main className="container mx-auto px-4 py-8">
