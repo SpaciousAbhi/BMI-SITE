@@ -823,6 +823,9 @@ const HomePage = () => {
           </div>
         </div>
 
+        {/* SEO-Optimized Content Section */}
+        <SEOContent />
+
         {/* Comprehensive BMI Information Sections */}
         <div className="mt-16 max-w-6xl mx-auto">
           <div className="text-center mb-12">
