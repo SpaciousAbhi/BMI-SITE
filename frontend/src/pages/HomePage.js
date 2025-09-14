@@ -124,18 +124,44 @@ const HomePage = () => {
       <Header />
       
       <main className="container mx-auto px-4 py-8">
-        {/* Hero Section */}
+        {/* Enhanced Hero Section */}
         <div className="text-center mb-12 animate-fade-in">
-          <h1 className={`text-4xl md:text-6xl font-bold mb-6 ${
-            theme === 'dark' ? 'text-white' : 'text-gray-900'
-          }`}>
-            Advanced BMI Calculator
-          </h1>
-          <p className={`text-xl md:text-2xl mb-8 max-w-3xl mx-auto ${
-            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+          <div className="relative">
+            <h1 className={`text-4xl md:text-6xl font-bold mb-6 transition-all duration-500 ${
+              theme === 'white' ? 'text-gray-900' : 'text-white'
+            }`}>
+              Advanced BMI Calculator
+            </h1>
+            {/* Accent underline */}
+            <div className={`w-32 h-1 mx-auto mb-6 rounded-full transition-all duration-500 ${
+              theme === 'white' ? 'bg-gradient-to-r from-teal-400 to-cyan-500' :
+              theme === 'dark' ? 'bg-gradient-to-r from-purple-400 to-pink-500' :
+              'bg-gradient-to-r from-green-400 to-emerald-500'
+            }`} />
+          </div>
+          <p className={`text-xl md:text-2xl mb-8 max-w-3xl mx-auto transition-colors duration-500 ${
+            theme === 'white' ? 'text-gray-600' : 'text-gray-300'
           }`}>
             Calculate your Body Mass Index with advanced health insights, body fat estimation, and personalized recommendations.
           </p>
+          
+          {/* Feature badges */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {['Instant Results', 'PDF Reports', 'Workout Plans', 'Health Insights'].map((feature, index) => (
+              <Badge 
+                key={feature}
+                variant="secondary" 
+                className={`px-4 py-2 text-sm font-medium transition-all duration-500 transform hover:scale-105 animate-slide-in ${
+                  theme === 'white' ? 'bg-teal-100 text-teal-800 hover:bg-teal-200' :
+                  theme === 'dark' ? 'bg-purple-900/50 text-purple-200 hover:bg-purple-800/50' :
+                  'bg-green-900/50 text-green-200 hover:bg-green-800/50'
+                }`}
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {feature}
+              </Badge>
+            ))}
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
