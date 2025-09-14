@@ -254,7 +254,7 @@ const HomePage = () => {
                     step={formData.heightUnit === 'feet' ? '0.1' : '1'}
                     placeholder={
                       formData.heightUnit === 'feet' 
-                        ? 'Enter height (e.g., 5.9 for 5\'9")' 
+                        ? 'Enter height (e.g., 6.10 for 6\'10")' 
                         : `Enter height in ${formData.heightUnit}`
                     }
                     value={formData.height}
