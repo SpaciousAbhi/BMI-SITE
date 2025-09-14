@@ -14,6 +14,7 @@ import BMIResult from '../components/BMIResult';
 import AdvancedMetrics from '../components/AdvancedMetrics';
 import BMIInformation from '../components/BMIInformation';
 import ChildrenBMIInfo from '../components/ChildrenBMIInfo';
+import SEOContent from '../components/SEOContent';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { calculateBMI, calculateBodyFat, calculateIdealWeight, getHealthRecommendations } from '../utils/bmiCalculations';
