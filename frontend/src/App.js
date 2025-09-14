@@ -29,6 +29,9 @@ function App() {
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/about-bmi" element={<AboutBMIPage />} />
+              <Route path="/health-tips" element={<HealthTipsPage />} />
+              <Route path="/nutrition-guide" element={<NutritionGuidePage />} />
             </Routes>
           </BrowserRouter>
           <Toaster />
