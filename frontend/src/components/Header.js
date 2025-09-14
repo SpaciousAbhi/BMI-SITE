@@ -14,7 +14,9 @@ import {
   Heart,
   BookOpen,
   Shield,
-  Mail
+  Mail,
+  Utensils,
+  Activity
 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
