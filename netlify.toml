@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  CI = "false"
 
 # Redirect rules for SEO and URL structure
 [[redirects]]
