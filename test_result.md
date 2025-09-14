@@ -262,13 +262,10 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Health Resources Pages (About BMI, Health Tips, Nutrition Guide)"
-    - "Enhanced Routing and Navigation"
-    - "Enhanced Theme System (3 Dynamic Themes)"
-    - "Enhanced Color Schemes & CSS Variables"
-    - "Enhanced Header Component with Theme Toggle"
-    - "Enhanced HomePage with Theme-Aware Styling"
-    - "Enhanced Footer Component"
+    - "Page Load Position Fix"
+    - "Height Input Bug Fix (Feet & Inches)"
+    - "Workout Plans Page Functionality"
+    - "Main Menu Navigation"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
