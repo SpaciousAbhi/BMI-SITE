@@ -27,10 +27,13 @@ const HomePage = () => {
   const [formData, setFormData] = useState({
     weight: '',
     height: '',
+    heightFeet: '',
+    heightInches: '',
     age: '',
     gender: '',
     weightUnit: 'kg',
     heightUnit: 'cm',
+    unitSystem: 'metric', // 'metric', 'us', 'indian'
   });
   
   const [result, setResult] = useState(null);
