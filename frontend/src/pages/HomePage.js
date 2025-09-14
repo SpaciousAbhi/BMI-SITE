@@ -179,8 +179,58 @@ const HomePage = () => {
   };
 
   const resetForm = () => {
-    setFormData({ weight: '', height: '', age: '', gender: '', weightUnit: 'kg', heightUnit: 'cm' });
+    setFormData({ 
+      weight: '', 
+      height: '', 
+      heightFeet: '',
+      heightInches: '',
+      age: '', 
+      gender: '', 
+      weightUnit: 'kg', 
+      heightUnit: 'cm',
+      unitSystem: 'metric',
+    });
     setResult(null);
+  };
+
+  const getUnitSystemColor = (system) => {
+    const isActive = formData.unitSystem === system;
+    if (isActive) {
+      return theme === 'white' 
+        ? 'bg-teal-600 text-white border-teal-600' 
+        : theme === 'dark'
+        ? 'bg-purple-600 text-white border-purple-600'
+        : 'bg-green-600 text-white border-green-600';
+    }
+    return theme === 'white' 
+      ? 'bg-white text-teal-600 border-teal-300 hover:bg-teal-50' 
+      : theme === 'dark'
+      ? 'bg-gray-700 text-purple-300 border-purple-500/50 hover:bg-purple-900/20'
+      : 'bg-gray-800 text-green-300 border-green-500/50 hover:bg-green-900/20';
+  };
+
+  const getHeightPlaceholder = () => {
+    switch(formData.heightUnit) {
+      case 'feet':
+        return 'e.g., 6.10 for 6\'10" or use separate fields below';
+      case 'inches':
+        return 'e.g., 70 for 70 inches';
+      case 'cm':
+        return 'e.g., 175 for 175 cm';
+      default:
+        return `Enter height in ${formData.heightUnit}`;
+    }
+  };
+
+  const getWeightPlaceholder = () => {
+    switch(formData.weightUnit) {
+      case 'kg':
+        return 'e.g., 70 for 70 kilograms';
+      case 'lbs':
+        return 'e.g., 154 for 154 pounds';
+      default:
+        return `Enter weight in ${formData.weightUnit}`;
+    }
   };
 
   const getBackgroundGradient = () => {
