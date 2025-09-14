@@ -1,22 +1,43 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# High-priority pages for crawling
+Allow: /
+Allow: /body-fat
+Allow: /calories  
+Allow: /macros
+Allow: /about-bmi
+Allow: /health-tips
+Allow: /nutrition-guide
+
+# Sitemap location
 Sitemap: https://bmicalculator.com/sitemap.xml
 
-# AdSense-friendly policies
+# Search engine specific directives
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
-# Block common bot spam
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# Block resource-heavy crawlers
 User-agent: AhrefsBot
 Disallow: /
 
 User-agent: MJ12bot
 Disallow: /
 
-# Crawl-delay for all bots
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Crawl-delay for general bots
 Crawl-delay: 1
