@@ -20,9 +20,9 @@ const Footer = () => {
       { name: 'Health Goals', href: '/goals' },
     ],
     resources: [
-      { name: 'About BMI', href: '#', external: true },
-      { name: 'Health Tips', href: '#', external: true },
-      { name: 'Nutrition Guide', href: '#', external: true },
+      { name: 'About BMI', href: '/about-bmi', external: false },
+      { name: 'Health Tips', href: '/health-tips', external: false },
+      { name: 'Nutrition Guide', href: '/nutrition-guide', external: false },
     ]
   };
 
