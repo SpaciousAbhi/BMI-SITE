@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Enhance the UI/UX & Colors, keep 3 themes dynamic white, dynamic dark & Black & make the site work smoothly."
+user_problem_statement: "Fix 4 Critical Issues: 1) Page Load Position - pages loading from middle/bottom instead of top, 2) Height Input Bug - 6.10/6.11 not handled correctly in BMI calculator (feet.inches format), 3) Workout Plans Page - not functional when accessed directly, 4) Main Menu - missing navigation menu button"
 
 backend:
   - task: "Backend compatibility with enhanced UI themes"
