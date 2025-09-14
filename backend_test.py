@@ -10,8 +10,14 @@ import sys
 from datetime import datetime
 import uuid
 
-# Backend URL - using localhost since we're testing internally
-BACKEND_URL = "http://localhost:8001/api"
+# Backend URL - get from environment variable
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv('/app/frontend/.env')
+BACKEND_BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'http://localhost:8001')
+BACKEND_URL = f"{BACKEND_BASE_URL}/api"
 
 def test_backend_health():
     """Test if backend service is running and responding"""
