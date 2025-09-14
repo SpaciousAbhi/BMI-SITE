@@ -176,6 +176,25 @@ const BMIResult = ({ result }) => {
             {bmi >= 30 && " We recommend consulting with a healthcare provider for a personalized weight management plan."}
           </p>
         </div>
+
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row gap-3 pt-4">
+          <Button 
+            onClick={handleViewWorkout}
+            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+          >
+            <Dumbbell className="h-4 w-4 mr-2" />
+            View Workout Plan
+          </Button>
+          <Button 
+            onClick={handleDownloadPDF}
+            variant="outline"
+            className="flex-1"
+          >
+            <Download className="h-4 w-4 mr-2" />
+            Download PDF Report
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );
