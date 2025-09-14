@@ -4,7 +4,8 @@ import { Scale, Heart, Shield, FileText, Mail, ExternalLink } from 'lucide-react
 import { useTheme } from '../contexts/ThemeContext';
 
 const Footer = () => {
-  const { theme } = useTheme();
+  const { theme, getThemeConfig } = useTheme();
+  const themeConfig = getThemeConfig();
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
