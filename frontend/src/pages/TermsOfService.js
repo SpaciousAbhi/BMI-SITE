@@ -179,7 +179,7 @@ const TermsOfService = () => {
                   <li>• Health recommendations and content</li>
                 </ul>
                 <p>
-                  Are owned by BMI Pro and are protected by copyright, trademark, and other 
+                  Are owned by Advanced BMI Calculator Ultra Pro Max by Venom Stone and are protected by copyright, trademark, and other 
                   intellectual property laws. You may not reproduce, distribute, or create 
                   derivative works without explicit permission.
                 </p>
