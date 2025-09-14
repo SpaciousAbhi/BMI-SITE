@@ -1,6 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Scale, Heart, Shield, FileText, Mail, ExternalLink } from 'lucide-react';
+import { 
+  Scale, 
+  Heart, 
+  Target, 
+  TrendingUp, 
+  Shield, 
+  FileText, 
+  Mail,
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube
+} from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Footer = () => {
@@ -8,205 +20,254 @@ const Footer = () => {
   const themeConfig = getThemeConfig();
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = {
-    legal: [
-      { name: 'Privacy Policy', href: '/privacy-policy', icon: Shield },
-      { name: 'Terms of Service', href: '/terms-of-service', icon: FileText },
-      { name: 'Contact Us', href: '/contact', icon: Mail },
-    ],
-    tools: [
-      { name: 'BMI Calculator', href: '/' },
-      { name: 'BMI History', href: '/history' },
-      { name: 'Health Goals', href: '/goals' },
-    ],
-    resources: [
-      { name: 'About BMI', href: '/about-bmi', external: false },
-      { name: 'Health Tips', href: '/health-tips', external: false },
-      { name: 'Nutrition Guide', href: '/nutrition-guide', external: false },
-    ]
+  const getIconColor = () => {
+    switch(themeConfig.accent) {
+      case 'teal': return theme === 'white' ? 'text-teal-600' : 'text-teal-400';
+      case 'purple': return 'text-purple-400';
+      case 'green': return 'text-green-400';
+      default: return 'text-blue-400';
+    }
+  };
+
+  const getHoverColor = () => {
+    switch(themeConfig.accent) {
+      case 'teal': return theme === 'white' ? 'hover:text-teal-600' : 'hover:text-teal-400';
+      case 'purple': return 'hover:text-purple-400';
+      case 'green': return 'hover:text-green-400';
+      default: return 'hover:text-blue-400';
+    }
+  };
+
+  const getBorderColor = () => {
+    switch(themeConfig.accent) {
+      case 'teal': return theme === 'white' ? 'border-teal-200' : 'border-teal-400/20';
+      case 'purple': return 'border-purple-400/20';
+      case 'green': return 'border-green-400/20';
+      default: return 'border-blue-400/20';
+    }
   };
 
   return (
-    <footer className={`mt-16 backdrop-blur-md border-t transition-all duration-500 glass-effect ${
+    <footer className={`mt-16 backdrop-blur-md border-t transition-all duration-500 ${
       theme === 'white' 
-        ? 'bg-white/70 border-teal-200/30' 
+        ? 'bg-white/80 border-teal-200/50' 
         : theme === 'dark'
-        ? 'bg-gray-900/70 border-purple-500/20'
-        : 'bg-black/70 border-green-500/20'
+        ? 'bg-gray-900/80 border-purple-500/30'
+        : 'bg-black/80 border-green-500/30'
     }`}>
       <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
-          {/* Enhanced Brand Section */}
-          <div className="space-y-4 animate-fade-in">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Brand Section */}
+          <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 group">
-              <Scale className={`h-8 w-8 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 ${
-                theme === 'white' ? 'text-teal-600' : 
-                theme === 'dark' ? 'text-purple-400' : 
-                'text-green-400'
-              }`} />
-              <span className={`text-xl font-bold transition-colors duration-300 ${
+              <Scale className={`h-6 w-6 transition-all duration-300 group-hover:scale-110 ${getIconColor()}`} />
+              <span className={`text-lg font-bold transition-colors duration-300 ${
                 theme === 'white' ? 'text-gray-900' : 'text-white'
               }`}>
-                Advanced BMI Calculator Ultra Pro Max by Venom Stone
+                Advanced BMI Calculator
               </span>
             </Link>
-            <p className={`text-sm leading-relaxed transition-colors duration-300 ${
+            <p className={`text-sm leading-relaxed ${
               theme === 'white' ? 'text-gray-600' : 'text-gray-400'
             }`}>
-              Advanced BMI calculator with health insights, body fat estimation, and personalized recommendations. 
-              Your privacy-focused health companion.
+              Your comprehensive health companion for accurate BMI calculations, 
+              personalized insights, and fitness goal tracking.
             </p>
-            <div className="flex items-center gap-2 animate-pulse-glow">
-              <Heart className={`h-4 w-4 ${
-                theme === 'white' ? 'text-red-500' : 
-                theme === 'dark' ? 'text-red-400' : 
-                'text-red-400'
-              }`} />
-              <span className={`text-sm transition-colors duration-300 ${
-                theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-              }`}>
-                Made with care for your health
-              </span>
+            <div className="flex space-x-4">
+              <a 
+                href="#" 
+                className={`${theme === 'white' ? 'text-gray-400' : 'text-gray-500'} ${getHoverColor()} transition-all duration-300 hover:scale-110`}
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a 
+                href="#" 
+                className={`${theme === 'white' ? 'text-gray-400' : 'text-gray-500'} ${getHoverColor()} transition-all duration-300 hover:scale-110`}
+                aria-label="Twitter"
+              >
+                <Twitter className="h-5 w-5" />
+              </a>
+              <a 
+                href="#" 
+                className={`${theme === 'white' ? 'text-gray-400' : 'text-gray-500'} ${getHoverColor()} transition-all duration-300 hover:scale-110`}
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a 
+                href="#" 
+                className={`${theme === 'white' ? 'text-gray-400' : 'text-gray-500'} ${getHoverColor()} transition-all duration-300 hover:scale-110`}
+                aria-label="YouTube"
+              >
+                <Youtube className="h-5 w-5" />
+              </a>
             </div>
           </div>
 
-          {/* Enhanced Legal Links */}
-          <div className="space-y-4 animate-slide-in" style={{ animationDelay: '100ms' }}>
-            <h3 className={`text-lg font-semibold transition-colors duration-300 ${
+          {/* Tools Section */}
+          <div className="space-y-4">
+            <h3 className={`text-sm font-semibold uppercase tracking-wider ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
-              Legal & Support
+              Tools
             </h3>
             <ul className="space-y-3">
-              {footerLinks.legal.map((link, index) => {
-                const IconComponent = link.icon;
-                return (
-                  <li key={link.name} className="animate-slide-in" style={{ animationDelay: `${200 + index * 50}ms` }}>
-                    <Link
-                      to={link.href}
-                      className={`flex items-center gap-2 text-sm transition-all duration-300 hover:scale-105 hover:translate-x-1 ${
-                        theme === 'white' 
-                          ? 'text-gray-600 hover:text-teal-600' 
-                          : theme === 'dark'
-                          ? 'text-gray-400 hover:text-purple-400'
-                          : 'text-gray-400 hover:text-green-400'
-                      }`}
-                    >
-                      <IconComponent className="h-4 w-4" />
-                      {link.name}
-                    </Link>
-                  </li>
-                );
-              })}
+              <li>
+                <Link 
+                  to="/" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Scale className="h-4 w-4" />
+                  BMI Calculator
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/history" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <TrendingUp className="h-4 w-4" />
+                  Progress Tracking
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/goals" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Target className="h-4 w-4" />
+                  Goal Setting
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/workout" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Heart className="h-4 w-4" />
+                  Workout Plans
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Enhanced Tools */}
-          <div className="space-y-4 animate-slide-in" style={{ animationDelay: '200ms' }}>
-            <h3 className={`text-lg font-semibold transition-colors duration-300 ${
-              theme === 'white' ? 'text-gray-900' : 'text-white'
-            }`}>
-              Tools & Features
-            </h3>
-            <ul className="space-y-3">
-              {footerLinks.tools.map((link, index) => (
-                <li key={link.name} className="animate-slide-in" style={{ animationDelay: `${300 + index * 50}ms` }}>
-                  <Link
-                    to={link.href}
-                    className={`text-sm transition-all duration-300 hover:scale-105 hover:translate-x-1 ${
-                      theme === 'white' 
-                        ? 'text-gray-600 hover:text-teal-600' 
-                        : theme === 'dark'
-                        ? 'text-gray-400 hover:text-purple-400'
-                        : 'text-gray-400 hover:text-green-400'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Enhanced Resources */}
-          <div className="space-y-4 animate-slide-in" style={{ animationDelay: '300ms' }}>
-            <h3 className={`text-lg font-semibold transition-colors duration-300 ${
+          {/* Health Resources Section */}
+          <div className="space-y-4">
+            <h3 className={`text-sm font-semibold uppercase tracking-wider ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
               Health Resources
             </h3>
             <ul className="space-y-3">
-              {footerLinks.resources.map((link, index) => (
-                <li key={link.name} className="animate-slide-in" style={{ animationDelay: `${400 + index * 50}ms` }}>
-                  {link.external ? (
-                    <a
-                      href={link.href}
-                      className={`flex items-center gap-2 text-sm transition-all duration-300 hover:scale-105 hover:translate-x-1 ${
-                        theme === 'white' 
-                          ? 'text-gray-600 hover:text-teal-600' 
-                          : theme === 'dark'
-                          ? 'text-gray-400 hover:text-purple-400'
-                          : 'text-gray-400 hover:text-green-400'
-                      }`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {link.name}
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
-                  ) : (
-                    <Link
-                      to={link.href}
-                      className={`flex items-center gap-2 text-sm transition-all duration-300 hover:scale-105 hover:translate-x-1 ${
-                        theme === 'white' 
-                          ? 'text-gray-600 hover:text-teal-600' 
-                          : theme === 'dark'
-                          ? 'text-gray-400 hover:text-purple-400'
-                          : 'text-gray-400 hover:text-green-400'
-                      }`}
-                    >
-                      {link.name}
-                    </Link>
-                  )}
-                </li>
-              ))}
+              <li>
+                <Link 
+                  to="/about-bmi" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                >
+                  About BMI
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/health-tips" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                >
+                  Health Tips
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/nutrition-guide" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                >
+                  Nutrition Guide
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Legal Section */}
+          <div className="space-y-4">
+            <h3 className={`text-sm font-semibold uppercase tracking-wider ${
+              theme === 'white' ? 'text-gray-900' : 'text-white'
+            }`}>
+              Legal
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <Link 
+                  to="/privacy-policy" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Shield className="h-4 w-4" />
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/terms-of-service" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <FileText className="h-4 w-4" />
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/contact" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Mail className="h-4 w-4" />
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* Enhanced Bottom Section */}
-        <div className={`mt-12 pt-8 border-t transition-all duration-300 ${
-          theme === 'white' ? 'border-teal-200/30' : 
-          theme === 'dark' ? 'border-purple-500/20' : 
-          'border-green-500/20'
-        }`}>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 animate-fade-in" style={{ animationDelay: '500ms' }}>
-            <div className={`text-sm transition-colors duration-300 ${
-              theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-            }`}>
-              © {currentYear} Advanced BMI Calculator Ultra Pro Max by Venom Stone. All rights reserved.
-            </div>
-            
-            <div className={`text-sm text-center transition-colors duration-300 ${
-              theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-            }`}>
-              <strong className={`${
-                theme === 'white' ? 'text-orange-600' : 
-                theme === 'dark' ? 'text-yellow-400' : 
-                'text-yellow-400'
-              }`}>
-                Medical Disclaimer:
-              </strong>
-              {' '}This tool is for educational purposes only. Consult healthcare professionals for medical advice.
-            </div>
-          </div>
-        </div>
+        {/* Divider */}
+        <div className={`my-8 border-t ${getBorderColor()}`}></div>
 
-        {/* Enhanced AdSense Ready Notice */}
-        <div className={`mt-6 text-center text-xs transition-colors duration-300 animate-pulse-glow ${
-          theme === 'white' ? 'text-gray-400' : 'text-gray-500'
-        }`}>
-          <p>This site is optimized for Google AdSense and follows privacy-first practices.</p>
+        {/* Bottom Footer */}
+        <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+          <div className={`text-sm ${
+            theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+          }`}>
+            © {currentYear} Advanced BMI Calculator. All rights reserved.
+          </div>
+          
+          <div className={`text-xs ${
+            theme === 'white' ? 'text-gray-500' : 'text-gray-500'
+          } text-center md:text-right`}>
+            <p className="mb-1">
+              ⚠️ Disclaimer: This tool provides estimates only.
+            </p>
+            <p>
+              Consult healthcare professionals for medical advice.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

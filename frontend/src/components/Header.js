@@ -48,15 +48,17 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <Scale className={`h-8 w-8 transform group-hover:scale-110 transition-all duration-300 ${
-              theme === 'white' ? 'text-teal-600' : 
-              theme === 'dark' ? 'text-purple-400' : 
-              'text-green-400'
+            <Scale className={`h-6 w-6 transition-all duration-300 group-hover:scale-110 ${
+              theme === 'white' 
+                ? 'text-teal-600' 
+                : theme === 'dark' 
+                ? 'text-purple-400' 
+                : 'text-green-400'
             }`} />
-            <span className={`text-xl font-bold transition-colors duration-300 ${
+            <span className={`text-lg font-bold transition-colors duration-300 ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
-              Advanced BMI Calculator by Venom Stone
+              Advanced BMI Calculator
             </span>
           </Link>
 
@@ -66,75 +68,43 @@ const Header = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`relative px-3 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 ${
+                className={`text-sm font-medium transition-all duration-300 hover:scale-105 ${
                   location.pathname === item.path
-                    ? getAccentColor()
-                    : theme === 'white'
-                    ? 'text-gray-600 hover:text-gray-900 hover:bg-teal-50/50'
-                    : theme === 'dark'
-                    ? 'text-gray-300 hover:text-white hover:bg-purple-500/10'
-                    : 'text-gray-300 hover:text-white hover:bg-green-500/10'
-                }`}
+                    ? theme === 'white'
+                      ? 'text-teal-600 border-b-2 border-teal-600'
+                      : theme === 'dark'
+                      ? 'text-purple-400 border-b-2 border-purple-400'
+                      : 'text-green-400 border-b-2 border-green-400'
+                    : theme === 'white' 
+                    ? 'text-gray-600 hover:text-teal-600' 
+                    : 'text-gray-300 hover:text-white'
+                } pb-1`}
               >
                 {item.label}
-                {location.pathname === item.path && (
-                  <div className={`absolute bottom-0 left-0 right-0 h-0.5 rounded-full transition-all duration-300 ${
-                    theme === 'white' ? 'bg-teal-500' : 
-                    theme === 'dark' ? 'bg-purple-400' : 
-                    'bg-green-400'
-                  }`} />
-                )}
               </Link>
             ))}
           </nav>
 
-          {/* Controls */}
+          {/* Theme Toggle */}
           <div className="flex items-center gap-3">
-            {/* Enhanced Theme Toggle */}
-            <div className="flex items-center gap-2">
-              <span className={`text-xs font-medium transition-colors duration-300 ${
-                theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-              }`}>
-                {themeConfig.name}
-              </span>
-              <Button
-                onClick={toggleTheme}
-                variant="outline"
-                size="sm"
-                className={`p-2 transform hover:scale-105 transition-all duration-300 ${
-                  theme === 'white' 
-                    ? 'border-teal-200 text-teal-600 hover:bg-teal-50' 
-                    : theme === 'dark'
-                    ? 'border-purple-500/30 text-purple-400 hover:bg-purple-500/10'
-                    : 'border-green-500/30 text-green-400 hover:bg-green-500/10'
-                }`}
-                title={`Switch to ${theme === 'white' ? 'Dark' : theme === 'dark' ? 'Black' : 'White'} theme`}
-              >
-                {getThemeIcon()}
-              </Button>
-            </div>
+            <Badge variant="outline" className={`${getAccentColor()} border-current`}>
+              {themeConfig.name}
+            </Badge>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={toggleTheme}
+              className={`transition-all duration-300 hover:scale-105 ${
+                theme === 'white'
+                  ? 'border-teal-200 hover:border-teal-300 hover:bg-teal-50'
+                  : theme === 'dark'
+                  ? 'border-purple-400/30 hover:border-purple-400/50 hover:bg-purple-400/10'
+                  : 'border-green-400/30 hover:border-green-400/50 hover:bg-green-400/10'
+              }`}
+            >
+              {getThemeIcon()}
+            </Button>
           </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        <div className="md:hidden pb-3">
-          <nav className="flex items-center gap-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`px-3 py-1 rounded-lg text-sm transition-all duration-300 ${
-                  location.pathname === item.path
-                    ? getAccentColor()
-                    : theme === 'white'
-                    ? 'text-gray-600'
-                    : 'text-gray-300'
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
         </div>
       </div>
     </header>
