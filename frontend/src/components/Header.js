@@ -7,9 +7,10 @@ import { useTheme } from '../contexts/ThemeContext';
 import { useBMI } from '../contexts/BMIContext';
 
 const Header = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, getThemeConfig } = useTheme();
   const {} = useBMI();
   const location = useLocation();
+  const themeConfig = getThemeConfig();
 
   const navItems = [
     { path: '/', label: 'Calculator' },
