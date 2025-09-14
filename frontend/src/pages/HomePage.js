@@ -407,16 +407,14 @@ const HomePage = () => {
                   }`} />
                   Height
                 </Label>
+                
+                {/* Primary Height Input */}
                 <div className="flex gap-3">
                   <Input
                     id="height"
                     type="number"
-                    step={formData.heightUnit === 'feet' ? '0.1' : '1'}
-                    placeholder={
-                      formData.heightUnit === 'feet' 
-                        ? 'Enter height (e.g., 6.10 for 6\'10")' 
-                        : `Enter height in ${formData.heightUnit}`
-                    }
+                    step={formData.heightUnit === 'feet' ? '0.01' : '1'}
+                    placeholder={getHeightPlaceholder()}
                     value={formData.height}
                     onChange={(e) => handleInputChange('height', e.target.value)}
                     className={`flex-1 transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
@@ -443,6 +441,72 @@ const HomePage = () => {
                       <SelectItem value="feet">ft</SelectItem>
                     </SelectContent>
                   </Select>
+                </div>
+
+                {/* Separate Feet and Inches Input (when feet is selected) */}
+                {formData.heightUnit === 'feet' && (
+                  <div className="space-y-2">
+                    <div className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                      Or enter feet and inches separately:
+                    </div>
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <Label className={`text-xs ${theme === 'white' ? 'text-gray-500' : 'text-gray-400'}`}>
+                          Feet
+                        </Label>
+                        <Input
+                          type="number"
+                          placeholder="e.g., 6"
+                          value={formData.heightFeet}
+                          onChange={(e) => handleInputChange('heightFeet', e.target.value)}
+                          className={`transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
+                            theme === 'white' 
+                              ? 'bg-white/70 border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
+                              : theme === 'dark'
+                              ? 'bg-gray-700/50 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
+                              : 'bg-gray-900/50 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
+                          }`}
+                        />
+                      </div>
+                      <div>
+                        <Label className={`text-xs ${theme === 'white' ? 'text-gray-500' : 'text-gray-400'}`}>
+                          Inches
+                        </Label>
+                        <Input
+                          type="number"
+                          min="0"
+                          max="11"
+                          placeholder="e.g., 10"
+                          value={formData.heightInches}
+                          onChange={(e) => handleInputChange('heightInches', e.target.value)}
+                          className={`transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
+                            theme === 'white' 
+                              ? 'bg-white/70 border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
+                              : theme === 'dark'
+                              ? 'bg-gray-700/50 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
+                              : 'bg-gray-900/50 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
+                          }`}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Height Input Examples and Tips */}
+                <div className={`text-xs space-y-1 ${theme === 'white' ? 'text-gray-500' : 'text-gray-400'}`}>
+                  <div className="font-medium">Examples:</div>
+                  {formData.heightUnit === 'feet' && (
+                    <div>
+                      • Combined: 6.10 (6 feet 10 inches) or 5.09 (5 feet 9 inches)<br/>
+                      • Separate: 6 feet + 10 inches or 5 feet + 9 inches
+                    </div>
+                  )}
+                  {formData.heightUnit === 'inches' && (
+                    <div>• 70 inches, 68 inches, 72 inches</div>
+                  )}
+                  {formData.heightUnit === 'cm' && (
+                    <div>• 175 cm, 165 cm, 180 cm</div>
+                  )}
                 </div>
               </div>
 
