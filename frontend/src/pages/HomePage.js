@@ -106,12 +106,21 @@ const HomePage = () => {
     setResult(null);
   };
 
+  const getBackgroundGradient = () => {
+    switch(theme) {
+      case 'white':
+        return 'bg-gradient-to-br from-blue-50 via-teal-50 to-cyan-50';
+      case 'dark':
+        return 'bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900';
+      case 'black':
+        return 'bg-gradient-to-br from-black via-gray-900 to-black';
+      default:
+        return 'bg-gradient-to-br from-blue-50 via-teal-50 to-cyan-50';
+    }
+  };
+
   return (
-    <div className={`min-h-screen transition-all duration-500 ${
-      theme === 'dark' 
-        ? 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900' 
-        : 'bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50'
-    }`}>
+    <div className={`min-h-screen transition-all duration-700 ${getBackgroundGradient()}`}>
       <Header />
       
       <main className="container mx-auto px-4 py-8">
