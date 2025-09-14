@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Fix 4 Critical Issues: 1) Page Load Position - pages loading from middle/bottom instead of top, 2) Height Input Bug - 6.10/6.11 not handled correctly in BMI calculator (feet.inches format), 3) Workout Plans Page - not functional when accessed directly, 4) Main Menu - missing navigation menu button"
+user_problem_statement: "Add Enhanced Calculators: Body Fat % Calculator (using waist, neck, hip, and height inputs), Calorie Needs Calculator (TDEE/BMR) – shows how many calories to maintain, lose, or gain weight, Macros Calculator – provides protein, carb, and fat breakdown based on goal. These should be added to the main menu as separate tools, and also displayed on the main page as standalone options. Keep the BMI Calculator as it is, since BMI is our core tool."
 
 backend:
   - task: "Backend compatibility with enhanced UI themes"
