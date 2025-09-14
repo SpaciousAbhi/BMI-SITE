@@ -13,6 +13,7 @@ import ContactPage from "./pages/ContactPage";
 import AboutBMIPage from "./pages/AboutBMIPage";
 import HealthTipsPage from "./pages/HealthTipsPage";
 import NutritionGuidePage from "./pages/NutritionGuidePage";
+import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "./components/ui/toaster";
 
 // Loading component
