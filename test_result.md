@@ -182,10 +182,11 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Page Load Position Fix"
-    - "Height Input Bug Fix (Feet & Inches)"
-    - "Workout Plans Page Functionality"
-    - "Main Menu Navigation"
+    - "Body Fat Calculator Page"
+    - "Calorie/TDEE Calculator Page"
+    - "Macros Calculator Page"
+    - "Enhanced Navigation and Routing"
+    - "Enhanced Homepage with New Calculators"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
