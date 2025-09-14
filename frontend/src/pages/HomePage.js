@@ -165,11 +165,13 @@ const HomePage = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Calculator Form */}
-          <Card className={`backdrop-blur-md border-0 shadow-2xl transform hover:scale-105 transition-all duration-300 ${
-            theme === 'dark' 
-              ? 'bg-white/10 hover:bg-white/15' 
-              : 'bg-white/70 hover:bg-white/80'
+          {/* Enhanced Calculator Form */}
+          <Card className={`backdrop-blur-md border-0 shadow-2xl transform hover:scale-[1.02] transition-all duration-500 glass-effect animate-scale-in ${
+            theme === 'white' 
+              ? 'bg-white/80 hover:bg-white/90 border-teal-200/20' 
+              : theme === 'dark'
+              ? 'bg-gray-800/80 hover:bg-gray-800/90 border-purple-500/20'
+              : 'bg-black/80 hover:bg-gray-900/50 border-green-500/20'
           }`}>
             <CardHeader>
               <CardTitle className={`flex items-center gap-2 text-2xl ${
