@@ -323,7 +323,7 @@ const ContactPage = () => {
                         Medical Disclaimer
                       </h3>
                       <p className={`text-sm ${theme === 'dark' ? 'text-yellow-200' : 'text-yellow-700'}`}>
-                        Advanced BMI Calculator Ultra Pro Max by Venom Stone provides educational information only. Always consult with qualified healthcare 
+                        Advanced BMI Calculator provides educational information only. Always consult with qualified healthcare 
                         professionals for medical advice, diagnosis, or treatment decisions.
                       </p>
                     </div>
