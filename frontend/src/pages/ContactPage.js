@@ -29,7 +29,7 @@ const ContactPage = () => {
     {
       icon: Mail,
       title: "Email Support",
-      content: "support@bmipro.com",
+      content: "support@venomstone.com",
       description: "Get help with technical issues or questions"
     },
     {
