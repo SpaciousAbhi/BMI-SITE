@@ -70,22 +70,26 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Legal Links */}
-          <div className="space-y-4">
-            <h3 className={`text-lg font-semibold ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
+          {/* Enhanced Legal Links */}
+          <div className="space-y-4 animate-slide-in" style={{ animationDelay: '100ms' }}>
+            <h3 className={`text-lg font-semibold transition-colors duration-300 ${
+              theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
               Legal & Support
             </h3>
             <ul className="space-y-3">
-              {footerLinks.legal.map((link) => {
+              {footerLinks.legal.map((link, index) => {
                 const IconComponent = link.icon;
                 return (
-                  <li key={link.name}>
+                  <li key={link.name} className="animate-slide-in" style={{ animationDelay: `${200 + index * 50}ms` }}>
                     <Link
                       to={link.href}
-                      className={`flex items-center gap-2 text-sm hover:text-blue-500 transition-colors duration-200 ${
-                        theme === 'dark' ? 'text-gray-400 hover:text-blue-400' : 'text-gray-600'
+                      className={`flex items-center gap-2 text-sm transition-all duration-300 hover:scale-105 hover:translate-x-1 ${
+                        theme === 'white' 
+                          ? 'text-gray-600 hover:text-teal-600' 
+                          : theme === 'dark'
+                          ? 'text-gray-400 hover:text-purple-400'
+                          : 'text-gray-400 hover:text-green-400'
                       }`}
                     >
                       <IconComponent className="h-4 w-4" />
@@ -97,20 +101,24 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Tools */}
-          <div className="space-y-4">
-            <h3 className={`text-lg font-semibold ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
+          {/* Enhanced Tools */}
+          <div className="space-y-4 animate-slide-in" style={{ animationDelay: '200ms' }}>
+            <h3 className={`text-lg font-semibold transition-colors duration-300 ${
+              theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
               Tools & Features
             </h3>
             <ul className="space-y-3">
-              {footerLinks.tools.map((link) => (
-                <li key={link.name}>
+              {footerLinks.tools.map((link, index) => (
+                <li key={link.name} className="animate-slide-in" style={{ animationDelay: `${300 + index * 50}ms` }}>
                   <Link
                     to={link.href}
-                    className={`text-sm hover:text-blue-500 transition-colors duration-200 ${
-                      theme === 'dark' ? 'text-gray-400 hover:text-blue-400' : 'text-gray-600'
+                    className={`text-sm transition-all duration-300 hover:scale-105 hover:translate-x-1 ${
+                      theme === 'white' 
+                        ? 'text-gray-600 hover:text-teal-600' 
+                        : theme === 'dark'
+                        ? 'text-gray-400 hover:text-purple-400'
+                        : 'text-gray-400 hover:text-green-400'
                     }`}
                   >
                     {link.name}
@@ -120,20 +128,24 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Resources */}
-          <div className="space-y-4">
-            <h3 className={`text-lg font-semibold ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
+          {/* Enhanced Resources */}
+          <div className="space-y-4 animate-slide-in" style={{ animationDelay: '300ms' }}>
+            <h3 className={`text-lg font-semibold transition-colors duration-300 ${
+              theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
               Health Resources
             </h3>
             <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
-                <li key={link.name}>
+              {footerLinks.resources.map((link, index) => (
+                <li key={link.name} className="animate-slide-in" style={{ animationDelay: `${400 + index * 50}ms` }}>
                   <a
                     href={link.href}
-                    className={`flex items-center gap-2 text-sm hover:text-blue-500 transition-colors duration-200 ${
-                      theme === 'dark' ? 'text-gray-400 hover:text-blue-400' : 'text-gray-600'
+                    className={`flex items-center gap-2 text-sm transition-all duration-300 hover:scale-105 hover:translate-x-1 ${
+                      theme === 'white' 
+                        ? 'text-gray-600 hover:text-teal-600' 
+                        : theme === 'dark'
+                        ? 'text-gray-400 hover:text-purple-400'
+                        : 'text-gray-400 hover:text-green-400'
                     }`}
                     {...(link.external && { target: '_blank', rel: 'noopener noreferrer' })}
                   >
