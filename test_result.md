@@ -118,18 +118,51 @@ backend:
           comment: "IMPLEMENTATION COMPLETE: Created comprehensive calculation utilities for Body Fat (US Navy method), Calorie/TDEE (Mifflin-St Jeor equation), and Macros (8 diet types including Keto, High Protein, Low Carb). All calculations are client-side JavaScript functions - no backend API changes needed for Netlify hosting."
 
 frontend:
-  - task: "Page Load Position Fix"
+  - task: "Body Fat Calculator Page"
     implemented: true
     working: true
-    file: "/app/frontend/src/components/ScrollToTop.js, /app/frontend/src/App.js"
+    file: "/app/frontend/src/pages/BodyFatPage.js"
     stuck_count: 0
     priority: "high"
     needs_retesting: true
     status_history:
         - working: true
           agent: "main"
-          comment: "IMPLEMENTATION COMPLETE: Added ScrollToTop component to automatically scroll to top when navigating between pages. Component uses React Router's useLocation hook to detect route changes and smoothly scrolls to top position."
-  - task: "Height Input Bug Fix (Feet & Inches)"
+          comment: "IMPLEMENTATION COMPLETE: Created comprehensive Body Fat Calculator using US Navy method. Features: waist/neck/hip measurements, both inches/cm units, body fat categories, personalized recommendations, theme-aware styling, and responsive design. Includes proper validation and error handling."
+  - task: "Calorie/TDEE Calculator Page"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/CaloriePage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "IMPLEMENTATION COMPLETE: Created TDEE/BMR Calculator with Mifflin-St Jeor equation. Features: 5 activity levels (sedentary to super active), 7 weight goals (aggressive loss to muscle gain), BMR/TDEE/goal calories display, weekly weight change predictions, and personalized recommendations."
+  - task: "Macros Calculator Page"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/MacrosPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "IMPLEMENTATION COMPLETE: Created comprehensive Macros Calculator with 8 diet types (Balanced, High Protein, Low Carb, Keto, Endurance, Cutting, Bulking). Features: protein/carbs/fats breakdown, meal planning, food suggestions, visual macro bars, and detailed recommendations."
+  - task: "Enhanced Navigation and Routing"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/App.js, /app/frontend/src/components/Header.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+        - working: true
+          agent: "main"
+          comment: "IMPLEMENTATION COMPLETE: Added new routes (/body-fat, /calories, /macros) and updated Header navigation with new calculator tools. Organized tools menu with 7 calculators including the new enhanced calculators."
+  - task: "Enhanced Homepage with New Calculators"
     implemented: true
     working: true
     file: "/app/frontend/src/pages/HomePage.js"
@@ -139,117 +172,7 @@ frontend:
     status_history:
         - working: true
           agent: "main"
-          comment: "IMPLEMENTATION COMPLETE: Fixed critical height conversion bug. Now correctly parses feet.inches format (6.10 = 6 feet 10 inches) instead of treating it as 6.10 feet. Updated conversion logic to extract feet and inches separately, calculate total inches, then convert to cm."
-  - task: "Workout Plans Page Functionality"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/pages/WorkoutPage.js"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: true
-    status_history:
-        - working: true
-          agent: "main"
-          comment: "IMPLEMENTATION COMPLETE: Completely rewrote WorkoutPage to be functional as standalone page. Added comprehensive default workout plans for Beginner/Intermediate/Advanced levels, interactive level selection, detailed exercise instructions with sets/reps, and call-to-action for BMI calculation. Page now works with or without BMI data."
-  - task: "Main Menu Navigation"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/components/Header.js"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: true
-    status_history:
-        - working: true
-          agent: "main"
-          comment: "IMPLEMENTATION COMPLETE: Enhanced Header component with comprehensive navigation menu. Added desktop navigation for main tools, responsive hamburger menu for mobile with organized sections (Tools, Health Resources, Legal), proper active state indicators, and theme-aware styling. All pages now accessible through main menu."
-  - task: "Enhanced Theme System (3 Dynamic Themes)"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/contexts/ThemeContext.js"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-        - working: true
-          agent: "main"
-          comment: "IMPLEMENTATION COMPLETE: Enhanced theme system supporting 3 dynamic themes - Dynamic White (teal accents), Dynamic Dark (purple accents), Black OLED (green accents). Themes cycle smoothly with localStorage persistence."
-  - task: "Enhanced Color Schemes & CSS Variables"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/index.css"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-        - working: true
-          agent: "main"
-          comment: "IMPLEMENTATION COMPLETE: Added comprehensive CSS variables for all 3 themes with distinct color palettes, enhanced animations (pulse-glow, float), improved glass morphism effects, and smooth transitions."
-  - task: "Enhanced Header Component with Theme Toggle"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/components/Header.js"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-        - working: true
-          agent: "main"
-          comment: "IMPLEMENTATION COMPLETE: Updated header with 3-theme support, theme name display, smooth icon transitions (Sun/Moon/Zap), enhanced glass morphism, and accent color coordination."
-  - task: "Enhanced HomePage with Theme-Aware Styling"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/pages/HomePage.js"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-        - working: true
-          agent: "main"
-          comment: "IMPLEMENTATION COMPLETE: Enhanced homepage with theme-specific gradients, animated form inputs, improved micro-interactions, enhanced buttons with loading states, and staggered animations."
-  - task: "Enhanced Footer Component"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/components/Footer.js"
-    stuck_count: 0
-    priority: "medium"
-    needs_retesting: false
-    status_history:
-        - working: true
-          agent: "main"
-          comment: "IMPLEMENTATION COMPLETE: Updated footer with theme-aware styling, enhanced animations, improved hover effects, and consistent color coordination across all themes."
-  - task: "Health Resources Pages (About BMI, Health Tips, Nutrition Guide)"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/pages/AboutBMIPage.js, /app/frontend/src/pages/HealthTipsPage.js, /app/frontend/src/pages/NutritionGuidePage.js"
-    stuck_count: 0
-    priority: "high"
-    needs_retesting: false
-    status_history:
-        - working: true
-          agent: "main"
-          comment: "IMPLEMENTATION COMPLETE: Created 3 comprehensive Health Resources pages with detailed, useful content. About BMI page includes BMI categories, formula, benefits/limitations. Health Tips page covers 6 health categories with evidence-based tips. Nutrition Guide includes macronutrients breakdown, BMI-specific nutrition advice, meal timing, and portion control. All pages are theme-aware and include smooth animations."
-  - task: "Enhanced Routing and Navigation"
-    implemented: true
-    working: true
-    file: "/app/frontend/src/App.js, /app/frontend/src/components/Footer.js"
-    stuck_count: 0
-    priority: "medium"
-    needs_retesting: false
-    status_history:
-        - working: true
-          agent: "main"
-          comment: "IMPLEMENTATION COMPLETE: Added routing for new Health Resources pages, updated footer links to actual pages instead of placeholders, improved navigation with breadcrumbs and cross-page linking."
-  - task: "Existing BMI Features Compatibility"
-    implemented: true
-    working: true
-    file: "Various BMI components"
-    stuck_count: 0
-    priority: "medium"
-    needs_retesting: false
-    status_history:
-        - working: true
-          agent: "main"
-          comment: "VERIFIED: All existing BMI calculator features, workout recommendations, and PDF generation remain fully functional with new theme system."
+          comment: "IMPLEMENTATION COMPLETE: Redesigned homepage features section to prominently display all 4 primary calculators (BMI, Body Fat, Calories, Macros) with color-coded icons and descriptions. Added secondary features section for tracking and goals. Maintains theme consistency."
 
 metadata:
   created_by: "main_agent"
