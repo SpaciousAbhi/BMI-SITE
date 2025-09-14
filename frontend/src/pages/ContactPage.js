@@ -35,7 +35,7 @@ const ContactPage = () => {
     {
       icon: MessageCircle,
       title: "General Inquiries",
-      content: "info@bmipro.com",
+      content: "info@venomstone.com",
       description: "For partnerships and general information"
     },
     {
