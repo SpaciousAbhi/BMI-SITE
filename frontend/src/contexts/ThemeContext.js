@@ -12,7 +12,7 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   // Available themes: white (default), dark, black
-  const [theme, setTheme] = useState('white'); // Default without localStorage
+  const [theme, setTheme] = useState('dark'); // Default to Dynamic Dark theme
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Load theme from localStorage after hydration
