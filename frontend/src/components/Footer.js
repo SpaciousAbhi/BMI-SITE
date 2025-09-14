@@ -42,7 +42,7 @@ const Footer = () => {
               <span className={`text-xl font-bold ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
-                BMI Pro
+                Advanced BMI Calculator Ultra Pro Max by Venom Stone
               </span>
             </Link>
             <p className={`text-sm leading-relaxed ${
