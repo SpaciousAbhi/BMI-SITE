@@ -567,42 +567,6 @@ const HomePage = () => {
                 </Select>
               </div>
 
-              {/* Enhanced Action Buttons */}
-              <div className="flex gap-4 pt-6 animate-fade-in" style={{ animationDelay: '500ms' }}>
-                <Button 
-                  onClick={calculateResults}
-                  disabled={loading}
-                  className={`flex-1 font-semibold py-3 transform hover:scale-105 transition-all duration-300 shadow-lg ${
-                    theme === 'white' 
-                      ? 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white' 
-                      : theme === 'dark'
-                      ? 'bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white'
-                      : 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white'
-                  }`}
-                >
-                  {loading ? (
-                    <>
-                      <div className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
-                      Calculating...
-                    </>
-                  ) : (
-                    'Calculate BMI'
-                  )}
-                </Button>
-                <Button 
-                  onClick={resetForm}
-                  variant="outline"
-                  className={`px-6 transform hover:scale-105 transition-all duration-300 ${
-                    theme === 'white' 
-                      ? 'border-teal-200 text-teal-700 hover:bg-teal-50' 
-                      : theme === 'dark'
-                      ? 'border-purple-500/30 text-purple-300 hover:bg-purple-500/10'
-                      : 'border-green-500/30 text-green-300 hover:bg-green-500/10'
-                  }`}
-                >
-                  Clear
-                </Button>
-              </div>
               {/* Action Buttons */}
               <div className="grid grid-cols-2 gap-3 pt-4 animate-slide-in" style={{ animationDelay: '500ms' }}>
                 <Button
