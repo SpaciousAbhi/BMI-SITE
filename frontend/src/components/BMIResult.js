@@ -12,8 +12,37 @@ import { generateBMIReport } from '../utils/pdfGenerator';
 
 const BMIResult = ({ result }) => {
   const { theme } = useTheme();
-  const { bmi, bodyFat, idealWeight, recommendations, weight, height, gender, weightUnit, heightUnit } = result;
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const { bmi, bodyFat, idealWeight, recommendations, weight, height, gender, weightUnit, heightUnit, age } = result;
   const category = getBMICategory(bmi);
+
+  const handleViewWorkout = () => {
+    navigate('/workout', { state: result });
+  };
+
+  const handleDownloadPDF = async () => {
+    try {
+      toast({
+        title: "Generating PDF...",
+        description: "Please wait while we create your personalized report.",
+      });
+
+      const fileName = await generateBMIReport(result);
+      
+      toast({
+        title: "Success!",
+        description: `Your BMI report has been downloaded as ${fileName}`,
+      });
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      toast({
+        title: "Error",
+        description: "Failed to generate PDF report. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
 
   const getRecommendationIcon = (type) => {
     switch (type) {
