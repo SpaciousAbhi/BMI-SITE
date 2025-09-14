@@ -33,7 +33,7 @@ const Header = () => {
             <span className={`text-xl font-bold ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              BMI Pro
+              Advanced BMI Calculator by Venom Stone
             </span>
           </Link>
 
