@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Add workout recommendations after calculating BMI and users should able to download their report in PDF format"
+user_problem_statement: "Enhance the UI/UX & Colors, keep 3 themes dynamic white, dynamic dark & Black & make the site work smoothly."
 
 backend:
   - task: "Backend setup (Not applicable for this frontend-only feature)"
