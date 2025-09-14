@@ -26,12 +26,28 @@ const Header = () => {
   const {} = useBMI();
   const location = useLocation();
   const themeConfig = getThemeConfig();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navItems = [
-    { path: '/', label: 'Calculator' },
-    { path: '/history', label: 'History' },
-    { path: '/goals', label: 'Goals' },
+  const toolsNavItems = [
+    { path: '/', label: 'BMI Calculator', icon: Calculator },
+    { path: '/history', label: 'Progress Tracking', icon: History },
+    { path: '/goals', label: 'Goal Setting', icon: Target },
+    { path: '/workout', label: 'Workout Plans', icon: Dumbbell },
   ];
+
+  const healthResourcesItems = [
+    { path: '/about-bmi', label: 'About BMI', icon: BookOpen },
+    { path: '/health-tips', label: 'Health Tips', icon: Heart },
+    { path: '/nutrition-guide', label: 'Nutrition Guide', icon: BookOpen },
+  ];
+
+  const legalItems = [
+    { path: '/privacy-policy', label: 'Privacy Policy', icon: Shield },
+    { path: '/terms-of-service', label: 'Terms of Service', icon: Shield },
+    { path: '/contact', label: 'Contact Us', icon: Mail },
+  ];
+
+  const allNavItems = [...toolsNavItems, ...healthResourcesItems, ...legalItems];
 
   const getThemeIcon = () => {
     switch(theme) {
