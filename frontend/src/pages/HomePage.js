@@ -187,31 +187,39 @@ const HomePage = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Weight Input */}
-              <div className="space-y-2">
-                <Label htmlFor="weight" className={`flex items-center gap-2 ${
-                  theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+              <div className="space-y-3 animate-slide-in" style={{ animationDelay: '100ms' }}>
+                <Label htmlFor="weight" className={`flex items-center gap-2 font-medium transition-colors duration-500 ${
+                  theme === 'white' ? 'text-gray-700' : 'text-gray-200'
                 }`}>
-                  <Weight className="h-4 w-4" />
+                  <Weight className={`h-4 w-4 ${
+                    theme === 'white' ? 'text-teal-600' : 
+                    theme === 'dark' ? 'text-purple-400' : 
+                    'text-green-400'
+                  }`} />
                   Weight
                 </Label>
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   <Input
                     id="weight"
                     type="number"
                     placeholder={`Enter weight in ${formData.weightUnit}`}
                     value={formData.weight}
                     onChange={(e) => handleInputChange('weight', e.target.value)}
-                    className={`flex-1 transition-all duration-300 focus:scale-105 ${
-                      theme === 'dark' 
-                        ? 'bg-white/20 border-white/30 text-white placeholder:text-gray-400' 
-                        : 'bg-white/50 border-gray-300'
+                    className={`flex-1 transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
+                      theme === 'white' 
+                        ? 'bg-white/70 border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
+                        : theme === 'dark'
+                        ? 'bg-gray-700/50 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
+                        : 'bg-gray-900/50 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
                     }`}
                   />
                   <Select value={formData.weightUnit} onValueChange={(value) => handleInputChange('weightUnit', value)}>
-                    <SelectTrigger className={`w-20 transition-all duration-300 ${
-                      theme === 'dark' 
-                        ? 'bg-white/20 border-white/30 text-white' 
-                        : 'bg-white/50 border-gray-300'
+                    <SelectTrigger className={`w-20 transition-all duration-300 hover:scale-105 ${
+                      theme === 'white' 
+                        ? 'bg-white/70 border-teal-200' 
+                        : theme === 'dark'
+                        ? 'bg-gray-700/50 border-purple-500/30 text-white'
+                        : 'bg-gray-900/50 border-green-500/30 text-white'
                     }`}>
                       <SelectValue />
                     </SelectTrigger>
