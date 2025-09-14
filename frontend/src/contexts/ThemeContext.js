@@ -12,12 +12,21 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   // Available themes: white (default), dark, black
-  const [theme, setTheme] = useState(() => {
+  const [theme, setTheme] = useState('white'); // Default without localStorage
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Load theme from localStorage after hydration
+  useEffect(() => {
     const saved = localStorage.getItem('bmi-theme');
-    return saved || 'white';
-  });
+    if (saved && ['white', 'dark', 'black'].includes(saved)) {
+      setTheme(saved);
+    }
+    setIsLoaded(true);
+  }, []);
 
   useEffect(() => {
+    if (!isLoaded) return; // Don't update localStorage before hydration
+    
     localStorage.setItem('bmi-theme', theme);
     
     // Remove all theme classes first
@@ -30,7 +39,7 @@ export const ThemeProvider = ({ children }) => {
       document.documentElement.classList.add('black');
     }
     // 'white' theme doesn't need a class (default)
-  }, [theme]);
+  }, [theme, isLoaded]);
 
   const toggleTheme = () => {
     setTheme(prev => {
@@ -69,7 +78,7 @@ export const ThemeProvider = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, getThemeConfig }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, getThemeConfig, isLoaded }}>
       {children}
     </ThemeContext.Provider>
   );

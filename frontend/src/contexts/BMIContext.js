@@ -11,32 +11,47 @@ export const useBMI = () => {
 };
 
 export const BMIProvider = ({ children }) => {
-  const [history, setHistory] = useState(() => {
-    const saved = localStorage.getItem('bmi-history');
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [history, setHistory] = useState([]); // Default empty array
+  const [goals, setGoals] = useState([]); // Default empty array
+  const [units, setUnits] = useState('metric'); // Default metric
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const [goals, setGoals] = useState(() => {
-    const saved = localStorage.getItem('bmi-goals');
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  const [units, setUnits] = useState(() => {
-    const saved = localStorage.getItem('bmi-units');
-    return saved || 'metric';
-  });
+  // Load data from localStorage after hydration
+  useEffect(() => {
+    try {
+      const savedHistory = localStorage.getItem('bmi-history');
+      const savedGoals = localStorage.getItem('bmi-goals');
+      const savedUnits = localStorage.getItem('bmi-units');
+      
+      if (savedHistory) {
+        setHistory(JSON.parse(savedHistory));
+      }
+      if (savedGoals) {
+        setGoals(JSON.parse(savedGoals));
+      }
+      if (savedUnits) {
+        setUnits(savedUnits);
+      }
+    } catch (error) {
+      console.warn('Error loading data from localStorage:', error);
+    }
+    setIsLoaded(true);
+  }, []);
 
   useEffect(() => {
+    if (!isLoaded) return; // Don't update localStorage before hydration
     localStorage.setItem('bmi-history', JSON.stringify(history));
-  }, [history]);
+  }, [history, isLoaded]);
 
   useEffect(() => {
+    if (!isLoaded) return; // Don't update localStorage before hydration
     localStorage.setItem('bmi-goals', JSON.stringify(goals));
-  }, [goals]);
+  }, [goals, isLoaded]);
 
   useEffect(() => {
+    if (!isLoaded) return; // Don't update localStorage before hydration
     localStorage.setItem('bmi-units', units);
-  }, [units]);
+  }, [units, isLoaded]);
 
   const addBMIRecord = (record) => {
     const newRecord = {
@@ -80,6 +95,7 @@ export const BMIProvider = ({ children }) => {
       history,
       goals,
       units,
+      isLoaded,
       addBMIRecord,
       deleteBMIRecord,
       addGoal,
