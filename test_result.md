@@ -105,23 +105,17 @@
 user_problem_statement: "Add Enhanced Calculators: Body Fat % Calculator (using waist, neck, hip, and height inputs), Calorie Needs Calculator (TDEE/BMR) – shows how many calories to maintain, lose, or gain weight, Macros Calculator – provides protein, carb, and fat breakdown based on goal. These should be added to the main menu as separate tools, and also displayed on the main page as standalone options. Keep the BMI Calculator as it is, since BMI is our core tool."
 
 backend:
-  - task: "Backend compatibility with enhanced UI themes"
+  - task: "Enhanced Calculator Utilities - Frontend Only"
     implemented: true
     working: true
-    file: "/app/backend/server.py"
+    file: "/app/frontend/src/utils/bodyFatCalculations.js, /app/frontend/src/utils/calorieCalculations.js, /app/frontend/src/utils/macroCalculations.js"
     stuck_count: 0
-    priority: "low"
-    needs_retesting: false
+    priority: "high"
+    needs_retesting: true
     status_history:
         - working: true
           agent: "main"
-          comment: "Enhanced UI/UX with 3 dynamic themes (white, dark, black) - no backend changes required, existing APIs remain compatible"
-        - working: true
-          agent: "testing"
-          comment: "BACKEND TESTING COMPLETE: All API endpoints working correctly. ✅ Service Health Check passed ✅ CORS headers properly configured ✅ Database connectivity stable (MongoDB) ✅ All CRUD operations functional (GET /api/, GET /api/status, POST /api/status). Created missing environment files (.env) for backend and frontend. Backend fully compatible with enhanced UI theme system - no breaking changes detected."
-        - working: true
-          agent: "testing"
-          comment: "RE-TESTED AFTER FRONTEND CHANGES: ✅ All backend services running properly (supervisor status confirmed) ✅ All API endpoints functional (GET /api/ returns Hello World, POST /api/status creates records, GET /api/status retrieves records) ✅ MongoDB connection stable with 2 test records ✅ CORS configuration working correctly with proper headers ✅ Environment files created and configured ✅ No breaking changes from frontend fixes (height conversion, navigation, scroll behavior) - Backend remains fully compatible with all frontend enhancements."
+          comment: "IMPLEMENTATION COMPLETE: Created comprehensive calculation utilities for Body Fat (US Navy method), Calorie/TDEE (Mifflin-St Jeor equation), and Macros (8 diet types including Keto, High Protein, Low Carb). All calculations are client-side JavaScript functions - no backend API changes needed for Netlify hosting."
 
 frontend:
   - task: "Page Load Position Fix"
