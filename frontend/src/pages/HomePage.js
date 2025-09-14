@@ -628,12 +628,12 @@ const HomePage = () => {
             <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
-              Enhanced Health Calculators
+              Free Health Calculators - BMI, Body Fat & Calorie Calculator
             </h2>
             <p className={`text-lg max-w-3xl mx-auto ${
               theme === 'white' ? 'text-gray-600' : 'text-gray-300'
             }`}>
-              Complete suite of health and fitness calculators for comprehensive body analysis.
+              Complete suite of <strong>free health calculators</strong> including BMI calculator, body fat percentage calculator, calorie needs calculator, and macros calculator for comprehensive health analysis.
             </p>
           </div>
 
