@@ -1,10 +1,14 @@
 import React from 'react';
-import { TrendingUp, TrendingDown, Target, Heart, Activity, Zap } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { TrendingUp, TrendingDown, Target, Heart, Activity, Zap, Dumbbell, Download } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
+import { Button } from './ui/button';
 import { Progress } from './ui/progress';
 import { useTheme } from '../contexts/ThemeContext';
+import { useToast } from '../hooks/use-toast';
 import { getBMICategory, formatWeight, formatHeight } from '../utils/bmiCalculations';
+import { generateBMIReport } from '../utils/pdfGenerator';
 
 const BMIResult = ({ result }) => {
   const { theme } = useTheme();
