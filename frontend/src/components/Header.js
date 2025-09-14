@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sun, Moon, Scale } from 'lucide-react';
+import { Sun, Moon, Zap, Scale } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { useTheme } from '../contexts/ThemeContext';
