@@ -283,12 +283,16 @@ const HomePage = () => {
               </div>
 
               {/* Age Input */}
-              <div className="space-y-2">
-                <Label htmlFor="age" className={`flex items-center gap-2 ${
-                  theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+              <div className="space-y-3 animate-slide-in" style={{ animationDelay: '300ms' }}>
+                <Label htmlFor="age" className={`flex items-center gap-2 font-medium transition-colors duration-500 ${
+                  theme === 'white' ? 'text-gray-700' : 'text-gray-200'
                 }`}>
-                  <Calendar className="h-4 w-4" />
-                  Age (years)
+                  <Calendar className={`h-4 w-4 ${
+                    theme === 'white' ? 'text-teal-600' : 
+                    theme === 'dark' ? 'text-purple-400' : 
+                    'text-green-400'
+                  }`} />
+                  Age
                 </Label>
                 <Input
                   id="age"
@@ -296,27 +300,35 @@ const HomePage = () => {
                   placeholder="Enter your age"
                   value={formData.age}
                   onChange={(e) => handleInputChange('age', e.target.value)}
-                  className={`transition-all duration-300 focus:scale-105 ${
-                    theme === 'dark' 
-                      ? 'bg-white/20 border-white/30 text-white placeholder:text-gray-400' 
-                      : 'bg-white/50 border-gray-300'
+                  className={`transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
+                    theme === 'white' 
+                      ? 'bg-white/70 border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
+                      : theme === 'dark'
+                      ? 'bg-gray-700/50 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
+                      : 'bg-gray-900/50 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
                   }`}
                 />
               </div>
 
               {/* Gender Select */}
-              <div className="space-y-2">
-                <Label className={`flex items-center gap-2 ${
-                  theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
+              <div className="space-y-3 animate-slide-in" style={{ animationDelay: '400ms' }}>
+                <Label className={`flex items-center gap-2 font-medium transition-colors duration-500 ${
+                  theme === 'white' ? 'text-gray-700' : 'text-gray-200'
                 }`}>
-                  <User className="h-4 w-4" />
+                  <User className={`h-4 w-4 ${
+                    theme === 'white' ? 'text-teal-600' : 
+                    theme === 'dark' ? 'text-purple-400' : 
+                    'text-green-400'
+                  }`} />
                   Gender
                 </Label>
                 <Select value={formData.gender} onValueChange={(value) => handleInputChange('gender', value)}>
-                  <SelectTrigger className={`transition-all duration-300 hover:scale-105 ${
-                    theme === 'dark' 
-                      ? 'bg-white/20 border-white/30 text-white' 
-                      : 'bg-white/50 border-gray-300'
+                  <SelectTrigger className={`transition-all duration-300 hover:scale-[1.02] ${
+                    theme === 'white' 
+                      ? 'bg-white/70 border-teal-200' 
+                      : theme === 'dark'
+                      ? 'bg-gray-700/50 border-purple-500/30 text-white'
+                      : 'bg-gray-900/50 border-green-500/30 text-white'
                   }`}>
                     <SelectValue placeholder="Select your gender" />
                   </SelectTrigger>
@@ -327,22 +339,37 @@ const HomePage = () => {
                 </Select>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex gap-3 pt-4">
+              {/* Enhanced Action Buttons */}
+              <div className="flex gap-4 pt-6 animate-fade-in" style={{ animationDelay: '500ms' }}>
                 <Button 
                   onClick={calculateResults}
                   disabled={loading}
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 transform hover:scale-105 transition-all duration-300 shadow-lg"
+                  className={`flex-1 font-semibold py-3 transform hover:scale-105 transition-all duration-300 shadow-lg ${
+                    theme === 'white' 
+                      ? 'bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-600 hover:to-cyan-700 text-white' 
+                      : theme === 'dark'
+                      ? 'bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white'
+                      : 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white'
+                  }`}
                 >
-                  {loading ? 'Calculating...' : 'Calculate BMI'}
+                  {loading ? (
+                    <>
+                      <div className="animate-spin mr-2 h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
+                      Calculating...
+                    </>
+                  ) : (
+                    'Calculate BMI'
+                  )}
                 </Button>
                 <Button 
                   onClick={resetForm}
                   variant="outline"
                   className={`px-6 transform hover:scale-105 transition-all duration-300 ${
-                    theme === 'dark' 
-                      ? 'border-white/30 text-white hover:bg-white/10' 
-                      : 'border-gray-300 hover:bg-gray-50'
+                    theme === 'white' 
+                      ? 'border-teal-200 text-teal-700 hover:bg-teal-50' 
+                      : theme === 'dark'
+                      ? 'border-purple-500/30 text-purple-300 hover:bg-purple-500/10'
+                      : 'border-green-500/30 text-green-300 hover:bg-green-500/10'
                   }`}
                 >
                   Reset
