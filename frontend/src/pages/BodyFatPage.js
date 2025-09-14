@@ -150,6 +150,20 @@ const BodyFatPage = () => {
 
   return (
     <div className={`min-h-screen transition-all duration-700 ${getBackgroundGradient()}`}>
+      <SEOHead 
+        title="Free Body Fat Calculator | Body Fat Percentage Calculator - US Navy Method"
+        description="Free body fat calculator using US Navy method. Calculate body fat percentage with waist, neck, and hip measurements. Accurate body fat estimation with health recommendations and BMI integration."
+        keywords="body fat calculator, body fat percentage calculator, US Navy body fat, body fat estimation, waist neck hip measurement, free body fat calculator, body composition calculator"
+        canonical="/body-fat"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebApplication", 
+          "name": "Body Fat Percentage Calculator - US Navy Method",
+          "description": "Calculate your body fat percentage using the US Navy method with waist, neck, and hip measurements. Free, accurate body fat calculator.",
+          "url": "https://bmicalculator.com/body-fat",
+          "applicationCategory": "HealthApplication"
+        }}
+      />
       <Header />
       
       <main className="container mx-auto px-4 py-8">
