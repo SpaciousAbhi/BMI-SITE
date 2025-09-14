@@ -32,8 +32,11 @@ const Header = () => {
 
   const toolsNavItems = [
     { path: '/', label: 'BMI Calculator', icon: Calculator },
+    { path: '/body-fat', label: 'Body Fat Calculator', icon: Target },
+    { path: '/calories', label: 'Calorie Calculator', icon: Zap },
+    { path: '/macros', label: 'Macro Calculator', icon: Utensils },
     { path: '/history', label: 'Progress Tracking', icon: History },
-    { path: '/goals', label: 'Goal Setting', icon: Target },
+    { path: '/goals', label: 'Goal Setting', icon: Activity },
     { path: '/workout', label: 'Workout Plans', icon: Dumbbell },
   ];
 
