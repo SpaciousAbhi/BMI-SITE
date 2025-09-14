@@ -111,10 +111,22 @@ const HomePage = () => {
   };
 
   const calculateResults = async () => {
-    if (!formData.weight || !formData.height || !formData.age || !formData.gender) {
+    // Validation
+    const heightInCm = getHeightInCm();
+    
+    if (!formData.weight || !heightInCm || !formData.age || !formData.gender) {
       toast({
         title: "Missing Information",
         description: "Please fill in all fields to calculate your BMI.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (heightInCm <= 0) {
+      toast({
+        title: "Invalid Height",
+        description: "Please enter a valid height.",
         variant: "destructive",
       });
       return;
@@ -125,25 +137,12 @@ const HomePage = () => {
     // Simulate calculation delay for better UX
     setTimeout(() => {
       const weight = parseFloat(formData.weight);
-      const height = parseFloat(formData.height);
       const age = parseInt(formData.age);
       
-      // Convert to consistent units for calculation
+      // Convert weight to kg if needed
       let weightInKg = weight;
-      let heightInCm = height;
-      
       if (formData.weightUnit === 'lbs') {
         weightInKg = weight * 0.453592;
-      }
-      
-      if (formData.heightUnit === 'inches') {
-        heightInCm = height * 2.54;
-      } else if (formData.heightUnit === 'feet') {
-        // Parse feet.inches format (e.g., 6.10 = 6 feet 10 inches)
-        const feet = Math.floor(height);
-        const inches = Math.round((height - feet) * 100);
-        const totalInches = (feet * 12) + inches;
-        heightInCm = totalInches * 2.54;
       }
       
       const bmi = calculateBMI(weightInKg, heightInCm, 'metric');
@@ -157,11 +156,15 @@ const HomePage = () => {
         idealWeight,
         recommendations,
         weight,
-        height,
+        height: formData.heightUnit === 'feet' && formData.heightFeet && formData.heightInches 
+          ? `${formData.heightFeet}'${formData.heightInches}"` 
+          : formData.height,
+        heightInCm,
         age,
         gender: formData.gender,
         weightUnit: formData.weightUnit,
         heightUnit: formData.heightUnit,
+        unitSystem: formData.unitSystem,
       };
       
       setResult(resultData);
