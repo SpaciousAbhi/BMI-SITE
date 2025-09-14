@@ -93,32 +93,36 @@ const Header = () => {
             </span>
           </Link>
 
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`text-sm font-medium transition-all duration-300 hover:scale-105 ${
-                  location.pathname === item.path
-                    ? theme === 'white'
-                      ? 'text-teal-600 border-b-2 border-teal-600'
-                      : theme === 'dark'
-                      ? 'text-purple-400 border-b-2 border-purple-400'
-                      : 'text-green-400 border-b-2 border-green-400'
-                    : theme === 'white' 
-                    ? 'text-gray-600 hover:text-teal-600' 
-                    : 'text-gray-300 hover:text-white'
-                } pb-1`}
-              >
-                {item.label}
-              </Link>
-            ))}
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-6">
+            {toolsNavItems.slice(0, 4).map((item) => {
+              const IconComponent = item.icon;
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:scale-105 px-3 py-2 rounded-lg ${
+                    location.pathname === item.path
+                      ? theme === 'white'
+                        ? 'text-teal-600 bg-teal-50'
+                        : theme === 'dark'
+                        ? 'text-purple-400 bg-purple-400/10'
+                        : 'text-green-400 bg-green-400/10'
+                      : theme === 'white' 
+                      ? 'text-gray-600 hover:text-teal-600 hover:bg-teal-50' 
+                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <IconComponent className="h-4 w-4" />
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
 
-          {/* Theme Toggle */}
+          {/* Mobile Menu Button and Theme Toggle */}
           <div className="flex items-center gap-3">
-            <Badge variant="outline" className={`${getAccentColor()} border-current`}>
+            <Badge variant="outline" className={`${getAccentColor()} border-current hidden sm:block`}>
               {themeConfig.name}
             </Badge>
             <Button
@@ -135,8 +139,136 @@ const Header = () => {
             >
               {getThemeIcon()}
             </Button>
+            
+            {/* Mobile Menu Button */}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className={`lg:hidden transition-all duration-300 hover:scale-105 ${
+                theme === 'white'
+                  ? 'border-teal-200 hover:border-teal-300 hover:bg-teal-50'
+                  : theme === 'dark'
+                  ? 'border-purple-400/30 hover:border-purple-400/50 hover:bg-purple-400/10'
+                  : 'border-green-400/30 hover:border-green-400/50 hover:bg-green-400/10'
+              }`}
+            >
+              {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </Button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className={`lg:hidden border-t transition-all duration-300 ${
+            theme === 'white' 
+              ? 'border-teal-200/30 bg-white/90' 
+              : theme === 'dark'
+              ? 'border-purple-500/20 bg-gray-900/90'
+              : 'border-green-500/20 bg-black/90'
+          }`}>
+            <div className="py-4 space-y-1">
+              {/* Tools Section */}
+              <div className="px-4 py-2">
+                <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
+                  theme === 'white' ? 'text-gray-500' : 'text-gray-400'
+                }`}>
+                  Tools
+                </h3>
+                {toolsNavItems.map((item) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
+                        location.pathname === item.path
+                          ? theme === 'white'
+                            ? 'text-teal-600 bg-teal-50'
+                            : theme === 'dark'
+                            ? 'text-purple-400 bg-purple-400/10'
+                            : 'text-green-400 bg-green-400/10'
+                          : theme === 'white' 
+                          ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      <IconComponent className="h-4 w-4" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Health Resources Section */}
+              <div className="px-4 py-2">
+                <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
+                  theme === 'white' ? 'text-gray-500' : 'text-gray-400'
+                }`}>
+                  Health Resources
+                </h3>
+                {healthResourcesItems.map((item) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
+                        location.pathname === item.path
+                          ? theme === 'white'
+                            ? 'text-teal-600 bg-teal-50'
+                            : theme === 'dark'
+                            ? 'text-purple-400 bg-purple-400/10'
+                            : 'text-green-400 bg-green-400/10'
+                          : theme === 'white' 
+                          ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      <IconComponent className="h-4 w-4" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Legal Section */}
+              <div className="px-4 py-2">
+                <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
+                  theme === 'white' ? 'text-gray-500' : 'text-gray-400'
+                }`}>
+                  Legal
+                </h3>
+                {legalItems.map((item) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
+                        location.pathname === item.path
+                          ? theme === 'white'
+                            ? 'text-teal-600 bg-teal-50'
+                            : theme === 'dark'
+                            ? 'text-purple-400 bg-purple-400/10'
+                            : 'text-green-400 bg-green-400/10'
+                          : theme === 'white' 
+                          ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      <IconComponent className="h-4 w-4" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );
