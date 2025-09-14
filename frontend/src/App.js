@@ -67,11 +67,13 @@ const AppContent = () => {
 
 function App() {
   return (
-    <ThemeProvider>
-      <BMIProvider>
-        <AppContent />
-      </BMIProvider>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <BMIProvider>
+          <AppContent />
+        </BMIProvider>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 
