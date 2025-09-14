@@ -145,6 +145,20 @@ const CaloriePage = () => {
 
   return (
     <div className={`min-h-screen transition-all duration-700 ${getBackgroundGradient()}`}>
+      <SEOHead 
+        title="Free Calorie Calculator | TDEE & BMR Calculator - Daily Calorie Needs"
+        description="Free calorie calculator to determine your daily calorie needs. Calculate TDEE, BMR, and calories for weight loss, maintenance, or muscle gain. Accurate calorie calculator with activity levels."
+        keywords="calorie calculator, TDEE calculator, BMR calculator, daily calorie needs, calories for weight loss, calorie needs calculator, free calorie calculator, metabolism calculator"
+        canonical="/calories"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Calorie Calculator - TDEE & BMR Calculator", 
+          "description": "Calculate your daily calorie needs with our free TDEE and BMR calculator. Determine calories for weight loss, maintenance, or muscle gain.",
+          "url": "https://bmicalculator.com/calories",
+          "applicationCategory": "HealthApplication"
+        }}
+      />
       <Header />
       
       <main className="container mx-auto px-4 py-8">
