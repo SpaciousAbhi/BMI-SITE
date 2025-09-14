@@ -158,17 +158,27 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className={`mt-12 pt-8 border-t ${
-          theme === 'dark' ? 'border-white/10' : 'border-black/10'
+        {/* Enhanced Bottom Section */}
+        <div className={`mt-12 pt-8 border-t transition-all duration-300 ${
+          theme === 'white' ? 'border-teal-200/30' : 
+          theme === 'dark' ? 'border-purple-500/20' : 
+          'border-green-500/20'
         }`}>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 animate-fade-in" style={{ animationDelay: '500ms' }}>
+            <div className={`text-sm transition-colors duration-300 ${
+              theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+            }`}>
               © {currentYear} Advanced BMI Calculator Ultra Pro Max by Venom Stone. All rights reserved.
             </div>
             
-            <div className={`text-sm text-center ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-              <strong className={theme === 'dark' ? 'text-yellow-400' : 'text-yellow-600'}>
+            <div className={`text-sm text-center transition-colors duration-300 ${
+              theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+            }`}>
+              <strong className={`${
+                theme === 'white' ? 'text-orange-600' : 
+                theme === 'dark' ? 'text-yellow-400' : 
+                'text-yellow-400'
+              }`}>
                 Medical Disclaimer:
               </strong>
               {' '}This tool is for educational purposes only. Consult healthcare professionals for medical advice.
@@ -176,8 +186,10 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* AdSense Ready Notice */}
-        <div className={`mt-6 text-center text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}>
+        {/* Enhanced AdSense Ready Notice */}
+        <div className={`mt-6 text-center text-xs transition-colors duration-300 animate-pulse-glow ${
+          theme === 'white' ? 'text-gray-400' : 'text-gray-500'
+        }`}>
           <p>This site is optimized for Google AdSense and follows privacy-first practices.</p>
         </div>
       </div>
