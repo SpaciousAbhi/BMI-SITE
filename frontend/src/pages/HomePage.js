@@ -600,7 +600,47 @@ const HomePage = () => {
                       : 'border-green-500/30 text-green-300 hover:bg-green-500/10'
                   }`}
                 >
-                  Reset
+                  Clear
+                </Button>
+              </div>
+              {/* Action Buttons */}
+              <div className="grid grid-cols-2 gap-3 pt-4 animate-slide-in" style={{ animationDelay: '500ms' }}>
+                <Button
+                  onClick={calculateResults}
+                  disabled={loading}
+                  className={`transition-all duration-300 hover:scale-105 transform ${
+                    theme === 'white'
+                      ? 'bg-teal-600 hover:bg-teal-700 text-white shadow-lg hover:shadow-xl'
+                      : theme === 'dark'
+                      ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl'
+                      : 'bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl'
+                  }`}
+                >
+                  {loading ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Calculating...
+                    </>
+                  ) : (
+                    <>
+                      <Calculator className="h-4 w-4 mr-2" />
+                      Calculate BMI
+                    </>
+                  )}
+                </Button>
+                <Button
+                  onClick={clearForm}
+                  variant="outline"
+                  className={`transition-all duration-300 hover:scale-105 ${
+                    theme === 'white'
+                      ? 'border-teal-300 text-teal-700 hover:bg-teal-50'
+                      : theme === 'dark'
+                      ? 'border-purple-500/50 text-purple-300 hover:bg-purple-900/20'
+                      : 'border-green-500/50 text-green-300 hover:bg-green-900/20'
+                  }`}
+                >
+                  <X className="h-4 w-4 mr-2" />
+                  Clear
                 </Button>
               </div>
             </CardContent>
