@@ -170,7 +170,7 @@ const TermsOfService = () => {
             <CardContent className="space-y-4">
               <div className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>
                 <p className="mb-4">
-                  All content, features, and functionality of Advanced BMI Calculator Ultra Pro Max by Venom Stone, including but not limited to:
+                  All content, features, and functionality of Advanced BMI Calculator, including but not limited to:
                 </p>
                 <ul className="space-y-2 ml-4 mb-4">
                   <li>• Text, graphics, logos, and images</li>
