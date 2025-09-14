@@ -19,9 +19,10 @@ import Footer from '../components/Footer';
 import { calculateBMI, calculateBodyFat, calculateIdealWeight, getHealthRecommendations } from '../utils/bmiCalculations';
 
 const HomePage = () => {
-  const { theme } = useTheme();
+  const { theme, getThemeConfig } = useTheme();
   const { units, addBMIRecord } = useBMI();
   const { toast } = useToast();
+  const themeConfig = getThemeConfig();
   
   const [formData, setFormData] = useState({
     weight: '',
