@@ -257,7 +257,7 @@ const HomePage = () => {
             <h1 className={`text-4xl md:text-6xl font-bold mb-6 transition-all duration-500 ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
-              Advanced BMI Calculator
+              Free BMI Calculator - Calculate Body Mass Index Online
             </h1>
             {/* Accent underline */}
             <div className={`w-32 h-1 mx-auto mb-6 rounded-full transition-all duration-500 ${
@@ -269,7 +269,7 @@ const HomePage = () => {
           <p className={`text-xl md:text-2xl mb-8 max-w-3xl mx-auto transition-colors duration-500 ${
             theme === 'white' ? 'text-gray-600' : 'text-gray-300'
           }`}>
-            Calculate your Body Mass Index with advanced health insights, body fat estimation, and personalized recommendations.
+            <strong>Calculate your BMI instantly</strong> with our free Body Mass Index calculator. Get accurate BMI results, healthy BMI range analysis, body fat estimation, and personalized health recommendations.
           </p>
           
           {/* Feature badges */}
