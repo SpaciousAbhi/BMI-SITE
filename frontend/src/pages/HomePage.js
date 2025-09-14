@@ -309,8 +309,11 @@ const HomePage = () => {
                   theme === 'dark' ? 'text-purple-400' : 
                   'text-green-400'
                 }`} />
-                BMI Calculator
+                Free BMI Calculator Online
               </CardTitle>
+              <p className={`text-sm mt-2 ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                Calculate your Body Mass Index instantly with our free, accurate BMI calculator
+              </p>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Unit System Selection */}
