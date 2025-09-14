@@ -39,6 +39,7 @@ const AppContent = () => {
   return (
     <div className="App min-h-screen transition-colors duration-300">
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/history" element={<HistoryPage />} />
