@@ -141,7 +141,7 @@ const Footer = () => {
         }`}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-              © {currentYear} BMI Pro. All rights reserved.
+              © {currentYear} Advanced BMI Calculator Ultra Pro Max by Venom Stone. All rights reserved.
             </div>
             
             <div className={`text-sm text-center ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
