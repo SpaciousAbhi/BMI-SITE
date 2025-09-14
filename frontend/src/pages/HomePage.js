@@ -43,6 +43,73 @@ const HomePage = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  const setUnitSystem = (system) => {
+    let newData = { ...formData, unitSystem: system };
+    
+    switch(system) {
+      case 'us':
+        newData.weightUnit = 'lbs';
+        newData.heightUnit = 'feet';
+        break;
+      case 'metric':
+        newData.weightUnit = 'kg';
+        newData.heightUnit = 'cm';
+        break;
+      case 'indian':
+        newData.weightUnit = 'kg';
+        newData.heightUnit = 'cm';
+        break;
+      default:
+        break;
+    }
+    
+    setFormData(newData);
+  };
+
+  const clearForm = () => {
+    setFormData({
+      weight: '',
+      height: '',
+      heightFeet: '',
+      heightInches: '',
+      age: '',
+      gender: '',
+      weightUnit: formData.weightUnit,
+      heightUnit: formData.heightUnit,
+      unitSystem: formData.unitSystem,
+    });
+    setResult(null);
+  };
+
+  const getHeightInCm = () => {
+    if (formData.heightUnit === 'cm') {
+      return parseFloat(formData.height);
+    } else if (formData.heightUnit === 'inches') {
+      return parseFloat(formData.height) * 2.54;
+    } else if (formData.heightUnit === 'feet') {
+      // Handle both combined (5.9) and separate feet/inches input
+      if (formData.heightFeet && formData.heightInches) {
+        // Separate feet and inches input
+        const feet = parseInt(formData.heightFeet);
+        const inches = parseInt(formData.heightInches);
+        return ((feet * 12) + inches) * 2.54;
+      } else if (formData.height) {
+        // Combined feet.inches input (e.g., 5.9 or 6.10)
+        const heightStr = formData.height.toString();
+        if (heightStr.includes('.')) {
+          const [feetStr, inchesStr] = heightStr.split('.');
+          const feet = parseInt(feetStr);
+          const inches = parseInt(inchesStr);
+          return ((feet * 12) + inches) * 2.54;
+        } else {
+          // Just feet, no inches
+          return parseInt(formData.height) * 12 * 2.54;
+        }
+      }
+    }
+    return 0;
+  };
+
   const calculateResults = async () => {
     if (!formData.weight || !formData.height || !formData.age || !formData.gender) {
       toast({
