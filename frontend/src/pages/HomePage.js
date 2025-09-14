@@ -69,7 +69,11 @@ const HomePage = () => {
       if (formData.heightUnit === 'inches') {
         heightInCm = height * 2.54;
       } else if (formData.heightUnit === 'feet') {
-        heightInCm = height * 30.48; // 1 foot = 30.48 cm
+        // Parse feet.inches format (e.g., 6.10 = 6 feet 10 inches)
+        const feet = Math.floor(height);
+        const inches = Math.round((height - feet) * 100);
+        const totalInches = (feet * 12) + inches;
+        heightInCm = totalInches * 2.54;
       }
       
       const bmi = calculateBMI(weightInKg, heightInCm, 'metric');
