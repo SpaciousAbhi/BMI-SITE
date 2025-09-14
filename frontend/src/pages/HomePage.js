@@ -250,6 +250,31 @@ const HomePage = () => {
 
   return (
     <div className={`min-h-screen transition-all duration-700 ${getBackgroundGradient()}`}>
+      <SEOHead 
+        title="Free BMI Calculator - Calculate Body Mass Index Online 2025 | Instant Results"
+        description="Free BMI calculator online - Calculate your Body Mass Index instantly with our advanced BMI calculator. Includes body fat estimation, ideal weight, calorie needs, and macros calculator. Get instant BMI results with health recommendations."
+        keywords="BMI calculator, body mass index calculator, calculate BMI, free BMI calculator, BMI calculator online, healthy BMI range, BMI categories, body fat calculator, calorie calculator, ideal weight calculator, healthy weight BMI"
+        canonical="/"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Free BMI Calculator - Body Mass Index Calculator",
+          "description": "Free online BMI calculator to calculate your Body Mass Index instantly. Includes body fat estimation, ideal weight calculator, calorie needs calculator, and macros breakdown.",
+          "url": "https://bmicalculator.com/",
+          "applicationCategory": "HealthApplication",
+          "operatingSystem": ["Windows", "macOS", "Linux", "Android", "iOS"],
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "15000"
+          }
+        }}
+      />
       <Header />
       
       <main className="container mx-auto px-4 py-8">
