@@ -366,7 +366,7 @@ const HomePage = () => {
                   <Input
                     id="weight"
                     type="number"
-                    placeholder={`Enter weight in ${formData.weightUnit}`}
+                    placeholder={getWeightPlaceholder()}
                     value={formData.weight}
                     onChange={(e) => handleInputChange('weight', e.target.value)}
                     className={`flex-1 transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
