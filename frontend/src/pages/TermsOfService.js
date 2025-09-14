@@ -13,7 +13,7 @@ const TermsOfService = () => {
       icon: Users,
       title: "Acceptance of Terms",
       content: [
-        "By accessing and using Advanced BMI Calculator Ultra Pro Max by Venom Stone, you accept and agree to be bound by these Terms of Service",
+        "By accessing and using Advanced BMI Calculator, you accept and agree to be bound by these Terms of Service",
         "If you do not agree to these terms, please do not use our service",
         "We may update these terms from time to time, and continued use constitutes acceptance",
         "You must be at least 13 years old to use this service"
