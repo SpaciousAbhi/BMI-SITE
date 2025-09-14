@@ -313,6 +313,43 @@ const HomePage = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
+              {/* Unit System Selection */}
+              <div className="space-y-3 animate-slide-in" style={{ animationDelay: '50ms' }}>
+                <Label className={`flex items-center gap-2 font-medium transition-colors duration-500 ${
+                  theme === 'white' ? 'text-gray-700' : 'text-gray-200'
+                }`}>
+                  Unit System
+                </Label>
+                <div className="grid grid-cols-3 gap-3">
+                  <Button
+                    type="button"
+                    onClick={() => setUnitSystem('metric')}
+                    className={`transition-all duration-300 hover:scale-105 ${getUnitSystemColor('metric')}`}
+                  >
+                    Metric
+                  </Button>
+                  <Button
+                    type="button"
+                    onClick={() => setUnitSystem('us')}
+                    className={`transition-all duration-300 hover:scale-105 ${getUnitSystemColor('us')}`}
+                  >
+                    US
+                  </Button>
+                  <Button
+                    type="button"
+                    onClick={() => setUnitSystem('indian')}
+                    className={`transition-all duration-300 hover:scale-105 ${getUnitSystemColor('indian')}`}
+                  >
+                    Indian
+                  </Button>
+                </div>
+                <div className={`text-xs ${theme === 'white' ? 'text-gray-500' : 'text-gray-400'}`}>
+                  {formData.unitSystem === 'metric' && 'Metric: kg + cm'}
+                  {formData.unitSystem === 'us' && 'US: lbs + feet/inches'}
+                  {formData.unitSystem === 'indian' && 'Indian: kg + cm'}
+                </div>
+              </div>
+
               {/* Weight Input */}
               <div className="space-y-3 animate-slide-in" style={{ animationDelay: '100ms' }}>
                 <Label htmlFor="weight" className={`flex items-center gap-2 font-medium transition-colors duration-500 ${
