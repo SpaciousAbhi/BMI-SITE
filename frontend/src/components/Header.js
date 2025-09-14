@@ -125,12 +125,10 @@ const Header = () => {
                 to={item.path}
                 className={`px-3 py-1 rounded-lg text-sm transition-all duration-300 ${
                   location.pathname === item.path
-                    ? theme === 'dark'
-                      ? 'text-blue-400 bg-blue-400/10'
-                      : 'text-blue-600 bg-blue-600/10'
-                    : theme === 'dark'
-                      ? 'text-gray-300'
-                      : 'text-gray-600'
+                    ? getAccentColor()
+                    : theme === 'white'
+                    ? 'text-gray-600'
+                    : 'text-gray-300'
                 }`}
               >
                 {item.label}
