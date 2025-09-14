@@ -95,7 +95,7 @@ const PrivacyPolicy = () => {
           }`}>
             <CardContent className="p-6">
               <p className={`text-lg leading-relaxed ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                At BMI Pro, we are committed to protecting your privacy and ensuring the security of your personal health information. 
+                At Advanced BMI Calculator Ultra Pro Max by Venom Stone, we are committed to protecting your privacy and ensuring the security of your personal health information. 
                 This Privacy Policy explains how we collect, use, and protect your information when you use our BMI calculator service.
               </p>
             </CardContent>
