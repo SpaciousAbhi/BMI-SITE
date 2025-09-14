@@ -274,7 +274,7 @@ const HomePage = () => {
           
           {/* Feature badges */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {['Instant Results', 'PDF Reports', 'Workout Plans', 'Health Insights'].map((feature, index) => (
+            {['Free BMI Calculator', 'Instant BMI Results', 'Body Fat Calculator', 'Healthy BMI Range', 'Calorie Calculator', 'Health Reports'].map((feature, index) => (
               <Badge 
                 key={feature}
                 variant="secondary" 
