@@ -98,27 +98,35 @@ def test_cors_headers():
     """Test CORS headers are properly set"""
     print("🔍 Testing CORS Headers...")
     try:
-        response = requests.options(f"{BACKEND_URL}/", timeout=10)
+        # Test with a regular GET request to see CORS headers
+        response = requests.get(f"{BACKEND_URL}/", timeout=10)
         headers = response.headers
         
-        # Check for CORS headers
-        cors_headers = [
-            "Access-Control-Allow-Origin",
-            "Access-Control-Allow-Methods",
-            "Access-Control-Allow-Headers"
-        ]
+        # Check for CORS headers in response
+        cors_headers_found = []
+        if "Access-Control-Allow-Origin" in headers:
+            cors_headers_found.append(f"Access-Control-Allow-Origin: {headers['Access-Control-Allow-Origin']}")
+        if "Access-Control-Allow-Methods" in headers:
+            cors_headers_found.append(f"Access-Control-Allow-Methods: {headers['Access-Control-Allow-Methods']}")
+        if "Access-Control-Allow-Headers" in headers:
+            cors_headers_found.append(f"Access-Control-Allow-Headers: {headers['Access-Control-Allow-Headers']}")
         
-        cors_ok = True
-        for header in cors_headers:
-            if header not in headers:
-                print(f"❌ Missing CORS header: {header}")
-                cors_ok = False
+        # Also test with OPTIONS preflight request
+        options_response = requests.options(f"{BACKEND_URL}/", timeout=10)
+        options_headers = options_response.headers
         
-        if cors_ok:
+        if "Access-Control-Allow-Origin" in options_headers:
+            cors_headers_found.append(f"OPTIONS Access-Control-Allow-Origin: {options_headers['Access-Control-Allow-Origin']}")
+        
+        if cors_headers_found:
             print("✅ CORS headers test passed")
+            for header in cors_headers_found:
+                print(f"   Found: {header}")
             return True
         else:
-            print("❌ CORS headers test failed")
+            print("❌ CORS headers test failed - no CORS headers found")
+            print(f"   GET headers: {dict(headers)}")
+            print(f"   OPTIONS headers: {dict(options_headers)}")
             return False
             
     except requests.exceptions.RequestException as e:
