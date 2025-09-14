@@ -10,6 +10,9 @@ import WorkoutPage from "./pages/WorkoutPage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import ContactPage from "./pages/ContactPage";
+import AboutBMIPage from "./pages/AboutBMIPage";
+import HealthTipsPage from "./pages/HealthTipsPage";
+import NutritionGuidePage from "./pages/NutritionGuidePage";
 import { Toaster } from "./components/ui/toaster";
 
 function App() {
