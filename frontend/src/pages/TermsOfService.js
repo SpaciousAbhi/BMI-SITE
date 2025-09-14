@@ -23,7 +23,7 @@ const TermsOfService = () => {
       icon: Info,
       title: "Service Description",
       content: [
-        "Advanced BMI Calculator Ultra Pro Max by Venom Stone provides BMI (Body Mass Index) calculation tools and health-related information",
+        "Advanced BMI Calculator provides BMI (Body Mass Index) calculation tools and health-related information",
         "Our service includes BMI calculations, body fat estimation, and health recommendations",
         "We provide goal tracking and calculation history features",
         "All calculations are for informational purposes only"
