@@ -176,7 +176,7 @@ const Header = () => {
               ? 'border-purple-500/20 bg-gray-900/90'
               : 'border-green-500/20 bg-black/90'
           }`}>
-            <div className="py-4 space-y-1">
+            <div className="py-4 space-y-1 max-h-96 overflow-y-auto">
               {/* Tools Section */}
               <div className="px-4 py-2">
                 <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
