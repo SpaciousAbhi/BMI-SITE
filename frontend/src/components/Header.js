@@ -61,7 +61,7 @@ const Header = () => {
     { path: '/contact', label: 'Contact Us', icon: Mail },
   ];
 
-  const allNavItems = [...toolsNavItems, ...healthResourcesItems, ...legalItems];
+  const allNavItems = [...calculatorsNavItems, ...toolsNavItems, ...healthResourcesItems, ...legalItems];
 
   const getThemeIcon = () => {
     switch(theme) {
