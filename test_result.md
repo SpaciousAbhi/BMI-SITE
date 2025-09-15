@@ -225,17 +225,17 @@ frontend:
         - working: true
           agent: "main"
           comment: "SPECIALIZED CALCULATORS COMPLETE: ✅ PREGNANCY BMI CALCULATOR: Advanced calculator for tracking healthy weight gain during pregnancy with trimester-specific recommendations, pre-pregnancy BMI analysis, and maternal health guidelines. ✅ SENIOR BMI CALCULATOR (65+): Age-adjusted BMI categories recognizing that slightly higher BMI may be protective for seniors, with sarcopenia prevention focus and longevity insights. ✅ ETHNICITY-ADJUSTED BMI CALCULATOR: Culturally-aware BMI with adjustments for Asian, South Asian, Pacific Islander, African American, Hispanic, and other ethnic backgrounds. Includes genetic risk factors and cultural considerations. ✅ All calculators feature comprehensive health recommendations, specialized risk assessments, and educational content. ✅ Professional medical disclaimers and evidence-based adjustments."
-  - task: "Navigation and SEO Integration"
+  - task: "Homepage UI/UX Reorganization - Visual Cleanup"
     implemented: true
     working: true
-    file: "/app/frontend/src/App.js, /app/frontend/src/components/Header.js, /app/frontend/src/components/Footer.js, /app/frontend/public/sitemap.xml"
+    file: "/app/frontend/src/pages/HomePage.js"
     stuck_count: 0
     priority: "high"
     needs_retesting: false
     status_history:
         - working: true
           agent: "main"
-          comment: "NAVIGATION & SEO INTEGRATION COMPLETE: ✅ Updated App.js with all new routes for blog and specialized calculators. ✅ Enhanced Header.js navigation with Health Blog link in resources section. ✅ Updated Footer.js with links to all specialized calculators (Pregnancy BMI, Senior BMI, Ethnicity-Adjusted BMI). ✅ Comprehensive sitemap.xml update with all new pages including individual blog post URLs with proper priorities and change frequencies. ✅ HomePage.js enhanced with new Specialized BMI Calculators section showcasing all advanced calculators with attractive gradient cards and emoji icons. ✅ Internal linking strategy implemented for better SEO and user experience. ✅ All new pages properly integrated into site architecture."
+          comment: "COMPREHENSIVE HOMEPAGE REORGANIZATION COMPLETE: ✅ STREAMLINED HERO SECTION: Simplified from cluttered title/badges to clean, focused design with clear hierarchy and professional key features. ✅ CONSOLIDATED CALCULATOR SECTIONS: Merged 'Free Health Calculators' and 'Specialized BMI Calculators' into single 'Complete Health Calculator Suite' with better organization. ✅ IMPROVED VISUAL HIERARCHY: Clear categorization with 'Essential Health Calculators' (Body Fat, Calorie, Macros, Workout), 'Specialized BMI Calculators' (Pregnancy, Senior, Ethnicity, Athletes, Smart BMI, Blog), and 'Health Tools & Resources' (Progress, Goals, Reports). ✅ ENHANCED CALCULATOR FORM: 2/3 width layout with cleaner design, better spacing, larger inputs, improved labels, and placeholder for results. ✅ CONSISTENT CARD DESIGN: Unified styling with proper hover effects, color coding by calculator type, and improved accessibility. ✅ REDUCED COGNITIVE LOAD: Eliminated redundant sections, improved information architecture, and created logical flow from primary to specialized tools. ✅ BETTER SPACING & TYPOGRAPHY: Improved visual separation, consistent font sizing, and professional layout structure. Layout is now significantly cleaner, more intuitive, and provides better user experience while maintaining all functionality."
 
 metadata:
   created_by: "main_agent"
