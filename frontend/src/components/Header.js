@@ -44,6 +44,7 @@ const Header = () => {
     { path: '/about-bmi', label: 'About BMI', icon: BookOpen },
     { path: '/health-tips', label: 'Health Tips', icon: Heart },
     { path: '/nutrition-guide', label: 'Nutrition Guide', icon: BookOpen },
+    { path: '/blog', label: 'Health Blog', icon: BookOpen },
   ];
 
   const legalItems = [
