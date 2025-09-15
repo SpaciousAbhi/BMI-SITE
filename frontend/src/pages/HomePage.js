@@ -949,11 +949,35 @@ const HomePage = () => {
               <p className={`text-lg max-w-2xl mx-auto ${
                 theme === 'white' ? 'text-gray-600' : 'text-gray-400'
               }`}>
-                Additional tools to support your health and fitness journey
+                Additional tools and resources to support your health and fitness journey
               </p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+              <Link to="/workout" className="group">
+                <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                  theme === 'white' 
+                    ? 'bg-white/70 hover:bg-white/90 border border-blue-100' 
+                    : theme === 'dark'
+                    ? 'bg-gray-800/70 hover:bg-gray-800/90 border border-blue-500/20'
+                    : 'bg-gray-900/70 hover:bg-gray-900/90 border border-blue-500/20'
+                }`}>
+                  <CardContent className="p-6 text-center">
+                    <Activity className={`h-12 w-12 mx-auto mb-4 ${
+                      theme === 'white' ? 'text-blue-600' : 'text-blue-400'
+                    }`} />
+                    <h4 className={`text-lg font-semibold mb-2 ${
+                      theme === 'white' ? 'text-gray-900' : 'text-white'
+                    }`}>
+                      Workout Plans
+                    </h4>
+                    <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      Personalized exercise routines
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+
               <Link to="/history" className="group">
                 <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
                   theme === 'white' 
@@ -972,7 +996,7 @@ const HomePage = () => {
                       Progress Tracking
                     </h4>
                     <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
-                      Monitor your health metrics over time
+                      Monitor your health metrics
                     </p>
                   </CardContent>
                 </Card>
@@ -996,33 +1020,35 @@ const HomePage = () => {
                       Health Goals
                     </h4>
                     <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
-                      Set and track your fitness objectives
+                      Set and track fitness objectives
                     </p>
                   </CardContent>
                 </Card>
               </Link>
 
-              <Card className={`backdrop-blur-md border-0 shadow-xl transform hover:scale-105 transition-all duration-300 ${
-                theme === 'white' 
-                  ? 'bg-white/70 hover:bg-white/90 border border-indigo-100' 
-                  : theme === 'dark'
-                  ? 'bg-gray-800/70 hover:bg-gray-800/90 border border-indigo-500/20'
-                  : 'bg-gray-900/70 hover:bg-gray-900/90 border border-indigo-500/20'
-              }`}>
-                <CardContent className="p-6 text-center">
-                  <Calculator className={`h-12 w-12 mx-auto mb-4 ${
-                    theme === 'white' ? 'text-indigo-600' : 'text-indigo-400'
-                  }`} />
-                  <h4 className={`text-lg font-semibold mb-2 ${
-                    theme === 'white' ? 'text-gray-900' : 'text-white'
-                  }`}>
-                    Health Reports
-                  </h4>
-                  <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
-                    Download comprehensive health reports
-                  </p>
-                </CardContent>
-              </Card>
+              <Link to="/blog" className="group">
+                <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                  theme === 'white' 
+                    ? 'bg-white/70 hover:bg-white/90 border border-orange-100' 
+                    : theme === 'dark'
+                    ? 'bg-gray-800/70 hover:bg-gray-800/90 border border-orange-500/20'
+                    : 'bg-gray-900/70 hover:bg-gray-900/90 border border-orange-500/20'
+                }`}>
+                  <CardContent className="p-6 text-center">
+                    <BookOpen className={`h-12 w-12 mx-auto mb-4 ${
+                      theme === 'white' ? 'text-orange-600' : 'text-orange-400'
+                    }`} />
+                    <h4 className={`text-lg font-semibold mb-2 ${
+                      theme === 'white' ? 'text-gray-900' : 'text-white'
+                    }`}>
+                      Health & BMI Blog
+                    </h4>
+                    <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      Expert health articles
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
             </div>
           </div>
         </div>
