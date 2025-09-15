@@ -17,6 +17,7 @@ import NutritionGuidePage from "./pages/NutritionGuidePage";
 import BodyFatPage from "./pages/BodyFatPage";
 import CaloriePage from "./pages/CaloriePage";
 import MacrosPage from "./pages/MacrosPage";
+import SmartBMIPage from "./pages/SmartBMIPage";
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "./components/ui/toaster";
 
