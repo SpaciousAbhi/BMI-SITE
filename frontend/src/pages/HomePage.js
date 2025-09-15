@@ -849,6 +849,198 @@ const HomePage = () => {
           </div>
         </div>
 
+        {/* Specialized BMI Calculators Section */}
+        <div className="mt-16 max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
+              theme === 'white' ? 'text-gray-900' : 'text-white'
+            }`}>
+              Specialized BMI Calculators for Every Need
+            </h2>
+            <p className={`text-lg max-w-3xl mx-auto ${
+              theme === 'white' ? 'text-gray-600' : 'text-gray-300'
+            }`}>
+              Advanced BMI calculators tailored for specific demographics, life stages, and health needs. Get more accurate results with specialized adjustments.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Pregnancy BMI Calculator */}
+            <Link to="/pregnancy-bmi" className="group">
+              <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                theme === 'white' 
+                  ? 'bg-gradient-to-br from-pink-50 to-purple-50 hover:from-pink-100 hover:to-purple-100' 
+                  : theme === 'dark'
+                  ? 'bg-gradient-to-br from-pink-900/20 to-purple-900/20 hover:from-pink-800/30 hover:to-purple-800/30'
+                  : 'bg-gradient-to-br from-pink-900/20 to-purple-900/20 hover:from-pink-800/30 hover:to-purple-800/30'
+              }`}>
+                <CardContent className="p-6 text-center">
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
+                    theme === 'white' ? 'bg-pink-100' : 'bg-pink-900/30'
+                  }`}>
+                    <span className={`text-2xl ${
+                      theme === 'white' ? 'text-pink-600' : 'text-pink-400'
+                    }`}>🤱</span>
+                  </div>
+                  <h3 className={`text-xl font-semibold mb-2 ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    Pregnancy BMI Calculator
+                  </h3>
+                  <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                    Track healthy weight gain during pregnancy with trimester-specific recommendations
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            {/* Senior BMI Calculator */}
+            <Link to="/senior-bmi" className="group">
+              <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                theme === 'white' 
+                  ? 'bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100' 
+                  : theme === 'dark'
+                  ? 'bg-gradient-to-br from-blue-900/20 to-indigo-900/20 hover:from-blue-800/30 hover:to-indigo-800/30'
+                  : 'bg-gradient-to-br from-blue-900/20 to-indigo-900/20 hover:from-blue-800/30 hover:to-indigo-800/30'
+              }`}>
+                <CardContent className="p-6 text-center">
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
+                    theme === 'white' ? 'bg-indigo-100' : 'bg-indigo-900/30'
+                  }`}>
+                    <Users className={`h-8 w-8 ${
+                      theme === 'white' ? 'text-indigo-600' : 'text-indigo-400'
+                    }`} />
+                  </div>
+                  <h3 className={`text-xl font-semibold mb-2 ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    Senior BMI Calculator (65+)
+                  </h3>
+                  <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                    Age-adjusted BMI categories and health recommendations for seniors
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            {/* Ethnicity BMI Calculator */}
+            <Link to="/ethnicity-bmi" className="group">
+              <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                theme === 'white' 
+                  ? 'bg-gradient-to-br from-emerald-50 to-teal-50 hover:from-emerald-100 hover:to-teal-100' 
+                  : theme === 'dark'
+                  ? 'bg-gradient-to-br from-emerald-900/20 to-teal-900/20 hover:from-emerald-800/30 hover:to-teal-800/30'
+                  : 'bg-gradient-to-br from-emerald-900/20 to-teal-900/20 hover:from-emerald-800/30 hover:to-teal-800/30'
+              }`}>
+                <CardContent className="p-6 text-center">
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
+                    theme === 'white' ? 'bg-emerald-100' : 'bg-emerald-900/30'
+                  }`}>
+                    <span className={`text-2xl ${
+                      theme === 'white' ? 'text-emerald-600' : 'text-emerald-400'
+                    }`}>🌍</span>
+                  </div>
+                  <h3 className={`text-xl font-semibold mb-2 ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    Ethnicity-Adjusted BMI
+                  </h3>
+                  <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                    Culturally-aware BMI with adjustments for different ethnic backgrounds
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            {/* Blog Section Link */}
+            <Link to="/blog" className="group">
+              <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                theme === 'white' 
+                  ? 'bg-gradient-to-br from-yellow-50 to-orange-50 hover:from-yellow-100 hover:to-orange-100' 
+                  : theme === 'dark'
+                  ? 'bg-gradient-to-br from-yellow-900/20 to-orange-900/20 hover:from-yellow-800/30 hover:to-orange-800/30'
+                  : 'bg-gradient-to-br from-yellow-900/20 to-orange-900/20 hover:from-yellow-800/30 hover:to-orange-800/30'
+              }`}>
+                <CardContent className="p-6 text-center">
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
+                    theme === 'white' ? 'bg-orange-100' : 'bg-orange-900/30'
+                  }`}>
+                    <BookOpen className={`h-8 w-8 ${
+                      theme === 'white' ? 'text-orange-600' : 'text-orange-400'
+                    }`} />
+                  </div>
+                  <h3 className={`text-xl font-semibold mb-2 ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    Health & BMI Blog
+                  </h3>
+                  <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                    Expert articles on BMI, health, fitness, and wellness from medical professionals
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            {/* Smart BMI Calculator */}
+            <Link to="/smart-bmi" className="group">
+              <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                theme === 'white' 
+                  ? 'bg-gradient-to-br from-violet-50 to-purple-50 hover:from-violet-100 hover:to-purple-100' 
+                  : theme === 'dark'
+                  ? 'bg-gradient-to-br from-violet-900/20 to-purple-900/20 hover:from-violet-800/30 hover:to-purple-800/30'
+                  : 'bg-gradient-to-br from-violet-900/20 to-purple-900/20 hover:from-violet-800/30 hover:to-purple-800/30'
+              }`}>
+                <CardContent className="p-6 text-center">
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
+                    theme === 'white' ? 'bg-violet-100' : 'bg-violet-900/30'
+                  }`}>
+                    <span className={`text-2xl ${
+                      theme === 'white' ? 'text-violet-600' : 'text-violet-400'
+                    }`}>🧠</span>
+                  </div>
+                  <h3 className={`text-xl font-semibold mb-2 ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    Smart BMI Calculator
+                  </h3>
+                  <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                    AI-powered BMI analysis with advanced health insights and recommendations
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+
+            {/* BMI for Athletes */}
+            <Link to="/bmi-for-athletes" className="group">
+              <Card className={`backdrop-blur-md border-0 shadow-xl transform group-hover:scale-105 transition-all duration-300 cursor-pointer ${
+                theme === 'white' 
+                  ? 'bg-gradient-to-br from-red-50 to-pink-50 hover:from-red-100 hover:to-pink-100' 
+                  : theme === 'dark'
+                  ? 'bg-gradient-to-br from-red-900/20 to-pink-900/20 hover:from-red-800/30 hover:to-pink-800/30'
+                  : 'bg-gradient-to-br from-red-900/20 to-pink-900/20 hover:from-red-800/30 hover:to-pink-800/30'
+              }`}>
+                <CardContent className="p-6 text-center">
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
+                    theme === 'white' ? 'bg-red-100' : 'bg-red-900/30'
+                  }`}>
+                    <span className={`text-2xl ${
+                      theme === 'white' ? 'text-red-600' : 'text-red-400'
+                    }`}>🏃‍♂️</span>
+                  </div>
+                  <h3 className={`text-xl font-semibold mb-2 ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    BMI for Athletes
+                  </h3>
+                  <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                    Specialized BMI calculator considering high muscle mass and athletic build
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
+        </div>
+
         {/* SEO-Optimized Content Section */}
         <SEOContent />
 
