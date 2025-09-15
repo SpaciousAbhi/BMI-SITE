@@ -127,6 +127,36 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
+                  to="/pregnancy-bmi" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                >
+                  Pregnancy BMI
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/senior-bmi" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                >
+                  Senior BMI (65+)
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/ethnicity-bmi" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                >
+                  Ethnicity-Adjusted BMI
+                </Link>
+              </li>
+              <li>
+                <Link 
                   to="/history" 
                   className={`text-sm ${
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
