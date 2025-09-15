@@ -278,43 +278,47 @@ const HomePage = () => {
       <Header />
       
       <main className="container mx-auto px-4 py-8">
-        {/* Enhanced Hero Section */}
-        <div className="text-center mb-12 animate-fade-in">
-          <div className="relative">
-            <h1 className={`text-4xl md:text-6xl font-bold mb-6 transition-all duration-500 ${
+        {/* Streamlined Hero Section */}
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="relative max-w-5xl mx-auto">
+            <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight transition-all duration-500 ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
-              Free BMI Calculator - Calculate Body Mass Index Online
+              Free BMI Calculator
             </h1>
-            {/* Accent underline */}
-            <div className={`w-32 h-1 mx-auto mb-6 rounded-full transition-all duration-500 ${
+            <div className={`w-24 h-1.5 mx-auto mb-8 rounded-full transition-all duration-500 ${
               theme === 'white' ? 'bg-gradient-to-r from-teal-400 to-cyan-500' :
               theme === 'dark' ? 'bg-gradient-to-r from-purple-400 to-pink-500' :
               'bg-gradient-to-r from-green-400 to-emerald-500'
             }`} />
-          </div>
-          <p className={`text-xl md:text-2xl mb-8 max-w-3xl mx-auto transition-colors duration-500 ${
-            theme === 'white' ? 'text-gray-600' : 'text-gray-300'
-          }`}>
-            <strong>Calculate your BMI instantly</strong> with our free Body Mass Index calculator. Get accurate BMI results, healthy BMI range analysis, body fat estimation, and personalized health recommendations.
-          </p>
-          
-          {/* Feature badges */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {['Free BMI Calculator', 'Instant BMI Results', 'Body Fat Calculator', 'Healthy BMI Range', 'Calorie Calculator', 'Health Reports'].map((feature, index) => (
-              <Badge 
-                key={feature}
-                variant="secondary" 
-                className={`px-4 py-2 text-sm font-medium transition-all duration-500 transform hover:scale-105 animate-slide-in ${
-                  theme === 'white' ? 'bg-teal-100 text-teal-800 hover:bg-teal-200' :
-                  theme === 'dark' ? 'bg-purple-900/50 text-purple-200 hover:bg-purple-800/50' :
-                  'bg-green-900/50 text-green-200 hover:bg-green-800/50'
-                }`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {feature}
-              </Badge>
-            ))}
+            <p className={`text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed transition-colors duration-500 ${
+              theme === 'white' ? 'text-gray-600' : 'text-gray-300'
+            }`}>
+              Calculate your <strong>Body Mass Index</strong> instantly with professional-grade accuracy. 
+              Get comprehensive health insights, body composition analysis, and personalized recommendations.
+            </p>
+            
+            {/* Simplified key features */}
+            <div className="flex flex-wrap justify-center gap-4 mb-10">
+              {[
+                { label: '🎯 Instant Results', color: 'teal' },
+                { label: '📊 Body Fat Analysis', color: 'purple' },
+                { label: '🔬 Medical Grade', color: 'green' },
+                { label: '📱 Mobile Friendly', color: 'blue' }
+              ].map((feature, index) => (
+                <div 
+                  key={feature.label}
+                  className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-500 transform hover:scale-105 animate-slide-in ${
+                    theme === 'white' 
+                      ? `bg-${feature.color}-50 text-${feature.color}-700 border border-${feature.color}-200 hover:bg-${feature.color}-100` 
+                      : `bg-${feature.color}-900/30 text-${feature.color}-300 border border-${feature.color}-500/30 hover:bg-${feature.color}-800/30`
+                  }`}
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  {feature.label}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
