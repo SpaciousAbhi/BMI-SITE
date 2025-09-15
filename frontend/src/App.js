@@ -71,6 +71,11 @@ const AppContent = () => {
           <Route path="/bmi-for-athletes" element={<BMIForAthletesPage />} />
           <Route path="/bmi-for-children" element={<BMIForChildrenPage />} />
           <Route path="/bmi-guide" element={<BMIGuidePage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/pregnancy-bmi" element={<PregnancyBMIPage />} />
+          <Route path="/senior-bmi" element={<SeniorBMIPage />} />
+          <Route path="/ethnicity-bmi" element={<EthnicityBMIPage />} />
         </Routes>
       </BrowserRouter>
       <Toaster />
