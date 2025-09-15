@@ -298,22 +298,46 @@ const HomePage = () => {
               Get comprehensive health insights, body composition analysis, and personalized recommendations.
             </p>
             
-            {/* Simplified key features */}
-            <div className="flex flex-wrap justify-center gap-4 mb-10">
+            {/* Comprehensive Features & Specialties */}
+            <div className="flex flex-wrap justify-center gap-3 mb-10 max-w-6xl mx-auto">
               {[
-                { label: '🎯 Instant Results', color: 'teal' },
+                { label: '🎯 Instant BMI Results', color: 'teal' },
                 { label: '📊 Body Fat Analysis', color: 'purple' },
-                { label: '🔬 Medical Grade', color: 'green' },
-                { label: '📱 Mobile Friendly', color: 'blue' }
+                { label: '🔬 Medical Grade Accuracy', color: 'green' },
+                { label: '📱 Mobile Friendly', color: 'blue' },
+                { label: '🤱 Pregnancy BMI', color: 'pink' },
+                { label: '👴 Senior BMI (65+)', color: 'indigo' },
+                { label: '🌍 Ethnicity-Adjusted', color: 'emerald' },
+                { label: '🏃‍♂️ Athletes BMI', color: 'red' },
+                { label: '🧠 AI-Powered Analysis', color: 'violet' },
+                { label: '🔥 Calorie Calculator', color: 'orange' },
+                { label: '🍎 Macros Breakdown', color: 'green' },
+                { label: '💪 Workout Plans', color: 'blue' },
+                { label: '📈 Progress Tracking', color: 'purple' },
+                { label: '🎯 Goal Setting', color: 'teal' },
+                { label: '📚 Expert Health Blog', color: 'orange' },
+                { label: '⚖️ Multiple Units (Metric/US/Indian)', color: 'gray' },
+                { label: '🆓 100% Free', color: 'green' },
+                { label: '🔒 No Registration Required', color: 'blue' },
+                { label: '⚡ Instant PDF Reports', color: 'yellow' },
+                { label: '🎨 Multiple Themes', color: 'purple' }
               ].map((feature, index) => (
                 <div 
                   key={feature.label}
-                  className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-500 transform hover:scale-105 animate-slide-in ${
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-500 transform hover:scale-105 animate-slide-in ${
                     theme === 'white' 
-                      ? `bg-${feature.color}-50 text-${feature.color}-700 border border-${feature.color}-200 hover:bg-${feature.color}-100` 
+                      ? feature.color === 'gray' 
+                        ? 'bg-gray-50 text-gray-700 border border-gray-200 hover:bg-gray-100'
+                        : feature.color === 'yellow'
+                        ? 'bg-yellow-50 text-yellow-700 border border-yellow-200 hover:bg-yellow-100'
+                        : `bg-${feature.color}-50 text-${feature.color}-700 border border-${feature.color}-200 hover:bg-${feature.color}-100`
+                      : feature.color === 'gray'
+                      ? 'bg-gray-800/30 text-gray-300 border border-gray-500/30 hover:bg-gray-700/30'
+                      : feature.color === 'yellow'
+                      ? 'bg-yellow-900/30 text-yellow-300 border border-yellow-500/30 hover:bg-yellow-800/30'
                       : `bg-${feature.color}-900/30 text-${feature.color}-300 border border-${feature.color}-500/30 hover:bg-${feature.color}-800/30`
                   }`}
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {feature.label}
                 </div>
