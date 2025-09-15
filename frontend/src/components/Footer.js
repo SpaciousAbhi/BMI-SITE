@@ -127,6 +127,39 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
+                  to="/body-fat" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Target className="h-4 w-4" />
+                  Body Fat Calculator
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/calories" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Heart className="h-4 w-4" />
+                  Calorie Calculator
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/macros" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Target className="h-4 w-4" />
+                  Macro Calculator
+                </Link>
+              </li>
+              <li>
+                <Link 
                   to="/pregnancy-bmi" 
                   className={`text-sm ${
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
@@ -152,7 +185,7 @@ const Footer = () => {
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
                 >
-                  Ethnicity-Adjusted BMI
+                  🌍 Ethnicity-Adjusted BMI
                 </Link>
               </li>
               <li>
