@@ -109,7 +109,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6">
-            {toolsNavItems.slice(0, 4).map((item) => {
+            {calculatorsNavItems.slice(0, 4).map((item) => {
               const IconComponent = item.icon;
               return (
                 <Link
