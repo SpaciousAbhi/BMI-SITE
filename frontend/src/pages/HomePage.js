@@ -1087,29 +1087,28 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* SEO-Optimized Content Section */}
-        <SEOContent />
+        {/* Streamlined SEO Content */}
+        <div className="mt-20">
+          <SEOContent />
+        </div>
 
-        {/* Comprehensive BMI Information Sections */}
+        {/* Simplified BMI Information */}
         <div className="mt-16 max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
+            <h2 className={`text-3xl md:text-4xl font-bold mb-6 ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              Complete BMI Guide & Health Information
+              BMI Guide & Health Information
             </h2>
             <p className={`text-lg max-w-3xl mx-auto ${
               theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
             }`}>
-              Comprehensive information about BMI, health risks, limitations, and special considerations.
+              Essential information about BMI calculation, health implications, and wellness guidance.
             </p>
           </div>
 
-          {/* BMI Information Sections */}
-          <BMIInformation />
-          
-          {/* Children BMI Information */}
-          <div className="mt-12">
+          <div className="grid md:grid-cols-2 gap-8">
+            <BMIInformation />
             <ChildrenBMIInfo />
           </div>
         </div>
