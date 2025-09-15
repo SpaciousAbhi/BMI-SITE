@@ -786,7 +786,7 @@ const HomePage = () => {
               <p className={`text-lg max-w-2xl mx-auto ${
                 theme === 'white' ? 'text-gray-600' : 'text-gray-400'
               }`}>
-                Advanced calculators with demographic-specific adjustments for more accurate results
+                Advanced BMI calculators with demographic-specific adjustments for more accurate results
               </p>
             </div>
             
@@ -931,35 +931,6 @@ const HomePage = () => {
                     </h4>
                     <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
                       AI-powered analysis with advanced health insights
-                    </p>
-                  </CardContent>
-                </Card>
-              </Link>
-
-              {/* Health Blog */}
-              <Link to="/blog" className="group">
-                <Card className={`backdrop-blur-md border-0 shadow-2xl transform group-hover:scale-[1.03] group-hover:-translate-y-1 transition-all duration-500 cursor-pointer ${
-                  theme === 'white' 
-                    ? 'bg-gradient-to-br from-yellow-50 to-orange-50 hover:from-yellow-100 hover:to-orange-100 border border-orange-200/50' 
-                    : theme === 'dark'
-                    ? 'bg-gradient-to-br from-yellow-900/20 to-orange-900/20 hover:from-yellow-800/30 hover:to-orange-800/30 border border-orange-500/20'
-                    : 'bg-gradient-to-br from-yellow-900/20 to-orange-900/20 hover:from-yellow-800/30 hover:to-orange-800/30 border border-orange-500/20'
-                }`}>
-                  <CardContent className="p-8 text-center">
-                    <div className={`w-18 h-18 mx-auto mb-6 rounded-2xl flex items-center justify-center ${
-                      theme === 'white' ? 'bg-orange-100' : 'bg-orange-900/30'
-                    }`}>
-                      <BookOpen className={`h-9 w-9 ${
-                        theme === 'white' ? 'text-orange-600' : 'text-orange-400'
-                      }`} />
-                    </div>
-                    <h4 className={`text-xl font-bold mb-3 ${
-                      theme === 'white' ? 'text-gray-900' : 'text-white'
-                    }`}>
-                      Health & BMI Blog
-                    </h4>
-                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
-                      Expert articles on health, fitness, and wellness
                     </p>
                   </CardContent>
                 </Card>
