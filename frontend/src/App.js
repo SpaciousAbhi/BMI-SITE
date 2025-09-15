@@ -59,6 +59,7 @@ const AppContent = () => {
           <Route path="/body-fat" element={<BodyFatPage />} />
           <Route path="/calories" element={<CaloriePage />} />
           <Route path="/macros" element={<MacrosPage />} />
+          <Route path="/smart-bmi" element={<SmartBMIPage />} />
         </Routes>
       </BrowserRouter>
       <Toaster />
