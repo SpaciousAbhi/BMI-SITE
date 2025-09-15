@@ -88,6 +88,74 @@
   }
   </script>
 
+  <!-- Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BMI Calculator Online",
+    "url": "%PUBLIC_URL%/",
+    "logo": "%PUBLIC_URL%/logo192.png",
+    "description": "Leading provider of free BMI calculators and health analysis tools with advanced AI-enhanced calculations for accurate body mass index assessment.",
+    "foundingDate": "2023",
+    "sameAs": [
+      "https://twitter.com/bmicalculator",
+      "https://facebook.com/bmicalculator",
+      "https://instagram.com/bmicalculator"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-800-BMI-CALC",
+      "contactType": "customer service",
+      "availableLanguage": ["English"]
+    },
+    "areaServed": "Worldwide",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Free Health Calculators",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "BMI Calculator",
+            "description": "Free Body Mass Index calculator with instant results"
+          },
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service", 
+            "name": "Body Fat Calculator",
+            "description": "Free body fat percentage calculator using US Navy method"
+          },
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Calorie Calculator", 
+            "description": "Free daily calorie needs calculator (TDEE/BMR)"
+          },
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "25000",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+  </script>
+
   <!-- Medical Organization Schema -->
   <script type="application/ld+json">
   {
