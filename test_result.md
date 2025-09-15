@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "This is our BMI Calculator website. I want you to perform advanced SEO optimization to ensure it ranks at the top of search results and drives consistent traffic. Research the most relevant keywords that people are likely to search for, identify ranking opportunities, and keep in mind that this is a frontend-only site hosted on Netlify."
+user_problem_statement: "This is our BMI Calculator website. I want you to perform advanced SEO optimization to ensure it ranks at the top of search results and drives consistent traffic. Research the most relevant keywords that people are likely to search for, identify ranking opportunities, and keep in mind that this is a frontend-only site hosted on Netlify. ADDITIONAL REQUEST: Add blog/articles section for health content marketing and add more specialized calculators (pregnancy BMI, athlete BMI, etc.)"
 
 backend:
   - task: "Backend Service Compatibility - Frontend Only Optimization"
