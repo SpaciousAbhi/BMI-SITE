@@ -211,6 +211,16 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
+                  to="/blog" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                >
+                  Health Blog
+                </Link>
+              </li>
+              <li>
+                <Link 
                   to="/health-tips" 
                   className={`text-sm ${
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
