@@ -322,333 +322,324 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Enhanced Calculator Form */}
-          <Card className={`backdrop-blur-md border-0 shadow-2xl transform hover:scale-[1.02] transition-all duration-500 glass-effect animate-scale-in ${
-            theme === 'white' 
-              ? 'bg-white/80 hover:bg-white/90 border-teal-200/20' 
-              : theme === 'dark'
-              ? 'bg-gray-800/80 hover:bg-gray-800/90 border-purple-500/20'
-              : 'bg-black/80 hover:bg-gray-900/50 border-green-500/20'
-          }`}>
-            <CardHeader>
-              <CardTitle className={`flex items-center gap-3 text-2xl transition-colors duration-500 ${
-                theme === 'white' ? 'text-gray-900' : 'text-white'
-              }`}>
-                <Calculator className={`h-6 w-6 transition-colors duration-500 ${
-                  theme === 'white' ? 'text-teal-600' : 
-                  theme === 'dark' ? 'text-purple-400' : 
-                  'text-green-400'
-                }`} />
-                Free BMI Calculator Online
-              </CardTitle>
-              <p className={`text-sm mt-2 ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
-                Calculate your Body Mass Index instantly with our free, accurate BMI calculator
-              </p>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {/* Unit System Selection */}
-              <div className="space-y-3 animate-slide-in" style={{ animationDelay: '50ms' }}>
-                <Label className={`flex items-center gap-2 font-medium transition-colors duration-500 ${
-                  theme === 'white' ? 'text-gray-700' : 'text-gray-200'
+        <div className="grid lg:grid-cols-3 gap-12 max-w-7xl mx-auto mb-20">
+          {/* Streamlined Calculator Form */}
+          <div className="lg:col-span-2">
+            <Card className={`backdrop-blur-md border-0 shadow-2xl transform hover:scale-[1.01] transition-all duration-500 glass-effect animate-scale-in ${
+              theme === 'white' 
+                ? 'bg-white/95 hover:bg-white border border-teal-200/30' 
+                : theme === 'dark'
+                ? 'bg-gray-800/95 hover:bg-gray-800 border border-purple-500/30'
+                : 'bg-black/95 hover:bg-gray-900/70 border border-green-500/30'
+            }`}>
+              <CardHeader className="pb-6">
+                <CardTitle className={`flex items-center gap-3 text-2xl md:text-3xl transition-colors duration-500 ${
+                  theme === 'white' ? 'text-gray-900' : 'text-white'
                 }`}>
-                  Unit System
-                </Label>
-                <div className="grid grid-cols-3 gap-3">
-                  <Button
-                    type="button"
-                    onClick={() => setUnitSystem('metric')}
-                    className={`transition-all duration-300 hover:scale-105 ${getUnitSystemColor('metric')}`}
-                  >
-                    Metric
-                  </Button>
-                  <Button
-                    type="button"
-                    onClick={() => setUnitSystem('us')}
-                    className={`transition-all duration-300 hover:scale-105 ${getUnitSystemColor('us')}`}
-                  >
-                    US
-                  </Button>
-                  <Button
-                    type="button"
-                    onClick={() => setUnitSystem('indian')}
-                    className={`transition-all duration-300 hover:scale-105 ${getUnitSystemColor('indian')}`}
-                  >
-                    Indian
-                  </Button>
-                </div>
-                <div className={`text-xs ${theme === 'white' ? 'text-gray-500' : 'text-gray-400'}`}>
-                  {formData.unitSystem === 'metric' && 'Metric: kg + cm'}
-                  {formData.unitSystem === 'us' && 'US: lbs + feet/inches'}
-                  {formData.unitSystem === 'indian' && 'Indian: kg + cm'}
-                </div>
-              </div>
-
-              {/* Weight Input */}
-              <div className="space-y-3 animate-slide-in" style={{ animationDelay: '100ms' }}>
-                <Label htmlFor="weight" className={`flex items-center gap-2 font-medium transition-colors duration-500 ${
-                  theme === 'white' ? 'text-gray-700' : 'text-gray-200'
-                }`}>
-                  <Weight className={`h-4 w-4 ${
+                  <Calculator className={`h-8 w-8 transition-colors duration-500 ${
                     theme === 'white' ? 'text-teal-600' : 
                     theme === 'dark' ? 'text-purple-400' : 
                     'text-green-400'
                   }`} />
-                  Weight
-                </Label>
-                <div className="flex gap-3">
-                  <Input
-                    id="weight"
-                    type="number"
-                    placeholder={getWeightPlaceholder()}
-                    value={formData.weight}
-                    onChange={(e) => handleInputChange('weight', e.target.value)}
-                    className={`flex-1 transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
-                      theme === 'white' 
-                        ? 'bg-white/70 border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
-                        : theme === 'dark'
-                        ? 'bg-gray-700/50 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
-                        : 'bg-gray-900/50 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
-                    }`}
-                  />
-                  <Select value={formData.weightUnit} onValueChange={(value) => handleInputChange('weightUnit', value)}>
-                    <SelectTrigger className={`w-20 transition-all duration-300 hover:scale-105 ${
-                      theme === 'white' 
-                        ? 'bg-white/70 border-teal-200' 
-                        : theme === 'dark'
-                        ? 'bg-gray-700/50 border-purple-500/30 text-white'
-                        : 'bg-gray-900/50 border-green-500/30 text-white'
-                    }`}>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="kg">kg</SelectItem>
-                      <SelectItem value="lbs">lbs</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-
-              {/* Height Input */}
-              <div className="space-y-3 animate-slide-in" style={{ animationDelay: '200ms' }}>
-                <Label htmlFor="height" className={`flex items-center gap-2 font-medium transition-colors duration-500 ${
-                  theme === 'white' ? 'text-gray-700' : 'text-gray-200'
-                }`}>
-                  <Ruler className={`h-4 w-4 ${
-                    theme === 'white' ? 'text-teal-600' : 
-                    theme === 'dark' ? 'text-purple-400' : 
-                    'text-green-400'
-                  }`} />
-                  Height
-                </Label>
-                
-                {/* Primary Height Input */}
-                <div className="flex gap-3">
-                  <Input
-                    id="height"
-                    type="number"
-                    step={formData.heightUnit === 'feet' ? '0.01' : '1'}
-                    placeholder={getHeightPlaceholder()}
-                    value={formData.height}
-                    onChange={(e) => handleInputChange('height', e.target.value)}
-                    className={`flex-1 transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
-                      theme === 'white' 
-                        ? 'bg-white/70 border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
-                        : theme === 'dark'
-                        ? 'bg-gray-700/50 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
-                        : 'bg-gray-900/50 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
-                    }`}
-                  />
-                  <Select value={formData.heightUnit} onValueChange={(value) => handleInputChange('heightUnit', value)}>
-                    <SelectTrigger className={`w-24 transition-all duration-300 hover:scale-105 ${
-                      theme === 'white' 
-                        ? 'bg-white/70 border-teal-200' 
-                        : theme === 'dark'
-                        ? 'bg-gray-700/50 border-purple-500/30 text-white'
-                        : 'bg-gray-900/50 border-green-500/30 text-white'
-                    }`}>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="cm">cm</SelectItem>
-                      <SelectItem value="inches">in</SelectItem>
-                      <SelectItem value="feet">ft</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  Calculate Your BMI
+                </CardTitle>
+                <p className={`text-base mt-3 ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                  Get instant, accurate results with body composition analysis
+                </p>
+              </CardHeader>
+              <CardContent className="space-y-8">
+                {/* Unit System Selection */}
+                <div className="space-y-4 animate-slide-in" style={{ animationDelay: '50ms' }}>
+                  <Label className={`text-base font-semibold transition-colors duration-500 ${
+                    theme === 'white' ? 'text-gray-800' : 'text-gray-200'
+                  }`}>
+                    Measurement System
+                  </Label>
+                  <div className="grid grid-cols-3 gap-4">
+                    {['metric', 'us', 'indian'].map((system) => (
+                      <Button
+                        key={system}
+                        type="button"
+                        onClick={() => setUnitSystem(system)}
+                        className={`h-12 transition-all duration-300 hover:scale-105 ${getUnitSystemColor(system)}`}
+                      >
+                        {system === 'metric' && 'Metric (kg/cm)'}
+                        {system === 'us' && 'US (lbs/ft)'}
+                        {system === 'indian' && 'Indian (kg/cm)'}
+                      </Button>
+                    ))}
+                  </div>
                 </div>
 
-                {/* Separate Feet and Inches Input (when feet is selected) */}
-                {formData.heightUnit === 'feet' && (
-                  <div className="space-y-2">
-                    <div className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
-                      Or enter feet and inches separately:
-                    </div>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div>
-                        <Label className={`text-xs ${theme === 'white' ? 'text-gray-500' : 'text-gray-400'}`}>
-                          Feet
-                        </Label>
-                        <Input
-                          type="number"
-                          placeholder="e.g., 6"
-                          value={formData.heightFeet}
-                          onChange={(e) => handleInputChange('heightFeet', e.target.value)}
-                          className={`transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
-                            theme === 'white' 
-                              ? 'bg-white/70 border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
-                              : theme === 'dark'
-                              ? 'bg-gray-700/50 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
-                              : 'bg-gray-900/50 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
-                          }`}
-                        />
-                      </div>
-                      <div>
-                        <Label className={`text-xs ${theme === 'white' ? 'text-gray-500' : 'text-gray-400'}`}>
-                          Inches
-                        </Label>
-                        <Input
-                          type="number"
-                          min="0"
-                          max="11"
-                          placeholder="e.g., 10"
-                          value={formData.heightInches}
-                          onChange={(e) => handleInputChange('heightInches', e.target.value)}
-                          className={`transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
-                            theme === 'white' 
-                              ? 'bg-white/70 border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
-                              : theme === 'dark'
-                              ? 'bg-gray-700/50 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
-                              : 'bg-gray-900/50 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
-                          }`}
-                        />
-                      </div>
+                <div className="grid md:grid-cols-2 gap-8">
+                  {/* Weight Input */}
+                  <div className="space-y-4 animate-slide-in" style={{ animationDelay: '100ms' }}>
+                    <Label htmlFor="weight" className={`text-base font-semibold transition-colors duration-500 ${
+                      theme === 'white' ? 'text-gray-800' : 'text-gray-200'
+                    }`}>
+                      <Weight className={`inline h-5 w-5 mr-2 ${
+                        theme === 'white' ? 'text-teal-600' : 
+                        theme === 'dark' ? 'text-purple-400' : 
+                        'text-green-400'
+                      }`} />
+                      Weight
+                    </Label>
+                    <div className="flex gap-3">
+                      <Input
+                        id="weight"
+                        type="number"
+                        placeholder={getWeightPlaceholder()}
+                        value={formData.weight}
+                        onChange={(e) => handleInputChange('weight', e.target.value)}
+                        className={`h-12 text-lg transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
+                          theme === 'white' 
+                            ? 'bg-white border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
+                            : theme === 'dark'
+                            ? 'bg-gray-700/70 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
+                            : 'bg-gray-900/70 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
+                        }`}
+                      />
+                      <Select value={formData.weightUnit} onValueChange={(value) => handleInputChange('weightUnit', value)}>
+                        <SelectTrigger className={`w-24 h-12 transition-all duration-300 hover:scale-105 ${
+                          theme === 'white' 
+                            ? 'bg-white border-teal-200' 
+                            : theme === 'dark'
+                            ? 'bg-gray-700/70 border-purple-500/30 text-white'
+                            : 'bg-gray-900/70 border-green-500/30 text-white'
+                        }`}>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="kg">kg</SelectItem>
+                          <SelectItem value="lbs">lbs</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
                   </div>
-                )}
 
-                {/* Height Input Examples and Tips */}
-                <div className={`text-xs space-y-1 ${theme === 'white' ? 'text-gray-500' : 'text-gray-400'}`}>
-                  <div className="font-medium">Examples:</div>
-                  {formData.heightUnit === 'feet' && (
-                    <div>
-                      • Combined: 6.10 (6 feet 10 inches) or 5.09 (5 feet 9 inches)<br/>
-                      • Separate: 6 feet + 10 inches or 5 feet + 9 inches
+                  {/* Height Input */}
+                  <div className="space-y-4 animate-slide-in" style={{ animationDelay: '200ms' }}>
+                    <Label htmlFor="height" className={`text-base font-semibold transition-colors duration-500 ${
+                      theme === 'white' ? 'text-gray-800' : 'text-gray-200'
+                    }`}>
+                      <Ruler className={`inline h-5 w-5 mr-2 ${
+                        theme === 'white' ? 'text-teal-600' : 
+                        theme === 'dark' ? 'text-purple-400' : 
+                        'text-green-400'
+                      }`} />
+                      Height
+                    </Label>
+                    
+                    <div className="flex gap-3">
+                      <Input
+                        id="height"
+                        type="number"
+                        step={formData.heightUnit === 'feet' ? '0.01' : '1'}
+                        placeholder={getHeightPlaceholder()}
+                        value={formData.height}
+                        onChange={(e) => handleInputChange('height', e.target.value)}
+                        className={`h-12 text-lg transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
+                          theme === 'white' 
+                            ? 'bg-white border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
+                            : theme === 'dark'
+                            ? 'bg-gray-700/70 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
+                            : 'bg-gray-900/70 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
+                        }`}
+                      />
+                      <Select value={formData.heightUnit} onValueChange={(value) => handleInputChange('heightUnit', value)}>
+                        <SelectTrigger className={`w-24 h-12 transition-all duration-300 hover:scale-105 ${
+                          theme === 'white' 
+                            ? 'bg-white border-teal-200' 
+                            : theme === 'dark'
+                            ? 'bg-gray-700/70 border-purple-500/30 text-white'
+                            : 'bg-gray-900/70 border-green-500/30 text-white'
+                        }`}>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="cm">cm</SelectItem>
+                          <SelectItem value="inches">in</SelectItem>
+                          <SelectItem value="feet">ft</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
-                  )}
-                  {formData.heightUnit === 'inches' && (
-                    <div>• 70 inches, 68 inches, 72 inches</div>
-                  )}
-                  {formData.heightUnit === 'cm' && (
-                    <div>• 175 cm, 165 cm, 180 cm</div>
-                  )}
+
+                    {/* Separate Feet and Inches Input (when feet is selected) */}
+                    {formData.heightUnit === 'feet' && (
+                      <div className="grid grid-cols-2 gap-3 mt-3">
+                        <div>
+                          <Label className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                            Feet
+                          </Label>
+                          <Input
+                            type="number"
+                            placeholder="6"
+                            value={formData.heightFeet}
+                            onChange={(e) => handleInputChange('heightFeet', e.target.value)}
+                            className={`mt-1 h-10 transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
+                              theme === 'white' 
+                                ? 'bg-white border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
+                                : theme === 'dark'
+                                ? 'bg-gray-700/70 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
+                                : 'bg-gray-900/70 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
+                            }`}
+                          />
+                        </div>
+                        <div>
+                          <Label className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                            Inches
+                          </Label>
+                          <Input
+                            type="number"
+                            min="0"
+                            max="11"
+                            placeholder="10"
+                            value={formData.heightInches}
+                            onChange={(e) => handleInputChange('heightInches', e.target.value)}
+                            className={`mt-1 h-10 transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
+                              theme === 'white' 
+                                ? 'bg-white border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
+                                : theme === 'dark'
+                                ? 'bg-gray-700/70 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
+                                : 'bg-gray-900/70 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
+                            }`}
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              {/* Age Input */}
-              <div className="space-y-3 animate-slide-in" style={{ animationDelay: '300ms' }}>
-                <Label htmlFor="age" className={`flex items-center gap-2 font-medium transition-colors duration-500 ${
-                  theme === 'white' ? 'text-gray-700' : 'text-gray-200'
-                }`}>
-                  <Calendar className={`h-4 w-4 ${
-                    theme === 'white' ? 'text-teal-600' : 
-                    theme === 'dark' ? 'text-purple-400' : 
-                    'text-green-400'
-                  }`} />
-                  Age
-                </Label>
-                <Input
-                  id="age"
-                  type="number"
-                  placeholder="Enter your age"
-                  value={formData.age}
-                  onChange={(e) => handleInputChange('age', e.target.value)}
-                  className={`transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
-                    theme === 'white' 
-                      ? 'bg-white/70 border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
-                      : theme === 'dark'
-                      ? 'bg-gray-700/50 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
-                      : 'bg-gray-900/50 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
-                  }`}
-                />
-              </div>
+                <div className="grid md:grid-cols-2 gap-8">
+                  {/* Age Input */}
+                  <div className="space-y-4 animate-slide-in" style={{ animationDelay: '300ms' }}>
+                    <Label htmlFor="age" className={`text-base font-semibold transition-colors duration-500 ${
+                      theme === 'white' ? 'text-gray-800' : 'text-gray-200'
+                    }`}>
+                      <Calendar className={`inline h-5 w-5 mr-2 ${
+                        theme === 'white' ? 'text-teal-600' : 
+                        theme === 'dark' ? 'text-purple-400' : 
+                        'text-green-400'
+                      }`} />
+                      Age
+                    </Label>
+                    <Input
+                      id="age"
+                      type="number"
+                      placeholder="Enter your age"
+                      value={formData.age}
+                      onChange={(e) => handleInputChange('age', e.target.value)}
+                      className={`h-12 text-lg transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
+                        theme === 'white' 
+                          ? 'bg-white border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
+                          : theme === 'dark'
+                          ? 'bg-gray-700/70 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
+                          : 'bg-gray-900/70 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
+                      }`}
+                    />
+                  </div>
 
-              {/* Gender Select */}
-              <div className="space-y-3 animate-slide-in" style={{ animationDelay: '400ms' }}>
-                <Label className={`flex items-center gap-2 font-medium transition-colors duration-500 ${
-                  theme === 'white' ? 'text-gray-700' : 'text-gray-200'
-                }`}>
-                  <User className={`h-4 w-4 ${
-                    theme === 'white' ? 'text-teal-600' : 
-                    theme === 'dark' ? 'text-purple-400' : 
-                    'text-green-400'
-                  }`} />
-                  Gender
-                </Label>
-                <Select value={formData.gender} onValueChange={(value) => handleInputChange('gender', value)}>
-                  <SelectTrigger className={`transition-all duration-300 hover:scale-[1.02] ${
-                    theme === 'white' 
-                      ? 'bg-white/70 border-teal-200' 
-                      : theme === 'dark'
-                      ? 'bg-gray-700/50 border-purple-500/30 text-white'
-                      : 'bg-gray-900/50 border-green-500/30 text-white'
-                  }`}>
-                    <SelectValue placeholder="Select your gender" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="male">Male</SelectItem>
-                    <SelectItem value="female">Female</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+                  {/* Gender Select */}
+                  <div className="space-y-4 animate-slide-in" style={{ animationDelay: '400ms' }}>
+                    <Label className={`text-base font-semibold transition-colors duration-500 ${
+                      theme === 'white' ? 'text-gray-800' : 'text-gray-200'
+                    }`}>
+                      <User className={`inline h-5 w-5 mr-2 ${
+                        theme === 'white' ? 'text-teal-600' : 
+                        theme === 'dark' ? 'text-purple-400' : 
+                        'text-green-400'
+                      }`} />
+                      Gender
+                    </Label>
+                    <Select value={formData.gender} onValueChange={(value) => handleInputChange('gender', value)}>
+                      <SelectTrigger className={`h-12 text-lg transition-all duration-300 hover:scale-[1.02] ${
+                        theme === 'white' 
+                          ? 'bg-white border-teal-200' 
+                          : theme === 'dark'
+                          ? 'bg-gray-700/70 border-purple-500/30 text-white'
+                          : 'bg-gray-900/70 border-green-500/30 text-white'
+                      }`}>
+                        <SelectValue placeholder="Select your gender" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="male">Male</SelectItem>
+                        <SelectItem value="female">Female</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
 
-              {/* Action Buttons */}
-              <div className="grid grid-cols-2 gap-3 pt-4 animate-slide-in" style={{ animationDelay: '500ms' }}>
-                <Button
-                  onClick={calculateResults}
-                  disabled={loading}
-                  className={`transition-all duration-300 hover:scale-105 transform ${
-                    theme === 'white'
-                      ? 'bg-teal-600 hover:bg-teal-700 text-white shadow-lg hover:shadow-xl'
-                      : theme === 'dark'
-                      ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl'
-                      : 'bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl'
-                  }`}
-                >
-                  {loading ? (
-                    <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Calculating...
-                    </>
-                  ) : (
-                    <>
-                      <Calculator className="h-4 w-4 mr-2" />
-                      Calculate BMI
-                    </>
-                  )}
-                </Button>
-                <Button
-                  onClick={clearForm}
-                  variant="outline"
-                  className={`transition-all duration-300 hover:scale-105 ${
-                    theme === 'white'
-                      ? 'border-teal-300 text-teal-700 hover:bg-teal-50'
-                      : theme === 'dark'
-                      ? 'border-purple-500/50 text-purple-300 hover:bg-purple-900/20'
-                      : 'border-green-500/50 text-green-300 hover:bg-green-900/20'
-                  }`}
-                >
-                  <X className="h-4 w-4 mr-2" />
-                  Clear
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+                {/* Action Buttons */}
+                <div className="grid grid-cols-2 gap-6 pt-6 animate-slide-in" style={{ animationDelay: '500ms' }}>
+                  <Button
+                    onClick={calculateResults}
+                    disabled={loading}
+                    className={`h-14 text-lg font-semibold transition-all duration-300 hover:scale-105 transform ${
+                      theme === 'white'
+                        ? 'bg-teal-600 hover:bg-teal-700 text-white shadow-lg hover:shadow-xl'
+                        : theme === 'dark'
+                        ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-lg hover:shadow-xl'
+                        : 'bg-green-600 hover:bg-green-700 text-white shadow-lg hover:shadow-xl'
+                    }`}
+                  >
+                    {loading ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                        Calculating...
+                      </>
+                    ) : (
+                      <>
+                        <Calculator className="h-5 w-5 mr-3" />
+                        Calculate BMI
+                      </>
+                    )}
+                  </Button>
+                  <Button
+                    onClick={clearForm}
+                    variant="outline"
+                    className={`h-14 text-lg font-semibold transition-all duration-300 hover:scale-105 ${
+                      theme === 'white'
+                        ? 'border-teal-300 text-teal-700 hover:bg-teal-50'
+                        : theme === 'dark'
+                        ? 'border-purple-500/50 text-purple-300 hover:bg-purple-900/20'
+                        : 'border-green-500/50 text-green-300 hover:bg-green-900/20'
+                    }`}
+                  >
+                    <X className="h-5 w-5 mr-3" />
+                    Clear Form
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
           {/* Results Display */}
-          {result && (
-            <div className="space-y-6">
+          {result ? (
+            <div className="space-y-8">
               <BMIResult result={result} />
               <AdvancedMetrics result={result} />
+            </div>
+          ) : (
+            <div className={`flex items-center justify-center h-96 rounded-2xl border-2 border-dashed transition-colors duration-500 ${
+              theme === 'white' 
+                ? 'border-gray-300 bg-gray-50/50' 
+                : 'border-gray-600 bg-gray-800/30'
+            }`}>
+              <div className="text-center">
+                <Calculator className={`h-16 w-16 mx-auto mb-4 ${
+                  theme === 'white' ? 'text-gray-400' : 'text-gray-500'
+                }`} />
+                <p className={`text-lg font-medium ${
+                  theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                }`}>
+                  Your BMI results will appear here
+                </p>
+                <p className={`text-sm mt-2 ${
+                  theme === 'white' ? 'text-gray-500' : 'text-gray-500'
+                }`}>
+                  Fill in the form and click Calculate BMI
+                </p>
+              </div>
             </div>
           )}
         </div>
