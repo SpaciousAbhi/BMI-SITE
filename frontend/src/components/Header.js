@@ -30,24 +30,29 @@ const Header = () => {
   const themeConfig = getThemeConfig();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toolsNavItems = [
+  const calculatorsNavItems = [
     { path: '/', label: 'BMI Calculator', icon: Calculator },
+    { path: '/athletes-bmi', label: 'BMI for Athletes', icon: Activity },
     { path: '/body-fat', label: 'Body Fat Calculator', icon: Target },
     { path: '/calories', label: 'Calorie Calculator', icon: Zap },
     { path: '/macros', label: 'Macro Calculator', icon: Utensils },
-    { path: '/pregnancy-bmi', label: 'Pregnancy BMI Calculator', icon: Heart },
-    { path: '/senior-bmi', label: 'Senior BMI Calculator (65+)', icon: Shield },
-    { path: '/ethnicity-bmi', label: 'Ethnicity-Adjusted BMI 🌍', icon: Activity },
+    { path: '/pregnancy-bmi', label: 'Pregnancy BMI', icon: Heart },
+    { path: '/senior-bmi', label: 'Senior BMI', icon: Shield },
+    { path: '/ethnicity-bmi', label: 'Ethnicity-Adjusted BMI', icon: Activity },
+  ];
+
+  const toolsNavItems = [
     { path: '/history', label: 'Progress Tracking', icon: History },
-    { path: '/goals', label: 'Goal Setting', icon: Activity },
+    { path: '/goals', label: 'Goal Setting', icon: Target },
     { path: '/workout', label: 'Workout Plans', icon: Dumbbell },
   ];
 
   const healthResourcesItems = [
     { path: '/about-bmi', label: 'About BMI', icon: BookOpen },
+    { path: '/blog', label: 'Health Blog', icon: BookOpen },
     { path: '/health-tips', label: 'Health Tips', icon: Heart },
     { path: '/nutrition-guide', label: 'Nutrition Guide', icon: BookOpen },
-    { path: '/blog', label: 'Health Blog', icon: BookOpen },
+    { path: '/bmi-blog', label: 'BMI Blog', icon: BookOpen },
   ];
 
   const legalItems = [
