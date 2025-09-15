@@ -192,6 +192,69 @@
   }
   </script>
 
+  <!-- HowTo Schema for BMI Calculation -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Calculate BMI (Body Mass Index)",
+    "description": "Step-by-step guide to calculate your BMI using our free BMI calculator or manual formula.",
+    "image": "%PUBLIC_URL%/bmi-calculator-guide.jpg",
+    "totalTime": "PT2M",
+    "estimatedCost": {
+      "@type": "MonetaryAmount",
+      "currency": "USD",
+      "value": "0"
+    },
+    "supply": [
+      {
+        "@type": "HowToSupply",
+        "name": "Your current weight"
+      },
+      {
+        "@type": "HowToSupply", 
+        "name": "Your height measurement"
+      },
+      {
+        "@type": "HowToSupply",
+        "name": "Age and gender (for enhanced results)"
+      }
+    ],
+    "tool": [
+      {
+        "@type": "HowToTool",
+        "name": "Free BMI Calculator Online"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Enter Your Weight",
+        "text": "Input your current weight in either kilograms (kg) or pounds (lbs) using our calculator.",
+        "image": "%PUBLIC_URL%/step1-weight.jpg"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Enter Your Height", 
+        "text": "Input your height in centimeters (cm), inches, or feet/inches format.",
+        "image": "%PUBLIC_URL%/step2-height.jpg"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Add Personal Details",
+        "text": "Enter your age and select your gender for more accurate body fat estimation and health recommendations.",
+        "image": "%PUBLIC_URL%/step3-details.jpg"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Calculate BMI",
+        "text": "Click 'Calculate BMI' to get instant results including BMI value, category, body fat estimation, and personalized health recommendations.",
+        "image": "%PUBLIC_URL%/step4-results.jpg"
+      }
+    ]
+  }
+  </script>
+
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 </head>
