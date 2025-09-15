@@ -57,7 +57,7 @@ const Footer = () => {
     }`}>
       <div className="container mx-auto px-4 py-12">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 group">
@@ -106,12 +106,12 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Tools Section */}
+          {/* Calculators Section */}
           <div className="space-y-4">
             <h3 className={`text-sm font-semibold uppercase tracking-wider ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
-              Tools
+              Calculators
             </h3>
             <ul className="space-y-3">
               <li>
@@ -123,6 +123,16 @@ const Footer = () => {
                 >
                   <Scale className="h-4 w-4" />
                   BMI Calculator
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/athletes-bmi" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                >
+                  BMI for Athletes
                 </Link>
               </li>
               <li>
@@ -175,7 +185,7 @@ const Footer = () => {
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
                 >
-                  Senior BMI (65+)
+                  Senior BMI
                 </Link>
               </li>
               <li>
@@ -185,9 +195,20 @@ const Footer = () => {
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
                 >
-                  🌍 Ethnicity-Adjusted BMI
+                  Ethnicity-Adjusted BMI
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Tools Section */}
+          <div className="space-y-4">
+            <h3 className={`text-sm font-semibold uppercase tracking-wider ${
+              theme === 'white' ? 'text-gray-900' : 'text-white'
+            }`}>
+              Tools
+            </h3>
+            <ul className="space-y-3">
               <li>
                 <Link 
                   to="/history" 
@@ -270,6 +291,16 @@ const Footer = () => {
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
                 >
                   Nutrition Guide
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/bmi-blog" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                >
+                  BMI Blog
                 </Link>
               </li>
             </ul>
