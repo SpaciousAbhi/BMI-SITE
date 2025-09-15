@@ -675,11 +675,11 @@ const HomePage = () => {
               <p className={`text-lg max-w-2xl mx-auto ${
                 theme === 'white' ? 'text-gray-600' : 'text-gray-400'
               }`}>
-                Core calculators for comprehensive health assessment and goal planning
+                Core calculators for comprehensive health assessment and body composition analysis
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               {/* Body Fat Calculator */}
               <Link to="/body-fat" className="group">
                 <Card className={`backdrop-blur-md border-0 shadow-2xl transform group-hover:scale-[1.05] group-hover:-translate-y-2 transition-all duration-500 cursor-pointer ${
@@ -768,37 +768,6 @@ const HomePage = () => {
                     </h4>
                     <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
                       Optimal protein, carbs, and fats breakdown for your specific fitness goals
-                    </p>
-                  </CardContent>
-                </Card>
-              </Link>
-
-              {/* Workout Plans */}
-              <Link to="/workout" className="group">
-                <Card className={`backdrop-blur-md border-0 shadow-2xl transform group-hover:scale-[1.05] group-hover:-translate-y-2 transition-all duration-500 cursor-pointer ${
-                  theme === 'white' 
-                    ? 'bg-white/90 hover:bg-white border border-blue-100 hover:border-blue-200' 
-                    : theme === 'dark'
-                    ? 'bg-gray-800/90 hover:bg-gray-800 border border-blue-500/20 hover:border-blue-500/40'
-                    : 'bg-gray-900/90 hover:bg-gray-900 border border-blue-500/20 hover:border-blue-500/40'
-                }`}>
-                  <CardContent className="p-8 text-center">
-                    <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center transition-all duration-300 ${
-                      theme === 'white' 
-                        ? 'bg-blue-50 group-hover:bg-blue-100' 
-                        : 'bg-blue-900/20 group-hover:bg-blue-900/30'
-                    }`}>
-                      <Activity className={`h-10 w-10 transition-all duration-300 ${
-                        theme === 'white' ? 'text-blue-600 group-hover:text-blue-700' : 'text-blue-400 group-hover:text-blue-300'
-                      }`} />
-                    </div>
-                    <h4 className={`text-xl font-bold mb-3 ${
-                      theme === 'white' ? 'text-gray-900' : 'text-white'
-                    }`}>
-                      Workout Plans
-                    </h4>
-                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
-                      Personalized exercise routines tailored to your fitness level and goals
                     </p>
                   </CardContent>
                 </Card>
