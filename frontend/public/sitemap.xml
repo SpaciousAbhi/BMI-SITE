@@ -56,6 +56,28 @@
     <priority>0.8</priority>
   </url>
   
+  <!-- 2025 Advanced SEO Pages -->
+  <url>
+    <loc>https://bmicalculator.com/bmi-calculator-with-age</loc>
+    <lastmod>2025-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmicalculator.com/ai-bmi-calculator</loc>
+    <lastmod>2025-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://bmicalculator.com/obesity-calculator</loc>
+    <lastmod>2025-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
   <!-- Health Information Pages - SEO Content -->
   <url>
     <loc>https://bmicalculator.com/about-bmi</loc>
