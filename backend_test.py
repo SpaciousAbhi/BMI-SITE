@@ -14,9 +14,9 @@ import uuid
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv('/app/frontend/.env')
-BACKEND_BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'http://localhost:8001')
+# For testing, use the local backend service directly
+# The frontend .env contains the production URL, but we need to test the local service
+BACKEND_BASE_URL = 'http://localhost:8001'
 BACKEND_URL = f"{BACKEND_BASE_URL}/api"
 
 def test_backend_health():
