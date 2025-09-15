@@ -182,6 +182,39 @@ const Header = () => {
               : 'border-green-500/20 bg-black/90'
           }`}>
             <div className="py-4 space-y-1 max-h-96 overflow-y-auto">
+              {/* Calculators Section */}
+              <div className="px-4 py-2">
+                <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
+                  theme === 'white' ? 'text-gray-500' : 'text-gray-400'
+                }`}>
+                  Calculators
+                </h3>
+                {calculatorsNavItems.map((item) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
+                        location.pathname === item.path
+                          ? theme === 'white'
+                            ? 'text-teal-600 bg-teal-50'
+                            : theme === 'dark'
+                            ? 'text-purple-400 bg-purple-400/10'
+                            : 'text-green-400 bg-green-400/10'
+                          : theme === 'white' 
+                          ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      <IconComponent className="h-4 w-4" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+
               {/* Tools Section */}
               <div className="px-4 py-2">
                 <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
