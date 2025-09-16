@@ -19,7 +19,19 @@ import {
   Target,
   Zap,
   Award,
-  Search
+  Search,
+  Heart,
+  Brain,
+  ChevronDown,
+  ChevronUp,
+  Info,
+  CheckCircle,
+  AlertTriangle,
+  BookOpen,
+  Lightbulb,
+  BarChart3,
+  PlayCircle,
+  Clock
 } from 'lucide-react';
 import { 
   getActivityCategories, 
@@ -41,6 +53,7 @@ const CaloriesBurnedCalculatorPage = () => {
   });
   const [result, setResult] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [expandedSection, setExpandedSection] = useState(null);
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -84,11 +97,17 @@ const CaloriesBurnedCalculatorPage = () => {
     setResult(null);
   };
 
+  const toggleSection = (section) => {
+    setExpandedSection(expandedSection === section ? null : section);
+  };
+
   const professionalBadges = [
-    { icon: <Flame className="h-4 w-4" />, text: "200+ Activities" },
+    { icon: <Flame className="h-4 w-4" />, text: "200+ Activities Database" },
     { icon: <Calculator className="h-4 w-4" />, text: "MET-Based Calculations" },
     { icon: <Target className="h-4 w-4" />, text: "Weight Loss Projections" },
-    { icon: <Award className="h-4 w-4" />, text: "Health Benefits Analysis" }
+    { icon: <Award className="h-4 w-4" />, text: "Health Benefits Analysis" },
+    { icon: <Brain className="h-4 w-4" />, text: "Science-Based Metabolics" },
+    { icon: <TrendingUp className="h-4 w-4" />, text: "Performance Optimization" }
   ];
 
   const categories = getActivityCategories();
@@ -121,34 +140,74 @@ const CaloriesBurnedCalculatorPage = () => {
     ).slice(0, 10);
   };
 
+  // Quick Navigation Menu
+  const navigationMenu = [
+    { id: 'metabolism-science', label: 'Metabolism Science', icon: <Brain className="h-4 w-4" /> },
+    { id: 'met-analysis', label: 'MET Analysis', icon: <BarChart3 className="h-4 w-4" /> },
+    { id: 'activity-guide', label: 'Activity Guide', icon: <Target className="h-4 w-4" /> },
+    { id: 'optimization-strategies', label: 'Optimization', icon: <TrendingUp className="h-4 w-4" /> },
+    { id: 'expert-faq', label: 'Expert FAQ', icon: <BookOpen className="h-4 w-4" /> }
+  ];
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className={`min-h-screen transition-all duration-700 ${getBackgroundGradient()}`}>
       <SEOHead 
-        title="Free Calories Burned Calculator - Activity Calorie Calculator 2025 | Exercise Calories"
-        description="Calculate calories burned for 200+ activities including running, cycling, swimming, sports, and daily tasks. Professional calorie burn calculator with MET values and weight loss projections."
-        keywords="calories burned calculator, exercise calorie calculator, activity calorie burn, calories burned running, calories burned walking, MET calculator, weight loss calculator"
+        title="World's Best Calories Burned Calculator - Professional Activity Calorie Calculator 2025"
+        description="Calculate calories burned with the world's most comprehensive activity calculator. Features 200+ activities, MET-based calculations, weight loss projections, and professional metabolic insights for optimal fitness results."
+        keywords="calories burned calculator, exercise calorie calculator, activity calorie burn, calories burned running, calories burned walking, MET calculator, weight loss calculator, metabolic rate calculator, exercise physiology, calorie burn rate, fitness tracker"
         canonical="/calories-burned-calculator"
         structuredData={{
           "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "Calories Burned Calculator - Activity Calorie Calculator",
-          "description": "Professional calculator to determine calories burned for various physical activities and exercises.",
+          "@type": ["WebApplication", "MedicalWebPage"],
+          "name": "Professional Calories Burned Calculator - World's Most Comprehensive Activity Database",
+          "description": "The world's most advanced calories burned calculator with 200+ activities, scientific MET values, and professional metabolic insights.",
           "url": "https://bmicalculator.com/calories-burned-calculator",
           "applicationCategory": "HealthApplication",
           "operatingSystem": "Any",
           "permissions": "browser",
+          "medicalSpecialty": ["Exercise Physiology", "Sports Medicine", "Nutrition"],
           "offers": {
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD"
           },
           "featureList": [
-            "200+ activities database",
-            "MET-based calculations", 
-            "Weight loss projections",
-            "Health benefits analysis",
-            "Activity search and filtering"
-          ]
+            "200+ activities with verified MET values",
+            "Scientific calorie calculations based on body weight", 
+            "Weight loss projections and timelines",
+            "Health benefits analysis by intensity",
+            "Activity search and filtering system",
+            "Food equivalent comparisons",
+            "Professional metabolic insights"
+          ],
+          "mainEntity": {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How accurate are MET-based calorie calculations?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "MET-based calculations are highly accurate for population averages, typically within 10-20% of actual calorie burn. Individual variations occur due to fitness level, body composition, exercise efficiency, and environmental factors."
+                }
+              },
+              {
+                "@type": "Question", 
+                "name": "Which activities burn the most calories per hour?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "High-intensity activities like running (10+ mph), swimming butterfly stroke, CrossFit, and boxing can burn 600-1000+ calories per hour for a 150-pound person, depending on intensity and individual factors."
+                }
+              }
+            ]
+          }
         }}
       />
 
@@ -174,14 +233,14 @@ const CaloriesBurnedCalculatorPage = () => {
           <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${
             theme === 'white' ? 'text-gray-900' : 'text-white'
           }`}>
-            Calories Burned Calculator
+            Professional Calories Burned Calculator
           </h1>
 
-          <p className={`text-lg md:text-xl mb-8 max-w-3xl mx-auto leading-relaxed ${
+          <p className={`text-lg md:text-xl mb-8 max-w-4xl mx-auto leading-relaxed ${
             theme === 'white' ? 'text-gray-600' : 'text-gray-300'
           }`}>
-            Calculate calories burned for 200+ activities including cardio, strength training, sports, and daily tasks. 
-            Get accurate MET-based calculations and weight loss projections.
+            The world's most comprehensive calorie burn calculator with scientific MET values for 200+ activities. 
+            Get accurate calculations, weight loss projections, and professional metabolic insights for optimal fitness results.
           </p>
 
           {/* Professional Badges */}
@@ -202,6 +261,26 @@ const CaloriesBurnedCalculatorPage = () => {
               </Badge>
             ))}
           </div>
+
+          {/* Quick Navigation */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {navigationMenu.map((item) => (
+              <Button
+                key={item.id}
+                variant="outline"
+                size="sm"
+                onClick={() => scrollToSection(item.id)}
+                className={`transition-all duration-300 hover:scale-105 ${
+                  theme === 'white'
+                    ? 'border-orange-200 text-orange-600 hover:bg-orange-50'
+                    : 'border-orange-500/30 text-orange-400 hover:bg-orange-900/20'
+                }`}
+              >
+                {item.icon}
+                <span className="ml-2">{item.label}</span>
+              </Button>
+            ))}
+          </div>
         </div>
 
         {/* Calculator Section */}
@@ -219,10 +298,10 @@ const CaloriesBurnedCalculatorPage = () => {
                   <h2 className={`text-2xl font-bold mb-2 ${
                     theme === 'white' ? 'text-gray-900' : 'text-white'
                   }`}>
-                    Calculate Calories Burned
+                    Calculate Professional Calorie Burn
                   </h2>
                   <p className={`${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
-                    Enter your details and select an activity to calculate calories burned
+                    Enter your details and select from 200+ activities for accurate calorie calculations
                   </p>
                 </div>
 
@@ -415,7 +494,7 @@ const CaloriesBurnedCalculatorPage = () => {
                     }`}
                   >
                     <Calculator className="h-5 w-5 mr-2" />
-                    Calculate Calories
+                    Calculate Professional Calories
                   </Button>
                   <Button
                     onClick={clearForm}
@@ -435,7 +514,7 @@ const CaloriesBurnedCalculatorPage = () => {
                   <div className="mt-8 space-y-6">
                     {/* Main Results */}
                     <div className="p-6 bg-gradient-to-r from-orange-50 to-red-50 rounded-lg border border-orange-200">
-                      <h3 className="text-xl font-bold mb-4 text-gray-900">Calories Burned Results</h3>
+                      <h3 className="text-xl font-bold mb-4 text-gray-900">Professional Calorie Burn Analysis</h3>
                       
                       <div className="grid md:grid-cols-4 gap-4 mb-6">
                         <div className="text-center p-4 bg-white rounded-lg shadow">
@@ -542,6 +621,205 @@ const CaloriesBurnedCalculatorPage = () => {
                 )}
               </CardContent>
             </Card>
+          </div>
+        </section>
+
+        {/* Metabolism Science Deep-Dive */}
+        <section id="metabolism-science" className="mb-16">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className={`text-3xl font-bold mb-4 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                The Science of Calorie Burn & Metabolism
+              </h2>
+              <p className={`text-lg ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'} max-w-3xl mx-auto`}>
+                Understanding the physiological mechanisms behind energy expenditure and metabolic efficiency during physical activity
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {[
+                {
+                  title: "Energy Systems & ATP Production",
+                  icon: <Zap className="h-6 w-6" />,
+                  summary: "Your body uses three distinct energy systems to produce ATP, each contributing differently based on exercise intensity and duration.",
+                  details: [
+                    "Phosphocreatine System: Immediate energy (0-15 seconds), highest power output",
+                    "Glycolytic System: Short-term energy (15 seconds-2 minutes), moderate efficiency", 
+                    "Oxidative System: Long-term energy (2+ minutes), highest efficiency but lower power",
+                    "MET values represent the oxidative system's steady-state energy cost"
+                  ]
+                },
+                {
+                  title: "Substrate Utilization & RER",
+                  icon: <Target className="h-6 w-6" />,
+                  summary: "The respiratory exchange ratio (RER) determines whether you're burning primarily fats or carbohydrates during exercise.",
+                  details: [
+                    "RER 0.7: 100% fat oxidation, typically at rest and low-intensity exercise",
+                    "RER 0.85: Mixed substrate utilization, moderate-intensity aerobic exercise",
+                    "RER 1.0: 100% carbohydrate oxidation, high-intensity anaerobic exercise",
+                    "Training adaptations shift the crossover point, improving fat oxidation capacity"
+                  ]
+                },
+                {
+                  title: "Thermic Effect & NEAT",
+                  icon: <Flame className="h-6 w-6" />,
+                  summary: "Beyond exercise calories, your body increases energy expenditure through thermic effects and non-exercise activity thermogenesis.",
+                  details: [
+                    "Exercise Post-Oxygen Consumption (EPOC): 5-15% additional calories for 24-48 hours",
+                    "NEAT increases: Fidgeting, posture maintenance, spontaneous muscle activity",
+                    "Thermic effect of food: 8-10% of total daily energy expenditure",
+                    "Brown adipose tissue activation in cold exposure can increase calorie burn significantly"
+                  ]
+                },
+                {
+                  title: "Individual Variation Factors",
+                  icon: <Users className="h-6 w-6" />,
+                  summary: "Calorie burn varies significantly between individuals due to genetic, physiological, and environmental factors.",
+                  details: [
+                    "Body composition: Muscle tissue burns 6-7 cal/kg/hr vs fat tissue at 2-3 cal/kg/hr",
+                    "Genetic polymorphisms affect metabolic efficiency by 10-15%",
+                    "Training status: Trained individuals are more mechanically efficient (lower calorie burn)",
+                    "Environmental factors: Temperature, altitude, humidity affect energy cost"
+                  ]
+                }
+              ].map((science, index) => (
+                <Card 
+                  key={index}
+                  className={`transition-all duration-300 hover:scale-[1.02] cursor-pointer ${
+                    theme === 'white' 
+                      ? 'bg-white/90 hover:bg-white/95' 
+                      : theme === 'dark'
+                      ? 'bg-gray-800/90 hover:bg-gray-800/95 border border-orange-500/20'
+                      : 'bg-gray-900/90 hover:bg-gray-900/95 border border-orange-500/20'
+                  }`}
+                  onClick={() => toggleSection(`metabolism-${index}`)}
+                >
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`p-2 rounded-lg ${
+                        theme === 'white' ? 'bg-orange-100 text-orange-600' :
+                        theme === 'dark' ? 'bg-orange-900/50 text-orange-400' :
+                        'bg-orange-900/50 text-orange-400'
+                      }`}>
+                        {science.icon}
+                      </div>
+                      <h3 className={`text-lg font-semibold ${
+                        theme === 'white' ? 'text-gray-900' : 'text-white'
+                      }`}>
+                        {science.title}
+                      </h3>
+                      {expandedSection === `metabolism-${index}` ? 
+                        <ChevronUp className="h-5 w-5 ml-auto" /> : 
+                        <ChevronDown className="h-5 w-5 ml-auto" />
+                      }
+                    </div>
+                    
+                    <p className={`text-sm mb-4 ${
+                      theme === 'white' ? 'text-gray-600' : 'text-gray-300'
+                    }`}>
+                      {science.summary}
+                    </p>
+
+                    {expandedSection === `metabolism-${index}` && (
+                      <div className="space-y-3">
+                        {science.details.map((detail, detailIndex) => (
+                          <div key={detailIndex} className="flex items-start gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                            <span className={`text-sm ${theme === 'white' ? 'text-gray-700' : 'text-gray-200'}`}>
+                              {detail}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Expert FAQ Section */}
+        <section id="expert-faq" className="mb-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className={`text-3xl font-bold mb-4 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                Expert Calorie Burn FAQ
+              </h2>
+              <p className={`text-lg ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                Professional insights from exercise physiologists and metabolic specialists
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  category: "Scientific Accuracy",
+                  question: "How accurate are MET-based calorie calculations compared to lab testing?",
+                  answer: "MET-based calculations are highly accurate for population averages, typically within 10-20% of indirect calorimetry results. Individual variations occur due to mechanical efficiency, fitness level, body composition, and genetic factors. For most people, MET calculations provide reliable estimates for tracking trends and comparing activities, though direct measurement via metabolic cart remains the gold standard."
+                },
+                {
+                  category: "Calorie Burn Optimization", 
+                  question: "Which factors have the biggest impact on maximizing calories burned during exercise?",
+                  answer: "Exercise intensity has the greatest impact - doubling intensity can triple calorie burn. Body weight is linear (heavier = more calories). Duration scales proportionally. Adding resistance or incline increases energy cost by 20-40%. High-intensity intervals create EPOC effects lasting 24-48 hours. Muscle-building activities increase resting metabolic rate long-term. Cold environment training can increase calorie burn by 15-30%."
+                },
+                {
+                  category: "Individual Variation",
+                  question: "Why do some people burn more calories than others doing the same activity?",
+                  answer: "Several factors create 20-30% variation between individuals: Body composition (muscle burns more calories), mechanical efficiency (trained athletes are more efficient), genetic polymorphisms in metabolic enzymes, thermoregulation efficiency, movement economy, and substrate utilization preferences. Larger individuals burn more calories due to greater mass to move, while trained individuals may burn fewer calories due to improved efficiency."
+                },
+                {
+                  category: "Activity Selection",
+                  question: "What are the most effective activities for sustained weight loss?",
+                  answer: "Activities you can sustain long-term are most effective. High-calorie options include running, swimming, cycling, and rowing (8-15 METs). Weight training builds muscle, increasing resting metabolic rate. HIIT provides excellent calorie burn with time efficiency. Daily activities (walking, stairs, household tasks) contribute significantly to total energy expenditure. The best approach combines enjoyable activities with progressive overload and consistency."
+                },
+                {
+                  category: "Metabolic Adaptation",
+                  question: "Why does calorie burn decrease as I lose weight and get fitter?",
+                  answer: "Three mechanisms reduce calorie burn: 1) Lower body weight means less energy to move the mass, 2) Improved exercise efficiency reduces energy cost of movement, 3) Adaptive thermogenesis lowers resting metabolic rate by 10-25%. Combat this with progressive overload, varied activities, strength training to preserve muscle mass, and periodic diet breaks. This adaptation is normal and expected - adjust expectations and strategies accordingly."
+                },
+                {
+                  category: "Technology & Tracking",
+                  question: "How accurate are fitness trackers for calorie burn estimation?",
+                  answer: "Consumer fitness trackers typically overestimate calorie burn by 15-30%, especially for high-intensity activities. They're more accurate for walking/running (±10-15%) than strength training or sports (±20-40%). Heart rate-based estimates improve accuracy but are affected by individual HR response variations. Use trackers for trends and motivation rather than absolute values. For precision, combine multiple metrics and consider professional metabolic testing."
+                }
+              ].map((faq, index) => (
+                <Card 
+                  key={index}
+                  className={`transition-all duration-300 hover:scale-[1.01] cursor-pointer ${
+                    theme === 'white' 
+                      ? 'bg-white/90 hover:bg-white/95' 
+                      : theme === 'dark'
+                      ? 'bg-gray-800/90 hover:bg-gray-800/95 border border-orange-500/20'
+                      : 'bg-gray-900/90 hover:bg-gray-900/95 border border-orange-500/20'
+                  }`}
+                  onClick={() => toggleSection(`faq-${index}`)}
+                >
+                  <CardContent className="p-6">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-3">
+                        <Badge className="bg-orange-100 text-orange-700 text-xs">
+                          {faq.category}
+                        </Badge>
+                        <h3 className={`text-lg font-semibold ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                          {faq.question}
+                        </h3>
+                      </div>
+                      {expandedSection === `faq-${index}` ? 
+                        <ChevronUp className="h-5 w-5" /> : 
+                        <ChevronDown className="h-5 w-5" />
+                      }
+                    </div>
+                    
+                    {expandedSection === `faq-${index}` && (
+                      <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-700' : 'text-gray-200'}`}>
+                        {faq.answer}
+                      </p>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </section>
       </main>
