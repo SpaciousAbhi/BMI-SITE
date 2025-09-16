@@ -1168,7 +1168,7 @@ const SeniorBMIPage = () => {
                           <div className={`p-3 rounded ${theme === 'white' ? 'bg-white/60' : 'bg-gray-700/30'}`}>
                             <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Vitamin D Optimization:</strong>
                             <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
-                              Maintain levels >30 ng/mL (75 nmol/L). Deficiency common in seniors and impairs muscle function. May require 1000-4000 IU daily.
+                              Maintain levels &gt;30 ng/mL (75 nmol/L). Deficiency common in seniors and impairs muscle function. May require 1000-4000 IU daily.
                             </p>
                           </div>
                           <div className={`p-3 rounded ${theme === 'white' ? 'bg-white/60' : 'bg-gray-700/30'}`}>
