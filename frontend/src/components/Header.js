@@ -101,6 +101,17 @@ const Header = () => {
     { title: 'Fitness & Health', items: fitnessTools, icon: Heart },
   ];
 
+  const handleDropdownToggle = (dropdown) => {
+    setOpenDropdown(openDropdown === dropdown ? null : dropdown);
+  };
+
+  const handleMenuClose = () => {
+    setIsMenuOpen(false);
+    setOpenDropdown(null);
+  };
+
+  const allNavItems = [...bmiCalculators, ...bodyCompositionTools, ...nutritionTools, ...fitnessTools, ...healthTools, ...healthResources];
+
   const getThemeIcon = () => {
     switch(theme) {
       case 'white': return <Moon className="h-4 w-4" />;
@@ -146,30 +157,214 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
-            {calculatorsNavItems.slice(0, 4).map((item) => {
-              const IconComponent = item.icon;
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:scale-105 px-3 py-2 rounded-lg ${
-                    location.pathname === item.path
-                      ? theme === 'white'
-                        ? 'text-teal-600 bg-teal-50'
-                        : theme === 'dark'
-                        ? 'text-purple-400 bg-purple-400/10'
-                        : 'text-green-400 bg-green-400/10'
-                      : theme === 'white' 
-                      ? 'text-gray-600 hover:text-teal-600 hover:bg-teal-50' 
-                      : 'text-gray-300 hover:text-white hover:bg-white/10'
-                  }`}
-                >
-                  <IconComponent className="h-4 w-4" />
-                  {item.label}
-                </Link>
-              );
-            })}
+          <nav className="hidden lg:flex items-center">
+            {/* Calculators Dropdown */}
+            <div className="relative group">
+              <button
+                onClick={() => handleDropdownToggle('calculators')}
+                className={`flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:scale-105 px-4 py-2 rounded-lg ${
+                  theme === 'white' 
+                    ? 'text-gray-600 hover:text-teal-600 hover:bg-teal-50' 
+                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <Calculator className="h-4 w-4" />
+                Calculators
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
+                  openDropdown === 'calculators' ? 'rotate-180' : ''
+                }`} />
+              </button>
+
+              {/* Calculators Mega Menu */}
+              {openDropdown === 'calculators' && (
+                <div className={`absolute top-full left-0 mt-2 w-[900px] p-6 rounded-xl shadow-2xl border backdrop-blur-md z-50 ${
+                  theme === 'white' 
+                    ? 'bg-white/95 border-teal-200/50' 
+                    : theme === 'dark'
+                    ? 'bg-gray-900/95 border-purple-500/30'
+                    : 'bg-black/95 border-green-500/30'
+                }`}>
+                  <div className="grid grid-cols-2 gap-6">
+                    {calculatorCategories.map((category) => {
+                      const CategoryIcon = category.icon;
+                      return (
+                        <div key={category.title} className="space-y-3">
+                          <div className="flex items-center gap-2">
+                            <CategoryIcon className={`h-5 w-5 ${
+                              theme === 'white' ? 'text-teal-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'
+                            }`} />
+                            <h3 className={`font-semibold text-sm ${
+                              theme === 'white' ? 'text-gray-900' : 'text-white'
+                            }`}>
+                              {category.title}
+                            </h3>
+                          </div>
+                          <div className="space-y-1">
+                            {category.items.map((item) => {
+                              const ItemIcon = item.icon;
+                              return (
+                                <Link
+                                  key={item.path}
+                                  to={item.path}
+                                  onClick={handleMenuClose}
+                                  className={`flex items-start gap-3 p-2 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
+                                    location.pathname === item.path
+                                      ? theme === 'white'
+                                        ? 'text-teal-600 bg-teal-50'
+                                        : theme === 'dark'
+                                        ? 'text-purple-400 bg-purple-400/10'
+                                        : 'text-green-400 bg-green-400/10'
+                                      : theme === 'white' 
+                                      ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
+                                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                                  }`}
+                                >
+                                  <ItemIcon className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                                  <div>
+                                    <div className="text-sm font-medium">{item.label}</div>
+                                    <div className={`text-xs ${
+                                      theme === 'white' ? 'text-gray-500' : 'text-gray-400'
+                                    }`}>
+                                      {item.description}
+                                    </div>
+                                  </div>
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Health Tools Dropdown */}
+            <div className="relative group">
+              <button
+                onClick={() => handleDropdownToggle('tools')}
+                className={`flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:scale-105 px-4 py-2 rounded-lg ${
+                  theme === 'white' 
+                    ? 'text-gray-600 hover:text-teal-600 hover:bg-teal-50' 
+                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <TrendingUp className="h-4 w-4" />
+                Health Tools
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
+                  openDropdown === 'tools' ? 'rotate-180' : ''
+                }`} />
+              </button>
+
+              {/* Tools Dropdown */}
+              {openDropdown === 'tools' && (
+                <div className={`absolute top-full left-0 mt-2 w-64 p-4 rounded-xl shadow-2xl border backdrop-blur-md z-50 ${
+                  theme === 'white' 
+                    ? 'bg-white/95 border-teal-200/50' 
+                    : theme === 'dark'
+                    ? 'bg-gray-900/95 border-purple-500/30'
+                    : 'bg-black/95 border-green-500/30'
+                }`}>
+                  <div className="space-y-1">
+                    {healthTools.map((item) => {
+                      const ItemIcon = item.icon;
+                      return (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          onClick={handleMenuClose}
+                          className={`flex items-start gap-3 p-2 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
+                            location.pathname === item.path
+                              ? theme === 'white'
+                                ? 'text-teal-600 bg-teal-50'
+                                : theme === 'dark'
+                                ? 'text-purple-400 bg-purple-400/10'
+                                : 'text-green-400 bg-green-400/10'
+                              : theme === 'white' 
+                              ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
+                              : 'text-gray-300 hover:text-white hover:bg-white/10'
+                          }`}
+                        >
+                          <ItemIcon className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                          <div>
+                            <div className="text-sm font-medium">{item.label}</div>
+                            <div className={`text-xs ${
+                              theme === 'white' ? 'text-gray-500' : 'text-gray-400'
+                            }`}>
+                              {item.description}
+                            </div>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Resources Dropdown */}
+            <div className="relative group">
+              <button
+                onClick={() => handleDropdownToggle('resources')}
+                className={`flex items-center gap-2 text-sm font-medium transition-all duration-300 hover:scale-105 px-4 py-2 rounded-lg ${
+                  theme === 'white' 
+                    ? 'text-gray-600 hover:text-teal-600 hover:bg-teal-50' 
+                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                <BookOpen className="h-4 w-4" />
+                Resources
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
+                  openDropdown === 'resources' ? 'rotate-180' : ''
+                }`} />
+              </button>
+
+              {/* Resources Dropdown */}
+              {openDropdown === 'resources' && (
+                <div className={`absolute top-full left-0 mt-2 w-64 p-4 rounded-xl shadow-2xl border backdrop-blur-md z-50 ${
+                  theme === 'white' 
+                    ? 'bg-white/95 border-teal-200/50' 
+                    : theme === 'dark'
+                    ? 'bg-gray-900/95 border-purple-500/30'
+                    : 'bg-black/95 border-green-500/30'
+                }`}>
+                  <div className="space-y-1">
+                    {healthResources.map((item) => {
+                      const ItemIcon = item.icon;
+                      return (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          onClick={handleMenuClose}
+                          className={`flex items-start gap-3 p-2 rounded-lg transition-all duration-300 hover:scale-[1.02] ${
+                            location.pathname === item.path
+                              ? theme === 'white'
+                                ? 'text-teal-600 bg-teal-50'
+                                : theme === 'dark'
+                                ? 'text-purple-400 bg-purple-400/10'
+                                : 'text-green-400 bg-green-400/10'
+                              : theme === 'white' 
+                              ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
+                              : 'text-gray-300 hover:text-white hover:bg-white/10'
+                          }`}
+                        >
+                          <ItemIcon className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                          <div>
+                            <div className="text-sm font-medium">{item.label}</div>
+                            <div className={`text-xs ${
+                              theme === 'white' ? 'text-gray-500' : 'text-gray-400'
+                            }`}>
+                              {item.description}
+                            </div>
+                          </div>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Mobile Menu Button and Theme Toggle */}
