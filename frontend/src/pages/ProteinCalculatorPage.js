@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
-import { Card, CardContent } from '../components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Label } from '../components/ui/label';
@@ -9,21 +10,27 @@ import { Badge } from '../components/ui/badge';
 import SEOHead from '../components/SEOHead';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useToast } from '../hooks/use-toast';
 import { 
   Calculator, 
   Dumbbell, 
   Target, 
   Clock, 
   ChevronDown, 
-  ChevronUp,
+  ChevronRight,
   Utensils,
   Zap,
   Award,
   Users,
   Activity,
   User,
-  Ruler,
-  Calendar
+  Calendar,
+  ArrowLeft,
+  Info,
+  Heart,
+  Brain,
+  TrendingUp,
+  Shield
 } from 'lucide-react';
 import { 
   calculateProteinIntake, 
