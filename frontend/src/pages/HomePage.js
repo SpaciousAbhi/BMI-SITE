@@ -457,81 +457,103 @@ const HomePage = () => {
                       Height
                     </Label>
                     
-                    <div className="flex gap-3">
-                      <Input
-                        id="height"
-                        type="number"
-                        step={formData.heightUnit === 'feet' ? '0.01' : '1'}
-                        placeholder={getHeightPlaceholder()}
-                        value={formData.height}
-                        onChange={(e) => handleInputChange('height', e.target.value)}
-                        className={`h-12 text-lg transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
-                          theme === 'white' 
-                            ? 'bg-white border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
-                            : theme === 'dark'
-                            ? 'bg-gray-700/70 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
-                            : 'bg-gray-900/70 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
-                        }`}
-                      />
-                      <Select value={formData.heightUnit} onValueChange={(value) => handleInputChange('heightUnit', value)}>
-                        <SelectTrigger className={`w-24 h-12 transition-all duration-300 hover:scale-105 ${
-                          theme === 'white' 
-                            ? 'bg-white border-teal-200' 
-                            : theme === 'dark'
-                            ? 'bg-gray-700/70 border-purple-500/30 text-white'
-                            : 'bg-gray-900/70 border-green-500/30 text-white'
-                        }`}>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="cm">cm</SelectItem>
-                          <SelectItem value="inches">in</SelectItem>
-                          <SelectItem value="feet">ft</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    {/* Separate Feet and Inches Input (when feet is selected) */}
-                    {formData.heightUnit === 'feet' && (
-                      <div className="grid grid-cols-2 gap-3 mt-3">
-                        <div>
-                          <Label className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
-                            Feet
-                          </Label>
-                          <Input
-                            type="number"
-                            placeholder="6"
-                            value={formData.heightFeet}
-                            onChange={(e) => handleInputChange('heightFeet', e.target.value)}
-                            className={`mt-1 h-10 transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
-                              theme === 'white' 
-                                ? 'bg-white border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
-                                : theme === 'dark'
-                                ? 'bg-gray-700/70 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
-                                : 'bg-gray-900/70 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
-                            }`}
-                          />
+                    {/* Height Input - Different layouts based on unit */}
+                    {formData.heightUnit === 'feet' ? (
+                      // Separate Feet and Inches Input for feet
+                      <div className="space-y-3">
+                        <Select value={formData.heightUnit} onValueChange={(value) => handleInputChange('heightUnit', value)}>
+                          <SelectTrigger className={`w-24 h-12 transition-all duration-300 hover:scale-105 ${
+                            theme === 'white' 
+                              ? 'bg-white border-teal-200' 
+                              : theme === 'dark'
+                              ? 'bg-gray-700/70 border-purple-500/30 text-white'
+                              : 'bg-gray-900/70 border-green-500/30 text-white'
+                          }`}>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="cm">cm</SelectItem>
+                            <SelectItem value="inches">in</SelectItem>
+                            <SelectItem value="feet">ft</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <Label className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                              Feet
+                            </Label>
+                            <Input
+                              type="number"
+                              placeholder="6"
+                              min="1"
+                              max="8"
+                              value={formData.heightFeet}
+                              onChange={(e) => handleInputChange('heightFeet', e.target.value)}
+                              className={`mt-1 h-12 text-lg transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
+                                theme === 'white' 
+                                  ? 'bg-white border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
+                                  : theme === 'dark'
+                                  ? 'bg-gray-700/70 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
+                                  : 'bg-gray-900/70 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
+                              }`}
+                            />
+                          </div>
+                          <div>
+                            <Label className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                              Inches
+                            </Label>
+                            <Input
+                              type="number"
+                              min="0"
+                              max="11"
+                              placeholder="10"
+                              value={formData.heightInches}
+                              onChange={(e) => handleInputChange('heightInches', e.target.value)}
+                              className={`mt-1 h-12 text-lg transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
+                                theme === 'white' 
+                                  ? 'bg-white border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
+                                  : theme === 'dark'
+                                  ? 'bg-gray-700/70 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
+                                  : 'bg-gray-900/70 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
+                              }`}
+                            />
+                          </div>
                         </div>
-                        <div>
-                          <Label className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
-                            Inches
-                          </Label>
-                          <Input
-                            type="number"
-                            min="0"
-                            max="11"
-                            placeholder="10"
-                            value={formData.heightInches}
-                            onChange={(e) => handleInputChange('heightInches', e.target.value)}
-                            className={`mt-1 h-10 transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
-                              theme === 'white' 
-                                ? 'bg-white border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
-                                : theme === 'dark'
-                                ? 'bg-gray-700/70 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
-                                : 'bg-gray-900/70 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
-                            }`}
-                          />
-                        </div>
+                      </div>
+                    ) : (
+                      // Single input for cm and inches
+                      <div className="flex gap-3">
+                        <Input
+                          id="height"
+                          type="number"
+                          step="1"
+                          placeholder={getHeightPlaceholder()}
+                          value={formData.height}
+                          onChange={(e) => handleInputChange('height', e.target.value)}
+                          className={`h-12 text-lg transition-all duration-300 hover:scale-[1.02] focus:scale-[1.02] ${
+                            theme === 'white' 
+                              ? 'bg-white border-teal-200 focus:border-teal-400 focus:ring-teal-400/20' 
+                              : theme === 'dark'
+                              ? 'bg-gray-700/70 border-purple-500/30 text-white placeholder:text-gray-400 focus:border-purple-400 focus:ring-purple-400/20'
+                              : 'bg-gray-900/70 border-green-500/30 text-white placeholder:text-gray-400 focus:border-green-400 focus:ring-green-400/20'
+                          }`}
+                        />
+                        <Select value={formData.heightUnit} onValueChange={(value) => handleInputChange('heightUnit', value)}>
+                          <SelectTrigger className={`w-24 h-12 transition-all duration-300 hover:scale-105 ${
+                            theme === 'white' 
+                              ? 'bg-white border-teal-200' 
+                              : theme === 'dark'
+                              ? 'bg-gray-700/70 border-purple-500/30 text-white'
+                              : 'bg-gray-900/70 border-green-500/30 text-white'
+                          }`}>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="cm">cm</SelectItem>
+                            <SelectItem value="inches">in</SelectItem>
+                            <SelectItem value="feet">ft</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </div>
                     )}
                   </div>
