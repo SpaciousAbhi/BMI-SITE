@@ -310,7 +310,7 @@ const HomePage = () => {
                 { label: '🌍 Ethnicity-Adjusted', color: 'emerald' },
                 { label: '🏃‍♂️ Athletes BMI', color: 'red' },
                 { label: '🧠 AI-Powered Analysis', color: 'violet' },
-                { label: '🔥 Calorie Calculator', color: 'orange' },
+                { label: '🔥 TDEE & BMR Calculator', color: 'orange' },
                 { label: '🍎 Macros Breakdown', color: 'green' },
                 { label: '💪 Workout Plans', color: 'blue' },
                 { label: '📈 Progress Tracking', color: 'purple' },
