@@ -1299,7 +1299,7 @@ const EthnicityBMIPage = () => {
                           <div className={`p-3 rounded ${theme === 'white' ? 'bg-blue-50' : 'bg-blue-900/20'}`}>
                             <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Singapore Chinese Health Study:</strong>
                             <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
-                              63,000 participants followed for 20+ years. Diabetes risk increases significantly at BMI &gt;23 in Chinese populations. Cardiovascular disease risk elevated at BMI >25, lower than Western thresholds.
+                              63,000 participants followed for 20+ years. Diabetes risk increases significantly at BMI &gt;23 in Chinese populations. Cardiovascular disease risk elevated at BMI &gt;25, lower than Western thresholds.
                             </p>
                           </div>
                           <div className={`p-3 rounded ${theme === 'white' ? 'bg-green-50' : 'bg-green-900/20'}`}>
@@ -1311,7 +1311,7 @@ const EthnicityBMIPage = () => {
                           <div className={`p-3 rounded ${theme === 'white' ? 'bg-purple-50' : 'bg-purple-900/20'}`}>
                             <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Korea National Health Insurance:</strong>
                             <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
-                              23 million participants show metabolic syndrome prevalence increases dramatically at BMI &gt;23. Led to Korean obesity guidelines using BMI >25 as obesity threshold.
+                              23 million participants show metabolic syndrome prevalence increases dramatically at BMI &gt;23. Led to Korean obesity guidelines using BMI &gt;25 as obesity threshold.
                             </p>
                           </div>
                         </div>
@@ -1366,7 +1366,7 @@ const EthnicityBMIPage = () => {
                           <li><strong>Pacific Islanders:</strong> Risk threshold BMI >30</li>
                           <li><strong>Hispanics:</strong> Elevated risk at BMI >26</li>
                           <li><strong>African Americans:</strong> Risk increases at BMI >27</li>
-                          <li><strong>Caucasians:</strong> Traditional threshold BMI >25</li>
+                          <li><strong>Caucasians:</strong> Traditional threshold BMI &gt;25</li>
                         </ul>
                       </div>
                       <div className={`p-4 rounded-lg ${
@@ -1393,7 +1393,7 @@ const EthnicityBMIPage = () => {
                         <ul className={`space-y-2 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
                           <li><strong>South Asians:</strong> High prevalence at BMI &gt;23</li>
                           <li><strong>East Asians:</strong> Components present at BMI >24</li>
-                          <li><strong>Hispanics:</strong> Insulin resistance at BMI >25</li>
+                          <li><strong>Hispanics:</strong> Insulin resistance at BMI &gt;25</li>
                           <li><strong>African Americans:</strong> Different component patterns</li>
                           <li><strong>Caucasians:</strong> Standard definitions apply</li>
                           <li><strong>Mixed Ancestry:</strong> Requires individual assessment</li>
@@ -1719,7 +1719,7 @@ const EthnicityBMIPage = () => {
                             'Address food sovereignty and access to traditional foods',
                             'Church-based health promotion programs',
                             'Focus on functional fitness rather than weight loss alone',
-                            'Diabetes prevention at BMI >26 rather than >25'
+                            'Diabetes prevention at BMI >26 rather than &gt;25'
                           ]
                         },
                         {
@@ -1896,7 +1896,7 @@ const EthnicityBMIPage = () => {
                     {
                       category: 'prevention',
                       question: 'When should diabetes screening begin for different ethnic groups?',
-                      answer: 'Screening should begin earlier for high-risk ethnicities: South Asians at BMI &gt;21 or age 25; East Asians at BMI &gt;23 or age 35; Native Americans regardless of BMI at age 25; Pacific Islanders at BMI >26; African Americans and Hispanics at BMI >25. Family history and other risk factors may warrant even earlier screening.'
+                      answer: 'Screening should begin earlier for high-risk ethnicities: South Asians at BMI &gt;21 or age 25; East Asians at BMI &gt;23 or age 35; Native Americans regardless of BMI at age 25; Pacific Islanders at BMI >26; African Americans and Hispanics at BMI &gt;25. Family history and other risk factors may warrant even earlier screening.'
                     },
                     {
                       category: 'prevention',
