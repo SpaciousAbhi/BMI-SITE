@@ -149,6 +149,275 @@ const MacrosPage = () => {
     }
   };
 
+  // Comprehensive Macronutrient Science Content Data
+  const macroScience = [
+    {
+      title: "Protein Synthesis & Muscle Protein Balance",
+      icon: <Dumbbell className="h-5 w-5" />,
+      content: "Protein synthesis is the process by which cells build proteins from amino acids, critical for muscle growth, repair, and maintenance. Muscle protein balance is the net difference between muscle protein synthesis (MPS) and muscle protein breakdown (MPB). A positive balance (MPS > MPB) leads to muscle growth, while negative balance results in muscle loss. Research shows that consuming 20-40g of high-quality protein can maximally stimulate MPS for 3-5 hours.",
+      keyPoints: [
+        "20-40g protein maximally stimulates muscle protein synthesis",
+        "MPS remains elevated for 3-5 hours after protein consumption",
+        "Leucine (2.5-3g) is the key amino acid trigger for MPS",
+        "Resistance training amplifies the protein synthesis response"
+      ]
+    },
+    {
+      title: "Carbohydrate Metabolism & Glycogen Storage",
+      icon: <Zap className="h-5 w-5" />,
+      content: "Carbohydrates are the body's preferred fuel source, stored as glycogen in muscles (300-600g) and liver (80-120g). Glycogen storage capacity affects performance, recovery, and metabolic flexibility. During exercise, muscle glycogen provides immediate energy, while liver glycogen maintains blood glucose. Strategic carb timing can optimize performance, recovery, and body composition.",
+      keyPoints: [
+        "Muscles store 300-600g glycogen, liver stores 80-120g",
+        "Glycogen depletion impairs high-intensity performance after 90+ minutes",
+        "Post-workout carbs (0.5-1.2g/kg) optimize glycogen replenishment",
+        "Higher carb diets support high-intensity training adaptations"
+      ]
+    },
+    {
+      title: "Fat Metabolism & Essential Fatty Acids",
+      icon: <Heart className="h-5 w-5" />,
+      content: "Dietary fats provide essential fatty acids (omega-3 and omega-6), support hormone production, and enable fat-soluble vitamin absorption. Fat oxidation becomes the primary fuel source during low-intensity exercise and fasted states. Essential fatty acids cannot be synthesized by the body and must be obtained through diet. The ratio of omega-6 to omega-3 fatty acids significantly impacts inflammation and health.",
+      keyPoints: [
+        "Essential fatty acids must be obtained through diet",
+        "Minimum 20-30% of calories from fat needed for hormone production",
+        "Omega-3s (EPA/DHA) reduce inflammation and support brain function",
+        "Fat oxidation provides unlimited energy during aerobic activities"
+      ]
+    },
+    {
+      title: "Macro Timing & Nutrient Partitioning",
+      icon: <Clock className="h-5 w-5" />,
+      content: "Nutrient timing refers to the strategic consumption of macronutrients around training to optimize performance, recovery, and body composition. Nutrient partitioning describes how the body directs nutrients toward muscle building versus fat storage. Post-workout, the body is primed for nutrient uptake with enhanced insulin sensitivity and increased protein synthesis rates.",
+      keyPoints: [
+        "Post-workout 'anabolic window' lasts 24-48 hours, not just 30 minutes",
+        "Pre-workout carbs enhance performance for sessions >60 minutes",
+        "Post-workout protein + carbs optimize recovery and glycogen resynthesis",
+        "Evening carbs don't inherently cause fat gain - total calories matter most"
+      ]
+    }
+  ];
+
+  const expandedDietTypes = [
+    {
+      type: "balanced",
+      title: "Balanced Macros",
+      emoji: "⚖️",
+      protein: 25,
+      carbs: 45,
+      fat: 30,
+      description: "Evidence-based balanced approach suitable for most health and fitness goals",
+      scientificBasis: "Based on Acceptable Macronutrient Distribution Ranges (AMDR) from nutrition research",
+      benefits: ["Sustainable long-term", "Supports all training types", "Flexible food choices", "Optimal health markers"],
+      bestFor: "General health, moderate activity levels, sustainable lifestyle changes",
+      considerations: "May not be optimal for specific athletic goals or metabolic conditions"
+    },
+    {
+      type: "high_protein",
+      title: "High Protein",
+      emoji: "💪",
+      protein: 35,
+      carbs: 35,
+      fat: 30,
+      description: "Elevated protein for muscle building, weight loss, and satiety",
+      scientificBasis: "Research shows 1.6-2.2g/kg protein optimal for muscle growth and preservation",
+      benefits: ["Enhanced muscle protein synthesis", "Increased satiety", "Higher thermic effect", "Better body composition"],
+      bestFor: "Muscle building, weight loss, older adults, athletes",
+      considerations: "Higher cost, potential kidney stress in predisposed individuals"
+    },
+    {
+      type: "keto",
+      title: "Ketogenic",
+      emoji: "🥑",
+      protein: 25,
+      carbs: 5,
+      fat: 70,
+      description: "Very low carb, high fat approach for metabolic flexibility",
+      scientificBasis: "Induces ketosis, alternative metabolic state using ketones for fuel",
+      benefits: ["Rapid initial weight loss", "Stable energy levels", "Reduced hunger", "Potential therapeutic benefits"],
+      bestFor: "Metabolic syndrome, epilepsy, rapid weight loss, endurance athletes",
+      considerations: "Adaptation period, social restrictions, nutrient timing critical"
+    },
+    {
+      type: "low_carb",
+      title: "Low Carb",
+      emoji: "🥩",
+      protein: 30,
+      carbs: 20,
+      fat: 50,
+      description: "Moderate carb restriction with increased protein and fat",
+      scientificBasis: "Reduces insulin response while maintaining some glucose availability",
+      benefits: ["Improved insulin sensitivity", "Stable blood sugar", "Enhanced fat oxidation", "Good compliance"],
+      bestFor: "Pre-diabetes, insulin resistance, moderate weight loss",
+      considerations: "May impair high-intensity performance"
+    },
+    {
+      type: "low_fat",
+      title: "Low Fat",
+      emoji: "🍎",
+      protein: 20,
+      carbs: 65,
+      fat: 15,
+      description: "Traditional low-fat approach emphasizing carbohydrates",
+      scientificBasis: "Historical approach based on heart disease prevention research",
+      benefits: ["High fiber intake", "Lower calorie density", "Good for endurance athletes", "Budget-friendly"],
+      bestFor: "Endurance athletes, high training volumes, budget constraints",
+      considerations: "Essential fatty acid deficiency risk, hormone disruption"
+    },
+    {
+      type: "zone",
+      title: "Zone Diet",
+      emoji: "🎯",
+      protein: 30,
+      carbs: 40,
+      fat: 30,
+      description: "Anti-inflammatory approach with specific macro ratios",
+      scientificBasis: "Aims to control insulin and inflammation through precise macro ratios",
+      benefits: ["Reduced inflammation", "Stable energy", "Good compliance", "Balanced approach"],
+      bestFor: "Inflammation management, general health, moderate training",
+      considerations: "Requires precise tracking, may not optimize performance"
+    },
+    {
+      type: "carb_cycling",
+      title: "Carb Cycling",
+      emoji: "🔄",
+      protein: 30,
+      carbs: "Variable",
+      fat: "Variable", 
+      description: "Strategic alternation between high and low carb days",
+      scientificBasis: "Optimizes insulin sensitivity while supporting training and recovery",
+      benefits: ["Metabolic flexibility", "Training optimization", "Body composition", "Mental breaks"],
+      bestFor: "Advanced dieters, bodybuilders, athletes with periodized training",
+      considerations: "Complex planning, requires experience"
+    },
+    {
+      type: "mediterranean",
+      title: "Mediterranean",
+      emoji: "🫒",
+      protein: 20,
+      carbs: 45,
+      fat: 35,
+      description: "Heart-healthy approach emphasizing whole foods and olive oil",
+      scientificBasis: "Extensive research on cardiovascular health and longevity",
+      benefits: ["Heart health", "Longevity", "Sustainable", "Rich in antioxidants"],
+      bestFor: "Long-term health, older adults, cardiovascular risk reduction",
+      considerations: "May not optimize athletic performance or body composition goals"
+    }
+  ];
+
+  const macroTiming = [
+    {
+      timeframe: "Pre-Workout (1-3 hours)",
+      recommendations: {
+        protein: "10-20g easily digestible",
+        carbs: "20-40g for sessions >60 min",
+        fat: "Minimal - delays gastric emptying"
+      },
+      purpose: "Provide available energy and prevent muscle breakdown",
+      examples: ["Greek yogurt with berries", "Banana with protein powder", "Oatmeal with protein"],
+      timing: "Larger meals 2-3 hours before, smaller snacks 30-60 minutes before"
+    },
+    {
+      timeframe: "Post-Workout (0-2 hours)", 
+      recommendations: {
+        protein: "20-40g high-quality complete protein",
+        carbs: "0.5-1.2g/kg bodyweight",
+        fat: "Can be included, doesn't impair recovery"
+      },
+      purpose: "Maximize muscle protein synthesis and glycogen replenishment",
+      examples: ["Protein shake with banana", "Chicken with rice", "Chocolate milk"],
+      timing: "Within 2 hours for optimal benefits, but 24-hour intake matters most"
+    },
+    {
+      timeframe: "Throughout Day",
+      recommendations: {
+        protein: "20-40g every 3-4 hours",
+        carbs: "Time around training and activity",
+        fat: "Include with each meal for satiety"
+      },
+      purpose: "Maintain stable amino acid levels and energy",
+      examples: ["Balanced meals every 3-4 hours", "Protein + carbs + fat combinations"],
+      timing: "Consistency matters more than perfection"
+    }
+  ];
+
+  const detailedMacroFAQ = [
+    {
+      category: "Basics",
+      question: "What are macronutrients and why do they matter?",
+      answer: "Macronutrients are the three main nutrients that provide calories: protein (4 cal/g), carbohydrates (4 cal/g), and fats (9 cal/g). Each has unique functions - protein builds and repairs tissues, carbs provide quick energy and fuel the brain, fats support hormone production and nutrient absorption. The ratio of these macros affects energy levels, body composition, performance, and health markers. Getting the right balance for your goals and activity level optimizes results."
+    },
+    {
+      category: "Protein",
+      question: "How much protein do I really need?",
+      answer: "Protein needs vary significantly based on goals and activity. Sedentary adults need 0.8g/kg (0.36g/lb) minimum. Active individuals benefit from 1.2-1.6g/kg (0.54-0.73g/lb). Athletes and those building muscle should consume 1.6-2.2g/kg (0.73-1g/lb). During weight loss, higher protein (2.0-2.4g/kg or 0.9-1.1g/lb) helps preserve muscle mass. Older adults (65+) need 1.2-1.6g/kg to combat sarcopenia. Quality matters - complete proteins with all essential amino acids are superior."
+    },
+    {
+      category: "Carbs",
+      question: "Are carbs necessary for muscle building and performance?",
+      answer: "Carbs aren't technically essential for survival, but they're crucial for optimal performance and muscle building. Muscle glycogen (stored carbs) fuels high-intensity exercise and provides the energy needed for challenging workouts that stimulate muscle growth. Research shows that low-carb diets can impair power output, training capacity, and recovery. For muscle building, 3-7g/kg (1.4-3.2g/lb) carbs daily supports training intensity and recovery. Athletes may need up to 12g/kg during heavy training phases."
+    },
+    {
+      category: "Fats",
+      question: "What's the minimum fat intake for health?",
+      answer: "The minimum fat intake is 20-25% of total calories to ensure essential fatty acid needs and hormone production. Going below 15% can disrupt hormone levels (testosterone, growth hormone, thyroid), impair nutrient absorption, and affect cell membrane function. Essential fatty acids (omega-3 and omega-6) must come from food. For optimal health, include sources of EPA/DHA (fish, algae), monounsaturated fats (olive oil, nuts), and avoid trans fats completely."
+    },
+    {
+      category: "Timing",
+      question: "Does meal timing and macro timing really matter?",
+      answer: "Meal timing has modest effects compared to total daily intake, but it can optimize performance and recovery. The post-workout 'anabolic window' lasts 24-48 hours, not just 30 minutes, so don't stress about immediate post-workout nutrition. However, having protein every 3-4 hours maintains muscle protein synthesis. Pre-workout carbs help performance for sessions >60 minutes. Post-workout protein (20-40g) + carbs (0.5-1.2g/kg) optimize recovery. For most people, eating regularly throughout the day is more important than precise timing."
+    },
+    {
+      category: "Diet Types",
+      question: "Which diet approach is best for my goals?",
+      answer: "The best diet is one you can stick to long-term that supports your goals. For muscle building: moderate to high protein (25-35%) with adequate carbs (35-45%) for training fuel. For fat loss: higher protein (30-40%) with moderate carbs and fats. Keto can work for weight loss but may impair high-intensity performance. Mediterranean and balanced approaches are excellent for general health. Athletes need higher carbs (45-65%). The key is finding an approach that fits your lifestyle, preferences, and training demands."
+    },
+    {
+      category: "Tracking",
+      question: "Do I need to track macros precisely?",
+      answer: "Precision depends on your goals and current results. Beginners benefit from tracking initially to learn portion sizes and food composition. Competitive athletes and physique competitors often need precise tracking for optimal results. For general health and fitness, close approximations work well. Focus on hitting protein targets first, then distribute carbs and fats based on preferences and training. Many successful people use hand portions or visual estimates rather than precise weighing. Start strict if needed, then find your minimum effective dose of tracking."
+    },
+    {
+      category: "Adjustments",
+      question: "How do I adjust macros when progress stalls?",
+      answer: "Stalled progress requires systematic adjustments. For weight loss plateaus: increase protein by 0.2-0.4g/kg, reduce carbs by 50-100g, or add 2-3 cardio sessions. For muscle building stalls: increase total calories by 100-200, emphasize post-workout carbs, ensure adequate sleep and recovery. Consider diet breaks every 6-12 weeks during cuts. Track biometrics (weight, measurements, photos) and adjust based on 2-week trends, not daily fluctuations. Sometimes the issue isn't macros but training, sleep, or adherence."
+    },
+    {
+      category: "Special Needs",
+      question: "How do medical conditions affect macro needs?",
+      answer: "Medical conditions significantly impact macro requirements. Diabetes requires careful carb management and fiber emphasis. PCOS benefits from lower glycemic carbs and higher protein. Hypothyroidism may need higher calories and iodine-rich foods. Kidney disease requires protein restriction. IBS/IBD may need specific fiber types or elimination diets. Eating disorders require professional guidance focusing on food relationship over macros. Always consult healthcare providers for medical conditions. Generic calculators may not account for metabolic differences in various conditions."
+    },
+    {
+      category: "Age & Gender",
+      question: "How do age and gender affect macro needs?",
+      answer: "Age and gender create different macro requirements. Women generally need less total calories but similar protein per kg body weight. During menstruation, slight calorie increases may help. Pregnancy dramatically increases needs. Menopause may benefit from higher protein and resistance training. Older adults (65+) need more protein (1.2-1.6g/kg) to combat sarcopenia and may benefit from leucine-rich sources. Children and teens need adequate calories for growth. Men typically have higher overall needs due to greater muscle mass and size."
+    },
+    {
+      category: "Performance",
+      question: "How should endurance vs strength athletes adjust macros?",
+      answer: "Endurance athletes need higher carbs (6-12g/kg) to fuel training and replenish glycogen. Protein needs are moderate (1.2-1.6g/kg) as muscle building isn't the primary goal. Fat can be 20-35% for general health. Strength/power athletes need higher protein (1.6-2.2g/kg) for muscle building and repair. Carbs should support training intensity (3-7g/kg). Fat can be lower (20-30%) to allow room for protein and carbs. Both need adequate calories to support training demands and recovery."
+    },
+    {
+      category: "Weight Loss",
+      question: "What macro ratio is best for weight loss?",
+      answer: "For weight loss, prioritize higher protein (30-40% or 1.2-1.6g/lb) to preserve muscle mass and increase satiety. Distribute remaining calories between carbs and fats based on preferences and training. Lower carb (20-30%) works well for sedentary individuals or those with insulin resistance. Higher carb (35-45%) suits active individuals who need training fuel. The key is creating a sustainable calorie deficit while maintaining adequate protein. Extreme low-fat or low-carb approaches are harder to maintain long-term."
+    },
+    {
+      category: "Muscle Building",
+      question: "What's the optimal macro split for building muscle?",
+      answer: "For muscle building, prioritize protein at 1.6-2.2g/kg (0.73-1g/lb) spread throughout the day. Carbs should be 3-7g/kg (1.4-3.2g/lb) to fuel intense training sessions. Fat can be 20-35% of calories for hormone production and general health. Total calories should be 200-500 above maintenance. Time protein every 3-4 hours and include carbs around workouts. The exact ratios matter less than hitting absolute protein targets and maintaining a calorie surplus with quality training and adequate recovery."
+    },
+    {
+      category: "Supplements",
+      question: "Do I need supplements or can I get everything from food?",
+      answer: "Most macro needs can be met through whole foods, but supplements can be convenient and cost-effective. Protein powder is useful for meeting high protein targets affordably. Creatine (3-5g daily) enhances power output and muscle building. Fish oil provides EPA/DHA if fish intake is low. Vitamin D, B12, and iron may be needed based on diet restrictions or deficiencies. Pre/post-workout supplements are optional - whole foods work equally well. Focus on food first, use supplements to fill specific gaps or for convenience."
+    },
+    {
+      category: "Long-term",
+      question: "How do I maintain results long-term without obsessive tracking?",
+      answer: "Long-term success requires transitioning from strict tracking to intuitive habits. Start by learning proper portions for your macro targets. Use hand-based portions (palm = protein, cupped hand = carbs, thumb = fats). Build consistent meal patterns and templates. Practice mindful eating and hunger/satiety cues. Do periodic 'check-ins' with tracking to stay calibrated. Focus on food quality and whole foods. Develop flexible approaches for social situations. Remember that perfect consistency isn't required - aim for 80% adherence over time rather than short-term perfection."
+    }
+  ];
+
   const MacroBar = ({ macro, percentage, color }) => (
     <div className="space-y-2">
       <div className="flex justify-between text-sm">
