@@ -77,6 +77,9 @@ const AppContent = () => {
           <Route path="/pregnancy-bmi" element={<PregnancyBMIPage />} />
           <Route path="/senior-bmi" element={<SeniorBMIPage />} />
           <Route path="/ethnicity-bmi" element={<EthnicityBMIPage />} />
+          <Route path="/ideal-weight" element={<IdealWeightPage />} />
+          <Route path="/waist-height-ratio" element={<WaistHeightRatioPage />} />
+          <Route path="/body-surface-area" element={<BSACalculatorPage />} />
         </Routes>
       </BrowserRouter>
       <Toaster />
