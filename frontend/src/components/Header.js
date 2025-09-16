@@ -615,8 +615,13 @@ const Header = () => {
                 })}
               </div>
 
-              {/* Contact Section */}
+              {/* Legal & Support Section */}
               <div className="px-4 py-2 border-t border-gray-200/30">
+                <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
+                  theme === 'white' ? 'text-gray-500' : 'text-gray-400'
+                }`}>
+                  ⚖️ Legal & Support
+                </h3>
                 <Link
                   to="/contact"
                   onClick={handleMenuClose}
@@ -634,6 +639,42 @@ const Header = () => {
                 >
                   <Mail className="h-4 w-4" />
                   Contact Us
+                </Link>
+                <Link
+                  to="/privacy-policy"
+                  onClick={handleMenuClose}
+                  className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
+                    location.pathname === '/privacy-policy'
+                      ? theme === 'white'
+                        ? 'text-teal-600 bg-teal-50'
+                        : theme === 'dark'
+                        ? 'text-purple-400 bg-purple-400/10'
+                        : 'text-green-400 bg-green-400/10'
+                      : theme === 'white' 
+                      ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
+                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <Shield className="h-4 w-4" />
+                  Privacy Policy
+                </Link>
+                <Link
+                  to="/terms-of-service"
+                  onClick={handleMenuClose}
+                  className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
+                    location.pathname === '/terms-of-service'
+                      ? theme === 'white'
+                        ? 'text-teal-600 bg-teal-50'
+                        : theme === 'dark'
+                        ? 'text-purple-400 bg-purple-400/10'
+                        : 'text-green-400 bg-green-400/10'
+                      : theme === 'white' 
+                      ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
+                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <Shield className="h-4 w-4" />
+                  Terms of Service
                 </Link>
               </div>
             </div>
