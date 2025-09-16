@@ -1071,6 +1071,365 @@ const MacrosPage = () => {
             </div>
           )}
         </div>
+
+        {/* Comprehensive Scientific Content Sections */}
+        
+        {/* Macronutrient Science Deep-Dive */}
+        <section id="science" className="max-w-6xl mx-auto mt-16 mb-16">
+          <h2 className={`text-3xl font-bold text-center mb-8 ${
+            theme === 'white' ? 'text-gray-900' : 'text-white'
+          }`}>
+            The Science of Macronutrients
+          </h2>
+          
+          <div className="grid gap-6">
+            {macroScience.map((science, index) => (
+              <Card key={index} className={`backdrop-blur-md border-0 shadow-lg ${
+                theme === 'white' 
+                  ? 'bg-white/80' 
+                  : theme === 'dark'
+                  ? 'bg-gray-800/80'
+                  : 'bg-black/80'
+              }`}>
+                <CardHeader className="cursor-pointer" onClick={() => toggleSection(`science-${index}`)}>
+                  <CardTitle className={`text-lg flex items-center justify-between ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    <div className="flex items-center gap-3">
+                      <span className={theme === 'white' ? 'text-teal-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}>
+                        {science.icon}
+                      </span>
+                      {science.title}
+                    </div>
+                    {expandedSections[`science-${index}`] 
+                      ? <ChevronDown className="h-5 w-5" /> 
+                      : <ChevronRight className="h-5 w-5" />
+                    }
+                  </CardTitle>
+                </CardHeader>
+                {expandedSections[`science-${index}`] && (
+                  <CardContent className="space-y-4">
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      {science.content}
+                    </p>
+                    
+                    <div className={`p-4 rounded-lg ${
+                      theme === 'white' ? 'bg-blue-50' : theme === 'dark' ? 'bg-blue-900/20' : 'bg-blue-900/20'
+                    }`}>
+                      <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-blue-900' : 'text-blue-300'}`}>
+                        Key Scientific Points:
+                      </h4>
+                      <ul className={`text-sm space-y-1 ${theme === 'white' ? 'text-blue-700' : 'text-blue-200'}`}>
+                        {science.keyPoints.map((point, pointIndex) => (
+                          <li key={pointIndex}>• {point}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </CardContent>
+                )}
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Comprehensive Diet Types Analysis */}
+        <section id="diets" className="max-w-6xl mx-auto mb-16">
+          <h2 className={`text-3xl font-bold text-center mb-8 ${
+            theme === 'white' ? 'text-gray-900' : 'text-white'
+          }`}>
+            Comprehensive Diet Types Analysis
+          </h2>
+          
+          <div className="grid gap-6">
+            {expandedDietTypes.map((diet, index) => (
+              <Card key={index} className={`backdrop-blur-md border-0 shadow-lg ${
+                theme === 'white' 
+                  ? 'bg-white/80' 
+                  : theme === 'dark'
+                  ? 'bg-gray-800/80'
+                  : 'bg-black/80'
+              }`}>
+                <CardHeader className="cursor-pointer" onClick={() => toggleSection(`diet-${index}`)}>
+                  <CardTitle className={`text-lg flex items-center justify-between ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">{diet.emoji}</span>
+                      <div>
+                        <div>{diet.title}</div>
+                        <div className={`text-sm font-normal ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                          P: {diet.protein}% • C: {typeof diet.carbs === 'number' ? diet.carbs : diet.carbs}% • F: {typeof diet.fat === 'number' ? diet.fat : diet.fat}%
+                        </div>
+                      </div>
+                    </div>
+                    {expandedSections[`diet-${index}`] 
+                      ? <ChevronDown className="h-5 w-5" /> 
+                      : <ChevronRight className="h-5 w-5" />
+                    }
+                  </CardTitle>
+                </CardHeader>
+                {expandedSections[`diet-${index}`] && (
+                  <CardContent className="space-y-4">
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      {diet.description}
+                    </p>
+                    
+                    <div className={`p-3 rounded-lg ${
+                      theme === 'white' ? 'bg-purple-50' : theme === 'dark' ? 'bg-purple-900/20' : 'bg-purple-900/20'
+                    }`}>
+                      <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-purple-900' : 'text-purple-300'}`}>
+                        Scientific Basis:
+                      </h4>
+                      <p className={`text-sm ${theme === 'white' ? 'text-purple-700' : 'text-purple-200'}`}>
+                        {diet.scientificBasis}
+                      </p>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className={`p-3 rounded-lg ${
+                        theme === 'white' ? 'bg-green-50' : theme === 'dark' ? 'bg-green-900/20' : 'bg-green-900/20'
+                      }`}>
+                        <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-green-900' : 'text-green-300'}`}>
+                          Benefits:
+                        </h4>
+                        <ul className={`text-xs space-y-1 ${theme === 'white' ? 'text-green-700' : 'text-green-200'}`}>
+                          {diet.benefits.map((benefit, benefitIndex) => (
+                            <li key={benefitIndex}>• {benefit}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div className={`p-3 rounded-lg ${
+                        theme === 'white' ? 'bg-blue-50' : theme === 'dark' ? 'bg-blue-900/20' : 'bg-blue-900/20'
+                      }`}>
+                        <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-blue-900' : 'text-blue-300'}`}>
+                          Best For:
+                        </h4>
+                        <p className={`text-xs ${theme === 'white' ? 'text-blue-700' : 'text-blue-200'}`}>
+                          {diet.bestFor}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className={`p-3 rounded-lg ${
+                      theme === 'white' ? 'bg-yellow-50' : theme === 'dark' ? 'bg-yellow-900/20' : 'bg-yellow-900/20'
+                    }`}>
+                      <h4 className={`font-medium mb-1 ${theme === 'white' ? 'text-yellow-900' : 'text-yellow-300'}`}>
+                        Considerations:
+                      </h4>
+                      <p className={`text-xs ${theme === 'white' ? 'text-yellow-700' : 'text-yellow-200'}`}>
+                        {diet.considerations}
+                      </p>
+                    </div>
+                  </CardContent>
+                )}
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Nutrient Timing Science */}
+        <section id="timing" className="max-w-6xl mx-auto mb-16">
+          <h2 className={`text-3xl font-bold text-center mb-8 ${
+            theme === 'white' ? 'text-gray-900' : 'text-white'
+          }`}>
+            Strategic Nutrient Timing
+          </h2>
+          
+          <div className="grid gap-6">
+            {macroTiming.map((timing, index) => (
+              <Card key={index} className={`backdrop-blur-md border-0 shadow-lg ${
+                theme === 'white' 
+                  ? 'bg-white/80' 
+                  : theme === 'dark'
+                  ? 'bg-gray-800/80'
+                  : 'bg-black/80'
+              }`}>
+                <CardHeader className="cursor-pointer" onClick={() => toggleSection(`timing-${index}`)}>
+                  <CardTitle className={`text-lg flex items-center justify-between ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    <div className="flex items-center gap-3">
+                      <Clock className={`h-5 w-5 ${theme === 'white' ? 'text-teal-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`} />
+                      {timing.timeframe}
+                    </div>
+                    {expandedSections[`timing-${index}`] 
+                      ? <ChevronDown className="h-5 w-5" /> 
+                      : <ChevronRight className="h-5 w-5" />
+                    }
+                  </CardTitle>
+                </CardHeader>
+                {expandedSections[`timing-${index}`] && (
+                  <CardContent className="space-y-4">
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      <strong>Purpose:</strong> {timing.purpose}
+                    </p>
+                    
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div className={`p-3 rounded-lg ${
+                        theme === 'white' ? 'bg-red-50' : theme === 'dark' ? 'bg-red-900/20' : 'bg-red-900/20'
+                      }`}>
+                        <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-red-900' : 'text-red-300'}`}>
+                          Protein
+                        </h4>
+                        <p className={`text-xs ${theme === 'white' ? 'text-red-700' : 'text-red-200'}`}>
+                          {timing.recommendations.protein}
+                        </p>
+                      </div>
+                      
+                      <div className={`p-3 rounded-lg ${
+                        theme === 'white' ? 'bg-blue-50' : theme === 'dark' ? 'bg-blue-900/20' : 'bg-blue-900/20'
+                      }`}>
+                        <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-blue-900' : 'text-blue-300'}`}>
+                          Carbohydrates
+                        </h4>
+                        <p className={`text-xs ${theme === 'white' ? 'text-blue-700' : 'text-blue-200'}`}>
+                          {timing.recommendations.carbs}
+                        </p>
+                      </div>
+                      
+                      <div className={`p-3 rounded-lg ${
+                        theme === 'white' ? 'bg-yellow-50' : theme === 'dark' ? 'bg-yellow-900/20' : 'bg-yellow-900/20'
+                      }`}>
+                        <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-yellow-900' : 'text-yellow-300'}`}>
+                          Fats
+                        </h4>
+                        <p className={`text-xs ${theme === 'white' ? 'text-yellow-700' : 'text-yellow-200'}`}>
+                          {timing.recommendations.fat}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className={`p-3 rounded-lg ${
+                      theme === 'white' ? 'bg-green-50' : theme === 'dark' ? 'bg-green-900/20' : 'bg-green-900/20'
+                    }`}>
+                      <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-green-900' : 'text-green-300'}`}>
+                        Food Examples:
+                      </h4>
+                      <div className={`text-xs ${theme === 'white' ? 'text-green-700' : 'text-green-200'}`}>
+                        {timing.examples.join(' • ')}
+                      </div>
+                    </div>
+                    
+                    <div className={`p-3 rounded-lg ${
+                      theme === 'white' ? 'bg-gray-50' : theme === 'dark' ? 'bg-gray-700/50' : 'bg-gray-800/50'
+                    }`}>
+                      <h4 className={`font-medium mb-1 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                        Timing Guidelines:
+                      </h4>
+                      <p className={`text-xs ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                        {timing.timing}
+                      </p>
+                    </div>
+                  </CardContent>
+                )}
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <div className="text-center mb-16">
+          <Card className={`backdrop-blur-md border-0 shadow-2xl max-w-3xl mx-auto ${
+            theme === 'white' 
+              ? 'bg-gradient-to-r from-teal-50 to-purple-50' 
+              : theme === 'dark'
+              ? 'bg-gradient-to-r from-teal-900/50 to-purple-900/50'
+              : 'bg-gradient-to-r from-teal-900/50 to-purple-900/50'
+          }`}>
+            <CardContent className="p-8">
+              <h2 className={`text-2xl font-bold mb-4 ${
+                theme === 'white' ? 'text-gray-900' : 'text-white'
+              }`}>
+                Complete Your Nutrition Strategy
+              </h2>
+              <p className={`mb-6 ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                Combine precision macro tracking with accurate calorie calculation for optimal body composition and performance results
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/calories">
+                  <Button className={`transition-all duration-300 hover:scale-105 transform ${
+                    theme === 'white'
+                      ? 'bg-teal-600 hover:bg-teal-700 text-white shadow-lg hover:shadow-xl'
+                      : 'bg-teal-600 hover:bg-teal-700 text-white shadow-lg hover:shadow-xl'
+                  }`}>
+                    <Zap className="h-4 w-4 mr-2" />
+                    Calculate Calories
+                  </Button>
+                </Link>
+                <Link to="/body-fat">
+                  <Button variant="outline" className={`transition-all duration-300 hover:scale-105 ${
+                    theme === 'white'
+                      ? 'border-teal-300 text-teal-700 hover:bg-teal-50'
+                      : 'border-teal-500/50 text-teal-300 hover:bg-teal-900/20'
+                  }`}>
+                    <Target className="h-4 w-4 mr-2" />
+                    Body Composition Analysis
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Comprehensive FAQ Section */}
+        <section id="faq" className="max-w-6xl mx-auto mb-16">
+          <h2 className={`text-3xl font-bold text-center mb-8 ${
+            theme === 'white' ? 'text-gray-900' : 'text-white'
+          }`}>
+            Expert FAQ: Macronutrient Science & Optimization
+          </h2>
+          
+          {/* FAQ Categories */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {['All', 'Basics', 'Protein', 'Carbs', 'Fats', 'Timing', 'Performance', 'Advanced'].map((category) => (
+              <Badge 
+                key={category}
+                className={`cursor-pointer px-3 py-2 ${
+                  theme === 'white' ? 'bg-teal-100 text-teal-800 hover:bg-teal-200' : 'bg-teal-900/30 text-teal-300 hover:bg-teal-900/50'
+                }`}
+              >
+                {category}
+              </Badge>
+            ))}
+          </div>
+
+          <div className="space-y-6">
+            {detailedMacroFAQ.map((faq, index) => (
+              <Card key={index} className={`backdrop-blur-md border-0 shadow-lg ${
+                theme === 'white' 
+                  ? 'bg-white/80' 
+                  : theme === 'dark'
+                  ? 'bg-gray-800/80'
+                  : 'bg-black/80'
+              }`}>
+                <CardHeader className="cursor-pointer" onClick={() => toggleSection(`faq-${index}`)}>
+                  <CardTitle className={`text-lg flex items-center justify-between ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    <span>{faq.question}</span>
+                    <div className="flex items-center gap-2">
+                      <Badge className="bg-teal-100 text-teal-800 text-xs">
+                        {faq.category}
+                      </Badge>
+                      {expandedSections[`faq-${index}`] 
+                        ? <ChevronDown className="h-5 w-5" /> 
+                        : <ChevronRight className="h-5 w-5" />
+                      }
+                    </div>
+                  </CardTitle>
+                </CardHeader>
+                {expandedSections[`faq-${index}`] && (
+                  <CardContent>
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      {faq.answer}
+                    </p>
+                  </CardContent>
+                )}
+              </Card>
+            ))}
+          </div>
+        </section>
       </main>
       
       <Footer />
