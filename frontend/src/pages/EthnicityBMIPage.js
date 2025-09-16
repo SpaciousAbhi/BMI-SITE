@@ -1324,7 +1324,7 @@ const EthnicityBMIPage = () => {
                           <div className={`p-3 rounded ${theme === 'white' ? 'bg-red-50' : 'bg-red-900/20'}`}>
                             <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Multi-Ethnic Study of Atherosclerosis:</strong>
                             <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
-                              6,800 adults from 4 ethnic groups show different BMI-disease relationships. African Americans have lower cardiovascular risk at higher BMI. Hispanics show elevated diabetes risk at BMI >26.
+                              6,800 adults from 4 ethnic groups show different BMI-disease relationships. African Americans have lower cardiovascular risk at higher BMI. Hispanics show elevated diabetes risk at BMI &gt;26.
                             </p>
                           </div>
                           <div className={`p-3 rounded ${theme === 'white' ? 'bg-orange-50' : 'bg-orange-900/20'}`}>
@@ -1364,7 +1364,7 @@ const EthnicityBMIPage = () => {
                           <li><strong>South Asians:</strong> Risk increases at BMI &gt;21</li>
                           <li><strong>East Asians:</strong> Significant risk at BMI &gt;23</li>
                           <li><strong>Pacific Islanders:</strong> Risk threshold BMI >30</li>
-                          <li><strong>Hispanics:</strong> Elevated risk at BMI >26</li>
+                          <li><strong>Hispanics:</strong> Elevated risk at BMI &gt;26</li>
                           <li><strong>African Americans:</strong> Risk increases at BMI >27</li>
                           <li><strong>Caucasians:</strong> Traditional threshold BMI &gt;25</li>
                         </ul>
@@ -1378,7 +1378,7 @@ const EthnicityBMIPage = () => {
                         <ul className={`space-y-2 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
                           <li><strong>South Asians:</strong> Risk elevation at BMI >22</li>
                           <li><strong>East Asians:</strong> Cardiovascular risk at BMI >24</li>
-                          <li><strong>Middle Eastern:</strong> Risk increases at BMI >26</li>
+                          <li><strong>Middle Eastern:</strong> Risk increases at BMI &gt;26</li>
                           <li><strong>African Americans:</strong> Complex relationship, protective effects noted</li>
                           <li><strong>Pacific Islanders:</strong> Traditional lifestyle protective up to BMI 32</li>
                           <li><strong>Native Americans:</strong> High baseline risk regardless of BMI</li>
@@ -1719,7 +1719,7 @@ const EthnicityBMIPage = () => {
                             'Address food sovereignty and access to traditional foods',
                             'Church-based health promotion programs',
                             'Focus on functional fitness rather than weight loss alone',
-                            'Diabetes prevention at BMI >26 rather than &gt;25'
+                            'Diabetes prevention at BMI &gt;26 rather than &gt;25'
                           ]
                         },
                         {
@@ -1896,7 +1896,7 @@ const EthnicityBMIPage = () => {
                     {
                       category: 'prevention',
                       question: 'When should diabetes screening begin for different ethnic groups?',
-                      answer: 'Screening should begin earlier for high-risk ethnicities: South Asians at BMI &gt;21 or age 25; East Asians at BMI &gt;23 or age 35; Native Americans regardless of BMI at age 25; Pacific Islanders at BMI >26; African Americans and Hispanics at BMI &gt;25. Family history and other risk factors may warrant even earlier screening.'
+                      answer: 'Screening should begin earlier for high-risk ethnicities: South Asians at BMI &gt;21 or age 25; East Asians at BMI &gt;23 or age 35; Native Americans regardless of BMI at age 25; Pacific Islanders at BMI &gt;26; African Americans and Hispanics at BMI &gt;25. Family history and other risk factors may warrant even earlier screening.'
                     },
                     {
                       category: 'prevention',
