@@ -516,14 +516,76 @@ const CaloriePage = () => {
             Calculate your daily calorie needs (TDEE) and get personalized recommendations for weight loss, maintenance, or gain.
           </p>
           
-          {/* Method Badge */}
-          <Badge variant="secondary" className={`px-4 py-2 text-sm font-medium ${
-            theme === 'white' ? 'bg-teal-100 text-teal-800' :
-            theme === 'dark' ? 'bg-purple-900/50 text-purple-200' :
-            'bg-green-900/50 text-green-200'
-          }`}>
-            Mifflin-St Jeor Equation + Activity Level
-          </Badge>
+          {/* Professional Badges */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            <Badge variant="secondary" className={`px-4 py-2 text-sm font-medium ${
+              theme === 'white' ? 'bg-teal-100 text-teal-800' :
+              theme === 'dark' ? 'bg-purple-900/50 text-purple-200' :
+              'bg-green-900/50 text-green-200'
+            }`}>
+              🧬 5+ Scientific Methods
+            </Badge>
+            <Badge variant="secondary" className={`px-4 py-2 text-sm font-medium ${
+              theme === 'white' ? 'bg-blue-100 text-blue-800' :
+              theme === 'dark' ? 'bg-blue-900/50 text-blue-200' :
+              'bg-blue-900/50 text-blue-200'
+            }`}>
+              📊 Metabolic Adaptation Analysis
+            </Badge>
+            <Badge variant="secondary" className={`px-4 py-2 text-sm font-medium ${
+              theme === 'white' ? 'bg-green-100 text-green-800' :
+              theme === 'dark' ? 'bg-green-900/50 text-green-200' :
+              'bg-green-900/50 text-green-200'
+            }`}>
+              🎯 Goal-Specific Guidance
+            </Badge>
+            <Badge variant="secondary" className={`px-4 py-2 text-sm font-medium ${
+              theme === 'white' ? 'bg-orange-100 text-orange-800' :
+              theme === 'dark' ? 'bg-orange-900/50 text-orange-200' :
+              'bg-orange-900/50 text-orange-200'
+            }`}>
+              💪 Athletic & Medical Grade
+            </Badge>
+          </div>
+
+          {/* Quick Navigation */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            <a href="#calculator" className={`text-xs px-3 py-1 rounded-full transition-all duration-300 hover:scale-105 ${
+              theme === 'white' ? 'bg-white/50 text-teal-700 hover:bg-white/70' :
+              theme === 'dark' ? 'bg-purple-900/30 text-purple-300 hover:bg-purple-900/50' :
+              'bg-green-900/30 text-green-300 hover:bg-green-900/50'
+            }`}>
+              Calculator
+            </a>
+            <a href="#science" className={`text-xs px-3 py-1 rounded-full transition-all duration-300 hover:scale-105 ${
+              theme === 'white' ? 'bg-white/50 text-teal-700 hover:bg-white/70' :
+              theme === 'dark' ? 'bg-purple-900/30 text-purple-300 hover:bg-purple-900/50' :
+              'bg-green-900/30 text-green-300 hover:bg-green-900/50'
+            }`}>
+              Calorie Science
+            </a>
+            <a href="#methods" className={`text-xs px-3 py-1 rounded-full transition-all duration-300 hover:scale-105 ${
+              theme === 'white' ? 'bg-white/50 text-teal-700 hover:bg-white/70' :
+              theme === 'dark' ? 'bg-purple-900/30 text-purple-300 hover:bg-purple-900/50' :
+              'bg-green-900/30 text-green-300 hover:bg-green-900/50'
+            }`}>
+              Calculation Methods
+            </a>
+            <a href="#health" className={`text-xs px-3 py-1 rounded-full transition-all duration-300 hover:scale-105 ${
+              theme === 'white' ? 'bg-white/50 text-teal-700 hover:bg-white/70' :
+              theme === 'dark' ? 'bg-purple-900/30 text-purple-300 hover:bg-purple-900/50' :
+              'bg-green-900/30 text-green-300 hover:bg-green-900/50'
+            }`}>
+              Health Implications
+            </a>
+            <a href="#faq" className={`text-xs px-3 py-1 rounded-full transition-all duration-300 hover:scale-105 ${
+              theme === 'white' ? 'bg-white/50 text-teal-700 hover:bg-white/70' :
+              theme === 'dark' ? 'bg-purple-900/30 text-purple-300 hover:bg-purple-900/50' :
+              'bg-green-900/30 text-green-300 hover:bg-green-900/50'
+            }`}>
+              Expert FAQ
+            </a>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
