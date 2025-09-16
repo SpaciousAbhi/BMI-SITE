@@ -29,6 +29,8 @@ const PregnancyBMIPage = () => {
   
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [expandedSections, setExpandedSections] = useState({});
+  const [activeNavSection, setActiveNavSection] = useState('science');
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
