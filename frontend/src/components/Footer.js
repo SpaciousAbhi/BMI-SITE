@@ -74,7 +74,7 @@ const Footer = () => {
     }`}>
       <div className="container mx-auto px-4 py-12">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-8 gap-6">
           {/* Brand Section */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-2 group">
@@ -123,12 +123,12 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* BMI & Body Analysis Calculators */}
+          {/* BMI & Body Analysis */}
           <div className="space-y-4">
             <h3 className={`text-sm font-semibold uppercase tracking-wider ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
-              🧮 BMI & Body Analysis
+              🧮 BMI Analysis
             </h3>
             <ul className="space-y-2">
               <li>
@@ -186,37 +186,15 @@ const Footer = () => {
                   Ethnicity BMI
                 </Link>
               </li>
-              <li>
-                <Link 
-                  to="/bmi-for-children" 
-                  className={`text-sm ${
-                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
-                >
-                  <User className="h-3 w-3" />
-                  Children BMI
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/smart-bmi" 
-                  className={`text-sm ${
-                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
-                >
-                  <Brain className="h-3 w-3" />
-                  Smart BMI
-                </Link>
-              </li>
             </ul>
           </div>
 
-          {/* Body Composition & Nutrition Tools */}
+          {/* Body Composition */}
           <div className="space-y-4">
             <h3 className={`text-sm font-semibold uppercase tracking-wider ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
-              ⚖️ Body & Nutrition
+              ⚖️ Body Composition
             </h3>
             <ul className="space-y-2">
               <li>
@@ -263,6 +241,17 @@ const Footer = () => {
                   Body Surface Area
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Nutrition & Diet */}
+          <div className="space-y-4">
+            <h3 className={`text-sm font-semibold uppercase tracking-wider ${
+              theme === 'white' ? 'text-gray-900' : 'text-white'
+            }`}>
+              🍎 Nutrition & Diet
+            </h3>
+            <ul className="space-y-2">
               <li>
                 <Link 
                   to="/calories" 
@@ -293,7 +282,7 @@ const Footer = () => {
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
                   <Dumbbell className="h-3 w-3" />
-                  Protein Intake
+                  Protein Calculator
                 </Link>
               </li>
               <li>
@@ -310,7 +299,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Fitness & Health Tools */}
+          {/* Fitness & Health */}
           <div className="space-y-4">
             <h3 className={`text-sm font-semibold uppercase tracking-wider ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
@@ -326,7 +315,7 @@ const Footer = () => {
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
                   <HeartPulse className="h-3 w-3" />
-                  Heart Rate Zones
+                  Heart Rate Calculator
                 </Link>
               </li>
               <li>
@@ -351,6 +340,17 @@ const Footer = () => {
                   Fasting Planner
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Health Management */}
+          <div className="space-y-4">
+            <h3 className={`text-sm font-semibold uppercase tracking-wider ${
+              theme === 'white' ? 'text-gray-900' : 'text-white'
+            }`}>
+              📊 Health Management
+            </h3>
+            <ul className="space-y-2">
               <li>
                 <Link 
                   to="/history" 
@@ -387,12 +387,12 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Health Resources & Support */}
+          {/* Health Resources */}
           <div className="space-y-4">
             <h3 className={`text-sm font-semibold uppercase tracking-wider ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
-              📚 Resources & Support
+              📚 Health Resources
             </h3>
             <ul className="space-y-2">
               <li>
@@ -439,6 +439,17 @@ const Footer = () => {
                   Nutrition Guide
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          {/* Legal & Support */}
+          <div className="space-y-4">
+            <h3 className={`text-sm font-semibold uppercase tracking-wider ${
+              theme === 'white' ? 'text-gray-900' : 'text-white'
+            }`}>
+              ⚖️ Legal & Support
+            </h3>
+            <ul className="space-y-2">
               <li>
                 <Link 
                   to="/contact" 
