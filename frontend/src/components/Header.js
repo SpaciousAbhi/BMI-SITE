@@ -86,6 +86,13 @@ const Header = () => {
     { path: '/workout', label: 'Workout Plans', icon: Dumbbell, description: 'Personalized exercise routines' },
   ];
 
+  // Legal & Support Tools
+  const legalSupport = [
+    { path: '/contact', label: 'Contact Us', icon: Mail, description: 'Get in touch with our team' },
+    { path: '/privacy-policy', label: 'Privacy Policy', icon: Shield, description: 'Privacy and data protection' },
+    { path: '/terms-of-service', label: 'Terms of Service', icon: Shield, description: 'Service terms and conditions' },
+  ];
+
   // Health Resources
   const healthResources = [
     { path: '/blog', label: 'Health Blog', icon: BookOpen, description: 'Expert health articles' },
