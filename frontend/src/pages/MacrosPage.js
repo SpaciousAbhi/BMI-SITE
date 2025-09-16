@@ -440,17 +440,100 @@ const MacrosPage = () => {
   return (
     <div className={`min-h-screen transition-all duration-700 ${getBackgroundGradient()}`}>
       <SEOHead 
-        title="Free Macros Calculator | Macronutrient Calculator - Protein, Carbs, Fat"
-        description="Free macros calculator for protein, carbs, and fat breakdown. Calculate macronutrients for keto, high protein, low carb, and other diet types. Personalized macro calculator with meal planning."
-        keywords="macros calculator, macronutrient calculator, protein calculator, carbs calculator, keto macros, high protein diet, macro breakdown, free macros calculator, diet macros"
+        title="Professional Macros Calculator | Advanced Macronutrient Calculator 2025 - Scientific Nutrition Planning"
+        description="World's most comprehensive macros calculator with scientific protein, carbs, and fat calculations, 8+ diet types analysis, nutrient timing strategies, and expert nutrition guidance for optimal body composition and performance."
+        keywords="advanced macros calculator, professional macronutrient calculator, protein calculator, carbs calculator, keto macros calculator, high protein diet calculator, macro timing, nutrient partitioning, muscle building macros, weight loss macros, bodybuilding nutrition, macro cycling, diet optimization 2025"
         canonical="/macros"
         structuredData={{
           "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "Macros Calculator - Macronutrient Calculator",
-          "description": "Calculate your daily macronutrient needs with our free macros calculator. Get protein, carbs, and fat breakdown for your diet goals.",
-          "url": "https://bmicalculator.com/macros", 
-          "applicationCategory": "HealthApplication"
+          "@graph": [
+            {
+              "@type": "WebApplication",
+              "name": "Professional Macros Calculator - Advanced Macronutrient Calculator",
+              "description": "Comprehensive macronutrient calculator with scientific protein, carbs, and fat analysis, 8+ diet types, nutrient timing, and expert nutrition guidance.",
+              "url": "https://bmicalculator.com/macros",
+              "applicationCategory": "HealthApplication",
+              "operatingSystem": "Web Browser",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "featureList": [
+                "8+ Scientific Diet Types",
+                "Nutrient Timing Optimization", 
+                "Muscle Protein Synthesis Analysis",
+                "Meal Planning Integration",
+                "Professional Nutrition Guidance"
+              ]
+            },
+            {
+              "@type": "MedicalWebPage",
+              "name": "Macros Calculator - Professional Nutrition Tool",
+              "description": "Evidence-based macronutrient calculator with comprehensive diet analysis and professional recommendations for optimal health and performance.",
+              "medicalSpecialty": "Nutrition",
+              "audience": {
+                "@type": "MedicalAudience",
+                "audienceType": "Patient"
+              }
+            },
+            {
+              "@type": "HowTo",
+              "name": "How to Calculate Perfect Macronutrient Ratios",
+              "description": "Step-by-step guide to calculating optimal protein, carbohydrate, and fat ratios for your specific goals.",
+              "step": [
+                {
+                  "@type": "HowToStep",
+                  "name": "Determine Your Calorie Needs",
+                  "text": "Calculate your daily calorie requirements using our advanced calorie calculator based on your activity level and goals."
+                },
+                {
+                  "@type": "HowToStep", 
+                  "name": "Set Your Protein Target",
+                  "text": "Determine protein needs based on body weight, activity level, and goals (1.6-2.2g/kg for muscle building)."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Choose Your Diet Type",
+                  "text": "Select from 8+ evidence-based diet approaches (balanced, keto, high protein, etc.) based on your preferences and goals."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Optimize Meal Timing",
+                  "text": "Distribute macronutrients across meals with strategic timing around workouts for optimal results."
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "How much protein do I need for muscle building?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For muscle building, consume 1.6-2.2g/kg (0.73-1g/lb) of body weight daily. Distribute this across 4-6 meals with 20-40g per meal to optimize muscle protein synthesis."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Which macro ratio is best for weight loss?",
+                  "acceptedAnswer": {
+                    "@type": "Answer", 
+                    "text": "For weight loss, prioritize higher protein (30-40%) to preserve muscle and increase satiety. Distribute remaining calories between carbs and fats based on training needs and preferences."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Do I need to time my macronutrients around workouts?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "While total daily intake matters most, strategic timing can optimize performance and recovery. Include 20-40g protein and 0.5-1.2g/kg carbs within 2 hours post-workout for best results."
+                  }
+                }
+              ]
+            }
+          ]
         }}
       />
       <Header />
