@@ -204,8 +204,6 @@ const HomePage = () => {
 
   const getHeightPlaceholder = () => {
     switch(formData.heightUnit) {
-      case 'feet':
-        return 'e.g., 6.10 for 6\'10" or use separate fields below';
       case 'inches':
         return 'e.g., 70 for 70 inches';
       case 'cm':
