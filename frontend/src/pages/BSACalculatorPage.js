@@ -1397,7 +1397,7 @@ const BSACalculatorPage = () => {
                 </p>
               </Link>
             </div>
-          </Section>
+          </section>
         </div>
       </main>
       
