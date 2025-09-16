@@ -11,7 +11,24 @@ import {
   Facebook,
   Twitter,
   Instagram,
-  Youtube
+  Youtube,
+  Calculator,
+  Activity,
+  Baby,
+  Users,
+  Globe,
+  Brain,
+  User,
+  Ruler,
+  BarChart3,
+  Zap,
+  Utensils,
+  Dumbbell,
+  Droplets,
+  Pulse,
+  Flame,
+  Clock,
+  BookOpen
 } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
