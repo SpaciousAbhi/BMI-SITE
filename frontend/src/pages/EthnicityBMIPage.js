@@ -241,7 +241,7 @@ const EthnicityBMIPage = () => {
             'Different concepts of ideal body weight'
           ],
           specificRisks: [
-            'Diabetes risk increases at BMI >21',
+            'Diabetes risk increases at BMI &gt;21',
             'Heart disease risk significantly elevated',
             'Higher rates of metabolic syndrome',
             'Increased risk of gestational diabetes in women'
@@ -1361,7 +1361,7 @@ const EthnicityBMIPage = () => {
                           Type 2 Diabetes Risk
                         </h4>
                         <ul className={`space-y-2 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
-                          <li><strong>South Asians:</strong> Risk increases at BMI >21</li>
+                          <li><strong>South Asians:</strong> Risk increases at BMI &gt;21</li>
                           <li><strong>East Asians:</strong> Significant risk at BMI &gt;23</li>
                           <li><strong>Pacific Islanders:</strong> Risk threshold BMI >30</li>
                           <li><strong>Hispanics:</strong> Elevated risk at BMI >26</li>
@@ -1690,7 +1690,7 @@ const EthnicityBMIPage = () => {
                           population: 'South Asian Populations',
                           color: 'red',
                           strategies: [
-                            'Early diabetes screening starting at BMI >21',
+                            'Early diabetes screening starting at BMI &gt;21',
                             'Focus on reducing central adiposity through diet and exercise',
                             'Cultural food modifications (reduce refined grains, increase fiber)',
                             'Family-based interventions including extended family members',
@@ -1881,7 +1881,7 @@ const EthnicityBMIPage = () => {
                     {
                       category: 'populations',
                       question: 'Are ethnicity-adjusted BMI categories more accurate than standard BMI?',
-                      answer: 'Yes, for health risk assessment. Standard BMI was developed primarily from European populations and may misclassify risk in other ethnic groups. Ethnicity-adjusted BMI provides more accurate diabetes and cardiovascular disease risk prediction. For example, using adjusted categories, South Asians show diabetes risk at BMI >21, while standard BMI would miss early intervention opportunities.'
+                      answer: 'Yes, for health risk assessment. Standard BMI was developed primarily from European populations and may misclassify risk in other ethnic groups. Ethnicity-adjusted BMI provides more accurate diabetes and cardiovascular disease risk prediction. For example, using adjusted categories, South Asians show diabetes risk at BMI &gt;21, while standard BMI would miss early intervention opportunities.'
                     },
                     {
                       category: 'cultural',
@@ -1896,7 +1896,7 @@ const EthnicityBMIPage = () => {
                     {
                       category: 'prevention',
                       question: 'When should diabetes screening begin for different ethnic groups?',
-                      answer: 'Screening should begin earlier for high-risk ethnicities: South Asians at BMI >21 or age 25; East Asians at BMI &gt;23 or age 35; Native Americans regardless of BMI at age 25; Pacific Islanders at BMI >26; African Americans and Hispanics at BMI >25. Family history and other risk factors may warrant even earlier screening.'
+                      answer: 'Screening should begin earlier for high-risk ethnicities: South Asians at BMI &gt;21 or age 25; East Asians at BMI &gt;23 or age 35; Native Americans regardless of BMI at age 25; Pacific Islanders at BMI >26; African Americans and Hispanics at BMI >25. Family history and other risk factors may warrant even earlier screening.'
                     },
                     {
                       category: 'prevention',
