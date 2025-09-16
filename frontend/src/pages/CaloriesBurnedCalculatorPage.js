@@ -306,29 +306,29 @@ const CaloriesBurnedCalculatorPage = () => {
                   </p>
                 </div>
 
-                {/* Professional Calculator Form */}
-                <div className="grid lg:grid-cols-3 gap-8 mb-8">
-                  {/* Personal Information */}
-                  <div className={`p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg ${
+                {/* Professional Calculator Form - Mobile Optimized */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-8">
+                  {/* Personal Information - Optimized for Mobile */}
+                  <div className={`p-4 lg:p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg ${
                     theme === 'white' 
                       ? 'bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200 hover:border-blue-300' 
                       : 'bg-gradient-to-br from-blue-900/20 to-indigo-900/20 border-blue-500/30 hover:border-blue-400/50'
                   }`}>
-                    <div className="flex items-center mb-4">
+                    <div className="flex items-center mb-3 lg:mb-4">
                       <div className={`p-2 rounded-lg mr-3 ${
                         theme === 'white' ? 'bg-blue-600 text-white' : 'bg-blue-500 text-white'
                       }`}>
-                        <User className="h-5 w-5" />
+                        <User className="h-4 w-4 lg:h-5 lg:w-5" />
                       </div>
-                      <h3 className={`text-lg font-bold ${theme === 'white' ? 'text-gray-800' : 'text-white'}`}>
+                      <h3 className={`text-base lg:text-lg font-bold ${theme === 'white' ? 'text-gray-800' : 'text-white'}`}>
                         Personal Details
                       </h3>
                     </div>
                     
-                    {/* Advanced Weight Input */}
-                    <div className="space-y-3 mb-4">
-                      <Label className={`flex items-center text-sm font-semibold ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
-                        <BarChart3 className="h-4 w-4 mr-2" />
+                    {/* Mobile-Optimized Weight Input */}
+                    <div className="space-y-2 lg:space-y-3 mb-3 lg:mb-4">
+                      <Label className={`flex items-center text-xs lg:text-sm font-semibold ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                        <BarChart3 className="h-3 w-3 lg:h-4 lg:w-4 mr-2" />
                         Body Weight
                       </Label>
                       <div className="flex gap-2">
@@ -338,20 +338,20 @@ const CaloriesBurnedCalculatorPage = () => {
                             placeholder="Enter weight"
                             value={formData.weight}
                             onChange={(e) => handleInputChange('weight', e.target.value)}
-                            className={`text-lg font-semibold pr-12 transition-all duration-300 focus:ring-2 focus:ring-blue-500 ${
+                            className={`text-base lg:text-lg font-semibold pr-12 transition-all duration-300 focus:ring-2 focus:ring-blue-500 ${
                               theme === 'white' 
                                 ? 'bg-white border-2 border-gray-300 focus:border-blue-500' 
                                 : 'bg-gray-700 border-2 border-gray-600 text-white focus:border-blue-400'
                             }`}
                           />
-                          <div className={`absolute right-3 top-1/2 transform -translate-y-1/2 text-sm ${
+                          <div className={`absolute right-3 top-1/2 transform -translate-y-1/2 text-xs lg:text-sm ${
                             theme === 'white' ? 'text-gray-500' : 'text-gray-400'
                           }`}>
                             {formData.weightUnit}
                           </div>
                         </div>
                         <Select value={formData.weightUnit} onValueChange={(value) => handleInputChange('weightUnit', value)}>
-                          <SelectTrigger className={`w-28 text-sm font-semibold transition-all duration-300 ${
+                          <SelectTrigger className={`w-20 lg:w-28 text-xs lg:text-sm font-semibold transition-all duration-300 ${
                             theme === 'white' 
                               ? 'bg-white border-2 border-gray-300 hover:border-blue-400' 
                               : 'bg-gray-700 border-2 border-gray-600 text-white hover:border-blue-400'
@@ -360,22 +360,26 @@ const CaloriesBurnedCalculatorPage = () => {
                           </SelectTrigger>
                           <SelectContent className={theme === 'white' ? 'bg-white' : 'bg-gray-800 border-gray-600'}>
                             <SelectItem value="lbs" className="flex items-center">
-                              <span className="font-semibold">lbs</span>
-                              <span className="ml-2 text-xs text-gray-500">(pounds)</span>
+                              <div className="flex flex-col">
+                                <span className="font-semibold">lbs</span>
+                                <span className="text-xs text-gray-500 hidden lg:block">(pounds)</span>
+                              </div>
                             </SelectItem>
                             <SelectItem value="kg" className="flex items-center">
-                              <span className="font-semibold">kg</span>
-                              <span className="ml-2 text-xs text-gray-500">(kilograms)</span>
+                              <div className="flex flex-col">
+                                <span className="font-semibold">kg</span>
+                                <span className="text-xs text-gray-500 hidden lg:block">(kilograms)</span>
+                              </div>
                             </SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
                     </div>
 
-                    {/* Advanced Duration Input */}
-                    <div className="space-y-3">
-                      <Label className={`flex items-center text-sm font-semibold ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
-                        <Clock className="h-4 w-4 mr-2" />
+                    {/* Mobile-Optimized Duration Input */}
+                    <div className="space-y-2 lg:space-y-3">
+                      <Label className={`flex items-center text-xs lg:text-sm font-semibold ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                        <Clock className="h-3 w-3 lg:h-4 lg:w-4 mr-2" />
                         Exercise Duration
                       </Label>
                       <div className="flex gap-2">
@@ -385,20 +389,20 @@ const CaloriesBurnedCalculatorPage = () => {
                             placeholder="Duration"
                             value={formData.duration}
                             onChange={(e) => handleInputChange('duration', e.target.value)}
-                            className={`text-lg font-semibold pr-12 transition-all duration-300 focus:ring-2 focus:ring-blue-500 ${
+                            className={`text-base lg:text-lg font-semibold pr-12 transition-all duration-300 focus:ring-2 focus:ring-blue-500 ${
                               theme === 'white' 
                                 ? 'bg-white border-2 border-gray-300 focus:border-blue-500' 
                                 : 'bg-gray-700 border-2 border-gray-600 text-white focus:border-blue-400'
                             }`}
                           />
-                          <div className={`absolute right-3 top-1/2 transform -translate-y-1/2 text-sm ${
+                          <div className={`absolute right-3 top-1/2 transform -translate-y-1/2 text-xs lg:text-sm ${
                             theme === 'white' ? 'text-gray-500' : 'text-gray-400'
                           }`}>
                             {formData.durationUnit === 'minutes' ? 'min' : 'hrs'}
                           </div>
                         </div>
                         <Select value={formData.durationUnit} onValueChange={(value) => handleInputChange('durationUnit', value)}>
-                          <SelectTrigger className={`w-32 text-sm font-semibold transition-all duration-300 ${
+                          <SelectTrigger className={`w-24 lg:w-32 text-xs lg:text-sm font-semibold transition-all duration-300 ${
                             theme === 'white' 
                               ? 'bg-white border-2 border-gray-300 hover:border-blue-400' 
                               : 'bg-gray-700 border-2 border-gray-600 text-white hover:border-blue-400'
@@ -407,12 +411,16 @@ const CaloriesBurnedCalculatorPage = () => {
                           </SelectTrigger>
                           <SelectContent className={theme === 'white' ? 'bg-white' : 'bg-gray-800 border-gray-600'}>
                             <SelectItem value="minutes" className="flex items-center">
-                              <span className="font-semibold">Minutes</span>
-                              <span className="ml-2 text-xs text-gray-500">(min)</span>
+                              <div className="flex flex-col">
+                                <span className="font-semibold">Minutes</span>
+                                <span className="text-xs text-gray-500 hidden lg:block">(min)</span>
+                              </div>
                             </SelectItem>
                             <SelectItem value="hours" className="flex items-center">
-                              <span className="font-semibold">Hours</span>
-                              <span className="ml-2 text-xs text-gray-500">(hrs)</span>
+                              <div className="flex flex-col">
+                                <span className="font-semibold">Hours</span>
+                                <span className="text-xs text-gray-500 hidden lg:block">(hrs)</span>
+                              </div>
                             </SelectItem>
                           </SelectContent>
                         </Select>
@@ -420,27 +428,27 @@ const CaloriesBurnedCalculatorPage = () => {
                     </div>
                   </div>
 
-                  {/* Professional Activity Selector */}
-                  <div className={`p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg ${
+                  {/* Mobile-Optimized Activity Selector */}
+                  <div className={`p-4 lg:p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg ${
                     theme === 'white' 
                       ? 'bg-gradient-to-br from-orange-50 to-red-50 border-orange-200 hover:border-orange-300' 
                       : 'bg-gradient-to-br from-orange-900/20 to-red-900/20 border-orange-500/30 hover:border-orange-400/50'
                   }`}>
-                    <div className="flex items-center mb-4">
+                    <div className="flex items-center mb-3 lg:mb-4">
                       <div className={`p-2 rounded-lg mr-3 ${
                         theme === 'white' ? 'bg-orange-600 text-white' : 'bg-orange-500 text-white'
                       }`}>
-                        <Activity className="h-5 w-5" />
+                        <Activity className="h-4 w-4 lg:h-5 lg:w-5" />
                       </div>
-                      <h3 className={`text-lg font-bold ${theme === 'white' ? 'text-gray-800' : 'text-white'}`}>
+                      <h3 className={`text-base lg:text-lg font-bold ${theme === 'white' ? 'text-gray-800' : 'text-white'}`}>
                         Activity Selection
                       </h3>
                     </div>
                     
-                    {/* Professional Search Bar */}
-                    <div className="space-y-3 mb-4">
-                      <Label className={`flex items-center text-sm font-semibold ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
-                        <Search className="h-4 w-4 mr-2" />
+                    {/* Mobile-Optimized Search Bar */}
+                    <div className="space-y-2 lg:space-y-3 mb-3 lg:mb-4">
+                      <Label className={`flex items-center text-xs lg:text-sm font-semibold ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                        <Search className="h-3 w-3 lg:h-4 lg:w-4 mr-2" />
                         Find Your Activity
                       </Label>
                       <div className="relative">
@@ -461,20 +469,20 @@ const CaloriesBurnedCalculatorPage = () => {
                       </div>
                     </div>
 
-                    {/* Category Selector Dropdown */}
-                    <div className="space-y-3">
-                      <Label className={`flex items-center text-sm font-semibold ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
-                        <Target className="h-4 w-4 mr-2" />
+                    {/* Mobile-Optimized Category Selector */}
+                    <div className="space-y-2 lg:space-y-3">
+                      <Label className={`flex items-center text-xs lg:text-sm font-semibold ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                        <Target className="h-3 w-3 lg:h-4 lg:w-4 mr-2" />
                         Activity Category
                       </Label>
                       <Select value={formData.selectedCategory} onValueChange={(value) => handleCategoryChange(value)}>
-                        <SelectTrigger className={`w-full text-sm font-semibold transition-all duration-300 ${
+                        <SelectTrigger className={`w-full text-xs lg:text-sm font-semibold transition-all duration-300 ${
                           theme === 'white' 
                             ? 'bg-white border-2 border-gray-300 hover:border-orange-400' 
                             : 'bg-gray-700 border-2 border-gray-600 text-white hover:border-orange-400'
                         }`}>
                           <div className="flex items-center">
-                            <span className="text-lg mr-2">
+                            <span className="text-base lg:text-lg mr-2">
                               {categories.find(cat => cat.id === formData.selectedCategory)?.icon}
                             </span>
                             <SelectValue />
@@ -482,12 +490,12 @@ const CaloriesBurnedCalculatorPage = () => {
                         </SelectTrigger>
                         <SelectContent className={theme === 'white' ? 'bg-white' : 'bg-gray-800 border-gray-600'}>
                           {categories.map(category => (
-                            <SelectItem key={category.id} value={category.id} className="flex items-center py-3">
+                            <SelectItem key={category.id} value={category.id} className="flex items-center py-2 lg:py-3">
                               <div className="flex items-center">
-                                <span className="text-lg mr-3">{category.icon}</span>
+                                <span className="text-base lg:text-lg mr-2 lg:mr-3">{category.icon}</span>
                                 <div>
-                                  <div className="font-semibold">{category.name}</div>
-                                  <div className="text-xs text-gray-500">{category.description}</div>
+                                  <div className="font-semibold text-sm lg:text-base">{category.name}</div>
+                                  <div className="text-xs text-gray-500 hidden lg:block">{category.description}</div>
                                 </div>
                               </div>
                             </SelectItem>
@@ -497,34 +505,34 @@ const CaloriesBurnedCalculatorPage = () => {
                     </div>
                   </div>
 
-                  {/* Selected Activity Display & Controls */}
-                  <div className={`p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg ${
+                  {/* Mobile-Optimized Selected Activity Display & Controls */}
+                  <div className={`p-4 lg:p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg ${
                     theme === 'white' 
                       ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-200 hover:border-green-300' 
                       : 'bg-gradient-to-br from-green-900/20 to-emerald-900/20 border-green-500/30 hover:border-green-400/50'
                   }`}>
-                    <div className="flex items-center mb-4">
+                    <div className="flex items-center mb-3 lg:mb-4">
                       <div className={`p-2 rounded-lg mr-3 ${
                         theme === 'white' ? 'bg-green-600 text-white' : 'bg-green-500 text-white'
                       }`}>
-                        <CheckCircle className="h-5 w-5" />
+                        <CheckCircle className="h-4 w-4 lg:h-5 lg:w-5" />
                       </div>
-                      <h3 className={`text-lg font-bold ${theme === 'white' ? 'text-gray-800' : 'text-white'}`}>
+                      <h3 className={`text-base lg:text-lg font-bold ${theme === 'white' ? 'text-gray-800' : 'text-white'}`}>
                         Selected Activity
                       </h3>
                     </div>
 
                     {formData.selectedActivity ? (
-                      <div className={`p-4 rounded-lg border-2 mb-4 ${
+                      <div className={`p-3 lg:p-4 rounded-lg border-2 mb-3 lg:mb-4 ${
                         theme === 'white' 
                           ? 'bg-white border-green-200' 
                           : 'bg-gray-800 border-green-500/50'
                       }`}>
                         <div className="flex items-center justify-between mb-2">
-                          <div className={`font-bold text-lg ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                          <div className={`font-bold text-sm lg:text-lg ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
                             {formData.selectedActivity.name}
                           </div>
-                          <Badge className={`${
+                          <Badge className={`text-xs px-2 py-1 ${
                             formData.selectedActivity.intensity === 'High' || formData.selectedActivity.intensity === 'Very High'
                               ? 'bg-red-500 hover:bg-red-600'
                               : formData.selectedActivity.intensity === 'Moderate'
@@ -534,42 +542,42 @@ const CaloriesBurnedCalculatorPage = () => {
                             {formData.selectedActivity.intensity}
                           </Badge>
                         </div>
-                        <div className={`flex items-center space-x-4 text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                        <div className={`flex items-center space-x-2 lg:space-x-4 text-xs lg:text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
                           <div className="flex items-center">
-                            <Flame className="h-4 w-4 mr-1 text-orange-500" />
+                            <Flame className="h-3 w-3 lg:h-4 lg:w-4 mr-1 text-orange-500" />
                             <span className="font-semibold">MET: {formData.selectedActivity.met}</span>
                           </div>
                           <div className="flex items-center">
-                            <TrendingUp className="h-4 w-4 mr-1 text-blue-500" />
+                            <TrendingUp className="h-3 w-3 lg:h-4 lg:w-4 mr-1 text-blue-500" />
                             <span className="font-semibold">Professional Grade</span>
                           </div>
                         </div>
                       </div>
                     ) : (
-                      <div className={`p-4 rounded-lg border-2 border-dashed mb-4 text-center ${
+                      <div className={`p-3 lg:p-4 rounded-lg border-2 border-dashed mb-3 lg:mb-4 text-center ${
                         theme === 'white' 
                           ? 'border-gray-300 bg-gray-50' 
                           : 'border-gray-600 bg-gray-800/50'
                       }`}>
-                        <Activity className={`h-8 w-8 mx-auto mb-2 ${theme === 'white' ? 'text-gray-400' : 'text-gray-500'}`} />
-                        <p className={`text-sm ${theme === 'white' ? 'text-gray-500' : 'text-gray-400'}`}>
+                        <Activity className={`h-6 w-6 lg:h-8 lg:w-8 mx-auto mb-2 ${theme === 'white' ? 'text-gray-400' : 'text-gray-500'}`} />
+                        <p className={`text-xs lg:text-sm ${theme === 'white' ? 'text-gray-500' : 'text-gray-400'}`}>
                           Select an activity to continue
                         </p>
                       </div>
                     )}
 
-                    {/* Action Buttons */}
-                    <div className="space-y-3">
+                    {/* Mobile-Optimized Action Buttons */}
+                    <div className="space-y-2 lg:space-y-3">
                       <Button
                         onClick={calculateCalories}
                         disabled={!formData.weight || !formData.duration || !formData.selectedActivity}
-                        className={`w-full py-3 text-lg font-bold transition-all duration-300 transform hover:scale-105 disabled:transform-none ${
+                        className={`w-full py-2 lg:py-3 text-sm lg:text-lg font-bold transition-all duration-300 transform hover:scale-105 disabled:transform-none ${
                           !formData.weight || !formData.duration || !formData.selectedActivity
                             ? 'bg-gray-400 cursor-not-allowed'
                             : 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg hover:shadow-xl'
                         }`}
                       >
-                        <Calculator className="h-5 w-5 mr-2" />
+                        <Calculator className="h-4 w-4 lg:h-5 lg:w-5 mr-2" />
                         Calculate Calories
                       </Button>
                       
