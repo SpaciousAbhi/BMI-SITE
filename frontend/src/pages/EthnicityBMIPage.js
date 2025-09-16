@@ -51,6 +51,21 @@ const EthnicityBMIPage = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
+  const toggleSection = (section) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
+
+  const scrollToSection = (sectionId) => {
+    setActiveNavSection(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const getHeightInCm = () => {
     if (formData.heightUnit === 'cm') {
       return parseFloat(formData.height);
