@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calculator, Target, User, Zap, ArrowLeft, Download, X, Utensils, Info } from 'lucide-react';
+import { Calculator, Target, User, Zap, ArrowLeft, Download, X, Utensils, Info, ChevronDown, ChevronRight, Heart, Brain, Activity, TrendingUp, Clock, Dumbbell } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Input } from '../components/ui/input';
