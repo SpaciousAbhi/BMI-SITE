@@ -559,7 +559,7 @@ const WaistHeightRatioPage = () => {
                     'text-emerald-400'
                   }`} />
                   WHR Calculator
-                </Target>
+                </CardTitle>
                 <Badge className={`w-fit ${
                   theme === 'white' ? 'bg-emerald-100 text-emerald-800' :
                   theme === 'dark' ? 'bg-emerald-900/50 text-emerald-200' :
