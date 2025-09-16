@@ -1641,7 +1641,7 @@ const PregnancyBMIPage = () => {
                     {
                       category: 'complications',
                       question: 'What are the risks of gaining too little weight?',
-                      answer: 'Insufficient weight gain increases risks of: Low birth weight (<2500g); Preterm birth; Intrauterine growth restriction; Neural tube defects; Maternal nutritional deficiencies; Breastfeeding difficulties. Adequate nutrition is essential for optimal fetal development.'
+                      answer: 'Insufficient weight gain increases risks of: Low birth weight (&lt;2500g); Preterm birth; Intrauterine growth restriction; Neural tube defects; Maternal nutritional deficiencies; Breastfeeding difficulties. Adequate nutrition is essential for optimal fetal development.'
                     },
                     {
                       category: 'complications',
