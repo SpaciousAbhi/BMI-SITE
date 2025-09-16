@@ -569,22 +569,75 @@ const MacrosPage = () => {
             Calculate your ideal macronutrient breakdown (protein, carbs, fats) based on your goals and diet type.
           </p>
           
-          {/* Diet Types Preview */}
+          {/* Professional Badges */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            <Badge variant="secondary" className={`px-4 py-2 text-sm font-medium ${
+              theme === 'white' ? 'bg-teal-100 text-teal-800' :
+              theme === 'dark' ? 'bg-purple-900/50 text-purple-200' :
+              'bg-green-900/50 text-green-200'
+            }`}>
+              🧬 8+ Scientific Diet Types
+            </Badge>
+            <Badge variant="secondary" className={`px-4 py-2 text-sm font-medium ${
+              theme === 'white' ? 'bg-blue-100 text-blue-800' :
+              theme === 'dark' ? 'bg-blue-900/50 text-blue-200' :
+              'bg-blue-900/50 text-blue-200'
+            }`}>
+              ⏰ Nutrient Timing Science
+            </Badge>
+            <Badge variant="secondary" className={`px-4 py-2 text-sm font-medium ${
+              theme === 'white' ? 'bg-green-100 text-green-800' :
+              theme === 'dark' ? 'bg-green-900/50 text-green-200' :
+              'bg-green-900/50 text-green-200'
+            }`}>
+              💪 Muscle Protein Synthesis
+            </Badge>
+            <Badge variant="secondary" className={`px-4 py-2 text-sm font-medium ${
+              theme === 'white' ? 'bg-orange-100 text-orange-800' :
+              theme === 'dark' ? 'bg-orange-900/50 text-orange-200' :
+              'bg-orange-900/50 text-orange-200'
+            }`}>
+              🎯 Goal-Specific Optimization
+            </Badge>
+          </div>
+
+          {/* Quick Navigation */}
           <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {getDietTypes().slice(0, 4).map((diet, index) => (
-              <Badge 
-                key={diet.type}
-                variant="secondary" 
-                className={`px-3 py-1 text-xs font-medium transition-all duration-500 transform hover:scale-105 animate-slide-in ${
-                  theme === 'white' ? 'bg-teal-100 text-teal-800' :
-                  theme === 'dark' ? 'bg-purple-900/50 text-purple-200' :
-                  'bg-green-900/50 text-green-200'
-                }`}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {diet.emoji} {diet.title}
-              </Badge>
-            ))}
+            <a href="#calculator" className={`text-xs px-3 py-1 rounded-full transition-all duration-300 hover:scale-105 ${
+              theme === 'white' ? 'bg-white/50 text-teal-700 hover:bg-white/70' :
+              theme === 'dark' ? 'bg-purple-900/30 text-purple-300 hover:bg-purple-900/50' :
+              'bg-green-900/30 text-green-300 hover:bg-green-900/50'
+            }`}>
+              Calculator
+            </a>
+            <a href="#science" className={`text-xs px-3 py-1 rounded-full transition-all duration-300 hover:scale-105 ${
+              theme === 'white' ? 'bg-white/50 text-teal-700 hover:bg-white/70' :
+              theme === 'dark' ? 'bg-purple-900/30 text-purple-300 hover:bg-purple-900/50' :
+              'bg-green-900/30 text-green-300 hover:bg-green-900/50'
+            }`}>
+              Macro Science
+            </a>
+            <a href="#diets" className={`text-xs px-3 py-1 rounded-full transition-all duration-300 hover:scale-105 ${
+              theme === 'white' ? 'bg-white/50 text-teal-700 hover:bg-white/70' :
+              theme === 'dark' ? 'bg-purple-900/30 text-purple-300 hover:bg-purple-900/50' :
+              'bg-green-900/30 text-green-300 hover:bg-green-900/50'
+            }`}>
+              Diet Types
+            </a>
+            <a href="#timing" className={`text-xs px-3 py-1 rounded-full transition-all duration-300 hover:scale-105 ${
+              theme === 'white' ? 'bg-white/50 text-teal-700 hover:bg-white/70' :
+              theme === 'dark' ? 'bg-purple-900/30 text-purple-300 hover:bg-purple-900/50' :
+              'bg-green-900/30 text-green-300 hover:bg-green-900/50'
+            }`}>
+              Nutrient Timing
+            </a>
+            <a href="#faq" className={`text-xs px-3 py-1 rounded-full transition-all duration-300 hover:scale-105 ${
+              theme === 'white' ? 'bg-white/50 text-teal-700 hover:bg-white/70' :
+              theme === 'dark' ? 'bg-purple-900/30 text-purple-300 hover:bg-purple-900/50' :
+              'bg-green-900/30 text-green-300 hover:bg-green-900/50'
+            }`}>
+              Expert FAQ
+            </a>
           </div>
         </div>
 
