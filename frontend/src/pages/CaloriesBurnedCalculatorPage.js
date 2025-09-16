@@ -30,6 +30,73 @@ const CaloriesBurnedCalculatorPage = () => {
   const [result, setResult] = useState(null);
   const [showDetails, setShowDetails] = useState(false);
 
+  // Simplified popular activities with MET values
+  const popularActivities = [
+    { name: 'Walking (3 mph)', met: 3.5, intensity: 'Light' },
+    { name: 'Walking (4 mph)', met: 5.0, intensity: 'Moderate' },
+    { name: 'Jogging (5 mph)', met: 8.0, intensity: 'Moderate' },
+    { name: 'Running (6 mph)', met: 10.0, intensity: 'High' },
+    { name: 'Running (7 mph)', met: 11.5, intensity: 'High' },
+    { name: 'Running (8 mph)', met: 13.5, intensity: 'Very High' },
+    { name: 'Cycling (10-12 mph)', met: 6.0, intensity: 'Moderate' },
+    { name: 'Cycling (12-14 mph)', met: 8.0, intensity: 'Moderate' },
+    { name: 'Cycling (14-16 mph)', met: 10.0, intensity: 'High' },
+    { name: 'Swimming (moderate)', met: 6.0, intensity: 'Moderate' },
+    { name: 'Swimming (vigorous)', met: 10.0, intensity: 'High' },
+    { name: 'Weight Training', met: 6.0, intensity: 'Moderate' },
+    { name: 'Basketball', met: 8.0, intensity: 'High' },
+    { name: 'Soccer', met: 10.0, intensity: 'High' },
+    { name: 'Tennis', met: 8.0, intensity: 'High' },
+    { name: 'Dancing', met: 4.5, intensity: 'Moderate' },
+    { name: 'Hiking', met: 6.0, intensity: 'Moderate' },
+    { name: 'Yoga', met: 3.0, intensity: 'Light' },
+    { name: 'Elliptical', met: 7.0, intensity: 'Moderate' },
+    { name: 'Rowing Machine', met: 8.5, intensity: 'High' }
+  ];
+
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const calculateCalories = () => {
+    if (!formData.weight || !formData.duration || !formData.selectedActivity) return;
+
+    const activity = popularActivities.find(a => a.name === formData.selectedActivity);
+    if (!activity) return;
+
+    // Convert weight to kg if needed
+    const weightInKg = formData.weightUnit === 'lbs' 
+      ? parseFloat(formData.weight) * 0.453592 
+      : parseFloat(formData.weight);
+
+    // Calculate calories: MET × weight in kg × time in hours
+    const durationInHours = parseFloat(formData.duration) / 60;
+    const totalCalories = Math.round(activity.met * weightInKg * durationInHours);
+    const caloriesPerMinute = Math.round(totalCalories / parseFloat(formData.duration));
+
+    setResult({
+      calories: totalCalories,
+      caloriesPerMinute: caloriesPerMinute,
+      activity: activity.name,
+      intensity: activity.intensity,
+      met: activity.met,
+      duration: formData.duration,
+      weight: formData.weight,
+      weightUnit: formData.weightUnit
+    });
+  };
+
+  const clearForm = () => {
+    setFormData({
+      weight: '',
+      weightUnit: 'lbs',
+      duration: '',
+      selectedActivity: ''
+    });
+    setResult(null);
+    setShowDetails(false);
+  };
+
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
