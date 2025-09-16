@@ -15,6 +15,7 @@ import {
   Timer, 
   Activity,
   User,
+  Users,
   TrendingUp,
   Target,
   Zap,
