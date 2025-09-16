@@ -43,39 +43,63 @@ const Header = () => {
   const location = useLocation();
   const themeConfig = getThemeConfig();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
-  const calculatorsNavItems = [
-    { path: '/', label: 'BMI Calculator', icon: Calculator },
-    { path: '/athletes-bmi', label: 'BMI for Athletes', icon: Activity },
-    { path: '/body-fat', label: 'Body Fat Calculator', icon: Target },
-    { path: '/calories', label: 'Calorie Calculator', icon: Zap },
-    { path: '/macros', label: 'Macro Calculator', icon: Utensils },
-    { path: '/pregnancy-bmi', label: 'Pregnancy BMI', icon: Heart },
-    { path: '/senior-bmi', label: 'Senior BMI', icon: Shield },
-    { path: '/ethnicity-bmi', label: 'Ethnicity-Adjusted BMI', icon: Activity },
+  // BMI & Body Analysis Calculators
+  const bmiCalculators = [
+    { path: '/', label: 'BMI Calculator', icon: Calculator, description: 'Calculate Body Mass Index' },
+    { path: '/athletes-bmi', label: 'BMI for Athletes', icon: Activity, description: 'Sports-specific BMI analysis' },
+    { path: '/pregnancy-bmi', label: 'Pregnancy BMI', icon: Baby, description: 'Safe weight gain during pregnancy' },
+    { path: '/senior-bmi', label: 'Senior BMI (65+)', icon: Users, description: 'Age-adjusted BMI for seniors' },
+    { path: '/ethnicity-bmi', label: 'Ethnicity-Adjusted BMI', icon: Globe, description: 'Culturally-aware BMI calculations' },
+    { path: '/bmi-for-children', label: 'BMI for Children & Teens', icon: User, description: 'Pediatric BMI percentiles' },
+    { path: '/smart-bmi', label: 'Smart BMI Calculator', icon: Brain, description: 'AI-powered BMI insights' },
   ];
 
-  const toolsNavItems = [
-    { path: '/history', label: 'Progress Tracking', icon: History },
-    { path: '/goals', label: 'Goal Setting', icon: Target },
-    { path: '/workout', label: 'Workout Plans', icon: Dumbbell },
+  // Body Composition Tools
+  const bodyCompositionTools = [
+    { path: '/body-fat', label: 'Body Fat Calculator', icon: Target, description: 'US Navy Method body fat analysis' },
+    { path: '/ideal-weight', label: 'Ideal Weight Calculator', icon: Scale, description: 'Calculate your ideal weight range' },
+    { path: '/waist-height-ratio', label: 'Waist-to-Height Ratio', icon: Ruler, description: 'Better than BMI for health risks' },
+    { path: '/body-surface-area', label: 'Body Surface Area (BSA)', icon: BarChart3, description: 'Medical-grade BSA calculations' },
   ];
 
-  const healthResourcesItems = [
-    { path: '/about-bmi', label: 'About BMI', icon: BookOpen },
-    { path: '/blog', label: 'Health Blog', icon: BookOpen },
-    { path: '/health-tips', label: 'Health Tips', icon: Heart },
-    { path: '/nutrition-guide', label: 'Nutrition Guide', icon: BookOpen },
-    { path: '/bmi-blog', label: 'BMI Blog', icon: BookOpen },
+  // Nutrition & Diet Tools
+  const nutritionTools = [
+    { path: '/calories', label: 'TDEE & BMR Calculator', icon: Zap, description: 'Daily calorie needs calculation' },
+    { path: '/macros', label: 'Macro Calculator', icon: Utensils, description: 'Protein, carbs, and fat breakdown' },
+    { path: '/protein-calculator', label: 'Protein Calculator', icon: Dumbbell, description: 'Daily protein intake needs' },
+    { path: '/water-calculator', label: 'Water Calculator', icon: Droplets, description: 'Daily hydration requirements' },
   ];
 
-  const legalItems = [
-    { path: '/privacy-policy', label: 'Privacy Policy', icon: Shield },
-    { path: '/terms-of-service', label: 'Terms of Service', icon: Shield },
-    { path: '/contact', label: 'Contact Us', icon: Mail },
+  // Fitness & Health Tools
+  const fitnessTools = [
+    { path: '/heart-rate-calculator', label: 'Heart Rate Calculator', icon: Pulse, description: 'Training zones and max HR' },
+    { path: '/calories-burned-calculator', label: 'Calories Burned', icon: Flame, description: '200+ activities calorie burn' },
+    { path: '/fasting-planner', label: 'Fasting Planner', icon: Clock, description: 'Intermittent fasting schedules' },
   ];
 
-  const allNavItems = [...calculatorsNavItems, ...toolsNavItems, ...healthResourcesItems, ...legalItems];
+  // Health Management Tools
+  const healthTools = [
+    { path: '/history', label: 'Progress Tracking', icon: TrendingUp, description: 'Track your health journey' },
+    { path: '/goals', label: 'Goal Setting', icon: Target, description: 'Set and achieve health goals' },
+    { path: '/workout', label: 'Workout Plans', icon: Dumbbell, description: 'Personalized exercise routines' },
+  ];
+
+  // Health Resources
+  const healthResources = [
+    { path: '/blog', label: 'Health Blog', icon: BookOpen, description: 'Expert health articles' },
+    { path: '/about-bmi', label: 'About BMI', icon: FileText, description: 'Complete BMI guide' },
+    { path: '/health-tips', label: 'Health Tips', icon: Heart, description: 'Daily wellness advice' },
+    { path: '/nutrition-guide', label: 'Nutrition Guide', icon: BookOpen, description: 'Comprehensive nutrition info' },
+  ];
+
+  const calculatorCategories = [
+    { title: 'BMI & Body Analysis', items: bmiCalculators, icon: Calculator },
+    { title: 'Body Composition', items: bodyCompositionTools, icon: Target },
+    { title: 'Nutrition & Diet', items: nutritionTools, icon: Utensils },
+    { title: 'Fitness & Health', items: fitnessTools, icon: Heart },
+  ];
 
   const getThemeIcon = () => {
     switch(theme) {
