@@ -530,7 +530,7 @@ const WaistHeightRatioPage = () => {
                       <p className={`text-sm font-medium ${
                         theme === 'white' ? 'text-orange-800' : 'text-orange-300'
                       }`}>
-                        Ratio < 0.5 = Healthy • Ratio ≥ 0.5 = Increased Risk
+                        Ratio &lt; 0.5 = Healthy • Ratio ≥ 0.5 = Increased Risk
                       </p>
                     </div>
                   </div>
