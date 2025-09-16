@@ -969,7 +969,7 @@ const PregnancyBMIPage = () => {
                             <ul className="space-y-1">
                               <li>• Gestational diabetes: 2-3x increased risk</li>
                               <li>• Preeclampsia: 2x increased risk</li>
-                              <li>• Macrosomia (>4000g): 3x increased risk</li>
+                              <li>• Macrosomia (&gt;4000g): 3x increased risk</li>
                               <li>• Cesarean delivery: 1.5x increased risk</li>
                               <li>• Postpartum weight retention</li>
                             </ul>
