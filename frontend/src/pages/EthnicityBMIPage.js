@@ -1377,7 +1377,7 @@ const EthnicityBMIPage = () => {
                         </h4>
                         <ul className={`space-y-2 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
                           <li><strong>South Asians:</strong> Risk elevation at BMI &gt;22</li>
-                          <li><strong>East Asians:</strong> Cardiovascular risk at BMI >24</li>
+                          <li><strong>East Asians:</strong> Cardiovascular risk at BMI &gt;24</li>
                           <li><strong>Middle Eastern:</strong> Risk increases at BMI &gt;26</li>
                           <li><strong>African Americans:</strong> Complex relationship, protective effects noted</li>
                           <li><strong>Pacific Islanders:</strong> Traditional lifestyle protective up to BMI 32</li>
@@ -1392,7 +1392,7 @@ const EthnicityBMIPage = () => {
                         </h4>
                         <ul className={`space-y-2 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
                           <li><strong>South Asians:</strong> High prevalence at BMI &gt;23</li>
-                          <li><strong>East Asians:</strong> Components present at BMI >24</li>
+                          <li><strong>East Asians:</strong> Components present at BMI &gt;24</li>
                           <li><strong>Hispanics:</strong> Insulin resistance at BMI &gt;25</li>
                           <li><strong>African Americans:</strong> Different component patterns</li>
                           <li><strong>Caucasians:</strong> Standard definitions apply</li>
