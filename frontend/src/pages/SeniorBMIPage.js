@@ -373,9 +373,16 @@ const SeniorBMIPage = () => {
             Specialized <strong>BMI calculator for seniors aged 65+</strong> with age-adjusted categories and health recommendations tailored for older adults.
           </p>
           
-          {/* Feature badges */}
+          {/* Professional Feature badges */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {['Age-Adjusted BMI', 'Senior Health Focus', 'Muscle Mass Considerations', 'Longevity Insights'].map((feature, index) => (
+            {[
+              'Geriatric Health Expertise',
+              'Age-Adjusted BMI Categories', 
+              'Sarcopenia Prevention',
+              'Chronic Disease Management',
+              'Longevity Optimization',
+              'Cognitive Health Integration'
+            ].map((feature, index) => (
               <Badge 
                 key={feature}
                 variant="secondary" 
@@ -389,6 +396,43 @@ const SeniorBMIPage = () => {
                 {feature}
               </Badge>
             ))}
+          </div>
+
+          {/* Quick Navigation */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {[
+              { id: 'aging', label: 'Aging Science', icon: BookOpen },
+              { id: 'sarcopenia', label: 'Muscle Health', icon: Activity },
+              { id: 'cognitive', label: 'Brain Health', icon: Brain },
+              { id: 'management', label: 'Health Management', icon: Shield }
+            ].map((nav, index) => {
+              const Icon = nav.icon;
+              return (
+                <Button
+                  key={nav.id}
+                  variant="outline"
+                  size="sm"
+                  onClick={() => scrollToSection(nav.id)}
+                  className={`transition-all duration-300 hover:scale-105 animate-slide-in ${
+                    activeNavSection === nav.id
+                      ? theme === 'white'
+                        ? 'bg-indigo-100 text-indigo-800 border-indigo-300'
+                        : theme === 'dark'
+                        ? 'bg-purple-900/50 text-purple-200 border-purple-500/50'
+                        : 'bg-green-900/50 text-green-200 border-green-500/50'
+                      : theme === 'white' 
+                        ? 'bg-white/80 text-gray-700 border-indigo-200/50 hover:bg-indigo-50'
+                        : theme === 'dark'
+                        ? 'bg-gray-800/80 text-gray-300 border-purple-500/30 hover:bg-purple-900/30'
+                        : 'bg-black/80 text-gray-300 border-green-500/30 hover:bg-green-900/30'
+                  }`}
+                  style={{ animationDelay: `${400 + index * 100}ms` }}
+                >
+                  <Icon className="h-4 w-4 mr-2" />
+                  {nav.label}
+                </Button>
+              );
+            })}
           </div>
         </div>
 
