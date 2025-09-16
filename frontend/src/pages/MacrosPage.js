@@ -38,6 +38,14 @@ const MacrosPage = () => {
   
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [expandedSections, setExpandedSections] = useState({});
+
+  const toggleSection = (sectionId) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [sectionId]: !prev[sectionId]
+    }));
+  };
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
