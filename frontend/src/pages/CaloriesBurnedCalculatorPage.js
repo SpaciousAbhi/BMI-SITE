@@ -588,83 +588,167 @@ const CaloriesBurnedCalculatorPage = () => {
                   </div>
                 </div>
 
-                {/* Search Results */}
-                {searchTerm && (
+                {/* Professional Activity Browser */}
+                {!searchTerm && (
                   <div className="mb-8">
-                    <h4 className={`font-semibold mb-4 ${theme === 'white' ? 'text-gray-800' : 'text-gray-200'}`}>
-                      Search Results ({searchActivities().length} found)
-                    </h4>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-60 overflow-y-auto">
-                      {searchActivities().map((activity, index) => (
-                        <Button
-                          key={index}
-                          variant="outline"
-                          onClick={() => handleActivitySelect(activity)}
-                          className={`text-left justify-start h-auto p-3 ${
-                            formData.selectedActivity?.name === activity.name
-                              ? 'ring-2 ring-orange-500 bg-orange-50'
-                              : ''
-                          }`}
-                        >
-                          <div>
-                            <div className="font-medium">{activity.name}</div>
-                            <div className="text-xs text-gray-500">
-                              MET: {activity.met} | {activity.intensity}
+                    <div className="text-center mb-6">
+                      <h4 className={`text-xl font-bold mb-2 ${theme === 'white' ? 'text-gray-800' : 'text-white'}`}>
+                        Professional Activity Database
+                      </h4>
+                      <p className={`text-sm ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                        Browse 200+ activities organized by category with scientific MET values
+                      </p>
+                    </div>
+                    
+                    {/* Enhanced Activities Grid */}
+                    <div className={`p-6 rounded-xl border-2 ${
+                      theme === 'white' 
+                        ? 'bg-gradient-to-br from-gray-50 to-slate-50 border-gray-200' 
+                        : 'bg-gradient-to-br from-gray-800/50 to-slate-800/50 border-gray-600/50'
+                    }`}>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-80 overflow-y-auto">
+                        {getFilteredActivities(formData.selectedCategory).map((activity, index) => (
+                          <div
+                            key={index}
+                            onClick={() => handleActivitySelect(activity)}
+                            className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-lg ${
+                              formData.selectedActivity?.name === activity.name
+                                ? theme === 'white'
+                                  ? 'border-green-500 bg-green-50 shadow-lg'
+                                  : 'border-green-400 bg-green-900/30 shadow-lg'
+                                : theme === 'white'
+                                ? 'border-gray-200 bg-white hover:border-orange-300 hover:bg-orange-50'
+                                : 'border-gray-600 bg-gray-700 hover:border-orange-400 hover:bg-orange-900/20'
+                            }`}
+                          >
+                            <div className="flex items-center justify-between mb-2">
+                              <div className={`font-semibold text-sm ${
+                                formData.selectedActivity?.name === activity.name
+                                  ? theme === 'white' ? 'text-green-800' : 'text-green-200'
+                                  : theme === 'white' ? 'text-gray-900' : 'text-white'
+                              }`}>
+                                {activity.name}
+                              </div>
+                              {formData.selectedActivity?.name === activity.name && (
+                                <CheckCircle className="h-5 w-5 text-green-500" />
+                              )}
                             </div>
+                            
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center space-x-3">
+                                <div className="flex items-center">
+                                  <Flame className="h-3 w-3 mr-1 text-orange-500" />
+                                  <span className={`text-xs font-semibold ${
+                                    theme === 'white' ? 'text-gray-600' : 'text-gray-300'
+                                  }`}>
+                                    MET {activity.met}
+                                  </span>
+                                </div>
+                                <Badge className={`text-xs px-2 py-1 ${
+                                  activity.intensity === 'High' || activity.intensity === 'Very High'
+                                    ? 'bg-red-100 text-red-800 hover:bg-red-200'
+                                    : activity.intensity === 'Moderate'
+                                    ? 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200'
+                                    : 'bg-green-100 text-green-800 hover:bg-green-200'
+                                }`}>
+                                  {activity.intensity}
+                                </Badge>
+                              </div>
+                            </div>
+                            
+                            {/* Estimated calorie preview */}
+                            {formData.weight && formData.duration && (
+                              <div className={`mt-2 pt-2 border-t text-xs ${
+                                theme === 'white' ? 'border-gray-200 text-gray-500' : 'border-gray-600 text-gray-400'
+                              }`}>
+                                ≈ {Math.round(activity.met * parseFloat(formData.weight) * 0.453592 * parseFloat(formData.duration) / (formData.durationUnit === 'hours' ? 1 : 60))} calories
+                              </div>
+                            )}
                           </div>
-                        </Button>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
 
-                {/* Activity Categories */}
-                {!searchTerm && (
+                {/* Enhanced Search Results */}
+                {searchTerm && (
                   <div className="mb-8">
-                    <h4 className={`font-semibold mb-4 ${theme === 'white' ? 'text-gray-800' : 'text-gray-200'}`}>
-                      Browse by Category
-                    </h4>
-                    
-                    {/* Category Tabs */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {categories.map(category => (
-                        <Button
-                          key={category.id}
-                          variant={formData.selectedCategory === category.id ? "default" : "outline"}
-                          onClick={() => handleCategoryChange(category.id)}
-                          className={`${
-                            formData.selectedCategory === category.id
-                              ? 'bg-orange-600 hover:bg-orange-700 text-white'
-                              : ''
-                          }`}
-                        >
-                          <span className="mr-2">{category.icon}</span>
-                          {category.name}
-                        </Button>
-                      ))}
+                    <div className="flex items-center justify-between mb-4">
+                      <h4 className={`text-lg font-bold ${theme === 'white' ? 'text-gray-800' : 'text-white'}`}>
+                        Search Results
+                      </h4>
+                      <Badge className="bg-blue-100 text-blue-800 px-3 py-1">
+                        {searchActivities().length} activities found
+                      </Badge>
                     </div>
-
-                    {/* Activities in Selected Category */}
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-                      {getFilteredActivities(formData.selectedCategory).map((activity, index) => (
-                        <Button
-                          key={index}
-                          variant="outline"
-                          onClick={() => handleActivitySelect(activity)}
-                          className={`text-left justify-start h-auto p-3 ${
-                            formData.selectedActivity?.name === activity.name
-                              ? 'ring-2 ring-orange-500 bg-orange-50'
-                              : ''
-                          }`}
-                        >
-                          <div>
-                            <div className="font-medium">{activity.name}</div>
-                            <div className="text-xs text-gray-500">
-                              MET: {activity.met} | {activity.intensity}
+                    
+                    <div className={`p-6 rounded-xl border-2 ${
+                      theme === 'white' 
+                        ? 'bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200' 
+                        : 'bg-gradient-to-br from-blue-900/20 to-indigo-900/20 border-blue-500/30'
+                    }`}>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-h-80 overflow-y-auto">
+                        {searchActivities().map((activity, index) => (
+                          <div
+                            key={index}
+                            onClick={() => handleActivitySelect(activity)}
+                            className={`p-4 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-lg ${
+                              formData.selectedActivity?.name === activity.name
+                                ? theme === 'white'
+                                  ? 'border-green-500 bg-green-50 shadow-lg'
+                                  : 'border-green-400 bg-green-900/30 shadow-lg'
+                                : theme === 'white'
+                                ? 'border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50'
+                                : 'border-gray-600 bg-gray-700 hover:border-blue-400 hover:bg-blue-900/20'
+                            }`}
+                          >
+                            <div className="flex items-center justify-between mb-2">
+                              <div className={`font-semibold text-sm ${
+                                formData.selectedActivity?.name === activity.name
+                                  ? theme === 'white' ? 'text-green-800' : 'text-green-200'
+                                  : theme === 'white' ? 'text-gray-900' : 'text-white'
+                              }`}>
+                                {activity.name}
+                              </div>
+                              {formData.selectedActivity?.name === activity.name && (
+                                <CheckCircle className="h-5 w-5 text-green-500" />
+                              )}
                             </div>
+                            
+                            <div className="flex items-center justify-between">
+                              <div className="flex items-center space-x-3">
+                                <div className="flex items-center">
+                                  <Flame className="h-3 w-3 mr-1 text-blue-500" />
+                                  <span className={`text-xs font-semibold ${
+                                    theme === 'white' ? 'text-gray-600' : 'text-gray-300'
+                                  }`}>
+                                    MET {activity.met}
+                                  </span>
+                                </div>
+                                <Badge className={`text-xs px-2 py-1 ${
+                                  activity.intensity === 'High' || activity.intensity === 'Very High'
+                                    ? 'bg-red-100 text-red-800 hover:bg-red-200'
+                                    : activity.intensity === 'Moderate'
+                                    ? 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200'
+                                    : 'bg-green-100 text-green-800 hover:bg-green-200'
+                                }`}>
+                                  {activity.intensity}
+                                </Badge>
+                              </div>
+                            </div>
+                            
+                            {/* Estimated calorie preview */}
+                            {formData.weight && formData.duration && (
+                              <div className={`mt-2 pt-2 border-t text-xs ${
+                                theme === 'white' ? 'border-gray-200 text-gray-500' : 'border-gray-600 text-gray-400'
+                              }`}>
+                                ≈ {Math.round(activity.met * parseFloat(formData.weight) * 0.453592 * parseFloat(formData.duration) / (formData.durationUnit === 'hours' ? 1 : 60))} calories
+                              </div>
+                            )}
                           </div>
-                        </Button>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
