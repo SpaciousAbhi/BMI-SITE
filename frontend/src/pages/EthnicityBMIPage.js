@@ -208,7 +208,7 @@ const EthnicityBMIPage = () => {
             'Different body image ideals and weight perceptions'
           ],
           specificRisks: [
-            'Type 2 diabetes risk increases at BMI >23',
+            'Type 2 diabetes risk increases at BMI &gt;23',
             'Cardiovascular disease risk higher at lower BMI',
             'Metabolic syndrome more common',
             'Higher visceral fat accumulation'
@@ -1299,7 +1299,7 @@ const EthnicityBMIPage = () => {
                           <div className={`p-3 rounded ${theme === 'white' ? 'bg-blue-50' : 'bg-blue-900/20'}`}>
                             <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Singapore Chinese Health Study:</strong>
                             <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
-                              63,000 participants followed for 20+ years. Diabetes risk increases significantly at BMI >23 in Chinese populations. Cardiovascular disease risk elevated at BMI >25, lower than Western thresholds.
+                              63,000 participants followed for 20+ years. Diabetes risk increases significantly at BMI &gt;23 in Chinese populations. Cardiovascular disease risk elevated at BMI >25, lower than Western thresholds.
                             </p>
                           </div>
                           <div className={`p-3 rounded ${theme === 'white' ? 'bg-green-50' : 'bg-green-900/20'}`}>
@@ -1311,7 +1311,7 @@ const EthnicityBMIPage = () => {
                           <div className={`p-3 rounded ${theme === 'white' ? 'bg-purple-50' : 'bg-purple-900/20'}`}>
                             <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Korea National Health Insurance:</strong>
                             <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
-                              23 million participants show metabolic syndrome prevalence increases dramatically at BMI >23. Led to Korean obesity guidelines using BMI >25 as obesity threshold.
+                              23 million participants show metabolic syndrome prevalence increases dramatically at BMI &gt;23. Led to Korean obesity guidelines using BMI >25 as obesity threshold.
                             </p>
                           </div>
                         </div>
@@ -1362,7 +1362,7 @@ const EthnicityBMIPage = () => {
                         </h4>
                         <ul className={`space-y-2 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
                           <li><strong>South Asians:</strong> Risk increases at BMI >21</li>
-                          <li><strong>East Asians:</strong> Significant risk at BMI >23</li>
+                          <li><strong>East Asians:</strong> Significant risk at BMI &gt;23</li>
                           <li><strong>Pacific Islanders:</strong> Risk threshold BMI >30</li>
                           <li><strong>Hispanics:</strong> Elevated risk at BMI >26</li>
                           <li><strong>African Americans:</strong> Risk increases at BMI >27</li>
@@ -1391,7 +1391,7 @@ const EthnicityBMIPage = () => {
                           Metabolic Syndrome
                         </h4>
                         <ul className={`space-y-2 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
-                          <li><strong>South Asians:</strong> High prevalence at BMI >23</li>
+                          <li><strong>South Asians:</strong> High prevalence at BMI &gt;23</li>
                           <li><strong>East Asians:</strong> Components present at BMI >24</li>
                           <li><strong>Hispanics:</strong> Insulin resistance at BMI >25</li>
                           <li><strong>African Americans:</strong> Different component patterns</li>
@@ -1702,7 +1702,7 @@ const EthnicityBMIPage = () => {
                           population: 'East Asian Populations',
                           color: 'blue',
                           strategies: [
-                            'Metabolic screening at BMI >23 rather than standard thresholds',
+                            'Metabolic screening at BMI &gt;23 rather than standard thresholds',
                             'Focus on preventing visceral fat accumulation',
                             'Maintain traditional dietary patterns while reducing portion sizes',
                             'Address cultural stigma around mental health affecting eating behaviors',
@@ -1896,12 +1896,12 @@ const EthnicityBMIPage = () => {
                     {
                       category: 'prevention',
                       question: 'When should diabetes screening begin for different ethnic groups?',
-                      answer: 'Screening should begin earlier for high-risk ethnicities: South Asians at BMI >21 or age 25; East Asians at BMI >23 or age 35; Native Americans regardless of BMI at age 25; Pacific Islanders at BMI >26; African Americans and Hispanics at BMI >25. Family history and other risk factors may warrant even earlier screening.'
+                      answer: 'Screening should begin earlier for high-risk ethnicities: South Asians at BMI >21 or age 25; East Asians at BMI &gt;23 or age 35; Native Americans regardless of BMI at age 25; Pacific Islanders at BMI >26; African Americans and Hispanics at BMI >25. Family history and other risk factors may warrant even earlier screening.'
                     },
                     {
                       category: 'prevention',
                       question: 'How should weight loss goals differ by ethnicity?',
-                      answer: 'Weight loss goals should consider ethnicity-specific optimal ranges and focus on metabolic health rather than specific BMI targets. For South Asians, even 3-5% weight loss at BMI >23 can significantly improve insulin sensitivity. For Pacific Islanders, maintaining BMI <32 with good metabolic health may be more appropriate than targeting standard ranges. Individual assessment remains crucial.'
+                      answer: 'Weight loss goals should consider ethnicity-specific optimal ranges and focus on metabolic health rather than specific BMI targets. For South Asians, even 3-5% weight loss at BMI &gt;23 can significantly improve insulin sensitivity. For Pacific Islanders, maintaining BMI <32 with good metabolic health may be more appropriate than targeting standard ranges. Individual assessment remains crucial.'
                     },
                     {
                       category: 'genetics',
