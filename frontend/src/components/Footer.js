@@ -539,15 +539,21 @@ const Footer = () => {
             © {currentYear} Advanced BMI Calculator. All rights reserved.
           </div>
           
-          <div className={`text-xs ${
-            theme === 'white' ? 'text-gray-500' : 'text-gray-500'
-          } text-center md:text-right`}>
-            <p className="mb-1">
-              ⚠️ Disclaimer: This tool provides estimates only.
-            </p>
-            <p>
-              Consult healthcare professionals for medical advice.
-            </p>
+          <div className="flex items-center gap-4 text-sm">
+            <span className={`${
+              theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+            }`}>
+              22+ Professional Health Calculators
+            </span>
+            <span className={`px-2 py-1 rounded text-xs font-medium ${
+              theme === 'white' 
+                ? 'bg-teal-100 text-teal-800' 
+                : theme === 'dark'
+                ? 'bg-purple-400/20 text-purple-300'
+                : 'bg-green-400/20 text-green-300'
+            }`}>
+              100% Free
+            </span>
           </div>
         </div>
       </div>
