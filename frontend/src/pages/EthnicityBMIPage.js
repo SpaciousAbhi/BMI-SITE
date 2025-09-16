@@ -1336,7 +1336,7 @@ const EthnicityBMIPage = () => {
                           <div className={`p-3 rounded ${theme === 'white' ? 'bg-teal-50' : 'bg-teal-900/20'}`}>
                             <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>UK Biobank Multi-Ethnic Analysis:</strong>
                             <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
-                              500,000 participants demonstrate clear ethnic differences in BMI-mortality relationships. South Asians show increased disease risk at BMI >22. Black populations show protective effects up to BMI 32.
+                              500,000 participants demonstrate clear ethnic differences in BMI-mortality relationships. South Asians show increased disease risk at BMI &gt;22. Black populations show protective effects up to BMI 32.
                             </p>
                           </div>
                         </div>
@@ -1376,7 +1376,7 @@ const EthnicityBMIPage = () => {
                           Cardiovascular Disease
                         </h4>
                         <ul className={`space-y-2 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
-                          <li><strong>South Asians:</strong> Risk elevation at BMI >22</li>
+                          <li><strong>South Asians:</strong> Risk elevation at BMI &gt;22</li>
                           <li><strong>East Asians:</strong> Cardiovascular risk at BMI >24</li>
                           <li><strong>Middle Eastern:</strong> Risk increases at BMI &gt;26</li>
                           <li><strong>African Americans:</strong> Complex relationship, protective effects noted</li>
