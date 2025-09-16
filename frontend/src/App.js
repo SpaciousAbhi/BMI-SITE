@@ -26,6 +26,9 @@ import BlogPostPage from "./pages/BlogPostPage";
 import PregnancyBMIPage from "./pages/PregnancyBMIPage";
 import SeniorBMIPage from "./pages/SeniorBMIPage";
 import EthnicityBMIPage from "./pages/EthnicityBMIPage";
+import IdealWeightPage from "./pages/IdealWeightPage";
+import WaistHeightRatioPage from "./pages/WaistHeightRatioPage";
+import BSACalculatorPage from "./pages/BSACalculatorPage";
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "./components/ui/toaster";
 
