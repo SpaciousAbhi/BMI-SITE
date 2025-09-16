@@ -151,6 +151,239 @@ const CaloriePage = () => {
     }
   };
 
+  // Comprehensive Scientific Content Data
+  const calorieScience = [
+    {
+      title: "BMR vs TDEE: The Foundation of Calorie Science",
+      icon: <Brain className="h-5 w-5" />,
+      content: "BMR (Basal Metabolic Rate) represents the calories your body burns at complete rest for essential functions like breathing, circulation, and cellular repair. TDEE (Total Daily Energy Expenditure) includes BMR plus calories burned through activity. BMR typically accounts for 60-75% of total daily calories in sedentary individuals, with factors like muscle mass, age, genetics, and hormones significantly affecting this rate. Understanding this distinction is crucial for accurate calorie planning.",
+      keyPoints: [
+        "BMR accounts for 60-75% of daily calorie burn in sedentary individuals",
+        "Every pound of muscle burns 6-10 calories per day at rest",
+        "BMR naturally decreases by 1-2% per decade after age 30",
+        "Thyroid hormones can alter BMR by 15-20% in healthy individuals"
+      ]
+    },
+    {
+      title: "Activity Level Multipliers & NEAT (Non-Exercise Activity Thermogenesis)",
+      icon: <Activity className="h-5 w-5" />,
+      content: "NEAT represents the calories burned through daily activities outside of formal exercise, including fidgeting, maintaining posture, and occupational activities. NEAT can vary by up to 800 calories per day between individuals and significantly impacts TDEE calculations. Activity multipliers are averages - individual variation can be substantial based on job type, lifestyle, and genetic factors affecting spontaneous movement.",
+      keyPoints: [
+        "NEAT can vary by 200-800 calories daily between individuals",
+        "Office workers may have 15-20% lower NEAT than manual laborers",
+        "Cold exposure can increase NEAT through thermogenesis",
+        "Stress and sleep quality significantly affect NEAT levels"
+      ]
+    },
+    {
+      title: "Metabolic Adaptation & Adaptive Thermogenesis",
+      icon: <TrendingUp className="h-5 w-5" />,
+      content: "Metabolic adaptation occurs when the body reduces energy expenditure in response to calorie restriction, potentially lowering BMR by 10-40% during prolonged dieting. This protective mechanism helped humans survive famine but complicates modern weight management. Understanding and managing metabolic adaptation through strategic diet breaks, refeed days, and resistance training is essential for long-term success.",
+      keyPoints: [
+        "BMR can decrease 10-40% during prolonged calorie restriction",
+        "Adaptation begins within 72 hours of calorie reduction",
+        "Resistance training helps preserve BMR during weight loss",
+        "Strategic diet breaks can help reset metabolic rate"
+      ]
+    },
+    {
+      title: "Calorie Cycling & Advanced Strategies",
+      icon: <Zap className="h-5 w-5" />,
+      content: "Calorie cycling involves alternating between higher and lower calorie days to optimize fat loss while minimizing metabolic adaptation. Research shows this approach can be more effective than consistent calorie restriction for some individuals. Refeed days (planned high-calorie days) can help restore leptin levels, improve mood, and support long-term adherence to calorie goals.",
+      keyPoints: [
+        "Calorie cycling can improve long-term diet adherence",
+        "Weekly refeed days may help restore leptin and thyroid function",
+        "Higher calorie days should emphasize carbohydrates for hormonal benefits",
+        "Flexible dieting approaches show better psychological outcomes"
+      ]
+    }
+  ];
+
+  const calculationMethods = [
+    {
+      name: "Mifflin-St Jeor Equation",
+      accuracy: 95,
+      description: "Most accurate for the general population",
+      formula: "Men: (10 × weight) + (6.25 × height) - (5 × age) + 5\nWomen: (10 × weight) + (6.25 × height) - (5 × age) - 161",
+      pros: ["Highest accuracy for normal BMI", "Most widely validated", "Accounts for gender differences"],
+      cons: ["Less accurate for very muscular individuals", "May underestimate for some ethnicities"],
+      bestFor: "General population, normal body composition"
+    },
+    {
+      name: "Harris-Benedict Equation (Revised)",
+      accuracy: 85,
+      description: "Traditional method, revised for better accuracy",
+      formula: "Men: 88.362 + (13.397 × weight) + (4.799 × height) - (5.677 × age)\nWomen: 447.593 + (9.247 × weight) + (3.098 × height) - (4.330 × age)",
+      pros: ["Well-established method", "Good for historical comparison", "Widely available"],
+      cons: ["Less accurate than Mifflin-St Jeor", "May overestimate in some cases"],
+      bestFor: "General estimates, when Mifflin-St Jeor unavailable"
+    },
+    {
+      name: "Katch-McArdle Formula",
+      accuracy: 98,
+      description: "Most accurate when body fat percentage is known",
+      formula: "BMR = 370 + (21.6 × lean body mass in kg)",
+      pros: ["Highest accuracy with body fat data", "Accounts for muscle mass", "Excellent for athletes"],
+      cons: ["Requires accurate body fat measurement", "Not practical for everyone"],
+      bestFor: "Athletes, individuals with known body fat percentage"
+    },
+    {
+      name: "Cunningham Equation",
+      accuracy: 92,
+      description: "Designed specifically for lean, active individuals",
+      formula: "BMR = 500 + (22 × lean body mass in kg)",
+      pros: ["Excellent for lean athletes", "Accounts for high muscle mass", "Validated in active populations"],
+      cons: ["Overestimates for sedentary individuals", "Requires body fat measurement"],
+      bestFor: "Lean athletes, bodybuilders, highly active individuals"
+    },
+    {
+      name: "Body Weight Multiplier Method",
+      accuracy: 75,
+      description: "Simple estimation based on activity level",
+      formula: "Sedentary: weight × 12-14\nActive: weight × 15-17\nVery Active: weight × 18-20",
+      pros: ["Very simple to calculate", "Quick estimation", "No complex inputs needed"],
+      cons: ["Less accurate", "Doesn't account for age/height", "Broad ranges"],
+      bestFor: "Quick estimates, when detailed data unavailable"
+    }
+  ];
+
+  const healthImplications = [
+    {
+      category: "Safe Weight Loss Calorie Deficits",
+      riskLevel: "Low-Moderate",
+      ranges: "300-750 calorie deficit (0.5-1.5 lbs/week)",
+      description: "Moderate calorie deficits promote sustainable fat loss while preserving muscle mass and metabolic health. Research shows deficits of 500-750 calories daily are optimal for most individuals.",
+      benefits: ["Sustainable fat loss", "Muscle mass preservation", "Better adherence", "Stable energy levels"],
+      risks: ["Slower initial progress", "Requires patience and consistency"],
+      recommendations: [
+        "Aim for 0.5-1% body weight loss per week",
+        "Include resistance training to preserve muscle",
+        "Ensure adequate protein intake (0.8-1.2g/lb bodyweight)",
+        "Take diet breaks every 6-12 weeks"
+      ]
+    },
+    {
+      category: "Aggressive Weight Loss Calorie Deficits",
+      riskLevel: "High",
+      ranges: ">750 calorie deficit (>1.5 lbs/week)",
+      description: "Large calorie deficits can lead to rapid weight loss but carry significant risks including muscle loss, metabolic adaptation, nutritional deficiencies, and psychological stress.",
+      benefits: ["Rapid initial results", "May improve motivation short-term"],
+      risks: ["Significant muscle loss", "Metabolic adaptation", "Nutrient deficiencies", "Increased hunger hormones", "Poor long-term adherence"],
+      recommendations: [
+        "Only under medical supervision",
+        "Short-term use only (2-4 weeks max)",
+        "Prioritize protein and micronutrients",
+        "Monitor for signs of metabolic damage"
+      ]
+    },
+    {
+      category: "Muscle Gain Calorie Surpluses",
+      riskLevel: "Low",
+      ranges: "200-500 calorie surplus",
+      description: "Moderate calorie surpluses support muscle growth while minimizing fat gain. The 'lean gains' approach emphasizes smaller surpluses for body composition improvement.",
+      benefits: ["Muscle growth support", "Improved recovery", "Better performance", "Minimal fat gain"],
+      risks: ["Some fat gain inevitable", "Requires precise tracking"],
+      recommendations: [
+        "Start with 200-300 calorie surplus",
+        "Emphasize protein timing around workouts",
+        "Include resistance training 3-5x per week",
+        "Monitor body composition changes monthly"
+      ]
+    },
+    {
+      category: "Maintenance & Metabolic Health",
+      riskLevel: "Very Low",
+      ranges: "Within 100 calories of TDEE",
+      description: "Maintenance calories support metabolic health, hormone production, and psychological well-being. Periodic maintenance phases are crucial during long-term body composition goals.",
+      benefits: ["Metabolic recovery", "Hormone optimization", "Psychological relief", "Social flexibility"],
+      risks: ["No active body composition changes"],
+      recommendations: [
+        "Use maintenance phases every 8-12 weeks during cuts",
+        "Focus on performance and health metrics",
+        "Practice intuitive eating skills",
+        "Maintain consistent exercise routine"
+      ]
+    }
+  ];
+
+  const detailedFAQ = [
+    {
+      category: "Basics",
+      question: "What's the difference between BMR, RMR, and TDEE?",
+      answer: "BMR (Basal Metabolic Rate) is measured in a lab after 12 hours of fasting and 8 hours of sleep in a controlled environment. RMR (Resting Metabolic Rate) is more practical and measured with less strict conditions - typically 10-15% higher than BMR. TDEE (Total Daily Energy Expenditure) includes BMR/RMR plus all daily activities. Most calculators estimate RMR and call it BMR for simplicity."
+    },
+    {
+      category: "Accuracy",
+      question: "How accurate are online calorie calculators?",
+      answer: "The best equations (Mifflin-St Jeor) are accurate within ±10% for about 80% of the population. However, individual variation can be significant - some people may have metabolic rates 20-30% higher or lower than predicted. Accuracy improves with body fat percentage data. Always use calculated values as starting points and adjust based on real-world results over 2-4 weeks."
+    },
+    {
+      category: "Activity",
+      question: "How do I choose the right activity level?",
+      answer: "Activity levels are often misestimated. 'Sedentary' means desk job with little exercise. 'Lightly Active' includes light exercise 1-3 days/week. 'Moderately Active' means moderate exercise 3-5 days/week. 'Very Active' includes hard exercise 6-7 days/week. 'Extremely Active' is for athletes training multiple times daily. Consider your job, commute, hobbies, and formal exercise. When in doubt, start conservative and adjust based on results."
+    },
+    {
+      category: "Weight Loss",
+      question: "Why did my weight loss plateau even though I'm eating the same calories?",
+      answer: "Weight loss plateaus occur due to metabolic adaptation - your body reduces energy expenditure in response to prolonged calorie restriction. BMR can decrease 10-40%, NEAT reduces significantly, and hormones like leptin and thyroid hormones decline. Strategies include diet breaks, refeed days, increasing activity, adjusting macronutrients, or accepting a slower rate of loss as you approach your goal weight."
+    },
+    {
+      category: "Muscle Gain",
+      question: "How many calories do I need to build muscle?",
+      answer: "Muscle building requires a calorie surplus, but the amount depends on training status. Beginners can build muscle in small deficits or maintenance due to 'newbie gains.' Intermediate trainees typically need 200-500 calorie surpluses. Advanced lifters may need larger surpluses or cycling approaches. Factors include training quality, protein intake (0.8-1.2g/lb), sleep, and genetics. Expect 0.5-2 lbs muscle gain per month under optimal conditions."
+    },
+    {
+      category: "Age",
+      question: "How does age affect calorie needs?",
+      answer: "BMR naturally decreases about 1-2% per decade after age 30 due to muscle loss (sarcopenia), hormonal changes, and reduced organ function. However, this isn't inevitable - resistance training can maintain or even increase BMR with age. Post-menopausal women may see additional BMR reductions due to estrogen decline. Older adults often need higher protein intake (1.0-1.6g/kg) to maintain muscle mass and may benefit from slightly higher calorie targets to support health."
+    },
+    {
+      category: "Gender",
+      question: "Why do men and women have different calorie needs?",
+      answer: "Men typically have higher calorie needs due to greater muscle mass, larger body size, and hormonal differences. Testosterone promotes muscle growth and increases BMR. Women have essential fat requirements (10-13% vs 2-5% for men) and hormonal fluctuations affecting metabolism. During menstruation, BMR can increase 5-10%. Pregnancy and breastfeeding dramatically increase calorie needs. These differences are accounted for in gender-specific BMR equations."
+    },
+    {
+      category: "Hormones",
+      question: "How do hormones affect my calorie needs?",
+      answer: "Hormones significantly impact metabolism. Thyroid hormones (T3/T4) can alter BMR by 15-20%. Insulin resistance reduces metabolic flexibility. Cortisol elevation from stress can promote fat storage and increase cravings. Leptin resistance makes the brain think you're starving even with adequate calories. Growth hormone and testosterone support muscle mass and BMR. Sleep deprivation disrupts hunger hormones (ghrelin/leptin), potentially increasing calorie needs by 200-300 daily."
+    },
+    {
+      category: "Timing",
+      question: "Does meal timing affect calorie needs?",
+      answer: "Meal timing has modest effects on metabolism. Eating increases energy expenditure through the thermic effect of food (TEF) - about 8-10% of calories consumed. Protein has the highest TEF (20-30%), followed by carbs (5-10%) and fats (0-5%). Intermittent fasting doesn't significantly change TDEE but may improve insulin sensitivity. Eating late doesn't slow metabolism, but may affect sleep quality and hunger hormones. Focus on total daily calories and macros over timing for most goals."
+    },
+    {
+      category: "Exercise",
+      question: "How should I account for exercise calories?",
+      answer: "Exercise calories are often overestimated. Cardio machines can overestimate by 20-40%. Most fitness trackers are reasonably accurate for steps but less so for exercise. The TDEE method (including exercise in activity level) is often more accurate than eating back exercise calories. If you do eat back exercise calories, start with 50-75% of estimated burn. Consider that intense exercise may reduce NEAT for the rest of the day, partially offsetting the calorie burn."
+    },
+    {
+      category: "Medical",
+      question: "How do medical conditions affect calorie calculations?",
+      answer: "Several conditions significantly impact metabolism. Hypothyroidism can reduce BMR by 15-30%. PCOS may decrease BMR and increase insulin resistance. Diabetes affects metabolic flexibility and may require adjusted approaches. Medications like corticosteroids, antidepressants, and beta-blockers can affect metabolism. Sleep apnea reduces sleep quality and affects hunger hormones. Always consult healthcare providers when medical conditions are present, as standard calculators may not apply."
+    },
+    {
+      category: "Body Composition",
+      question: "Why doesn't the calculator ask for body fat percentage?",
+      answer: "This calculator uses the Mifflin-St Jeor equation, which doesn't require body fat data but is still highly accurate for most people. The Katch-McArdle formula uses lean body mass and is more accurate when you know your body fat percentage, but requires accurate measurement methods like DEXA or hydrostatic weighing. Consumer body fat scales are often inaccurate (±5-8% error). For most people, Mifflin-St Jeor provides excellent estimates without additional complexity."
+    },
+    {
+      category: "Adjustments",
+      question: "How often should I recalculate my calorie needs?",
+      answer: "Recalculate every 10-15 pounds of weight change or every 2-3 months. As you lose weight, your calorie needs decrease - roughly 25-50 calories per pound lost, depending on how much is fat vs. muscle. During muscle-building phases, calorie needs may increase. Age-related changes occur slowly, so annual recalculation is sufficient unless significant lifestyle changes occur. Always prioritize real-world results over calculator predictions when making adjustments."
+    },
+    {
+      category: "Tracking",
+      question: "Do I need to track calories forever?",
+      answer: "Calorie tracking is a tool, not a lifestyle requirement. Many people benefit from tracking initially to learn portion sizes and food values, then transition to intuitive eating. Some find periodic tracking helpful for course corrections. Others prefer consistent tracking for precise goals. Research shows people tend to underestimate intake by 20-40% without tracking, but obsessive tracking can lead to disordered eating. Find an approach that supports your goals while maintaining a healthy relationship with food."
+    },
+    {
+      category: "Special Populations",
+      question: "Are there special considerations for athletes?",
+      answer: "Athletes have unique calorie needs due to high training volumes, increased muscle mass, and recovery demands. Endurance athletes may need 2,500-5,000+ calories daily depending on training. Strength athletes require adequate calories to support muscle protein synthesis and recovery. Female athletes are at higher risk for Relative Energy Deficiency in Sport (REDs) from inadequate calorie intake. Periodization of calorie intake around training phases can optimize performance and body composition. Sport-specific needs vary significantly."
+    }
+  ];
+
   return (
     <div className={`min-h-screen transition-all duration-700 ${getBackgroundGradient()}`}>
       <SEOHead 
