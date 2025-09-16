@@ -1365,7 +1365,7 @@ const EthnicityBMIPage = () => {
                           <li><strong>East Asians:</strong> Significant risk at BMI &gt;23</li>
                           <li><strong>Pacific Islanders:</strong> Risk threshold BMI >30</li>
                           <li><strong>Hispanics:</strong> Elevated risk at BMI &gt;26</li>
-                          <li><strong>African Americans:</strong> Risk increases at BMI >27</li>
+                          <li><strong>African Americans:</strong> Risk increases at BMI &gt;27</li>
                           <li><strong>Caucasians:</strong> Traditional threshold BMI &gt;25</li>
                         </ul>
                       </div>
