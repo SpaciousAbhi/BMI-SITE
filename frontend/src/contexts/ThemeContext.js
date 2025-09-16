@@ -77,6 +77,19 @@ export const ThemeProvider = ({ children }) => {
     return configs[theme];
   };
 
+  const getBackgroundGradient = () => {
+    switch(theme) {
+      case 'white':
+        return 'bg-gradient-to-br from-blue-50 via-teal-50 to-cyan-50';
+      case 'dark':
+        return 'bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900';
+      case 'black':
+        return 'bg-gradient-to-br from-black via-gray-900 to-black';
+      default:
+        return 'bg-gradient-to-br from-blue-50 via-teal-50 to-cyan-50';
+    }
+  };
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, getThemeConfig, isLoaded }}>
       {children}
