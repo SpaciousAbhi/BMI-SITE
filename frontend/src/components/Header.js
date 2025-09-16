@@ -16,7 +16,21 @@ import {
   Shield,
   Mail,
   Utensils,
-  Activity
+  Activity,
+  ChevronDown,
+  Baby,
+  Users,
+  Globe,
+  Brain,
+  BarChart3,
+  Ruler,
+  Droplets,
+  Pulse,
+  Flame,
+  Clock,
+  TrendingUp,
+  FileText,
+  User
 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
