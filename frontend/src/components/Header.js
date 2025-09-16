@@ -415,20 +415,20 @@ const Header = () => {
               : 'border-green-500/20 bg-black/90'
           }`}>
             <div className="py-4 space-y-1 max-h-96 overflow-y-auto">
-              {/* Calculators Section */}
+              {/* BMI & Body Analysis Section */}
               <div className="px-4 py-2">
                 <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
                   theme === 'white' ? 'text-gray-500' : 'text-gray-400'
                 }`}>
-                  Calculators
+                  🧮 BMI & Body Analysis
                 </h3>
-                {calculatorsNavItems.map((item) => {
+                {bmiCalculators.map((item) => {
                   const IconComponent = item.icon;
                   return (
                     <Link
                       key={item.path}
                       to={item.path}
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={handleMenuClose}
                       className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
                         location.pathname === item.path
                           ? theme === 'white'
@@ -448,20 +448,119 @@ const Header = () => {
                 })}
               </div>
 
-              {/* Tools Section */}
+              {/* Body Composition Section */}
               <div className="px-4 py-2">
                 <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
                   theme === 'white' ? 'text-gray-500' : 'text-gray-400'
                 }`}>
-                  Tools
+                  ⚖️ Body Composition Tools
                 </h3>
-                {toolsNavItems.map((item) => {
+                {bodyCompositionTools.map((item) => {
                   const IconComponent = item.icon;
                   return (
                     <Link
                       key={item.path}
                       to={item.path}
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={handleMenuClose}
+                      className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
+                        location.pathname === item.path
+                          ? theme === 'white'
+                            ? 'text-teal-600 bg-teal-50'
+                            : theme === 'dark'
+                            ? 'text-purple-400 bg-purple-400/10'
+                            : 'text-green-400 bg-green-400/10'
+                          : theme === 'white' 
+                          ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      <IconComponent className="h-4 w-4" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Nutrition & Diet Section */}
+              <div className="px-4 py-2">
+                <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
+                  theme === 'white' ? 'text-gray-500' : 'text-gray-400'
+                }`}>
+                  🍎 Nutrition & Diet Tools
+                </h3>
+                {nutritionTools.map((item) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={handleMenuClose}
+                      className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
+                        location.pathname === item.path
+                          ? theme === 'white'
+                            ? 'text-teal-600 bg-teal-50'
+                            : theme === 'dark'
+                            ? 'text-purple-400 bg-purple-400/10'
+                            : 'text-green-400 bg-green-400/10'
+                          : theme === 'white' 
+                          ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      <IconComponent className="h-4 w-4" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Fitness & Health Section */}
+              <div className="px-4 py-2">
+                <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
+                  theme === 'white' ? 'text-gray-500' : 'text-gray-400'
+                }`}>
+                  💪 Fitness & Health Tools
+                </h3>
+                {fitnessTools.map((item) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={handleMenuClose}
+                      className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
+                        location.pathname === item.path
+                          ? theme === 'white'
+                            ? 'text-teal-600 bg-teal-50'
+                            : theme === 'dark'
+                            ? 'text-purple-400 bg-purple-400/10'
+                            : 'text-green-400 bg-green-400/10'
+                          : theme === 'white' 
+                          ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      <IconComponent className="h-4 w-4" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Health Management Section */}
+              <div className="px-4 py-2">
+                <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
+                  theme === 'white' ? 'text-gray-500' : 'text-gray-400'
+                }`}>
+                  📊 Health Management Tools
+                </h3>
+                {healthTools.map((item) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={handleMenuClose}
                       className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
                         location.pathname === item.path
                           ? theme === 'white'
@@ -486,15 +585,15 @@ const Header = () => {
                 <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
                   theme === 'white' ? 'text-gray-500' : 'text-gray-400'
                 }`}>
-                  Health Resources
+                  📚 Health Resources
                 </h3>
-                {healthResourcesItems.map((item) => {
+                {healthResources.map((item) => {
                   const IconComponent = item.icon;
                   return (
                     <Link
                       key={item.path}
                       to={item.path}
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={handleMenuClose}
                       className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
                         location.pathname === item.path
                           ? theme === 'white'
@@ -514,37 +613,26 @@ const Header = () => {
                 })}
               </div>
 
-              {/* Legal Section */}
-              <div className="px-4 py-2">
-                <h3 className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
-                  theme === 'white' ? 'text-gray-500' : 'text-gray-400'
-                }`}>
-                  Legal
-                </h3>
-                {legalItems.map((item) => {
-                  const IconComponent = item.icon;
-                  return (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => setIsMenuOpen(false)}
-                      className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
-                        location.pathname === item.path
-                          ? theme === 'white'
-                            ? 'text-teal-600 bg-teal-50'
-                            : theme === 'dark'
-                            ? 'text-purple-400 bg-purple-400/10'
-                            : 'text-green-400 bg-green-400/10'
-                          : theme === 'white' 
-                          ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
-                          : 'text-gray-300 hover:text-white hover:bg-white/10'
-                      }`}
-                    >
-                      <IconComponent className="h-4 w-4" />
-                      {item.label}
-                    </Link>
-                  );
-                })}
+              {/* Contact Section */}
+              <div className="px-4 py-2 border-t border-gray-200/30">
+                <Link
+                  to="/contact"
+                  onClick={handleMenuClose}
+                  className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-300 hover:scale-[1.02] ${
+                    location.pathname === '/contact'
+                      ? theme === 'white'
+                        ? 'text-teal-600 bg-teal-50'
+                        : theme === 'dark'
+                        ? 'text-purple-400 bg-purple-400/10'
+                        : 'text-green-400 bg-green-400/10'
+                      : theme === 'white' 
+                      ? 'text-gray-700 hover:text-teal-600 hover:bg-teal-50' 
+                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <Mail className="h-4 w-4" />
+                  Contact Us
+                </Link>
               </div>
             </div>
           </div>
