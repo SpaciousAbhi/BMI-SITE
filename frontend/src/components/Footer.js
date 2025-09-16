@@ -475,58 +475,6 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
-                >
-                  BMI Blog
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Legal Section */}
-          <div className="space-y-4">
-            <h3 className={`text-sm font-semibold uppercase tracking-wider ${
-              theme === 'white' ? 'text-gray-900' : 'text-white'
-            }`}>
-              Legal
-            </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link 
-                  to="/privacy-policy" 
-                  className={`text-sm ${
-                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
-                >
-                  <Shield className="h-4 w-4" />
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/terms-of-service" 
-                  className={`text-sm ${
-                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
-                >
-                  <FileText className="h-4 w-4" />
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/contact" 
-                  className={`text-sm ${
-                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
-                >
-                  <Mail className="h-4 w-4" />
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
 
         {/* Divider */}
         <div className={`my-8 border-t ${getBorderColor()}`}></div>
