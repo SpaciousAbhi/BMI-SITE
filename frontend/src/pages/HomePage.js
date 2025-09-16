@@ -1070,6 +1070,199 @@ const HomePage = () => {
             </div>
           </div>
 
+          {/* Nutrition & Fitness Calculators - Phase 2 */}
+          <div className="mb-20">
+            <div className="text-center mb-10">
+              <h3 className={`text-2xl md:text-3xl font-semibold mb-4 ${
+                theme === 'white' ? 'text-gray-800' : 'text-gray-100'
+              }`}>
+                Nutrition & Fitness Calculators
+              </h3>
+              <p className={`text-lg max-w-2xl mx-auto ${
+                theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+              }`}>
+                Professional-grade calculators for optimal nutrition and fitness planning
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Protein Calculator */}
+              <Link to="/protein-calculator" className="group">
+                <Card className={`backdrop-blur-md border-0 shadow-2xl transform group-hover:scale-[1.03] group-hover:-translate-y-1 transition-all duration-500 cursor-pointer ${
+                  theme === 'white' 
+                    ? 'bg-gradient-to-br from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 border border-blue-200/50' 
+                    : theme === 'dark'
+                    ? 'bg-gradient-to-br from-blue-900/30 to-indigo-900/30 hover:from-blue-800/40 hover:to-indigo-800/40 border border-blue-500/30'
+                    : 'bg-gradient-to-br from-blue-900/30 to-indigo-900/30 hover:from-blue-800/40 hover:to-indigo-800/40 border border-blue-500/30'
+                }`}>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`p-3 rounded-full ${
+                        theme === 'white' ? 'bg-gradient-to-br from-blue-500 to-indigo-600' : 'bg-gradient-to-br from-blue-400 to-indigo-500'
+                      }`}>
+                        <Dumbbell className="h-8 w-8 text-white" />
+                      </div>
+                      <div>
+                        <h4 className={`text-xl font-bold ${
+                          theme === 'white' ? 'text-gray-900' : 'text-white'
+                        }`}>
+                          Protein Calculator
+                        </h4>
+                        <div className="flex gap-2 mt-1">
+                          <Badge className="text-xs bg-blue-100 text-blue-800 px-2 py-1">Science-Based</Badge>
+                          <Badge className="text-xs bg-indigo-100 text-indigo-800 px-2 py-1">Goal-Specific</Badge>
+                        </div>
+                      </div>
+                    </div>
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      Calculate optimal daily protein intake based on activity level, goals, and body composition with meal timing guidance
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Water Calculator */}
+              <Link to="/water-calculator" className="group">
+                <Card className={`backdrop-blur-md border-0 shadow-2xl transform group-hover:scale-[1.03] group-hover:-translate-y-1 transition-all duration-500 cursor-pointer ${
+                  theme === 'white' 
+                    ? 'bg-gradient-to-br from-cyan-50 to-blue-50 hover:from-cyan-100 hover:to-blue-100 border border-cyan-200/50' 
+                    : theme === 'dark'
+                    ? 'bg-gradient-to-br from-cyan-900/30 to-blue-900/30 hover:from-cyan-800/40 hover:to-blue-800/40 border border-cyan-500/30'
+                    : 'bg-gradient-to-br from-cyan-900/30 to-blue-900/30 hover:from-cyan-800/40 hover:to-blue-800/40 border border-cyan-500/30'
+                }`}>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`p-3 rounded-full ${
+                        theme === 'white' ? 'bg-gradient-to-br from-cyan-500 to-blue-600' : 'bg-gradient-to-br from-cyan-400 to-blue-500'
+                      }`}>
+                        <Droplets className="h-8 w-8 text-white" />
+                      </div>
+                      <div>
+                        <h4 className={`text-xl font-bold ${
+                          theme === 'white' ? 'text-gray-900' : 'text-white'
+                        }`}>
+                          Water Calculator
+                        </h4>
+                        <div className="flex gap-2 mt-1">
+                          <Badge className="text-xs bg-cyan-100 text-cyan-800 px-2 py-1">Climate-Adjusted</Badge>
+                          <Badge className="text-xs bg-blue-100 text-blue-800 px-2 py-1">Activity-Based</Badge>
+                        </div>
+                      </div>
+                    </div>
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      Calculate optimal daily water intake with climate, activity, and health factor adjustments
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Heart Rate Calculator */}
+              <Link to="/heart-rate-calculator" className="group">
+                <Card className={`backdrop-blur-md border-0 shadow-2xl transform group-hover:scale-[1.03] group-hover:-translate-y-1 transition-all duration-500 cursor-pointer ${
+                  theme === 'white' 
+                    ? 'bg-gradient-to-br from-red-50 to-pink-50 hover:from-red-100 hover:to-pink-100 border border-red-200/50' 
+                    : theme === 'dark'
+                    ? 'bg-gradient-to-br from-red-900/30 to-pink-900/30 hover:from-red-800/40 hover:to-pink-800/40 border border-red-500/30'
+                    : 'bg-gradient-to-br from-red-900/30 to-pink-900/30 hover:from-red-800/40 hover:to-pink-800/40 border border-red-500/30'
+                }`}>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`p-3 rounded-full ${
+                        theme === 'white' ? 'bg-gradient-to-br from-red-500 to-pink-600' : 'bg-gradient-to-br from-red-400 to-pink-500'
+                      }`}>
+                        <Heart className="h-8 w-8 text-white" />
+                      </div>
+                      <div>
+                        <h4 className={`text-xl font-bold ${
+                          theme === 'white' ? 'text-gray-900' : 'text-white'
+                        }`}>
+                          Heart Rate Zones
+                        </h4>
+                        <div className="flex gap-2 mt-1">
+                          <Badge className="text-xs bg-red-100 text-red-800 px-2 py-1">5 Training Zones</Badge>
+                          <Badge className="text-xs bg-pink-100 text-pink-800 px-2 py-1">Performance</Badge>
+                        </div>
+                      </div>
+                    </div>
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      Calculate optimal heart rate training zones for cardio workouts and athletic performance
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Fasting Planner */}
+              <Link to="/fasting-planner" className="group">
+                <Card className={`backdrop-blur-md border-0 shadow-2xl transform group-hover:scale-[1.03] group-hover:-translate-y-1 transition-all duration-500 cursor-pointer ${
+                  theme === 'white' 
+                    ? 'bg-gradient-to-br from-orange-50 to-amber-50 hover:from-orange-100 hover:to-amber-100 border border-orange-200/50' 
+                    : theme === 'dark'
+                    ? 'bg-gradient-to-br from-orange-900/30 to-amber-900/30 hover:from-orange-800/40 hover:to-amber-800/40 border border-orange-500/30'
+                    : 'bg-gradient-to-br from-orange-900/30 to-amber-900/30 hover:from-orange-800/40 hover:to-amber-800/40 border border-orange-500/30'
+                }`}>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`p-3 rounded-full ${
+                        theme === 'white' ? 'bg-gradient-to-br from-orange-500 to-amber-600' : 'bg-gradient-to-br from-orange-400 to-amber-500'
+                      }`}>
+                        <Timer className="h-8 w-8 text-white" />
+                      </div>
+                      <div>
+                        <h4 className={`text-xl font-bold ${
+                          theme === 'white' ? 'text-gray-900' : 'text-white'
+                        }`}>
+                          Fasting Planner
+                        </h4>
+                        <div className="flex gap-2 mt-1">
+                          <Badge className="text-xs bg-orange-100 text-orange-800 px-2 py-1">6 IF Methods</Badge>
+                          <Badge className="text-xs bg-amber-100 text-amber-800 px-2 py-1">Personalized</Badge>
+                        </div>
+                      </div>
+                    </div>
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      Create personalized intermittent fasting schedules with safety guidelines and health benefits
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Calories Burned Calculator */}
+              <Link to="/calories-burned-calculator" className="group">
+                <Card className={`backdrop-blur-md border-0 shadow-2xl transform group-hover:scale-[1.03] group-hover:-translate-y-1 transition-all duration-500 cursor-pointer ${
+                  theme === 'white' 
+                    ? 'bg-gradient-to-br from-green-50 to-emerald-50 hover:from-green-100 hover:to-emerald-100 border border-green-200/50' 
+                    : theme === 'dark'
+                    ? 'bg-gradient-to-br from-green-900/30 to-emerald-900/30 hover:from-green-800/40 hover:to-emerald-800/40 border border-green-500/30'
+                    : 'bg-gradient-to-br from-green-900/30 to-emerald-900/30 hover:from-green-800/40 hover:to-emerald-800/40 border border-green-500/30'
+                }`}>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`p-3 rounded-full ${
+                        theme === 'white' ? 'bg-gradient-to-br from-green-500 to-emerald-600' : 'bg-gradient-to-br from-green-400 to-emerald-500'
+                      }`}>
+                        <Flame className="h-8 w-8 text-white" />
+                      </div>
+                      <div>
+                        <h4 className={`text-xl font-bold ${
+                          theme === 'white' ? 'text-gray-900' : 'text-white'
+                        }`}>
+                          Calories Burned
+                        </h4>
+                        <div className="flex gap-2 mt-1">
+                          <Badge className="text-xs bg-green-100 text-green-800 px-2 py-1">200+ Activities</Badge>
+                          <Badge className="text-xs bg-emerald-100 text-emerald-800 px-2 py-1">MET-Based</Badge>
+                        </div>
+                      </div>
+                    </div>
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      Calculate calories burned for sports, exercise, and daily activities with weight loss projections
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+          </div>
+
           {/* Health Tools & Resources */}
           <div className="mb-12">
             <div className="text-center mb-10">
