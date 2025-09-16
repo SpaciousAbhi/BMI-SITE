@@ -641,7 +641,7 @@ const MacrosPage = () => {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div id="calculator" className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Calculator Form */}
           <Card className={`backdrop-blur-md border-0 shadow-2xl transform hover:scale-[1.02] transition-all duration-500 glass-effect animate-scale-in ${
             theme === 'white' 
