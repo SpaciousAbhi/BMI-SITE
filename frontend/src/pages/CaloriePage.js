@@ -503,7 +503,7 @@ const CaloriePage = () => {
           <h1 className={`text-4xl md:text-6xl font-bold mb-6 transition-all duration-500 ${
             theme === 'white' ? 'text-gray-900' : 'text-white'
           }`}>
-            Calorie Calculator
+            TDEE & BMR Calculator
           </h1>
           <div className={`w-32 h-1 mx-auto mb-6 rounded-full transition-all duration-500 ${
             theme === 'white' ? 'bg-gradient-to-r from-teal-400 to-cyan-500' :
