@@ -1084,7 +1084,7 @@ const SeniorBMIPage = () => {
                         </p>
                         <ul className={`space-y-1 ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
                           <li>• Low muscle mass (DEXA/BIA)</li>
-                          <li>• Reduced grip strength (<27kg men, <16kg women)</li>
+                          <li>• Reduced grip strength (&lt;27kg men, &lt;16kg women)</li>
                           <li>• Slow gait speed (<0.8 m/s)</li>
                           <li>• Chair stand test (>15 seconds)</li>
                           <li>• SARC-F screening questionnaire</li>
