@@ -29,6 +29,12 @@ import EthnicityBMIPage from "./pages/EthnicityBMIPage";
 import IdealWeightPage from "./pages/IdealWeightPage";
 import WaistHeightRatioPage from "./pages/WaistHeightRatioPage";
 import BSACalculatorPage from "./pages/BSACalculatorPage";
+// Phase 2 Calculator Imports
+import ProteinCalculatorPage from "./pages/ProteinCalculatorPage";
+import WaterCalculatorPage from "./pages/WaterCalculatorPage";
+import HeartRateCalculatorPage from "./pages/HeartRateCalculatorPage";
+import FastingPlannerPage from "./pages/FastingPlannerPage";
+import CaloriesBurnedCalculatorPage from "./pages/CaloriesBurnedCalculatorPage";
 import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "./components/ui/toaster";
 
@@ -83,6 +89,12 @@ const AppContent = () => {
           <Route path="/ideal-weight" element={<IdealWeightPage />} />
           <Route path="/waist-height-ratio" element={<WaistHeightRatioPage />} />
           <Route path="/body-surface-area" element={<BSACalculatorPage />} />
+          {/* Phase 2 Calculator Routes */}
+          <Route path="/protein-calculator" element={<ProteinCalculatorPage />} />
+          <Route path="/water-calculator" element={<WaterCalculatorPage />} />
+          <Route path="/heart-rate-calculator" element={<HeartRateCalculatorPage />} />
+          <Route path="/fasting-planner" element={<FastingPlannerPage />} />
+          <Route path="/calories-burned-calculator" element={<CaloriesBurnedCalculatorPage />} />
         </Routes>
       </BrowserRouter>
       <Toaster />
