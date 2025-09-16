@@ -985,7 +985,7 @@ const SeniorBMIPage = () => {
                       <div className={`mt-4 text-sm ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
                         <div className="grid md:grid-cols-2 gap-4">
                           <div>
-                            <h4 className="font-semibold mb-2 text-red-600">Underweight Risks (BMI <22)</h4>
+                            <h4 className="font-semibold mb-2 text-red-600">Underweight Risks (BMI &lt;22)</h4>
                             <ul className="space-y-1 mb-4">
                               <li>• Increased mortality risk (up to 50% higher)</li>
                               <li>• Malnutrition and micronutrient deficiencies</li>
