@@ -1013,7 +1013,7 @@ const SeniorBMIPage = () => {
                               <li>• Maintained functional independence</li>
                               <li>• Reduced frailty syndrome risk</li>
                             </ul>
-                            <h4 className="font-semibold mb-2 text-red-700">Severe Obesity (BMI >35)</h4>
+                            <h4 className="font-semibold mb-2 text-red-700">Severe Obesity (BMI &gt;35)</h4>
                             <ul className="space-y-1">
                               <li>• Significant mobility impairment</li>
                               <li>• Increased cardiovascular disease risk</li>
