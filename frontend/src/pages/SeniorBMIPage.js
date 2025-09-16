@@ -1432,7 +1432,7 @@ const SeniorBMIPage = () => {
                           disease: 'Type 2 Diabetes',
                           color: 'red',
                           recommendations: [
-                            'Target BMI 25-29 may be optimal (not <25)',
+                            'Target BMI 25-29 may be optimal (not &lt;25)',
                             'Focus on glycemic control over weight loss',
                             'Prevent muscle loss during any weight reduction',
                             'Monitor for hypoglycemia with weight changes',
