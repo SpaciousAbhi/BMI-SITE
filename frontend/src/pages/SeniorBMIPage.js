@@ -1148,7 +1148,7 @@ const SeniorBMIPage = () => {
                             <li>• Target: 1.2-1.6g per kg body weight</li>
                             <li>• Distribution: 25-30g per meal</li>
                             <li>• Timing: Post-exercise protein within 2 hours</li>
-                            <li>• Quality: Complete proteins (leucine >2.5g)</li>
+                            <li>• Quality: Complete proteins (leucine &gt;2.5g)</li>
                             <li>• Sources: Whey, casein, lean meats, eggs</li>
                             <li>• Supplements: Consider if dietary intake inadequate</li>
                           </ul>
