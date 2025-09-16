@@ -30,6 +30,8 @@ const EthnicityBMIPage = () => {
   
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [expandedSections, setExpandedSections] = useState({});
+  const [activeNavSection, setActiveNavSection] = useState('genetics');
 
   const ethnicityOptions = [
     { value: 'asian', label: 'Asian' },
