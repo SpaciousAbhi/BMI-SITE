@@ -151,6 +151,8 @@ const HomePage = () => {
         weight,
         height: formData.heightUnit === 'feet' && formData.heightFeet && formData.heightInches 
           ? `${formData.heightFeet}'${formData.heightInches}"` 
+          : formData.heightUnit === 'feet' && formData.heightFeet
+          ? `${formData.heightFeet}'0"`
           : formData.height,
         heightInCm,
         age,
