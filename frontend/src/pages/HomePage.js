@@ -299,7 +299,7 @@ const HomePage = () => {
             </p>
             
             {/* Comprehensive Features & Specialties */}
-            <div className="flex flex-wrap justify-center gap-3 mb-10 max-w-6xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-2 mb-10 max-w-6xl mx-auto">
               {[
                 { label: '🎯 Instant BMI Results', color: 'teal' },
                 { label: '📊 Body Fat Analysis', color: 'purple' },
@@ -327,7 +327,7 @@ const HomePage = () => {
               ].map((feature, index) => (
                 <div 
                   key={feature.label}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-500 transform hover:scale-105 animate-slide-in ${
+                  className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all duration-500 transform hover:scale-105 animate-slide-in ${
                     theme === 'white' 
                       ? feature.color === 'gray' 
                         ? 'bg-gray-50 text-gray-700 border border-gray-200 hover:bg-gray-100'
