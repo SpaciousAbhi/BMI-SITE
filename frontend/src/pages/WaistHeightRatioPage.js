@@ -813,7 +813,7 @@ const WaistHeightRatioPage = () => {
                       }`}>
                         <div className="text-center">
                           <p className={`text-sm font-medium ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
-                            Healthy Threshold: < 0.5
+                            Healthy Threshold: &lt; 0.5
                           </p>
                           <p className={`text-lg font-bold ${
                             result.ratio < 0.5 
