@@ -25,7 +25,7 @@ import {
   Utensils,
   Dumbbell,
   Droplets,
-  Pulse,
+  HeartPulse,
   Flame,
   Clock,
   BookOpen
