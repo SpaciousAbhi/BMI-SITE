@@ -325,7 +325,7 @@ const Footer = () => {
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
-                  <Pulse className="h-3 w-3" />
+                  <HeartPulse className="h-3 w-3" />
                   Heart Rate Zones
                 </Link>
               </li>
