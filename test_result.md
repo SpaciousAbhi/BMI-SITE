@@ -254,12 +254,10 @@ metadata:
 
 test_plan:
   current_focus:
-    - "Netlify Build Fix - Dependency Resolution"
-    - "Backend Service Compatibility - Frontend Only Optimization"
-    - "Advanced SEO Meta Tags Optimization"
-    - "Content SEO & Keyword Optimization"
-    - "Individual Calculator Pages SEO"
-    - "Technical SEO Improvements"
+    - "Homepage BMI Calculator Testing"
+    - "Phase 2 Calculator Testing - Protein Calculator"
+    - "Phase 2 Calculator Testing - Water Calculator"
+    - "Phase 2 Calculator Testing - Heart Rate Calculator"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
