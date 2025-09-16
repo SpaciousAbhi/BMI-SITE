@@ -1363,7 +1363,7 @@ const EthnicityBMIPage = () => {
                         <ul className={`space-y-2 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
                           <li><strong>South Asians:</strong> Risk increases at BMI &gt;21</li>
                           <li><strong>East Asians:</strong> Significant risk at BMI &gt;23</li>
-                          <li><strong>Pacific Islanders:</strong> Risk threshold BMI >30</li>
+                          <li><strong>Pacific Islanders:</strong> Risk threshold BMI &gt;30</li>
                           <li><strong>Hispanics:</strong> Elevated risk at BMI &gt;26</li>
                           <li><strong>African Americans:</strong> Risk increases at BMI &gt;27</li>
                           <li><strong>Caucasians:</strong> Traditional threshold BMI &gt;25</li>
