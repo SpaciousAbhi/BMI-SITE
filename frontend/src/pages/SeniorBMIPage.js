@@ -831,49 +831,878 @@ const SeniorBMIPage = () => {
           </Alert>
         </div>
 
-        {/* Educational Content */}
-        <div className="max-w-4xl mx-auto mt-12">
-          <Card className={`backdrop-blur-md border-0 shadow-xl ${
-            theme === 'white' 
-              ? 'bg-white/80' 
-              : theme === 'dark'
-              ? 'bg-gray-800/80'
-              : 'bg-black/80'
-          }`}>
-            <CardContent className="p-8">
-              <h2 className={`text-2xl font-bold mb-6 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
-                BMI and Healthy Aging
-              </h2>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h3 className={`text-lg font-semibold mb-3 ${theme === 'white' ? 'text-gray-800' : 'text-gray-200'}`}>
-                    Why Senior BMI is Different
-                  </h3>
-                  <ul className={`space-y-2 text-sm ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
-                    <li>• Muscle mass naturally decreases with age</li>
-                    <li>• Bone density changes affect weight</li>
-                    <li>• Metabolism slows down</li>
-                    <li>• Higher BMI may be protective against illness</li>
-                    <li>• Recovery from illness is better with higher weight</li>
-                  </ul>
-                </div>
+        {/* Comprehensive Scientific Content for Seniors */}
+        <div className="max-w-6xl mx-auto mt-16 space-y-12">
+          
+          {/* Aging and BMI Science */}
+          <div id="aging" className="scroll-mt-8">
+            <Card className={`backdrop-blur-md border-0 shadow-xl ${
+              theme === 'white' 
+                ? 'bg-white/80' 
+                : theme === 'dark'
+                ? 'bg-gray-800/80'
+                : 'bg-black/80'
+            }`}>
+              <CardContent className="p-8">
+                <h2 className={`text-3xl font-bold mb-8 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                  The Science of Aging and Weight Management
+                </h2>
                 
-                <div>
-                  <h3 className={`text-lg font-semibold mb-3 ${theme === 'white' ? 'text-gray-800' : 'text-gray-200'}`}>
-                    Key Health Priorities for Seniors
-                  </h3>
-                  <ul className={`space-y-2 text-sm ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
-                    <li>• Maintaining muscle mass (sarcopenia prevention)</li>
-                    <li>• Bone health and fall prevention</li>
-                    <li>• Functional mobility and independence</li>
-                    <li>• Adequate nutrition and hydration</li>
-                    <li>• Managing chronic conditions</li>
-                  </ul>
+                <div className="grid gap-6">
+                  {/* Physiological Changes in Aging */}
+                  <div className={`border rounded-lg p-6 transition-all duration-300 ${
+                    theme === 'white' ? 'border-indigo-200 bg-indigo-50/50' :
+                    theme === 'dark' ? 'border-purple-500/30 bg-purple-900/20' :
+                    'border-green-500/30 bg-green-900/20'
+                  }`}>
+                    <div 
+                      className="flex items-center justify-between cursor-pointer"
+                      onClick={() => toggleSection('physiological')}
+                    >
+                      <h3 className={`text-xl font-semibold ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                        Age-Related Physiological Changes
+                      </h3>
+                      {expandedSections.physiological ? 
+                        <ChevronDown className={`h-5 w-5 ${theme === 'white' ? 'text-indigo-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`} /> : 
+                        <ChevronRight className={`h-5 w-5 ${theme === 'white' ? 'text-indigo-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`} />
+                      }
+                    </div>
+                    {expandedSections.physiological && (
+                      <div className={`mt-4 text-sm ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div>
+                            <h4 className="font-semibold mb-2">Metabolic Changes</h4>
+                            <p className="mb-3">Basal metabolic rate decreases 1-3% per decade after age 30. Mitochondrial efficiency declines, reducing cellular energy production. Insulin sensitivity often decreases, affecting glucose metabolism and fat storage patterns.</p>
+                            <h4 className="font-semibold mb-2">Body Composition Shifts</h4>
+                            <p>Adults lose 3-8% of muscle mass per decade after age 30, accelerating after 65. Fat distribution shifts to visceral areas. Bone density decreases 0.5-1% annually, affecting overall weight and fracture risk.</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Hormonal Changes</h4>
+                            <p className="mb-3">Growth hormone and testosterone decline affect muscle maintenance. Thyroid function may decrease, slowing metabolism. Cortisol patterns change, potentially affecting weight distribution and stress response.</p>
+                            <h4 className="font-semibold mb-2">Digestive System Changes</h4>
+                            <p>Reduced stomach acid production affects nutrient absorption. Decreased appetite regulation due to altered ghrelin and leptin sensitivity. Slower gastric emptying can affect meal timing and portion sizes.</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* The "Obesity Paradox" in Seniors */}
+                  <div className={`border rounded-lg p-6 transition-all duration-300 ${
+                    theme === 'white' ? 'border-indigo-200 bg-indigo-50/50' :
+                    theme === 'dark' ? 'border-purple-500/30 bg-purple-900/20' :
+                    'border-green-500/30 bg-green-900/20'
+                  }`}>
+                    <div 
+                      className="flex items-center justify-between cursor-pointer"
+                      onClick={() => toggleSection('paradox')}
+                    >
+                      <h3 className={`text-xl font-semibold ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                        The Obesity Paradox in Older Adults
+                      </h3>
+                      {expandedSections.paradox ? 
+                        <ChevronDown className={`h-5 w-5 ${theme === 'white' ? 'text-indigo-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`} /> : 
+                        <ChevronRight className={`h-5 w-5 ${theme === 'white' ? 'text-indigo-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`} />
+                      }
+                    </div>
+                    {expandedSections.paradox && (
+                      <div className={`mt-4 text-sm ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div>
+                            <h4 className="font-semibold mb-2">Research Evidence</h4>
+                            <p className="mb-3">Multiple studies show seniors with BMI 25-30 have lower mortality rates than those with "normal" BMI 18.5-25. The Framingham Heart Study found optimal BMI for 65+ adults is 27-30, challenging traditional categories.</p>
+                            <h4 className="font-semibold mb-2">Protective Mechanisms</h4>
+                            <p>Higher BMI provides energy reserves during illness or stress. Increased muscle mass (not just fat) in higher BMI seniors supports functional capacity. Improved nutritional status helps recovery from illness or surgery.</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Clinical Implications</h4>
+                            <p className="mb-3">Weight loss interventions in seniors should focus on preserving muscle mass rather than total weight reduction. Functional capacity and quality of life matter more than BMI alone.</p>
+                            <h4 className="font-semibold mb-2">Important Limitations</h4>
+                            <p>The paradox doesn't apply to all seniors or all health outcomes. Mobility, cardiovascular health, and diabetes risk still correlate with higher BMI. Individual assessment remains crucial.</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Longevity and Weight Research */}
+                  <div className={`border rounded-lg p-6 transition-all duration-300 ${
+                    theme === 'white' ? 'border-indigo-200 bg-indigo-50/50' :
+                    theme === 'dark' ? 'border-purple-500/30 bg-purple-900/20' :
+                    'border-green-500/30 bg-green-900/20'
+                  }`}>
+                    <div 
+                      className="flex items-center justify-between cursor-pointer"
+                      onClick={() => toggleSection('longevity')}
+                    >
+                      <h3 className={`text-xl font-semibold ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                        Longevity Research and Optimal Weight
+                      </h3>
+                      {expandedSections.longevity ? 
+                        <ChevronDown className={`h-5 w-5 ${theme === 'white' ? 'text-indigo-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`} /> : 
+                        <ChevronRight className={`h-5 w-5 ${theme === 'white' ? 'text-indigo-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`} />
+                      }
+                    </div>
+                    {expandedSections.longevity && (
+                      <div className={`mt-4 text-sm ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                        <div className="grid md:grid-cols-3 gap-4">
+                          <div>
+                            <h4 className="font-semibold mb-2">Blue Zone Studies</h4>
+                            <p className="mb-3">Populations with exceptional longevity (Okinawans, Sardinians, Costa Ricans) show optimal BMI ranges of 24-27 in older adults. These populations maintain muscle mass and functional capacity into their 90s.</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Centenarian Research</h4>
+                            <p className="mb-3">Studies of people living to 100+ show they maintain stable weight throughout their 80s and 90s. Weight loss in very old age is associated with increased mortality, regardless of starting BMI.</p>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Genetic Factors</h4>
+                            <p>APOE4 carriers may benefit from different weight targets. FTO gene variants affect metabolism in older adults. Telomere length correlates with weight stability and longevity outcomes.</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Age-Specific Health Risks */}
+                  <div className={`border rounded-lg p-6 transition-all duration-300 ${
+                    theme === 'white' ? 'border-indigo-200 bg-indigo-50/50' :
+                    theme === 'dark' ? 'border-purple-500/30 bg-purple-900/20' :
+                    'border-green-500/30 bg-green-900/20'
+                  }`}>
+                    <div 
+                      className="flex items-center justify-between cursor-pointer"
+                      onClick={() => toggleSection('risks')}
+                    >
+                      <h3 className={`text-xl font-semibold ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                        Age-Specific Health Risk Assessment
+                      </h3>
+                      {expandedSections.risks ? 
+                        <ChevronDown className={`h-5 w-5 ${theme === 'white' ? 'text-indigo-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`} /> : 
+                        <ChevronRight className={`h-5 w-5 ${theme === 'white' ? 'text-indigo-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`} />
+                      }
+                    </div>
+                    {expandedSections.risks && (
+                      <div className={`mt-4 text-sm ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div>
+                            <h4 className="font-semibold mb-2 text-red-600">Underweight Risks (BMI <22)</h4>
+                            <ul className="space-y-1 mb-4">
+                              <li>• Increased mortality risk (up to 50% higher)</li>
+                              <li>• Malnutrition and micronutrient deficiencies</li>
+                              <li>• Increased infection susceptibility</li>
+                              <li>• Slower wound healing and recovery</li>
+                              <li>• Higher risk of falls and fractures</li>
+                              <li>• Reduced ability to withstand medical treatments</li>
+                            </ul>
+                            <h4 className="font-semibold mb-2 text-orange-600">Moderate Overweight (BMI 27-32)</h4>
+                            <ul className="space-y-1">
+                              <li>• May be protective in many seniors</li>
+                              <li>• Monitor for mobility limitations</li>
+                              <li>• Increased diabetes risk in some individuals</li>
+                              <li>• Joint stress in knees and hips</li>
+                              <li>• Sleep apnea considerations</li>
+                            </ul>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2 text-green-600">Optimal Range (BMI 22-27)</h4>
+                            <ul className="space-y-1 mb-4">
+                              <li>• Lowest mortality risk for seniors</li>
+                              <li>• Best balance of energy reserves and mobility</li>
+                              <li>• Adequate nutritional status</li>
+                              <li>• Better surgical outcomes</li>
+                              <li>• Maintained functional independence</li>
+                              <li>• Reduced frailty syndrome risk</li>
+                            </ul>
+                            <h4 className="font-semibold mb-2 text-red-700">Severe Obesity (BMI >35)</h4>
+                            <ul className="space-y-1">
+                              <li>• Significant mobility impairment</li>
+                              <li>• Increased cardiovascular disease risk</li>
+                              <li>• Higher diabetes and metabolic syndrome rates</li>
+                              <li>• Reduced quality of life</li>
+                              <li>• Increased healthcare utilization</li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Sarcopenia and Muscle Health */}
+          <div id="sarcopenia" className="scroll-mt-8">
+            <Card className={`backdrop-blur-md border-0 shadow-xl ${
+              theme === 'white' 
+                ? 'bg-white/80' 
+                : theme === 'dark'
+                ? 'bg-gray-800/80'
+                : 'bg-black/80'
+            }`}>
+              <CardContent className="p-8">
+                <h2 className={`text-3xl font-bold mb-8 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                  Sarcopenia Prevention and Muscle Health
+                </h2>
+                
+                <div className="grid gap-6">
+                  {/* Understanding Sarcopenia */}
+                  <div className={`border rounded-lg p-6 ${
+                    theme === 'white' ? 'border-indigo-200 bg-indigo-50/50' :
+                    theme === 'dark' ? 'border-purple-500/30 bg-purple-900/20' :
+                    'border-green-500/30 bg-green-900/20'
+                  }`}>
+                    <h3 className={`text-xl font-semibold mb-4 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                      Understanding Sarcopenia: The Hidden Epidemic
+                    </h3>
+                    <div className="grid md:grid-cols-3 gap-4 text-sm">
+                      <div className={`p-4 rounded-lg ${
+                        theme === 'white' ? 'bg-white/80' : theme === 'dark' ? 'bg-gray-700/50' : 'bg-gray-900/50'
+                      }`}>
+                        <h4 className={`font-semibold mb-3 ${theme === 'white' ? 'text-indigo-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`}>
+                          Definition & Prevalence
+                        </h4>
+                        <p className={`mb-3 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                          Age-related loss of muscle mass, strength, and function
+                        </p>
+                        <ul className={`space-y-1 ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                          <li>• Affects 10-16% of adults 65+</li>
+                          <li>• Increases to 50% by age 85</li>
+                          <li>• More common in women post-menopause</li>
+                          <li>• Often undiagnosed until severe</li>
+                          <li>• Accelerated by chronic diseases</li>
+                        </ul>
+                      </div>
+                      <div className={`p-4 rounded-lg ${
+                        theme === 'white' ? 'bg-white/80' : theme === 'dark' ? 'bg-gray-700/50' : 'bg-gray-900/50'
+                      }`}>
+                        <h4 className={`font-semibold mb-3 ${theme === 'white' ? 'text-indigo-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`}>
+                          Diagnostic Criteria
+                        </h4>
+                        <p className={`mb-3 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                          Three key components for diagnosis
+                        </p>
+                        <ul className={`space-y-1 ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                          <li>• Low muscle mass (DEXA/BIA)</li>
+                          <li>• Reduced grip strength (<27kg men, <16kg women)</li>
+                          <li>• Slow gait speed (<0.8 m/s)</li>
+                          <li>• Chair stand test (>15 seconds)</li>
+                          <li>• SARC-F screening questionnaire</li>
+                        </ul>
+                      </div>
+                      <div className={`p-4 rounded-lg ${
+                        theme === 'white' ? 'bg-white/80' : theme === 'dark' ? 'bg-gray-700/50' : 'bg-gray-900/50'
+                      }`}>
+                        <h4 className={`font-semibold mb-3 ${theme === 'white' ? 'text-indigo-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}`}>
+                          Health Consequences
+                        </h4>
+                        <p className={`mb-3 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                          Impact on health and independence
+                        </p>
+                        <ul className={`space-y-1 ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                          <li>• 3x increased fall risk</li>
+                          <li>• 2x higher fracture rates</li>
+                          <li>• Increased hospitalization</li>
+                          <li>• Loss of functional independence</li>
+                          <li>• Higher mortality rates</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Prevention and Treatment Strategies */}
+                  <div className={`border rounded-lg p-6 ${
+                    theme === 'white' ? 'border-indigo-200 bg-indigo-50/50' :
+                    theme === 'dark' ? 'border-purple-500/30 bg-purple-900/20' :
+                    'border-green-500/30 bg-green-900/20'
+                  }`}>
+                    <h3 className={`text-xl font-semibold mb-4 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                      Evidence-Based Prevention and Treatment
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-6 text-sm">
+                      <div>
+                        <h4 className={`font-semibold mb-3 ${theme === 'white' ? 'text-gray-800' : 'text-gray-200'}`}>
+                          Resistance Training Protocol
+                        </h4>
+                        <div className={`p-4 rounded-lg mb-4 ${
+                          theme === 'white' ? 'bg-green-50' : theme === 'dark' ? 'bg-green-900/20' : 'bg-green-900/20'
+                        }`}>
+                          <strong className={`${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>Optimal Program:</strong>
+                          <ul className={`mt-2 space-y-1 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                            <li>• Frequency: 2-3 sessions per week</li>
+                            <li>• Intensity: 70-85% of 1RM</li>
+                            <li>• Volume: 8-12 repetitions, 2-3 sets</li>
+                            <li>• Progression: Increase weight weekly</li>
+                            <li>• Focus: Compound movements (squats, deadlifts)</li>
+                            <li>• Duration: Minimum 12-week programs</li>
+                          </ul>
+                        </div>
+                        <h4 className={`font-semibold mb-3 ${theme === 'white' ? 'text-gray-800' : 'text-gray-200'}`}>
+                          Nutritional Interventions
+                        </h4>
+                        <div className={`p-4 rounded-lg ${
+                          theme === 'white' ? 'bg-blue-50' : theme === 'dark' ? 'bg-blue-900/20' : 'bg-blue-900/20'
+                        }`}>
+                          <strong className={`${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>Protein Requirements:</strong>
+                          <ul className={`mt-2 space-y-1 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                            <li>• Target: 1.2-1.6g per kg body weight</li>
+                            <li>• Distribution: 25-30g per meal</li>
+                            <li>• Timing: Post-exercise protein within 2 hours</li>
+                            <li>• Quality: Complete proteins (leucine >2.5g)</li>
+                            <li>• Sources: Whey, casein, lean meats, eggs</li>
+                            <li>• Supplements: Consider if dietary intake inadequate</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className={`font-semibold mb-3 ${theme === 'white' ? 'text-gray-800' : 'text-gray-200'}`}>
+                          Advanced Interventions
+                        </h4>
+                        <div className="space-y-3">
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-white/60' : 'bg-gray-700/30'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Creatine Supplementation:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              3-5g daily improves muscle mass and strength when combined with resistance training. Particularly effective in vegetarians and older adults.
+                            </p>
+                          </div>
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-white/60' : 'bg-gray-700/30'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Vitamin D Optimization:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              Maintain levels >30 ng/mL (75 nmol/L). Deficiency common in seniors and impairs muscle function. May require 1000-4000 IU daily.
+                            </p>
+                          </div>
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-white/60' : 'bg-gray-700/30'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>HMB (β-Hydroxy β-Methylbutyrate):</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              3g daily may reduce muscle protein breakdown. Most effective during periods of increased muscle stress or bed rest.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Exercise Programming for Seniors */}
+                  <div className={`border rounded-lg p-6 ${
+                    theme === 'white' ? 'border-indigo-200 bg-indigo-50/50' :
+                    theme === 'dark' ? 'border-purple-500/30 bg-purple-900/20' :
+                    'border-green-500/30 bg-green-900/20'
+                  }`}>
+                    <h3 className={`text-xl font-semibold mb-4 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                      Comprehensive Exercise Programming for Healthy Aging
+                    </h3>
+                    <div className="grid md:grid-cols-4 gap-4 text-sm">
+                      {[
+                        {
+                          title: 'Resistance Training',
+                          color: 'red',
+                          frequency: '2-3x per week',
+                          exercises: ['Squats/Chair stands', 'Modified deadlifts', 'Chest press', 'Rows', 'Overhead press', 'Core stabilization'],
+                          benefits: 'Builds muscle mass, increases bone density, improves metabolic health'
+                        },
+                        {
+                          title: 'Cardiovascular Exercise',
+                          color: 'blue', 
+                          frequency: '150 min/week moderate',
+                          exercises: ['Walking', 'Swimming', 'Cycling', 'Elliptical', 'Dancing', 'Water aerobics'],
+                          benefits: 'Improves heart health, endurance, mood, and cognitive function'
+                        },
+                        {
+                          title: 'Balance & Flexibility',
+                          color: 'green',
+                          frequency: 'Daily',
+                          exercises: ['Tai Chi', 'Yoga', 'Single-leg stands', 'Heel-to-toe walks', 'Stretching', 'Proprioception training'],
+                          benefits: 'Reduces fall risk, maintains mobility, improves quality of life'
+                        },
+                        {
+                          title: 'Functional Training',
+                          color: 'purple',
+                          frequency: '2-3x per week',
+                          exercises: ['Sit-to-stand', 'Stair climbing', 'Carrying objects', 'Reaching activities', 'Multi-directional movements'],
+                          benefits: 'Maintains independence in daily activities, real-world strength'
+                        }
+                      ].map((program, index) => (
+                        <div key={index} className={`p-4 rounded-lg ${
+                          theme === 'white' ? 'bg-white/80' : theme === 'dark' ? 'bg-gray-700/50' : 'bg-gray-900/50'
+                        }`}>
+                          <h4 className={`font-semibold mb-2 ${
+                            program.color === 'red' ? 'text-red-600' :
+                            program.color === 'blue' ? 'text-blue-600' :
+                            program.color === 'green' ? 'text-green-600' :
+                            'text-purple-600'
+                          }`}>
+                            {program.title}
+                          </h4>
+                          <p className={`font-medium mb-3 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                            {program.frequency}
+                          </p>
+                          <ul className={`space-y-1 mb-3 ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                            {program.exercises.map((exercise, i) => (
+                              <li key={i}>• {exercise}</li>
+                            ))}
+                          </ul>
+                          <p className={`text-xs italic ${theme === 'white' ? 'text-gray-500' : 'text-gray-500'}`}>
+                            {program.benefits}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Cognitive Health and Weight Connection */}
+          <div id="cognitive" className="scroll-mt-8">
+            <Card className={`backdrop-blur-md border-0 shadow-xl ${
+              theme === 'white' 
+                ? 'bg-white/80' 
+                : theme === 'dark'
+                ? 'bg-gray-800/80'
+                : 'bg-black/80'
+            }`}>
+              <CardContent className="p-8">
+                <h2 className={`text-3xl font-bold mb-8 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                  Brain Health and Weight in Aging
+                </h2>
+                
+                <div className="grid gap-6">
+                  {/* Weight-Brain Health Connection */}
+                  <div className={`border rounded-lg p-6 ${
+                    theme === 'white' ? 'border-indigo-200 bg-indigo-50/50' :
+                    theme === 'dark' ? 'border-purple-500/30 bg-purple-900/20' :
+                    'border-green-500/30 bg-green-900/20'
+                  }`}>
+                    <h3 className={`text-xl font-semibold mb-4 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                      The Weight-Cognition Connection in Seniors
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-6 text-sm">
+                      <div>
+                        <h4 className={`font-semibold mb-3 ${theme === 'white' ? 'text-gray-800' : 'text-gray-200'}`}>
+                          Research Findings
+                        </h4>
+                        <div className="space-y-3">
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-blue-50' : 'bg-blue-900/20'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>U-Shaped Relationship:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              Both very low and very high BMI associated with cognitive decline. Optimal cognitive health occurs at BMI 25-29 in seniors.
+                            </p>
+                          </div>
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-green-50' : 'bg-green-900/20'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Protective Mechanisms:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              Moderate weight provides brain energy reserves, supports neurotransmitter production, and maintains vascular health.
+                            </p>
+                          </div>
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-purple-50' : 'bg-purple-900/20'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Longitudinal Studies:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              Weight loss after age 65 predicts cognitive decline, even when controlling for underlying disease.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className={`font-semibold mb-3 ${theme === 'white' ? 'text-gray-800' : 'text-gray-200'}`}>
+                          Mechanisms of Action
+                        </h4>
+                        <div className="space-y-3">
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-yellow-50' : 'bg-yellow-900/20'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Metabolic Support:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              Brain requires 20% of daily calories. Adequate weight ensures glucose availability during illness or stress.
+                            </p>
+                          </div>
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-red-50' : 'bg-red-900/20'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Vascular Health:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              Moderate BMI maintains optimal blood flow to brain. Extreme low weight can compromise cerebral perfusion.
+                            </p>
+                          </div>
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-indigo-50' : 'bg-indigo-900/20'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Hormone Production:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              Adipose tissue produces hormones and growth factors that support neuroplasticity and neuroprotection.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Nutrition for Brain Health */}
+                  <div className={`border rounded-lg p-6 ${
+                    theme === 'white' ? 'border-indigo-200 bg-indigo-50/50' :
+                    theme === 'dark' ? 'border-purple-500/30 bg-purple-900/20' :
+                    'border-green-500/30 bg-green-900/20'
+                  }`}>
+                    <h3 className={`text-xl font-semibold mb-4 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                      Brain-Healthy Nutrition for Seniors
+                    </h3>
+                    <div className="grid md:grid-cols-3 gap-4 text-sm">
+                      <div className={`p-4 rounded-lg ${
+                        theme === 'white' ? 'bg-white/80' : theme === 'dark' ? 'bg-gray-700/50' : 'bg-gray-900/50'
+                      }`}>
+                        <h4 className={`font-semibold mb-3 ${theme === 'white' ? 'text-purple-600' : 'text-purple-400'}`}>
+                          MIND Diet Principles
+                        </h4>
+                        <p className={`mb-3 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                          Mediterranean-DASH diet for cognitive protection
+                        </p>
+                        <ul className={`space-y-1 ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                          <li>• Leafy greens (6+ servings/week)</li>
+                          <li>• Berries (2+ servings/week)</li>
+                          <li>• Nuts (5+ servings/week)</li>
+                          <li>• Fatty fish (1+ servings/week)</li>
+                          <li>• Whole grains (3+ servings/day)</li>
+                          <li>• Olive oil as primary fat</li>
+                        </ul>
+                      </div>
+                      <div className={`p-4 rounded-lg ${
+                        theme === 'white' ? 'bg-white/80' : theme === 'dark' ? 'bg-gray-700/50' : 'bg-gray-900/50'
+                      }`}>
+                        <h4 className={`font-semibold mb-3 ${theme === 'white' ? 'text-blue-600' : 'text-blue-400'}`}>
+                          Key Nutrients
+                        </h4>
+                        <p className={`mb-3 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                          Specific nutrients for brain health
+                        </p>
+                        <ul className={`space-y-1 ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                          <li>• Omega-3 fatty acids (DHA/EPA)</li>
+                          <li>• Vitamin B12 (often deficient)</li>
+                          <li>• Folate for methylation</li>
+                          <li>• Vitamin D for neuroprotection</li>
+                          <li>• Choline for memory</li>
+                          <li>• Antioxidants (vitamins C, E)</li>
+                        </ul>
+                      </div>
+                      <div className={`p-4 rounded-lg ${
+                        theme === 'white' ? 'bg-white/80' : theme === 'dark' ? 'bg-gray-700/50' : 'bg-gray-900/50'
+                      }`}>
+                        <h4 className={`font-semibold mb-3 ${theme === 'white' ? 'text-green-600' : 'text-green-400'}`}>
+                          Meal Timing & Cognition
+                        </h4>
+                        <p className={`mb-3 ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                          Optimize eating patterns for brain function
+                        </p>
+                        <ul className={`space-y-1 ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                          <li>• Regular meal times maintain glucose stability</li>
+                          <li>• Avoid prolonged fasting in seniors</li>
+                          <li>• Include protein at each meal</li>
+                          <li>• Stay hydrated (dehydration affects cognition)</li>
+                          <li>• Consider intermittent fasting carefully</li>
+                          <li>• Monitor blood sugar fluctuations</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Chronic Disease Management */}
+          <div id="management" className="scroll-mt-8">
+            <Card className={`backdrop-blur-md border-0 shadow-xl ${
+              theme === 'white' 
+                ? 'bg-white/80' 
+                : theme === 'dark'
+                ? 'bg-gray-800/80'
+                : 'bg-black/80'
+            }`}>
+              <CardContent className="p-8">
+                <h2 className={`text-3xl font-bold mb-8 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                  Chronic Disease Management and Weight
+                </h2>
+                
+                <div className="grid gap-6">
+                  {/* Disease-Specific Weight Considerations */}
+                  <div className={`border rounded-lg p-6 ${
+                    theme === 'white' ? 'border-indigo-200 bg-indigo-50/50' :
+                    theme === 'dark' ? 'border-purple-500/30 bg-purple-900/20' :
+                    'border-green-500/30 bg-green-900/20'
+                  }`}>
+                    <h3 className={`text-xl font-semibold mb-4 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                      Disease-Specific Weight Management
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {[
+                        {
+                          disease: 'Type 2 Diabetes',
+                          color: 'red',
+                          recommendations: [
+                            'Target BMI 25-29 may be optimal (not <25)',
+                            'Focus on glycemic control over weight loss',
+                            'Prevent muscle loss during any weight reduction',
+                            'Monitor for hypoglycemia with weight changes',
+                            'Consider diabetes remission potential',
+                            'Regular A1C and glucose monitoring'
+                          ]
+                        },
+                        {
+                          disease: 'Cardiovascular Disease',
+                          color: 'blue',
+                          recommendations: [
+                            'Moderate weight loss (5-10%) if overweight',
+                            'Maintain weight if BMI 22-27',
+                            'Focus on cardiac rehabilitation',
+                            'Monitor blood pressure changes',
+                            'Sodium restriction more important than weight',
+                            'Consider heart failure implications'
+                          ]
+                        },
+                        {
+                          disease: 'Osteoarthritis',
+                          color: 'orange',
+                          recommendations: [
+                            'Weight loss beneficial for knee/hip joints',
+                            'Maintain muscle mass to support joints',
+                            'Low-impact exercise essential',
+                            'Consider joint replacement timing',
+                            'Balance pain management with activity',
+                            'Anti-inflammatory nutrition patterns'
+                          ]
+                        },
+                        {
+                          disease: 'Chronic Kidney Disease',
+                          color: 'green',
+                          recommendations: [
+                            'Prevent muscle wasting (common in CKD)',
+                            'Protein needs may be different',
+                            'Monitor fluid status and edema',
+                            'Coordinate with nephrology team',
+                            'Consider dialysis implications',
+                            'Phosphorus and potassium considerations'
+                          ]
+                        }
+                      ].map((condition, index) => (
+                        <div key={index} className={`p-4 rounded-lg ${
+                          theme === 'white' ? 'bg-white/60' : theme === 'dark' ? 'bg-gray-700/30' : 'bg-gray-900/30'
+                        }`}>
+                          <h4 className={`font-semibold mb-3 ${
+                            condition.color === 'red' ? 'text-red-600' :
+                            condition.color === 'blue' ? 'text-blue-600' :
+                            condition.color === 'orange' ? 'text-orange-600' :
+                            'text-green-600'
+                          }`}>
+                            {condition.disease}
+                          </h4>
+                          <ul className={`space-y-1 text-sm ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                            {condition.recommendations.map((rec, i) => (
+                              <li key={i}>• {rec}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Medication Effects on Weight */}
+                  <div className={`border rounded-lg p-6 ${
+                    theme === 'white' ? 'border-indigo-200 bg-indigo-50/50' :
+                    theme === 'dark' ? 'border-purple-500/30 bg-purple-900/20' :
+                    'border-green-500/30 bg-green-900/20'
+                  }`}>
+                    <h3 className={`text-xl font-semibold mb-4 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                      Medication Effects on Weight and Appetite
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-6 text-sm">
+                      <div>
+                        <h4 className={`font-semibold mb-3 text-red-600`}>
+                          Medications That May Cause Weight Gain
+                        </h4>
+                        <div className="space-y-3">
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-red-50' : 'bg-red-900/20'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Antidepressants:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              SSRIs (especially paroxetine), tricyclics, mirtazapine. Monitor weight monthly, consider alternatives if significant gain.
+                            </p>
+                          </div>
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-red-50' : 'bg-red-900/20'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Diabetes Medications:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              Insulin, sulfonylureas, thiazolidinediones. Consider weight-neutral alternatives like metformin, GLP-1 agonists.
+                            </p>
+                          </div>
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-red-50' : 'bg-red-900/20'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Corticosteroids:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              Prednisone, prednisolone increase appetite and redistribute fat. Use lowest effective dose, shortest duration.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className={`font-semibold mb-3 text-orange-600`}>
+                          Medications That May Cause Weight Loss
+                        </h4>
+                        <div className="space-y-3">
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-orange-50' : 'bg-orange-900/20'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Cholinesterase Inhibitors:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              Donepezil, rivastigmine for dementia can reduce appetite. Monitor nutrition status closely.
+                            </p>
+                          </div>
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-orange-50' : 'bg-orange-900/20'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Diuretics:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              Can cause fluid loss appearing as weight loss. Monitor for dehydration and electrolyte imbalances.
+                            </p>
+                          </div>
+                          <div className={`p-3 rounded ${theme === 'white' ? 'bg-orange-50' : 'bg-orange-900/20'}`}>
+                            <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Certain Antibiotics:</strong>
+                            <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
+                              Can alter gut microbiome and reduce appetite temporarily. Probiotics may help maintain gut health.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Comprehensive FAQ Section */}
+          <div className="max-w-6xl mx-auto mt-16">
+            <Card className={`backdrop-blur-md border-0 shadow-xl ${
+              theme === 'white' 
+                ? 'bg-white/80' 
+                : theme === 'dark'
+                ? 'bg-gray-800/80'
+                : 'bg-black/80'
+            }`}>
+              <CardContent className="p-8">
+                <h2 className={`text-3xl font-bold mb-8 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                  Expert FAQ: Senior Health and Weight Management
+                </h2>
+                
+                {/* FAQ Categories */}
+                <div className="grid md:grid-cols-4 gap-3 mb-8">
+                  {[
+                    { id: 'basics', label: 'Aging Basics', icon: BookOpen },
+                    { id: 'sarcopenia', label: 'Muscle Health', icon: Activity },
+                    { id: 'cognitive', label: 'Brain Health', icon: Brain },
+                    { id: 'management', label: 'Disease Management', icon: Shield }
+                  ].map((category) => {
+                    const Icon = category.icon;
+                    return (
+                      <Badge
+                        key={category.id}
+                        variant="outline"
+                        className={`p-3 cursor-pointer transition-all duration-300 hover:scale-105 ${
+                          theme === 'white' 
+                            ? 'border-indigo-200 text-indigo-700 hover:bg-indigo-50'
+                            : theme === 'dark'
+                            ? 'border-purple-500/50 text-purple-300 hover:bg-purple-900/30'
+                            : 'border-green-500/50 text-green-300 hover:bg-green-900/30'
+                        }`}
+                      >
+                        <Icon className="h-4 w-4 mr-2" />
+                        {category.label}
+                      </Badge>
+                    );
+                  })}
+                </div>
+
+                {/* FAQ Items */}
+                <div className="space-y-4">
+                  {[
+                    {
+                      category: 'basics',
+                      question: 'Why is the BMI range different for seniors?',
+                      answer: 'Research consistently shows that seniors aged 65+ with BMI 25-30 have lower mortality rates than those with "normal" BMI 18.5-25. This "obesity paradox" occurs because higher BMI provides energy reserves during illness, may indicate better nutritional status, and includes muscle mass. Age-related changes in metabolism, body composition, and health risks support these adjusted categories.'
+                    },
+                    {
+                      category: 'basics',
+                      question: 'Should seniors try to lose weight if they are overweight?',
+                      answer: 'Weight loss in seniors should focus on health improvement rather than achieving specific BMI targets. If BMI is 27-32, moderate weight loss (5-10%) may improve mobility and diabetes control, but preserving muscle mass is crucial. Seniors with BMI >35 may benefit from supervised weight loss. However, rapid or severe weight loss can be dangerous and increase mortality risk.'
+                    },
+                    {
+                      category: 'basics',
+                      question: 'What is considered underweight for seniors, and why is it concerning?',
+                      answer: 'BMI below 22 is considered underweight for seniors and is associated with 50% higher mortality risk. Low weight in seniors often indicates malnutrition, muscle loss (sarcopenia), or underlying illness. It reduces ability to recover from infections, surgeries, or other health stresses. Even seniors who have been thin their whole life should be monitored for unintentional weight loss.'
+                    },
+                    {
+                      category: 'sarcopenia',
+                      question: 'What is sarcopenia and how can it be prevented?',
+                      answer: 'Sarcopenia is age-related loss of muscle mass, strength, and function, affecting 10-16% of adults 65+ and 50% by age 85. Prevention requires resistance training 2-3x per week at 70-85% intensity, adequate protein intake (1.2-1.6g per kg body weight), and vitamin D optimization. Early intervention is crucial - muscle loss accelerates with age and becomes harder to reverse.'
+                    },
+                    {
+                      category: 'sarcopenia',
+                      question: 'How much protein do seniors need to maintain muscle?',
+                      answer: 'Seniors need 1.2-1.6g protein per kilogram of body weight daily, significantly higher than younger adults (0.8g/kg). Protein should be distributed throughout the day with 25-30g per meal to optimize muscle protein synthesis. Post-exercise protein within 2 hours is particularly important. Complete proteins containing leucine (>2.5g) are most effective for muscle maintenance.'
+                    },
+                    {
+                      category: 'sarcopenia',
+                      question: 'Can seniors safely do resistance training?',
+                      answer: 'Yes, resistance training is safe and essential for most seniors when properly prescribed. Start with bodyweight exercises or light weights, progress gradually, and focus on compound movements. Medical clearance may be needed for those with cardiovascular disease, recent surgeries, or unstable conditions. The benefits (muscle preservation, bone health, fall prevention, metabolic health) far outweigh risks when done properly.'
+                    },
+                    {
+                      category: 'cognitive',
+                      question: 'How does weight affect brain health in seniors?',
+                      answer: 'There is a U-shaped relationship between weight and cognitive health in seniors. Both very low and very high BMI increase dementia risk. Optimal cognitive health occurs at BMI 25-29. Moderate weight provides brain energy reserves, supports neurotransmitter production, and maintains vascular health. Weight loss after age 65 can predict cognitive decline even when controlling for underlying diseases.'
+                    },
+                    {
+                      category: 'cognitive',
+                      question: 'What foods support brain health in aging?',
+                      answer: 'The MIND diet (Mediterranean-DASH) is most evidence-based for brain health: leafy greens (6+ servings/week), berries (2+ servings/week), nuts (5+ servings/week), fatty fish (1+ serving/week), whole grains, and olive oil. Key nutrients include omega-3s, vitamin B12 (often deficient in seniors), folate, vitamin D, and choline. Regular meal timing maintains glucose stability for optimal brain function.'
+                    },
+                    {
+                      category: 'management',
+                      question: 'How do common medications affect weight in seniors?',
+                      answer: 'Many medications commonly prescribed to seniors affect weight. Weight-gaining medications include antidepressants (SSRIs, tricyclics), diabetes medications (insulin, sulfonylureas), and corticosteroids. Weight-reducing medications include cholinesterase inhibitors for dementia and some diuretics. Always discuss medication-related weight changes with healthcare providers - alternatives may be available.'
+                    },
+                    {
+                      category: 'management',
+                      question: 'Should seniors with diabetes aim for lower BMI?',
+                      answer: 'Not necessarily. For seniors with diabetes, BMI 25-29 may be optimal rather than pushing toward "normal" weight. Focus should be on glycemic control, preventing muscle loss, and maintaining functional capacity. Severe calorie restriction can cause hypoglycemia and muscle loss. Moderate weight loss (5-10%) can improve diabetes control while preserving health.'
+                    },
+                    {
+                      category: 'basics',
+                      question: 'How often should seniors monitor their weight?',
+                      answer: 'Seniors should weigh themselves weekly at the same time of day, using the same scale. Monthly measurements may be sufficient for those with stable chronic conditions. More frequent monitoring is needed during illness, medication changes, or active weight management. Unintentional weight loss of 5% in 6 months or 10% in a year requires medical evaluation.'
+                    },
+                    {
+                      category: 'management',
+                      question: 'Can intermittent fasting be beneficial for seniors?',
+                      answer: 'Intermittent fasting should be approached very cautiously in seniors. While some research shows potential benefits for longevity and metabolic health, seniors are at higher risk for malnutrition, muscle loss, and medication timing issues. Time-restricted eating (12-14 hour fasts) may be safer than longer fasting periods. Always consult healthcare providers before starting any fasting regimen.'
+                    },
+                    {
+                      category: 'cognitive',
+                      question: 'Does weight training improve cognitive function in seniors?',
+                      answer: 'Yes, resistance training has direct cognitive benefits beyond muscle preservation. Studies show strength training 2-3x per week improves executive function, memory, and processing speed in seniors with mild cognitive impairment. The mechanism involves increased BDNF (brain-derived neurotrophic factor), improved vascular health, and reduced inflammation. Combined aerobic and resistance training provides the greatest cognitive benefits.'
+                    },
+                    {
+                      category: 'basics',
+                      question: 'What role does social isolation play in senior weight changes?',
+                      answer: 'Social isolation significantly affects eating patterns and weight in seniors. Isolation often leads to poor appetite, skipped meals, and weight loss, while some may overeat from depression or boredom. Communal dining, meal delivery programs, and social eating opportunities can help maintain healthy eating patterns. Depression screening is important when unexplained weight changes occur.'
+                    },
+                    {
+                      category: 'management',
+                      question: 'How should seniors approach weight management with multiple chronic conditions?',
+                      answer: 'Seniors with multiple conditions need individualized approaches coordinated among their healthcare team. Priority is often functional capacity and quality of life rather than specific weight targets. Consider medication interactions, disease progression, life expectancy, and personal goals. Small, sustainable changes are usually more successful than dramatic interventions. Focus on nutrition quality, physical function, and preventing further decline.'
+                    }
+                  ].map((faq, index) => (
+                    <div key={index} className={`border rounded-lg p-4 transition-all duration-300 ${
+                      theme === 'white' ? 'border-indigo-200 bg-indigo-50/30' :
+                      theme === 'dark' ? 'border-purple-500/30 bg-purple-900/10' :
+                      'border-green-500/30 bg-green-900/10'
+                    }`}>
+                      <h3 className={`font-semibold mb-2 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                        {faq.question}
+                      </h3>
+                      <p className={`text-sm ${theme === 'white' ? 'text-gray-700' : 'text-gray-300'}`}>
+                        {faq.answer}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </main>
       
