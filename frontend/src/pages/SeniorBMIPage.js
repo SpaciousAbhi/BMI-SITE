@@ -247,18 +247,95 @@ const SeniorBMIPage = () => {
   return (
     <div className={`min-h-screen transition-all duration-700 ${getBackgroundGradient()}`}>
       <SEOHead 
-        title="Senior BMI Calculator - BMI Calculator for Adults 65+ | Age-Adjusted BMI 2025"
-        description="Free BMI calculator designed specifically for seniors aged 65+. Get age-adjusted BMI categories and health recommendations tailored for older adults."
-        keywords="senior BMI calculator, elderly BMI calculator, BMI for seniors, BMI over 65, age adjusted BMI, senior health calculator, elderly weight calculator"
+        title="Senior BMI Calculator - Complete Health Guide for Adults 65+ | Age-Adjusted BMI Calculator 2025"
+        description="World's most comprehensive senior BMI calculator with age-adjusted categories, sarcopenia prevention, chronic disease management, and longevity insights. Expert geriatric health guidance for optimal aging."
+        keywords="senior BMI calculator, elderly BMI calculator, BMI for seniors, BMI over 65, age adjusted BMI, senior health calculator, elderly weight calculator, geriatric BMI, sarcopenia prevention, senior nutrition, healthy aging BMI, elderly fitness calculator, senior wellness tool, aging BMI categories, gerontology calculator"
         canonical="/senior-bmi"
         structuredData={{
           "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "Senior BMI Calculator",
-          "description": "BMI calculator specifically designed for adults aged 65 and above with age-adjusted categories",
-          "url": "https://bmicalculator.com/senior-bmi",
-          "applicationCategory": "HealthApplication",
-          "operatingSystem": ["Windows", "macOS", "Linux", "Android", "iOS"]
+          "@graph": [
+            {
+              "@type": "WebApplication",
+              "name": "Senior BMI Calculator",
+              "description": "Comprehensive BMI calculator designed specifically for adults aged 65+ with age-adjusted categories and geriatric health guidance",
+              "url": "https://bmicalculator.com/senior-bmi",
+              "applicationCategory": "HealthApplication",
+              "operatingSystem": ["Windows", "macOS", "Linux", "Android", "iOS"],
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            },
+            {
+              "@type": "MedicalWebPage",
+              "name": "Senior BMI Calculator",
+              "description": "Expert BMI calculator for seniors with age-adjusted health recommendations and geriatric wellness guidance",
+              "medicalAudience": [
+                {
+                  "@type": "MedicalAudience",
+                  "audienceType": "Seniors 65+, geriatricians, healthcare providers"
+                }
+              ],
+              "about": {
+                "@type": "MedicalCondition",
+                "name": "Senior Health and Weight Management"
+              }
+            },
+            {
+              "@type": "HowTo",
+              "name": "How to Calculate Senior BMI",
+              "description": "Step-by-step guide to calculating age-adjusted BMI for seniors aged 65+",
+              "step": [
+                {
+                  "@type": "HowToStep",
+                  "name": "Enter Current Weight",
+                  "text": "Input your current weight in kg or lbs"
+                },
+                {
+                  "@type": "HowToStep", 
+                  "name": "Enter Height",
+                  "text": "Provide your height in centimeters or inches"
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Enter Age", 
+                  "text": "Input your age (must be 65 or older)"
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Select Gender",
+                  "text": "Choose male or female for gender-specific analysis"
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Get Age-Adjusted Results",
+                  "text": "Receive senior-specific BMI categories and health recommendations"
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Why is BMI different for seniors?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Senior BMI categories are adjusted because research shows slightly higher BMI (25-30) may be protective for adults 65+, associated with better survival rates and reduced mortality risk."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What is a healthy BMI for seniors?",
+                  "acceptedAnswer": {
+                    "@type": "Answer", 
+                    "text": "For seniors 65+, the optimal BMI range is typically 22-27, which is higher than standard adult ranges. This accounts for age-related changes in muscle mass, bone density, and metabolism."
+                  }
+                }
+              ]
+            }
+          ]
         }}
       />
       <Header />
