@@ -321,6 +321,13 @@ test_plan:
     stuck_count: 0
     priority: "high"
     needs_retesting: false
+  - task: "Calories Burned Calculator Page - Critical Bug Fix"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/CaloriesBurnedCalculatorPage.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
     status_history:
         - working: false
           agent: "main"
