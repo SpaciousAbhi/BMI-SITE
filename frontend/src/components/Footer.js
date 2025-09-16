@@ -74,9 +74,9 @@ const Footer = () => {
     }`}>
       <div className="container mx-auto px-4 py-12">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Brand Section */}
-          <div className="space-y-4">
+          <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-2 group">
               <Scale className={`h-6 w-6 transition-all duration-300 group-hover:scale-110 ${getIconColor()}`} />
               <span className={`text-lg font-bold transition-colors duration-300 ${
@@ -88,8 +88,8 @@ const Footer = () => {
             <p className={`text-sm leading-relaxed ${
               theme === 'white' ? 'text-gray-600' : 'text-gray-400'
             }`}>
-              Your comprehensive health companion for accurate BMI calculations, 
-              personalized insights, and fitness goal tracking.
+              Your comprehensive health companion featuring 22+ calculators for accurate BMI calculations, 
+              body composition analysis, nutrition planning, and fitness goal tracking.
             </p>
             <div className="flex space-x-4">
               <a 
@@ -123,14 +123,14 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Calculators Section */}
+          {/* BMI & Body Analysis Calculators */}
           <div className="space-y-4">
             <h3 className={`text-sm font-semibold uppercase tracking-wider ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
-              Calculators
+              🧮 BMI & Body Analysis
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               <li>
                 <Link 
                   to="/" 
@@ -138,7 +138,7 @@ const Footer = () => {
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
-                  <Scale className="h-4 w-4" />
+                  <Calculator className="h-3 w-3" />
                   BMI Calculator
                 </Link>
               </li>
@@ -147,11 +147,78 @@ const Footer = () => {
                   to="/athletes-bmi" 
                   className={`text-sm ${
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
+                  <Activity className="h-3 w-3" />
                   BMI for Athletes
                 </Link>
               </li>
+              <li>
+                <Link 
+                  to="/pregnancy-bmi" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Baby className="h-3 w-3" />
+                  Pregnancy BMI
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/senior-bmi" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Users className="h-3 w-3" />
+                  Senior BMI
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/ethnicity-bmi" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Globe className="h-3 w-3" />
+                  Ethnicity BMI
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/bmi-for-children" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <User className="h-3 w-3" />
+                  Children BMI
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/smart-bmi" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Brain className="h-3 w-3" />
+                  Smart BMI
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Body Composition & Nutrition Tools */}
+          <div className="space-y-4">
+            <h3 className={`text-sm font-semibold uppercase tracking-wider ${
+              theme === 'white' ? 'text-gray-900' : 'text-white'
+            }`}>
+              ⚖️ Body & Nutrition
+            </h3>
+            <ul className="space-y-2">
               <li>
                 <Link 
                   to="/body-fat" 
@@ -159,8 +226,41 @@ const Footer = () => {
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
-                  <Target className="h-4 w-4" />
+                  <Target className="h-3 w-3" />
                   Body Fat Calculator
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/ideal-weight" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Scale className="h-3 w-3" />
+                  Ideal Weight
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/waist-height-ratio" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Ruler className="h-3 w-3" />
+                  Waist-Height Ratio
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/body-surface-area" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <BarChart3 className="h-3 w-3" />
+                  Body Surface Area
                 </Link>
               </li>
               <li>
@@ -170,8 +270,8 @@ const Footer = () => {
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
-                  <Heart className="h-4 w-4" />
-                  Calorie Calculator
+                  <Zap className="h-3 w-3" />
+                  TDEE & BMR
                 </Link>
               </li>
               <li>
@@ -181,51 +281,76 @@ const Footer = () => {
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
-                  <Target className="h-4 w-4" />
+                  <Utensils className="h-3 w-3" />
                   Macro Calculator
                 </Link>
               </li>
               <li>
                 <Link 
-                  to="/pregnancy-bmi" 
+                  to="/protein-calculator" 
                   className={`text-sm ${
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
-                  Pregnancy BMI
+                  <Dumbbell className="h-3 w-3" />
+                  Protein Intake
                 </Link>
               </li>
               <li>
                 <Link 
-                  to="/senior-bmi" 
+                  to="/water-calculator" 
                   className={`text-sm ${
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
-                  Senior BMI
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/ethnicity-bmi" 
-                  className={`text-sm ${
-                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
-                >
-                  Ethnicity-Adjusted BMI
+                  <Droplets className="h-3 w-3" />
+                  Water Calculator
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Tools Section */}
+          {/* Fitness & Health Tools */}
           <div className="space-y-4">
             <h3 className={`text-sm font-semibold uppercase tracking-wider ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
-              Tools
+              💪 Fitness & Health
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
+              <li>
+                <Link 
+                  to="/heart-rate-calculator" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Pulse className="h-3 w-3" />
+                  Heart Rate Zones
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/calories-burned-calculator" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Flame className="h-3 w-3" />
+                  Calories Burned
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/fasting-planner" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Clock className="h-3 w-3" />
+                  Fasting Planner
+                </Link>
+              </li>
               <li>
                 <Link 
                   to="/history" 
@@ -233,7 +358,7 @@ const Footer = () => {
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
-                  <TrendingUp className="h-4 w-4" />
+                  <TrendingUp className="h-3 w-3" />
                   Progress Tracking
                 </Link>
               </li>
@@ -244,7 +369,7 @@ const Footer = () => {
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
-                  <Target className="h-4 w-4" />
+                  <Target className="h-3 w-3" />
                   Goal Setting
                 </Link>
               </li>
@@ -255,39 +380,41 @@ const Footer = () => {
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
-                  <Heart className="h-4 w-4" />
+                  <Dumbbell className="h-3 w-3" />
                   Workout Plans
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Health Resources Section */}
+          {/* Health Resources & Support */}
           <div className="space-y-4">
             <h3 className={`text-sm font-semibold uppercase tracking-wider ${
               theme === 'white' ? 'text-gray-900' : 'text-white'
             }`}>
-              Health Resources
+              📚 Resources & Support
             </h3>
-            <ul className="space-y-3">
-              <li>
-                <Link 
-                  to="/about-bmi" 
-                  className={`text-sm ${
-                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
-                >
-                  About BMI
-                </Link>
-              </li>
+            <ul className="space-y-2">
               <li>
                 <Link 
                   to="/blog" 
                   className={`text-sm ${
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
+                  <BookOpen className="h-3 w-3" />
                   Health Blog
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/about-bmi" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <FileText className="h-3 w-3" />
+                  About BMI
                 </Link>
               </li>
               <li>
@@ -295,8 +422,9 @@ const Footer = () => {
                   to="/health-tips" 
                   className={`text-sm ${
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
+                  <Heart className="h-3 w-3" />
                   Health Tips
                 </Link>
               </li>
@@ -305,16 +433,48 @@ const Footer = () => {
                   to="/nutrition-guide" 
                   className={`text-sm ${
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
-                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
                 >
+                  <BookOpen className="h-3 w-3" />
                   Nutrition Guide
                 </Link>
               </li>
               <li>
                 <Link 
-                  to="/bmi-blog" 
+                  to="/contact" 
                   className={`text-sm ${
                     theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Mail className="h-3 w-3" />
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/privacy-policy" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Shield className="h-3 w-3" />
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/terms-of-service" 
+                  className={`text-sm ${
+                    theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+                  } ${getHoverColor()} transition-all duration-300 hover:translate-x-1 flex items-center gap-2`}
+                >
+                  <Shield className="h-3 w-3" />
+                  Terms of Service
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
                   } ${getHoverColor()} transition-all duration-300 hover:translate-x-1`}
                 >
                   BMI Blog
