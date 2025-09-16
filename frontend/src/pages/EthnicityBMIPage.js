@@ -406,18 +406,90 @@ const EthnicityBMIPage = () => {
   return (
     <div className={`min-h-screen transition-all duration-700 ${getBackgroundGradient()}`}>
       <SEOHead 
-        title="Ethnicity-Adjusted BMI Calculator - BMI by Race & Ethnicity 2025"
-        description="Free BMI calculator with ethnicity-specific adjustments for Asian, South Asian, Pacific Islander, African American, Hispanic populations. Get culturally-aware health recommendations."
-        keywords="ethnicity BMI calculator, Asian BMI calculator, race adjusted BMI, cultural BMI, South Asian BMI, Pacific Islander BMI, African American BMI, Hispanic BMI calculator"
+        title="Ethnicity-Adjusted BMI Calculator - Comprehensive Cultural Health Assessment 2025 | Genetic BMI Analysis"
+        description="World's most advanced ethnicity-adjusted BMI calculator with genetic risk factors, cultural dietary patterns, and population-specific health insights. Expert analysis for Asian, South Asian, Pacific Islander, African American, Hispanic, and mixed ethnicities."
+        keywords="ethnicity BMI calculator, Asian BMI calculator, race adjusted BMI, cultural BMI, South Asian BMI, Pacific Islander BMI, African American BMI, Hispanic BMI calculator, genetic BMI factors, population health calculator, cultural health assessment, ethnic health risks, genetic predisposition calculator, multicultural BMI tool, diversity health metrics"
         canonical="/ethnicity-bmi"
         structuredData={{
           "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "Ethnicity-Adjusted BMI Calculator",
-          "description": "BMI calculator with ethnicity-specific adjustments and cultural health considerations",
-          "url": "https://bmicalculator.com/ethnicity-bmi",
-          "applicationCategory": "HealthApplication",
-          "operatingSystem": ["Windows", "macOS", "Linux", "Android", "iOS"]
+          "@graph": [
+            {
+              "@type": "WebApplication",
+              "name": "Ethnicity-Adjusted BMI Calculator",
+              "description": "Advanced BMI calculator with ethnicity-specific adjustments, genetic risk factors, and comprehensive cultural health considerations",
+              "url": "https://bmicalculator.com/ethnicity-bmi",
+              "applicationCategory": "HealthApplication",
+              "operatingSystem": ["Windows", "macOS", "Linux", "Android", "iOS"],
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            },
+            {
+              "@type": "MedicalWebPage",
+              "name": "Ethnicity-Adjusted BMI Calculator",
+              "description": "Expert BMI calculator with ethnicity-specific health recommendations and genetic risk factor analysis",
+              "medicalAudience": [
+                {
+                  "@type": "MedicalAudience",
+                  "audienceType": "Healthcare providers, genetic counselors, multicultural health specialists"
+                }
+              ],
+              "about": {
+                "@type": "MedicalCondition",
+                "name": "Ethnic Health Disparities and Weight Management"
+              }
+            },
+            {
+              "@type": "HowTo",
+              "name": "How to Calculate Ethnicity-Adjusted BMI",
+              "description": "Step-by-step guide to calculating BMI with ethnic and genetic considerations",
+              "step": [
+                {
+                  "@type": "HowToStep",
+                  "name": "Enter Basic Measurements",
+                  "text": "Input weight, height, age in preferred units"
+                },
+                {
+                  "@type": "HowToStep", 
+                  "name": "Select Gender",
+                  "text": "Choose male or female for gender-specific analysis"
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Choose Ethnicity", 
+                  "text": "Select from 11 ethnic/racial categories for population-specific adjustments"
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Get Comprehensive Analysis",
+                  "text": "Receive ethnicity-adjusted BMI categories, genetic risk factors, and cultural health recommendations"
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Why do different ethnicities have different BMI ranges?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Different ethnic groups have varying body compositions, genetic predispositions, and disease risk thresholds. For example, Asian populations develop diabetes at lower BMI levels, while Pacific Islanders have naturally larger body frames."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How accurate are ethnicity-adjusted BMI calculations?",
+                  "acceptedAnswer": {
+                    "@type": "Answer", 
+                    "text": "Ethnicity-adjusted BMI provides more accurate health risk assessment than standard BMI alone, based on extensive population research showing different disease thresholds across ethnic groups."
+                  }
+                }
+              ]
+            }
+          ]
         }}
       />
       <Header />
