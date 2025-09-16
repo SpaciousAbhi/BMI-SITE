@@ -760,7 +760,7 @@ const HomePage = () => {
                     <h4 className={`text-xl font-bold mb-3 ${
                       theme === 'white' ? 'text-gray-900' : 'text-white'
                     }`}>
-                      Calorie Calculator
+                      TDEE & BMR Calculator
                     </h4>
                     <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
                       TDEE & BMR calculator for precise daily calorie needs and weight goals
