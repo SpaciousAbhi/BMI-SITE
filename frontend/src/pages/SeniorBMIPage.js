@@ -1618,7 +1618,7 @@ const SeniorBMIPage = () => {
                     {
                       category: 'basics',
                       question: 'Should seniors try to lose weight if they are overweight?',
-                      answer: 'Weight loss in seniors should focus on health improvement rather than achieving specific BMI targets. If BMI is 27-32, moderate weight loss (5-10%) may improve mobility and diabetes control, but preserving muscle mass is crucial. Seniors with BMI >35 may benefit from supervised weight loss. However, rapid or severe weight loss can be dangerous and increase mortality risk.'
+                      answer: 'Weight loss in seniors should focus on health improvement rather than achieving specific BMI targets. If BMI is 27-32, moderate weight loss (5-10%) may improve mobility and diabetes control, but preserving muscle mass is crucial. Seniors with BMI &gt;35 may benefit from supervised weight loss. However, rapid or severe weight loss can be dangerous and increase mortality risk.'
                     },
                     {
                       category: 'basics',
