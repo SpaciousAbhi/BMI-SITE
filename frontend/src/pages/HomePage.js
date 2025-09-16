@@ -89,24 +89,15 @@ const HomePage = () => {
     } else if (formData.heightUnit === 'inches') {
       return parseFloat(formData.height) * 2.54;
     } else if (formData.heightUnit === 'feet') {
-      // Handle both combined (5.9) and separate feet/inches input
+      // Only use separate feet and inches input
       if (formData.heightFeet && formData.heightInches) {
-        // Separate feet and inches input
         const feet = parseInt(formData.heightFeet);
         const inches = parseInt(formData.heightInches);
         return ((feet * 12) + inches) * 2.54;
-      } else if (formData.height) {
-        // Combined feet.inches input (e.g., 5.9 or 6.10)
-        const heightStr = formData.height.toString();
-        if (heightStr.includes('.')) {
-          const [feetStr, inchesStr] = heightStr.split('.');
-          const feet = parseInt(feetStr);
-          const inches = parseInt(inchesStr);
-          return ((feet * 12) + inches) * 2.54;
-        } else {
-          // Just feet, no inches
-          return parseInt(formData.height) * 12 * 2.54;
-        }
+      } else if (formData.heightFeet) {
+        // Only feet provided, no inches
+        const feet = parseInt(formData.heightFeet);
+        return feet * 12 * 2.54;
       }
     }
     return 0;
