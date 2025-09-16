@@ -999,6 +999,364 @@ const CaloriePage = () => {
             </div>
           )}
         </div>
+
+        {/* Comprehensive Scientific Content Sections */}
+        
+        {/* Calorie Science Deep-Dive */}
+        <section id="science" className="max-w-6xl mx-auto mt-16 mb-16">
+          <h2 className={`text-3xl font-bold text-center mb-8 ${
+            theme === 'white' ? 'text-gray-900' : 'text-white'
+          }`}>
+            The Science of Calorie Calculation
+          </h2>
+          
+          <div className="grid gap-6">
+            {calorieScience.map((science, index) => (
+              <Card key={index} className={`backdrop-blur-md border-0 shadow-lg ${
+                theme === 'white' 
+                  ? 'bg-white/80' 
+                  : theme === 'dark'
+                  ? 'bg-gray-800/80'
+                  : 'bg-black/80'
+              }`}>
+                <CardHeader className="cursor-pointer" onClick={() => toggleSection(`science-${index}`)}>
+                  <CardTitle className={`text-lg flex items-center justify-between ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    <div className="flex items-center gap-3">
+                      <span className={theme === 'white' ? 'text-teal-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'}>
+                        {science.icon}
+                      </span>
+                      {science.title}
+                    </div>
+                    {expandedSections[`science-${index}`] 
+                      ? <ChevronDown className="h-5 w-5" /> 
+                      : <ChevronRight className="h-5 w-5" />
+                    }
+                  </CardTitle>
+                </CardHeader>
+                {expandedSections[`science-${index}`] && (
+                  <CardContent className="space-y-4">
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      {science.content}
+                    </p>
+                    
+                    <div className={`p-4 rounded-lg ${
+                      theme === 'white' ? 'bg-blue-50' : theme === 'dark' ? 'bg-blue-900/20' : 'bg-blue-900/20'
+                    }`}>
+                      <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-blue-900' : 'text-blue-300'}`}>
+                        Key Scientific Points:
+                      </h4>
+                      <ul className={`text-sm space-y-1 ${theme === 'white' ? 'text-blue-700' : 'text-blue-200'}`}>
+                        {science.keyPoints.map((point, pointIndex) => (
+                          <li key={pointIndex}>• {point}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </CardContent>
+                )}
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Calculation Methods Comparison */}
+        <section id="methods" className="max-w-6xl mx-auto mb-16">
+          <h2 className={`text-3xl font-bold text-center mb-8 ${
+            theme === 'white' ? 'text-gray-900' : 'text-white'
+          }`}>
+            Calculation Methods Comparison
+          </h2>
+          
+          <div className="grid gap-6">
+            {calculationMethods.map((method, index) => (
+              <Card key={index} className={`backdrop-blur-md border-0 shadow-lg ${
+                theme === 'white' 
+                  ? 'bg-white/80' 
+                  : theme === 'dark'
+                  ? 'bg-gray-800/80'
+                  : 'bg-black/80'
+              }`}>
+                <CardHeader className="cursor-pointer" onClick={() => toggleSection(`method-${index}`)}>
+                  <CardTitle className={`text-lg flex items-center justify-between ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    <div className="flex items-center gap-3">
+                      <div className={`text-center ${
+                        theme === 'white' ? 'text-teal-600' : theme === 'dark' ? 'text-purple-400' : 'text-green-400'
+                      }`}>
+                        <div className="text-2xl font-bold">{method.accuracy}%</div>
+                        <div className="text-xs">Accuracy</div>
+                      </div>
+                      <div>
+                        <div>{method.name}</div>
+                        <div className={`text-sm font-normal ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                          {method.description}
+                        </div>
+                      </div>
+                    </div>
+                    {expandedSections[`method-${index}`] 
+                      ? <ChevronDown className="h-5 w-5" /> 
+                      : <ChevronRight className="h-5 w-5" />
+                    }
+                  </CardTitle>
+                </CardHeader>
+                {expandedSections[`method-${index}`] && (
+                  <CardContent className="space-y-4">
+                    <div className={`p-3 rounded-lg ${
+                      theme === 'white' ? 'bg-gray-50' : theme === 'dark' ? 'bg-gray-700/50' : 'bg-gray-800/50'
+                    }`}>
+                      <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-gray-900' : 'text-white'}`}>
+                        Formula:
+                      </h4>
+                      <pre className={`text-xs whitespace-pre-wrap ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                        {method.formula}
+                      </pre>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className={`p-3 rounded-lg ${
+                        theme === 'white' ? 'bg-green-50' : theme === 'dark' ? 'bg-green-900/20' : 'bg-green-900/20'
+                      }`}>
+                        <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-green-900' : 'text-green-300'}`}>
+                          Advantages:
+                        </h4>
+                        <ul className={`text-xs space-y-1 ${theme === 'white' ? 'text-green-700' : 'text-green-200'}`}>
+                          {method.pros.map((pro, proIndex) => (
+                            <li key={proIndex}>• {pro}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div className={`p-3 rounded-lg ${
+                        theme === 'white' ? 'bg-red-50' : theme === 'dark' ? 'bg-red-900/20' : 'bg-red-900/20'
+                      }`}>
+                        <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-red-900' : 'text-red-300'}`}>
+                          Limitations:
+                        </h4>
+                        <ul className={`text-xs space-y-1 ${theme === 'white' ? 'text-red-700' : 'text-red-200'}`}>
+                          {method.cons.map((con, conIndex) => (
+                            <li key={conIndex}>• {con}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                    
+                    <div className={`p-3 rounded-lg ${
+                      theme === 'white' ? 'bg-blue-50' : theme === 'dark' ? 'bg-blue-900/20' : 'bg-blue-900/20'
+                    }`}>
+                      <h4 className={`font-medium mb-1 ${theme === 'white' ? 'text-blue-900' : 'text-blue-300'}`}>
+                        Best For:
+                      </h4>
+                      <p className={`text-xs ${theme === 'white' ? 'text-blue-700' : 'text-blue-200'}`}>
+                        {method.bestFor}
+                      </p>
+                    </div>
+                  </CardContent>
+                )}
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Health Implications */}
+        <section id="health" className="max-w-6xl mx-auto mb-16">
+          <h2 className={`text-3xl font-bold text-center mb-8 ${
+            theme === 'white' ? 'text-gray-900' : 'text-white'
+          }`}>
+            Health Implications & Calorie Guidelines
+          </h2>
+          
+          <div className="grid gap-6">
+            {healthImplications.map((implication, index) => (
+              <Card key={index} className={`backdrop-blur-md border-0 shadow-lg ${
+                theme === 'white' 
+                  ? 'bg-white/80' 
+                  : theme === 'dark'
+                  ? 'bg-gray-800/80'
+                  : 'bg-black/80'
+              }`}>
+                <CardHeader className="cursor-pointer" onClick={() => toggleSection(`health-${index}`)}>
+                  <CardTitle className={`text-lg flex items-center justify-between ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    <div className="flex items-center gap-3">
+                      <Badge className={`${
+                        implication.riskLevel === 'Very Low' ? 'bg-green-100 text-green-800' :
+                        implication.riskLevel === 'Low' ? 'bg-blue-100 text-blue-800' :
+                        implication.riskLevel === 'Low-Moderate' ? 'bg-yellow-100 text-yellow-800' :
+                        'bg-red-100 text-red-800'
+                      }`}>
+                        {implication.riskLevel} Risk
+                      </Badge>
+                      <div>
+                        <div>{implication.category}</div>
+                        <div className={`text-sm font-normal ${theme === 'white' ? 'text-gray-600' : 'text-gray-400'}`}>
+                          {implication.ranges}
+                        </div>
+                      </div>
+                    </div>
+                    {expandedSections[`health-${index}`] 
+                      ? <ChevronDown className="h-5 w-5" /> 
+                      : <ChevronRight className="h-5 w-5" />
+                    }
+                  </CardTitle>
+                </CardHeader>
+                {expandedSections[`health-${index}`] && (
+                  <CardContent className="space-y-4">
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      {implication.description}
+                    </p>
+                    
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className={`p-3 rounded-lg ${
+                        theme === 'white' ? 'bg-green-50' : theme === 'dark' ? 'bg-green-900/20' : 'bg-green-900/20'
+                      }`}>
+                        <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-green-900' : 'text-green-300'}`}>
+                          Benefits:
+                        </h4>
+                        <ul className={`text-xs space-y-1 ${theme === 'white' ? 'text-green-700' : 'text-green-200'}`}>
+                          {implication.benefits.map((benefit, benefitIndex) => (
+                            <li key={benefitIndex}>• {benefit}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div className={`p-3 rounded-lg ${
+                        theme === 'white' ? 'bg-red-50' : theme === 'dark' ? 'bg-red-900/20' : 'bg-red-900/20'
+                      }`}>
+                        <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-red-900' : 'text-red-300'}`}>
+                          Risks:
+                        </h4>
+                        <ul className={`text-xs space-y-1 ${theme === 'white' ? 'text-red-700' : 'text-red-200'}`}>
+                          {implication.risks.map((risk, riskIndex) => (
+                            <li key={riskIndex}>• {risk}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                    
+                    <div className={`p-4 rounded-lg ${
+                      theme === 'white' ? 'bg-blue-50' : theme === 'dark' ? 'bg-blue-900/20' : 'bg-blue-900/20'
+                    }`}>
+                      <h4 className={`font-medium mb-2 ${theme === 'white' ? 'text-blue-900' : 'text-blue-300'}`}>
+                        Professional Recommendations:
+                      </h4>
+                      <ul className={`text-sm space-y-1 ${theme === 'white' ? 'text-blue-700' : 'text-blue-200'}`}>
+                        {implication.recommendations.map((rec, recIndex) => (
+                          <li key={recIndex}>• {rec}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </CardContent>
+                )}
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <div className="text-center mb-16">
+          <Card className={`backdrop-blur-md border-0 shadow-2xl max-w-3xl mx-auto ${
+            theme === 'white' 
+              ? 'bg-gradient-to-r from-teal-50 to-blue-50' 
+              : theme === 'dark'
+              ? 'bg-gradient-to-r from-teal-900/50 to-blue-900/50'
+              : 'bg-gradient-to-r from-teal-900/50 to-blue-900/50'
+          }`}>
+            <CardContent className="p-8">
+              <h2 className={`text-2xl font-bold mb-4 ${
+                theme === 'white' ? 'text-gray-900' : 'text-white'
+              }`}>
+                Complete Your Nutrition Analysis
+              </h2>
+              <p className={`mb-6 ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                Get the complete picture of your nutritional needs with our comprehensive calculator suite designed by nutrition professionals
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/macros">
+                  <Button className={`transition-all duration-300 hover:scale-105 transform ${
+                    theme === 'white'
+                      ? 'bg-teal-600 hover:bg-teal-700 text-white shadow-lg hover:shadow-xl'
+                      : 'bg-teal-600 hover:bg-teal-700 text-white shadow-lg hover:shadow-xl'
+                  }`}>
+                    <Target className="h-4 w-4 mr-2" />
+                    Calculate Macros
+                  </Button>
+                </Link>
+                <Link to="/body-fat">
+                  <Button variant="outline" className={`transition-all duration-300 hover:scale-105 ${
+                    theme === 'white'
+                      ? 'border-teal-300 text-teal-700 hover:bg-teal-50'
+                      : 'border-teal-500/50 text-teal-300 hover:bg-teal-900/20'
+                  }`}>
+                    <Calculator className="h-4 w-4 mr-2" />
+                    Body Fat Analysis
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Comprehensive FAQ Section */}
+        <section id="faq" className="max-w-6xl mx-auto mb-16">
+          <h2 className={`text-3xl font-bold text-center mb-8 ${
+            theme === 'white' ? 'text-gray-900' : 'text-white'
+          }`}>
+            Expert FAQ: Calorie Science & Nutrition
+          </h2>
+          
+          {/* FAQ Categories */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {['All', 'Basics', 'Accuracy', 'Weight Loss', 'Muscle Gain', 'Medical', 'Advanced'].map((category) => (
+              <Badge 
+                key={category}
+                className={`cursor-pointer px-3 py-2 ${
+                  theme === 'white' ? 'bg-teal-100 text-teal-800 hover:bg-teal-200' : 'bg-teal-900/30 text-teal-300 hover:bg-teal-900/50'
+                }`}
+              >
+                {category}
+              </Badge>
+            ))}
+          </div>
+
+          <div className="space-y-6">
+            {detailedFAQ.map((faq, index) => (
+              <Card key={index} className={`backdrop-blur-md border-0 shadow-lg ${
+                theme === 'white' 
+                  ? 'bg-white/80' 
+                  : theme === 'dark'
+                  ? 'bg-gray-800/80'
+                  : 'bg-black/80'
+              }`}>
+                <CardHeader className="cursor-pointer" onClick={() => toggleSection(`faq-${index}`)}>
+                  <CardTitle className={`text-lg flex items-center justify-between ${
+                    theme === 'white' ? 'text-gray-900' : 'text-white'
+                  }`}>
+                    <span>{faq.question}</span>
+                    <div className="flex items-center gap-2">
+                      <Badge className="bg-teal-100 text-teal-800 text-xs">
+                        {faq.category}
+                      </Badge>
+                      {expandedSections[`faq-${index}`] 
+                        ? <ChevronDown className="h-5 w-5" /> 
+                        : <ChevronRight className="h-5 w-5" />
+                      }
+                    </div>
+                  </CardTitle>
+                </CardHeader>
+                {expandedSections[`faq-${index}`] && (
+                  <CardContent>
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      {faq.answer}
+                    </p>
+                  </CardContent>
+                )}
+              </Card>
+            ))}
+          </div>
+        </section>
       </main>
       
       <Footer />
