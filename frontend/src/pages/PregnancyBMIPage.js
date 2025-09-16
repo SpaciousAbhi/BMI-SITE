@@ -959,7 +959,7 @@ const PregnancyBMIPage = () => {
                           <div>
                             <h4 className="font-semibold mb-2 text-red-600">Insufficient Weight Gain</h4>
                             <ul className="space-y-1 mb-4">
-                              <li>• Low birth weight (<2500g): 2x increased risk</li>
+                              <li>• Low birth weight (&lt;2500g): 2x increased risk</li>
                               <li>• Preterm birth: 1.5x increased risk</li>
                               <li>• Intrauterine growth restriction</li>
                               <li>• Neural tube defects</li>
