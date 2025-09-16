@@ -387,17 +387,100 @@ const CaloriePage = () => {
   return (
     <div className={`min-h-screen transition-all duration-700 ${getBackgroundGradient()}`}>
       <SEOHead 
-        title="Free Calorie Calculator | TDEE & BMR Calculator - Daily Calorie Needs"
-        description="Free calorie calculator to determine your daily calorie needs. Calculate TDEE, BMR, and calories for weight loss, maintenance, or muscle gain. Accurate calorie calculator with activity levels."
-        keywords="calorie calculator, TDEE calculator, BMR calculator, daily calorie needs, calories for weight loss, calorie needs calculator, free calorie calculator, metabolism calculator"
+        title="Professional Calorie Calculator | Advanced TDEE & BMR Calculator 2025 - Scientific Weight Management"
+        description="World's most comprehensive calorie calculator with scientific TDEE/BMR calculations, metabolic adaptation analysis, 5+ calculation methods, and expert guidance for weight loss, muscle gain, and maintenance. Professional-grade nutrition planning."
+        keywords="advanced calorie calculator, professional TDEE calculator, scientific BMR calculator, metabolic adaptation, calorie cycling, NEAT calculator, calorie deficit calculator, muscle gain calories, weight loss calories, nutrition calculator, metabolism calculator 2025, calorie needs calculator, daily calorie requirements, energy expenditure calculator"
         canonical="/calories"
         structuredData={{
           "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "Calorie Calculator - TDEE & BMR Calculator", 
-          "description": "Calculate your daily calorie needs with our free TDEE and BMR calculator. Determine calories for weight loss, maintenance, or muscle gain.",
-          "url": "https://bmicalculator.com/calories",
-          "applicationCategory": "HealthApplication"
+          "@graph": [
+            {
+              "@type": "WebApplication",
+              "name": "Professional Calorie Calculator - Advanced TDEE & BMR Calculator",
+              "description": "Comprehensive calorie calculator with scientific TDEE/BMR calculations, metabolic adaptation analysis, and expert nutrition guidance for optimal results.",
+              "url": "https://bmicalculator.com/calories",
+              "applicationCategory": "HealthApplication",
+              "operatingSystem": "Web Browser",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "featureList": [
+                "5+ Scientific Calculation Methods",
+                "Metabolic Adaptation Analysis", 
+                "Activity Level Optimization",
+                "Goal-Specific Recommendations",
+                "Professional Nutrition Guidance"
+              ]
+            },
+            {
+              "@type": "MedicalWebPage",
+              "name": "Calorie Calculator - Professional Nutrition Tool",
+              "description": "Evidence-based calorie calculator with comprehensive health implications analysis and professional recommendations.",
+              "medicalSpecialty": "Nutrition",
+              "audience": {
+                "@type": "MedicalAudience",
+                "audienceType": "Patient"
+              }
+            },
+            {
+              "@type": "HowTo",
+              "name": "How to Calculate Daily Calorie Needs",
+              "description": "Step-by-step guide to calculating accurate daily calorie requirements using scientific methods.",
+              "step": [
+                {
+                  "@type": "HowToStep",
+                  "name": "Determine Your BMR",
+                  "text": "Calculate your Basal Metabolic Rate using the Mifflin-St Jeor equation based on weight, height, age, and gender."
+                },
+                {
+                  "@type": "HowToStep", 
+                  "name": "Assess Activity Level",
+                  "text": "Evaluate your daily activity including exercise, work, and lifestyle factors to determine your activity multiplier."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Calculate TDEE",
+                  "text": "Multiply your BMR by your activity level multiplier to get your Total Daily Energy Expenditure."
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Adjust for Goals",
+                  "text": "Modify your TDEE based on your goals: subtract 300-750 calories for weight loss, add 200-500 for muscle gain."
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What's the most accurate calorie calculator method?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Mifflin-St Jeor equation is most accurate for the general population (±10% for 80% of people). The Katch-McArdle formula is most accurate when body fat percentage is known."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How many calories should I eat to lose weight?",
+                  "acceptedAnswer": {
+                    "@type": "Answer", 
+                    "text": "For safe weight loss, create a 300-750 calorie deficit from your TDEE, aiming for 0.5-1.5 lbs per week. Larger deficits risk muscle loss and metabolic adaptation."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Why did my weight loss plateau?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Weight loss plateaus occur due to metabolic adaptation where your body reduces energy expenditure by 10-40% during prolonged calorie restriction. Use diet breaks and refeed days to help reset metabolism."
+                  }
+                }
+              ]
+            }
+          ]
         }}
       />
       <Header />
