@@ -962,6 +962,111 @@ const HomePage = () => {
             </div>
           </div>
 
+          {/* High-Priority Health Calculators */}
+          <div className="mb-20">
+            <div className="text-center mb-10">
+              <h3 className={`text-2xl md:text-3xl font-semibold mb-4 ${
+                theme === 'white' ? 'text-gray-800' : 'text-gray-100'
+              }`}>
+                Advanced Health Calculators  
+              </h3>
+              <p className={`text-lg max-w-2xl mx-auto ${
+                theme === 'white' ? 'text-gray-600' : 'text-gray-400'
+              }`}>
+                Professional-grade calculators for comprehensive health assessment
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Ideal Weight Calculator */}
+              <Link to="/ideal-weight" className="group">
+                <Card className={`backdrop-blur-md border-0 shadow-2xl transform group-hover:scale-[1.03] group-hover:-translate-y-1 transition-all duration-500 cursor-pointer ${
+                  theme === 'white' 
+                    ? 'bg-gradient-to-br from-blue-50 to-purple-50 hover:from-blue-100 hover:to-purple-100 border border-purple-200/50' 
+                    : theme === 'dark'
+                    ? 'bg-gradient-to-br from-blue-900/20 to-purple-900/20 hover:from-blue-800/30 hover:to-purple-800/30 border border-purple-500/20'
+                    : 'bg-gradient-to-br from-blue-900/20 to-purple-900/20 hover:from-blue-800/30 hover:to-purple-800/30 border border-purple-500/20'
+                }`}>
+                  <CardContent className="p-8 text-center">
+                    <div className={`w-18 h-18 mx-auto mb-6 rounded-2xl flex items-center justify-center ${
+                      theme === 'white' ? 'bg-purple-100' : 'bg-purple-900/30'
+                    }`}>
+                      <Target className={`h-9 w-9 ${
+                        theme === 'white' ? 'text-purple-600' : 'text-purple-400'
+                      }`} />
+                    </div>
+                    <h4 className={`text-xl font-bold mb-3 ${
+                      theme === 'white' ? 'text-gray-900' : 'text-white'
+                    }`}>
+                      Ideal Weight Calculator
+                    </h4>
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      Find your healthy weight range using 4 scientific formulas
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Waist-to-Height Ratio Calculator */}
+              <Link to="/waist-height-ratio" className="group">
+                <Card className={`backdrop-blur-md border-0 shadow-2xl transform group-hover:scale-[1.03] group-hover:-translate-y-1 transition-all duration-500 cursor-pointer ${
+                  theme === 'white' 
+                    ? 'bg-gradient-to-br from-orange-50 to-red-50 hover:from-orange-100 hover:to-red-100 border border-red-200/50' 
+                    : theme === 'dark'
+                    ? 'bg-gradient-to-br from-orange-900/20 to-red-900/20 hover:from-orange-800/30 hover:to-red-800/30 border border-red-500/20'
+                    : 'bg-gradient-to-br from-orange-900/20 to-red-900/20 hover:from-orange-800/30 hover:to-red-800/30 border border-red-500/20'
+                }`}>
+                  <CardContent className="p-8 text-center">
+                    <div className={`w-18 h-18 mx-auto mb-6 rounded-2xl flex items-center justify-center ${
+                      theme === 'white' ? 'bg-orange-100' : 'bg-orange-900/30'
+                    }`}>
+                      <Ruler className={`h-9 w-9 ${
+                        theme === 'white' ? 'text-orange-600' : 'text-orange-400'
+                      }`} />
+                    </div>
+                    <h4 className={`text-xl font-bold mb-3 ${
+                      theme === 'white' ? 'text-gray-900' : 'text-white'
+                    }`}>
+                      Waist-to-Height Ratio
+                    </h4>
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      More accurate than BMI for predicting health risks
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              {/* Body Surface Area Calculator */}
+              <Link to="/body-surface-area" className="group">
+                <Card className={`backdrop-blur-md border-0 shadow-2xl transform group-hover:scale-[1.03] group-hover:-translate-y-1 transition-all duration-500 cursor-pointer ${
+                  theme === 'white' 
+                    ? 'bg-gradient-to-br from-teal-50 to-blue-50 hover:from-teal-100 hover:to-blue-100 border border-teal-200/50' 
+                    : theme === 'dark'
+                    ? 'bg-gradient-to-br from-teal-900/20 to-blue-900/20 hover:from-teal-800/30 hover:to-blue-800/30 border border-teal-500/20'
+                    : 'bg-gradient-to-br from-teal-900/20 to-blue-900/20 hover:from-teal-800/30 hover:to-blue-800/30 border border-teal-500/20'
+                }`}>
+                  <CardContent className="p-8 text-center">
+                    <div className={`w-18 h-18 mx-auto mb-6 rounded-2xl flex items-center justify-center ${
+                      theme === 'white' ? 'bg-teal-100' : 'bg-teal-900/30'
+                    }`}>
+                      <Activity className={`h-9 w-9 ${
+                        theme === 'white' ? 'text-teal-600' : 'text-teal-400'
+                      }`} />
+                    </div>
+                    <h4 className={`text-xl font-bold mb-3 ${
+                      theme === 'white' ? 'text-gray-900' : 'text-white'
+                    }`}>
+                      Body Surface Area (BSA)
+                    </h4>
+                    <p className={`text-sm leading-relaxed ${theme === 'white' ? 'text-gray-600' : 'text-gray-300'}`}>
+                      Medical-grade calculator for drug dosing and research
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
+          </div>
+
           {/* Health Tools & Resources */}
           <div className="mb-12">
             <div className="text-center mb-10">
