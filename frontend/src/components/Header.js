@@ -25,7 +25,7 @@ import {
   BarChart3,
   Ruler,
   Droplets,
-  Pulse,
+  HeartPulse,
   Flame,
   Clock,
   TrendingUp,
