@@ -92,6 +92,8 @@ const Header = () => {
     { path: '/about-bmi', label: 'About BMI', icon: FileText, description: 'Complete BMI guide' },
     { path: '/health-tips', label: 'Health Tips', icon: Heart, description: 'Daily wellness advice' },
     { path: '/nutrition-guide', label: 'Nutrition Guide', icon: BookOpen, description: 'Comprehensive nutrition info' },
+    { path: '/privacy-policy', label: 'Privacy Policy', icon: Shield, description: 'Privacy and data protection' },
+    { path: '/terms-of-service', label: 'Terms of Service', icon: Shield, description: 'Service terms and conditions' },
   ];
 
   const calculatorCategories = [
