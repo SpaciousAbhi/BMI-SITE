@@ -1633,7 +1633,7 @@ const SeniorBMIPage = () => {
                     {
                       category: 'sarcopenia',
                       question: 'How much protein do seniors need to maintain muscle?',
-                      answer: 'Seniors need 1.2-1.6g protein per kilogram of body weight daily, significantly higher than younger adults (0.8g/kg). Protein should be distributed throughout the day with 25-30g per meal to optimize muscle protein synthesis. Post-exercise protein within 2 hours is particularly important. Complete proteins containing leucine (>2.5g) are most effective for muscle maintenance.'
+                      answer: 'Seniors need 1.2-1.6g protein per kilogram of body weight daily, significantly higher than younger adults (0.8g/kg). Protein should be distributed throughout the day with 25-30g per meal to optimize muscle protein synthesis. Post-exercise protein within 2 hours is particularly important. Complete proteins containing leucine (&gt;2.5g) are most effective for muscle maintenance.'
                     },
                     {
                       category: 'sarcopenia',
