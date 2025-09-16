@@ -1521,7 +1521,7 @@ const EthnicityBMIPage = () => {
                           <div className={`p-3 rounded ${theme === 'white' ? 'bg-orange-50' : 'bg-orange-900/20'}`}>
                             <strong className={theme === 'white' ? 'text-gray-900' : 'text-white'}>Native American Diet Changes:</strong>
                             <p className={`${theme === 'white' ? 'text-gray-700' : 'text-gray-300'} mt-1`}>
-                              Loss of traditional hunting/gathering foods replaced by government commodity foods high in refined carbohydrates. Dramatic increase in diabetes prevalence from <1% to 15-40%.
+                              Loss of traditional hunting/gathering foods replaced by government commodity foods high in refined carbohydrates. Dramatic increase in diabetes prevalence from &lt;1% to 15-40%.
                             </p>
                           </div>
                           <div className={`p-3 rounded ${theme === 'white' ? 'bg-yellow-50' : 'bg-yellow-900/20'}`}>
