@@ -74,7 +74,7 @@ const Header = () => {
 
   // Fitness & Health Tools
   const fitnessTools = [
-    { path: '/heart-rate-calculator', label: 'Heart Rate Calculator', icon: Pulse, description: 'Training zones and max HR' },
+    { path: '/heart-rate-calculator', label: 'Heart Rate Calculator', icon: HeartPulse, description: 'Training zones and max HR' },
     { path: '/calories-burned-calculator', label: 'Calories Burned', icon: Flame, description: '200+ activities calorie burn' },
     { path: '/fasting-planner', label: 'Fasting Planner', icon: Clock, description: 'Intermittent fasting schedules' },
   ];
