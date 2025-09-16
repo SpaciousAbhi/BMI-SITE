@@ -321,7 +321,7 @@ test_plan:
     stuck_count: 0
     priority: "high"
     needs_retesting: false
-  - task: "Calories Burned Calculator Page - Critical Bug Fix"
+  - task: "Calories Burned Calculator Page - Simplified for Mobile & Desktop Compatibility"
     implemented: true
     working: true
     file: "/app/frontend/src/pages/CaloriesBurnedCalculatorPage.js"
