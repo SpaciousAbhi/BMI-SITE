@@ -14,33 +14,10 @@ import {
   Calculator, 
   Timer, 
   Activity,
-  User,
-  Users,
-  TrendingUp,
-  Target,
-  Zap,
-  Award,
-  Search,
-  Heart,
-  Brain,
   ChevronDown,
   ChevronUp,
-  Info,
-  CheckCircle,
-  AlertTriangle,
-  BookOpen,
-  Lightbulb,
-  BarChart3,
-  PlayCircle,
-  Clock
+  Info
 } from 'lucide-react';
-import { 
-  getActivityCategories, 
-  getActivitiesByCategory,
-  calculateCaloriesBurned,
-  getWeightLossProjections,
-  getHealthBenefits
-} from '../utils/caloriesBurnedCalculations';
 
 const CaloriesBurnedCalculatorPage = () => {
   const { theme, getBackgroundGradient } = useTheme();
@@ -48,13 +25,10 @@ const CaloriesBurnedCalculatorPage = () => {
     weight: '',
     weightUnit: 'lbs',
     duration: '',
-    durationUnit: 'minutes',
-    selectedCategory: 'cardio',
-    selectedActivity: null
+    selectedActivity: ''
   });
   const [result, setResult] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [expandedSection, setExpandedSection] = useState(null);
+  const [showDetails, setShowDetails] = useState(false);
 
   const handleInputChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
