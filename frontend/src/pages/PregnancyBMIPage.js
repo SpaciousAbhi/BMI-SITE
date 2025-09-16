@@ -352,9 +352,16 @@ const PregnancyBMIPage = () => {
             Track your <strong>healthy weight gain during pregnancy</strong> with our specialized BMI calculator. Get personalized recommendations based on your pre-pregnancy BMI.
           </p>
           
-          {/* Feature badges */}
+          {/* Professional Feature badges */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {['Pregnancy BMI', 'Weight Gain Tracking', 'Trimester Analysis', 'Health Recommendations'].map((feature, index) => (
+            {[
+              'Expert Maternal Health Guidance',
+              'Trimester-Specific Tracking', 
+              'Nutritional Recommendations',
+              'Exercise Guidelines',
+              'Complications Monitoring',
+              'Postpartum Planning'
+            ].map((feature, index) => (
               <Badge 
                 key={feature}
                 variant="secondary" 
@@ -368,6 +375,43 @@ const PregnancyBMIPage = () => {
                 {feature}
               </Badge>
             ))}
+          </div>
+
+          {/* Quick Navigation */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {[
+              { id: 'science', label: 'Pregnancy Science', icon: BookOpen },
+              { id: 'nutrition', label: 'Nutrition Guide', icon: Apple },
+              { id: 'exercise', label: 'Safe Exercise', icon: Activity },
+              { id: 'monitoring', label: 'Health Monitoring', icon: Shield }
+            ].map((nav, index) => {
+              const Icon = nav.icon;
+              return (
+                <Button
+                  key={nav.id}
+                  variant="outline"
+                  size="sm"
+                  onClick={() => scrollToSection(nav.id)}
+                  className={`transition-all duration-300 hover:scale-105 animate-slide-in ${
+                    activeNavSection === nav.id
+                      ? theme === 'white'
+                        ? 'bg-pink-100 text-pink-800 border-pink-300'
+                        : theme === 'dark'
+                        ? 'bg-purple-900/50 text-purple-200 border-purple-500/50'
+                        : 'bg-green-900/50 text-green-200 border-green-500/50'
+                      : theme === 'white' 
+                        ? 'bg-white/80 text-gray-700 border-pink-200/50 hover:bg-pink-50'
+                        : theme === 'dark'
+                        ? 'bg-gray-800/80 text-gray-300 border-purple-500/30 hover:bg-purple-900/30'
+                        : 'bg-black/80 text-gray-300 border-green-500/30 hover:bg-green-900/30'
+                  }`}
+                  style={{ animationDelay: `${400 + index * 100}ms` }}
+                >
+                  <Icon className="h-4 w-4 mr-2" />
+                  {nav.label}
+                </Button>
+              );
+            })}
           </div>
         </div>
 
