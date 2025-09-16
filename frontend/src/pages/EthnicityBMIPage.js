@@ -527,9 +527,16 @@ const EthnicityBMIPage = () => {
             <strong>Culturally-aware BMI calculator</strong> with ethnicity-specific adjustments. Get personalized health recommendations based on your ethnic background and genetic predispositions.
           </p>
           
-          {/* Feature badges */}
+          {/* Professional Feature badges */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {['Ethnicity-Specific BMI', 'Cultural Health Insights', 'Genetic Risk Factors', 'Personalized Recommendations'].map((feature, index) => (
+            {[
+              'Genetic Risk Analysis',
+              'Population-Specific BMI Categories', 
+              'Cultural Dietary Assessment',
+              'Ancestral Health Patterns',
+              'Disease Predisposition Mapping',
+              'Multicultural Health Expertise'
+            ].map((feature, index) => (
               <Badge 
                 key={feature}
                 variant="secondary" 
@@ -543,6 +550,43 @@ const EthnicityBMIPage = () => {
                 {feature}
               </Badge>
             ))}
+          </div>
+
+          {/* Quick Navigation */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {[
+              { id: 'genetics', label: 'Genetic Factors', icon: Dna },
+              { id: 'populations', label: 'Population Studies', icon: Users },
+              { id: 'cultural', label: 'Cultural Health', icon: Globe },
+              { id: 'prevention', label: 'Disease Prevention', icon: Shield }
+            ].map((nav, index) => {
+              const Icon = nav.icon;
+              return (
+                <Button
+                  key={nav.id}
+                  variant="outline"
+                  size="sm"
+                  onClick={() => scrollToSection(nav.id)}
+                  className={`transition-all duration-300 hover:scale-105 animate-slide-in ${
+                    activeNavSection === nav.id
+                      ? theme === 'white'
+                        ? 'bg-emerald-100 text-emerald-800 border-emerald-300'
+                        : theme === 'dark'
+                        ? 'bg-purple-900/50 text-purple-200 border-purple-500/50'
+                        : 'bg-green-900/50 text-green-200 border-green-500/50'
+                      : theme === 'white' 
+                        ? 'bg-white/80 text-gray-700 border-emerald-200/50 hover:bg-emerald-50'
+                        : theme === 'dark'
+                        ? 'bg-gray-800/80 text-gray-300 border-purple-500/30 hover:bg-purple-900/30'
+                        : 'bg-black/80 text-gray-300 border-green-500/30 hover:bg-green-900/30'
+                  }`}
+                  style={{ animationDelay: `${400 + index * 100}ms` }}
+                >
+                  <Icon className="h-4 w-4 mr-2" />
+                  {nav.label}
+                </Button>
+              );
+            })}
           </div>
         </div>
 
