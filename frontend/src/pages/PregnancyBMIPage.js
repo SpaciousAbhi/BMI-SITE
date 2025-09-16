@@ -226,18 +226,95 @@ const PregnancyBMIPage = () => {
   return (
     <div className={`min-h-screen transition-all duration-700 ${getBackgroundGradient()}`}>
       <SEOHead 
-        title="Pregnancy BMI Calculator - Track Weight Gain During Pregnancy 2025"
-        description="Free pregnancy BMI calculator to track healthy weight gain during pregnancy. Get personalized recommendations based on your pre-pregnancy BMI and current week of pregnancy."
-        keywords="pregnancy BMI calculator, pregnancy weight gain calculator, healthy pregnancy weight, prenatal BMI, pregnancy nutrition, maternal health"
+        title="Pregnancy BMI Calculator - Complete Weight Gain Guide During Pregnancy 2025 | Expert Maternal Health Tool"
+        description="World's most comprehensive pregnancy BMI calculator with trimester-specific weight gain tracking, nutritional guidance, exercise recommendations, and expert maternal health insights. Used by healthcare professionals worldwide."
+        keywords="pregnancy BMI calculator, pregnancy weight gain calculator, healthy pregnancy weight, prenatal BMI, pregnancy nutrition, maternal health, trimester weight gain, pregnancy diet calculator, gestational weight gain, prenatal health tracker, pregnancy BMI chart, healthy pregnancy calculator, maternal BMI calculator, pregnancy weight tracking, prenatal nutrition calculator"
         canonical="/pregnancy-bmi"
         structuredData={{
           "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "Pregnancy BMI Calculator",
-          "description": "Calculate healthy weight gain during pregnancy based on pre-pregnancy BMI",
-          "url": "https://bmicalculator.com/pregnancy-bmi",
-          "applicationCategory": "HealthApplication",
-          "operatingSystem": ["Windows", "macOS", "Linux", "Android", "iOS"]
+          "@graph": [
+            {
+              "@type": "WebApplication",
+              "name": "Pregnancy BMI Calculator",
+              "description": "Comprehensive pregnancy BMI calculator with trimester-specific weight gain tracking and expert maternal health guidance",
+              "url": "https://bmicalculator.com/pregnancy-bmi",
+              "applicationCategory": "HealthApplication",
+              "operatingSystem": ["Windows", "macOS", "Linux", "Android", "iOS"],
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              }
+            },
+            {
+              "@type": "MedicalWebPage",
+              "name": "Pregnancy BMI Calculator",
+              "description": "Expert pregnancy weight gain calculator with comprehensive maternal health guidance",
+              "medicalAudience": [
+                {
+                  "@type": "MedicalAudience",
+                  "audienceType": "Pregnant women, healthcare providers, obstetricians"
+                }
+              ],
+              "about": {
+                "@type": "MedicalCondition",
+                "name": "Pregnancy Weight Management"
+              }
+            },
+            {
+              "@type": "HowTo",
+              "name": "How to Calculate Pregnancy BMI",
+              "description": "Step-by-step guide to calculating healthy weight gain during pregnancy",
+              "step": [
+                {
+                  "@type": "HowToStep",
+                  "name": "Enter Pre-Pregnancy Weight",
+                  "text": "Input your weight before becoming pregnant"
+                },
+                {
+                  "@type": "HowToStep", 
+                  "name": "Enter Current Height",
+                  "text": "Provide your height in centimeters or inches"
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Enter Current Weight", 
+                  "text": "Input your current pregnancy weight"
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Select Pregnancy Week",
+                  "text": "Choose your current week of pregnancy (1-42)"
+                },
+                {
+                  "@type": "HowToStep",
+                  "name": "Get Results",
+                  "text": "Receive personalized weight gain recommendations and health guidance"
+                }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What is a healthy pregnancy weight gain?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Healthy pregnancy weight gain depends on pre-pregnancy BMI: underweight women should gain 28-40 lbs, normal weight 25-35 lbs, overweight 15-25 lbs, and obese women 11-20 lbs."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How is pregnancy BMI calculated?",
+                  "acceptedAnswer": {
+                    "@type": "Answer", 
+                    "text": "Pregnancy BMI is calculated using pre-pregnancy weight divided by height squared, then used to determine appropriate weight gain ranges for each trimester."
+                  }
+                }
+              ]
+            }
+          ]
         }}
       />
       <Header />
