@@ -87,12 +87,12 @@ function AnimatedRoutes() {
   const location = useLocation();
   
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route 
           path="/" 
           element={
-            <PageTransition>
+            <PageTransition key="home">
               <Home />
             </PageTransition>
           } 
@@ -100,7 +100,7 @@ function AnimatedRoutes() {
         <Route 
           path="/privacy-policy" 
           element={
-            <PageTransition>
+            <PageTransition key="privacy">
               <PrivacyPolicy />
             </PageTransition>
           } 
@@ -108,7 +108,7 @@ function AnimatedRoutes() {
         <Route 
           path="/terms-conditions" 
           element={
-            <PageTransition>
+            <PageTransition key="terms">
               <TermsConditions />
             </PageTransition>
           } 
@@ -116,7 +116,7 @@ function AnimatedRoutes() {
         <Route 
           path="/contact-us" 
           element={
-            <PageTransition>
+            <PageTransition key="contact">
               <ContactUs />
             </PageTransition>
           } 
@@ -133,7 +133,7 @@ function App() {
         <SEOUpdater />
         <ScrollToTop />
         <Header />
-        <main className="flex-1 relative overflow-hidden">
+        <main className="flex-1">
           <AnimatedRoutes />
         </main>
         <Footer />
