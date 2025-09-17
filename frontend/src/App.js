@@ -82,6 +82,50 @@ function SEOUpdater() {
   return null;
 }
 
+// Animated Routes Component to handle transitions
+function AnimatedRoutes() {
+  const location = useLocation();
+  
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <Routes location={location} key={location.pathname}>
+        <Route 
+          path="/" 
+          element={
+            <PageTransition>
+              <Home />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/privacy-policy" 
+          element={
+            <PageTransition>
+              <PrivacyPolicy />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/terms-conditions" 
+          element={
+            <PageTransition>
+              <TermsConditions />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/contact-us" 
+          element={
+            <PageTransition>
+              <ContactUs />
+            </PageTransition>
+          } 
+        />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
 function App() {
   return (
     <div className="App min-h-screen bg-black text-white">
@@ -89,13 +133,8 @@ function App() {
         <SEOUpdater />
         <ScrollToTop />
         <Header />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-conditions" element={<TermsConditions />} />
-            <Route path="/contact-us" element={<ContactUs />} />
-          </Routes>
+        <main className="flex-1 relative overflow-hidden">
+          <AnimatedRoutes />
         </main>
         <Footer />
         <Toaster />
