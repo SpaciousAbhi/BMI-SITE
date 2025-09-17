@@ -116,39 +116,39 @@ const Home = () => {
           </div>
           
           {/* Trust Indicators - Professional Horizontal Layout */}
-          <div className="bg-gray-900/50 rounded-xl border border-gray-800 p-6">
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 md:gap-16">
-              <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-500/10">
-                  <Users className="h-6 w-6 text-green-400" />
+          <div className="bg-gray-900/50 rounded-xl border border-gray-800 p-4">
+            <div className="flex flex-row justify-center items-center gap-4 sm:gap-6 md:gap-12">
+              <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-green-500/10">
+                  <Users className="h-5 w-5 sm:h-6 sm:w-6 text-green-400" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">1M+</div>
-                  <div className="text-gray-400 text-sm">Users Worldwide</div>
+                  <div className="text-lg sm:text-2xl font-bold text-white">1M+</div>
+                  <div className="text-gray-400 text-xs sm:text-sm">Users</div>
                 </div>
               </div>
               
-              <div className="hidden sm:block h-12 w-px bg-gray-700"></div>
+              <div className="h-8 sm:h-12 w-px bg-gray-700"></div>
               
-              <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/10">
-                  <Award className="h-6 w-6 text-blue-400" />
+              <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10">
+                  <Award className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">99.9%</div>
-                  <div className="text-gray-400 text-sm">Accuracy Rate</div>
+                  <div className="text-lg sm:text-2xl font-bold text-white">99.9%</div>
+                  <div className="text-gray-400 text-xs sm:text-sm">Accuracy</div>
                 </div>
               </div>
               
-              <div className="hidden sm:block h-12 w-px bg-gray-700"></div>
+              <div className="h-8 sm:h-12 w-px bg-gray-700"></div>
               
-              <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-500/10">
-                  <TrendingUp className="h-6 w-6 text-green-400" />
+              <div className="flex items-center gap-2">
+                <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-green-500/10">
+                  <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-green-400" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-white">24/7</div>
-                  <div className="text-gray-400 text-sm">Available</div>
+                  <div className="text-lg sm:text-2xl font-bold text-white">24/7</div>
+                  <div className="text-gray-400 text-xs sm:text-sm">Available</div>
                 </div>
               </div>
             </div>
