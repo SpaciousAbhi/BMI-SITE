@@ -67,8 +67,10 @@ const BMICalculator = () => {
   };
 
   const calculateBMI = async () => {
-    // Validation
-    if (!weight || !height || (heightUnit === "ft" && (!feet || !inches)) || !age || !gender) {
+    // Validation - Fixed logic for height units
+    const heightValid = heightUnit === "ft" ? (feet && inches) : height;
+    
+    if (!weight || !heightValid || !age || !gender) {
       toast({
         title: "Missing Information",
         description: "Please fill in all required fields to calculate your BMI.",
