@@ -103,7 +103,7 @@ const Header = () => {
                           <Link
                             key={subItem.path}
                             to={subItem.path}
-                            className="block text-gray-300 hover:text-white transition-colors py-2 pl-4"
+                            className="nav-link block text-gray-300 hover:text-white transition-all duration-300 ease-out py-2 pl-4"
                             onClick={() => {
                               setIsOpen(false);
                               window.scrollTo(0, 0);
