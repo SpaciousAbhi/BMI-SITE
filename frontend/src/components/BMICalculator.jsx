@@ -1,11 +1,14 @@
 import React, { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { Calculator, RotateCcw, Heart, AlertCircle, CheckCircle, Target } from "lucide-react";
+import { Calculator, RotateCcw, Heart, AlertCircle, CheckCircle, Target, Download, FileText, Loader2 } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 const BMICalculator = () => {
   const [weight, setWeight] = useState("");
