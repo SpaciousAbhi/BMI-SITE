@@ -238,8 +238,9 @@ const BMICalculator = () => {
                 onClick={resetCalculator}
                 variant="outline"
                 className="border-gray-600 text-gray-300 hover:bg-gray-800"
+                size="icon"
               >
-                <RefreshCw className="h-4 w-4" />
+                <RotateCcw className="h-4 w-4" />
               </Button>
             </div>
           </CardContent>
