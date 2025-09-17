@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Priority pages for crawling
+Allow: /
+Allow: /privacy-policy
+Allow: /terms-conditions
+Allow: /contact-us
+
+# Sitemap location
+Sitemap: https://bmipro.com/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
