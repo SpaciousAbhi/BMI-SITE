@@ -36,7 +36,7 @@ const TermsConditions = () => {
             </CardHeader>
             <CardContent className="text-gray-300 space-y-4">
               <p>
-                By accessing and using BMI Pro ("the Service"), you accept and agree to be bound by the terms and provisions of this agreement. 
+                By accessing and using Advanced BMI Calculator ("the Service"), you accept and agree to be bound by the terms and provisions of this agreement. 
                 If you do not agree to abide by the above, please do not use this service.
               </p>
               <div className="bg-blue-900/20 p-4 rounded-lg border border-blue-800/50">
