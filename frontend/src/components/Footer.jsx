@@ -28,6 +28,7 @@ const Footer = () => {
                 <Link
                   to="/privacy-policy"
                   className="text-gray-400 hover:text-blue-400 transition-colors"
+                  onClick={() => window.scrollTo(0, 0)}
                 >
                   Privacy Policy
                 </Link>
@@ -36,6 +37,7 @@ const Footer = () => {
                 <Link
                   to="/terms-conditions"
                   className="text-gray-400 hover:text-blue-400 transition-colors"
+                  onClick={() => window.scrollTo(0, 0)}
                 >
                   Terms & Conditions
                 </Link>
@@ -44,6 +46,7 @@ const Footer = () => {
                 <Link
                   to="/contact-us"
                   className="text-gray-400 hover:text-blue-400 transition-colors"
+                  onClick={() => window.scrollTo(0, 0)}
                 >
                   Contact Us
                 </Link>
