@@ -59,7 +59,11 @@ const ContactUs = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <MessageCircle className="h-16 w-16 text-green-400 mx-auto mb-4" />
+          <div className="flex justify-center mb-6">
+            <div className="p-4 rounded-full bg-green-500/10">
+              <MessageCircle className="h-16 w-16 text-green-400" />
+            </div>
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
             Contact Us
           </h1>
