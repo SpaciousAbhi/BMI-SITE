@@ -166,9 +166,9 @@ const TermsConditions = () => {
             </CardHeader>
             <CardContent className="text-gray-300 space-y-4">
               <p>
-                The materials appearing on BMI Pro could include technical, typographical, or photographic errors. 
-                BMI Pro does not warrant that any of the materials on its website are accurate, complete, or current. 
-                BMI Pro may make changes to the materials contained on its website at any time without notice.
+                The materials appearing on Advanced BMI Calculator could include technical, typographical, or photographic errors. 
+                Advanced BMI Calculator does not warrant that any of the materials on its website are accurate, complete, or current. 
+                Advanced BMI Calculator may make changes to the materials contained on its website at any time without notice.
               </p>
             </CardContent>
           </Card>
