@@ -1,14 +1,33 @@
 User-agent: *
 Allow: /
 
-# Priority pages for crawling
+# Priority pages for crawling - SEO optimized
 Allow: /
 Allow: /privacy-policy
-Allow: /terms-conditions
+Allow: /terms-conditions  
 Allow: /contact-us
+
+# Block unnecessary files
+Disallow: /static/
+Disallow: /*.json$
+Disallow: /manifest.json
+Disallow: /service-worker.js
 
 # Sitemap location
 Sitemap: https://bmipro.com/sitemap.xml
 
-# Crawl delay
+# Crawl delay for better server performance
 Crawl-delay: 1
+
+# Specific directives for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
