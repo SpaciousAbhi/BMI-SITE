@@ -59,6 +59,7 @@ const Header = () => {
                           <Link
                             to={subItem.path}
                             className="text-gray-300 hover:text-white hover:bg-gray-800 transition-colors cursor-pointer"
+                            onClick={() => window.scrollTo(0, 0)}
                           >
                             {subItem.name}
                           </Link>
