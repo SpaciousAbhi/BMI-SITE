@@ -47,7 +47,7 @@ const Header = () => {
                     <DropdownMenuTrigger asChild>
                       <Button
                         variant="ghost"
-                        className="text-gray-300 hover:text-white hover:bg-gray-800 transition-colors flex items-center space-x-1"
+                        className="nav-link text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-300 ease-out flex items-center space-x-1"
                       >
                         <span>{item.name}</span>
                         <ChevronDown className="h-4 w-4" />
