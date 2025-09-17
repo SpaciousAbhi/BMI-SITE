@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "./components/ui/toaster";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
@@ -13,6 +14,7 @@ function App() {
   return (
     <div className="App min-h-screen bg-black text-white">
       <BrowserRouter>
+        <ScrollToTop />
         <Header />
         <main className="flex-1">
           <Routes>
