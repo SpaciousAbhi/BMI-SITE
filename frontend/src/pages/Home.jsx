@@ -18,24 +18,7 @@ const Home = () => {
             Get comprehensive health insights and personalized recommendations.
           </p>
           
-          {/* Features */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="flex flex-col items-center p-6 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-blue-500/50 transition-all duration-300">
-              <Activity className="h-12 w-12 text-green-400 mb-4" />
-              <h3 className="text-lg font-semibold mb-2">Accurate Results</h3>
-              <p className="text-gray-400 text-center">Precise BMI calculations using advanced algorithms and health standards</p>
-            </div>
-            <div className="flex flex-col items-center p-6 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-green-500/50 transition-all duration-300">
-              <Target className="h-12 w-12 text-blue-400 mb-4" />
-              <h3 className="text-lg font-semibold mb-2">Health Insights</h3>
-              <p className="text-gray-400 text-center">Comprehensive health analysis with personalized recommendations</p>
-            </div>
-            <div className="flex flex-col items-center p-6 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-blue-500/50 transition-all duration-300">
-              <TrendingUp className="h-12 w-12 text-green-400 mb-4" />
-              <h3 className="text-lg font-semibold mb-2">Multiple Units</h3>
-              <p className="text-gray-400 text-center">Support for metric and imperial units for global accessibility</p>
-            </div>
-          </div>
+
         </div>
       </section>
 
