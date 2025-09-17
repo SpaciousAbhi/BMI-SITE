@@ -34,7 +34,7 @@ const Header = () => {
           <Link to="/" className="flex items-center space-x-2">
             <Heart className="h-8 w-8 text-green-400" />
             <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-              BMI Pro
+              Advanced BMI Calculator
             </span>
           </Link>
 
