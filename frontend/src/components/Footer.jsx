@@ -37,7 +37,7 @@ const Footer = () => {
               </Link>
               <Link
                 to="/terms-conditions"
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-colors"
+                className="nav-link flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out"
               >
                 <FileText className="h-4 w-4 mr-2" />
                 Terms & Conditions
