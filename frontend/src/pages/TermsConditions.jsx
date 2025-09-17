@@ -145,7 +145,7 @@ const TermsConditions = () => {
             </CardHeader>
             <CardContent className="text-gray-300 space-y-4">
               <p>
-                In no event shall BMI Pro, nor its directors, employees, partners, agents, suppliers, or affiliates, 
+                In no event shall Advanced BMI Calculator, nor its directors, employees, partners, agents, suppliers, or affiliates, 
                 be liable for any indirect, incidental, punitive, special, or consequential damages, including without 
                 limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your use 
                 of the service.
