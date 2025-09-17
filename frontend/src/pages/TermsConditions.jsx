@@ -41,7 +41,7 @@ const TermsConditions = () => {
               </p>
               <div className="bg-blue-900/20 p-4 rounded-lg border border-blue-800/50">
                 <p className="text-blue-300">
-                  <strong>Important:</strong> These terms constitute a legally binding agreement between you and BMI Pro.
+                  <strong>Important:</strong> These terms constitute a legally binding agreement between you and Advanced BMI Calculator.
                 </p>
               </div>
             </CardContent>
