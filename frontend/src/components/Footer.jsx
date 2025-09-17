@@ -30,7 +30,7 @@ const Footer = () => {
             <div className="space-y-3">
               <Link
                 to="/privacy-policy"
-                className="flex items-center text-gray-400 hover:text-blue-400 transition-colors"
+                className="nav-link flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out"
               >
                 <Shield className="h-4 w-4 mr-2" />
                 Privacy Policy
