@@ -29,8 +29,10 @@ const PrivacyPolicy = () => {
           {/* Information We Collect */}
           <Card className="bg-gray-900/50 border-gray-800">
             <CardHeader>
-              <CardTitle className="flex items-center space-x-2 text-xl text-white">
-                <Eye className="h-5 w-5 text-blue-400" />
+              <CardTitle className="flex items-center space-x-3 text-xl text-white">
+                <div className="p-2 rounded-full bg-blue-500/10">
+                  <Database className="h-5 w-5 text-blue-400" />
+                </div>
                 <span>Information We Collect</span>
               </CardTitle>
             </CardHeader>
