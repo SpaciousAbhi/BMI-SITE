@@ -271,18 +271,24 @@ const BMICalculator = () => {
               </div>
 
               {/* Health Risk */}
-              <div className="space-y-2">
-                <h4 className="font-semibold text-white">Health Risk Assessment</h4>
+              <div className="space-y-3 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+                <div className="flex items-center space-x-2">
+                  <AlertCircle className="h-5 w-5 text-orange-400" />
+                  <h4 className="font-semibold text-white">Health Risk Assessment</h4>
+                </div>
                 <p className="text-gray-300 text-sm">{result.healthRisk}</p>
               </div>
 
               {/* Recommendations */}
-              <div className="space-y-2">
-                <h4 className="font-semibold text-white">Recommendations</h4>
-                <ul className="text-gray-300 text-sm space-y-1">
+              <div className="space-y-3 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="h-5 w-5 text-green-400" />
+                  <h4 className="font-semibold text-white">Recommendations</h4>
+                </div>
+                <ul className="text-gray-300 text-sm space-y-2">
                   {result.recommendations.map((rec, index) => (
                     <li key={index} className="flex items-start space-x-2">
-                      <span className="text-green-400 mt-1">•</span>
+                      <span className="text-green-400 mt-1 text-xs">●</span>
                       <span>{rec}</span>
                     </li>
                   ))}
@@ -290,10 +296,13 @@ const BMICalculator = () => {
               </div>
 
               {/* Ideal Weight Range */}
-              <div className="space-y-2">
-                <h4 className="font-semibold text-white">Ideal Weight Range</h4>
-                <div className="bg-gray-800/50 p-3 rounded-lg">
-                  <span className="text-green-400 font-medium">
+              <div className="space-y-3 p-4 bg-gray-800/50 rounded-lg border border-gray-700">
+                <div className="flex items-center space-x-2">
+                  <Target className="h-5 w-5 text-blue-400" />
+                  <h4 className="font-semibold text-white">Ideal Weight Range</h4>
+                </div>
+                <div className="bg-gradient-to-r from-green-900/30 to-blue-900/30 p-3 rounded-lg border border-green-800/30">
+                  <span className="text-green-400 font-semibold text-lg">
                     {result.idealWeightRange.min} - {result.idealWeightRange.max} {result.idealWeightRange.unit}
                   </span>
                 </div>
