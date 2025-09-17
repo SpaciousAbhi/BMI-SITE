@@ -116,8 +116,8 @@ const Home = () => {
           </div>
           
           {/* Trust Indicators - Professional Horizontal Layout */}
-          <div className="bg-gray-900/50 rounded-xl border border-gray-800 p-8">
-            <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+          <div className="bg-gray-900/50 rounded-xl border border-gray-800 p-6">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 md:gap-16">
               <div className="flex items-center gap-3">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-500/10">
                   <Users className="h-6 w-6 text-green-400" />
@@ -128,7 +128,7 @@ const Home = () => {
                 </div>
               </div>
               
-              <div className="hidden md:block h-12 w-px bg-gray-700"></div>
+              <div className="hidden sm:block h-12 w-px bg-gray-700"></div>
               
               <div className="flex items-center gap-3">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/10">
@@ -140,7 +140,7 @@ const Home = () => {
                 </div>
               </div>
               
-              <div className="hidden md:block h-12 w-px bg-gray-700"></div>
+              <div className="hidden sm:block h-12 w-px bg-gray-700"></div>
               
               <div className="flex items-center gap-3">
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-500/10">
