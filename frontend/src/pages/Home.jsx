@@ -39,7 +39,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section - SEO Optimized */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-400 via-green-400 to-blue-500 bg-clip-text text-transparent">
@@ -53,7 +53,7 @@ const Home = () => {
             Calculate your BMI instantly with our advanced Body Mass Index calculator. Get personalized health insights, 
             ideal weight ranges, and professional recommendations based on WHO & CDC guidelines.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mb-12 text-sm text-gray-400">
+          <div className="flex flex-wrap justify-center gap-4 mb-8 text-sm text-gray-400">
             <span className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full">
               <Calculator className="h-4 w-4 text-blue-400" />
               WHO Approved Formula
@@ -71,14 +71,14 @@ const Home = () => {
       </section>
 
       {/* BMI Calculator Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <BMICalculator />
         </div>
       </section>
 
       {/* Health Benefits Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
@@ -89,7 +89,7 @@ const Home = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div className="flex flex-col items-center p-8 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-blue-500/50 transition-all duration-300 group">
               <div className="p-4 rounded-full bg-blue-500/10 mb-6 group-hover:bg-blue-500/20 transition-colors">
                 <Stethoscope className="h-12 w-12 text-blue-400" />
@@ -115,28 +115,42 @@ const Home = () => {
             </div>
           </div>
           
-          {/* Trust Indicators */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-green-500/10 mb-4">
-                <Users className="h-8 w-8 text-green-400" />
+          {/* Trust Indicators - Professional Horizontal Layout */}
+          <div className="bg-gray-900/50 rounded-xl border border-gray-800 p-8">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-500/10">
+                  <Users className="h-6 w-6 text-green-400" />
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-white">1M+</div>
+                  <div className="text-gray-400 text-sm">Users Worldwide</div>
+                </div>
               </div>
-              <div className="text-2xl font-bold text-white mb-1">1M+</div>
-              <div className="text-gray-400">Users Worldwide</div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-500/10 mb-4">
-                <Award className="h-8 w-8 text-blue-400" />
+              
+              <div className="hidden md:block h-12 w-px bg-gray-700"></div>
+              
+              <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-blue-500/10">
+                  <Award className="h-6 w-6 text-blue-400" />
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-white">99.9%</div>
+                  <div className="text-gray-400 text-sm">Accuracy Rate</div>
+                </div>
               </div>
-              <div className="text-2xl font-bold text-white mb-1">99.9%</div>
-              <div className="text-gray-400">Accuracy Rate</div>
-            </div>
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-green-500/10 mb-4">
-                <TrendingUp className="h-8 w-8 text-green-400" />
+              
+              <div className="hidden md:block h-12 w-px bg-gray-700"></div>
+              
+              <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-green-500/10">
+                  <TrendingUp className="h-6 w-6 text-green-400" />
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-white">24/7</div>
+                  <div className="text-gray-400 text-sm">Available</div>
+                </div>
               </div>
-              <div className="text-2xl font-bold text-white mb-1">24/7</div>
-              <div className="text-gray-400">Available</div>
             </div>
           </div>
         </div>
