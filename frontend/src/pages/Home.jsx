@@ -39,7 +39,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section - SEO Optimized */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-400 via-green-400 to-blue-500 bg-clip-text text-transparent">
@@ -53,7 +53,7 @@ const Home = () => {
             Calculate your BMI instantly with our advanced Body Mass Index calculator. Get personalized health insights, 
             ideal weight ranges, and professional recommendations based on WHO & CDC guidelines.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mb-8 text-sm text-gray-400">
+          <div className="flex flex-wrap justify-center gap-4 mb-6 text-sm text-gray-400">
             <span className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full">
               <Calculator className="h-4 w-4 text-blue-400" />
               WHO Approved Formula
@@ -71,7 +71,7 @@ const Home = () => {
       </section>
 
       {/* BMI Calculator Section */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
+      <section className="py-8 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <BMICalculator />
         </div>
