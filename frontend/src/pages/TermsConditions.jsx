@@ -180,7 +180,7 @@ const TermsConditions = () => {
             </CardHeader>
             <CardContent className="text-gray-300 space-y-4">
               <p>
-                BMI Pro may revise these terms of service at any time without notice. By using this website, 
+                Advanced BMI Calculator may revise these terms of service at any time without notice. By using this website, 
                 you are agreeing to be bound by the then current version of these terms of service.
               </p>
               <p className="text-sm text-gray-400">
