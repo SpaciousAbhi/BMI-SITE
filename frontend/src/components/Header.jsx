@@ -58,7 +58,7 @@ const Header = () => {
                         <DropdownMenuItem key={subItem.path} asChild>
                           <Link
                             to={subItem.path}
-                            className="text-gray-300 hover:text-white hover:bg-gray-800 transition-colors cursor-pointer"
+                            className="nav-link text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-300 ease-out cursor-pointer"
                             onClick={() => window.scrollTo(0, 0)}
                           >
                             {subItem.name}
