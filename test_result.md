@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-## user_problem_statement: "DO THE SEO RESEARCH ON THE GREATEST LEVEL POSSIBLE. THEN APP THAT SEO ON THE HOMEPAGE. & MAKE THE WEBSITE PERFECT."
+## user_problem_statement: "DO THE SEO RESEARCH ON THE GREATEST LEVEL POSSIBLE. THEN APP THAT SEO ON THE HOMEPAGE. & MAKE THE WEBSITE PERFECT. | CONTINUATION TASK: Can you improve the content of privacy policy page, terms and conditions page & contact us page. These pages should look very highly professional & seo optimized for site."
 
 ## backend:
   - task: "No backend required - Frontend only application"
