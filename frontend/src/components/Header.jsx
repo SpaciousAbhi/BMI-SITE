@@ -116,7 +116,7 @@ const Header = () => {
                     ) : (
                       <Link
                         to={item.path}
-                        className="block text-gray-300 hover:text-white transition-colors py-2"
+                        className="nav-link block text-gray-300 hover:text-white transition-all duration-300 ease-out py-2"
                         onClick={() => setIsOpen(false)}
                       >
                         {item.name}
