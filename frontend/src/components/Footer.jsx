@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center space-x-2 mb-4">
-              <Activity className="h-8 w-8 text-green-400" />
+              <Heart className="h-8 w-8 text-green-400" />
               <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
                 BMI Pro
               </span>
