@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
-import { Shield, Eye, Lock, Users, FileText, Database, Globe, Server, Mail, Calendar } from "lucide-react";
+import { Shield, Eye, Lock, Users, FileText, Database, Globe, Server, Mail, Calendar, Scale } from "lucide-react";
 
 const PrivacyPolicy = () => {
   return (
