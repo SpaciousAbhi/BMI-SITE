@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { Menu, Activity, ChevronDown } from "lucide-react";
+import { Menu, Heart, ChevronDown } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
