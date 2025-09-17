@@ -2,6 +2,33 @@ import React, { useState } from "react";
 import BMICalculator from "../components/BMICalculator";
 import { Stethoscope, Brain, Users, Shield, Award, TrendingUp, ChevronDown, ChevronUp, Calculator, Heart, Target } from "lucide-react";
 
+const faqData = [
+  {
+    question: "What is BMI and how is it calculated?",
+    answer: "BMI (Body Mass Index) is a measure of body fat based on height and weight that applies to adult men and women. It's calculated using the formula: <strong>BMI = weight (kg) ÷ height (m)²</strong>. For example, if you weigh 70kg and are 1.75m tall, your BMI would be 70 ÷ (1.75 × 1.75) = 22.9."
+  },
+  {
+    question: "What are the different BMI categories and ranges?",
+    answer: "According to WHO guidelines: <strong>Underweight:</strong> Below 18.5, <strong>Healthy Weight:</strong> 18.5-24.9, <strong>Overweight:</strong> 25.0-29.9, <strong>Obese Class I:</strong> 30.0-34.9, <strong>Obese Class II:</strong> 35.0-39.9, <strong>Obese Class III:</strong> 40.0 and above. These ranges help assess health risks associated with body weight."
+  },
+  {
+    question: "Is BMI accurate for everyone?",
+    answer: "BMI is a useful screening tool but has limitations. It doesn't distinguish between muscle and fat mass, so athletes or very muscular individuals may have high BMI despite being healthy. Age, gender, ethnicity, and body composition can affect BMI interpretation. It's best used alongside other health assessments."
+  },
+  {
+    question: "How often should I calculate my BMI?",
+    answer: "For weight management, calculating BMI weekly or monthly is sufficient. Frequent daily calculations aren't necessary as healthy weight changes occur gradually. Use our BMI calculator to track long-term trends rather than daily fluctuations."
+  },
+  {
+    question: "What should I do if my BMI is outside the healthy range?",
+    answer: "If your BMI indicates underweight, overweight, or obesity, consult with a healthcare professional for personalized advice. They can assess your overall health, consider factors BMI doesn't measure, and recommend appropriate diet, exercise, or medical interventions if needed."
+  },
+  {
+    question: "Can I use this BMI calculator for children?",
+    answer: "This calculator is designed for adults (18+ years). Children and teens have different BMI calculations that account for age and gender using growth charts. For pediatric BMI assessment, consult your child's healthcare provider or use specialized pediatric BMI tools."
+  }
+];
+
 const Home = () => {
   const [openFaq, setOpenFaq] = useState(null);
 
