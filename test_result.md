@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-## user_problem_statement: "Create a professional, user-friendly, and highly optimized BMI Calculator website with black OLED background, blue/green highlights, advanced BMI calculator, and comprehensive legal pages (Privacy Policy, Terms & Conditions, Contact Us). The website should be SEO-optimized to rank at the top with professional icons throughout."
+## user_problem_statement: "DO THE SEO RESEARCH ON THE GREATEST LEVEL POSSIBLE. THEN APP THAT SEO ON THE HOMEPAGE. & MAKE THE WEBSITE PERFECT."
 
 ## backend:
   - task: "No backend required - Frontend only application"
