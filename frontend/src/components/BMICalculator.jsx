@@ -250,8 +250,13 @@ const BMICalculator = () => {
         {result && (
           <Card className="bg-gray-900/50 border-gray-800">
             <CardHeader>
-              <CardTitle className="text-2xl bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-                Your BMI Results
+              <CardTitle className="flex items-center space-x-2 text-2xl">
+                <div className="p-2 rounded-full bg-green-500/10">
+                  <Heart className="h-6 w-6 text-green-400" />
+                </div>
+                <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+                  Your BMI Results
+                </span>
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
