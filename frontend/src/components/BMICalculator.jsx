@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { Calculator, RefreshCw } from "lucide-react";
+import { Calculator, RotateCcw, Heart, AlertCircle, CheckCircle, Target } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
 
 const BMICalculator = () => {
