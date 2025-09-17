@@ -1,22 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import BMICalculator from "../components/BMICalculator";
-import { Stethoscope, Brain, Users, Shield, Award, TrendingUp } from "lucide-react";
+import { Stethoscope, Brain, Users, Shield, Award, TrendingUp, ChevronDown, ChevronUp, Calculator, Heart, Target } from "lucide-react";
 
 const Home = () => {
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
+      {/* Hero Section - SEO Optimized */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto text-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-400 via-green-400 to-blue-500 bg-clip-text text-transparent">
-              BMI Calculator
+              Free BMI Calculator
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto">
-            Calculate your Body Mass Index instantly with our advanced, professional-grade calculator. 
-            Get comprehensive health insights and personalized recommendations.
+          <h2 className="text-2xl md:text-3xl text-gray-200 mb-4 font-semibold">
+            Calculate Your Body Mass Index & Get Healthy Weight Insights
+          </h2>
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
+            Calculate your BMI instantly with our advanced Body Mass Index calculator. Get personalized health insights, 
+            ideal weight ranges, and professional recommendations based on WHO & CDC guidelines.
           </p>
+          <div className="flex flex-wrap justify-center gap-4 mb-12 text-sm text-gray-400">
+            <span className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full">
+              <Calculator className="h-4 w-4 text-blue-400" />
+              WHO Approved Formula
+            </span>
+            <span className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full">
+              <Heart className="h-4 w-4 text-green-400" />
+              Health Risk Assessment
+            </span>
+            <span className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full">
+              <Target className="h-4 w-4 text-blue-400" />
+              Ideal Weight Range
+            </span>
+          </div>
         </div>
       </section>
 
