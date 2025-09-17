@@ -121,11 +121,14 @@ const BMICalculator = () => {
         <Card className="bg-gray-900/50 border-gray-800">
           <CardHeader>
             <CardTitle className="flex items-center space-x-2 text-2xl">
-              <Calculator className="h-6 w-6 text-blue-400" />
+              <div className="p-2 rounded-full bg-blue-500/10">
+                <Calculator className="h-6 w-6 text-blue-400" />
+              </div>
               <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
                 BMI Calculator
               </span>
             </CardTitle>
+            <p className="text-gray-400 text-sm mt-2">Enter your details for accurate BMI calculation</p>
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Weight Input */}
