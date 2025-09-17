@@ -66,7 +66,7 @@ const BMICalculator = () => {
     }
   };
 
-  const calculateBMI = () => {
+  const calculateBMI = async () => {
     // Validation
     if (!weight || !height || (heightUnit === "ft" && (!feet || !inches)) || !age || !gender) {
       toast({
@@ -76,6 +76,11 @@ const BMICalculator = () => {
       });
       return;
     }
+
+    setIsCalculating(true);
+
+    // Add a small delay for animation effect
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
     // Convert weight to kg
     let weightInKg = parseFloat(weight);
@@ -126,7 +131,7 @@ const BMICalculator = () => {
     const idealWeightMin = 18.5 * (heightInM * heightInM);
     const idealWeightMax = 24.9 * (heightInM * heightInM);
 
-    setResult({
+    const resultData = {
       bmi: bmi.toFixed(1),
       category,
       color,
@@ -142,8 +147,12 @@ const BMICalculator = () => {
         height: (heightInM * 100).toFixed(1),
         age: parseInt(age),
         gender
-      }
-    });
+      },
+      calculatedOn: new Date().toLocaleDateString()
+    };
+
+    setResult(resultData);
+    setIsCalculating(false);
 
     toast({
       title: "BMI Calculated Successfully!",
