@@ -104,7 +104,10 @@ const Header = () => {
                             key={subItem.path}
                             to={subItem.path}
                             className="block text-gray-300 hover:text-white transition-colors py-2 pl-4"
-                            onClick={() => setIsOpen(false)}
+                            onClick={() => {
+                              setIsOpen(false);
+                              window.scrollTo(0, 0);
+                            }}
                           >
                             {subItem.name}
                           </Link>
