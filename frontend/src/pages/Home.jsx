@@ -17,9 +17,9 @@ const Home = () => {
             Calculate your Body Mass Index instantly with our advanced, professional-grade calculator. 
             Get comprehensive health insights and personalized recommendations.
           </p>
-          
-
         </div>
+      </section>
+
       {/* BMI Calculator Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
