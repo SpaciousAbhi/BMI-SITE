@@ -115,30 +115,32 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About BMI Section */}
+      {/* About BMI Section - Enhanced for SEO */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-              Understanding Your BMI
+              Understanding Your Body Mass Index (BMI)
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
-                <h3 className="text-2xl font-semibold mb-4 text-white">What is BMI?</h3>
+                <h3 className="text-2xl font-semibold mb-4 text-white">What is BMI and How is it Calculated?</h3>
                 <p className="text-gray-300 mb-6 leading-relaxed">
-                  Body Mass Index (BMI) is a widely used screening tool that helps assess whether you're at a healthy weight for your height. 
-                  It's calculated by dividing your weight in kilograms by your height in meters squared.
+                  Body Mass Index (BMI) is a widely used health screening tool that measures body fat based on height and weight. 
+                  BMI is calculated using the formula: <strong>weight (kg) ÷ height (m)²</strong>. Our BMI calculator makes this 
+                  calculation instant and accurate.
                 </p>
-                <p className="text-gray-300 leading-relaxed">
-                  While BMI is a useful indicator, it's important to remember that it doesn't measure body fat directly and may not 
-                  account for factors like muscle mass, bone density, and overall body composition.
+                <p className="text-gray-300 mb-6 leading-relaxed">
+                  While BMI is an excellent indicator for most adults, it has limitations. It doesn't distinguish between muscle 
+                  and fat mass, so athletes or very muscular individuals may have elevated BMI despite being healthy.
                 </p>
                 
                 <div className="mt-8 p-6 bg-blue-900/20 rounded-xl border border-blue-800/50">
-                  <h4 className="text-lg font-semibold mb-3 text-blue-300">WHO Guidelines</h4>
+                  <h4 className="text-lg font-semibold mb-3 text-blue-300">WHO & CDC Approved</h4>
                   <p className="text-gray-300 text-sm">
-                    Our BMI calculator follows World Health Organization (WHO) guidelines and standards for accurate health assessment.
+                    Our BMI calculator follows World Health Organization (WHO) and Centers for Disease Control (CDC) 
+                    guidelines for accurate health assessment and weight classification.
                   </p>
                 </div>
               </div>
@@ -146,7 +148,7 @@ const Home = () => {
               <div className="bg-gray-900/50 p-8 rounded-xl border border-gray-800">
                 <h4 className="text-xl font-semibold mb-6 text-blue-400 flex items-center">
                   <Stethoscope className="h-6 w-6 mr-2" />
-                  BMI Categories
+                  BMI Chart & Categories
                 </h4>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center p-3 rounded-lg bg-blue-900/20 border border-blue-800/30">
@@ -154,19 +156,105 @@ const Home = () => {
                     <span className="text-white font-semibold">Below 18.5</span>
                   </div>
                   <div className="flex justify-between items-center p-3 rounded-lg bg-green-900/20 border border-green-800/30">
-                    <span className="text-green-300 font-medium">Normal Weight</span>
+                    <span className="text-green-300 font-medium">Healthy Weight</span>
                     <span className="text-white font-semibold">18.5 - 24.9</span>
                   </div>
                   <div className="flex justify-between items-center p-3 rounded-lg bg-yellow-900/20 border border-yellow-800/30">
                     <span className="text-yellow-300 font-medium">Overweight</span>
                     <span className="text-white font-semibold">25.0 - 29.9</span>
                   </div>
+                  <div className="flex justify-between items-center p-3 rounded-lg bg-orange-900/20 border border-orange-800/30">
+                    <span className="text-orange-300 font-medium">Obese Class I</span>
+                    <span className="text-white font-semibold">30.0 - 34.9</span>
+                  </div>
                   <div className="flex justify-between items-center p-3 rounded-lg bg-red-900/20 border border-red-800/30">
-                    <span className="text-red-300 font-medium">Obese</span>
-                    <span className="text-white font-semibold">30.0 and above</span>
+                    <span className="text-red-300 font-medium">Obese Class II</span>
+                    <span className="text-white font-semibold">35.0 - 39.9</span>
+                  </div>
+                  <div className="flex justify-between items-center p-3 rounded-lg bg-red-900/30 border border-red-700/30">
+                    <span className="text-red-200 font-medium">Obese Class III</span>
+                    <span className="text-white font-semibold">40.0+</span>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SEO-Optimized FAQ Section for Featured Snippets */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+            Frequently Asked Questions About BMI Calculator
+          </h2>
+          
+          <div className="space-y-4">
+            {faqData.map((faq, index) => (
+              <div key={index} className="bg-gray-900/50 rounded-xl border border-gray-800 overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                  onClick={() => toggleFaq(index)}
+                  aria-expanded={openFaq === index}
+                >
+                  <h3 className="text-lg font-semibold text-white pr-4">{faq.question}</h3>
+                  {openFaq === index ? (
+                    <ChevronUp className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                  ) : (
+                    <ChevronDown className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                  )}
+                </button>
+                
+                {openFaq === index && (
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Health Tips Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+            Healthy Weight Management Tips
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
+              <div className="p-3 rounded-full bg-green-500/10 w-fit mb-4">
+                <Heart className="h-8 w-8 text-green-400" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-white">Maintain Healthy Diet</h3>
+              <p className="text-gray-400">
+                Focus on balanced nutrition with plenty of fruits, vegetables, lean proteins, and whole grains. 
+                Limit processed foods and added sugars for optimal BMI maintenance.
+              </p>
+            </div>
+            
+            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
+              <div className="p-3 rounded-full bg-blue-500/10 w-fit mb-4">
+                <TrendingUp className="h-8 w-8 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-white">Regular Exercise</h3>
+              <p className="text-gray-400">
+                Aim for at least 150 minutes of moderate aerobic activity weekly. Combine cardio with 
+                strength training for effective weight management and improved BMI.
+              </p>
+            </div>
+            
+            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
+              <div className="p-3 rounded-full bg-blue-500/10 w-fit mb-4">
+                <Target className="h-8 w-8 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3 text-white">Monitor Progress</h3>
+              <p className="text-gray-400">
+                Regular BMI calculations help track your progress. Use our BMI calculator weekly to 
+                monitor changes and adjust your health goals accordingly.
+              </p>
             </div>
           </div>
         </div>
