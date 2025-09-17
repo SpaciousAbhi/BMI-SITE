@@ -20,7 +20,51 @@ const BMICalculator = () => {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [result, setResult] = useState(null);
+  const [isCalculating, setIsCalculating] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
   const { toast } = useToast();
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4 }
+    }
+  };
+
+  const resultVariants = {
+    hidden: { opacity: 0, scale: 0.8, rotateY: 90 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotateY: 0,
+      transition: {
+        duration: 0.8,
+        type: "spring",
+        bounce: 0.4
+      }
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      rotateY: -90,
+      transition: { duration: 0.5 }
+    }
+  };
 
   const calculateBMI = () => {
     // Validation
