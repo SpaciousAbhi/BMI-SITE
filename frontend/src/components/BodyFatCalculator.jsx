@@ -430,7 +430,7 @@ const BodyFatCalculator = () => {
                     className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-blue-500/50 focus:border-blue-500 transition-all duration-300 flex-1"
                   />
                   <Select value={weightUnit} onValueChange={setWeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-20">
+                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-gray-800 border-gray-700">
