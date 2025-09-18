@@ -308,7 +308,7 @@ const GFRCalculatorPage = () => {
                   CKD stages are classified from G1 to G5 based on eGFR levels: G1 (≥90) indicates normal or high kidney function 
                   with possible kidney damage; G2 (60-89) shows mild decrease; G3a (45-59) indicates mild to moderate decrease; 
                   G3b (30-44) shows moderate to severe decrease; G4 (15-29) indicates severe decrease requiring preparation for 
-                  renal replacement therapy; G5 (<15) represents kidney failure requiring dialysis or transplant. Each stage guides 
+                  renal replacement therapy; G5 (&lt;15) represents kidney failure requiring dialysis or transplant. Each stage guides 
                   different management approaches and monitoring frequencies.
                 </p>
               </div>
