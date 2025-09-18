@@ -418,54 +418,6 @@ function AnimatedRoutes() {
           } 
         />
         <Route 
-          path="/pregnancy-calculator" 
-          element={
-            <PageTransition key="pregnancy">
-              <PregnancyCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/pregnancy-weight-gain-calculator" 
-          element={
-            <PageTransition key="pregnancy-weight-gain">
-              <PregnancyWeightGainCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/due-date-calculator" 
-          element={
-            <PageTransition key="due-date">
-              <DueDateCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/ovulation-calculator" 
-          element={
-            <PageTransition key="ovulation">
-              <OvulationCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/conception-calculator" 
-          element={
-            <PageTransition key="conception">
-              <ConceptionCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/period-calculator" 
-          element={
-            <PageTransition key="period">
-              <PeriodCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
           path="/gfr-calculator" 
           element={
             <PageTransition key="gfr">
