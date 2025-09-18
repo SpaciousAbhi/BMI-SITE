@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900/50 border-t border-gray-800 py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -21,44 +21,100 @@ const Footer = () => {
             </p>
           </div>
 
+          {/* Body Calculators Section */}
+          <div>
+            <h3 className="text-white font-semibold mb-4 flex items-center">
+              <Heart className="h-5 w-5 mr-2 text-green-400" />
+              Body Calculators
+            </h3>
+            <div className="space-y-2">
+              <Link
+                to="/"
+                className="nav-link block text-gray-400 hover:text-green-400 transition-all duration-300 ease-out text-sm"
+              >
+                BMI Calculator
+              </Link>
+              <Link
+                to="/body-fat-calculator"
+                className="nav-link block text-gray-400 hover:text-green-400 transition-all duration-300 ease-out text-sm"
+              >
+                Body Fat Calculator
+              </Link>
+              <Link
+                to="/army-body-fat-calculator"
+                className="nav-link block text-gray-400 hover:text-green-400 transition-all duration-300 ease-out text-sm"
+              >
+                Army Body Fat Calculator
+              </Link>
+              <Link
+                to="/lean-body-mass-calculator"
+                className="nav-link block text-gray-400 hover:text-green-400 transition-all duration-300 ease-out text-sm"
+              >
+                Lean Body Mass Calculator
+              </Link>
+            </div>
+          </div>
+
+          {/* More Calculators Section */}
+          <div>
+            <h3 className="text-white font-semibold mb-4 flex items-center">
+              <Heart className="h-5 w-5 mr-2 text-blue-400" />
+              Weight & Health
+            </h3>
+            <div className="space-y-2">
+              <Link
+                to="/ideal-weight-calculator"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+              >
+                Ideal Weight Calculator
+              </Link>
+              <Link
+                to="/healthy-weight-calculator"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+              >
+                Healthy Weight Calculator
+              </Link>
+              <Link
+                to="/body-type-calculator"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+              >
+                Body Type Calculator
+              </Link>
+              <Link
+                to="/body-surface-area-calculator"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+              >
+                Body Surface Area Calculator
+              </Link>
+            </div>
+          </div>
+
           {/* Legal & Privacy Section */}
           <div>
             <h3 className="text-white font-semibold mb-4 flex items-center">
               <Shield className="h-5 w-5 mr-2 text-blue-400" />
               Legal & Privacy
             </h3>
-            <div className="space-y-3">
+            <div className="space-y-2">
               <Link
                 to="/privacy-policy"
-                className="nav-link flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
               >
-                <Shield className="h-4 w-4 mr-2" />
                 Privacy Policy
               </Link>
               <Link
                 to="/terms-conditions"
-                className="nav-link flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
               >
-                <FileText className="h-4 w-4 mr-2" />
                 Terms & Conditions
               </Link>
               <Link
                 to="/contact-us"
-                className="nav-link flex items-center text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
               >
-                <MessageCircle className="h-4 w-4 mr-2" />
                 Contact Us
               </Link>
             </div>
-          </div>
-
-          {/* Health Disclaimer */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Health Information</h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              This BMI calculator is for informational purposes only and should not replace professional medical advice. 
-              Always consult with healthcare professionals for personalized health assessments.
-            </p>
           </div>
         </div>
 
