@@ -76,6 +76,13 @@ class BMICalculatorTester:
         """Test all frontend routes"""
         routes = [
             "/",
+            "/body-fat-calculator",
+            "/army-body-fat-calculator",
+            "/lean-body-mass-calculator", 
+            "/ideal-weight-calculator",
+            "/healthy-weight-calculator",
+            "/body-type-calculator",
+            "/body-surface-area-calculator",
             "/privacy-policy", 
             "/terms-conditions",
             "/contact-us"
