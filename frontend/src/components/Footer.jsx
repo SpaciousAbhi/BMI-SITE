@@ -21,11 +21,11 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Body Calculators Section */}
+          {/* Home Page | BMI Calculator Section */}
           <div>
             <h3 className="text-white font-semibold mb-4 flex items-center">
               <Heart className="h-5 w-5 mr-2 text-green-400" />
-              Body Calculators
+              Home Page | BMI Calculator
             </h3>
             <div className="space-y-2">
               <Link
@@ -34,34 +34,37 @@ const Footer = () => {
               >
                 BMI Calculator
               </Link>
+            </div>
+          </div>
+
+          {/* Additional Calculators Section */}
+          <div>
+            <h3 className="text-white font-semibold mb-2 flex items-center">
+              <Heart className="h-5 w-5 mr-2 text-blue-400" />
+              Additional Calculators
+            </h3>
+            <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3">
+              Body Composition & Weight
+            </div>
+            <div className="space-y-2 max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
               <Link
                 to="/body-fat-calculator"
-                className="nav-link block text-gray-400 hover:text-green-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
               >
                 Body Fat Calculator
               </Link>
               <Link
                 to="/army-body-fat-calculator"
-                className="nav-link block text-gray-400 hover:text-green-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
               >
                 Army Body Fat Calculator
               </Link>
               <Link
                 to="/lean-body-mass-calculator"
-                className="nav-link block text-gray-400 hover:text-green-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
               >
                 Lean Body Mass Calculator
               </Link>
-            </div>
-          </div>
-
-          {/* More Calculators Section */}
-          <div>
-            <h3 className="text-white font-semibold mb-4 flex items-center">
-              <Heart className="h-5 w-5 mr-2 text-blue-400" />
-              Weight & Health
-            </h3>
-            <div className="space-y-2">
               <Link
                 to="/ideal-weight-calculator"
                 className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
@@ -84,7 +87,7 @@ const Footer = () => {
                 to="/body-surface-area-calculator"
                 className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
               >
-                Body Surface Area Calculator
+                Body Surface Area (BSA) Calculator
               </Link>
             </div>
           </div>
