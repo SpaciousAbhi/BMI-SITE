@@ -498,7 +498,7 @@ const FatIntakeCalculator = () => {
                       <SelectValue placeholder="Select level" />
                     </SelectTrigger>
                     <SelectContent className="bg-gray-800 border-gray-700">
-                      <SelectItem value="optimal">Optimal (<200 mg/dL)</SelectItem>
+                      <SelectItem value="optimal">Optimal (&lt;200 mg/dL)</SelectItem>
                       <SelectItem value="borderline">Borderline (200-239 mg/dL)</SelectItem>
                       <SelectItem value="high">High (≥240 mg/dL)</SelectItem>
                       <SelectItem value="unknown">Unknown</SelectItem>
