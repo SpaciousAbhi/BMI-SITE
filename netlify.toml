@@ -1,6 +1,6 @@
 [build]
-  # Build command - use npm for more reliable Netlify builds
-  command = "cd frontend && npm ci && npm run build"
+  # Build command - install dependencies first with yarn, then build
+  command = "cd frontend && yarn install --frozen-lockfile && yarn build"
   
   # Directory to publish (relative to root of your repo)
   publish = "frontend/build"
@@ -8,6 +8,9 @@
 [build.environment]
   # Node version
   NODE_VERSION = "18"
+  
+  # Yarn version
+  YARN_VERSION = "1.22.22"
 
 # SPA routing configuration - MOST IMPORTANT FOR FIXING 404s
 [[redirects]]
