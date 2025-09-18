@@ -152,29 +152,29 @@ const PaceCalculator = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6">
+    <div className="w-full max-w-4xl mx-auto p-3 sm:p-4 md:p-6">
       <Card className="bg-gray-900/50 border-gray-800">
-        <CardHeader className="text-center pb-8">
+        <CardHeader className="text-center pb-6 sm:pb-8">
           <div className="flex items-center justify-center mb-4">
             <div className="p-3 rounded-full bg-blue-500/10 mr-4">
-              <Timer className="h-8 w-8 text-blue-400" />
+              <Timer className="h-6 w-6 sm:h-8 sm:w-8 text-blue-400" />
             </div>
-            <CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <CardTitle className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               Advanced Pace Calculator
             </CardTitle>
           </div>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto px-2">
             Calculate pace, time, or distance with precision. Includes race predictions, splits, and VDOT analysis for serious runners.
           </p>
         </CardHeader>
 
-        <CardContent className="space-y-8">
-          {/* Mode Selection */}
-          <div className="grid grid-cols-3 gap-4">
+        <CardContent className="space-y-6 sm:space-y-8">
+          {/* Mode Selection - Enhanced for mobile */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <Button
               onClick={() => setMode('pace')}
               variant={mode === 'pace' ? 'default' : 'outline'}
-              className="flex items-center space-x-2"
+              className="flex items-center justify-center space-x-2 h-11 sm:h-10 text-sm sm:text-base"
             >
               <Calculator className="h-4 w-4" />
               <span>Calculate Pace</span>
@@ -182,7 +182,7 @@ const PaceCalculator = () => {
             <Button
               onClick={() => setMode('time')}
               variant={mode === 'time' ? 'default' : 'outline'}
-              className="flex items-center space-x-2"
+              className="flex items-center justify-center space-x-2 h-11 sm:h-10 text-sm sm:text-base"
             >
               <Clock className="h-4 w-4" />
               <span>Calculate Time</span>
@@ -190,30 +190,30 @@ const PaceCalculator = () => {
             <Button
               onClick={() => setMode('distance')}
               variant={mode === 'distance' ? 'default' : 'outline'}
-              className="flex items-center space-x-2"
+              className="flex items-center justify-center space-x-2 h-11 sm:h-10 text-sm sm:text-base"
             >
               <Target className="h-4 w-4" />
               <span>Calculate Distance</span>
             </Button>
           </div>
 
-          {/* Input Form */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Input Form - Optimized grid layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {/* Distance Input (for pace and time modes) */}
             {(mode === 'pace' || mode === 'time') && (
-              <div className="space-y-4">
-                <Label className="text-white font-semibold">Distance *</Label>
+              <div className="space-y-3 sm:space-y-4">
+                <Label className="text-white font-semibold text-sm sm:text-base">Distance *</Label>
                 <div className="flex space-x-2">
                   <Input
                     type="number"
                     placeholder="Enter distance"
                     value={distance}
                     onChange={(e) => setDistance(e.target.value)}
-                    className="bg-gray-800 border-gray-700 text-white flex-1"
+                    className="bg-gray-800 border-gray-700 text-white flex-1 h-11 sm:h-10"
                     step="0.01"
                   />
                   <Select value={distanceUnit} onValueChange={setDistanceUnit}>
-                    <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-24">
+                    <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-20 sm:w-24 h-11 sm:h-10">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-gray-800 border-gray-700">
@@ -229,39 +229,39 @@ const PaceCalculator = () => {
 
             {/* Time Input (for pace and distance modes) */}
             {(mode === 'pace' || mode === 'distance') && (
-              <div className="space-y-4">
-                <Label className="text-white font-semibold">Time *</Label>
-                <div className="flex space-x-2">
-                  <div className="flex-1">
+              <div className="space-y-3 sm:space-y-4">
+                <Label className="text-white font-semibold text-sm sm:text-base">Time *</Label>
+                <div className="grid grid-cols-3 gap-2">
+                  <div>
                     <Input
                       type="number"
                       placeholder="Hours"
                       value={time.hours}
                       onChange={(e) => setTime({...time, hours: e.target.value})}
-                      className="bg-gray-800 border-gray-700 text-white text-center"
+                      className="bg-gray-800 border-gray-700 text-white text-center h-11 sm:h-10"
                       min="0"
                     />
                     <Label className="text-xs text-gray-400 block text-center mt-1">Hours</Label>
                   </div>
-                  <div className="flex-1">
+                  <div>
                     <Input
                       type="number"
                       placeholder="Minutes"
                       value={time.minutes}
                       onChange={(e) => setTime({...time, minutes: e.target.value})}
-                      className="bg-gray-800 border-gray-700 text-white text-center"
+                      className="bg-gray-800 border-gray-700 text-white text-center h-11 sm:h-10"
                       min="0"
                       max="59"
                     />
                     <Label className="text-xs text-gray-400 block text-center mt-1">Minutes</Label>
                   </div>
-                  <div className="flex-1">
+                  <div>
                     <Input
                       type="number"
                       placeholder="Seconds"
                       value={time.seconds}
                       onChange={(e) => setTime({...time, seconds: e.target.value})}
-                      className="bg-gray-800 border-gray-700 text-white text-center"
+                      className="bg-gray-800 border-gray-700 text-white text-center h-11 sm:h-10"
                       min="0"
                       max="59"
                     />
@@ -273,27 +273,27 @@ const PaceCalculator = () => {
 
             {/* Pace Input (for time and distance modes) */}
             {(mode === 'time' || mode === 'distance') && (
-              <div className="space-y-4">
-                <Label className="text-white font-semibold">Pace (per km) *</Label>
-                <div className="flex space-x-2">
-                  <div className="flex-1">
+              <div className="space-y-3 sm:space-y-4">
+                <Label className="text-white font-semibold text-sm sm:text-base">Pace (per km) *</Label>
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
                     <Input
                       type="number"
                       placeholder="Minutes"
                       value={pace.minutes}
                       onChange={(e) => setPace({...pace, minutes: e.target.value})}
-                      className="bg-gray-800 border-gray-700 text-white text-center"
+                      className="bg-gray-800 border-gray-700 text-white text-center h-11 sm:h-10"
                       min="0"
                     />
                     <Label className="text-xs text-gray-400 block text-center mt-1">Minutes</Label>
                   </div>
-                  <div className="flex-1">
+                  <div>
                     <Input
                       type="number"
                       placeholder="Seconds"
                       value={pace.seconds}
                       onChange={(e) => setPace({...pace, seconds: e.target.value})}
-                      className="bg-gray-800 border-gray-700 text-white text-center"
+                      className="bg-gray-800 border-gray-700 text-white text-center h-11 sm:h-10"
                       min="0"
                       max="59"
                     />
@@ -304,20 +304,20 @@ const PaceCalculator = () => {
             )}
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex gap-4 pt-6">
+          {/* Action Buttons - Enhanced mobile design */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6">
             <Button
               onClick={calculatePace}
               disabled={!isFormValid() || loading}
-              className="flex-1 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold py-3 rounded-lg transition-all duration-300 transform hover:scale-105"
+              className="flex-1 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold py-3 h-12 sm:h-auto rounded-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
             >
               {loading ? (
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-center space-x-2">
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
                   <span>Calculating...</span>
                 </div>
               ) : (
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-center space-x-2">
                   <Calculator className="h-5 w-5" />
                   <span>Calculate {mode === 'pace' ? 'Pace' : mode === 'time' ? 'Time' : 'Distance'}</span>
                 </div>
@@ -326,46 +326,46 @@ const PaceCalculator = () => {
             <Button
               onClick={resetForm}
               variant="outline"
-              className="px-8 border-gray-600 text-gray-300 hover:bg-gray-800"
+              className="px-6 border-gray-600 text-gray-300 hover:bg-gray-800 h-12 sm:h-auto sm:px-8"
             >
               Reset
             </Button>
           </div>
 
-          {/* Results */}
+          {/* Results - Enhanced mobile responsiveness */}
           {result && (
-            <div className="mt-8 p-6 bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl border border-blue-800/30">
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                <TrendingUp className="h-6 w-6 mr-2 text-blue-400" />
+            <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl border border-blue-800/30">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center">
+                <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 mr-2 text-blue-400" />
                 Your Results
               </h3>
 
               {result.type === 'pace' && (
-                <div className="space-y-6">
-                  {/* Main Results */}
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="text-center p-4 bg-blue-900/20 rounded-lg">
-                      <div className="text-2xl font-bold text-blue-300">{result.pacePerKm}</div>
-                      <div className="text-blue-200">per km</div>
+                <div className="space-y-4 sm:space-y-6">
+                  {/* Main Results - Responsive grid */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+                    <div className="text-center p-3 sm:p-4 bg-blue-900/20 rounded-lg">
+                      <div className="text-lg sm:text-2xl font-bold text-blue-300">{result.pacePerKm}</div>
+                      <div className="text-xs sm:text-sm text-blue-200">per km</div>
                     </div>
-                    <div className="text-center p-4 bg-cyan-900/20 rounded-lg">
-                      <div className="text-2xl font-bold text-cyan-300">{result.pacePerMile}</div>
-                      <div className="text-cyan-200">per mile</div>
+                    <div className="text-center p-3 sm:p-4 bg-cyan-900/20 rounded-lg">
+                      <div className="text-lg sm:text-2xl font-bold text-cyan-300">{result.pacePerMile}</div>
+                      <div className="text-xs sm:text-sm text-cyan-200">per mile</div>
                     </div>
-                    <div className="text-center p-4 bg-green-900/20 rounded-lg">
-                      <div className="text-2xl font-bold text-green-300">{result.speedKmh}</div>
-                      <div className="text-green-200">km/h</div>
+                    <div className="text-center p-3 sm:p-4 bg-green-900/20 rounded-lg">
+                      <div className="text-lg sm:text-2xl font-bold text-green-300">{result.speedKmh}</div>
+                      <div className="text-xs sm:text-sm text-green-200">km/h</div>
                     </div>
-                    <div className="text-center p-4 bg-purple-900/20 rounded-lg">
-                      <div className="text-2xl font-bold text-purple-300">{result.speedMph}</div>
-                      <div className="text-purple-200">mph</div>
+                    <div className="text-center p-3 sm:p-4 bg-purple-900/20 rounded-lg">
+                      <div className="text-lg sm:text-2xl font-bold text-purple-300">{result.speedMph}</div>
+                      <div className="text-xs sm:text-sm text-purple-200">mph</div>
                     </div>
                   </div>
 
-                  {/* Splits */}
-                  <div className="bg-gray-800/50 p-4 rounded-lg">
-                    <h4 className="text-lg font-semibold text-white mb-3">Split Times</h4>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  {/* Splits - Mobile optimized */}
+                  <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg">
+                    <h4 className="text-base sm:text-lg font-semibold text-white mb-3">Split Times</h4>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 text-sm">
                       <div className="flex justify-between"><span>1km:</span><span className="font-mono">{result.splits['1km']}</span></div>
                       <div className="flex justify-between"><span>1 mile:</span><span className="font-mono">{result.splits['1mile']}</span></div>
                       <div className="flex justify-between"><span>5km:</span><span className="font-mono">{result.splits['5km']}</span></div>
@@ -375,12 +375,12 @@ const PaceCalculator = () => {
                     </div>
                   </div>
 
-                  {/* Race Predictions */}
-                  <div className="bg-gray-800/50 p-4 rounded-lg">
-                    <h4 className="text-lg font-semibold text-white mb-3">Race Time Predictions (VDOT: {result.vdot})</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  {/* Race Predictions - Mobile optimized */}
+                  <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg">
+                    <h4 className="text-base sm:text-lg font-semibold text-white mb-3">Race Time Predictions (VDOT: {result.vdot})</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                       {result.predictions.map((pred, idx) => (
-                        <div key={idx} className="flex justify-between items-center p-2 bg-gray-700/30 rounded">
+                        <div key={idx} className="flex justify-between items-center p-2 sm:p-3 bg-gray-700/30 rounded text-sm">
                           <span className="font-semibold">{pred.distance}:</span>
                           <div className="text-right">
                             <div className="font-mono text-blue-300">{pred.predictedTime}</div>
@@ -395,8 +395,8 @@ const PaceCalculator = () => {
 
               {result.type === 'time' && (
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-blue-300 mb-2">{result.totalTime}</div>
-                  <div className="text-gray-300">
+                  <div className="text-3xl sm:text-4xl font-bold text-blue-300 mb-2">{result.totalTime}</div>
+                  <div className="text-sm sm:text-base text-gray-300">
                     Time to complete {result.distance} {result.distanceUnit} at {result.pace}/km pace
                   </div>
                 </div>
@@ -404,8 +404,8 @@ const PaceCalculator = () => {
 
               {result.type === 'distance' && (
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-blue-300 mb-2">{result.distance} km</div>
-                  <div className="text-gray-300">
+                  <div className="text-3xl sm:text-4xl font-bold text-blue-300 mb-2">{result.distance} km</div>
+                  <div className="text-sm sm:text-base text-gray-300">
                     Distance covered in {result.totalTime} at {result.pace}/km pace
                   </div>
                 </div>
