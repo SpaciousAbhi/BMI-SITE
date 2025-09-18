@@ -397,7 +397,7 @@ const IdealWeightCalculator = () => {
 
   return (
     <motion.div
-      className="w-full max-w-4xl mx-auto p-6"
+      className="w-full max-w-4xl mx-auto p-4 sm:p-6"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -422,7 +422,7 @@ const IdealWeightCalculator = () => {
         </CardHeader>
 
         <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {/* Personal Information */}
             <motion.div variants={itemVariants} className="space-y-4">
               <h3 className="text-lg font-semibold text-white mb-4">Personal Information</h3>
@@ -444,7 +444,7 @@ const IdealWeightCalculator = () => {
                 <Label htmlFor="height" className="text-gray-300">Height *</Label>
                 <div className="flex gap-2">
                   <Select value={heightUnit} onValueChange={setHeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-20">
+                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-gray-800 border-gray-700">
@@ -505,7 +505,7 @@ const IdealWeightCalculator = () => {
                     className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-blue-500/50 focus:border-blue-500 transition-all duration-300 flex-1"
                   />
                   <Select value={weightUnit} onValueChange={setWeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-20">
+                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-gray-800 border-gray-700">
@@ -646,7 +646,7 @@ const IdealWeightCalculator = () => {
                   <p className="text-gray-400">{result.method}</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6">
                   <div className="space-y-3">
                     <h4 className="text-lg font-semibold text-white flex items-center">
                       <Target className="h-5 w-5 mr-2 text-blue-400" />
