@@ -1,4 +1,5 @@
 // Performance optimization utilities for 2025
+import React from 'react';
 
 // Debounce function for input optimization
 export const debounce = (func, wait) => {
