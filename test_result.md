@@ -400,11 +400,11 @@
     description: "Successfully implemented enhanced animations, micro-interactions, and PDF export functionality"
     status: "completed"
     details: "All new features tested and working perfectly including form animations, calculation loading states, results reveal animations, and professional PDF export"
-  - task: "Additional Calculators - Complete Suite Implementation"
+  - task: "Navigation Structure Reorganization & Enhanced Responsive Design"
     priority: "high"
-    description: "Successfully implemented 7 additional body composition calculators with full website integration"
+    description: "Successfully implemented user's exact navigation structure requirements with scrollable menus and enhanced mobile responsiveness"
     status: "completed"
-    details: "Body Fat Calculator, Army Body Fat Calculator, Lean Body Mass Calculator, Ideal Weight Calculator, Healthy Weight Calculator, Body Type Calculator, and Body Surface Area Calculator. Includes routing system, navigation menu, homepage section, footer organization, and SEO optimization. All calculators follow professional medical standards with accurate formulas and user-friendly interfaces."
+    details: "Updated Header navigation to show 'Home Page | BMI Calculator', 'Additional Calculators' with 'Body Composition & Weight' subheading, and 'Legal & Privacy'. Added scrollable functionality to dropdown menus with custom scrollbars. Reorganized Footer to match new structure. Enhanced responsive design across all 7 calculator components with improved grid layouts (lg:grid-cols-2), smaller mobile select widths (w-16 sm:w-20), and better mobile padding (p-4 sm:p-6). All changes implemented exactly as requested."
 
   - task: "BMI Calculator Form Validation Fix - Height Unit Issue"
     implemented: true
