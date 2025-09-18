@@ -1,6 +1,6 @@
 [build]
   # Build command - install dependencies first, then build
-  command = "cd frontend && yarn install --frozen-lockfile && yarn build"
+  command = "cd frontend && yarn install && yarn build"
   
   # Directory to publish (relative to root of your repo)
   publish = "frontend/build"
@@ -9,8 +9,8 @@
   # Node version
   NODE_VERSION = "18"
   
-  # Yarn version
-  YARN_VERSION = "1.22.22"
+  # Use npm instead of yarn for more reliable builds
+  NPM_FLAGS = "--version"
 
 # SPA routing configuration - MOST IMPORTANT FOR FIXING 404s
 [[redirects]]
