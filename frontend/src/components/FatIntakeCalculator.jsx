@@ -641,7 +641,7 @@ const FatIntakeCalculator = () => {
                 <h4 className="font-semibold text-white mb-2">What's the difference between good and bad fats?</h4>
                 <p className="text-gray-300">
                   <strong>Healthy fats:</strong> Monounsaturated (olive oil, avocados) and polyunsaturated (nuts, fish, seeds) reduce inflammation and support heart health. 
-                  <strong>Limit:</strong> Saturated fats (butter, coconut oil) to &lt;10% of calories. 
+                  <strong>Limit:</strong> Saturated fats (butter, coconut oil) to less than 10% of calories. 
                   <strong>Avoid:</strong> Trans fats (processed foods) completely.
                 </p>
               </div>
