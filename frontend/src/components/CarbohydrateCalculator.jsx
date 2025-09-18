@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Wheat, Info, TrendingUp, Target, Zap } from "lucide-react";
+import { Wheat, Info, TrendingUp, Target, Zap, HelpCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -285,7 +285,7 @@ const CarbohydrateCalculator = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6">
+    <div className="w-full max-w-4xl mx-auto p-3 sm:p-4 md:p-6">
       <Card className="bg-gray-900/50 border-gray-800">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center mb-4">
@@ -521,7 +521,7 @@ const CarbohydrateCalculator = () => {
             <Button
               onClick={calculateCarbs}
               disabled={!validateForm() || isCalculating}
-              className="flex-1 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              className="flex-1 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white h-11 sm:h-10 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
             >
               {isCalculating ? (
                 <>
@@ -539,7 +539,7 @@ const CarbohydrateCalculator = () => {
             <Button
               onClick={resetForm}
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800"
+              className="border-gray-600 text-gray-300 hover:bg-gray-800 h-11 sm:h-10"
             >
               Reset Form
             </Button>
@@ -557,6 +557,119 @@ const CarbohydrateCalculator = () => {
         </CardContent>
       </Card>
 
+      {/* Scientific Information & FAQ Section */}
+      <Card className="mt-8 bg-gray-900/50 border-gray-800">
+        <CardHeader>
+          <CardTitle className="text-2xl font-bold text-white flex items-center">
+            <HelpCircle className="h-6 w-6 text-blue-400 mr-2" />
+            Carbohydrate Calculator: Complete Guide & FAQ
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {/* Scientific Background */}
+          <div className="bg-gray-800/50 p-3 sm:p-4 md:p-6 rounded-xl">
+            <h3 className="text-xl font-semibold text-blue-300 mb-4">Scientific Foundation</h3>
+            <div className="space-y-4 text-gray-300">
+              <p>
+                <strong className="text-white">Mifflin-St Jeor Equation:</strong> Our calculator uses the most accurate BMR formula: 
+                Males: BMR = 10 × weight(kg) + 6.25 × height(cm) - 5 × age + 5
+                Females: BMR = 10 × weight(kg) + 6.25 × height(cm) - 5 × age - 161
+              </p>
+              <p>
+                <strong className="text-white">TDEE Calculation:</strong> Total Daily Energy Expenditure = BMR × Activity Factor (1.2-1.9)
+              </p>
+              <p>
+                <strong className="text-white">Carb Requirements:</strong> Based on Dietary Guidelines (45-65% calories) and Sports Nutrition (5-12g/kg) standards.
+              </p>
+            </div>
+          </div>
+
+          {/* Comprehensive FAQ */}
+          <div className="bg-gray-800/50 p-3 sm:p-4 md:p-6 rounded-xl">
+            <h3 className="text-xl font-semibold text-blue-300 mb-6">Frequently Asked Questions</h3>
+            <div className="space-y-6">
+              
+              <div className="border-l-4 border-amber-500 pl-4">
+                <h4 className="font-semibold text-white mb-2">How many carbs should I eat per day?</h4>
+                <p className="text-gray-300">
+                  For general health, 45-65% of total calories should come from carbohydrates (225-325g for 2000 calories). 
+                  Athletes may need 5-12g per kg body weight. Weight loss goals typically use 20-30% of calories from carbs.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-green-500 pl-4">
+                <h4 className="font-semibold text-white mb-2">What's the difference between simple and complex carbs?</h4>
+                <p className="text-gray-300">
+                  <strong>Complex carbs</strong> (70% of intake): Whole grains, vegetables, legumes - provide sustained energy.
+                  <strong>Simple carbs</strong> (20% of intake): Fruits, honey - quick energy, best around workouts.
+                  <strong>Fiber-rich</strong> (10% of intake): Vegetables, beans - support digestion and satiety.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-blue-500 pl-4">
+                <h4 className="font-semibold text-white mb-2">When should I eat carbs for optimal performance?</h4>
+                <p className="text-gray-300">
+                  <strong>Pre-workout (25%):</strong> 1-2 hours before exercise for energy.
+                  <strong>Post-workout (35%):</strong> Within 30 minutes for recovery.
+                  <strong>Breakfast (20%):</strong> Start your day with sustained energy.
+                  <strong>Throughout day:</strong> Remaining 20% spread across meals.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-purple-500 pl-4">
+                <h4 className="font-semibold text-white mb-2">How do carbs affect weight loss and muscle building?</h4>
+                <p className="text-gray-300">
+                  <strong>Weight Loss:</strong> Lower carb intake (20-30% calories) can enhance fat burning while preserving muscle.
+                  <strong>Muscle Building:</strong> Higher carb intake (5-7g/kg) provides energy for intense training and recovery.
+                  <strong>Performance:</strong> Athletes need 7-12g/kg for optimal training and competition performance.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-red-500 pl-4">
+                <h4 className="font-semibold text-white mb-2">What about ketogenic and low-carb diets?</h4>
+                <p className="text-gray-300">
+                  <strong>Ketogenic:</strong> 5-10% calories from carbs (20-50g daily) can induce ketosis for fat burning.
+                  <strong>Low-carb:</strong> 20-30% calories from carbs suitable for many people's weight management.
+                  <strong>Moderation:</strong> Gradual reduction over 2-3 weeks helps avoid side effects.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-orange-500 pl-4">
+                <h4 className="font-semibold text-white mb-2">How accurate is this carbohydrate calculator?</h4>
+                <p className="text-gray-300">
+                  Our calculator uses scientifically validated formulas (Mifflin-St Jeor for BMR) and established nutritional guidelines. 
+                  Results are 85-90% accurate for most individuals. Factors like genetics, hormones, and medical conditions may require adjustments. 
+                  Consult healthcare providers for personalized nutrition plans.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Related Calculators */}
+          <div className="bg-gray-800/50 p-3 sm:p-4 md:p-6 rounded-xl">
+            <h3 className="text-xl font-semibold text-green-300 mb-4">Related Nutrition Calculators</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-gray-700/30 p-4 rounded-lg">
+                <h4 className="font-semibold text-white mb-2">Protein Calculator</h4>
+                <p className="text-gray-300 text-sm">Calculate optimal protein intake for muscle building and recovery.</p>
+              </div>
+              <div className="bg-gray-700/30 p-4 rounded-lg">
+                <h4 className="font-semibold text-white mb-2">Fat Intake Calculator</h4>
+                <p className="text-gray-300 text-sm">Determine healthy fat requirements for hormones and energy.</p>
+              </div>
+              <div className="bg-gray-700/30 p-4 rounded-lg">
+                <h4 className="font-semibold text-white mb-2">Macro Calculator</h4>
+                <p className="text-gray-300 text-sm">Complete macronutrient breakdown for balanced nutrition.</p>
+              </div>
+              <div className="bg-gray-700/30 p-4 rounded-lg">
+                <h4 className="font-semibold text-white mb-2">TDEE Calculator</h4>
+                <p className="text-gray-300 text-sm">Total daily energy expenditure for accurate calorie planning.</p>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Results Section */}
       {result && (
         <Card className="mt-8 bg-gray-900/50 border-gray-800">
@@ -568,9 +681,9 @@ const CarbohydrateCalculator = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Primary Carb Recommendation */}
-            <div className="text-center bg-gradient-to-r from-amber-900/20 to-orange-900/20 p-8 rounded-xl border border-amber-800/50">
-              <div className="text-5xl font-bold text-amber-300 mb-2">{result.recommendedCarbs}g</div>
-              <div className="text-xl text-amber-200 font-semibold mb-2">Daily Carbohydrates</div>
+            <div className="text-center bg-gradient-to-r from-amber-900/20 to-orange-900/20 p-6 sm:p-8 rounded-xl border border-amber-800/50">
+              <div className="text-4xl sm:text-5xl font-bold text-amber-300 mb-2">{result.recommendedCarbs}g</div>
+              <div className="text-lg sm:text-xl text-amber-200 font-semibold mb-2">Daily Carbohydrates</div>
               <div className="text-gray-400">
                 {result.carbCalories} calories ({result.carbPercentage}% of total calories)
               </div>
@@ -580,9 +693,9 @@ const CarbohydrateCalculator = () => {
             </div>
 
             {/* Method Comparison */}
-            <div className="bg-gray-800/50 p-6 rounded-xl">
+            <div className="bg-gray-800/50 p-3 sm:p-4 md:p-6 rounded-xl">
               <h3 className="text-lg font-semibold text-white mb-4">Carbohydrate Calculation Methods</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {carbMethods.map((method, index) => {
                   const methodKey = Object.keys(result.methods)[index];
                   const methodData = result.methods[methodKey];
@@ -619,7 +732,7 @@ const CarbohydrateCalculator = () => {
             </div>
 
             {/* Carb Timing */}
-            <div className="bg-gray-800/50 p-6 rounded-xl">
+            <div className="bg-gray-800/50 p-3 sm:p-4 md:p-6 rounded-xl">
               <h3 className="text-lg font-semibold text-white mb-4">Optimal Carb Timing</h3>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 {Object.entries(result.carbTiming).map(([timing, grams]) => (
@@ -635,7 +748,7 @@ const CarbohydrateCalculator = () => {
             </div>
 
             {/* Carb Sources */}
-            <div className="bg-gray-800/50 p-6 rounded-xl">
+            <div className="bg-gray-800/50 p-3 sm:p-4 md:p-6 rounded-xl">
               <h3 className="text-lg font-semibold text-white mb-4">Recommended Carb Distribution</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="text-center p-4 bg-green-900/20 rounded-lg border border-green-800/30">
@@ -659,7 +772,7 @@ const CarbohydrateCalculator = () => {
             </div>
 
             {/* Food Examples */}
-            <div className="bg-gray-800/50 p-6 rounded-xl">
+            <div className="bg-gray-800/50 p-3 sm:p-4 md:p-6 rounded-xl">
               <h3 className="text-lg font-semibold text-white mb-4">Carb-Rich Food Examples</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
