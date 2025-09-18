@@ -633,7 +633,7 @@ const FatIntakeCalculator = () => {
                   <strong>General health:</strong> 20-35% of total calories (44-78g for 2000 calories). 
                   <strong>Weight loss:</strong> 20-30% of calories. 
                   <strong>Ketogenic:</strong> 70-80% of calories (155-178g for 2000 calories). 
-                  <strong>Heart health:</strong> Focus on unsaturated fats, limit saturated to &lt;10%.
+                  <strong>Heart health:</strong> Focus on unsaturated fats, limit saturated to less than 10%.
                 </p>
               </div>
 
