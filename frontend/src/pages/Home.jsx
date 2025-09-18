@@ -591,6 +591,48 @@ const Home = () => {
               </div>
             </div>
           </div>
+
+          {/* Category: Medical & Health */}
+          <div className="mb-8">
+            <h3 className="text-2xl font-semibold text-white mb-6 text-center">
+              Medical & Health Analysis
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-3">
+              {/* GFR Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-red-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-red-500/10 w-fit mb-2 group-hover:bg-red-500/20 transition-colors">
+                  <Activity className="h-4 w-4 text-red-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">GFR Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate your Glomerular Filtration Rate using CKD-EPI equation for kidney function assessment.
+                </p>
+                <a
+                  href="/gfr-calculator"
+                  className="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-red-600 hover:to-red-700 transition-all duration-300"
+                >
+                  Calculate GFR →
+                </a>
+              </div>
+
+              {/* BAC Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-amber-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-amber-500/10 w-fit mb-2 group-hover:bg-amber-500/20 transition-colors">
+                  <AlertTriangle className="h-4 w-4 text-amber-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">BAC Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate Blood Alcohol Content using Widmark equation for safety and legal awareness.
+                </p>
+                <a
+                  href="/bac-calculator"
+                  className="inline-block bg-gradient-to-r from-amber-500 to-amber-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-amber-600 hover:to-amber-700 transition-all duration-300"
+                >
+                  Calculate BAC →
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
