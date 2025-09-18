@@ -68,6 +68,14 @@ const Header = () => {
       ],
     },
     {
+      name: "Medical & Health Calculators",
+      subheading: "Medical & Health",
+      items: [
+        { name: "GFR Calculator (kidney function)", path: "/gfr-calculator" },
+        { name: "BAC Calculator (blood alcohol content)", path: "/bac-calculator" },
+      ],
+    },
+    {
       name: "Legal & Privacy",
       items: [
         { name: "Privacy Policy", path: "/privacy-policy" },
