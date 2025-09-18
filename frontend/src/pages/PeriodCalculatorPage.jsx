@@ -23,7 +23,7 @@ const PeriodCalculatorPage = () => {
                   How accurate is the period calculator?
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  Our period calculator provides reliable predictions for women with regular cycles (varying by <7 days). It uses your historical cycle data to predict future periods, ovulation, and fertile windows. Accuracy is highest when you have consistent cycle patterns. For irregular cycles due to stress, PCOS, or other factors, predictions may vary and should be used as estimates.
+                  Our period calculator provides reliable predictions for women with regular cycles (varying by &lt;7 days). It uses your historical cycle data to predict future periods, ovulation, and fertile windows. Accuracy is highest when you have consistent cycle patterns. For irregular cycles due to stress, PCOS, or other factors, predictions may vary and should be used as estimates.
                 </p>
               </div>
               
