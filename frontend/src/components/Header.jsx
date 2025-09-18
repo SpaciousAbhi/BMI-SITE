@@ -111,45 +111,53 @@ const Header = () => {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-black border-gray-800">
-              <div className="flex flex-col space-y-4 mt-8 max-h-[calc(100vh-100px)] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
-                {navItems.map((item) => (
-                  <div key={item.name}>
-                    {item.items ? (
-                      <div className="space-y-2">
-                        <h3 className="text-lg font-semibold text-white">
+            <SheetContent side="right" className="bg-black border-gray-800 p-0">
+              <div className="flex flex-col h-full">
+                {/* Header */}
+                <div className="p-6 border-b border-gray-800">
+                  <h2 className="text-lg font-semibold text-white">Menu</h2>
+                </div>
+                
+                {/* Scrollable Content */}
+                <div className="flex-1 overflow-y-auto p-6 space-y-4">
+                  {navItems.map((item) => (
+                    <div key={item.name}>
+                      {item.items ? (
+                        <div className="space-y-2">
+                          <h3 className="text-lg font-semibold text-white">
+                            {item.name}
+                          </h3>
+                          {item.subheading && (
+                            <div className="text-xs font-medium text-gray-400 uppercase tracking-wider ml-2">
+                              {item.subheading}
+                            </div>
+                          )}
+                          {item.items.map((subItem) => (
+                            <Link
+                              key={subItem.path}
+                              to={subItem.path}
+                              className="nav-link block text-gray-300 hover:text-white transition-all duration-300 ease-out py-2 pl-4 hover:bg-gray-800 rounded-md"
+                              onClick={() => {
+                                setIsOpen(false);
+                                window.scrollTo(0, 0);
+                              }}
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      ) : (
+                        <Link
+                          to={item.path}
+                          className="nav-link block text-gray-300 hover:text-white transition-all duration-300 ease-out py-2 font-medium hover:bg-gray-800 rounded-md px-2"
+                          onClick={() => setIsOpen(false)}
+                        >
                           {item.name}
-                        </h3>
-                        {item.subheading && (
-                          <div className="text-xs font-medium text-gray-400 uppercase tracking-wider ml-2">
-                            {item.subheading}
-                          </div>
-                        )}
-                        {item.items.map((subItem) => (
-                          <Link
-                            key={subItem.path}
-                            to={subItem.path}
-                            className="nav-link block text-gray-300 hover:text-white transition-all duration-300 ease-out py-2 pl-4"
-                            onClick={() => {
-                              setIsOpen(false);
-                              window.scrollTo(0, 0);
-                            }}
-                          >
-                            {subItem.name}
-                          </Link>
-                        ))}
-                      </div>
-                    ) : (
-                      <Link
-                        to={item.path}
-                        className="nav-link block text-gray-300 hover:text-white transition-all duration-300 ease-out py-2 font-medium"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    )}
-                  </div>
-                ))}
+                        </Link>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             </SheetContent>
           </Sheet>
