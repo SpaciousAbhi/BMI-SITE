@@ -63,7 +63,14 @@ function SEOUpdater() {
       '/ideal-weight-calculator': 'Calculate your ideal body weight using medical formulas including Devine, Robinson, Miller methods. Get personalized weight targets based on height and gender.',
       '/healthy-weight-calculator': 'Calculate your personalized healthy weight range based on BMI, age, activity level, and body frame. Get customized weight management recommendations.',
       '/body-type-calculator': 'Discover your body type using Heath-Carter somatotype analysis. Get personalized fitness and nutrition recommendations for ectomorph, mesomorph, or endomorph.',
-      '/body-surface-area-calculator': 'Calculate body surface area using medical formulas including Du Bois, Mosteller, Haycock methods. Essential for medical dosing and cardiac assessments.'
+      '/body-surface-area-calculator': 'Calculate body surface area using medical formulas including Du Bois, Mosteller, Haycock methods. Essential for medical dosing and cardiac assessments.',
+      '/calorie-calculator': 'Calculate your daily calorie needs for weight loss, muscle gain, or maintenance. Advanced TDEE calculator with multiple BMR formulas and activity levels.',
+      '/tdee-calculator': 'Calculate Total Daily Energy Expenditure using advanced metabolic science. Get precise TDEE estimates with macronutrient targets and activity-specific calculations.',
+      '/bmr-calculator': 'Calculate Basal Metabolic Rate using Mifflin-St Jeor, Harris-Benedict, and Katch-McArdle formulas. Understand your metabolic rate and energy needs at rest.',
+      '/macro-calculator': 'Calculate optimal macronutrient distribution for protein, carbohydrates, and fats. Get personalized macro ratios based on goals, activity level, and dietary preferences.',
+      '/carbohydrate-calculator': 'Calculate daily carbohydrate intake for athletic performance, weight loss, or health goals. Get carb timing recommendations and source guidance.',
+      '/protein-calculator': 'Calculate daily protein requirements for muscle building, weight loss, and health. Get personalized protein targets with timing and source recommendations.',
+      '/fat-intake-calculator': 'Calculate optimal daily fat intake for health and performance. Get personalized fat type distribution and heart-healthy fat source recommendations.'
     };
 
     const keywords = {
