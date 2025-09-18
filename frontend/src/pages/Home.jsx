@@ -342,6 +342,82 @@ const Home = () => {
               </div>
             </div>
           </div>
+
+          {/* Category: Fitness & Performance */}
+          <div className="mb-8">
+            <h3 className="text-2xl font-semibold text-white mb-6 text-center">
+              Fitness & Performance Analysis
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-3">
+              {/* Pace Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-blue-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-blue-500/10 w-fit mb-2 group-hover:bg-blue-500/20 transition-colors">
+                  <Calculator className="h-4 w-4 text-blue-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Pace Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate running pace, time, or distance with precision. Get race predictions and VDOT analysis.
+                </p>
+                <a
+                  href="/pace-calculator"
+                  className="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-300"
+                >
+                  Calculate Pace →
+                </a>
+              </div>
+
+              {/* Calories Burned Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-orange-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-orange-500/10 w-fit mb-2 group-hover:bg-orange-500/20 transition-colors">
+                  <TrendingUp className="h-4 w-4 text-orange-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Calories Burned Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate precise calorie expenditure with advanced MET values and body composition factors.
+                </p>
+                <a
+                  href="/calories-burned-calculator"
+                  className="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-orange-600 hover:to-orange-700 transition-all duration-300"
+                >
+                  Calculate Calories →
+                </a>
+              </div>
+
+              {/* One Rep Max Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-purple-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-purple-500/10 w-fit mb-2 group-hover:bg-purple-500/20 transition-colors">
+                  <Target className="h-4 w-4 text-purple-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">One Rep Max Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate your one-rep maximum using 7 proven formulas. Get training zones and rep ranges.
+                </p>
+                <a
+                  href="/one-rep-max-calculator"
+                  className="inline-block bg-gradient-to-r from-purple-500 to-purple-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-purple-600 hover:to-purple-700 transition-all duration-300"
+                >
+                  Calculate 1RM →
+                </a>
+              </div>
+
+              {/* Target Heart Rate Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-red-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-red-500/10 w-fit mb-2 group-hover:bg-red-500/20 transition-colors">
+                  <Heart className="h-4 w-4 text-red-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Target Heart Rate Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate precise training zones using Karvonen method with personalized heart rate analysis.
+                </p>
+                <a
+                  href="/target-heart-rate-calculator"
+                  className="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-red-600 hover:to-red-700 transition-all duration-300"
+                >
+                  Calculate HR Zones →
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
