@@ -18,6 +18,13 @@ import IdealWeightCalculatorPage from "./pages/IdealWeightCalculatorPage";
 import HealthyWeightCalculatorPage from "./pages/HealthyWeightCalculatorPage";
 import BodyTypeCalculatorPage from "./pages/BodyTypeCalculatorPage";
 import BodySurfaceAreaCalculatorPage from "./pages/BodySurfaceAreaCalculatorPage";
+import CalorieCalculatorPage from "./pages/CalorieCalculatorPage";
+import TDEECalculatorPage from "./pages/TDEECalculatorPage";
+import BMRCalculatorPage from "./pages/BMRCalculatorPage";
+import MacroCalculatorPage from "./pages/MacroCalculatorPage";
+import CarbohydrateCalculatorPage from "./pages/CarbohydrateCalculatorPage";
+import ProteinCalculatorPage from "./pages/ProteinCalculatorPage";
+import FatIntakeCalculatorPage from "./pages/FatIntakeCalculatorPage";
 
 // Enhanced SEO Component for dynamic page titles and meta optimization
 function SEOUpdater() {
