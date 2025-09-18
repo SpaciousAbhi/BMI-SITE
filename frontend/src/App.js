@@ -53,7 +53,11 @@ function SEOUpdater() {
       '/macro-calculator': 'Macro Calculator - Macronutrient Calculator | Protein Carbs Fat Distribution',
       '/carbohydrate-calculator': 'Carbohydrate Calculator - Daily Carb Intake | Athletic Performance 2025',
       '/protein-calculator': 'Protein Calculator - Daily Protein Needs | Muscle Building & Weight Loss',
-      '/fat-intake-calculator': 'Fat Intake Calculator - Healthy Fat Requirements | Heart Health 2025'
+      '/fat-intake-calculator': 'Fat Intake Calculator - Healthy Fat Requirements | Heart Health 2025',
+      '/pace-calculator': 'Pace Calculator - Running Pace Calculator | Time Distance Speed Calculator 2025',
+      '/calories-burned-calculator': 'Calories Burned Calculator - Exercise Calorie Burn | MET Values 2025',
+      '/one-rep-max-calculator': 'One Rep Max Calculator - 1RM Calculator | Strength Training Formulas 2025',
+      '/target-heart-rate-calculator': 'Target Heart Rate Calculator - Training Zones | Karvonen Method 2025'
     };
 
     const descriptions = {
