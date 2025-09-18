@@ -84,7 +84,14 @@ function SEOUpdater() {
       '/ideal-weight-calculator': 'ideal weight calculator, Devine formula, Robinson formula, Miller formula, ideal body weight, medical weight calculator, target weight',
       '/healthy-weight-calculator': 'healthy weight calculator, healthy weight range, BMI weight calculator, personalized weight, weight management, healthy BMI range',
       '/body-type-calculator': 'body type calculator, somatotype calculator, ectomorph mesomorph endomorph, Heath Carter method, body type analysis, fitness body type',
-      '/body-surface-area-calculator': 'body surface area calculator, BSA calculator, Du Bois formula, Mosteller formula, medical BSA, cardiac index calculator'
+      '/body-surface-area-calculator': 'body surface area calculator, BSA calculator, Du Bois formula, Mosteller formula, medical BSA, cardiac index calculator',
+      '/calorie-calculator': 'calorie calculator, daily calorie needs, TDEE calculator, BMR calculator, weight loss calories, muscle gain calories, calorie requirements',
+      '/tdee-calculator': 'TDEE calculator, total daily energy expenditure, metabolic rate calculator, activity level calculator, calorie maintenance, energy expenditure',
+      '/bmr-calculator': 'BMR calculator, basal metabolic rate, Mifflin St Jeor, Harris Benedict, Katch McArdle, metabolism calculator, resting metabolic rate',
+      '/macro-calculator': 'macro calculator, macronutrient calculator, protein carbs fat calculator, macro distribution, IIFYM calculator, flexible dieting macros',
+      '/carbohydrate-calculator': 'carbohydrate calculator, daily carb intake, carb cycling calculator, athletic carbs, low carb calculator, carb timing',
+      '/protein-calculator': 'protein calculator, daily protein needs, protein requirements, muscle building protein, weight loss protein, protein intake',
+      '/fat-intake-calculator': 'fat intake calculator, healthy fat calculator, daily fat needs, omega 3 calculator, saturated fat calculator, heart healthy fats'
     };
 
     // Update title
