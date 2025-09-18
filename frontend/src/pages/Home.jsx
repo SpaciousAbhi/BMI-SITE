@@ -114,7 +114,7 @@ const Home = () => {
           {/* Quick Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 animate-fade-in-up delay-600">
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-blue-400 mb-1">50K+</div>
+              <div className="text-2xl md:text-3xl font-bold text-blue-400 mb-1">1M+</div>
               <div className="text-sm text-gray-400">Happy Users</div>
             </div>
             <div className="text-center">
