@@ -42,7 +42,14 @@ function SEOUpdater() {
       '/ideal-weight-calculator': 'Ideal Weight Calculator - Devine Formula | Medical Weight Calculator 2025',
       '/healthy-weight-calculator': 'Healthy Weight Calculator - Personalized Weight Range | BMI Assessment',
       '/body-type-calculator': 'Body Type Calculator - Somatotype Analysis | Ectomorph Mesomorph Endomorph',
-      '/body-surface-area-calculator': 'Body Surface Area Calculator - BSA Medical Formula | Du Bois Mosteller'
+      '/body-surface-area-calculator': 'Body Surface Area Calculator - BSA Medical Formula | Du Bois Mosteller',
+      '/calorie-calculator': 'Calorie Calculator - Daily Calorie Needs Calculator | Weight Loss & Gain 2025',
+      '/tdee-calculator': 'TDEE Calculator - Total Daily Energy Expenditure | Metabolic Rate Calculator',
+      '/bmr-calculator': 'BMR Calculator - Basal Metabolic Rate | Mifflin-St Jeor Formula 2025',
+      '/macro-calculator': 'Macro Calculator - Macronutrient Calculator | Protein Carbs Fat Distribution',
+      '/carbohydrate-calculator': 'Carbohydrate Calculator - Daily Carb Intake | Athletic Performance 2025',
+      '/protein-calculator': 'Protein Calculator - Daily Protein Needs | Muscle Building & Weight Loss',
+      '/fat-intake-calculator': 'Fat Intake Calculator - Healthy Fat Requirements | Heart Health 2025'
     };
 
     const descriptions = {
