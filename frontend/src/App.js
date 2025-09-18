@@ -28,21 +28,42 @@ function SEOUpdater() {
       '/': 'BMI Calculator - Free Body Mass Index Calculator | Healthy Weight Tool 2025',
       '/privacy-policy': 'Privacy Policy - BMI Calculator Pro | Data Protection & GDPR Compliance',
       '/terms-conditions': 'Terms & Conditions - BMI Calculator Pro | Legal Terms & Medical Disclaimers',
-      '/contact-us': 'Contact BMI Calculator Pro | Support & Feedback | Health Calculator Help'
+      '/contact-us': 'Contact BMI Calculator Pro | Support & Feedback | Health Calculator Help',
+      '/body-fat-calculator': 'Body Fat Calculator - Free Body Fat Percentage Calculator | US Navy Method 2025',
+      '/army-body-fat-calculator': 'Army Body Fat Calculator - Military AR 600-9 Standards | Tape Test 2025',
+      '/lean-body-mass-calculator': 'Lean Body Mass Calculator - Free LBM & FFMI Calculator | Medical Formulas',
+      '/ideal-weight-calculator': 'Ideal Weight Calculator - Devine Formula | Medical Weight Calculator 2025',
+      '/healthy-weight-calculator': 'Healthy Weight Calculator - Personalized Weight Range | BMI Assessment',
+      '/body-type-calculator': 'Body Type Calculator - Somatotype Analysis | Ectomorph Mesomorph Endomorph',
+      '/body-surface-area-calculator': 'Body Surface Area Calculator - BSA Medical Formula | Du Bois Mosteller'
     };
 
     const descriptions = {
       '/': 'Calculate your BMI instantly with our advanced Body Mass Index calculator. Get personalized health insights, ideal weight ranges, and professional recommendations. WHO & CDC approved BMI calculation tool.',
       '/privacy-policy': 'Learn how BMI Calculator Pro protects your privacy and handles your personal health data. Comprehensive privacy policy with GDPR compliance and data protection information.',
       '/terms-conditions': 'Read the terms and conditions for using BMI Calculator Pro. Medical disclaimers, usage guidelines, and legal terms for our health calculator tool.',
-      '/contact-us': 'Contact BMI Calculator Pro support team. Get help with BMI calculations, provide feedback, or ask questions about healthy weight and body mass index.'
+      '/contact-us': 'Contact BMI Calculator Pro support team. Get help with BMI calculations, provide feedback, or ask questions about healthy weight and body mass index.',
+      '/body-fat-calculator': 'Calculate your body fat percentage using the US Navy circumference method. Get accurate body composition analysis with personalized health insights and recommendations.',
+      '/army-body-fat-calculator': 'Calculate body fat percentage using official US Army AR 600-9 standards. Military tape test method for body composition assessment and compliance verification.',
+      '/lean-body-mass-calculator': 'Calculate your lean body mass using validated Boer, James, and Hume formulas. Assess muscle mass, FFMI, and body composition for health and fitness goals.',
+      '/ideal-weight-calculator': 'Calculate your ideal body weight using medical formulas including Devine, Robinson, Miller methods. Get personalized weight targets based on height and gender.',
+      '/healthy-weight-calculator': 'Calculate your personalized healthy weight range based on BMI, age, activity level, and body frame. Get customized weight management recommendations.',
+      '/body-type-calculator': 'Discover your body type using Heath-Carter somatotype analysis. Get personalized fitness and nutrition recommendations for ectomorph, mesomorph, or endomorph.',
+      '/body-surface-area-calculator': 'Calculate body surface area using medical formulas including Du Bois, Mosteller, Haycock methods. Essential for medical dosing and cardiac assessments.'
     };
 
     const keywords = {
       '/': 'BMI calculator, body mass index calculator, calculate BMI, healthy weight calculator, BMI chart, what is BMI, ideal weight calculator, weight loss calculator, BMI calculator adults, healthy BMI range',
       '/privacy-policy': 'BMI calculator privacy policy, health data protection, GDPR compliance, medical data privacy, health calculator privacy',
       '/terms-conditions': 'BMI calculator terms, medical disclaimer, health calculator legal terms, BMI tool conditions, weight calculator terms',
-      '/contact-us': 'BMI calculator support, health calculator help, BMI tool contact, weight calculator assistance, body mass index help'
+      '/contact-us': 'BMI calculator support, health calculator help, BMI tool contact, weight calculator assistance, body mass index help',
+      '/body-fat-calculator': 'body fat calculator, body fat percentage, US Navy method, circumference method, body composition, fat mass calculator, lean mass calculator',
+      '/army-body-fat-calculator': 'army body fat calculator, military body fat, AR 600-9, army tape test, military fitness standards, army body composition',
+      '/lean-body-mass-calculator': 'lean body mass calculator, LBM calculator, fat free mass, FFMI calculator, muscle mass calculator, Boer formula, James formula, Hume formula',
+      '/ideal-weight-calculator': 'ideal weight calculator, Devine formula, Robinson formula, Miller formula, ideal body weight, medical weight calculator, target weight',
+      '/healthy-weight-calculator': 'healthy weight calculator, healthy weight range, BMI weight calculator, personalized weight, weight management, healthy BMI range',
+      '/body-type-calculator': 'body type calculator, somatotype calculator, ectomorph mesomorph endomorph, Heath Carter method, body type analysis, fitness body type',
+      '/body-surface-area-calculator': 'body surface area calculator, BSA calculator, Du Bois formula, Mosteller formula, medical BSA, cardiac index calculator'
     };
 
     // Update title
