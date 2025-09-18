@@ -381,8 +381,7 @@
 
 ## test_plan:
   current_focus:
-    - "Enhanced Animations & Micro-interactions"
-    - "PDF Export Functionality"
+    - "Body Fat Calculator Calculation Bug Fix"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
