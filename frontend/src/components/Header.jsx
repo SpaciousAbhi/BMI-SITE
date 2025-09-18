@@ -69,9 +69,9 @@ const Header = () => {
                         <ChevronDown className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="bg-gray-900 border-gray-700 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
+                    <DropdownMenuContent className="bg-gray-900 border-gray-700 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 min-w-64">
                       {item.subheading && (
-                        <div className="px-2 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-700 mb-1">
+                        <div className="px-3 py-3 text-sm font-semibold text-blue-300 border-b border-gray-700 mb-2 border-l-2 border-blue-400 bg-gray-800/30">
                           {item.subheading}
                         </div>
                       )}
@@ -79,7 +79,7 @@ const Header = () => {
                         <DropdownMenuItem key={subItem.path} asChild>
                           <Link
                             to={subItem.path}
-                            className="nav-link text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-300 ease-out cursor-pointer"
+                            className="nav-link text-gray-300 hover:text-white hover:bg-gray-800 transition-all duration-300 ease-out cursor-pointer px-3 py-2 mx-1 rounded"
                             onClick={() => window.scrollTo(0, 0)}
                           >
                             {subItem.name}
