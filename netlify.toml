@@ -6,8 +6,8 @@
   publish = "frontend/build"
 
 [build.environment]
-  # Node version
-  NODE_VERSION = "18"
+  # Node version - Updated to 20 for react-router-dom@7.9.1 compatibility
+  NODE_VERSION = "20"
   
   # Yarn version
   YARN_VERSION = "1.22.22"
