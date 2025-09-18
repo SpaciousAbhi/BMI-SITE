@@ -381,7 +381,7 @@
 
 ## test_plan:
   current_focus:
-    - "Body Fat Calculator Calculation Bug Fix"
+    - "All Additional Calculators Implementation - COMPLETED"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
