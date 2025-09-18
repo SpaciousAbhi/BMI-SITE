@@ -213,7 +213,7 @@ const LeanBodyMassCalculatorPage = () => {
               <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 backdrop-blur-sm">
                 <h3 className="text-lg font-semibold mb-3 text-yellow-400">What is Fat-Free Mass Index (FFMI) and what does it indicate?</h3>
                 <p className="text-gray-300 mb-3">
-                  FFMI normalizes lean body mass for height, similar to BMI. For men: <17 (below average), 17-19 (average), 19-22 (above average), >22 (excellent). For women, ranges are about 3 points lower.
+                  FFMI normalizes lean body mass for height, similar to BMI. For men: &lt;17 (below average), 17-19 (average), 19-22 (above average), &gt;22 (excellent). For women, ranges are about 3 points lower.
                 </p>
                 <p className="text-sm text-gray-400">
                   FFMI helps assess muscular development independent of body size and is widely used in fitness and bodybuilding assessments.
