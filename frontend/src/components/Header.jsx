@@ -56,11 +56,15 @@ const Header = () => {
       ],
     },
     {
-      name: "Legal & Privacy",
+      name: "Pregnancy & Women's Health Calculators",
+      subheading: "Pregnancy & Women's Health",
       items: [
-        { name: "Privacy Policy", path: "/privacy-policy" },
-        { name: "Terms & Conditions", path: "/terms-conditions" },
-        { name: "Contact Us", path: "/contact-us" },
+        { name: "Pregnancy Calculator", path: "/pregnancy-calculator" },
+        { name: "Pregnancy Weight Gain Calculator", path: "/pregnancy-weight-gain-calculator" },
+        { name: "Due Date Calculator", path: "/due-date-calculator" },
+        { name: "Ovulation Calculator", path: "/ovulation-calculator" },
+        { name: "Conception Calculator", path: "/conception-calculator" },
+        { name: "Period Calculator", path: "/period-calculator" },
       ],
     },
   ];
