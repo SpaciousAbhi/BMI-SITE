@@ -184,7 +184,7 @@ const GFRCalculatorPage = () => {
                   <p className="text-gray-300 text-sm">Severe decrease. Prepare for kidney replacement therapy.</p>
                 </div>
                 <div className="p-4 bg-red-900/30 rounded-lg border border-red-700">
-                  <h3 className="text-red-500 font-semibold mb-2">Stage G5 (&lt;15)</h3>
+                  <h3 className="text-red-500 font-semibold mb-2">Stage G5 {'(<15)'}</h3>
                   <p className="text-gray-300 text-sm">Kidney failure. Dialysis or transplant needed.</p>
                 </div>
               </div>
