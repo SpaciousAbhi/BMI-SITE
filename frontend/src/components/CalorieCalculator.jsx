@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Calculator, Info, TrendingUp, Target } from "lucide-react";
+import { Calculator, Info, TrendingUp, Target, BookOpen, Users, Award } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -144,7 +144,39 @@ const CalorieCalculator = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6">
+    <div className="w-full max-w-6xl mx-auto p-3 sm:p-4 md:p-6">
+      {/* Educational Header Section */}
+      <div className="mb-8">
+        <div className="text-center mb-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+            Free Daily Calorie Calculator 2025
+          </h1>
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Calculate your daily caloric needs with precision using scientifically validated BMR formulas. 
+            Get personalized results for weight loss, muscle gain, or maintenance goals.
+          </p>
+        </div>
+
+        {/* Key Benefits Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8">
+          <div className="bg-gradient-to-br from-orange-500/10 to-red-500/10 p-4 md:p-6 rounded-xl border border-orange-500/20">
+            <Calculator className="h-8 w-8 text-orange-400 mb-3" />
+            <h3 className="text-lg font-semibold text-white mb-2">Accurate Calculations</h3>
+            <p className="text-sm text-gray-300">Uses Mifflin-St Jeor equation - the gold standard for BMR calculation with ±10% accuracy</p>
+          </div>
+          <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 p-4 md:p-6 rounded-xl border border-blue-500/20">
+            <Target className="h-8 w-8 text-blue-400 mb-3" />
+            <h3 className="text-lg font-semibold text-white mb-2">Goal-Specific Results</h3>
+            <p className="text-sm text-gray-300">Personalized calorie targets for weight loss, muscle gain, or maintenance goals</p>
+          </div>
+          <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 p-4 md:p-6 rounded-xl border border-green-500/20">
+            <Award className="h-8 w-8 text-green-400 mb-3" />
+            <h3 className="text-lg font-semibold text-white mb-2">Science-Based</h3>
+            <p className="text-sm text-gray-300">Based on peer-reviewed research and clinical nutrition guidelines</p>
+          </div>
+        </div>
+      </div>
+
       <Card className="bg-gray-900/50 border-gray-800">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center mb-4">
@@ -152,7 +184,7 @@ const CalorieCalculator = () => {
               <Calculator className="h-8 w-8 text-orange-400" />
             </div>
             <div>
-              <CardTitle className="text-3xl font-bold text-white">Daily Calorie Calculator</CardTitle>
+              <CardTitle className="text-2xl md:text-3xl font-bold text-white">Daily Calorie Calculator</CardTitle>
               <CardDescription className="text-gray-300 mt-2">
                 Calculate your daily caloric needs with precision using advanced metabolic formulas
               </CardDescription>
@@ -168,7 +200,7 @@ const CalorieCalculator = () => {
         </CardHeader>
 
         <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
             {/* Weight Input */}
             <div className="space-y-2">
               <Label htmlFor="weight" className="text-gray-200">Weight *</Label>
@@ -179,10 +211,10 @@ const CalorieCalculator = () => {
                   placeholder="Enter weight"
                   value={formData.weight}
                   onChange={(e) => handleInputChange("weight", e.target.value)}
-                  className="bg-gray-800 border-gray-700 text-white flex-1"
+                  className="bg-gray-800 border-gray-700 text-white flex-1 h-11 sm:h-10"
                 />
                 <Select value={formData.weightUnit} onValueChange={(value) => handleInputChange("weightUnit", value)}>
-                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-16 sm:w-20">
+                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-16 sm:w-20 h-11 sm:h-10">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent className="bg-gray-800 border-gray-700">
@@ -204,7 +236,7 @@ const CalorieCalculator = () => {
                     placeholder="Enter height"
                     value={formData.height}
                     onChange={(e) => handleInputChange("height", e.target.value)}
-                    className="bg-gray-800 border-gray-700 text-white flex-1"
+                    className="bg-gray-800 border-gray-700 text-white flex-1 h-11 sm:h-10"
                   />
                 ) : (
                   <div className="flex gap-1 flex-1">
@@ -213,19 +245,19 @@ const CalorieCalculator = () => {
                       placeholder="ft"
                       value={formData.feet}
                       onChange={(e) => handleInputChange("feet", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
+                      className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10"
                     />
                     <Input
                       type="number"
                       placeholder="in"
                       value={formData.inches}
                       onChange={(e) => handleInputChange("inches", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
+                      className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10"
                     />
                   </div>
                 )}
                 <Select value={formData.heightUnit} onValueChange={(value) => handleInputChange("heightUnit", value)}>
-                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-16 sm:w-20">
+                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-16 sm:w-20 h-11 sm:h-10">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent className="bg-gray-800 border-gray-700">
@@ -245,7 +277,7 @@ const CalorieCalculator = () => {
                 placeholder="Enter age"
                 value={formData.age}
                 onChange={(e) => handleInputChange("age", e.target.value)}
-                className="bg-gray-800 border-gray-700 text-white"
+                className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10"
               />
             </div>
 
@@ -253,7 +285,7 @@ const CalorieCalculator = () => {
             <div className="space-y-2">
               <Label className="text-gray-200">Gender *</Label>
               <Select value={formData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
                   <SelectValue placeholder="Select gender" />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-800 border-gray-700">
@@ -268,7 +300,7 @@ const CalorieCalculator = () => {
           <div className="space-y-2">
             <Label className="text-gray-200">Activity Level *</Label>
             <Select value={formData.activityLevel} onValueChange={(value) => handleInputChange("activityLevel", value)}>
-              <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+              <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
                 <SelectValue placeholder="Select activity level" />
               </SelectTrigger>
               <SelectContent className="bg-gray-800 border-gray-700">
@@ -288,7 +320,7 @@ const CalorieCalculator = () => {
           <div className="space-y-2">
             <Label className="text-gray-200">Goal *</Label>
             <Select value={formData.goal} onValueChange={(value) => handleInputChange("goal", value)}>
-              <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+              <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
                 <SelectValue placeholder="Select your goal" />
               </SelectTrigger>
               <SelectContent className="bg-gray-800 border-gray-700">
@@ -318,14 +350,14 @@ const CalorieCalculator = () => {
                     placeholder="Enter body fat %"
                     value={formData.bodyFat}
                     onChange={(e) => handleInputChange("bodyFat", e.target.value)}
-                    className="bg-gray-800 border-gray-700 text-white"
+                    className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10"
                   />
                 </div>
 
                 <div className="space-y-2">
                   <Label className="text-gray-200">Fitness Goal</Label>
                   <Select value={formData.fitnessGoal} onValueChange={(value) => handleInputChange("fitnessGoal", value)}>
-                    <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                    <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
                       <SelectValue placeholder="Select fitness goal" />
                     </SelectTrigger>
                     <SelectContent className="bg-gray-800 border-gray-700">
@@ -345,7 +377,7 @@ const CalorieCalculator = () => {
             <Button
               onClick={calculateCalories}
               disabled={!validateForm() || isCalculating}
-              className="flex-1 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              className="flex-1 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white py-3 h-12 sm:h-11 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
             >
               {isCalculating ? (
                 <>
@@ -363,7 +395,7 @@ const CalorieCalculator = () => {
             <Button
               onClick={resetForm}
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800"
+              className="border-gray-600 text-gray-300 hover:bg-gray-800 h-12 sm:h-11"
             >
               Reset Form
             </Button>
@@ -392,28 +424,28 @@ const CalorieCalculator = () => {
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Main Results */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-blue-900/20 p-6 rounded-xl border border-blue-800/50 text-center">
-                <div className="text-3xl font-bold text-blue-300 mb-2">{result.bmr.mifflin}</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+              <div className="bg-blue-900/20 p-4 md:p-6 rounded-xl border border-blue-800/50 text-center">
+                <div className="text-2xl md:text-3xl font-bold text-blue-300 mb-2">{result.bmr.mifflin}</div>
                 <div className="text-blue-200 font-semibold mb-1">Basal Metabolic Rate</div>
                 <div className="text-sm text-gray-400">Calories at rest (Recommended: Mifflin-St Jeor)</div>
               </div>
 
-              <div className="bg-green-900/20 p-6 rounded-xl border border-green-800/50 text-center">
-                <div className="text-3xl font-bold text-green-300 mb-2">{result.tdee}</div>
+              <div className="bg-green-900/20 p-4 md:p-6 rounded-xl border border-green-800/50 text-center">
+                <div className="text-2xl md:text-3xl font-bold text-green-300 mb-2">{result.tdee}</div>
                 <div className="text-green-200 font-semibold mb-1">Maintenance Calories</div>
                 <div className="text-sm text-gray-400">Total Daily Energy Expenditure</div>
               </div>
 
-              <div className="bg-orange-900/20 p-6 rounded-xl border border-orange-800/50 text-center">
-                <div className="text-3xl font-bold text-orange-300 mb-2">{result.targetCalories}</div>
+              <div className="bg-orange-900/20 p-4 md:p-6 rounded-xl border border-orange-800/50 text-center">
+                <div className="text-2xl md:text-3xl font-bold text-orange-300 mb-2">{result.targetCalories}</div>
                 <div className="text-orange-200 font-semibold mb-1">Target Calories</div>
                 <div className="text-sm text-gray-400">For {result.goal.label.toLowerCase()}</div>
               </div>
             </div>
 
             {/* BMR Comparison */}
-            <div className="bg-gray-800/50 p-6 rounded-xl">
+            <div className="bg-gray-800/50 p-4 md:p-6 rounded-xl">
               <h3 className="text-lg font-semibold text-white mb-4">BMR Formula Comparison</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="text-center">
@@ -439,7 +471,7 @@ const CalorieCalculator = () => {
             </div>
 
             {/* Goal Information */}
-            <div className="bg-gray-800/50 p-6 rounded-xl">
+            <div className="bg-gray-800/50 p-4 md:p-6 rounded-xl">
               <h3 className="text-lg font-semibold text-white mb-4">Goal Breakdown</h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
@@ -481,6 +513,134 @@ const CalorieCalculator = () => {
           </CardContent>
         </Card>
       )}
+
+      {/* Educational Content Section */}
+      <div className="mt-12 space-y-8">
+        <Card className="bg-gray-900/30 border-gray-800">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-white flex items-center">
+              <BookOpen className="h-6 w-6 text-blue-400 mr-2" />
+              How to Calculate Daily Calories: Complete Guide
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="prose prose-gray max-w-none">
+              <h3 className="text-xl font-semibold text-white mb-3">What is Daily Calorie Requirement?</h3>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                Your daily calorie requirement is the total number of calories your body needs to maintain its current weight, 
+                support all physiological functions, and fuel your daily activities. This includes your Basal Metabolic Rate (BMR) 
+                plus the calories burned through physical activity.
+              </p>
+
+              <h3 className="text-xl font-semibold text-white mb-3">BMR Calculation Formulas Explained</h3>
+              <div className="space-y-4">
+                <div className="bg-gray-800/50 p-4 rounded-xl">
+                  <h4 className="text-lg font-semibold text-blue-300 mb-2">1. Mifflin-St Jeor Equation (Recommended)</h4>
+                  <p className="text-gray-300 mb-2">
+                    <strong>For Men:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) - (5 × age) + 5<br/>
+                    <strong>For Women:</strong> BMR = (10 × weight in kg) + (6.25 × height in cm) - (5 × age) - 161
+                  </p>
+                  <p className="text-sm text-gray-400">
+                    Most accurate formula for general population with ±10% accuracy. Developed in 1990, 
+                    it's considered the gold standard by nutrition professionals.
+                  </p>
+                </div>
+
+                <div className="bg-gray-800/50 p-4 rounded-xl">
+                  <h4 className="text-lg font-semibold text-green-300 mb-2">2. Harris-Benedict Equation (Revised)</h4>
+                  <p className="text-gray-300 mb-2">
+                    <strong>For Men:</strong> BMR = 88.362 + (13.397 × weight in kg) + (4.799 × height in cm) - (5.677 × age)<br/>
+                    <strong>For Women:</strong> BMR = 447.593 + (9.247 × weight in kg) + (3.098 × height in cm) - (4.330 × age)
+                  </p>
+                  <p className="text-sm text-gray-400">
+                    Classic formula revised in 1984. Slightly less accurate than Mifflin-St Jeor but still widely used.
+                  </p>
+                </div>
+
+                <div className="bg-gray-800/50 p-4 rounded-xl">
+                  <h4 className="text-lg font-semibold text-purple-300 mb-2">3. Katch-McArdle Formula</h4>
+                  <p className="text-gray-300 mb-2">
+                    <strong>BMR = 370 + (21.6 × lean body mass in kg)</strong><br/>
+                    Lean Body Mass = Total Weight × (1 - Body Fat Percentage/100)
+                  </p>
+                  <p className="text-sm text-gray-400">
+                    Most accurate for lean individuals when body fat percentage is accurately known. 
+                    Requires body fat measurement via DEXA, BodPod, or other precise methods.
+                  </p>
+                </div>
+              </div>
+
+              <h3 className="text-xl font-semibold text-white mb-3">Activity Level Multipliers</h3>
+              <div className="bg-gray-800/50 p-4 rounded-xl">
+                <ul className="space-y-2 text-gray-300">
+                  <li><strong>Sedentary (1.2):</strong> Little to no exercise, desk job</li>
+                  <li><strong>Lightly Active (1.375):</strong> Light exercise 1-3 days per week</li>
+                  <li><strong>Moderately Active (1.55):</strong> Moderate exercise 3-5 days per week</li>
+                  <li><strong>Very Active (1.725):</strong> Hard exercise 6-7 days per week</li>
+                  <li><strong>Extremely Active (1.9):</strong> Very hard exercise, physical job, or training twice a day</li>
+                </ul>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* FAQ Section */}
+        <Card className="bg-gray-900/30 border-gray-800">
+          <CardHeader>
+            <CardTitle className="text-2xl font-bold text-white flex items-center">
+              <Users className="h-6 w-6 text-green-400 mr-2" />
+              Frequently Asked Questions
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              <div className="border-l-4 border-orange-500 pl-4">
+                <h3 className="text-lg font-semibold text-white mb-2">How accurate is this calorie calculator?</h3>
+                <p className="text-gray-300">
+                  Our calculator uses the Mifflin-St Jeor equation, which has an accuracy of ±10% for 95% of the population. 
+                  This makes it one of the most reliable methods for estimating daily calorie needs. However, individual 
+                  metabolic rates can vary, so consider this as a starting point and adjust based on your results.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-blue-500 pl-4">
+                <h3 className="text-lg font-semibold text-white mb-2">Should I eat exactly the calculated calories?</h3>
+                <p className="text-gray-300">
+                  Use the calculated calories as a baseline. Monitor your weight and energy levels for 2-3 weeks, 
+                  then adjust by ±200-300 calories if needed. Your actual needs may vary based on genetics, 
+                  muscle mass, hormones, and other individual factors.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-green-500 pl-4">
+                <h3 className="text-lg font-semibold text-white mb-2">How often should I recalculate my calories?</h3>
+                <p className="text-gray-300">
+                  Recalculate every 4-6 weeks or whenever your weight changes by 5+ pounds. As you lose or gain weight, 
+                  your calorie needs will change. Also recalculate if your activity level significantly changes.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-purple-500 pl-4">
+                <h3 className="text-lg font-semibold text-white mb-2">What's the difference between BMR and TDEE?</h3>
+                <p className="text-gray-300">
+                  BMR (Basal Metabolic Rate) is the calories your body burns at rest for basic functions like breathing 
+                  and circulation. TDEE (Total Daily Energy Expenditure) includes BMR plus calories burned through 
+                  activity and exercise. TDEE is what you should eat to maintain your current weight.
+                </p>
+              </div>
+
+              <div className="border-l-4 border-red-500 pl-4">
+                <h3 className="text-lg font-semibold text-white mb-2">Is it safe to eat below my BMR for weight loss?</h3>
+                <p className="text-gray-300">
+                  Generally, it's not recommended to eat below your BMR for extended periods. This can slow your 
+                  metabolism, cause muscle loss, and lead to nutrient deficiencies. For safe weight loss, 
+                  aim for a deficit of 500-750 calories from your TDEE, not your BMR.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };
