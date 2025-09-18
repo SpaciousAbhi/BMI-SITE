@@ -1,20 +1,19 @@
 # Netlify redirects for SPA (Single Page Application)
 # This ensures all routes are handled by React Router
 
-# Handle all routes by serving index.html
-/*    /index.html   200
+# Specific calculator routes - explicitly handle each route
+/body-fat-calculator                 /index.html   200
+/army-body-fat-calculator           /index.html   200
+/lean-body-mass-calculator          /index.html   200
+/ideal-weight-calculator            /index.html   200
+/healthy-weight-calculator          /index.html   200
+/body-type-calculator               /index.html   200
+/body-surface-area-calculator       /index.html   200
 
-# API routes (if any in the future)
-/api/*  /api/:splat  200
+# Legal pages
+/privacy-policy                     /index.html   200
+/terms-conditions                   /index.html   200
+/contact-us                         /index.html   200
 
-# Specific redirects for better SEO
-/bmi-calculator  /  301
-/calculator  /  301
-/home  /  301
-
-# Security headers
-/*
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  X-XSS-Protection: 1; mode=block
-  Referrer-Policy: strict-origin-when-cross-origin
+# Handle all other routes by serving index.html (MOST IMPORTANT)
+/*                                  /index.html   200
