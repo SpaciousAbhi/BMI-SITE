@@ -594,7 +594,7 @@ const BodyFatCalculator = () => {
                   <p className="text-gray-400">{result.method}</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6">
                   <div className="space-y-3">
                     <h4 className="text-lg font-semibold text-white flex items-center">
                       <Target className="h-5 w-5 mr-2 text-blue-400" />
