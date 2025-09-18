@@ -445,7 +445,7 @@ const BodyFatCalculator = () => {
                 <Label htmlFor="height" className="text-gray-300">Height</Label>
                 <div className="flex gap-2">
                   <Select value={heightUnit} onValueChange={setHeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-20">
+                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-gray-800 border-gray-700">
