@@ -90,6 +90,60 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Nutrition & Diet Calculators Section */}
+          <div>
+            <h3 className="text-white font-bold mb-3 text-base">
+              Nutrition & Diet Calculators
+            </h3>
+            <div className="text-sm font-semibold text-orange-300 mb-4 border-l-2 border-orange-400 pl-3">
+              Nutrition & Diet
+            </div>
+            <div className="space-y-2 max-h-52 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 pr-2">
+              <Link
+                to="/calorie-calculator"
+                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Calorie Calculator
+              </Link>
+              <Link
+                to="/tdee-calculator"
+                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                TDEE Calculator
+              </Link>
+              <Link
+                to="/bmr-calculator"
+                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                BMR Calculator
+              </Link>
+              <Link
+                to="/macro-calculator"
+                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Macro Calculator
+              </Link>
+              <Link
+                to="/carbohydrate-calculator"
+                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Carbohydrate Calculator
+              </Link>
+              <Link
+                to="/protein-calculator"
+                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Protein Calculator
+              </Link>
+              <Link
+                to="/fat-intake-calculator"
+                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Fat Intake Calculator
+              </Link>
+            </div>
+          </div>
+
           {/* Legal & Privacy Section */}
           <div>
             <h3 className="text-white font-bold mb-4 text-base">
