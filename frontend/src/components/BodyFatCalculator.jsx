@@ -388,7 +388,7 @@ const BodyFatCalculator = () => {
         </CardHeader>
 
         <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             {/* Personal Information */}
             <motion.div variants={itemVariants} className="space-y-4">
               <h3 className="text-lg font-semibold text-white mb-4">Personal Information</h3>
