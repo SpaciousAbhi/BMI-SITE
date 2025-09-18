@@ -124,27 +124,29 @@ const Header = () => {
                     <div key={item.name}>
                       {item.items ? (
                         <div className="space-y-2">
-                          <h3 className="text-lg font-semibold text-white">
+                          <h3 className="text-lg font-bold text-white mb-3">
                             {item.name}
                           </h3>
                           {item.subheading && (
-                            <div className="text-xs font-medium text-gray-400 uppercase tracking-wider ml-2">
+                            <div className="text-sm font-semibold text-blue-300 mb-3 border-l-2 border-blue-400 pl-3 bg-gray-800/30 py-2">
                               {item.subheading}
                             </div>
                           )}
-                          {item.items.map((subItem) => (
-                            <Link
-                              key={subItem.path}
-                              to={subItem.path}
-                              className="nav-link block text-gray-300 hover:text-white transition-all duration-300 ease-out py-2 pl-4 hover:bg-gray-800 rounded-md"
-                              onClick={() => {
-                                setIsOpen(false);
-                                window.scrollTo(0, 0);
-                              }}
-                            >
-                              {subItem.name}
-                            </Link>
-                          ))}
+                          <div className="space-y-1">
+                            {item.items.map((subItem) => (
+                              <Link
+                                key={subItem.path}
+                                to={subItem.path}
+                                className="nav-link block text-gray-300 hover:text-white transition-all duration-300 ease-out py-2 pl-4 hover:bg-gray-800 rounded-md text-sm"
+                                onClick={() => {
+                                  setIsOpen(false);
+                                  window.scrollTo(0, 0);
+                                }}
+                              >
+                                {subItem.name}
+                              </Link>
+                            ))}
+                          </div>
                         </div>
                       ) : (
                         <Link
