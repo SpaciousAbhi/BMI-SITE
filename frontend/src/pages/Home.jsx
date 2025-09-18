@@ -134,7 +134,7 @@ const Home = () => {
       </section>
 
       {/* BMI Calculator Section */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8">
+      <section id="bmi-calculator" className="py-8 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto">
           <BMICalculator />
         </div>
