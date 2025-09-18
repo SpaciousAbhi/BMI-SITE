@@ -252,38 +252,38 @@ const OneRepMaxCalculator = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6">
+    <div className="w-full max-w-4xl mx-auto p-3 sm:p-4 md:p-6">
       <Card className="bg-gray-900/50 border-gray-800">
-        <CardHeader className="text-center pb-8">
+        <CardHeader className="text-center pb-6 sm:pb-8">
           <div className="flex items-center justify-center mb-4">
             <div className="p-3 rounded-full bg-purple-500/10 mr-4">
-              <Dumbbell className="h-8 w-8 text-purple-400" />
+              <Dumbbell className="h-6 w-6 sm:h-8 sm:w-8 text-purple-400" />
             </div>
-            <CardTitle className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <CardTitle className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
               Advanced One Rep Max Calculator
             </CardTitle>
           </div>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto px-2">
             Calculate your one-rep maximum using 7 proven formulas. Get training zones, rep ranges, and progressive overload recommendations.
           </p>
         </CardHeader>
 
-        <CardContent className="space-y-8">
-          {/* Input Form */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <Label className="text-white font-semibold">Weight Lifted *</Label>
+        <CardContent className="space-y-6 sm:space-y-8">
+          {/* Input Form - Enhanced responsive layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            <div className="space-y-3 sm:space-y-4">
+              <Label className="text-white font-semibold text-sm sm:text-base">Weight Lifted *</Label>
               <div className="flex space-x-2">
                 <Input
                   type="number"
                   placeholder="Enter weight"
                   value={weight}
                   onChange={(e) => setWeight(e.target.value)}
-                  className="bg-gray-800 border-gray-700 text-white flex-1"
+                  className="bg-gray-800 border-gray-700 text-white flex-1 h-11 sm:h-10"
                   step="0.5"
                 />
                 <Select value={weightUnit} onValueChange={setWeightUnit}>
-                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-20">
+                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-16 sm:w-20 h-11 sm:h-10">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent className="bg-gray-800 border-gray-700">
@@ -294,14 +294,14 @@ const OneRepMaxCalculator = () => {
               </div>
             </div>
 
-            <div className="space-y-4">
-              <Label className="text-white font-semibold">Repetitions Completed *</Label>
+            <div className="space-y-3 sm:space-y-4">
+              <Label className="text-white font-semibold text-sm sm:text-base">Repetitions Completed *</Label>
               <Input
                 type="number"
                 placeholder="Enter reps (1-15)"
                 value={reps}
                 onChange={(e) => setReps(e.target.value)}
-                className="bg-gray-800 border-gray-700 text-white"
+                className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10"
                 min="1"
                 max="15"
               />
@@ -309,12 +309,12 @@ const OneRepMaxCalculator = () => {
             </div>
           </div>
 
-          {/* Optional Exercise Selection */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <Label className="text-white font-semibold">Exercise (Optional)</Label>
+          {/* Optional Exercise Selection - Mobile optimized */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            <div className="space-y-3 sm:space-y-4">
+              <Label className="text-white font-semibold text-sm sm:text-base">Exercise (Optional)</Label>
               <Select value={exercise} onValueChange={setExercise}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
                   <SelectValue placeholder="Select exercise for strength standards" />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-800 border-gray-700">
@@ -325,10 +325,10 @@ const OneRepMaxCalculator = () => {
               </Select>
             </div>
 
-            <div className="space-y-4">
-              <Label className="text-white font-semibold">Training Experience</Label>
+            <div className="space-y-3 sm:space-y-4">
+              <Label className="text-white font-semibold text-sm sm:text-base">Training Experience</Label>
               <Select value={experience} onValueChange={setExperience}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-800 border-gray-700">
@@ -342,20 +342,20 @@ const OneRepMaxCalculator = () => {
             </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex gap-4 pt-6">
+          {/* Action Buttons - Enhanced mobile design */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6">
             <Button
               onClick={calculateOneRepMax}
               disabled={!isFormValid() || loading}
-              className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-3 rounded-lg transition-all duration-300 transform hover:scale-105"
+              className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold py-3 h-12 sm:h-auto rounded-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
             >
               {loading ? (
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-center space-x-2">
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
                   <span>Calculating...</span>
                 </div>
               ) : (
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-center space-x-2">
                   <Dumbbell className="h-5 w-5" />
                   <span>Calculate 1RM</span>
                 </div>
@@ -364,76 +364,76 @@ const OneRepMaxCalculator = () => {
             <Button
               onClick={resetForm}
               variant="outline"
-              className="px-8 border-gray-600 text-gray-300 hover:bg-gray-800"
+              className="px-6 border-gray-600 text-gray-300 hover:bg-gray-800 h-12 sm:h-auto sm:px-8"
             >
               Reset
             </Button>
           </div>
 
-          {/* Results */}
+          {/* Results - Enhanced mobile responsiveness */}
           {result && (
-            <div className="mt-8 p-6 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl border border-purple-800/30">
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                <TrendingUp className="h-6 w-6 mr-2 text-purple-400" />
+            <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl border border-purple-800/30">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center">
+                <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 mr-2 text-purple-400" />
                 Your One Rep Max Results
               </h3>
 
-              {/* Main 1RM Results */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div className="text-center p-4 bg-purple-900/20 rounded-lg border border-purple-800/30">
-                  <div className="text-4xl font-bold text-purple-300">{result.average}</div>
-                  <div className="text-purple-200 font-medium">Average 1RM</div>
+              {/* Main 1RM Results - Responsive grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="text-center p-3 sm:p-4 bg-purple-900/20 rounded-lg border border-purple-800/30">
+                  <div className="text-3xl sm:text-4xl font-bold text-purple-300">{result.average}</div>
+                  <div className="text-xs sm:text-sm text-purple-200 font-medium">Average 1RM</div>
                   <div className="text-xs text-gray-400 mt-1">{result.weightUnit}</div>
                 </div>
-                <div className="text-center p-4 bg-pink-900/20 rounded-lg border border-pink-800/30">
-                  <div className="text-2xl font-bold text-pink-300">{result.range.min} - {result.range.max}</div>
-                  <div className="text-pink-200 font-medium">Range</div>
+                <div className="text-center p-3 sm:p-4 bg-pink-900/20 rounded-lg border border-pink-800/30">
+                  <div className="text-xl sm:text-2xl font-bold text-pink-300">{result.range.min} - {result.range.max}</div>
+                  <div className="text-xs sm:text-sm text-pink-200 font-medium">Range</div>
                   <div className="text-xs text-gray-400 mt-1">Min - Max</div>
                 </div>
-                <div className="text-center p-4 bg-blue-900/20 rounded-lg border border-blue-800/30">
-                  <div className="text-2xl font-bold text-blue-300">{result.originalWeight} × {result.originalReps}</div>
-                  <div className="text-blue-200 font-medium">Input</div>
+                <div className="text-center p-3 sm:p-4 bg-blue-900/20 rounded-lg border border-blue-800/30">
+                  <div className="text-xl sm:text-2xl font-bold text-blue-300">{result.originalWeight} × {result.originalReps}</div>
+                  <div className="text-xs sm:text-sm text-blue-200 font-medium">Input</div>
                   <div className="text-xs text-gray-400 mt-1">Weight × Reps</div>
                 </div>
               </div>
 
-              {/* Formula Results */}
-              <div className="bg-gray-800/50 p-4 rounded-lg mb-6">
-                <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                  <BarChart3 className="h-5 w-5 mr-2" />
+              {/* Formula Results - Mobile optimized */}
+              <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg mb-4 sm:mb-6">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-3 flex items-center">
+                  <BarChart3 className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   Formula Breakdown
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
                   {Object.entries(result.formulas).map(([key, value]) => (
-                    <div key={key} className="flex justify-between items-center p-2 bg-gray-700/30 rounded">
-                      <span className="text-sm font-medium">{formulas[key].name}:</span>
+                    <div key={key} className="flex justify-between items-center p-2 bg-gray-700/30 rounded text-sm">
+                      <span className="font-medium">{formulas[key].name}:</span>
                       <span className="font-bold text-purple-300">{value} {result.weightUnit}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Training Zones */}
-              <div className="bg-gray-800/50 p-4 rounded-lg mb-6">
-                <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                  <Target className="h-5 w-5 mr-2" />
+              {/* Training Zones - Mobile optimized */}
+              <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg mb-4 sm:mb-6">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-3 flex items-center">
+                  <Target className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   Training Zones
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                   {result.trainingZones.map((zone, idx) => (
                     <div key={idx} className={`p-3 rounded-lg border-l-4 border-${zone.color}-500 bg-${zone.color}-900/10`}>
-                      <div className="font-semibold text-white">{zone.zone}</div>
-                      <div className="text-sm text-gray-300">{zone.percentage} • {zone.weight} {result.weightUnit}</div>
+                      <div className="font-semibold text-white text-sm sm:text-base">{zone.zone}</div>
+                      <div className="text-xs sm:text-sm text-gray-300">{zone.percentage} • {zone.weight} {result.weightUnit}</div>
                       <div className="text-xs text-gray-400">{zone.reps} reps</div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Rep Ranges Table */}
-              <div className="bg-gray-800/50 p-4 rounded-lg mb-6">
-                <h4 className="text-lg font-semibold text-white mb-3">Percentage-Based Rep Ranges</h4>
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-2 text-sm">
+              {/* Rep Ranges Table - Mobile optimized */}
+              <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg mb-4 sm:mb-6">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-3">Percentage-Based Rep Ranges</h4>
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs sm:text-sm">
                   {result.repRanges.slice(0, 10).map((range, idx) => (
                     <div key={idx} className="text-center p-2 bg-gray-700/30 rounded">
                       <div className="font-semibold text-white">{range.percentage}</div>
@@ -444,34 +444,34 @@ const OneRepMaxCalculator = () => {
                 </div>
               </div>
 
-              {/* Progressive Overload Recommendations */}
-              <div className="bg-gray-800/50 p-4 rounded-lg">
-                <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                  <Zap className="h-5 w-5 mr-2" />
+              {/* Progressive Overload Recommendations - Mobile optimized */}
+              <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-3 flex items-center">
+                  <Zap className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   Progressive Overload Recommendations
                 </h4>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {result.progressiveOverload.map((rec, idx) => (
-                    <div key={idx} className="p-3 bg-gray-700/30 rounded-lg">
-                      <div className="font-semibold text-white mb-1">{rec.type}</div>
-                      <div className="text-purple-300 mb-1">{rec.suggestion}</div>
+                    <div key={idx} className="p-2 sm:p-3 bg-gray-700/30 rounded-lg">
+                      <div className="font-semibold text-white text-sm sm:text-base mb-1">{rec.type}</div>
+                      <div className="text-purple-300 text-sm mb-1">{rec.suggestion}</div>
                       <div className="text-xs text-gray-400">{rec.explanation}</div>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Strength Standards */}
+              {/* Strength Standards - Mobile optimized */}
               {result.strengthComparison && (
-                <div className="bg-gray-800/50 p-4 rounded-lg mt-6">
-                  <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                    <Award className="h-5 w-5 mr-2" />
+                <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg mt-4 sm:mt-6">
+                  <h4 className="text-base sm:text-lg font-semibold text-white mb-3 flex items-center">
+                    <Award className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                     Strength Level Standards
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-5 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-5 gap-2">
                     {result.strengthComparison.map((level, idx) => (
-                      <div key={idx} className={`text-center p-3 rounded-lg bg-${level.color}-900/20 border border-${level.color}-800/30`}>
-                        <div className="font-semibold text-white">{level.level}</div>
+                      <div key={idx} className={`text-center p-2 sm:p-3 rounded-lg bg-${level.color}-900/20 border border-${level.color}-800/30`}>
+                        <div className="font-semibold text-white text-sm">{level.level}</div>
                         <div className="text-xs text-gray-400 mt-1">{level.description}</div>
                       </div>
                     ))}

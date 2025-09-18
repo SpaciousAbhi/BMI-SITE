@@ -265,38 +265,38 @@ const CaloriesBurnedCalculator = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6">
+    <div className="w-full max-w-4xl mx-auto p-3 sm:p-4 md:p-6">
       <Card className="bg-gray-900/50 border-gray-800">
-        <CardHeader className="text-center pb-8">
+        <CardHeader className="text-center pb-6 sm:pb-8">
           <div className="flex items-center justify-center mb-4">
             <div className="p-3 rounded-full bg-orange-500/10 mr-4">
-              <Flame className="h-8 w-8 text-orange-400" />
+              <Flame className="h-6 w-6 sm:h-8 sm:w-8 text-orange-400" />
             </div>
-            <CardTitle className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+            <CardTitle className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
               Advanced Calories Burned Calculator
             </CardTitle>
           </div>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto px-2">
             Calculate precise calorie expenditure with advanced MET values, body composition factors, and personalized recommendations.
           </p>
         </CardHeader>
 
-        <CardContent className="space-y-8">
-          {/* Basic Information */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <Label className="text-white font-semibold">Body Weight *</Label>
+        <CardContent className="space-y-6 sm:space-y-8">
+          {/* Basic Information - Enhanced responsive layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            <div className="space-y-3 sm:space-y-4">
+              <Label className="text-white font-semibold text-sm sm:text-base">Body Weight *</Label>
               <div className="flex space-x-2">
                 <Input
                   type="number"
                   placeholder="Enter weight"
                   value={weight}
                   onChange={(e) => setWeight(e.target.value)}
-                  className="bg-gray-800 border-gray-700 text-white flex-1"
+                  className="bg-gray-800 border-gray-700 text-white flex-1 h-11 sm:h-10"
                   step="0.1"
                 />
                 <Select value={weightUnit} onValueChange={setWeightUnit}>
-                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-20">
+                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-16 sm:w-20 h-11 sm:h-10">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent className="bg-gray-800 border-gray-700">
@@ -307,10 +307,10 @@ const CaloriesBurnedCalculator = () => {
               </div>
             </div>
 
-            <div className="space-y-4">
-              <Label className="text-white font-semibold">Exercise Activity *</Label>
+            <div className="space-y-3 sm:space-y-4">
+              <Label className="text-white font-semibold text-sm sm:text-base">Exercise Activity *</Label>
               <Select value={activity} onValueChange={setActivity}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
                   <SelectValue placeholder="Select activity" />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-800 border-gray-700">
@@ -322,29 +322,29 @@ const CaloriesBurnedCalculator = () => {
             </div>
           </div>
 
-          {/* Duration and Intensity */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <Label className="text-white font-semibold">Duration *</Label>
-              <div className="flex space-x-2">
-                <div className="flex-1">
+          {/* Duration and Intensity - Mobile optimized */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            <div className="space-y-3 sm:space-y-4">
+              <Label className="text-white font-semibold text-sm sm:text-base">Duration *</Label>
+              <div className="grid grid-cols-2 gap-2">
+                <div>
                   <Input
                     type="number"
                     placeholder="Hours"
                     value={duration.hours}
                     onChange={(e) => setDuration({...duration, hours: e.target.value})}
-                    className="bg-gray-800 border-gray-700 text-white text-center"
+                    className="bg-gray-800 border-gray-700 text-white text-center h-11 sm:h-10"
                     min="0"
                   />
                   <Label className="text-xs text-gray-400 block text-center mt-1">Hours</Label>
                 </div>
-                <div className="flex-1">
+                <div>
                   <Input
                     type="number"
                     placeholder="Minutes"
                     value={duration.minutes}
                     onChange={(e) => setDuration({...duration, minutes: e.target.value})}
-                    className="bg-gray-800 border-gray-700 text-white text-center"
+                    className="bg-gray-800 border-gray-700 text-white text-center h-11 sm:h-10"
                     min="0"
                     max="59"
                   />
@@ -353,10 +353,10 @@ const CaloriesBurnedCalculator = () => {
               </div>
             </div>
 
-            <div className="space-y-4">
-              <Label className="text-white font-semibold">Intensity Level</Label>
+            <div className="space-y-3 sm:space-y-4">
+              <Label className="text-white font-semibold text-sm sm:text-base">Intensity Level</Label>
               <Select value={intensity} onValueChange={setIntensity}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-800 border-gray-700">
@@ -374,41 +374,41 @@ const CaloriesBurnedCalculator = () => {
             </div>
           </div>
 
-          {/* Advanced Options */}
-          <div className="border-t border-gray-700 pt-6">
-            <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-              <User className="h-5 w-5 mr-2" />
+          {/* Advanced Options - Enhanced mobile layout */}
+          <div className="border-t border-gray-700 pt-4 sm:pt-6">
+            <h3 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4 flex items-center">
+              <User className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
               Advanced Factors (Optional for Enhanced Accuracy)
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
               <div className="space-y-2">
-                <Label className="text-white">Body Fat %</Label>
+                <Label className="text-white text-sm">Body Fat %</Label>
                 <Input
                   type="number"
                   placeholder="e.g., 15"
                   value={bodyFat}
                   onChange={(e) => setBodyFat(e.target.value)}
-                  className="bg-gray-800 border-gray-700 text-white"
+                  className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10"
                   min="5"
                   max="50"
                 />
               </div>
               <div className="space-y-2">
-                <Label className="text-white">Age</Label>
+                <Label className="text-white text-sm">Age</Label>
                 <Input
                   type="number"
                   placeholder="e.g., 30"
                   value={age}
                   onChange={(e) => setAge(e.target.value)}
-                  className="bg-gray-800 border-gray-700 text-white"
+                  className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10"
                   min="15"
                   max="100"
                 />
               </div>
               <div className="space-y-2">
-                <Label className="text-white">Gender</Label>
+                <Label className="text-white text-sm">Gender</Label>
                 <Select value={gender} onValueChange={setGender}>
-                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
                     <SelectValue placeholder="Select gender" />
                   </SelectTrigger>
                   <SelectContent className="bg-gray-800 border-gray-700">
@@ -420,20 +420,20 @@ const CaloriesBurnedCalculator = () => {
             </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex gap-4 pt-6">
+          {/* Action Buttons - Enhanced mobile design */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6">
             <Button
               onClick={calculateCalories}
               disabled={!isFormValid() || loading}
-              className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-3 rounded-lg transition-all duration-300 transform hover:scale-105"
+              className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-3 h-12 sm:h-auto rounded-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
             >
               {loading ? (
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-center space-x-2">
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
                   <span>Calculating...</span>
                 </div>
               ) : (
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-center space-x-2">
                   <Flame className="h-5 w-5" />
                   <span>Calculate Calories Burned</span>
                 </div>
@@ -442,68 +442,68 @@ const CaloriesBurnedCalculator = () => {
             <Button
               onClick={resetForm}
               variant="outline"
-              className="px-8 border-gray-600 text-gray-300 hover:bg-gray-800"
+              className="px-6 border-gray-600 text-gray-300 hover:bg-gray-800 h-12 sm:h-auto sm:px-8"
             >
               Reset
             </Button>
           </div>
 
-          {/* Results */}
+          {/* Results - Enhanced mobile responsiveness */}
           {result && (
-            <div className="mt-8 p-6 bg-gradient-to-r from-orange-900/20 to-red-900/20 rounded-xl border border-orange-800/30">
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                <TrendingUp className="h-6 w-6 mr-2 text-orange-400" />
+            <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-orange-900/20 to-red-900/20 rounded-xl border border-orange-800/30">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center">
+                <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 mr-2 text-orange-400" />
                 Your Calorie Burn Results
               </h3>
 
-              {/* Main Results */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <div className="text-center p-4 bg-orange-900/20 rounded-lg border border-orange-800/30">
-                  <div className="text-3xl font-bold text-orange-300">{result.totalCalories}</div>
-                  <div className="text-orange-200 font-medium">Total Calories</div>
+              {/* Main Results - Responsive grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="text-center p-3 sm:p-4 bg-orange-900/20 rounded-lg border border-orange-800/30">
+                  <div className="text-2xl sm:text-3xl font-bold text-orange-300">{result.totalCalories}</div>
+                  <div className="text-xs sm:text-sm text-orange-200 font-medium">Total Calories</div>
                   <div className="text-xs text-gray-400 mt-1">{result.duration} minutes</div>
                 </div>
-                <div className="text-center p-4 bg-red-900/20 rounded-lg border border-red-800/30">
-                  <div className="text-3xl font-bold text-red-300">{result.caloriesPerHour}</div>
-                  <div className="text-red-200 font-medium">Calories/Hour</div>
+                <div className="text-center p-3 sm:p-4 bg-red-900/20 rounded-lg border border-red-800/30">
+                  <div className="text-2xl sm:text-3xl font-bold text-red-300">{result.caloriesPerHour}</div>
+                  <div className="text-xs sm:text-sm text-red-200 font-medium">Calories/Hour</div>
                   <div className="text-xs text-gray-400 mt-1">Rate</div>
                 </div>
-                <div className="text-center p-4 bg-yellow-900/20 rounded-lg border border-yellow-800/30">
-                  <div className="text-3xl font-bold text-yellow-300">{result.fatCalories}</div>
-                  <div className="text-yellow-200 font-medium">Fat Calories</div>
+                <div className="text-center p-3 sm:p-4 bg-yellow-900/20 rounded-lg border border-yellow-800/30">
+                  <div className="text-2xl sm:text-3xl font-bold text-yellow-300">{result.fatCalories}</div>
+                  <div className="text-xs sm:text-sm text-yellow-200 font-medium">Fat Calories</div>
                   <div className="text-xs text-gray-400 mt-1">{result.fatGrams}g fat</div>
                 </div>
-                <div className="text-center p-4 bg-blue-900/20 rounded-lg border border-blue-800/30">
-                  <div className="text-3xl font-bold text-blue-300">{result.metValue}</div>
-                  <div className="text-blue-200 font-medium">MET Value</div>
+                <div className="text-center p-3 sm:p-4 bg-blue-900/20 rounded-lg border border-blue-800/30">
+                  <div className="text-2xl sm:text-3xl font-bold text-blue-300">{result.metValue}</div>
+                  <div className="text-xs sm:text-sm text-blue-200 font-medium">MET Value</div>
                   <div className="text-xs text-gray-400 mt-1">Intensity</div>
                 </div>
               </div>
 
-              {/* Exercise Details */}
-              <div className="bg-gray-800/50 p-4 rounded-lg mb-6">
-                <h4 className="text-lg font-semibold text-white mb-2">Exercise Details</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+              {/* Exercise Details - Mobile optimized */}
+              <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg mb-4 sm:mb-6">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-2">Exercise Details</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 text-sm">
                   <div><span className="text-gray-400">Activity:</span> <span className="text-white">{result.exercise}</span></div>
                   <div><span className="text-gray-400">Intensity:</span> <span className="text-white">{result.intensityDescription}</span></div>
                   <div><span className="text-gray-400">Weight:</span> <span className="text-white">{result.weight} {result.weightUnit}</span></div>
                 </div>
               </div>
 
-              {/* Recommendations */}
+              {/* Recommendations - Mobile optimized */}
               {result.recommendations.length > 0 && (
-                <div className="bg-gray-800/50 p-4 rounded-lg">
-                  <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                    <Activity className="h-5 w-5 mr-2" />
+                <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg">
+                  <h4 className="text-base sm:text-lg font-semibold text-white mb-3 flex items-center">
+                    <Activity className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                     Personalized Recommendations
                   </h4>
-                  <div className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
                     {result.recommendations.map((rec, idx) => (
-                      <div key={idx} className="flex items-start space-x-3 p-3 bg-gray-700/30 rounded-lg">
-                        <div className="text-2xl">{rec.icon}</div>
+                      <div key={idx} className="flex items-start space-x-3 p-2 sm:p-3 bg-gray-700/30 rounded-lg">
+                        <div className="text-lg sm:text-2xl">{rec.icon}</div>
                         <div>
-                          <div className="font-semibold text-white">{rec.type}</div>
-                          <div className="text-gray-300 text-sm">{rec.message}</div>
+                          <div className="font-semibold text-white text-sm sm:text-base">{rec.type}</div>
+                          <div className="text-gray-300 text-xs sm:text-sm">{rec.message}</div>
                         </div>
                       </div>
                     ))}
