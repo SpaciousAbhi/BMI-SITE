@@ -224,7 +224,7 @@ const PeriodCalculatorPage = () => {
                     "name": "When should I see a doctor about my periods?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Consult a doctor for absent periods (3+ months), cycles <21 or >35 days, extremely heavy bleeding, severe cramping, bleeding between periods, or sudden cycle changes."
+                      "text": "Consult a doctor for absent periods (3+ months), cycles less than 21 or greater than 35 days, extremely heavy bleeding, severe cramping, bleeding between periods, or sudden cycle changes."
                     }
                   }
                 ]
