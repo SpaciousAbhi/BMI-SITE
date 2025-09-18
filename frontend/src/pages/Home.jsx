@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import BMICalculator from "../components/BMICalculator";
-import { Stethoscope, Brain, Users, Shield, Award, TrendingUp, ChevronDown, ChevronUp, Calculator, Heart, Target, Calendar } from "lucide-react";
+import { Stethoscope, Brain, Users, Shield, Award, TrendingUp, ChevronDown, ChevronUp, Calculator, Heart, Target, Calendar, Activity, AlertTriangle } from "lucide-react";
 
 const faqData = [
   {
