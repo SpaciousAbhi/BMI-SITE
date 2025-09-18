@@ -614,7 +614,7 @@ const FatIntakeCalculator = () => {
               </p>
               <p>
                 <strong className="text-white">Fat Types Distribution:</strong> 
-                Saturated fats: &lt;10% of calories • Monounsaturated: 15-20% • Polyunsaturated: 5-10% • Trans fats: 0%
+                Saturated fats: less than 10% of calories • Monounsaturated: 15-20% • Polyunsaturated: 5-10% • Trans fats: 0%
               </p>
               <p>
                 <strong className="text-white">Essential Fatty Acids:</strong> Omega-3 (ALA, EPA, DHA) and Omega-6 (LA) are essential for hormone production, brain function, and inflammation control.
