@@ -72,6 +72,8 @@ function SEOUpdater() {
       '/ovulation-calculator': 'Ovulation Calculator - Fertile Window Tracker | Conception Timing 2025',
       '/conception-calculator': 'Conception Calculator - When Did Conception Occur | Pregnancy Dating 2025',
       '/period-calculator': 'Period Calculator - Menstrual Cycle Tracker | Period Prediction 2025',
+      '/gfr-calculator': 'GFR Calculator - Kidney Function Assessment | CKD-EPI eGFR Calculator 2025',
+      '/bac-calculator': 'BAC Calculator - Blood Alcohol Content Estimator | Widmark Equation 2025',
       '/pregnancy-calculator': 'Pregnancy Calculator - Track Pregnancy Progress | Gestational Age Calculator 2025',
       '/pregnancy-weight-gain-calculator': 'Pregnancy Weight Gain Calculator - IOM Guidelines | Healthy Weight Gain 2025',
       '/due-date-calculator': 'Due Date Calculator - Pregnancy Due Date | LMP & Conception Date Calculator 2025',
