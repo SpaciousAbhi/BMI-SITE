@@ -1,167 +1,238 @@
 import React from "react";
 import OvulationCalculator from "../components/OvulationCalculator";
+import PageTransition from "../components/PageTransition";
 
 const OvulationCalculatorPage = () => {
   return (
-    <div className="min-h-screen bg-black text-white py-8">
-      <div className="container mx-auto px-4">
-        {/* Page Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-rose-400 to-pink-400 bg-clip-text text-transparent">
-              Ovulation Calculator
-            </span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Track your fertile window and ovulation dates with precision. Optimize your conception timing 
-            with our advanced ovulation calculator based on your menstrual cycle patterns.
-          </p>
-        </div>
-
-        {/* Calculator Component */}
+    <PageTransition>
+      <div className="min-h-screen bg-black">
         <OvulationCalculator />
-
-        {/* Educational Content */}
-        <div className="mt-12 max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <h3 className="text-xl font-semibold mb-4 text-rose-400">Understanding Ovulation</h3>
-              <p className="text-gray-300 mb-4">
-                Ovulation is the release of a mature egg from the ovary, typically occurring once per 
-                menstrual cycle. The egg survives for about 24 hours, but conception can occur from 
-                intercourse up to 5 days before ovulation due to sperm survival.
-              </p>
-              <ul className="text-gray-400 text-sm space-y-2">
-                <li>• Occurs approximately 14 days before next period</li>
-                <li>• Egg is viable for 12-24 hours after release</li>
-                <li>• Sperm can survive up to 5 days in reproductive tract</li>
-                <li>• Fertile window spans about 6 days total</li>
-              </ul>
-            </div>
-
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <h3 className="text-xl font-semibold mb-4 text-pink-400">Maximizing Conception Chances</h3>
-              <p className="text-gray-300 mb-4">
-                The highest probability of conception occurs during the 3 days leading up to and including 
-                ovulation day. Having intercourse every 1-2 days during your fertile window maximizes 
-                your chances while maintaining healthy sperm quality.
-              </p>
-              <ul className="text-gray-400 text-sm space-y-2">
-                <li>• Peak fertility: 2 days before ovulation (30% chance)</li>
-                <li>• Ovulation day: High fertility (33% chance)</li>
-                <li>• 3-5 days before: Moderate fertility (10-15% chance)</li>
-                <li>• Regular intercourse every 2-3 days optimizes chances</li>
-              </ul>
+        
+        {/* Enhanced SEO Content Section */}
+        <div className="max-w-4xl mx-auto p-6 mt-8">
+          
+          {/* Comprehensive FAQ Section */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+              Frequently Asked Questions - Ovulation Calculator
+            </h2>
+            
+            <div className="space-y-6">
+              <div className="border-b border-gray-800 pb-4">
+                <h3 className="text-lg font-semibold text-rose-400 mb-2">
+                  How does the ovulation calculator work?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Our ovulation calculator uses your last period date and cycle length to predict ovulation using the luteal phase method. Most women ovulate 12-16 days before their next period (average 14 days). The calculator identifies your fertile window (5 days before ovulation plus ovulation day) when conception is most likely to occur. It also tracks cycle phases and provides future cycle predictions.
+                </p>
+              </div>
+              
+              <div className="border-b border-gray-800 pb-4">
+                <h3 className="text-lg font-semibold text-rose-400 mb-2">
+                  What is the fertile window and when does it occur?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  The fertile window is a 6-day period during your cycle when pregnancy is possible. It includes the 5 days before ovulation and ovulation day itself. Sperm can survive in the reproductive tract for up to 5 days, while the egg is viable for about 24 hours. The highest conception probability occurs 1-2 days before ovulation (27-33% chance) and on ovulation day (33% chance).
+                </p>
+              </div>
+              
+              <div className="border-b border-gray-800 pb-4">
+                <h3 className="text-lg font-semibold text-rose-400 mb-2">
+                  Can I use this calculator with irregular cycles?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  If your cycles vary by more than 7 days, the calculator provides estimates that may be less accurate. For irregular cycles, consider tracking basal body temperature (BBT), cervical mucus changes, or using ovulation predictor kits (OPKs) for more precise ovulation detection. Conditions like PCOS, stress, illness, or hormonal changes can affect cycle regularity.
+                </p>
+              </div>
+              
+              <div className="border-b border-gray-800 pb-4">
+                <h3 className="text-lg font-semibold text-rose-400 mb-2">
+                  What are the signs of ovulation I should watch for?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Common ovulation signs include: clear, stretchy cervical mucus (like egg whites), slight increase in basal body temperature (0.5-1°F), mild pelvic pain or cramps (mittelschmerz), increased libido, breast tenderness, and light spotting. Some women also experience heightened senses or mood changes. Tracking these signs alongside the calculator improves accuracy.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-rose-400 mb-2">
+                  When should I seek medical advice about ovulation?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Consult a healthcare provider if you have very irregular cycles (varying by >7 days), cycles shorter than 21 days or longer than 35 days, absent periods (amenorrhea), extremely painful ovulation, or if you've been trying to conceive for 6-12 months without success. They can perform hormone tests, ultrasounds, or other evaluations to assess ovulation and fertility.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* SEO Content */}
-          <div className="mt-8 bg-gray-900/30 p-6 rounded-xl">
-            <h3 className="text-2xl font-semibold mb-4 text-white">Ovulation Signs and Symptoms</h3>
+          {/* Educational Content Section */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+              Understanding Ovulation & Fertility Tracking
+            </h2>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h4 className="text-lg font-semibold mb-3 text-rose-300">Physical Signs of Ovulation</h4>
-                <div className="space-y-3 text-sm">
-                  <div className="p-3 bg-rose-900/20 rounded-lg border border-rose-800/30">
-                    <div className="font-medium text-rose-300">Cervical Mucus Changes</div>
-                    <div className="text-gray-400 text-xs mt-1">
-                      Clear, stretchy, "egg white" consistency - most fertile
-                    </div>
-                  </div>
-                  <div className="p-3 bg-pink-900/20 rounded-lg border border-pink-800/30">
-                    <div className="font-medium text-pink-300">Basal Body Temperature</div>
-                    <div className="text-gray-400 text-xs mt-1">
-                      Slight rise (0.2-0.5°F) after ovulation occurs
-                    </div>
-                  </div>
-                  <div className="p-3 bg-purple-900/20 rounded-lg border border-purple-800/30">
-                    <div className="font-medium text-purple-300">LH Surge</div>
-                    <div className="text-gray-400 text-xs mt-1">
-                      Detectable 12-36 hours before ovulation with test strips
-                    </div>
-                  </div>
-                  <div className="p-3 bg-blue-900/20 rounded-lg border border-blue-800/30">
-                    <div className="font-medium text-blue-300">Ovulation Pain</div>
-                    <div className="text-gray-400 text-xs mt-1">
-                      Mild cramping on one side (mittelschmerz) - about 20% of women
-                    </div>
-                  </div>
-                </div>
+                <h3 className="text-lg font-semibold text-pink-400 mb-3">Menstrual Cycle Phases</h3>
+                <ul className="text-gray-300 text-sm space-y-2 mb-4">
+                  <li><strong>Menstrual (Days 1-5):</strong> Period occurs, hormone levels low</li>
+                  <li><strong>Follicular (Days 1-13):</strong> Follicles develop, estrogen rises</li>
+                  <li><strong>Ovulation (Day 14):</strong> Egg released, peak fertility</li>
+                  <li><strong>Luteal (Days 15-28):</strong> Post-ovulation, progesterone high</li>
+                </ul>
+                
+                <h3 className="text-lg font-semibold text-pink-400 mb-3">Ovulation Timing</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Ovulation typically occurs 12-16 days before your next period, regardless of cycle length. 
+                  For a 28-day cycle, this is around day 14. For a 30-day cycle, it's around day 16. 
+                  The luteal phase (post-ovulation) is usually consistent at 12-16 days for most women.
+                </p>
               </div>
+              
               <div>
-                <h4 className="text-lg font-semibold mb-3 text-pink-300">Cycle Phase Characteristics</h4>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between items-center p-2 bg-red-900/20 rounded">
-                    <span className="text-gray-400">Menstrual Phase:</span>
-                    <span className="text-red-300">Days 1-5</span>
-                  </div>
-                  <div className="flex justify-between items-center p-2 bg-blue-900/20 rounded">
-                    <span className="text-gray-400">Follicular Phase:</span>
-                    <span className="text-blue-300">Days 1-14</span>
-                  </div>
-                  <div className="flex justify-between items-center p-2 bg-green-900/20 rounded">
-                    <span className="text-gray-400">Ovulation:</span>
-                    <span className="text-green-300">Around Day 14</span>
-                  </div>
-                  <div className="flex justify-between items-center p-2 bg-purple-900/20 rounded">
-                    <span className="text-gray-400">Luteal Phase:</span>
-                    <span className="text-purple-300">Days 15-28</span>
-                  </div>
-                </div>
-                <div className="mt-4 p-3 bg-yellow-900/20 rounded-lg border border-yellow-800/30">
-                  <div className="font-medium text-yellow-300 mb-2">Fertility Tracking Tips:</div>
-                  <div className="text-gray-400 text-xs space-y-1">
-                    <div>• Track cycles for 3+ months for accuracy</div>
-                    <div>• Use multiple signs together (mucus + temperature)</div>
-                    <div>• Consider ovulation predictor kits</div>
-                    <div>• Apps can help but aren't always accurate</div>
-                  </div>
-                </div>
+                <h3 className="text-lg font-semibold text-green-400 mb-3">Improving Fertility</h3>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li>• Have intercourse every 1-2 days during fertile window</li>
+                  <li>• Track cervical mucus consistency changes</li>
+                  <li>• Monitor basal body temperature daily</li>
+                  <li>• Use ovulation predictor kits for LH surge detection</li>
+                  <li>• Maintain healthy weight and diet</li>
+                  <li>• Limit alcohol and avoid smoking</li>
+                  <li>• Manage stress levels effectively</li>
+                  <li>• Take prenatal vitamins with folic acid</li>
+                </ul>
+                
+                <h3 className="text-lg font-semibold text-green-400 mb-3 mt-4">Conception Probability</h3>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li><strong>5 days before ovulation:</strong> 5% chance</li>
+                  <li><strong>4 days before ovulation:</strong> 10% chance</li>
+                  <li><strong>3 days before ovulation:</strong> 15% chance</li>
+                  <li><strong>2 days before ovulation:</strong> 27% chance</li>
+                  <li><strong>1 day before ovulation:</strong> 30% chance</li>
+                  <li><strong>Ovulation day:</strong> 33% chance</li>
+                </ul>
               </div>
             </div>
           </div>
 
-          {/* FAQ Section */}
-          <div className="mt-8 bg-gray-900/30 p-6 rounded-xl">
-            <h3 className="text-2xl font-semibold mb-4 text-white">Frequently Asked Questions</h3>
-            <div className="space-y-4">
-              <div>
-                <h4 className="text-lg font-semibold text-rose-400 mb-2">How accurate are ovulation calculators?</h4>
-                <p className="text-gray-300 text-sm">
-                  Ovulation calculators are reasonably accurate for women with regular cycles, estimating 
-                  ovulation within 1-2 days for about 70% of women. However, they're less reliable for 
-                  irregular cycles. Combining calendar tracking with physical signs increases accuracy significantly.
+          {/* Advanced Tracking Methods Section */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+              Advanced Ovulation Tracking Methods
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-4 bg-blue-900/20 border border-blue-800/30 rounded-lg">
+                <h3 className="text-blue-400 font-semibold mb-3">Basal Body Temperature (BBT)</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Track your temperature first thing each morning. After ovulation, BBT rises by 0.5-1°F and stays elevated. 
+                  This confirms ovulation occurred but doesn't predict it in advance. Use a special BBT thermometer for accuracy.
                 </p>
               </div>
-              <div>
-                <h4 className="text-lg font-semibold text-pink-400 mb-2">What if my cycles are irregular?</h4>
-                <p className="text-gray-300 text-sm">
-                  For irregular cycles, ovulation calculators are less reliable. Focus on tracking physical 
-                  signs like cervical mucus changes, basal body temperature, and use ovulation predictor kits. 
-                  Consider consulting a healthcare provider if cycles vary by more than 7-9 days regularly.
+              
+              <div className="p-4 bg-purple-900/20 border border-purple-800/30 rounded-lg">
+                <h3 className="text-purple-400 font-semibold mb-3">Cervical Mucus Monitoring</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Check cervical mucus daily. Fertile mucus is clear, stretchy, and slippery (like egg whites). 
+                  It helps sperm survive and travel. Peak fertility occurs on the last day of stretchy mucus, 
+                  typically 1-2 days before ovulation.
                 </p>
               </div>
-              <div>
-                <h4 className="text-lg font-semibold text-rose-400 mb-2">Can I ovulate more than once per cycle?</h4>
-                <p className="text-gray-300 text-sm">
-                  While rare, it's possible to release multiple eggs within a 24-hour window (which can lead 
-                  to fraternal twins), but you cannot ovulate twice in separate events during the same cycle. 
-                  The luteal phase length remains consistent, making the 14-day rule reliable for most women.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-pink-400 mb-2">How long should we try before seeking help?</h4>
-                <p className="text-gray-300 text-sm">
-                  For women under 35, try for 12 months of regular, well-timed intercourse before consulting 
-                  a fertility specialist. For women 35+, seek help after 6 months. If you have known conditions 
-                  affecting fertility or irregular cycles, consult a healthcare provider sooner.
+              
+              <div className="p-4 bg-green-900/20 border border-green-800/30 rounded-lg">
+                <h3 className="text-green-400 font-semibold mb-3">Ovulation Predictor Kits</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  OPKs detect the LH (luteinizing hormone) surge that occurs 12-36 hours before ovulation. 
+                  Start testing several days before expected ovulation. A positive result indicates ovulation 
+                  will likely occur within 24-48 hours.
                 </p>
               </div>
             </div>
           </div>
+
+          {/* Related Calculators Section */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+              Related Fertility & Women's Health Tools
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <a href="/period-calculator" className="p-4 bg-red-900/20 border border-red-800/30 rounded-lg hover:bg-red-900/30 transition-colors">
+                <h3 className="text-red-400 font-semibold mb-2">Period Calculator</h3>
+                <p className="text-gray-300 text-sm">Track and predict menstrual cycles with fertility insights</p>
+              </a>
+              
+              <a href="/conception-calculator" className="p-4 bg-purple-900/20 border border-purple-800/30 rounded-lg hover:bg-purple-900/30 transition-colors">
+                <h3 className="text-purple-400 font-semibold mb-2">Conception Calculator</h3>
+                <p className="text-gray-300 text-sm">Calculate when conception occurred based on due date</p>
+              </a>
+              
+              <a href="/pregnancy-calculator" className="p-4 bg-pink-900/20 border border-pink-800/30 rounded-lg hover:bg-pink-900/30 transition-colors">
+                <h3 className="text-pink-400 font-semibold mb-2">Pregnancy Calculator</h3>
+                <p className="text-gray-300 text-sm">Track pregnancy progress and developmental milestones</p>
+              </a>
+            </div>
+          </div>
         </div>
+
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "MedicalRiskCalculator",
+              "name": "Ovulation Calculator - Fertile Window Tracker",
+              "description": "Advanced ovulation calculator to track fertile windows, predict ovulation dates, and optimize conception timing with cycle analysis",
+              "url": "https://your-domain.com/ovulation-calculator",
+              "medicalSpecialty": "Reproductive Medicine",
+              "usageInfo": "Enter last period date and cycle length to predict ovulation and fertile windows",
+              "applicationCategory": "HealthApplication",
+              "operatingSystem": "Web",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Advanced BMI Calculator",
+                "url": "https://your-domain.com"
+              },
+              "mainEntity": {
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "How does the ovulation calculator work?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The ovulation calculator uses your last period date and cycle length to predict ovulation using the luteal phase method. It identifies your 6-day fertile window when conception is most likely."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "When is the fertile window during my cycle?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The fertile window is 6 days: 5 days before ovulation plus ovulation day. Conception probability peaks 1-2 days before ovulation (27-33%) and on ovulation day (33%)."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What are the signs of ovulation?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Ovulation signs include clear stretchy cervical mucus, slight temperature increase, mild pelvic pain, increased libido, and breast tenderness. Track these alongside the calculator for better accuracy."
+                    }
+                  }
+                ]
+              }
+            })
+          }}
+        />
       </div>
-    </div>
+    </PageTransition>
   );
 };
 
