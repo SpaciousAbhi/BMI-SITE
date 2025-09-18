@@ -35,6 +35,8 @@ import DueDateCalculatorPage from "./pages/DueDateCalculatorPage";
 import OvulationCalculatorPage from "./pages/OvulationCalculatorPage";
 import ConceptionCalculatorPage from "./pages/ConceptionCalculatorPage";
 import PeriodCalculatorPage from "./pages/PeriodCalculatorPage";
+import GFRCalculatorPage from "./pages/GFRCalculatorPage";
+import BACCalculatorPage from "./pages/BACCalculatorPage";
 
 // Enhanced SEO Component for dynamic page titles and meta optimization
 function SEOUpdater() {
