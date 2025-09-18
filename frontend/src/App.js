@@ -471,6 +471,22 @@ function AnimatedRoutes() {
             </PageTransition>
           } 
         />
+        <Route 
+          path="/gfr-calculator" 
+          element={
+            <PageTransition key="gfr">
+              <GFRCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/bac-calculator" 
+          element={
+            <PageTransition key="bac">
+              <BACCalculatorPage />
+            </PageTransition>
+          } 
+        />
       </Routes>
     </AnimatePresence>
   );
