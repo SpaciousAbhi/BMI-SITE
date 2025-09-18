@@ -15,7 +15,7 @@ const Footer = () => {
                 Advanced BMI Calculator
               </span>
             </div>
-            <p className="text-gray-400 leading-relaxed">
+            <p className="text-gray-400 leading-relaxed text-sm">
               Professional BMI calculator providing accurate health insights and personalized recommendations 
               based on WHO and CDC guidelines. Your trusted partner in health assessment.
             </p>
@@ -23,14 +23,13 @@ const Footer = () => {
 
           {/* Home Page | BMI Calculator Section */}
           <div>
-            <h3 className="text-white font-semibold mb-4 flex items-center">
-              <Heart className="h-5 w-5 mr-2 text-green-400" />
+            <h3 className="text-white font-bold mb-4 text-base">
               Home Page | BMI Calculator
             </h3>
             <div className="space-y-2">
               <Link
                 to="/"
-                className="nav-link block text-gray-400 hover:text-green-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-green-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
               >
                 BMI Calculator
               </Link>
@@ -39,53 +38,52 @@ const Footer = () => {
 
           {/* Additional Calculators Section */}
           <div>
-            <h3 className="text-white font-semibold mb-2 flex items-center">
-              <Heart className="h-5 w-5 mr-2 text-blue-400" />
+            <h3 className="text-white font-bold mb-3 text-base">
               Additional Calculators
             </h3>
-            <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3">
+            <div className="text-sm font-semibold text-blue-300 mb-4 border-l-2 border-blue-400 pl-3">
               Body Composition & Weight
             </div>
-            <div className="space-y-2 max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
+            <div className="space-y-2 max-h-52 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 pr-2">
               <Link
                 to="/body-fat-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
               >
                 Body Fat Calculator
               </Link>
               <Link
                 to="/army-body-fat-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
               >
                 Army Body Fat Calculator
               </Link>
               <Link
                 to="/lean-body-mass-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
               >
                 Lean Body Mass Calculator
               </Link>
               <Link
                 to="/ideal-weight-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
               >
                 Ideal Weight Calculator
               </Link>
               <Link
                 to="/healthy-weight-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
               >
                 Healthy Weight Calculator
               </Link>
               <Link
                 to="/body-type-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
               >
                 Body Type Calculator
               </Link>
               <Link
                 to="/body-surface-area-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
               >
                 Body Surface Area (BSA) Calculator
               </Link>
@@ -94,26 +92,25 @@ const Footer = () => {
 
           {/* Legal & Privacy Section */}
           <div>
-            <h3 className="text-white font-semibold mb-4 flex items-center">
-              <Shield className="h-5 w-5 mr-2 text-blue-400" />
+            <h3 className="text-white font-bold mb-4 text-base">
               Legal & Privacy
             </h3>
             <div className="space-y-2">
               <Link
                 to="/privacy-policy"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
               >
                 Privacy Policy
               </Link>
               <Link
                 to="/terms-conditions"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
               >
                 Terms & Conditions
               </Link>
               <Link
                 to="/contact-us"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm"
+                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
               >
                 Contact Us
               </Link>
