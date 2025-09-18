@@ -60,7 +60,7 @@ const Home = () => {
           {/* Trust Badge */}
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-green-500/10 backdrop-blur-sm border border-blue-500/20 px-4 py-2 rounded-full mb-8 text-sm text-blue-300 animate-fade-in">
             <Award className="h-4 w-4" />
-            <span>Trusted by 50,000+ Users Worldwide</span>
+            <span>Trusted by 1M+ Users Worldwide</span>
           </div>
 
           {/* Main Heading with Enhanced Animation */}
