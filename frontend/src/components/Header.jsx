@@ -112,7 +112,7 @@ const Header = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="bg-black border-gray-800">
-              <div className="flex flex-col space-y-4 mt-8">
+              <div className="flex flex-col space-y-4 mt-8 max-h-[calc(100vh-100px)] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
                 {navItems.map((item) => (
                   <div key={item.name}>
                     {item.items ? (
@@ -120,6 +120,11 @@ const Header = () => {
                         <h3 className="text-lg font-semibold text-white">
                           {item.name}
                         </h3>
+                        {item.subheading && (
+                          <div className="text-xs font-medium text-gray-400 uppercase tracking-wider ml-2">
+                            {item.subheading}
+                          </div>
+                        )}
                         {item.items.map((subItem) => (
                           <Link
                             key={subItem.path}
@@ -137,7 +142,7 @@ const Header = () => {
                     ) : (
                       <Link
                         to={item.path}
-                        className="nav-link block text-gray-300 hover:text-white transition-all duration-300 ease-out py-2"
+                        className="nav-link block text-gray-300 hover:text-white transition-all duration-300 ease-out py-2 font-medium"
                         onClick={() => setIsOpen(false)}
                       >
                         {item.name}
