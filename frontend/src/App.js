@@ -94,7 +94,13 @@ function SEOUpdater() {
       '/pace-calculator': 'Calculate running pace, time, or distance with precision. Get race predictions, splits, and VDOT analysis for serious runners and fitness training.',
       '/calories-burned-calculator': 'Calculate precise calorie expenditure with advanced MET values, body composition factors, and personalized exercise recommendations.',
       '/one-rep-max-calculator': 'Calculate your one-rep maximum using 7 proven formulas. Get training zones, rep ranges, and progressive overload recommendations for strength training.',
-      '/target-heart-rate-calculator': 'Calculate precise training zones using Karvonen method with resting heart rate. Get personalized heart rate zones and cardio training plans.'
+      '/target-heart-rate-calculator': 'Calculate precise training zones using Karvonen method with resting heart rate. Get personalized heart rate zones and cardio training plans.',
+      '/pregnancy-calculator': 'Track your pregnancy journey with precise gestational age, due date, and developmental milestones using our advanced pregnancy calculator.',
+      '/pregnancy-weight-gain-calculator': 'Monitor healthy pregnancy weight gain based on IOM guidelines and your pre-pregnancy BMI for optimal maternal and fetal health.',
+      '/due-date-calculator': 'Calculate your pregnancy due date with medical precision using LMP or conception date. Track important milestones and birth window estimates.',
+      '/ovulation-calculator': 'Track your fertile window and ovulation dates with precision. Optimize conception timing with comprehensive cycle analysis.',
+      '/conception-calculator': 'Calculate when conception occurred based on due date, birth date, or last menstrual period with medical accuracy.',
+      '/period-calculator': 'Track and predict your menstrual cycle with comprehensive period and fertility insights. Plan ahead with accurate cycle predictions.'
     };
 
     const keywords = {
