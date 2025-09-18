@@ -233,6 +233,62 @@ function AnimatedRoutes() {
             </PageTransition>
           } 
         />
+        <Route 
+          path="/calorie-calculator" 
+          element={
+            <PageTransition key="calorie">
+              <CalorieCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/tdee-calculator" 
+          element={
+            <PageTransition key="tdee">
+              <TDEECalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/bmr-calculator" 
+          element={
+            <PageTransition key="bmr">
+              <BMRCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/macro-calculator" 
+          element={
+            <PageTransition key="macro">
+              <MacroCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/carbohydrate-calculator" 
+          element={
+            <PageTransition key="carbohydrate">
+              <CarbohydrateCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/protein-calculator" 
+          element={
+            <PageTransition key="protein">
+              <ProteinCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/fat-intake-calculator" 
+          element={
+            <PageTransition key="fat-intake">
+              <FatIntakeCalculatorPage />
+            </PageTransition>
+          } 
+        />
       </Routes>
     </AnimatePresence>
   );
