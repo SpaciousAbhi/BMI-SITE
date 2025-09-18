@@ -180,6 +180,54 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Pregnancy & Women's Health Calculators Section */}
+          <div>
+            <h3 className="text-white font-bold mb-3 text-base">
+              Pregnancy & Women's Health Calculators
+            </h3>
+            <div className="text-sm font-semibold text-pink-300 mb-4 border-l-2 border-pink-400 pl-3">
+              Pregnancy & Women's Health
+            </div>
+            <div className="space-y-2 max-h-52 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 pr-2">
+              <Link
+                to="/pregnancy-calculator"
+                className="nav-link block text-gray-400 hover:text-pink-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Pregnancy Calculator
+              </Link>
+              <Link
+                to="/pregnancy-weight-gain-calculator"
+                className="nav-link block text-gray-400 hover:text-pink-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Pregnancy Weight Gain Calculator
+              </Link>
+              <Link
+                to="/due-date-calculator"
+                className="nav-link block text-gray-400 hover:text-pink-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Due Date Calculator
+              </Link>
+              <Link
+                to="/ovulation-calculator"
+                className="nav-link block text-gray-400 hover:text-pink-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Ovulation Calculator
+              </Link>
+              <Link
+                to="/conception-calculator"
+                className="nav-link block text-gray-400 hover:text-pink-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Conception Calculator
+              </Link>
+              <Link
+                to="/period-calculator"
+                className="nav-link block text-gray-400 hover:text-pink-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Period Calculator
+              </Link>
+            </div>
+          </div>
+
           {/* Legal & Privacy Section */}
           <div>
             <h3 className="text-white font-bold mb-4 text-base">
