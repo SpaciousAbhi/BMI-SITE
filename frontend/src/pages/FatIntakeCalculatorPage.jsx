@@ -170,7 +170,7 @@ const FatIntakeCalculatorPage = () => {
                     <strong>Trans Fats (AVOID):</strong> Partially hydrogenated oils, processed foods, margarine
                   </div>
                   <div>
-                    <strong>Excessive Saturated Fat:</strong> Limit to <10% of calories, choose quality sources
+                    <strong>Excessive Saturated Fat:</strong> Limit to &lt;10% of calories, choose quality sources
                   </div>
                 </div>
               </div>
