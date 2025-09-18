@@ -481,6 +481,116 @@ const Home = () => {
               </div>
             </div>
           </div>
+
+          {/* Category: Pregnancy & Women's Health */}
+          <div className="mb-8">
+            <h3 className="text-2xl font-semibold text-white mb-6 text-center">
+              Pregnancy & Women's Health
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-3">
+              {/* Pregnancy Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-pink-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-pink-500/10 w-fit mb-2 group-hover:bg-pink-500/20 transition-colors">
+                  <Heart className="h-4 w-4 text-pink-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Pregnancy Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Track your pregnancy journey with precise gestational age, due date, and developmental milestones.
+                </p>
+                <a
+                  href="/pregnancy-calculator"
+                  className="inline-block bg-gradient-to-r from-pink-500 to-pink-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-pink-600 hover:to-pink-700 transition-all duration-300"
+                >
+                  Track Pregnancy →
+                </a>
+              </div>
+
+              {/* Pregnancy Weight Gain Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-green-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-green-500/10 w-fit mb-2 group-hover:bg-green-500/20 transition-colors">
+                  <TrendingUp className="h-4 w-4 text-green-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Pregnancy Weight Gain Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Monitor healthy weight gain based on IOM guidelines and your pre-pregnancy BMI for optimal health.
+                </p>
+                <a
+                  href="/pregnancy-weight-gain-calculator"
+                  className="inline-block bg-gradient-to-r from-green-500 to-green-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-green-600 hover:to-green-700 transition-all duration-300"
+                >
+                  Track Weight Gain →
+                </a>
+              </div>
+
+              {/* Due Date Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-blue-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-blue-500/10 w-fit mb-2 group-hover:bg-blue-500/20 transition-colors">
+                  <Calendar className="h-4 w-4 text-blue-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Due Date Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate your pregnancy due date with medical precision using LMP or conception date.
+                </p>
+                <a
+                  href="/due-date-calculator"
+                  className="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-300"
+                >
+                  Calculate Due Date →
+                </a>
+              </div>
+
+              {/* Ovulation Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-rose-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-rose-500/10 w-fit mb-2 group-hover:bg-rose-500/20 transition-colors">
+                  <Heart className="h-4 w-4 text-rose-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Ovulation Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Track your fertile window and ovulation dates with precision for optimal conception timing.
+                </p>
+                <a
+                  href="/ovulation-calculator"
+                  className="inline-block bg-gradient-to-r from-rose-500 to-rose-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-rose-600 hover:to-rose-700 transition-all duration-300"
+                >
+                  Track Ovulation →
+                </a>
+              </div>
+
+              {/* Conception Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-purple-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-purple-500/10 w-fit mb-2 group-hover:bg-purple-500/20 transition-colors">
+                  <Users className="h-4 w-4 text-purple-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Conception Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate when conception occurred based on due date, birth date, or last menstrual period.
+                </p>
+                <a
+                  href="/conception-calculator"
+                  className="inline-block bg-gradient-to-r from-purple-500 to-purple-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-purple-600 hover:to-purple-700 transition-all duration-300"
+                >
+                  Find Conception Date →
+                </a>
+              </div>
+
+              {/* Period Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-red-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-red-500/10 w-fit mb-2 group-hover:bg-red-500/20 transition-colors">
+                  <Calendar className="h-4 w-4 text-red-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Period Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Track and predict your menstrual cycle with comprehensive period and fertility insights.
+                </p>
+                <a
+                  href="/period-calculator"
+                  className="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-red-600 hover:to-red-700 transition-all duration-300"
+                >
+                  Track Periods →
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
