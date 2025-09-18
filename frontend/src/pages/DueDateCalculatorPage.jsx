@@ -1,171 +1,246 @@
 import React from "react";
 import DueDateCalculator from "../components/DueDateCalculator";
+import PageTransition from "../components/PageTransition";
 
 const DueDateCalculatorPage = () => {
   return (
-    <div className="min-h-screen bg-black text-white py-8">
-      <div className="container mx-auto px-4">
-        {/* Page Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-              Due Date Calculator
-            </span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Calculate your pregnancy due date with medical precision using your last menstrual period or 
-            conception date. Track important pregnancy milestones and birth window estimates.
-          </p>
-        </div>
-
-        {/* Calculator Component */}
+    <PageTransition>
+      <div className="min-h-screen bg-black">
         <DueDateCalculator />
-
-        {/* Educational Content */}
-        <div className="mt-12 max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <h3 className="text-xl font-semibold mb-4 text-blue-400">Due Date Calculation Methods</h3>
-              <p className="text-gray-300 mb-4">
-                Our due date calculator uses scientifically proven methods to estimate your baby's arrival. 
-                The most common method is Naegele's Rule, which adds 280 days (40 weeks) to your last 
-                menstrual period date, assuming a 28-day cycle with ovulation on day 14.
-              </p>
-              <ul className="text-gray-400 text-sm space-y-2">
-                <li>• <strong>LMP Method:</strong> Most commonly used by doctors</li>
-                <li>• <strong>Conception Date:</strong> More accurate if known</li>
-                <li>• <strong>Ultrasound Dating:</strong> Most precise (especially early pregnancy)</li>
-                <li>• <strong>IVF Dating:</strong> Most accurate for assisted pregnancies</li>
-              </ul>
-            </div>
-
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <h3 className="text-xl font-semibold mb-4 text-indigo-400">Due Date Accuracy</h3>
-              <p className="text-gray-300 mb-4">
-                While due dates provide important guidance, only about 5% of babies are born exactly on 
-                their due date. Most babies are born within 2 weeks before or after the estimated due date, 
-                which is considered normal and full-term.
-              </p>
-              <ul className="text-gray-400 text-sm space-y-2">
-                <li>• Only 5% of babies born on exact due date</li>
-                <li>• 37-42 weeks is considered full-term</li>
-                <li>• First-time mothers often deliver 1-2 days late</li>
-                <li>• Subsequent pregnancies may be earlier</li>
-              </ul>
+        
+        {/* Enhanced SEO Content Section */}
+        <div className="max-w-4xl mx-auto p-6 mt-8">
+          
+          {/* Comprehensive FAQ Section */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+              Frequently Asked Questions - Due Date Calculator
+            </h2>
+            
+            <div className="space-y-6">
+              <div className="border-b border-gray-800 pb-4">
+                <h3 className="text-lg font-semibold text-blue-400 mb-2">
+                  How accurate is the due date calculator?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Our due date calculator uses Naegele's rule, the standard medical formula used by healthcare providers worldwide. It calculates 280 days (40 weeks) from your last menstrual period (LMP) or 266 days from conception date. While 95% accurate within a 2-week window, only about 5% of babies are born exactly on their due date. Most healthy pregnancies deliver between 37-42 weeks (full-term window).
+                </p>
+              </div>
+              
+              <div className="border-b border-gray-800 pb-4">
+                <h3 className="text-lg font-semibold text-blue-400 mb-2">
+                  Which calculation method is more accurate: LMP or conception date?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Both methods are medically valid. LMP calculation is the clinical standard used by most healthcare providers, while conception date calculation may be more accurate if you know the exact fertilization date (from IVF or precise ovulation tracking). However, early pregnancy ultrasound (8-13 weeks) is considered the most accurate dating method, especially for women with irregular cycles.
+                </p>
+              </div>
+              
+              <div className="border-b border-gray-800 pb-4">
+                <h3 className="text-lg font-semibold text-blue-400 mb-2">
+                  What is the difference between due date and actual delivery?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Due dates are estimates, not exact predictions. Full-term pregnancy ranges from 37-42 weeks. First-time mothers often deliver 1-2 days after their due date, while women who've had previous pregnancies may deliver slightly earlier. Natural labor onset varies based on baby's readiness, maternal factors, and individual biology. Only about 4-5% of babies arrive exactly on their estimated due date.
+                </p>
+              </div>
+              
+              <div className="border-b border-gray-800 pb-4">
+                <h3 className="text-lg font-semibold text-blue-400 mb-2">
+                  When will my healthcare provider confirm my due date?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Your healthcare provider will confirm and possibly adjust your due date during your first prenatal appointment, typically around 8-12 weeks of pregnancy. They'll use ultrasound measurements to verify gestational age, which is most accurate between 8-13 weeks. If there's a significant difference (>7 days) between LMP and ultrasound dating, your provider may adjust your due date accordingly.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-blue-400 mb-2">
+                  What factors can affect my due date accuracy?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Several factors influence due date accuracy: irregular menstrual cycles, uncertainty about LMP date, late ovulation, multiple pregnancies (twins/triplets often deliver earlier), maternal age, previous pregnancy history, and certain medical conditions. Women with PCOS, long cycles, or those who were breastfeeding when they conceived may have less accurate LMP-based calculations.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* SEO Content */}
-          <div className="mt-8 bg-gray-900/30 p-6 rounded-xl">
-            <h3 className="text-2xl font-semibold mb-4 text-white">Understanding Your Due Date Results</h3>
+          {/* Educational Content Section */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+              Understanding Pregnancy Dating & Delivery Windows
+            </h2>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h4 className="text-lg font-semibold mb-3 text-blue-300">Pregnancy Timeline</h4>
-                <div className="space-y-3 text-sm">
-                  <div className="p-3 bg-blue-900/20 rounded-lg border border-blue-800/30">
-                    <div className="font-medium text-blue-300">Early Term (37-38 weeks)</div>
-                    <div className="text-gray-400 text-xs mt-1">
-                      Baby is considered full-term but may need extra monitoring
-                    </div>
-                  </div>
-                  <div className="p-3 bg-green-900/20 rounded-lg border border-green-800/30">
-                    <div className="font-medium text-green-300">Full Term (39-40 weeks)</div>
-                    <div className="text-gray-400 text-xs mt-1">
-                      Optimal time for delivery - baby's organs are fully mature
-                    </div>
-                  </div>
-                  <div className="p-3 bg-yellow-900/20 rounded-lg border border-yellow-800/30">
-                    <div className="font-medium text-yellow-300">Late Term (41 weeks)</div>
-                    <div className="text-gray-400 text-xs mt-1">
-                      Still normal but requires closer monitoring
-                    </div>
-                  </div>
-                  <div className="p-3 bg-orange-900/20 rounded-lg border border-orange-800/30">
-                    <div className="font-medium text-orange-300">Post Term (42+ weeks)</div>
-                    <div className="text-gray-400 text-xs mt-1">
-                      May require induction of labor
-                    </div>
-                  </div>
-                </div>
+                <h3 className="text-lg font-semibold text-indigo-400 mb-3">Pregnancy Term Classifications</h3>
+                <ul className="text-gray-300 text-sm space-y-2 mb-4">
+                  <li><strong>Early Preterm:</strong> Born before 34 weeks</li>
+                  <li><strong>Late Preterm:</strong> Born 34-36 weeks</li>
+                  <li><strong>Early Term:</strong> Born 37-38 weeks</li>
+                  <li><strong>Full Term:</strong> Born 39-40 weeks (optimal)</li>
+                  <li><strong>Late Term:</strong> Born 41-42 weeks</li>
+                  <li><strong>Post Term:</strong> Born after 42 weeks</li>
+                </ul>
+                
+                <h3 className="text-lg font-semibold text-indigo-400 mb-3">Key Pregnancy Milestones</h3>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li><strong>Week 12:</strong> End of first trimester, reduced miscarriage risk</li>
+                  <li><strong>Week 20:</strong> Anatomy scan, halfway point</li>
+                  <li><strong>Week 24:</strong> Viability milestone</li>
+                  <li><strong>Week 28:</strong> Start of third trimester</li>
+                  <li><strong>Week 37:</strong> Full-term begins</li>
+                  <li><strong>Week 39-40:</strong> Optimal delivery window</li>
+                </ul>
               </div>
+              
               <div>
-                <h4 className="text-lg font-semibold mb-3 text-indigo-300">Important Milestones</h4>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Viability (24 weeks):</span>
-                    <span className="text-white">50% survival rate</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Moderate Preterm (32 weeks):</span>
-                    <span className="text-white">95% survival rate</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Late Preterm (34 weeks):</span>
-                    <span className="text-white">99% survival rate</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Early Term (37 weeks):</span>
-                    <span className="text-white">Full-term pregnancy</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Full Term (39 weeks):</span>
-                    <span className="text-white">Optimal delivery time</span>
-                  </div>
-                </div>
-                <div className="mt-4 p-3 bg-purple-900/20 rounded-lg border border-purple-800/30">
-                  <div className="font-medium text-purple-300 mb-2">Key Prenatal Appointments:</div>
-                  <div className="text-gray-400 text-xs space-y-1">
-                    <div>• 8-12 weeks: First prenatal visit</div>
-                    <div>• 18-22 weeks: Anatomy scan</div>
-                    <div>• 24-28 weeks: Glucose screening</div>
-                    <div>• 36+ weeks: Weekly visits</div>
-                  </div>
-                </div>
+                <h3 className="text-lg font-semibold text-teal-400 mb-3">Factors Affecting Delivery Timing</h3>
+                <ul className="text-gray-300 text-sm space-y-2 mb-4">
+                  <li>• First pregnancy (tends to go past due date)</li>
+                  <li>• Previous pregnancy history (may deliver earlier)</li>
+                  <li>• Maternal age (>35 may have earlier delivery)</li>
+                  <li>• Multiple pregnancies (twins deliver ~36 weeks)</li>
+                  <li>• Baby's position and size</li>
+                  <li>• Medical conditions or complications</li>
+                  <li>• Stress levels and lifestyle factors</li>
+                </ul>
+                
+                <h3 className="text-lg font-semibold text-teal-400 mb-3">Signs Labor May Begin Soon</h3>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li>• Baby "dropping" into pelvis (lightening)</li>
+                  <li>• Braxton Hicks contractions increase</li>
+                  <li>• Bloody show or mucus plug loss</li>
+                  <li>• Water breaking (rupture of membranes)</li>
+                  <li>• Regular, increasing contractions</li>
+                  <li>• Lower back pain and cramping</li>
+                </ul>
               </div>
             </div>
           </div>
 
-          {/* FAQ Section */}
-          <div className="mt-8 bg-gray-900/30 p-6 rounded-xl">
-            <h3 className="text-2xl font-semibold mb-4 text-white">Frequently Asked Questions</h3>
-            <div className="space-y-4">
-              <div>
-                <h4 className="text-lg font-semibold text-blue-400 mb-2">How accurate are due date calculations?</h4>
-                <p className="text-gray-300 text-sm">
-                  Due date calculations are estimates with a margin of error of about ±2 weeks. The accuracy 
-                  depends on the method used: LMP-based calculations are accurate within 2 weeks for 90% of 
-                  women, while early ultrasounds (6-12 weeks) are accurate within 3-5 days.
-                </p>
+          {/* Pregnancy Planning Timeline Section */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+              Essential Pregnancy Appointment Timeline
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-4 bg-blue-900/20 border border-blue-800/30 rounded-lg">
+                <h3 className="text-blue-400 font-semibold mb-3">First Trimester (Weeks 1-13)</h3>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li><strong>6-8 weeks:</strong> First prenatal visit, confirm pregnancy</li>
+                  <li><strong>8-10 weeks:</strong> Dating ultrasound if needed</li>
+                  <li><strong>11-14 weeks:</strong> NT scan (nuchal translucency)</li>
+                  <li><strong>10-13 weeks:</strong> First trimester screening</li>
+                </ul>
               </div>
-              <div>
-                <h4 className="text-lg font-semibold text-indigo-400 mb-2">What if I don't remember my last period date?</h4>
-                <p className="text-gray-300 text-sm">
-                  If you can't remember your last menstrual period, your healthcare provider will likely 
-                  recommend an early dating ultrasound (typically between 8-13 weeks). This method measures 
-                  the baby's size to estimate gestational age and is very accurate in early pregnancy.
-                </p>
+              
+              <div className="p-4 bg-green-900/20 border border-green-800/30 rounded-lg">
+                <h3 className="text-green-400 font-semibold mb-3">Second Trimester (Weeks 14-27)</h3>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li><strong>15-20 weeks:</strong> AFP screening (quad screen)</li>
+                  <li><strong>18-22 weeks:</strong> Anatomy scan (detailed ultrasound)</li>
+                  <li><strong>24-28 weeks:</strong> Glucose screening test</li>
+                  <li><strong>Monthly visits:</strong> Monitor growth and health</li>
+                </ul>
               </div>
-              <div>
-                <h4 className="text-lg font-semibold text-blue-400 mb-2">Should I be worried if my baby is late?</h4>
-                <p className="text-gray-300 text-sm">
-                  Not necessarily. About 10% of pregnancies naturally extend beyond 42 weeks. However, 
-                  post-term pregnancies require closer monitoring due to increased risks. Your healthcare 
-                  provider may recommend induction between 41-42 weeks depending on various factors.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-indigo-400 mb-2">Can my due date change during pregnancy?</h4>
-                <p className="text-gray-300 text-sm">
-                  Yes, your due date may be adjusted based on ultrasound measurements, especially if there's 
-                  a significant difference (more than 7 days) between your LMP-based date and ultrasound 
-                  measurements. Early ultrasounds (before 20 weeks) are most reliable for dating adjustments.
-                </p>
+              
+              <div className="p-4 bg-purple-900/20 border border-purple-800/30 rounded-lg">
+                <h3 className="text-purple-400 font-semibold mb-3">Third Trimester (Weeks 28-40)</h3>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li><strong>28-32 weeks:</strong> Growth ultrasound if needed</li>
+                  <li><strong>35-37 weeks:</strong> Group B strep test</li>
+                  <li><strong>36+ weeks:</strong> Weekly visits begin</li>
+                  <li><strong>37-42 weeks:</strong> Monitor for labor signs</li>
+                </ul>
               </div>
             </div>
           </div>
+
+          {/* Related Calculators Section */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+              Related Pregnancy & Women's Health Tools
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <a href="/pregnancy-calculator" className="p-4 bg-pink-900/20 border border-pink-800/30 rounded-lg hover:bg-pink-900/30 transition-colors">
+                <h3 className="text-pink-400 font-semibold mb-2">Pregnancy Calculator</h3>
+                <p className="text-gray-300 text-sm">Track comprehensive pregnancy progress and milestones</p>
+              </a>
+              
+              <a href="/pregnancy-weight-gain-calculator" className="p-4 bg-green-900/20 border border-green-800/30 rounded-lg hover:bg-green-900/30 transition-colors">
+                <h3 className="text-green-400 font-semibold mb-2">Weight Gain Calculator</h3>
+                <p className="text-gray-300 text-sm">Monitor healthy pregnancy weight gain by trimester</p>
+              </a>
+              
+              <a href="/conception-calculator" className="p-4 bg-purple-900/20 border border-purple-800/30 rounded-lg hover:bg-purple-900/30 transition-colors">
+                <h3 className="text-purple-400 font-semibold mb-2">Conception Calculator</h3>
+                <p className="text-gray-300 text-sm">Calculate when conception occurred based on dates</p>
+              </a>
+            </div>
+          </div>
         </div>
+
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "MedicalRiskCalculator",
+              "name": "Due Date Calculator - Pregnancy Due Date Calculator",
+              "description": "Medical-grade due date calculator using LMP or conception date with Naegele's rule for accurate pregnancy dating and milestone tracking",
+              "url": "https://your-domain.com/due-date-calculator",
+              "medicalSpecialty": "Obstetrics and Gynecology",
+              "usageInfo": "Enter last menstrual period or conception date to calculate accurate due date and pregnancy milestones",
+              "applicationCategory": "HealthApplication",
+              "operatingSystem": "Web",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Advanced BMI Calculator",
+                "url": "https://your-domain.com"
+              },
+              "mainEntity": {
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "How accurate is the due date calculator?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "The due date calculator uses Naegele's rule with 95% accuracy within a 2-week window. Only 5% of babies are born exactly on their due date, with most delivering between 37-42 weeks."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Should I use LMP or conception date for calculation?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Both methods are medically valid. LMP is the clinical standard used by healthcare providers. Conception date may be more accurate if you know the exact fertilization date. Early ultrasound is most accurate."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "When is the optimal time for delivery?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Full-term pregnancy is 39-40 weeks (optimal delivery window). Early term is 37-38 weeks, late term is 41-42 weeks. Most healthy babies are born within this 37-42 week range."
+                    }
+                  }
+                ]
+              }
+            })
+          }}
+        />
       </div>
-    </div>
+    </PageTransition>
   );
 };
 
