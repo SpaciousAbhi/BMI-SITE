@@ -67,6 +67,14 @@ const Header = () => {
         { name: "Period Calculator", path: "/period-calculator" },
       ],
     },
+    {
+      name: "Legal & Privacy",
+      items: [
+        { name: "Privacy Policy", path: "/privacy-policy" },
+        { name: "Terms & Conditions", path: "/terms-conditions" },
+        { name: "Contact Us", path: "/contact-us" },
+      ],
+    },
   ];
 
   return (
