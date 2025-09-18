@@ -77,6 +77,147 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Additional Calculators Section */}
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900/20">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+              Additional Body Composition Calculators
+            </h2>
+            <p className="text-xl text-gray-300 max-w-4xl mx-auto">
+              Explore our comprehensive suite of medical-grade body composition calculators for complete health assessment
+            </p>
+          </div>
+
+          {/* Category: Body Composition & Weight */}
+          <div className="mb-8">
+            <h3 className="text-2xl font-semibold text-white mb-6 text-center">
+              Body Composition & Weight Analysis
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Body Fat Calculator */}
+              <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-blue-500/50 transition-all duration-300 group">
+                <div className="p-3 rounded-full bg-blue-500/10 w-fit mb-4 group-hover:bg-blue-500/20 transition-colors">
+                  <Calculator className="h-8 w-8 text-blue-400" />
+                </div>
+                <h4 className="text-xl font-semibold mb-3 text-white">Body Fat Calculator</h4>
+                <p className="text-gray-400 mb-4 text-sm">
+                  Calculate body fat percentage using the US Navy circumference method for accurate body composition analysis.
+                </p>
+                <a
+                  href="/body-fat-calculator"
+                  className="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-300 text-sm"
+                >
+                  Calculate Body Fat →
+                </a>
+              </div>
+
+              {/* Army Body Fat Calculator */}
+              <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-green-500/50 transition-all duration-300 group">
+                <div className="p-3 rounded-full bg-green-500/10 w-fit mb-4 group-hover:bg-green-500/20 transition-colors">
+                  <Shield className="h-8 w-8 text-green-400" />
+                </div>
+                <h4 className="text-xl font-semibold mb-3 text-white">Army Body Fat Calculator</h4>
+                <p className="text-gray-400 mb-4 text-sm">
+                  Official US Army AR 600-9 body fat calculation using military tape test standards for compliance verification.
+                </p>
+                <a
+                  href="/army-body-fat-calculator"
+                  className="inline-block bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-2 rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition-all duration-300 text-sm"
+                >
+                  Military Standard →
+                </a>
+              </div>
+
+              {/* Lean Body Mass Calculator */}
+              <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-purple-500/50 transition-all duration-300 group">
+                <div className="p-3 rounded-full bg-purple-500/10 w-fit mb-4 group-hover:bg-purple-500/20 transition-colors">
+                  <TrendingUp className="h-8 w-8 text-purple-400" />
+                </div>
+                <h4 className="text-xl font-semibold mb-3 text-white">Lean Body Mass Calculator</h4>
+                <p className="text-gray-400 mb-4 text-sm">
+                  Calculate lean body mass using validated Boer, James, and Hume formulas for accurate muscle mass assessment.
+                </p>
+                <a
+                  href="/lean-body-mass-calculator"
+                  className="inline-block bg-gradient-to-r from-purple-500 to-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:from-purple-600 hover:to-purple-700 transition-all duration-300 text-sm"
+                >
+                  Calculate LBM →
+                </a>
+              </div>
+
+              {/* Ideal Weight Calculator */}
+              <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-yellow-500/50 transition-all duration-300 group">
+                <div className="p-3 rounded-full bg-yellow-500/10 w-fit mb-4 group-hover:bg-yellow-500/20 transition-colors">
+                  <Target className="h-8 w-8 text-yellow-400" />
+                </div>
+                <h4 className="text-xl font-semibold mb-3 text-white">Ideal Weight Calculator</h4>
+                <p className="text-gray-400 mb-4 text-sm">
+                  Calculate ideal body weight using medical formulas including Devine, Robinson, and Miller methods.
+                </p>
+                <a
+                  href="/ideal-weight-calculator"
+                  className="inline-block bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-4 py-2 rounded-lg font-medium hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300 text-sm"
+                >
+                  Find Ideal Weight →
+                </a>
+              </div>
+
+              {/* Healthy Weight Calculator */}
+              <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-teal-500/50 transition-all duration-300 group">
+                <div className="p-3 rounded-full bg-teal-500/10 w-fit mb-4 group-hover:bg-teal-500/20 transition-colors">
+                  <Heart className="h-8 w-8 text-teal-400" />
+                </div>
+                <h4 className="text-xl font-semibold mb-3 text-white">Healthy Weight Calculator</h4>
+                <p className="text-gray-400 mb-4 text-sm">
+                  Get personalized healthy weight range based on BMI, age, activity level, and body frame analysis.
+                </p>
+                <a
+                  href="/healthy-weight-calculator"
+                  className="inline-block bg-gradient-to-r from-teal-500 to-teal-600 text-white px-4 py-2 rounded-lg font-medium hover:from-teal-600 hover:to-teal-700 transition-all duration-300 text-sm"
+                >
+                  Healthy Range →
+                </a>
+              </div>
+
+              {/* Body Type Calculator */}
+              <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-rose-500/50 transition-all duration-300 group">
+                <div className="p-3 rounded-full bg-rose-500/10 w-fit mb-4 group-hover:bg-rose-500/20 transition-colors">
+                  <Users className="h-8 w-8 text-rose-400" />
+                </div>
+                <h4 className="text-xl font-semibold mb-3 text-white">Body Type Calculator</h4>
+                <p className="text-gray-400 mb-4 text-sm">
+                  Discover your somatotype using Heath-Carter analysis for personalized fitness and nutrition recommendations.
+                </p>
+                <a
+                  href="/body-type-calculator"
+                  className="inline-block bg-gradient-to-r from-rose-500 to-rose-600 text-white px-4 py-2 rounded-lg font-medium hover:from-rose-600 hover:to-rose-700 transition-all duration-300 text-sm"
+                >
+                  Analyze Body Type →
+                </a>
+              </div>
+
+              {/* Body Surface Area Calculator */}
+              <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-orange-500/50 transition-all duration-300 group lg:col-start-2">
+                <div className="p-3 rounded-full bg-orange-500/10 w-fit mb-4 group-hover:bg-orange-500/20 transition-colors">
+                  <Stethoscope className="h-8 w-8 text-orange-400" />
+                </div>
+                <h4 className="text-xl font-semibold mb-3 text-white">Body Surface Area Calculator</h4>
+                <p className="text-gray-400 mb-4 text-sm">
+                  Calculate BSA using medical formulas including Du Bois, Mosteller, and Haycock methods for medical applications.
+                </p>
+                <a
+                  href="/body-surface-area-calculator"
+                  className="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 rounded-lg font-medium hover:from-orange-600 hover:to-orange-700 transition-all duration-300 text-sm"
+                >
+                  Calculate BSA →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Health Benefits Section */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
         <div className="container mx-auto">
