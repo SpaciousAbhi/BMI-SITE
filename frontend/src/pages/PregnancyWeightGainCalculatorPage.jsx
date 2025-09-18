@@ -88,7 +88,7 @@ const PregnancyWeightGainCalculatorPage = () => {
                     <p className="text-gray-300 text-sm">15-25 lbs total • 0.5-0.7 lbs/week (2nd & 3rd trimester)</p>
                   </div>
                   <div className="p-3 bg-red-900/20 rounded-lg">
-                    <p className="text-red-300 font-semibold">Obese (BMI ≥30)</p>
+                    <p className="text-red-300 font-semibold">Obese (BMI &ge;30)</p>
                     <p className="text-gray-300 text-sm">11-20 lbs total • 0.4-0.6 lbs/week (2nd & 3rd trimester)</p>
                   </div>
                 </div>
