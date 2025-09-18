@@ -305,6 +305,38 @@ function AnimatedRoutes() {
             </PageTransition>
           } 
         />
+        <Route 
+          path="/pace-calculator" 
+          element={
+            <PageTransition key="pace">
+              <PaceCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/calories-burned-calculator" 
+          element={
+            <PageTransition key="calories-burned">
+              <CaloriesBurnedCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/one-rep-max-calculator" 
+          element={
+            <PageTransition key="one-rep-max">
+              <OneRepMaxCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/target-heart-rate-calculator" 
+          element={
+            <PageTransition key="target-heart-rate">
+              <TargetHeartRateCalculatorPage />
+            </PageTransition>
+          } 
+        />
       </Routes>
     </AnimatePresence>
   );
