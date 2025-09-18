@@ -125,7 +125,13 @@ function SEOUpdater() {
       '/pace-calculator': 'pace calculator, running pace calculator, time distance calculator, VDOT calculator, race pace calculator, marathon pace calculator',
       '/calories-burned-calculator': 'calories burned calculator, exercise calorie burn, MET calculator, activity calorie calculator, workout calories, fitness tracker',
       '/one-rep-max-calculator': 'one rep max calculator, 1RM calculator, strength calculator, max lift calculator, powerlifting calculator, gym calculator',
-      '/target-heart-rate-calculator': 'target heart rate calculator, heart rate zones, cardio zones, Karvonen method, training heart rate, fitness zones'
+      '/target-heart-rate-calculator': 'target heart rate calculator, heart rate zones, cardio zones, Karvonen method, training heart rate, fitness zones',
+      '/pregnancy-calculator': 'pregnancy calculator, gestational age calculator, pregnancy tracker, due date calculator, pregnancy weeks, trimester calculator',
+      '/pregnancy-weight-gain-calculator': 'pregnancy weight gain calculator, IOM guidelines, healthy weight gain pregnancy, BMI pregnancy, maternal weight gain',
+      '/due-date-calculator': 'due date calculator, pregnancy due date, LMP calculator, conception date calculator, birth date predictor, pregnancy dating',
+      '/ovulation-calculator': 'ovulation calculator, fertile window calculator, ovulation tracker, conception calculator, fertility calendar, ovulation predictor',
+      '/conception-calculator': 'conception calculator, when did conception occur, pregnancy dating calculator, conception date calculator, fertility calculator',
+      '/period-calculator': 'period calculator, menstrual cycle calculator, period tracker, menstrual calendar, cycle predictor, period prediction'
     };
 
     // Update title
