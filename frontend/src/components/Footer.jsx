@@ -144,6 +144,42 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Fitness & Performance Calculators Section */}
+          <div>
+            <h3 className="text-white font-bold mb-3 text-base">
+              Fitness & Performance Calculators
+            </h3>
+            <div className="text-sm font-semibold text-purple-300 mb-4 border-l-2 border-purple-400 pl-3">
+              Fitness & Performance
+            </div>
+            <div className="space-y-2 max-h-52 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 pr-2">
+              <Link
+                to="/pace-calculator"
+                className="nav-link block text-gray-400 hover:text-purple-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Pace Calculator
+              </Link>
+              <Link
+                to="/calories-burned-calculator"
+                className="nav-link block text-gray-400 hover:text-purple-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Calories Burned Calculator
+              </Link>
+              <Link
+                to="/one-rep-max-calculator"
+                className="nav-link block text-gray-400 hover:text-purple-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                One Rep Max Calculator
+              </Link>
+              <Link
+                to="/target-heart-rate-calculator"
+                className="nav-link block text-gray-400 hover:text-purple-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                Target Heart Rate Calculator
+              </Link>
+            </div>
+          </div>
+
           {/* Legal & Privacy Section */}
           <div>
             <h3 className="text-white font-bold mb-4 text-base">
