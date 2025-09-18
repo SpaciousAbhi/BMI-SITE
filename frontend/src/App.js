@@ -11,6 +11,13 @@ import Home from "./pages/Home";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
 import ContactUs from "./pages/ContactUs";
+import BodyFatCalculatorPage from "./pages/BodyFatCalculatorPage";
+import ArmyBodyFatCalculatorPage from "./pages/ArmyBodyFatCalculatorPage";
+import LeanBodyMassCalculatorPage from "./pages/LeanBodyMassCalculatorPage";
+import IdealWeightCalculatorPage from "./pages/IdealWeightCalculatorPage";
+import HealthyWeightCalculatorPage from "./pages/HealthyWeightCalculatorPage";
+import BodyTypeCalculatorPage from "./pages/BodyTypeCalculatorPage";
+import BodySurfaceAreaCalculatorPage from "./pages/BodySurfaceAreaCalculatorPage";
 
 // Enhanced SEO Component for dynamic page titles and meta optimization
 function SEOUpdater() {
