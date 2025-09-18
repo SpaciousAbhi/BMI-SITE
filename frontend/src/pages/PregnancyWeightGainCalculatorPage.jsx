@@ -23,7 +23,7 @@ const PregnancyWeightGainCalculatorPage = () => {
                   How much weight should I gain during pregnancy?
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  Healthy pregnancy weight gain depends on your pre-pregnancy BMI. The Institute of Medicine (IOM) guidelines recommend: Underweight (BMI <18.5): 28-40 lbs, Normal weight (BMI 18.5-24.9): 25-35 lbs, Overweight (BMI 25-29.9): 15-25 lbs, Obese (BMI ≥30): 11-20 lbs. For twin pregnancies, recommended gains are higher. Our calculator provides personalized ranges based on your individual BMI.
+                  Healthy pregnancy weight gain depends on your pre-pregnancy BMI. The Institute of Medicine (IOM) guidelines recommend: Underweight (BMI &lt;18.5): 28-40 lbs, Normal weight (BMI 18.5-24.9): 25-35 lbs, Overweight (BMI 25-29.9): 15-25 lbs, Obese (BMI &ge;30): 11-20 lbs. For twin pregnancies, recommended gains are higher. Our calculator provides personalized ranges based on your individual BMI.
                 </p>
               </div>
               
