@@ -282,46 +282,46 @@ const TargetHeartRateCalculator = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6">
+    <div className="w-full max-w-4xl mx-auto p-3 sm:p-4 md:p-6">
       <Card className="bg-gray-900/50 border-gray-800">
-        <CardHeader className="text-center pb-8">
+        <CardHeader className="text-center pb-6 sm:pb-8">
           <div className="flex items-center justify-center mb-4">
             <div className="p-3 rounded-full bg-red-500/10 mr-4">
-              <Heart className="h-8 w-8 text-red-400" />
+              <Heart className="h-6 w-6 sm:h-8 sm:w-8 text-red-400" />
             </div>
-            <CardTitle className="text-3xl font-bold bg-gradient-to-r from-red-400 to-pink-400 bg-clip-text text-transparent">
+            <CardTitle className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-red-400 to-pink-400 bg-clip-text text-transparent">
               Advanced Target Heart Rate Calculator
             </CardTitle>
           </div>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto px-2">
             Calculate precise training zones using Karvonen method with resting heart rate. Get personalized training plans and zone-specific recommendations.
           </p>
         </CardHeader>
 
-        <CardContent className="space-y-8">
-          {/* Input Form */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <Label className="text-white font-semibold">Age *</Label>
+        <CardContent className="space-y-6 sm:space-y-8">
+          {/* Input Form - Enhanced responsive layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            <div className="space-y-3 sm:space-y-4">
+              <Label className="text-white font-semibold text-sm sm:text-base">Age *</Label>
               <Input
                 type="number"
                 placeholder="Enter your age"
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
-                className="bg-gray-800 border-gray-700 text-white"
+                className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10"
                 min="15"
                 max="100"
               />
             </div>
 
-            <div className="space-y-4">
-              <Label className="text-white font-semibold">Resting Heart Rate (Optional)</Label>
+            <div className="space-y-3 sm:space-y-4">
+              <Label className="text-white font-semibold text-sm sm:text-base">Resting Heart Rate (Optional)</Label>
               <Input
                 type="number"
                 placeholder="Enter resting HR (e.g., 60)"
                 value={restingHR}
                 onChange={(e) => setRestingHR(e.target.value)}
-                className="bg-gray-800 border-gray-700 text-white"
+                className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10"
                 min="40"
                 max="100"
               />
@@ -331,11 +331,11 @@ const TargetHeartRateCalculator = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <Label className="text-white font-semibold">Fitness Level</Label>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            <div className="space-y-3 sm:space-y-4">
+              <Label className="text-white font-semibold text-sm sm:text-base">Fitness Level</Label>
               <Select value={fitnessLevel} onValueChange={setFitnessLevel}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-800 border-gray-700">
@@ -349,10 +349,10 @@ const TargetHeartRateCalculator = () => {
               </Select>
             </div>
 
-            <div className="space-y-4">
-              <Label className="text-white font-semibold">Gender (Optional)</Label>
+            <div className="space-y-3 sm:space-y-4">
+              <Label className="text-white font-semibold text-sm sm:text-base">Gender (Optional)</Label>
               <Select value={gender} onValueChange={setGender}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+                <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
                   <SelectValue placeholder="Select gender for better accuracy" />
                 </SelectTrigger>
                 <SelectContent className="bg-gray-800 border-gray-700">
@@ -363,10 +363,10 @@ const TargetHeartRateCalculator = () => {
             </div>
           </div>
 
-          <div className="space-y-4">
-            <Label className="text-white font-semibold">Calculation Method</Label>
+          <div className="space-y-3 sm:space-y-4">
+            <Label className="text-white font-semibold text-sm sm:text-base">Calculation Method</Label>
             <Select value={method} onValueChange={setMethod}>
-              <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
+              <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="bg-gray-800 border-gray-700">
@@ -380,20 +380,20 @@ const TargetHeartRateCalculator = () => {
             </p>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex gap-4 pt-6">
+          {/* Action Buttons - Enhanced mobile design */}
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6">
             <Button
               onClick={calculateHeartRate}
               disabled={!isFormValid() || loading}
-              className="flex-1 bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-semibold py-3 rounded-lg transition-all duration-300 transform hover:scale-105"
+              className="flex-1 bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-semibold py-3 h-12 sm:h-auto rounded-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
             >
               {loading ? (
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-center space-x-2">
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
                   <span>Calculating...</span>
                 </div>
               ) : (
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center justify-center space-x-2">
                   <Heart className="h-5 w-5" />
                   <span>Calculate Heart Rate Zones</span>
                 </div>
@@ -402,72 +402,72 @@ const TargetHeartRateCalculator = () => {
             <Button
               onClick={resetForm}
               variant="outline"
-              className="px-8 border-gray-600 text-gray-300 hover:bg-gray-800"
+              className="px-6 border-gray-600 text-gray-300 hover:bg-gray-800 h-12 sm:h-auto sm:px-8"
             >
               Reset
             </Button>
           </div>
 
-          {/* Results */}
+          {/* Results - Enhanced mobile responsiveness */}
           {result && (
-            <div className="mt-8 p-6 bg-gradient-to-r from-red-900/20 to-pink-900/20 rounded-xl border border-red-800/30">
-              <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-                <TrendingUp className="h-6 w-6 mr-2 text-red-400" />
+            <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-red-900/20 to-pink-900/20 rounded-xl border border-red-800/30">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center">
+                <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 mr-2 text-red-400" />
                 Your Heart Rate Training Zones
               </h3>
 
-              {/* Key Metrics */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <div className="text-center p-4 bg-red-900/20 rounded-lg border border-red-800/30">
-                  <div className="text-3xl font-bold text-red-300">{result.maxHeartRate}</div>
-                  <div className="text-red-200 font-medium">Max HR</div>
+              {/* Key Metrics - Responsive grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div className="text-center p-3 sm:p-4 bg-red-900/20 rounded-lg border border-red-800/30">
+                  <div className="text-2xl sm:text-3xl font-bold text-red-300">{result.maxHeartRate}</div>
+                  <div className="text-xs sm:text-sm text-red-200 font-medium">Max HR</div>
                   <div className="text-xs text-gray-400">BPM</div>
                 </div>
-                <div className="text-center p-4 bg-blue-900/20 rounded-lg border border-blue-800/30">
-                  <div className="text-3xl font-bold text-blue-300">{result.restingHeartRate}</div>
-                  <div className="text-blue-200 font-medium">Resting HR</div>
+                <div className="text-center p-3 sm:p-4 bg-blue-900/20 rounded-lg border border-blue-800/30">
+                  <div className="text-2xl sm:text-3xl font-bold text-blue-300">{result.restingHeartRate}</div>
+                  <div className="text-xs sm:text-sm text-blue-200 font-medium">Resting HR</div>
                   <div className="text-xs text-gray-400">BPM</div>
                 </div>
-                <div className="text-center p-4 bg-green-900/20 rounded-lg border border-green-800/30">
-                  <div className="text-3xl font-bold text-green-300">{result.heartRateReserve}</div>
-                  <div className="text-green-200 font-medium">HR Reserve</div>
+                <div className="text-center p-3 sm:p-4 bg-green-900/20 rounded-lg border border-green-800/30">
+                  <div className="text-2xl sm:text-3xl font-bold text-green-300">{result.heartRateReserve}</div>
+                  <div className="text-xs sm:text-sm text-green-200 font-medium">HR Reserve</div>
                   <div className="text-xs text-gray-400">BPM</div>
                 </div>
-                <div className="text-center p-4 bg-yellow-900/20 rounded-lg border border-yellow-800/30">
-                  <div className="text-2xl font-bold text-yellow-300">{result.fatBurningZone.min}-{result.fatBurningZone.max}</div>
-                  <div className="text-yellow-200 font-medium">Fat Burn Zone</div>
+                <div className="text-center p-3 sm:p-4 bg-yellow-900/20 rounded-lg border border-yellow-800/30">
+                  <div className="text-lg sm:text-2xl font-bold text-yellow-300">{result.fatBurningZone.min}-{result.fatBurningZone.max}</div>
+                  <div className="text-xs sm:text-sm text-yellow-200 font-medium">Fat Burn Zone</div>
                   <div className="text-xs text-gray-400">BPM</div>
                 </div>
               </div>
 
-              {/* Training Zones */}
-              <div className="bg-gray-800/50 p-4 rounded-lg mb-6">
-                <h4 className="text-lg font-semibold text-white mb-4 flex items-center">
-                  <Target className="h-5 w-5 mr-2" />
+              {/* Training Zones - Mobile optimized */}
+              <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg mb-4 sm:mb-6">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4 flex items-center">
+                  <Target className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   Training Zones Breakdown
                 </h4>
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {result.zones.map((zone, idx) => (
-                    <div key={idx} className={`p-4 rounded-lg border ${getZoneColor(zone.color)}`}>
-                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                    <div key={idx} className={`p-3 sm:p-4 rounded-lg border ${getZoneColor(zone.color)}`}>
+                      <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 sm:gap-4 items-start">
                         <div>
-                          <div className="font-bold text-lg">Zone {zone.zone}: {zone.name}</div>
-                          <div className="text-sm opacity-80">{zone.percentage.min}-{zone.percentage.max}%</div>
+                          <div className="font-bold text-sm sm:text-lg">Zone {zone.zone}: {zone.name}</div>
+                          <div className="text-xs sm:text-sm opacity-80">{zone.percentage.min}-{zone.percentage.max}%</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-2xl font-bold">{zone.minHR}-{zone.maxHR}</div>
+                          <div className="text-lg sm:text-2xl font-bold">{zone.minHR}-{zone.maxHR}</div>
                           <div className="text-xs">BPM Range</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-lg font-semibold">{zone.duration}</div>
+                          <div className="text-sm sm:text-lg font-semibold">{zone.duration}</div>
                           <div className="text-xs">Duration</div>
                         </div>
-                        <div className="text-sm">
+                        <div className="text-xs sm:text-sm">
                           <div className="font-medium mb-1">{zone.description}</div>
-                          <div className="text-xs opacity-70">{zone.activities}</div>
+                          <div className="opacity-70">{zone.activities}</div>
                         </div>
                       </div>
-                      <div className="mt-2 text-sm opacity-80">
+                      <div className="mt-2 text-xs sm:text-sm opacity-80">
                         <strong>Benefits:</strong> {zone.benefits}
                       </div>
                     </div>
@@ -475,16 +475,16 @@ const TargetHeartRateCalculator = () => {
                 </div>
               </div>
 
-              {/* Weekly Training Plan */}
-              <div className="bg-gray-800/50 p-4 rounded-lg mb-6">
-                <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                  <Activity className="h-5 w-5 mr-2" />
+              {/* Weekly Training Plan - Mobile optimized */}
+              <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg mb-4 sm:mb-6">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-3 flex items-center">
+                  <Activity className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   Suggested Weekly Training Plan
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-7 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-7 gap-2">
                   {result.weeklyPlan.map((day, idx) => (
-                    <div key={idx} className="text-center p-3 bg-gray-700/30 rounded-lg">
-                      <div className="font-semibold text-white text-sm">{day.day}</div>
+                    <div key={idx} className="text-center p-2 sm:p-3 bg-gray-700/30 rounded-lg">
+                      <div className="font-semibold text-white text-xs sm:text-sm">{day.day}</div>
                       <div className="text-xs text-blue-300 font-medium">{day.zone}</div>
                       <div className="text-xs text-gray-400">{day.duration}</div>
                       <div className="text-xs text-gray-400 mt-1">{day.activity}</div>
@@ -493,21 +493,21 @@ const TargetHeartRateCalculator = () => {
                 </div>
               </div>
 
-              {/* Recommendations */}
-              <div className="bg-gray-800/50 p-4 rounded-lg">
-                <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                  <Zap className="h-5 w-5 mr-2" />
+              {/* Recommendations - Mobile optimized */}
+              <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-3 flex items-center">
+                  <Zap className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   Personalized Recommendations
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
                   {result.recommendations.map((rec, idx) => (
-                    <div key={idx} className="p-3 bg-gray-700/30 rounded-lg">
+                    <div key={idx} className="p-2 sm:p-3 bg-gray-700/30 rounded-lg">
                       <div className="flex items-start space-x-3">
-                        <div className="text-2xl">{rec.icon}</div>
+                        <div className="text-lg sm:text-2xl">{rec.icon}</div>
                         <div>
-                          <div className="font-semibold text-white">{rec.title}</div>
+                          <div className="font-semibold text-white text-sm sm:text-base">{rec.title}</div>
                           <div className="text-xs text-blue-300 mb-1">{rec.category}</div>
-                          <div className="text-sm text-gray-300">{rec.message}</div>
+                          <div className="text-xs sm:text-sm text-gray-300">{rec.message}</div>
                         </div>
                       </div>
                     </div>
@@ -515,13 +515,13 @@ const TargetHeartRateCalculator = () => {
                 </div>
               </div>
 
-              {/* Important Notes */}
-              <div className="bg-yellow-900/10 border border-yellow-800/30 p-4 rounded-lg mt-6">
+              {/* Important Notes - Mobile optimized */}
+              <div className="bg-yellow-900/10 border border-yellow-800/30 p-3 sm:p-4 rounded-lg mt-4 sm:mt-6">
                 <div className="flex items-start space-x-3">
-                  <AlertCircle className="h-6 w-6 text-yellow-400 flex-shrink-0 mt-0.5" />
+                  <AlertCircle className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-400 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h5 className="font-semibold text-yellow-300 mb-2">Important Notes:</h5>
-                    <ul className="text-sm text-gray-300 space-y-1">
+                    <h5 className="font-semibold text-yellow-300 mb-2 text-sm sm:text-base">Important Notes:</h5>
+                    <ul className="text-xs sm:text-sm text-gray-300 space-y-1">
                       <li>• These are general guidelines. Individual responses may vary.</li>
                       <li>• Consult a healthcare provider before starting intense exercise programs.</li>
                       <li>• Monitor how you feel during exercise - ratings of perceived exertion matter too.</li>
