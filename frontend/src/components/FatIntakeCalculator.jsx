@@ -655,7 +655,7 @@ const FatIntakeCalculator = () => {
                 <div className="text-center p-4 bg-red-900/20 rounded-lg border border-red-800/30">
                   <div className="text-2xl font-bold text-red-300">{result.fatTypes.saturated}g</div>
                   <div className="text-red-200 font-medium">Saturated</div>
-                  <div className="text-xs text-gray-400 mt-2"><10% of total calories</div>
+                  <div className="text-xs text-gray-400 mt-2">&lt;10% of total calories</div>
                 </div>
 
                 <div className="text-center p-4 bg-green-900/20 rounded-lg border border-green-800/30">
