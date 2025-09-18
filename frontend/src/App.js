@@ -25,6 +25,10 @@ import MacroCalculatorPage from "./pages/MacroCalculatorPage";
 import CarbohydrateCalculatorPage from "./pages/CarbohydrateCalculatorPage";
 import ProteinCalculatorPage from "./pages/ProteinCalculatorPage";
 import FatIntakeCalculatorPage from "./pages/FatIntakeCalculatorPage";
+import PaceCalculatorPage from "./pages/PaceCalculatorPage";
+import CaloriesBurnedCalculatorPage from "./pages/CaloriesBurnedCalculatorPage";
+import OneRepMaxCalculatorPage from "./pages/OneRepMaxCalculatorPage";
+import TargetHeartRateCalculatorPage from "./pages/TargetHeartRateCalculatorPage";
 
 // Enhanced SEO Component for dynamic page titles and meta optimization
 function SEOUpdater() {
