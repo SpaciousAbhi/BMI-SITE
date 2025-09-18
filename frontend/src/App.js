@@ -29,6 +29,12 @@ import PaceCalculatorPage from "./pages/PaceCalculatorPage";
 import CaloriesBurnedCalculatorPage from "./pages/CaloriesBurnedCalculatorPage";
 import OneRepMaxCalculatorPage from "./pages/OneRepMaxCalculatorPage";
 import TargetHeartRateCalculatorPage from "./pages/TargetHeartRateCalculatorPage";
+import PregnancyCalculatorPage from "./pages/PregnancyCalculatorPage";
+import PregnancyWeightGainCalculatorPage from "./pages/PregnancyWeightGainCalculatorPage";
+import DueDateCalculatorPage from "./pages/DueDateCalculatorPage";
+import OvulationCalculatorPage from "./pages/OvulationCalculatorPage";
+import ConceptionCalculatorPage from "./pages/ConceptionCalculatorPage";
+import PeriodCalculatorPage from "./pages/PeriodCalculatorPage";
 
 // Enhanced SEO Component for dynamic page titles and meta optimization
 function SEOUpdater() {
