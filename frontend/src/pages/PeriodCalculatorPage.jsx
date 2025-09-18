@@ -1,172 +1,239 @@
 import React from "react";
 import PeriodCalculator from "../components/PeriodCalculator";
+import PageTransition from "../components/PageTransition";
 
 const PeriodCalculatorPage = () => {
   return (
-    <div className="min-h-screen bg-black text-white py-8">
-      <div className="container mx-auto px-4">
-        {/* Page Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-red-400 to-pink-400 bg-clip-text text-transparent">
-              Period Calculator
-            </span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Track and predict your menstrual cycle with comprehensive period and fertility insights. 
-            Plan ahead with accurate predictions and understand your cycle phases.
-          </p>
-        </div>
-
-        {/* Calculator Component */}
+    <PageTransition>
+      <div className="min-h-screen bg-black">
         <PeriodCalculator />
-
-        {/* Educational Content */}
-        <div className="mt-12 max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <h3 className="text-xl font-semibold mb-4 text-red-400">Understanding Your Menstrual Cycle</h3>
-              <p className="text-gray-300 mb-4">
-                The menstrual cycle is a natural process that prepares your body for potential pregnancy 
-                each month. A typical cycle lasts 21-35 days, with the average being 28 days. Understanding 
-                your cycle helps with family planning, health monitoring, and general well-being.
-              </p>
-              <ul className="text-gray-400 text-sm space-y-2">
-                <li>• Average cycle length: 28 days (normal range: 21-35 days)</li>
-                <li>• Period duration: 3-7 days (average 5 days)</li>
-                <li>• Cycle regularity may vary ±7 days normally</li>
-                <li>• Hormone levels fluctuate throughout the cycle</li>
-              </ul>
-            </div>
-
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <h3 className="text-xl font-semibold mb-4 text-pink-400">Cycle Phases Explained</h3>
-              <p className="text-gray-300 mb-4">
-                Your menstrual cycle consists of four main phases, each with distinct hormonal changes 
-                and physical characteristics. Understanding these phases helps you recognize normal 
-                patterns and identify any irregularities that may need medical attention.
-              </p>
-              <ul className="text-gray-400 text-sm space-y-2">
-                <li>• <strong>Menstrual Phase:</strong> Shedding of uterine lining (Days 1-5)</li>
-                <li>• <strong>Follicular Phase:</strong> Egg development and estrogen rise</li>
-                <li>• <strong>Ovulation:</strong> Egg release and peak fertility (around Day 14)</li>
-                <li>• <strong>Luteal Phase:</strong> Progesterone dominance (Days 15-28)</li>
-              </ul>
+        
+        {/* Enhanced SEO Content Section */}
+        <div className="max-w-4xl mx-auto p-6 mt-8">
+          
+          {/* Comprehensive FAQ Section */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+              Frequently Asked Questions - Period Calculator
+            </h2>
+            
+            <div className="space-y-6">
+              <div className="border-b border-gray-800 pb-4">
+                <h3 className="text-lg font-semibold text-red-400 mb-2">
+                  How accurate is the period calculator?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Our period calculator provides reliable predictions for women with regular cycles (varying by <7 days). It uses your historical cycle data to predict future periods, ovulation, and fertile windows. Accuracy is highest when you have consistent cycle patterns. For irregular cycles due to stress, PCOS, or other factors, predictions may vary and should be used as estimates.
+                </p>
+              </div>
+              
+              <div className="border-b border-gray-800 pb-4">
+                <h3 className="text-lg font-semibold text-red-400 mb-2">
+                  What is considered a normal menstrual cycle?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  A normal menstrual cycle ranges from 21-35 days, with 28 days being average. Period length typically lasts 3-7 days with 5 days being average. The cycle is counted from the first day of one period to the first day of the next. Slight variations (±2-3 days) month to month are normal, especially during puberty and perimenopause.
+                </p>
+              </div>
+              
+              <div className="border-b border-gray-800 pb-4">
+                <h3 className="text-lg font-semibold text-red-400 mb-2">
+                  Why should I track my menstrual cycle?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Cycle tracking helps you understand your body's patterns, predict periods for planning activities, identify fertile windows for conception or contraception, detect irregularities that may indicate health issues (like PCOS or thyroid problems), and understand how hormones affect mood, energy, and physical symptoms throughout your cycle.
+                </p>
+              </div>
+              
+              <div className="border-b border-gray-800 pb-4">
+                <h3 className="text-lg font-semibold text-red-400 mb-2">
+                  What factors can affect my menstrual cycle?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Many factors can influence cycle regularity: stress (physical or emotional), significant weight changes, excessive exercise, hormonal birth control, medications, travel/time zone changes, illness, breastfeeding, perimenopause, medical conditions (PCOS, thyroid disorders, endometriosis), and age (cycles often become irregular during puberty and before menopause).
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold text-red-400 mb-2">
+                  When should I consult a healthcare provider?
+                </h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  See a doctor if you experience: absent periods for 3+ months (if not pregnant/breastfeeding), cycles shorter than 21 days or longer than 35 days, extremely heavy bleeding (changing pad/tampon hourly), severe cramping that interferes with daily activities, bleeding between periods, sudden changes in cycle patterns, or concerning symptoms like excessive pain, clotting, or irregular bleeding.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* SEO Content */}
-          <div className="mt-8 bg-gray-900/30 p-6 rounded-xl">
-            <h3 className="text-2xl font-semibold mb-4 text-white">Menstrual Cycle Health and Tracking</h3>
+          {/* Educational Content Section */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+              Understanding Your Menstrual Cycle & Hormones
+            </h2>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h4 className="text-lg font-semibold mb-3 text-red-300">Normal vs. Irregular Cycles</h4>
-                <div className="space-y-3 text-sm">
-                  <div className="p-3 bg-green-900/20 rounded-lg border border-green-800/30">
-                    <div className="font-medium text-green-300">Regular Cycles</div>
-                    <div className="text-gray-400 text-xs mt-1">
-                      • 21-35 day length consistently<br/>
-                      • Variation of ±7 days is normal<br/>
-                      • Predictable symptoms and flow
-                    </div>
-                  </div>
-                  <div className="p-3 bg-orange-900/20 rounded-lg border border-orange-800/30">
-                    <div className="font-medium text-orange-300">Irregular Cycles</div>
-                    <div className="text-gray-400 text-xs mt-1">
-                      • Length varies >9 days between cycles<br/>
-                      • Cycles shorter than 21 or longer than 35 days<br/>
-                      • Absent periods (amenorrhea)
-                    </div>
-                  </div>
-                  <div className="p-3 bg-yellow-900/20 rounded-lg border border-yellow-800/30">
-                    <div className="font-medium text-yellow-300">When to See a Doctor</div>
-                    <div className="text-gray-400 text-xs mt-1">
-                      • Sudden changes in cycle pattern<br/>
-                      • Severe pain or very heavy bleeding<br/>
-                      • Missed periods without pregnancy
-                    </div>
-                  </div>
-                </div>
+                <h3 className="text-lg font-semibold text-pink-400 mb-3">Hormonal Changes Throughout Your Cycle</h3>
+                <ul className="text-gray-300 text-sm space-y-2 mb-4">
+                  <li><strong>Days 1-7 (Menstrual):</strong> Estrogen & progesterone low, menstruation occurs</li>
+                  <li><strong>Days 1-13 (Follicular):</strong> FSH rises, follicles develop, estrogen increases</li>
+                  <li><strong>Day 14 (Ovulation):</strong> LH surge triggers egg release, estrogen peaks</li>
+                  <li><strong>Days 15-28 (Luteal):</strong> Progesterone rises, prepares uterus for pregnancy</li>
+                </ul>
+                
+                <h3 className="text-lg font-semibold text-pink-400 mb-3">Symptoms by Cycle Phase</h3>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li><strong>Menstrual:</strong> Cramping, fatigue, mood changes</li>
+                  <li><strong>Follicular:</strong> Energy increases, mood improves</li>
+                  <li><strong>Ovulation:</strong> Peak energy, increased libido</li>
+                  <li><strong>Luteal:</strong> PMS symptoms, breast tenderness</li>
+                </ul>
               </div>
+              
               <div>
-                <h4 className="text-lg font-semibold mb-3 text-pink-300">Factors Affecting Your Cycle</h4>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between items-center p-2 bg-purple-900/20 rounded">
-                    <span className="text-gray-400">Stress:</span>
-                    <span className="text-purple-300">Can delay ovulation</span>
-                  </div>
-                  <div className="flex justify-between items-center p-2 bg-blue-900/20 rounded">
-                    <span className="text-gray-400">Weight changes:</span>
-                    <span className="text-blue-300">Affect hormone levels</span>
-                  </div>
-                  <div className="flex justify-between items-center p-2 bg-teal-900/20 rounded">
-                    <span className="text-gray-400">Exercise:</span>
-                    <span className="text-teal-300">Intense training can affect cycles</span>
-                  </div>
-                  <div className="flex justify-between items-center p-2 bg-indigo-900/20 rounded">
-                    <span className="text-gray-400">Age:</span>
-                    <span className="text-indigo-300">Cycles change over time</span>
-                  </div>
-                  <div className="flex justify-between items-center p-2 bg-rose-900/20 rounded">
-                    <span className="text-gray-400">Medications:</span>
-                    <span className="text-rose-300">Birth control affects timing</span>
-                  </div>
-                </div>
-                <div className="mt-4 p-3 bg-cyan-900/20 rounded-lg border border-cyan-800/30">
-                  <div className="font-medium text-cyan-300 mb-2">Tracking Benefits:</div>
-                  <div className="text-gray-400 text-xs space-y-1">
-                    <div>• Identify fertile windows for conception</div>
-                    <div>• Plan activities around energy levels</div>
-                    <div>• Monitor cycle health and changes</div>
-                    <div>• Prepare for PMS symptoms</div>
-                  </div>
-                </div>
+                <h3 className="text-lg font-semibold text-purple-400 mb-3">Healthy Period Management</h3>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li>• Use appropriate menstrual products (pads, tampons, cups)</li>
+                  <li>• Change products every 4-6 hours for hygiene</li>
+                  <li>• Apply heat therapy for cramp relief</li>
+                  <li>• Stay hydrated and eat iron-rich foods</li>
+                  <li>• Exercise gently to reduce symptoms</li>
+                  <li>• Get adequate sleep and manage stress</li>
+                  <li>• Consider over-the-counter pain relief if needed</li>
+                </ul>
+                
+                <h3 className="text-lg font-semibold text-purple-400 mb-3 mt-4">Red Flags to Watch For</h3>
+                <ul className="text-gray-300 text-sm space-y-2">
+                  <li>• Bleeding through a pad/tampon every hour</li>
+                  <li>• Clots larger than a quarter</li>
+                  <li>• Periods lasting longer than 7 days</li>
+                  <li>• Severe pain preventing normal activities</li>
+                  <li>• Fever during menstruation</li>
+                  <li>• Sudden, significant cycle changes</li>
+                </ul>
               </div>
             </div>
           </div>
 
-          {/* FAQ Section */}
-          <div className="mt-8 bg-gray-900/30 p-6 rounded-xl">
-            <h3 className="text-2xl font-semibold mb-4 text-white">Frequently Asked Questions</h3>
-            <div className="space-y-4">
-              <div>
-                <h4 className="text-lg font-semibold text-red-400 mb-2">How accurate are period predictions?</h4>
-                <p className="text-gray-300 text-sm">
-                  Period predictions are generally accurate within 1-3 days for women with regular cycles. 
-                  Accuracy improves after tracking for 3+ cycles. For irregular cycles, predictions are less 
-                  reliable and may vary by several days. Stress, illness, and lifestyle changes can affect timing.
+          {/* Cycle Tracking Benefits Section */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+              Benefits of Digital Period Tracking
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-4 bg-blue-900/20 border border-blue-800/30 rounded-lg">
+                <h3 className="text-blue-400 font-semibold mb-3">Health Monitoring</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Track symptoms, flow intensity, and cycle patterns to identify health issues early. 
+                  Share data with healthcare providers for better diagnosis and treatment of conditions 
+                  like PCOS, endometriosis, or thyroid disorders.
                 </p>
               </div>
-              <div>
-                <h4 className="text-lg font-semibold text-pink-400 mb-2">What's considered a normal period?</h4>
-                <p className="text-gray-300 text-sm">
-                  A normal period lasts 3-7 days with moderate flow that gradually decreases. Color ranges 
-                  from bright red to dark brown. You should use 3-6 pads/tampons per day on average. 
-                  Severe pain requiring prescription medication or flow requiring hourly changes may indicate problems.
+              
+              <div className="p-4 bg-green-900/20 border border-green-800/30 rounded-lg">
+                <h3 className="text-green-400 font-semibold mb-3">Fertility Awareness</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Understand your fertile windows for conception or natural family planning. 
+                  Track ovulation patterns and cervical mucus changes to optimize timing for 
+                  pregnancy or identify safe days for contraception.
                 </p>
               </div>
-              <div>
-                <h4 className="text-lg font-semibold text-red-400 mb-2">Can I get pregnant during my period?</h4>
-                <p className="text-gray-300 text-sm">
-                  While uncommon, pregnancy during menstruation is possible, especially with short cycles 
-                  or long periods. Sperm can survive up to 5 days, so if you ovulate early after your period 
-                  ends, conception could occur. Use contraception consistently if you want to avoid pregnancy.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-pink-400 mb-2">Why is my cycle suddenly irregular?</h4>
-                <p className="text-gray-300 text-sm">
-                  Cycle irregularities can result from stress, significant weight changes, intense exercise, 
-                  illness, medication changes, or hormonal imbalances. Occasional irregularity is normal, 
-                  but persistent changes warrant consultation with a healthcare provider to rule out conditions 
-                  like PCOS or thyroid disorders.
+              
+              <div className="p-4 bg-purple-900/20 border border-purple-800/30 rounded-lg">
+                <h3 className="text-purple-400 font-semibold mb-3">Lifestyle Planning</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Plan activities, travel, and exercise around your cycle. Understand how hormones 
+                  affect energy, mood, and performance. Prepare for PMS symptoms and adjust 
+                  self-care routines based on cycle phases.
                 </p>
               </div>
             </div>
           </div>
+
+          {/* Related Calculators Section */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
+              Related Women's Health & Fertility Tools
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <a href="/ovulation-calculator" className="p-4 bg-rose-900/20 border border-rose-800/30 rounded-lg hover:bg-rose-900/30 transition-colors">
+                <h3 className="text-rose-400 font-semibold mb-2">Ovulation Calculator</h3>
+                <p className="text-gray-300 text-sm">Track fertile windows and optimize conception timing</p>
+              </a>
+              
+              <a href="/conception-calculator" className="p-4 bg-purple-900/20 border border-purple-800/30 rounded-lg hover:bg-purple-900/30 transition-colors">
+                <h3 className="text-purple-400 font-semibold mb-2">Conception Calculator</h3>
+                <p className="text-gray-300 text-sm">Calculate when conception occurred from dates</p>
+              </a>
+              
+              <a href="/pregnancy-calculator" className="p-4 bg-pink-900/20 border border-pink-800/30 rounded-lg hover:bg-pink-900/30 transition-colors">
+                <h3 className="text-pink-400 font-semibold mb-2">Pregnancy Calculator</h3>
+                <p className="text-gray-300 text-sm">Track pregnancy progress and milestones</p>
+              </a>
+            </div>
+          </div>
         </div>
+
+        {/* JSON-LD Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "MedicalRiskCalculator",
+              "name": "Period Calculator - Menstrual Cycle Tracker",
+              "description": "Advanced period calculator to track and predict menstrual cycles with comprehensive fertility insights and cycle analysis",
+              "url": "https://your-domain.com/period-calculator",
+              "medicalSpecialty": "Gynecology",
+              "usageInfo": "Enter last period date and cycle length to predict future periods and fertile windows",
+              "applicationCategory": "HealthApplication",
+              "operatingSystem": "Web",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "Advanced BMI Calculator",
+                "url": "https://your-domain.com"
+              },
+              "mainEntity": {
+                "@type": "FAQPage",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "What is considered a normal menstrual cycle?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "A normal menstrual cycle ranges from 21-35 days with 28 days average. Period length is typically 3-7 days with 5 days average. Slight monthly variations (±2-3 days) are normal."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "Why should I track my menstrual cycle?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Cycle tracking helps predict periods, identify fertile windows, detect health issues, understand hormonal effects on mood and energy, and plan activities around your cycle."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "When should I see a doctor about my periods?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Consult a doctor for absent periods (3+ months), cycles <21 or >35 days, extremely heavy bleeding, severe cramping, bleeding between periods, or sudden cycle changes."
+                    }
+                  }
+                ]
+              }
+            })
+          }}
+        />
       </div>
-    </div>
+    </PageTransition>
   );
 };
 
