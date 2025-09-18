@@ -390,13 +390,15 @@
 
 ## metadata:
   created_by: "main_agent"
-  version: "2.3"
-  test_sequence: 4
+  version: "2.4"
+  test_sequence: 5
   run_ui: true
 
 ## test_plan:
   current_focus:
-    - "Nutrition Calculators Enhancement & Optimization - Complete Testing"
+    - "Nutrition Calculator Comprehensive Optimization - Carb, Protein, Fat Intake"
+    - "Mobile Responsiveness & SEO Enhancement Testing"
+    - "Advanced Content & FAQ Implementation Verification"
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
