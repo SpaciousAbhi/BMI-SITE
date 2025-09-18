@@ -149,6 +149,62 @@ function AnimatedRoutes() {
             </PageTransition>
           } 
         />
+        <Route 
+          path="/body-fat-calculator" 
+          element={
+            <PageTransition key="body-fat">
+              <BodyFatCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/army-body-fat-calculator" 
+          element={
+            <PageTransition key="army-body-fat">
+              <ArmyBodyFatCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/lean-body-mass-calculator" 
+          element={
+            <PageTransition key="lean-body-mass">
+              <LeanBodyMassCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/ideal-weight-calculator" 
+          element={
+            <PageTransition key="ideal-weight">
+              <IdealWeightCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/healthy-weight-calculator" 
+          element={
+            <PageTransition key="healthy-weight">
+              <HealthyWeightCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/body-type-calculator" 
+          element={
+            <PageTransition key="body-type">
+              <BodyTypeCalculatorPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/body-surface-area-calculator" 
+          element={
+            <PageTransition key="body-surface-area">
+              <BodySurfaceAreaCalculatorPage />
+            </PageTransition>
+          } 
+        />
       </Routes>
     </AnimatePresence>
   );
