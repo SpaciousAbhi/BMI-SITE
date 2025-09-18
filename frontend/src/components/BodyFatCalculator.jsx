@@ -168,7 +168,7 @@ const BodyFatCalculator = () => {
     }
 
     // Calculate fat mass and lean mass
-    const weightInKg = weightUnit === "kg" ? parseFloat(weight) : weightInLbs / 2.20462;
+    const weightInKg = weightUnit === "kg" ? parseFloat(weight) : parseFloat(weight) / 2.20462;
     const fatMass = weightInKg * (bodyFatPercentage / 100);
     const leanMass = weightInKg - fatMass;
 
