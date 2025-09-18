@@ -228,6 +228,30 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Medical & Health Calculators Section */}
+          <div>
+            <h3 className="text-white font-bold mb-3 text-base">
+              Medical & Health Calculators
+            </h3>
+            <div className="text-sm font-semibold text-red-300 mb-4 border-l-2 border-red-400 pl-3">
+              Medical & Health
+            </div>
+            <div className="space-y-2">
+              <Link
+                to="/gfr-calculator"
+                className="nav-link block text-gray-400 hover:text-red-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                GFR Calculator
+              </Link>
+              <Link
+                to="/bac-calculator"
+                className="nav-link block text-gray-400 hover:text-red-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+              >
+                BAC Calculator
+              </Link>
+            </div>
+          </div>
+
           {/* Legal & Privacy Section */}
           <div>
             <h3 className="text-white font-bold mb-4 text-base">
