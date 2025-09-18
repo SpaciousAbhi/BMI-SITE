@@ -78,7 +78,11 @@ function SEOUpdater() {
       '/macro-calculator': 'Calculate optimal macronutrient distribution for protein, carbohydrates, and fats. Get personalized macro ratios based on goals, activity level, and dietary preferences.',
       '/carbohydrate-calculator': 'Calculate daily carbohydrate intake for athletic performance, weight loss, or health goals. Get carb timing recommendations and source guidance.',
       '/protein-calculator': 'Calculate daily protein requirements for muscle building, weight loss, and health. Get personalized protein targets with timing and source recommendations.',
-      '/fat-intake-calculator': 'Calculate optimal daily fat intake for health and performance. Get personalized fat type distribution and heart-healthy fat source recommendations.'
+      '/fat-intake-calculator': 'Calculate optimal daily fat intake for health and performance. Get personalized fat type distribution and heart-healthy fat source recommendations.',
+      '/pace-calculator': 'Calculate running pace, time, or distance with precision. Get race predictions, splits, and VDOT analysis for serious runners and fitness training.',
+      '/calories-burned-calculator': 'Calculate precise calorie expenditure with advanced MET values, body composition factors, and personalized exercise recommendations.',
+      '/one-rep-max-calculator': 'Calculate your one-rep maximum using 7 proven formulas. Get training zones, rep ranges, and progressive overload recommendations for strength training.',
+      '/target-heart-rate-calculator': 'Calculate precise training zones using Karvonen method with resting heart rate. Get personalized heart rate zones and cardio training plans.'
     };
 
     const keywords = {
