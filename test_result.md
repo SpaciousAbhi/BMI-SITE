@@ -486,8 +486,8 @@
         - comment: "HOMEPAGE SECTION VERIFIED: Additional Body Composition Calculators section displaying perfectly on homepage with professional card-based layout. All calculator cards have proper descriptions, color-coded icons, and functional navigation links. Section positioned correctly after BMI calculator."
 
   - task: "Body Fat Calculator Calculation Bug Fix"
-    implemented: false
-    working: false
+    implemented: true
+    working: true
     file: "/app/frontend/src/components/BodyFatCalculator.jsx"
     stuck_count: 0
     priority: "high"
@@ -496,6 +496,9 @@
         - working: false
         - agent: "testing"
         - comment: "CALCULATION BUG IDENTIFIED: Body Fat Calculator form is functional and accepts all inputs correctly, but calculation returns NaN% due to variable reference error on line 171. The code references 'weightInLbs' but should reference 'weightInKg' for proper weight conversion in fat/lean mass calculations. This is a simple one-line fix needed."
+        - working: true
+        - agent: "main"
+        - comment: "BUG FIX COMPLETED: Fixed the weight conversion logic in Body Fat Calculator by correcting the variable reference on line 171. Updated the code to properly convert weight units for fat/lean mass calculations. Calculator now works correctly with both kg and lbs weight inputs."
 
 ## agent_communication:
     - agent: "main"
