@@ -215,6 +215,133 @@ const Home = () => {
               </div>
             </div>
           </div>
+
+          {/* Category: Nutrition & Diet */}
+          <div className="mb-8">
+            <h3 className="text-2xl font-semibold text-white mb-6 text-center">
+              Nutrition & Diet Analysis
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-3">
+              {/* Calorie Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-orange-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-orange-500/10 w-fit mb-2 group-hover:bg-orange-500/20 transition-colors">
+                  <Calculator className="h-4 w-4 text-orange-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Calorie Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate your daily calorie needs for weight loss, muscle gain, or maintenance goals.
+                </p>
+                <a
+                  href="/calorie-calculator"
+                  className="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-orange-600 hover:to-orange-700 transition-all duration-300"
+                >
+                  Calculate Calories →
+                </a>
+              </div>
+
+              {/* TDEE Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-cyan-500/10 w-fit mb-2 group-hover:bg-cyan-500/20 transition-colors">
+                  <TrendingUp className="h-4 w-4 text-cyan-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">TDEE Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate Total Daily Energy Expenditure using advanced metabolic science and activity levels.
+                </p>
+                <a
+                  href="/tdee-calculator"
+                  className="inline-block bg-gradient-to-r from-cyan-500 to-cyan-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-cyan-600 hover:to-cyan-700 transition-all duration-300"
+                >
+                  Calculate TDEE →
+                </a>
+              </div>
+
+              {/* BMR Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-red-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-red-500/10 w-fit mb-2 group-hover:bg-red-500/20 transition-colors">
+                  <Heart className="h-4 w-4 text-red-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">BMR Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate Basal Metabolic Rate using scientifically validated formulas for metabolic assessment.
+                </p>
+                <a
+                  href="/bmr-calculator"
+                  className="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-red-600 hover:to-red-700 transition-all duration-300"
+                >
+                  Calculate BMR →
+                </a>
+              </div>
+
+              {/* Macro Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-green-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-green-500/10 w-fit mb-2 group-hover:bg-green-500/20 transition-colors">
+                  <Target className="h-4 w-4 text-green-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Macro Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate optimal macronutrient distribution for protein, carbohydrates, and fats based on goals.
+                </p>
+                <a
+                  href="/macro-calculator"
+                  className="inline-block bg-gradient-to-r from-green-500 to-green-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-green-600 hover:to-green-700 transition-all duration-300"
+                >
+                  Calculate Macros →
+                </a>
+              </div>
+
+              {/* Carbohydrate Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-amber-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-amber-500/10 w-fit mb-2 group-hover:bg-amber-500/20 transition-colors">
+                  <TrendingUp className="h-4 w-4 text-amber-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Carbohydrate Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate daily carbohydrate intake for athletic performance, weight goals, and metabolic health.
+                </p>
+                <a
+                  href="/carbohydrate-calculator"
+                  className="inline-block bg-gradient-to-r from-amber-500 to-amber-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-amber-600 hover:to-amber-700 transition-all duration-300"
+                >
+                  Calculate Carbs →
+                </a>
+              </div>
+
+              {/* Protein Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-rose-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-rose-500/10 w-fit mb-2 group-hover:bg-rose-500/20 transition-colors">
+                  <Users className="h-4 w-4 text-rose-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Protein Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate daily protein requirements for muscle building, weight loss, and optimal health.
+                </p>
+                <a
+                  href="/protein-calculator"
+                  className="inline-block bg-gradient-to-r from-rose-500 to-rose-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-rose-600 hover:to-rose-700 transition-all duration-300"
+                >
+                  Calculate Protein →
+                </a>
+              </div>
+
+              {/* Fat Intake Calculator */}
+              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-yellow-500/50 transition-all duration-300 group">
+                <div className="p-1.5 rounded-full bg-yellow-500/10 w-fit mb-2 group-hover:bg-yellow-500/20 transition-colors">
+                  <Heart className="h-4 w-4 text-yellow-400" />
+                </div>
+                <h4 className="text-sm font-semibold mb-1.5 text-white">Fat Intake Calculator</h4>
+                <p className="text-gray-400 mb-2 text-xs leading-tight">
+                  Calculate optimal daily fat intake for health, performance, and heart-healthy nutrition goals.
+                </p>
+                <a
+                  href="/fat-intake-calculator"
+                  className="inline-block bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300"
+                >
+                  Calculate Fat Intake →
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
