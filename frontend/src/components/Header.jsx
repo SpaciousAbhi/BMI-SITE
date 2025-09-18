@@ -69,7 +69,12 @@ const Header = () => {
                         <ChevronDown className="h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="bg-gray-900 border-gray-700">
+                    <DropdownMenuContent className="bg-gray-900 border-gray-700 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
+                      {item.subheading && (
+                        <div className="px-2 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider border-b border-gray-700 mb-1">
+                          {item.subheading}
+                        </div>
+                      )}
                       {item.items.map((subItem) => (
                         <DropdownMenuItem key={subItem.path} asChild>
                           <Link
