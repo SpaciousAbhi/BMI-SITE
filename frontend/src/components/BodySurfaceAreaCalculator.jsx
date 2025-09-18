@@ -643,11 +643,11 @@ const BodySurfaceAreaCalculator = () => {
             </motion.div>
           </div>
 
-          <motion.div variants={itemVariants} className="flex gap-4 pt-6">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-6">
             <Button
               onClick={calculateBSA}
               disabled={isCalculating}
-              className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25"
+              className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold py-3 px-4 sm:px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25"
             >
               {isCalculating ? (
                 <>
@@ -665,7 +665,7 @@ const BodySurfaceAreaCalculator = () => {
             <Button
               onClick={resetCalculator}
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-300 px-6"
+              className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-300 px-4 sm:px-6 sm:flex-none"
             >
               <RotateCcw className="mr-2 h-4 w-4" />
               Reset
