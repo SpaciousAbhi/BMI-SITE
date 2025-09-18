@@ -103,7 +103,11 @@ function SEOUpdater() {
       '/macro-calculator': 'macro calculator, macronutrient calculator, protein carbs fat calculator, macro distribution, IIFYM calculator, flexible dieting macros',
       '/carbohydrate-calculator': 'carbohydrate calculator, daily carb intake, carb cycling calculator, athletic carbs, low carb calculator, carb timing',
       '/protein-calculator': 'protein calculator, daily protein needs, protein requirements, muscle building protein, weight loss protein, protein intake',
-      '/fat-intake-calculator': 'fat intake calculator, healthy fat calculator, daily fat needs, omega 3 calculator, saturated fat calculator, heart healthy fats'
+      '/fat-intake-calculator': 'fat intake calculator, healthy fat calculator, daily fat needs, omega 3 calculator, saturated fat calculator, heart healthy fats',
+      '/pace-calculator': 'pace calculator, running pace calculator, time distance calculator, VDOT calculator, race pace calculator, marathon pace calculator',
+      '/calories-burned-calculator': 'calories burned calculator, exercise calorie burn, MET calculator, activity calorie calculator, workout calories, fitness tracker',
+      '/one-rep-max-calculator': 'one rep max calculator, 1RM calculator, strength calculator, max lift calculator, powerlifting calculator, gym calculator',
+      '/target-heart-rate-calculator': 'target heart rate calculator, heart rate zones, cardio zones, Karvonen method, training heart rate, fitness zones'
     };
 
     // Update title
