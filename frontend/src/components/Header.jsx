@@ -15,18 +15,21 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", path: "/" },
     {
-      name: "Body Calculators",
+      name: "Home Page | BMI Calculator",
+      path: "/",
+    },
+    {
+      name: "Additional Calculators",
+      subheading: "Body Composition & Weight",
       items: [
-        { name: "BMI Calculator", path: "/" },
         { name: "Body Fat Calculator", path: "/body-fat-calculator" },
         { name: "Army Body Fat Calculator", path: "/army-body-fat-calculator" },
         { name: "Lean Body Mass Calculator", path: "/lean-body-mass-calculator" },
         { name: "Ideal Weight Calculator", path: "/ideal-weight-calculator" },
         { name: "Healthy Weight Calculator", path: "/healthy-weight-calculator" },
         { name: "Body Type Calculator", path: "/body-type-calculator" },
-        { name: "Body Surface Area Calculator", path: "/body-surface-area-calculator" },
+        { name: "Body Surface Area (BSA) Calculator", path: "/body-surface-area-calculator" },
       ],
     },
     {
