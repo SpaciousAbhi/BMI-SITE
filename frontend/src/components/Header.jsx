@@ -46,6 +46,16 @@ const Header = () => {
       ],
     },
     {
+      name: "Fitness & Performance Calculators",
+      subheading: "Fitness & Performance",
+      items: [
+        { name: "Pace Calculator", path: "/pace-calculator" },
+        { name: "Calories Burned Calculator", path: "/calories-burned-calculator" },
+        { name: "One Rep Max Calculator", path: "/one-rep-max-calculator" },
+        { name: "Target Heart Rate Calculator", path: "/target-heart-rate-calculator" },
+      ],
+    },
+    {
       name: "Legal & Privacy",
       items: [
         { name: "Privacy Policy", path: "/privacy-policy" },
