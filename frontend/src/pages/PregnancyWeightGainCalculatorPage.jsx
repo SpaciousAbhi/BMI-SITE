@@ -76,7 +76,7 @@ const PregnancyWeightGainCalculatorPage = () => {
                 <h3 className="text-lg font-semibold text-blue-400 mb-3">IOM Weight Gain Guidelines</h3>
                 <div className="space-y-3">
                   <div className="p-3 bg-blue-900/20 rounded-lg">
-                    <p className="text-blue-300 font-semibold">Underweight (BMI <18.5)</p>
+                    <p className="text-blue-300 font-semibold">Underweight (BMI &lt;18.5)</p>
                     <p className="text-gray-300 text-sm">28-40 lbs total • 1-1.3 lbs/week (2nd & 3rd trimester)</p>
                   </div>
                   <div className="p-3 bg-green-900/20 rounded-lg">
