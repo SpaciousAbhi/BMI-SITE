@@ -33,6 +33,19 @@ const Header = () => {
       ],
     },
     {
+      name: "Nutrition & Diet Calculators",
+      subheading: "Nutrition & Diet",
+      items: [
+        { name: "Calorie Calculator", path: "/calorie-calculator" },
+        { name: "TDEE Calculator", path: "/tdee-calculator" },
+        { name: "BMR Calculator", path: "/bmr-calculator" },
+        { name: "Macro Calculator", path: "/macro-calculator" },
+        { name: "Carbohydrate Calculator", path: "/carbohydrate-calculator" },
+        { name: "Protein Calculator", path: "/protein-calculator" },
+        { name: "Fat Intake Calculator", path: "/fat-intake-calculator" },
+      ],
+    },
+    {
       name: "Legal & Privacy",
       items: [
         { name: "Privacy Policy", path: "/privacy-policy" },
