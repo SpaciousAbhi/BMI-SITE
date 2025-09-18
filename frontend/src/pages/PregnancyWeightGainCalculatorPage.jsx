@@ -32,10 +32,10 @@ const PregnancyWeightGainCalculatorPage = () => {
                 pre-pregnancy BMI and are widely used by healthcare professionals worldwide.
               </p>
               <ul className="text-gray-400 text-sm space-y-2">
-                <li>• Underweight (BMI < 18.5): 28-40 lbs total gain</li>
+                <li>• Underweight (BMI &lt; 18.5): 28-40 lbs total gain</li>
                 <li>• Normal weight (BMI 18.5-24.9): 25-35 lbs total gain</li>
                 <li>• Overweight (BMI 25-29.9): 15-25 lbs total gain</li>
-                <li>• Obese (BMI ≥ 30): 11-20 lbs total gain</li>
+                <li>• Obese (BMI &ge; 30): 11-20 lbs total gain</li>
               </ul>
             </div>
 
