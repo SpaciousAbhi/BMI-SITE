@@ -143,7 +143,9 @@ function SEOUpdater() {
       '/due-date-calculator': 'due date calculator, pregnancy due date, LMP calculator, conception date calculator, birth date predictor, pregnancy dating',
       '/ovulation-calculator': 'ovulation calculator, fertile window calculator, ovulation tracker, conception calculator, fertility calendar, ovulation predictor',
       '/conception-calculator': 'conception calculator, when did conception occur, pregnancy dating calculator, conception date calculator, fertility calculator',
-      '/period-calculator': 'period calculator, menstrual cycle calculator, period tracker, menstrual calendar, cycle predictor, period prediction'
+      '/period-calculator': 'period calculator, menstrual cycle calculator, period tracker, menstrual calendar, cycle predictor, period prediction',
+      '/gfr-calculator': 'GFR calculator, glomerular filtration rate, kidney function test, CKD-EPI calculator, eGFR calculator, chronic kidney disease, renal function',
+      '/bac-calculator': 'BAC calculator, blood alcohol content, blood alcohol level, Widmark equation, alcohol calculator, DUI calculator, breathalyzer calculator'
     };
 
     // Update title
