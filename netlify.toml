@@ -12,12 +12,63 @@
   # Yarn version
   YARN_VERSION = "1.22.22"
 
-# SPA routing configuration
+# SPA routing configuration - MOST IMPORTANT FOR FIXING 404s
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
   force = false
+
+# Ensure specific calculator routes work
+[[redirects]]
+  from = "/body-fat-calculator"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/army-body-fat-calculator"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/lean-body-mass-calculator"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/ideal-weight-calculator"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/healthy-weight-calculator"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/body-type-calculator"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/body-surface-area-calculator"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms-conditions"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/contact-us"
+  to = "/index.html"
+  status = 200
 
 # Security headers
 [[headers]]
