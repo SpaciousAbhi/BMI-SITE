@@ -252,7 +252,7 @@ const FatIntakeCalculator = () => {
       recommendations.push({
         type: "warning",
         title: "High Cholesterol Considerations",
-        message: "Limit saturated fat to <7% of calories and avoid trans fats. Focus on omega-3 fatty acids and monounsaturated fats."
+        message: "Limit saturated fat to &lt;7% of calories and avoid trans fats. Focus on omega-3 fatty acids and monounsaturated fats."
       });
     }
 
