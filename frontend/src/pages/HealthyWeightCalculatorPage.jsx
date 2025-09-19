@@ -132,7 +132,7 @@ const HealthyWeightCalculatorPage = () => {
             {
               "@type": "HowToStep", 
               "name": "Assess Activity Level Using Standardized Criteria",
-              "text": "Evaluate physical activity using WHO physical activity guidelines: Sedentary (<150 min/week), Moderate (150-300 min/week), High (>300 min/week plus resistance training). Activity level affects healthy weight range calculations.",
+              "text": "Evaluate physical activity using WHO physical activity guidelines: Sedentary (&lt;150 min/week), Moderate (150-300 min/week), High (&gt;300 min/week plus resistance training). Activity level affects healthy weight range calculations.",
               "image": "https://bmipro.com/images/who-activity-assessment.jpg",
               "tool": "WHO Physical Activity Assessment Questionnaire"
             },
