@@ -55,7 +55,7 @@ const PregnancyWeightGainCalculatorPage = () => {
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
                   Healthy pregnancy weight gain depends on pre-pregnancy BMI according to Institute of Medicine (IOM) 2009 guidelines: 
-                  <strong>Underweight (BMI <18.5):</strong> 28-40 pounds total (1.0-1.3 lbs/week in 2nd & 3rd trimesters). 
+                  <strong>Underweight (BMI {'<'}18.5):</strong> 28-40 pounds total (1.0-1.3 lbs/week in 2nd & 3rd trimesters). 
                   <strong>Normal weight (BMI 18.5-24.9):</strong> 25-35 pounds total (0.8-1.0 lbs/week). 
                   <strong>Overweight (BMI 25-29.9):</strong> 15-25 pounds total (0.5-0.7 lbs/week). 
                   <strong>Obese (BMI ≥30):</strong> 11-20 pounds total (0.4-0.6 lbs/week). 
