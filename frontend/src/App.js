@@ -135,9 +135,9 @@ function SEOUpdater() {
       '/pregnancy-calculator': 'pregnancy calculator, gestational age calculator, pregnancy tracker, due date calculator, pregnancy weeks, trimester calculator',
       '/pregnancy-weight-gain-calculator': 'pregnancy weight gain calculator, IOM guidelines, healthy weight gain pregnancy, BMI pregnancy, maternal weight gain',
       '/due-date-calculator': 'due date calculator, pregnancy due date, LMP calculator, conception date calculator, birth date predictor, pregnancy dating',
-      '/ovulation-calculator': 'ovulation calculator, fertile window calculator, ovulation tracker, conception calculator, fertility calendar, ovulation predictor',
-      '/conception-calculator': 'conception calculator, when did conception occur, pregnancy dating calculator, conception date calculator, fertility calculator',
-      '/period-calculator': 'period calculator, menstrual cycle calculator, period tracker, menstrual calendar, cycle predictor, period prediction',
+      '/ovulation-calculator': 'AI ovulation calculator 2025, PCOS ovulation tracker, medical grade fertility calculator, transparent AI predictions, irregular cycle ovulation, fertility window optimization, conception timing calculator',
+      '/conception-calculator': 'medical grade conception calculator, IVF conception dating, 266 day calculation, ultrasound conception dating, pregnancy dating precision, assisted reproduction calculator, reverse due date calculator',
+      '/period-calculator': 'AI period calculator 2025, PCOS period tracker, irregular cycle prediction, medical accuracy period app, privacy first menstrual tracker, cycle pattern learning, gynecologist validated',
       '/gfr-calculator': 'GFR calculator, glomerular filtration rate, kidney function test, CKD-EPI calculator, eGFR calculator, chronic kidney disease, renal function',
       '/bac-calculator': 'BAC calculator, blood alcohol content, blood alcohol level, Widmark equation, alcohol calculator, DUI calculator, breathalyzer calculator'
     };
