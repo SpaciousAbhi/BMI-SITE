@@ -99,7 +99,7 @@ const DueDateCalculatorPage = () => {
                 <ul className="text-gray-300 text-sm space-y-2 mb-4">
                   <li>• First pregnancy (tends to go past due date)</li>
                   <li>• Previous pregnancy history (may deliver earlier)</li>
-                  <li>• Maternal age (>35 may have earlier delivery)</li>
+                  <li>• Maternal age (&gt;35 may have earlier delivery)</li>
                   <li>• Multiple pregnancies (twins deliver ~36 weeks)</li>
                   <li>• Baby's position and size</li>
                   <li>• Medical conditions or complications</li>
