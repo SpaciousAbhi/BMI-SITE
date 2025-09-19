@@ -139,7 +139,7 @@ const HealthyWeightCalculatorPage = () => {
             {
               "@type": "HowToStep",
               "name": "Determine Body Frame Size Using Clinical Methods",
-              "text": "Measure wrist circumference and apply frame size calculations: Small frame (M: &lt;16.5cm, F: &lt;14cm), Medium frame (M: 16.5-19cm, F: 14-16.5cm), Large frame (M: &gt;19cm, F: &gt;16.5cm). Body frame affects healthy weight ranges.",
+              "text": "Measure wrist circumference and apply frame size calculations: Small frame (M: &lt; 16.5cm, F: &lt; 14cm), Medium frame (M: 16.5-19cm, F: 14-16.5cm), Large frame (M: &gt; 19cm, F: &gt; 16.5cm). Body frame affects healthy weight ranges.",
               "image": "https://bmipro.com/images/clinical-frame-measurement.jpg",
               "tool": "Measuring tape, anthropometric calipers"
             },
