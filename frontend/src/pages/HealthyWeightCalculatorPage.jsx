@@ -650,7 +650,7 @@ const HealthyWeightCalculatorPage = () => {
                     <ul className="text-gray-400 text-sm space-y-1">
                       <li>• Small Frame: Wrist &lt;16.5cm (M), &lt;14cm (F) - lighter skeletal weight</li>
                       <li>• Medium Frame: Wrist 16.5-19cm (M), 14-16.5cm (F) - standard ranges</li>
-                      <li>• Large Frame: Wrist &gt;19cm (M), &gt;16.5cm (F) - higher weight capacity</li>
+                      <li>• Large Frame: Wrist &gt; 19cm (M), &gt; 16.5cm (F) - higher weight capacity</li>
                       <li>• Based on anthropometric standards and population studies</li>
                     </ul>
                   </div>
