@@ -706,7 +706,7 @@ const DueDateCalculatorPage = () => {
                     "name": "How do irregular periods affect due date calculator accuracy?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Irregular cycles (varying >7 days monthly) significantly impact accuracy. LMP-based calculations may be off by 1-4 weeks. Early dating ultrasound (8-10 weeks) becomes essential for accurate gestational age with irregular cycles."
+                      "text": "Irregular cycles (varying greater than 7 days monthly) significantly impact accuracy. LMP-based calculations may be off by 1-4 weeks. Early dating ultrasound (8-10 weeks) becomes essential for accurate gestational age with irregular cycles."
                     }
                   }
                 ]
