@@ -109,7 +109,7 @@ const DueDateCalculatorPage = () => {
                   <strong>Dating Ultrasound (8-13 weeks):</strong> Most accurate window for gestational age assessment using 
                   crown-rump length (CRL) measurement, accurate within ±5-7 days. 
                   <strong>Due Date Adjustment Criteria:</strong> ACOG recommends changing EDD when first-trimester ultrasound 
-                  differs from LMP by >7 days, second-trimester ultrasound differs by >10-14 days. 
+                  differs from LMP by {'>'}7 days, second-trimester ultrasound differs by {'>'}10-14 days. 
                   <strong>Final Due Date:</strong> Established by 20 weeks and typically not changed thereafter unless 
                   significant medical indication exists. Multiple dating methods create the most reliable estimate.
                 </p>
