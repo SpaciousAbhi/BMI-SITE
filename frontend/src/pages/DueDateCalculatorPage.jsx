@@ -50,7 +50,7 @@ const DueDateCalculatorPage = () => {
                   When will my healthcare provider confirm my due date?
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  Your healthcare provider will confirm and possibly adjust your due date during your first prenatal appointment, typically around 8-12 weeks of pregnancy. They'll use ultrasound measurements to verify gestational age, which is most accurate between 8-13 weeks. If there's a significant difference (>7 days) between LMP and ultrasound dating, your provider may adjust your due date accordingly.
+                  Your healthcare provider will confirm and possibly adjust your due date during your first prenatal appointment, typically around 8-12 weeks of pregnancy. They'll use ultrasound measurements to verify gestational age, which is most accurate between 8-13 weeks. If there's a significant difference (&gt;7 days) between LMP and ultrasound dating, your provider may adjust your due date accordingly.
                 </p>
               </div>
               
