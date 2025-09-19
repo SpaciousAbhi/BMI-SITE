@@ -487,7 +487,7 @@ const PregnancyCalculatorPage = () => {
                     "name": "Can pregnancy calculator work with irregular menstrual cycles?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Pregnancy calculators have limited accuracy with irregular cycles (variation >7 days monthly). For women with PCOS or long cycles, early dating ultrasound (8-10 weeks) provides superior accuracy and is recommended by CDC."
+                      "text": "Pregnancy calculators have limited accuracy with irregular cycles (variation greater than 7 days monthly). For women with PCOS or long cycles, early dating ultrasound (8-10 weeks) provides superior accuracy and is recommended by CDC."
                     }
                   }
                 ]
