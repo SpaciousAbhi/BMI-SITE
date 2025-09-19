@@ -105,8 +105,8 @@ const PregnancyCalculatorPage = () => {
                   Can pregnancy calculator work with irregular menstrual cycles?
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  Pregnancy calculators have limited accuracy with irregular cycles (variation >7 days monthly). 
-                  For women with PCOS, long cycles (>35 days), or recent contraceptive use, LMP-based calculations 
+                  Pregnancy calculators have limited accuracy with irregular cycles (variation {'>'}7 days monthly). 
+                  For women with PCOS, long cycles ({'>'}35 days), or recent contraceptive use, LMP-based calculations 
                   may be off by 1-3 weeks. In these cases: (1) Use average cycle length if available, (2) Schedule 
                   early dating ultrasound (8-10 weeks) for accurate gestational age, (3) Healthcare providers may 
                   revise due dates based on ultrasound biometry, (4) Consider fertility awareness tracking for future 
