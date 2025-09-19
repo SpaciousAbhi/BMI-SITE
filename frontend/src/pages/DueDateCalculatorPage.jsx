@@ -157,7 +157,7 @@ const DueDateCalculatorPage = () => {
                 <p className="text-gray-300 text-sm leading-relaxed">
                   Multiple maternal and fetal factors influence actual delivery timing compared to calculated due dates: 
                   <strong>Maternal Factors:</strong> First pregnancy (primigravida) tends to deliver 1-2 days after due date, 
-                  previous pregnancies (multigravida) may deliver earlier, maternal age >35 associated with slightly earlier delivery, 
+                  previous pregnancies (multigravida) may deliver earlier, maternal age {'>'}35 associated with slightly earlier delivery, 
                   pre-existing medical conditions (diabetes, hypertension) may necessitate earlier delivery. 
                   <strong>Fetal Factors:</strong> Baby's size and position, lung maturity, genetic factors influencing gestation length. 
                   <strong>Pregnancy Factors:</strong> Multiple pregnancies (twins average 36 weeks, triplets 32 weeks), 
