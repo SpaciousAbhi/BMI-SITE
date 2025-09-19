@@ -698,7 +698,7 @@ const DueDateCalculatorPage = () => {
                     "name": "When will my healthcare provider confirm and adjust my due date?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Healthcare providers confirm due dates during first prenatal appointments (6-10 weeks) using dating ultrasound (8-13 weeks). ACOG recommends adjusting EDD when first-trimester ultrasound differs from LMP by >7 days."
+                      "text": "Healthcare providers confirm due dates during first prenatal appointments (6-10 weeks) using dating ultrasound (8-13 weeks). ACOG recommends adjusting EDD when first-trimester ultrasound differs from LMP by greater than 7 days."
                     }
                   },
                   {
