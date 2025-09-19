@@ -121,7 +121,7 @@ const DueDateCalculatorPage = () => {
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
                   Irregular menstrual cycles significantly impact due date calculator accuracy and require modified approaches: 
-                  <strong>Cycle Irregularity Definition:</strong> Cycles varying by >7-10 days monthly, cycles <21 or >35 days, 
+                  <strong>Cycle Irregularity Definition:</strong> Cycles varying by {'>'}7-10 days monthly, cycles {'<'}21 or {'>'}35 days, 
                   unpredictable ovulation timing. 
                   <strong>Common Causes:</strong> PCOS (polycystic ovary syndrome), recent hormonal contraceptive use, 
                   breastfeeding, thyroid disorders, stress, weight changes. 
