@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
-Backend Testing Suite for Pregnancy & Women's Health Calculators Website
-Testing Agent Report - Frontend-Only Application Analysis
+Backend Testing Suite for World-Class Pregnancy Calculator Suite
+Testing Agent Report - Comprehensive Medical-Grade Calculator Analysis
+Focus: Three Main Pregnancy Calculator Routes with Advanced SEO & Medical Verification
 """
 
 import requests
 import json
 import sys
+import time
 from datetime import datetime
 
 class PregnancyCalculatorTester:
@@ -14,6 +16,13 @@ class PregnancyCalculatorTester:
         self.frontend_url = "http://localhost:3000"
         self.backend_url = "http://localhost:8001"
         self.test_results = []
+        
+        # Three main pregnancy calculator routes as specified in review request
+        self.main_pregnancy_routes = [
+            "/pregnancy-calculator",           # Advanced Pregnancy Calculator with Naegele's rule
+            "/pregnancy-weight-gain-calculator", # IOM Guidelines Medical Tool
+            "/due-date-calculator"             # Medical-Grade Pregnancy Dating Tool
+        ]
         
     def log_test(self, test_name, status, message, details=None):
         """Log test results"""
