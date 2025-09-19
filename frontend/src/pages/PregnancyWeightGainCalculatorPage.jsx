@@ -263,7 +263,7 @@ const PregnancyWeightGainCalculatorPage = () => {
                         <span className="font-medium">25-42 lbs</span>
                       </div>
                       <div className="flex justify-between">
-                        <span>Underweight BMI (<18.5):</span>
+                        <span>Underweight BMI ({'<'}18.5):</span>
                         <span className="font-medium">50-62 lbs*</span>
                       </div>
                       <p className="text-xs text-purple-400 mt-2">*Limited evidence, individualized care recommended</p>
