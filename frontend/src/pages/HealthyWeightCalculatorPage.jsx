@@ -507,7 +507,7 @@ const HealthyWeightCalculatorPage = () => {
                     </div>
                     
                     <div className="p-4 bg-green-900/20 rounded-lg border border-green-800/30">
-                      <h4 className="font-semibold text-green-300 mb-2">High (&gt;300 min/week + resistance)</h4>
+                      <h4 className="font-semibold text-green-300 mb-2">High (&gt; 300 min/week + resistance)</h4>
                       <p className="text-gray-300 text-sm mb-2">Athletic training with significant adaptations</p>
                       <div className="text-xs text-gray-400 space-y-1">
                         <p>• BMI Adjustment: +2 points</p>
