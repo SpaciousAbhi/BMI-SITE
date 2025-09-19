@@ -115,9 +115,9 @@ const PregnancyWeightGainCalculatorPage = () => {
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
                   <strong>Excessive Weight Gain (Above IOM Guidelines) Risks:</strong> Gestational diabetes mellitus (GDM), 
-                  pregnancy-induced hypertension, preeclampsia, macrosomia (large baby >9 lbs), cesarean delivery, 
+                  pregnancy-induced hypertension, preeclampsia, macrosomia (large baby {'>'}9 lbs), cesarean delivery, 
                   postpartum weight retention, childhood obesity risk for baby. 
-                  <strong>Insufficient Weight Gain (Below IOM Guidelines) Risks:</strong> Low birth weight (<2500g), 
+                  <strong>Insufficient Weight Gain (Below IOM Guidelines) Risks:</strong> Low birth weight ({'<'}2500g), 
                   small for gestational age (SGA), preterm delivery, intrauterine growth restriction (IUGR), 
                   developmental delays, increased NICU admission risk. Both extremes require medical intervention 
                   and individualized nutrition counseling to optimize outcomes.
