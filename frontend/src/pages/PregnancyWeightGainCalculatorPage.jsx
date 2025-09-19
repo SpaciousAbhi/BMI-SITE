@@ -404,7 +404,7 @@ const PregnancyWeightGainCalculatorPage = () => {
                   <div>
                     <h4 className="text-red-300 font-medium mb-1">Insufficient Weight Gain Risks</h4>
                     <ul className="text-gray-300 text-sm space-y-1">
-                      <li>• Low birth weight (<2500g)</li>
+                      <li>• Low birth weight ({'<'}2500g)</li>
                       <li>• Small for gestational age (SGA)</li>
                       <li>• Preterm delivery risk</li>
                       <li>• Intrauterine growth restriction</li>
