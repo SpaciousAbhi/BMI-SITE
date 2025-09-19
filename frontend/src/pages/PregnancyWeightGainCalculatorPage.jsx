@@ -171,7 +171,7 @@ const PregnancyWeightGainCalculatorPage = () => {
                   Use pregnancy weight gain charts or apps. 
                   <strong>Healthcare Monitoring:</strong> Prenatal visits include weight assessment, growth curves, 
                   nutritional counseling if needed. 
-                  <strong>Red Flags:</strong> Sudden weight gain (>2 lbs/week), significant weight loss, 
+                  <strong>Red Flags:</strong> Sudden weight gain ({'>'}2 lbs/week), significant weight loss, 
                   consistently outside target range. 
                   <strong>Adjustments:</strong> Individualized plans for women with eating disorders, diabetes, 
                   hypertension, or other medical conditions requiring modified guidelines.
