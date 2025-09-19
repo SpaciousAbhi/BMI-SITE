@@ -247,7 +247,7 @@ const PregnancyCalculatorPage = () => {
                   <div className="p-3 bg-rose-900/20 rounded-lg">
                     <h4 className="text-rose-300 font-semibold">High-Risk Pregnancy Indicators</h4>
                     <ul className="text-gray-300 text-sm mt-2 space-y-1">
-                      <li>• Maternal age &gt;35 or &lt;18 years</li>
+                      <li>• Maternal age {'>'}35 or {'<'}18 years</li>
                       <li>• Pre-existing medical conditions (diabetes, hypertension)</li>
                       <li>• Previous pregnancy complications</li>
                       <li>• Multiple gestation (twins, triplets)</li>
