@@ -129,7 +129,7 @@ const PeriodCalculatorPage = () => {
                   "How long should I track my periods before the AI becomes accurate?"
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  For regular cycles (21-35 days, varying <7 days), our AI achieves 85% accuracy after just 3 cycles and peaks at 89.2% after 6 cycles. 
+                  For regular cycles (21-35 days, varying less than 7 days), our AI achieves 85% accuracy after just 3 cycles and peaks at 89.2% after 6 cycles. 
                   For irregular cycles or PCOS, the algorithm needs 6-12 cycles to identify patterns, reaching 73.8% accuracy. 
                   The AI continuously learns from your symptom inputs, flow patterns, and cycle variations, providing confidence scores that increase over time. 
                   Unlike static calculators, our machine learning improves predictions the longer you use it.
