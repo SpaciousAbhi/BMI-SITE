@@ -551,7 +551,7 @@ const HealthyWeightCalculatorPage = () => {
                       <h4 className="font-semibold text-orange-300 mb-2">Large Frame</h4>
                       <p className="text-gray-300 text-sm mb-2">Broad bone structure, higher skeletal mass</p>
                       <div className="text-xs text-gray-400 space-y-1">
-                        <p>• Wrist: Males &gt;19cm, Females &gt;16.5cm</p>
+                        <p>• Wrist: Males &gt; 19cm, Females &gt; 16.5cm</p>
                         <p>• BMI Adjustment: +1 point</p>
                         <p>• Characteristics: Higher healthy weight capacity</p>
                       </div>
