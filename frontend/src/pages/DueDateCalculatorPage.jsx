@@ -92,7 +92,7 @@ const DueDateCalculatorPage = () => {
                   <strong>Late Term (41 weeks):</strong> Still normal, but requires increased monitoring for fetal well-being. 
                   <strong>Post Term (42+ weeks):</strong> Increased risks of stillbirth, macrosomia, and placental insufficiency; 
                   induction typically recommended. 
-                  <strong>Preterm (<37 weeks):</strong> Higher risks of respiratory distress, feeding difficulties, and NICU admission. 
+                  <strong>Preterm ({'<'}37 weeks):</strong> Higher risks of respiratory distress, feeding difficulties, and NICU admission. 
                   Most healthcare providers recommend delivery between 39-41 weeks for optimal outcomes.
                 </p>
               </div>
