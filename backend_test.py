@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
 Backend Testing Suite for BMI Calculator Website
-Testing Agent Report - Frontend-Only Application Analysis
+Testing Agent Report - Comprehensive Backend & Frontend Service Analysis
 """
 
 import requests
 import json
 import sys
+import time
 from datetime import datetime
 
 class BMICalculatorTester:
