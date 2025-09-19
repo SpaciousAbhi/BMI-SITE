@@ -531,7 +531,7 @@ const HealthyWeightCalculatorPage = () => {
                       <h4 className="font-semibold text-blue-300 mb-2">Small Frame</h4>
                       <p className="text-gray-300 text-sm mb-2">Narrow bone structure, smaller skeletal mass</p>
                       <div className="text-xs text-gray-400 space-y-1">
-                        <p>• Wrist: Males &lt;16.5cm, Females &lt;14cm</p>
+                        <p>• Wrist: Males &lt; 16.5cm, Females &lt; 14cm</p>
                         <p>• BMI Adjustment: -1 point</p>
                         <p>• Characteristics: Lighter skeletal weight</p>
                       </div>
