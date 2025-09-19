@@ -630,7 +630,7 @@ const HealthyWeightCalculatorPage = () => {
                   <div className="bg-orange-900/20 p-4 rounded-lg">
                     <h4 className="font-semibold text-orange-300 mb-2">Activity-Based Adjustments:</h4>
                     <ul className="text-gray-400 text-sm space-y-1">
-                      <li>• Sedentary: &lt;150 min/week - standard WHO ranges</li>
+                      <li>• Sedentary: &lt; 150 min/week - standard WHO ranges</li>
                       <li>• Moderate: 150-300 min/week - +1 BMI point adjustment</li>
                       <li>• High: &gt; 300 min/week + resistance - +2 BMI points</li>
                       <li>• Based on sports medicine and exercise physiology research</li>
