@@ -257,7 +257,7 @@ const DueDateCalculatorPage = () => {
                     <ul className="text-gray-300 text-sm mt-2 space-y-1">
                       <li>• Use ART dates when available (highest accuracy)</li>
                       <li>• Use first-trimester ultrasound if LMP uncertain</li>
-                      <li>• Adjust EDD if ultrasound differs from LMP by >7 days</li>
+                      <li>• Adjust EDD if ultrasound differs from LMP by {'>'}7 days</li>
                       <li>• Document all dating methods and rationale</li>
                     </ul>
                   </div>
