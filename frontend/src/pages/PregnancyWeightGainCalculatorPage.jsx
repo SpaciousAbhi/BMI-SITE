@@ -192,7 +192,7 @@ const PregnancyWeightGainCalculatorPage = () => {
                 <div className="space-y-3">
                   <div className="p-4 bg-blue-900/20 rounded-lg border border-blue-800/30">
                     <div className="flex justify-between items-center mb-2">
-                      <h4 className="text-blue-300 font-semibold">Underweight (BMI <18.5)</h4>
+                      <h4 className="text-blue-300 font-semibold">Underweight (BMI {'<'}18.5)</h4>
                       <span className="text-blue-400 font-bold">28-40 lbs</span>
                     </div>
                     <div className="space-y-1 text-gray-300 text-sm">
