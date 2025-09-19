@@ -259,7 +259,7 @@ const GFRCalculatorPage = () => {
                   </div>
                 </div>
                 <div className="p-6 bg-red-900/30 rounded-2xl border border-red-700 hover:bg-red-900/40 transition-colors">
-                  <h3 className="text-red-500 font-bold text-lg mb-3">Stage G5 ({`<15`})</h3>
+                  <h3 className="text-red-500 font-bold text-lg mb-3">Stage G5 (&lt;15)</h3>
                   <p className="text-gray-300 text-sm mb-4">Kidney failure. Dialysis or transplant required.</p>
                   <div className="text-xs text-red-400">
                     <strong>Management:</strong> Monthly monitoring, dialysis/transplant evaluation, palliative care options
