@@ -105,7 +105,7 @@ const PeriodCalculatorPage = () => {
                   "Can this period tracker help me identify PCOS symptoms?"
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed">
-                  Yes, our PCOS-specialized algorithm identifies polycystic ovary syndrome indicators including irregular cycles (>35 days or <21 days), 
+                  Yes, our PCOS-specialized algorithm identifies polycystic ovary syndrome indicators including irregular cycles (greater than 35 days or less than 21 days), 
                   anovulatory cycles, extended luteal phases, and symptom patterns like excessive hair growth, weight gain, and mood fluctuations. 
                   The AI tracks these correlations and suggests when to consult a gynecologist for PCOS evaluation, hormone testing, and treatment options 
                   like metformin, birth control, or lifestyle modifications.
