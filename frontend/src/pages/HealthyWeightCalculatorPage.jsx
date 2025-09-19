@@ -487,7 +487,7 @@ const HealthyWeightCalculatorPage = () => {
                   
                   <div className="space-y-4">
                     <div className="p-4 bg-red-900/20 rounded-lg border border-red-800/30">
-                      <h4 className="font-semibold text-red-300 mb-2">Sedentary (<150 min/week)</h4>
+                      <h4 className="font-semibold text-red-300 mb-2">Sedentary (&lt;150 min/week)</h4>
                       <p className="text-gray-300 text-sm mb-2">Standard WHO BMI ranges apply</p>
                       <div className="text-xs text-gray-400 space-y-1">
                         <p>• BMI Adjustment: +0 points</p>
