@@ -494,5 +494,5 @@ class BMICalculatorTester:
 
 if __name__ == "__main__":
     tester = BMICalculatorTester()
-    success = tester.run_all_tests()
+    success = tester.run_comprehensive_backend_tests()
     sys.exit(0 if success else 1)
