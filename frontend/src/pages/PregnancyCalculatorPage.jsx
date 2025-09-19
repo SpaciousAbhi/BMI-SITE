@@ -173,7 +173,7 @@ const PregnancyCalculatorPage = () => {
                     <h4 className="text-green-300 font-semibold mb-2">Ultrasound vs LMP Dating</h4>
                     <p className="text-gray-300 text-sm">
                       Early ultrasound (8-13 weeks): ±5-7 days accuracy. LMP dating: ±14 days accuracy. 
-                      ACOG recommends ultrasound dating when discrepancy >7 days exists.
+                      ACOG recommends ultrasound dating when discrepancy {'>'}7 days exists.
                     </p>
                   </div>
                 </div>
