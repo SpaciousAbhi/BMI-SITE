@@ -238,7 +238,7 @@ const GFRCalculatorPage = () => {
                     different body sizes, making it the universal language of kidney health used by nephrologists worldwide.
                   </p>
                   <p className="leading-relaxed text-base">
-                    Normal eGFR values ≥90 mL/min/1.73 m² indicate healthy kidney function, while values <60 suggest chronic kidney 
+                    Normal eGFR values ≥90 mL/min/1.73 m² indicate healthy kidney function, while values &lt;60 suggest chronic kidney 
                     disease requiring medical attention. The measurement is so critical that it's included in routine blood work for 
                     millions of patients annually, serving as an early warning system for kidney disease progression.
                   </p>
