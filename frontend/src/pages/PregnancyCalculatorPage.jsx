@@ -1,6 +1,7 @@
 import React from "react";
 import PregnancyCalculator from "../components/PregnancyCalculator";
 import PageTransition from "../components/PageTransition";
+import WorldClassPregnancyAuthority from "../components/WorldClassPregnancyAuthority";
 
 const PregnancyCalculatorPage = () => {
   return (
