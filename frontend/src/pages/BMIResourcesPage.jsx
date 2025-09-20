@@ -99,7 +99,120 @@ const BlogsArticlesPage = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-12">
+      {/* Categories Overview Section */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-white">
+            Explore Articles by <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text">Calculator Category</span>
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {/* Body Composition & Weight Analysis */}
+            <div className="bg-gradient-to-br from-blue-900/30 to-blue-800/20 rounded-xl p-6 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 group cursor-pointer"
+                 onClick={() => setSelectedCategory('Body Composition & Weight Analysis')}>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-blue-500/20 rounded-lg group-hover:bg-blue-500/30 transition-colors">
+                  <Scale className="w-8 h-8 text-blue-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Body Composition</h3>
+                  <p className="text-sm text-gray-400">Weight Analysis</p>
+                </div>
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Comprehensive guides on BMI, body fat, lean mass, and weight assessment calculators with medical insights.
+              </p>
+            </div>
+
+            {/* Nutrition & Diet Analysis */}
+            <div className="bg-gradient-to-br from-orange-900/30 to-orange-800/20 rounded-xl p-6 border border-orange-500/20 hover:border-orange-400/40 transition-all duration-300 group cursor-pointer"
+                 onClick={() => setSelectedCategory('Nutrition & Diet Analysis')}>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-orange-500/20 rounded-lg group-hover:bg-orange-500/30 transition-colors">
+                  <Utensils className="w-8 h-8 text-orange-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Nutrition & Diet</h3>
+                  <p className="text-sm text-gray-400">Analysis</p>
+                </div>
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Expert articles on calorie, macro, TDEE, and nutrition calculators for optimal diet planning and health.
+              </p>
+            </div>
+
+            {/* Fitness & Performance Analysis */}
+            <div className="bg-gradient-to-br from-purple-900/30 to-purple-800/20 rounded-xl p-6 border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300 group cursor-pointer"
+                 onClick={() => setSelectedCategory('Fitness & Performance Analysis')}>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-purple-500/20 rounded-lg group-hover:bg-purple-500/30 transition-colors">
+                  <Dumbbell className="w-8 h-8 text-purple-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Fitness & Performance</h3>
+                  <p className="text-sm text-gray-400">Analysis</p>
+                </div>
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Performance guides covering pace, calories burned, heart rate, and strength training calculators.
+              </p>
+            </div>
+
+            {/* Pregnancy & Women's Health */}
+            <div className="bg-gradient-to-br from-pink-900/30 to-pink-800/20 rounded-xl p-6 border border-pink-500/20 hover:border-pink-400/40 transition-all duration-300 group cursor-pointer"
+                 onClick={() => setSelectedCategory('Pregnancy & Women\'s Health')}>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-pink-500/20 rounded-lg group-hover:bg-pink-500/30 transition-colors">
+                  <Baby className="w-8 h-8 text-pink-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Pregnancy & Women's</h3>
+                  <p className="text-sm text-gray-400">Health</p>
+                </div>
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Specialized content on pregnancy, ovulation, due date, and women's health calculators with medical accuracy.
+              </p>
+            </div>
+
+            {/* Medical & Health Assessment */}
+            <div className="bg-gradient-to-br from-red-900/30 to-red-800/20 rounded-xl p-6 border border-red-500/20 hover:border-red-400/40 transition-all duration-300 group cursor-pointer"
+                 onClick={() => setSelectedCategory('Medical & Health Assessment')}>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-red-500/20 rounded-lg group-hover:bg-red-500/30 transition-colors">
+                  <Stethoscope className="w-8 h-8 text-red-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Medical & Health</h3>
+                  <p className="text-sm text-gray-400">Assessment</p>
+                </div>
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Clinical guides on GFR, BAC, and medical assessment calculators with professional healthcare insights.
+              </p>
+            </div>
+
+            {/* All Categories Overview */}
+            <div className="bg-gradient-to-br from-green-900/30 to-green-800/20 rounded-xl p-6 border border-green-500/20 hover:border-green-400/40 transition-all duration-300 group cursor-pointer"
+                 onClick={() => setSelectedCategory('all')}>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 bg-green-500/20 rounded-lg group-hover:bg-green-500/30 transition-colors">
+                  <Layers className="w-8 h-8 text-green-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">All Categories</h3>
+                  <p className="text-sm text-gray-400">Complete Collection</p>
+                </div>
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Browse our complete collection of health calculator articles across all categories and specialties.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8">
         {/* Search and Filters */}
         <div className="max-w-6xl mx-auto mb-12">
           <div className="bg-gray-900 rounded-lg p-6">
