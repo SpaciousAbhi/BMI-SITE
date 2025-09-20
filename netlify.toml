@@ -23,10 +23,6 @@
 # Netlify Plugin for SPA Prerendering
 [[plugins]]
   package = "netlify-plugin-prerender-spa"
-  
-  [plugins.inputs]
-    # Source directory (default is build)
-    source = "frontend/build"
 
 # Alternative: Use Netlify's built-in prerendering (simpler approach)
 [build.environment]
