@@ -161,7 +161,7 @@ const Header = () => {
     },
     {
       name: "Pregnancy & Women's Health",
-      subheading: "Pregnancy & Women's Health",
+      subheading: "Maternal Health & Fertility Tools",
       icon: Baby,
       items: [
         { 
