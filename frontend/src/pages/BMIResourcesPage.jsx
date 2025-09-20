@@ -418,4 +418,4 @@ const BlogsArticlesPage = () => {
   );
 };
 
-export default HealthGuidesPage;
+export default BlogsArticlesPage;
