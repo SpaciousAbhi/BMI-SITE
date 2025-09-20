@@ -44,8 +44,7 @@ const Header = () => {
       description: "BMI Calculator & Health Hub"
     },
     {
-      name: "Body Composition",
-      subheading: "Weight Analysis & Physical Assessment",
+      name: "Body Composition & Weight Analysis",
       icon: Scale,
       items: [
         { 
