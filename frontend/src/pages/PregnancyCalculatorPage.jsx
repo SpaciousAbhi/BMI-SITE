@@ -796,6 +796,9 @@ const PregnancyCalculatorPage = () => {
             </div>
           </div>
 
+          {/* World-Class Authority Section */}
+          <WorldClassPregnancyAuthority />
+
           {/* World-Class Pregnancy Calculator Ecosystem - Semantic SEO Expansion */}
           <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
             <h2 className="text-2xl font-bold text-white mb-6 text-center">
