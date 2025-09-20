@@ -31,7 +31,8 @@ import {
   Activity,
   ChevronUp,
   ExternalLink,
-  Globe
+  Globe,
+  BookOpen
 } from "lucide-react";
 
 const Footer = () => {
