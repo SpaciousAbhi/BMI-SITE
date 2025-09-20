@@ -195,8 +195,7 @@ const Header = () => {
       ],
     },
     {
-      name: "Medical & Health",
-      subheading: "Clinical Assessment & Diagnostic Tools",
+      name: "Medical & Health Assessment",
       icon: Stethoscope,
       items: [
         { 
