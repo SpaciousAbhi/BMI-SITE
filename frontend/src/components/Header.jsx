@@ -18,7 +18,8 @@ import {
   Scale,
   TrendingUp,
   Zap,
-  Star
+  Star,
+  FileText
 } from "lucide-react";
 import {
   DropdownMenu,
