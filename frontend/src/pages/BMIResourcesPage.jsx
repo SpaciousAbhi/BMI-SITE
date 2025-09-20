@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Calendar, Clock, User, Star, BookOpen, TrendingUp, Filter } from 'lucide-react';
+import { Search, Calendar, Clock, User, Star, BookOpen, TrendingUp, Filter, FileText, Layers, Scale, Utensils, Dumbbell, Baby, Stethoscope } from 'lucide-react';
 import { getAllArticles, getCategories, getTags, searchArticles, getArticleStats } from '../data/articles';
 import { formatDate, calculateReadingTime } from '../utils/markdown';
 
-const HealthGuidesPage = () => {
+const BlogsArticlesPage = () => {
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
