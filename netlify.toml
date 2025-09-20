@@ -20,6 +20,10 @@
   bundle = true
   minify = true
 
+# Netlify Plugin for SPA Prerendering
+[[plugins]]
+  package = "@netlify/plugin-prerender-spa"
+
 # Alternative: Use Netlify's built-in prerendering (simpler approach)
 [build.environment]
   # Node version - Updated to 20 for react-router-dom@7.9.1 compatibility
