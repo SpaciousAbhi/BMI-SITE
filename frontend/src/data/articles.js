@@ -1,9 +1,5 @@
 // BMI Articles data and content loader
-import ultimateGuideContent from '../../content/bmi/ultimate-guide-bmi-calculator.md';
-import accuracyContent from '../../content/bmi/is-bmi-accurate-athletes-seniors-ethnicities.md';
-import healthRisksContent from '../../content/bmi/bmi-health-risks-what-your-number-means.md';
-import changeBMIContent from '../../content/bmi/how-to-change-bmi-safely-weight-loss-gain-strategies.md';
-import alternativesContent from '../../content/bmi/bmi-alternatives-body-fat-waist-height-bmr.md';
+// Content will be loaded dynamically from the server
 
 // Article metadata and content mapping
 export const articles = [
