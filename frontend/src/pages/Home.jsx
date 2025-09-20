@@ -637,10 +637,10 @@ const Home = () => {
               <span>2025 Medical Guides</span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
-              BMI Resources & Expert Guides
+              Health Guides & Expert Articles
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Comprehensive, medically-reviewed articles covering everything about BMI calculation, interpretation, and health applications
+              Comprehensive, medically-reviewed guides covering all health calculators, fitness tools, and wellness topics
             </p>
           </div>
 
