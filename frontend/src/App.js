@@ -446,6 +446,7 @@ function App() {
         <SEOUpdater />
         <ScrollToTop />
         <Header />
+        <Breadcrumb />
         <main className="flex-1">
           <AnimatedRoutes />
         </main>
