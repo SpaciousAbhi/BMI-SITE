@@ -117,41 +117,43 @@ const Breadcrumb = () => {
   return (
     <nav aria-label="Breadcrumb" className="bg-gray-900/30 border-b border-gray-800/50 py-3">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <ol className="flex items-center space-x-2 text-sm">
-          {breadcrumbItems.map((item, index) => (
-            <li key={index} className="flex items-center">
-              {index > 0 && (
-                <ChevronRight className="h-4 w-4 text-gray-500 mx-2 flex-shrink-0" />
-              )}
-              
-              {item.isCurrent ? (
-                <span className="flex items-center text-blue-400 font-medium">
-                  <item.icon className="h-4 w-4 mr-2 flex-shrink-0" />
-                  <span className="truncate max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
-                    {item.name}
+        <div className="flex items-center space-x-2 text-sm overflow-x-auto scrollbar-none">
+          <ol className="flex items-center space-x-2 min-w-0 flex-nowrap">
+            {breadcrumbItems.map((item, index) => (
+              <li key={index} className="flex items-center flex-shrink-0">
+                {index > 0 && (
+                  <ChevronRight className="h-4 w-4 text-gray-500 mx-2 flex-shrink-0" />
+                )}
+                
+                {item.isCurrent ? (
+                  <span className="flex items-center text-blue-400 font-medium">
+                    <item.icon className="h-4 w-4 mr-2 flex-shrink-0" />
+                    <span className="truncate max-w-32 sm:max-w-48 md:max-w-64 lg:max-w-none">
+                      {item.name}
+                    </span>
                   </span>
-                </span>
-              ) : item.isCategory ? (
-                <span className="flex items-center text-gray-400 font-medium">
-                  <item.icon className="h-4 w-4 mr-2 flex-shrink-0" />
-                  <span className="truncate max-w-xs sm:max-w-sm">
-                    {item.name}
+                ) : item.isCategory ? (
+                  <span className="flex items-center text-gray-400 font-medium">
+                    <item.icon className="h-4 w-4 mr-2 flex-shrink-0" />
+                    <span className="truncate max-w-24 sm:max-w-32 md:max-w-48">
+                      {item.name}
+                    </span>
                   </span>
-                </span>
-              ) : (
-                <Link
-                  to={item.path}
-                  className="flex items-center text-gray-300 hover:text-white transition-colors duration-200 group"
-                >
-                  <item.icon className="h-4 w-4 mr-2 flex-shrink-0 group-hover:text-blue-400 transition-colors" />
-                  <span className="truncate max-w-xs sm:max-w-sm hover:underline">
-                    {item.name}
-                  </span>
-                </Link>
-              )}
-            </li>
-          ))}
-        </ol>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className="flex items-center text-gray-300 hover:text-white transition-colors duration-200 group"
+                  >
+                    <item.icon className="h-4 w-4 mr-2 flex-shrink-0 group-hover:text-blue-400 transition-colors" />
+                    <span className="truncate max-w-16 sm:max-w-24 hover:underline">
+                      {item.name}
+                    </span>
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </nav>
   );
