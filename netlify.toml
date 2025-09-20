@@ -20,9 +20,48 @@
   bundle = true
   minify = true
 
-# Netlify Plugin for SPA Prerendering
+# Netlify Plugin for SPA Prerendering - Fixed Configuration
 [[plugins]]
   package = "netlify-plugin-prerender-spa"
+  
+  [plugins.inputs]
+    # Configure the routes to prerender
+    routes = [
+      "/",
+      "/body-fat-calculator",
+      "/army-body-fat-calculator", 
+      "/lean-body-mass-calculator",
+      "/ideal-weight-calculator",
+      "/healthy-weight-calculator",
+      "/body-type-calculator",
+      "/body-surface-area-calculator",
+      "/carbohydrate-calculator",
+      "/protein-calculator",
+      "/fat-intake-calculator",
+      "/calorie-calculator",
+      "/tdee-calculator",
+      "/bmr-calculator",
+      "/macro-calculator",
+      "/pace-calculator",
+      "/calories-burned-calculator",
+      "/one-rep-max-calculator", 
+      "/target-heart-rate-calculator",
+      "/pregnancy-calculator",
+      "/pregnancy-weight-gain-calculator",
+      "/due-date-calculator",
+      "/ovulation-calculator",
+      "/conception-calculator",
+      "/period-calculator",
+      "/gfr-calculator",
+      "/bac-calculator",
+      "/privacy-policy",
+      "/terms-conditions",
+      "/contact-us"
+    ]
+    # Performance optimizations
+    concurrency = 4
+    renderAfterTime = 2000
+    renderAfterDocumentEvent = "custom-render-trigger"
 
 # Alternative: Use Netlify's built-in prerendering (simpler approach)
 [build.environment]
