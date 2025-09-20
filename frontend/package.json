@@ -61,8 +61,47 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build:prerender": "react-scripts build && echo 'Build completed for Netlify prerender'",
+    "build:prerender": "react-scripts build && react-snap",
     "test": "react-scripts test"
+  },
+  "reactSnap": {
+    "inlineCss": true,
+    "skipThirdPartyRequests": true,
+    "cacheAjaxRequests": false,
+    "preloadImages": true,
+    "crawlFrom": "/",
+    "include": [
+      "/",
+      "/body-fat-calculator",
+      "/army-body-fat-calculator", 
+      "/lean-body-mass-calculator",
+      "/ideal-weight-calculator",
+      "/healthy-weight-calculator",
+      "/body-type-calculator",
+      "/body-surface-area-calculator",
+      "/carbohydrate-calculator",
+      "/protein-calculator",
+      "/fat-intake-calculator",
+      "/calorie-calculator",
+      "/tdee-calculator",
+      "/bmr-calculator",
+      "/macro-calculator",
+      "/pace-calculator",
+      "/calories-burned-calculator",
+      "/one-rep-max-calculator",
+      "/target-heart-rate-calculator",
+      "/pregnancy-calculator",
+      "/pregnancy-weight-gain-calculator",
+      "/due-date-calculator",
+      "/ovulation-calculator",
+      "/conception-calculator",
+      "/period-calculator",
+      "/gfr-calculator",
+      "/bac-calculator",
+      "/privacy-policy",
+      "/terms-conditions",
+      "/contact-us"
+    ]
   },
   "browserslist": {
     "production": [
