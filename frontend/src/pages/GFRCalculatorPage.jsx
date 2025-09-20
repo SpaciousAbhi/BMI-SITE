@@ -558,7 +558,7 @@ const GFRCalculatorPage = () => {
                 <p className="text-gray-300 leading-relaxed mb-4">
                   eGFR accuracy may be affected by extreme muscle mass (bodybuilders, amputees), recent high-protein meals, dehydration, 
                   certain medications, acute illness, or pregnancy. The CKD-EPI 2021 equation performs best in stable, non-hospitalized 
-                  patients. Significant eGFR changes (>25% decrease) warrant immediate medical attention. Trends over time are more important 
+                  patients. Significant eGFR changes (&gt;25% decrease) warrant immediate medical attention. Trends over time are more important 
                   than single measurements for assessing kidney function decline.
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 mt-4">
