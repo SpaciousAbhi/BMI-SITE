@@ -5,6 +5,50 @@
   # Directory to publish (relative to root of your repo)
   publish = "frontend/build"
 
+# Netlify Prerender Plugin - Solves SEO & Crawler Issues
+[[plugins]]
+  package = "netlify-plugin-prerender"
+  
+  [plugins.inputs]
+    # Routes to prerender for SEO (crawlers will see full HTML)
+    routes = [
+      "/",
+      "/body-fat-calculator",
+      "/army-body-fat-calculator", 
+      "/lean-body-mass-calculator",
+      "/ideal-weight-calculator",
+      "/healthy-weight-calculator",
+      "/body-type-calculator",
+      "/body-surface-area-calculator",
+      "/carbohydrate-calculator",
+      "/protein-calculator",
+      "/fat-intake-calculator",
+      "/calorie-calculator",
+      "/tdee-calculator",
+      "/bmr-calculator",
+      "/macro-calculator",
+      "/pace-calculator",
+      "/calories-burned-calculator",
+      "/one-rep-max-calculator",
+      "/target-heart-rate-calculator",
+      "/pregnancy-calculator",
+      "/pregnancy-weight-gain-calculator",
+      "/due-date-calculator",
+      "/ovulation-calculator",
+      "/conception-calculator",
+      "/period-calculator",
+      "/gfr-calculator",
+      "/bac-calculator",
+      "/privacy-policy",
+      "/terms-conditions",
+      "/contact-us"
+    ]
+    
+    # Rendering options
+    concurrency = 4
+    renderAfterTime = 1000
+    renderAfterDocumentEvent = "custom-render-trigger"
+
 [build.environment]
   # Node version - Updated to 20 for react-router-dom@7.9.1 compatibility
   NODE_VERSION = "20"
