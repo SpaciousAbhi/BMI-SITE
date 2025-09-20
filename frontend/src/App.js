@@ -442,6 +442,19 @@ function AnimatedRoutes() {
 }
 
 function App() {
+  // Trigger for Netlify prerender plugin
+  useEffect(() => {
+    // Dispatch custom event after app is fully rendered
+    const timer = setTimeout(() => {
+      if (typeof window !== 'undefined') {
+        const event = new CustomEvent('custom-render-trigger');
+        document.dispatchEvent(event);
+      }
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="App min-h-screen bg-black text-white">
       <BrowserRouter>
