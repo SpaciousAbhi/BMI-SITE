@@ -708,7 +708,7 @@ const Home = () => {
                 <div className="text-xs text-gray-400">Featured</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-400">13m</div>
+                <div className="text-2xl font-bold text-purple-400">14m</div>
                 <div className="text-xs text-gray-400">Avg Read</div>
               </div>
             </div>
