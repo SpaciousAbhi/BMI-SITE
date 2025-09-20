@@ -385,7 +385,7 @@ const BlogsArticlesPage = () => {
                     )}
 
                     <Link
-                      to={`/health-guides/${article.slug}`}
+                      to={`/blogs-articles/${article.slug}`}
                       className="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-lg transition-colors font-medium"
                     >
                       Read Article
