@@ -562,11 +562,19 @@ const Header = () => {
                           ) : (
                             <Link
                               to={item.path}
-                              className="nav-link flex items-center text-gray-300 hover:text-white transition-all duration-300 ease-out py-3 px-3 font-medium hover:bg-gray-800/50 rounded-lg"
+                              className={`nav-link flex items-center transition-all duration-300 ease-out py-3 px-3 font-medium rounded-lg ${
+                                item.isMainHeading
+                                  ? "text-blue-400 hover:text-blue-300 font-bold bg-gradient-to-r from-blue-500/10 to-green-500/10 hover:from-blue-500/20 hover:to-green-500/20 border border-blue-500/20"
+                                  : "text-gray-300 hover:text-white hover:bg-gray-800/50"
+                              }`}
                               onClick={() => setIsOpen(false)}
                             >
-                              <item.icon className="h-5 w-5 mr-3 text-blue-400" />
-                              {item.name}
+                              <item.icon className={`h-5 w-5 mr-3 transition-colors ${
+                                item.isMainHeading ? "text-blue-400" : "text-blue-400"
+                              }`} />
+                              <span className={item.isMainHeading ? "bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent" : ""}>
+                                {item.name}
+                              </span>
                             </Link>
                           )}
                         </div>
