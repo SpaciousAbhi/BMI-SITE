@@ -38,10 +38,11 @@ const Header = () => {
   // Enhanced navigation items with icons and descriptions
   const navItems = [
     {
-      name: "Home",
+      name: "Home | BMI Calculator",
       path: "/",
       icon: Heart,
-      description: "BMI Calculator & Health Hub"
+      description: "BMI Calculator & Health Hub",
+      isMainHeading: true
     },
     {
       name: "Body Composition & Weight Analysis",
