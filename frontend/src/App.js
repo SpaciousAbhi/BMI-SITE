@@ -405,15 +405,15 @@ function AnimatedRoutes() {
           } 
         />
         <Route 
-          path="/health-guides" 
+          path="/blogs-articles" 
           element={
-            <PageTransition key="health-guides">
-              <HealthGuidesPage />
+            <PageTransition key="blogs-articles">
+              <BlogsArticlesPage />
             </PageTransition>
           } 
         />
         <Route 
-          path="/health-guides/:slug" 
+          path="/blogs-articles/:slug" 
           element={
             <PageTransition key="article">
               <ArticlePage />
