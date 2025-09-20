@@ -213,10 +213,17 @@ const Header = () => {
       ],
     },
     {
+      name: "Blogs & Articles",
+      path: "/blogs-articles",
+      icon: FileText,
+      description: "Expert health calculator guides & medical articles",
+      isMainHeading: true,
+      popular: true
+    },
+    {
       name: "Resources & Support",
       icon: Activity,
       items: [
-        { name: "Health Guides & Articles", path: "/health-guides", description: "Comprehensive health calculator guides and medical articles", popular: true },
         { name: "Privacy Policy", path: "/privacy-policy", description: "Data protection and privacy information" },
         { name: "Terms & Conditions", path: "/terms-conditions", description: "Terms of service and usage guidelines" },
         { name: "Contact Us", path: "/contact-us", description: "Get support and send feedback" },
