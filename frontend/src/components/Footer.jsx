@@ -357,6 +357,82 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Blogs & Articles Section */}
+        <div className="mb-12">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-white mb-2 flex items-center justify-center">
+              <FileText className="h-6 w-6 mr-3 text-blue-400" />
+              Blogs & Articles
+            </h3>
+            <p className="text-gray-400">Expert health insights & comprehensive calculator guides</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {/* Featured Categories */}
+            <div className="bg-gradient-to-br from-blue-900/20 to-blue-800/10 rounded-xl p-6 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 group">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-blue-500/20 rounded-lg group-hover:bg-blue-500/30 transition-colors">
+                  <Scale className="w-5 h-5 text-blue-400" />
+                </div>
+                <h4 className="font-semibold text-white">Body Composition</h4>
+              </div>
+              <p className="text-gray-300 text-sm mb-4">BMI, body fat, and weight analysis guides</p>
+              <Link 
+                to="/blogs-articles" 
+                className="inline-flex items-center text-blue-400 hover:text-blue-300 text-sm font-medium"
+              >
+                Read Articles
+                <ExternalLink className="w-3 h-3 ml-1" />
+              </Link>
+            </div>
+
+            <div className="bg-gradient-to-br from-orange-900/20 to-orange-800/10 rounded-xl p-6 border border-orange-500/20 hover:border-orange-400/40 transition-all duration-300 group">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-orange-500/20 rounded-lg group-hover:bg-orange-500/30 transition-colors">
+                  <Utensils className="w-5 h-5 text-orange-400" />
+                </div>
+                <h4 className="font-semibold text-white">Nutrition & Diet</h4>
+              </div>
+              <p className="text-gray-300 text-sm mb-4">Calorie, macro, and diet planning guides</p>
+              <Link 
+                to="/blogs-articles" 
+                className="inline-flex items-center text-orange-400 hover:text-orange-300 text-sm font-medium"
+              >
+                Read Articles
+                <ExternalLink className="w-3 h-3 ml-1" />
+              </Link>
+            </div>
+
+            <div className="bg-gradient-to-br from-purple-900/20 to-purple-800/10 rounded-xl p-6 border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300 group">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-purple-500/20 rounded-lg group-hover:bg-purple-500/30 transition-colors">
+                  <Dumbbell className="w-5 h-5 text-purple-400" />
+                </div>
+                <h4 className="font-semibold text-white">Fitness & Performance</h4>
+              </div>
+              <p className="text-gray-300 text-sm mb-4">Exercise, pace, and training guides</p>
+              <Link 
+                to="/blogs-articles" 
+                className="inline-flex items-center text-purple-400 hover:text-purple-300 text-sm font-medium"
+              >
+                Read Articles
+                <ExternalLink className="w-3 h-3 ml-1" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Quick Links to All Articles */}
+          <div className="text-center">
+            <Link
+              to="/blogs-articles"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+            >
+              <BookOpen className="w-4 h-4" />
+              View All Articles & Guides
+            </Link>
+          </div>
+        </div>
+
         {/* Legal & Privacy Section */}
         <div className="mb-12">
           <div className="bg-gray-800/20 rounded-xl p-8 border border-gray-700/30">
