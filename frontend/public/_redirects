@@ -1,7 +1,7 @@
 # Netlify redirects for SPA (Single Page Application)
 # This ensures all routes are handled by React Router
 
-# Specific calculator routes - explicitly handle each route
+# Body Composition & Weight Calculators
 /body-fat-calculator                 /index.html   200
 /army-body-fat-calculator           /index.html   200
 /lean-body-mass-calculator          /index.html   200
@@ -10,7 +10,34 @@
 /body-type-calculator               /index.html   200
 /body-surface-area-calculator       /index.html   200
 
-# Legal pages
+# Nutrition & Diet Calculators
+/carbohydrate-calculator            /index.html   200
+/protein-calculator                 /index.html   200
+/fat-intake-calculator              /index.html   200
+/calorie-calculator                 /index.html   200
+/tdee-calculator                    /index.html   200
+/bmr-calculator                     /index.html   200
+/macro-calculator                   /index.html   200
+
+# Fitness & Performance Calculators
+/pace-calculator                    /index.html   200
+/calories-burned-calculator         /index.html   200
+/one-rep-max-calculator             /index.html   200
+/target-heart-rate-calculator       /index.html   200
+
+# Pregnancy & Women's Health Calculators
+/pregnancy-calculator               /index.html   200
+/pregnancy-weight-gain-calculator   /index.html   200
+/due-date-calculator                /index.html   200
+/ovulation-calculator               /index.html   200
+/conception-calculator              /index.html   200
+/period-calculator                  /index.html   200
+
+# Medical & Health Calculators
+/gfr-calculator                     /index.html   200
+/bac-calculator                     /index.html   200
+
+# Legal & Support Pages
 /privacy-policy                     /index.html   200
 /terms-conditions                   /index.html   200
 /contact-us                         /index.html   200
