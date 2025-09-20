@@ -77,7 +77,7 @@ function SEOUpdater() {
       '/period-calculator': 'Period Calculator - Menstrual Cycle Tracker | Women\'s Health Tool',
       '/gfr-calculator': 'GFR Calculator - Kidney Function Assessment | eGFR Medical Tool',
       '/bac-calculator': 'BAC Calculator - Blood Alcohol Content | Legal Limit Calculator',
-      '/health-guides': 'Health Guides & Articles - Medical Calculator Resources | Expert Health Content',
+      '/blogs-articles': 'Blogs & Articles - Health Calculator Guides | Expert Medical Content 2025',
       '/privacy-policy': 'Privacy Policy - Data Protection & DPDP Act Compliance | BMI Calculator Pro',
       '/terms-conditions': 'Terms & Conditions - Usage Guidelines | BMI Calculator Pro Legal',
       '/contact-us': 'Contact Us - Support & Feedback | BMI Calculator Pro Help Center'
