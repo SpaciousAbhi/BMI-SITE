@@ -6,7 +6,9 @@ import { Toaster } from "./components/ui/toaster";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Breadcrumb from "./components/Breadcrumb";
+import BackButton from "./components/BackButton";
 import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 import PageTransition from "./components/PageTransition";
 import Home from "./pages/Home";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -447,10 +449,12 @@ function App() {
         <ScrollToTop />
         <Header />
         <Breadcrumb />
+        <BackButton />
         <main className="flex-1">
           <AnimatedRoutes />
         </main>
         <Footer />
+        <ScrollToTopButton />
         <Toaster />
       </BrowserRouter>
     </div>
