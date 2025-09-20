@@ -7,8 +7,7 @@ This test suite focuses on backend API testing for the enhanced header and foote
 Tests backend connectivity, route accessibility, and performance for the comprehensive calculator application.
 """
 
-import asyncio
-import aiohttp
+import requests
 import time
 import json
 import sys
@@ -21,19 +20,7 @@ class HeaderFooterBackendTester:
         self.backend_url = "http://localhost:8001"  # Backend runs on port 8001
         self.frontend_url = "http://localhost:3000"  # Frontend runs on port 3000
         self.test_results = []
-        self.session = None
         
-    async def setup_session(self):
-        """Initialize HTTP session for testing"""
-        connector = aiohttp.TCPConnector(limit=100, limit_per_host=30)
-        timeout = aiohttp.ClientTimeout(total=30, connect=10)
-        self.session = aiohttp.ClientSession(connector=connector, timeout=timeout)
-        
-    async def cleanup_session(self):
-        """Clean up HTTP session"""
-        if self.session:
-            await self.session.close()
-            
     def log_test(self, test_name: str, status: str, details: str, duration: float = 0):
         """Log test results"""
         result = {
@@ -43,44 +30,44 @@ class HeaderFooterBackendTester:
             "duration": f"{duration:.3f}s" if duration > 0 else "N/A"
         }
         self.test_results.append(result)
-        status_icon = "✅" if status == "PASS" else "❌" if status == "FAIL" else "⚠️"
+        status_icon = "✅" if status == "PASS" else "❌" if status == "FAIL" else "⚠️" if status == "WARN" else "ℹ️"
         print(f"{status_icon} {test_name}: {details} ({result['duration']})")
 
-    async def test_backend_connectivity(self):
+    def test_backend_connectivity(self):
         """Test basic backend API connectivity"""
         test_name = "Backend API Connectivity"
         try:
             start_time = time.time()
-            async with self.session.get(f"{self.backend_url}/api/") as response:
-                duration = time.time() - start_time
-                if response.status == 200:
-                    data = await response.json()
-                    if data.get("message") == "Hello World":
-                        self.log_test(test_name, "PASS", f"Backend API accessible, response: {data}", duration)
-                        return True
-                    else:
-                        self.log_test(test_name, "FAIL", f"Unexpected response: {data}", duration)
-                        return False
+            response = requests.get(f"{self.backend_url}/api/", timeout=10)
+            duration = time.time() - start_time
+            if response.status_code == 200:
+                data = response.json()
+                if data.get("message") == "Hello World":
+                    self.log_test(test_name, "PASS", f"Backend API accessible, response: {data}", duration)
+                    return True
                 else:
-                    self.log_test(test_name, "FAIL", f"HTTP {response.status}", duration)
+                    self.log_test(test_name, "FAIL", f"Unexpected response: {data}", duration)
                     return False
+            else:
+                self.log_test(test_name, "FAIL", f"HTTP {response.status_code}", duration)
+                return False
         except Exception as e:
             self.log_test(test_name, "FAIL", f"Connection error: {str(e)}")
             return False
 
-    async def test_backend_status_endpoints(self):
+    def test_backend_status_endpoints(self):
         """Test backend status check endpoints"""
         # Test GET status endpoint
         test_name = "Backend Status GET Endpoint"
         try:
             start_time = time.time()
-            async with self.session.get(f"{self.backend_url}/api/status") as response:
-                duration = time.time() - start_time
-                if response.status == 200:
-                    data = await response.json()
-                    self.log_test(test_name, "PASS", f"Status GET working, {len(data)} records", duration)
-                else:
-                    self.log_test(test_name, "FAIL", f"HTTP {response.status}", duration)
+            response = requests.get(f"{self.backend_url}/api/status", timeout=10)
+            duration = time.time() - start_time
+            if response.status_code == 200:
+                data = response.json()
+                self.log_test(test_name, "PASS", f"Status GET working, {len(data)} records", duration)
+            else:
+                self.log_test(test_name, "FAIL", f"HTTP {response.status_code}", duration)
         except Exception as e:
             self.log_test(test_name, "FAIL", f"Error: {str(e)}")
 
@@ -89,20 +76,20 @@ class HeaderFooterBackendTester:
         try:
             start_time = time.time()
             test_data = {"client_name": "header_footer_test"}
-            async with self.session.post(f"{self.backend_url}/api/status", json=test_data) as response:
-                duration = time.time() - start_time
-                if response.status == 200:
-                    data = await response.json()
-                    if "id" in data and "timestamp" in data:
-                        self.log_test(test_name, "PASS", f"Status POST working, ID: {data['id'][:8]}...", duration)
-                    else:
-                        self.log_test(test_name, "FAIL", f"Missing required fields in response", duration)
+            response = requests.post(f"{self.backend_url}/api/status", json=test_data, timeout=10)
+            duration = time.time() - start_time
+            if response.status_code == 200:
+                data = response.json()
+                if "id" in data and "timestamp" in data:
+                    self.log_test(test_name, "PASS", f"Status POST working, ID: {data['id'][:8]}...", duration)
                 else:
-                    self.log_test(test_name, "FAIL", f"HTTP {response.status}", duration)
+                    self.log_test(test_name, "FAIL", f"Missing required fields in response", duration)
+            else:
+                self.log_test(test_name, "FAIL", f"HTTP {response.status_code}", duration)
         except Exception as e:
             self.log_test(test_name, "FAIL", f"Error: {str(e)}")
 
-    async def test_calculator_routes_accessibility(self):
+    def test_calculator_routes_accessibility(self):
         """Test accessibility of all calculator routes mentioned in header navigation"""
         calculator_routes = [
             # Home route
@@ -157,18 +144,18 @@ class HeaderFooterBackendTester:
             test_name = f"Route Accessibility: {route}"
             try:
                 start_time = time.time()
-                async with self.session.get(f"{self.frontend_url}{route}") as response:
-                    duration = time.time() - start_time
-                    if response.status == 200:
-                        # Check if it's a valid React page (contains React app div)
-                        content = await response.text()
-                        if 'id="root"' in content or 'react' in content.lower():
-                            accessible_routes += 1
-                            self.log_test(test_name, "PASS", f"Route accessible", duration)
-                        else:
-                            self.log_test(test_name, "WARN", f"Route accessible but may not be React app", duration)
+                response = requests.get(f"{self.frontend_url}{route}", timeout=10)
+                duration = time.time() - start_time
+                if response.status_code == 200:
+                    # Check if it's a valid React page (contains React app div)
+                    content = response.text
+                    if 'id="root"' in content or 'react' in content.lower():
+                        accessible_routes += 1
+                        self.log_test(test_name, "PASS", f"Route accessible", duration)
                     else:
-                        self.log_test(test_name, "FAIL", f"HTTP {response.status}", duration)
+                        self.log_test(test_name, "WARN", f"Route accessible but may not be React app", duration)
+                else:
+                    self.log_test(test_name, "FAIL", f"HTTP {response.status_code}", duration)
             except Exception as e:
                 self.log_test(test_name, "FAIL", f"Error: {str(e)}")
         
@@ -182,7 +169,7 @@ class HeaderFooterBackendTester:
         else:
             self.log_test(summary_test, "FAIL", f"{accessible_routes}/{total_routes} routes accessible ({success_rate:.1f}%)")
 
-    async def test_search_functionality_backend_support(self):
+    def test_search_functionality_backend_support(self):
         """Test if search functionality has any backend support"""
         test_name = "Search Functionality Backend Support"
         
@@ -192,19 +179,19 @@ class HeaderFooterBackendTester:
         backend_search_support = False
         for endpoint in search_endpoints:
             try:
-                async with self.session.get(f"{self.backend_url}{endpoint}") as response:
-                    if response.status == 200:
-                        backend_search_support = True
-                        data = await response.json()
-                        self.log_test(test_name, "PASS", f"Backend search support found at {endpoint}")
-                        break
+                response = requests.get(f"{self.backend_url}{endpoint}", timeout=5)
+                if response.status_code == 200:
+                    backend_search_support = True
+                    data = response.json()
+                    self.log_test(test_name, "PASS", f"Backend search support found at {endpoint}")
+                    break
             except:
                 continue
         
         if not backend_search_support:
             self.log_test(test_name, "INFO", "Search functionality is client-side only (no backend endpoints found)")
 
-    async def test_newsletter_backend_support(self):
+    def test_newsletter_backend_support(self):
         """Test if newsletter functionality has backend support"""
         test_name = "Newsletter Backend Support"
         
@@ -214,19 +201,19 @@ class HeaderFooterBackendTester:
         backend_newsletter_support = False
         for endpoint in newsletter_endpoints:
             try:
-                async with self.session.post(f"{self.backend_url}{endpoint}", 
-                                           json={"email": "test@example.com"}) as response:
-                    if response.status in [200, 201, 400]:  # 400 might be validation error
-                        backend_newsletter_support = True
-                        self.log_test(test_name, "PASS", f"Backend newsletter support found at {endpoint}")
-                        break
+                response = requests.post(f"{self.backend_url}{endpoint}", 
+                                       json={"email": "test@example.com"}, timeout=5)
+                if response.status_code in [200, 201, 400]:  # 400 might be validation error
+                    backend_newsletter_support = True
+                    self.log_test(test_name, "PASS", f"Backend newsletter support found at {endpoint}")
+                    break
             except:
                 continue
         
         if not backend_newsletter_support:
             self.log_test(test_name, "INFO", "Newsletter functionality is client-side simulation (no backend endpoints found)")
 
-    async def test_frontend_performance(self):
+    def test_frontend_performance(self):
         """Test frontend performance for key pages"""
         key_pages = ["/", "/body-fat-calculator", "/pregnancy-calculator", "/calorie-calculator"]
         
@@ -237,20 +224,20 @@ class HeaderFooterBackendTester:
             test_name = f"Performance Test: {page}"
             try:
                 start_time = time.time()
-                async with self.session.get(f"{self.frontend_url}{page}") as response:
-                    duration = time.time() - start_time
-                    total_load_time += duration
-                    
-                    if response.status == 200:
-                        successful_loads += 1
-                        if duration < 1.0:
-                            self.log_test(test_name, "PASS", f"Fast load time", duration)
-                        elif duration < 3.0:
-                            self.log_test(test_name, "WARN", f"Acceptable load time", duration)
-                        else:
-                            self.log_test(test_name, "FAIL", f"Slow load time", duration)
+                response = requests.get(f"{self.frontend_url}{page}", timeout=10)
+                duration = time.time() - start_time
+                total_load_time += duration
+                
+                if response.status_code == 200:
+                    successful_loads += 1
+                    if duration < 1.0:
+                        self.log_test(test_name, "PASS", f"Fast load time", duration)
+                    elif duration < 3.0:
+                        self.log_test(test_name, "WARN", f"Acceptable load time", duration)
                     else:
-                        self.log_test(test_name, "FAIL", f"HTTP {response.status}", duration)
+                        self.log_test(test_name, "FAIL", f"Slow load time", duration)
+                else:
+                    self.log_test(test_name, "FAIL", f"HTTP {response.status_code}", duration)
             except Exception as e:
                 self.log_test(test_name, "FAIL", f"Error: {str(e)}")
         
@@ -265,35 +252,35 @@ class HeaderFooterBackendTester:
             else:
                 self.log_test(perf_test, "WARN", f"Average load time could be improved", avg_load_time)
 
-    async def test_mobile_responsiveness_indicators(self):
+    def test_mobile_responsiveness_indicators(self):
         """Test for mobile responsiveness indicators in HTML"""
         test_name = "Mobile Responsiveness Indicators"
         try:
             start_time = time.time()
-            async with self.session.get(f"{self.frontend_url}/") as response:
-                duration = time.time() - start_time
-                if response.status == 200:
-                    content = await response.text()
-                    
-                    # Check for viewport meta tag
-                    has_viewport = 'name="viewport"' in content
-                    # Check for responsive design indicators
-                    has_responsive_css = any(indicator in content for indicator in [
-                        'responsive', 'mobile', 'sm:', 'md:', 'lg:', 'xl:', '@media'
-                    ])
-                    
-                    if has_viewport and has_responsive_css:
-                        self.log_test(test_name, "PASS", "Mobile responsiveness indicators present", duration)
-                    elif has_viewport:
-                        self.log_test(test_name, "WARN", "Viewport meta tag present but limited responsive indicators", duration)
-                    else:
-                        self.log_test(test_name, "FAIL", "Missing mobile responsiveness indicators", duration)
+            response = requests.get(f"{self.frontend_url}/", timeout=10)
+            duration = time.time() - start_time
+            if response.status_code == 200:
+                content = response.text
+                
+                # Check for viewport meta tag
+                has_viewport = 'name="viewport"' in content
+                # Check for responsive design indicators
+                has_responsive_css = any(indicator in content for indicator in [
+                    'responsive', 'mobile', 'sm:', 'md:', 'lg:', 'xl:', '@media'
+                ])
+                
+                if has_viewport and has_responsive_css:
+                    self.log_test(test_name, "PASS", "Mobile responsiveness indicators present", duration)
+                elif has_viewport:
+                    self.log_test(test_name, "WARN", "Viewport meta tag present but limited responsive indicators", duration)
                 else:
-                    self.log_test(test_name, "FAIL", f"HTTP {response.status}", duration)
+                    self.log_test(test_name, "FAIL", "Missing mobile responsiveness indicators", duration)
+            else:
+                self.log_test(test_name, "FAIL", f"HTTP {response.status_code}", duration)
         except Exception as e:
             self.log_test(test_name, "FAIL", f"Error: {str(e)}")
 
-    async def test_static_assets(self):
+    def test_static_assets(self):
         """Test static assets accessibility"""
         static_assets = [
             "/robots.txt",
@@ -304,63 +291,121 @@ class HeaderFooterBackendTester:
             test_name = f"Static Asset: {asset}"
             try:
                 start_time = time.time()
-                async with self.session.get(f"{self.frontend_url}{asset}") as response:
-                    duration = time.time() - start_time
-                    if response.status == 200:
-                        content_type = response.headers.get('content-type', '')
-                        if asset.endswith('.xml') and 'xml' in content_type:
-                            self.log_test(test_name, "PASS", f"XML asset accessible with correct content-type", duration)
-                        elif asset.endswith('.txt') and 'text' in content_type:
-                            self.log_test(test_name, "PASS", f"Text asset accessible with correct content-type", duration)
-                        else:
-                            self.log_test(test_name, "PASS", f"Asset accessible", duration)
+                response = requests.get(f"{self.frontend_url}{asset}", timeout=10)
+                duration = time.time() - start_time
+                if response.status_code == 200:
+                    content_type = response.headers.get('content-type', '')
+                    if asset.endswith('.xml') and 'xml' in content_type:
+                        self.log_test(test_name, "PASS", f"XML asset accessible with correct content-type", duration)
+                    elif asset.endswith('.txt') and 'text' in content_type:
+                        self.log_test(test_name, "PASS", f"Text asset accessible with correct content-type", duration)
                     else:
-                        self.log_test(test_name, "FAIL", f"HTTP {response.status}", duration)
+                        self.log_test(test_name, "PASS", f"Asset accessible", duration)
+                else:
+                    self.log_test(test_name, "FAIL", f"HTTP {response.status_code}", duration)
             except Exception as e:
                 self.log_test(test_name, "FAIL", f"Error: {str(e)}")
 
-    async def run_all_tests(self):
+    def test_header_navigation_structure(self):
+        """Test if header navigation structure is properly implemented"""
+        test_name = "Header Navigation Structure"
+        try:
+            start_time = time.time()
+            response = requests.get(f"{self.frontend_url}/", timeout=10)
+            duration = time.time() - start_time
+            if response.status_code == 200:
+                content = response.text
+                
+                # Check for navigation indicators
+                nav_indicators = [
+                    'Body Composition', 'Nutrition & Diet', 'Fitness & Performance', 
+                    'Pregnancy & Women\'s Health', 'Medical & Health', 'Support'
+                ]
+                
+                found_categories = sum(1 for indicator in nav_indicators if indicator in content)
+                
+                if found_categories >= 5:
+                    self.log_test(test_name, "PASS", f"Enhanced navigation structure present ({found_categories}/6 categories found)", duration)
+                elif found_categories >= 3:
+                    self.log_test(test_name, "WARN", f"Partial navigation structure ({found_categories}/6 categories found)", duration)
+                else:
+                    self.log_test(test_name, "FAIL", f"Navigation structure incomplete ({found_categories}/6 categories found)", duration)
+            else:
+                self.log_test(test_name, "FAIL", f"HTTP {response.status_code}", duration)
+        except Exception as e:
+            self.log_test(test_name, "FAIL", f"Error: {str(e)}")
+
+    def test_footer_enhancements(self):
+        """Test if footer enhancements are properly implemented"""
+        test_name = "Footer Enhancements"
+        try:
+            start_time = time.time()
+            response = requests.get(f"{self.frontend_url}/", timeout=10)
+            duration = time.time() - start_time
+            if response.status_code == 200:
+                content = response.text
+                
+                # Check for footer enhancement indicators
+                footer_indicators = [
+                    'newsletter', 'subscribe', 'social', 'facebook', 'twitter', 
+                    'instagram', 'linkedin', 'youtube', 'trust', 'privacy'
+                ]
+                
+                found_indicators = sum(1 for indicator in footer_indicators if indicator.lower() in content.lower())
+                
+                if found_indicators >= 7:
+                    self.log_test(test_name, "PASS", f"Footer enhancements present ({found_indicators}/10 indicators found)", duration)
+                elif found_indicators >= 4:
+                    self.log_test(test_name, "WARN", f"Partial footer enhancements ({found_indicators}/10 indicators found)", duration)
+                else:
+                    self.log_test(test_name, "FAIL", f"Footer enhancements incomplete ({found_indicators}/10 indicators found)", duration)
+            else:
+                self.log_test(test_name, "FAIL", f"HTTP {response.status_code}", duration)
+        except Exception as e:
+            self.log_test(test_name, "FAIL", f"Error: {str(e)}")
+
+    def run_all_tests(self):
         """Run comprehensive backend testing suite"""
         print("🚀 Starting Enhanced Header and Footer Backend Testing Suite")
         print("=" * 80)
         
-        await self.setup_session()
+        # Core backend tests
+        print("\n📡 BACKEND API CONNECTIVITY TESTS")
+        print("-" * 50)
+        backend_available = self.test_backend_connectivity()
         
-        try:
-            # Core backend tests
-            print("\n📡 BACKEND API CONNECTIVITY TESTS")
-            print("-" * 50)
-            backend_available = await self.test_backend_connectivity()
-            
-            if backend_available:
-                await self.test_backend_status_endpoints()
-            else:
-                self.log_test("Backend Status Tests", "SKIP", "Backend not available")
-            
-            # Frontend route accessibility tests
-            print("\n🌐 FRONTEND ROUTE ACCESSIBILITY TESTS")
-            print("-" * 50)
-            await self.test_calculator_routes_accessibility()
-            
-            # Feature-specific backend support tests
-            print("\n🔍 FEATURE BACKEND SUPPORT TESTS")
-            print("-" * 50)
-            await self.test_search_functionality_backend_support()
-            await self.test_newsletter_backend_support()
-            
-            # Performance and responsiveness tests
-            print("\n⚡ PERFORMANCE & RESPONSIVENESS TESTS")
-            print("-" * 50)
-            await self.test_frontend_performance()
-            await self.test_mobile_responsiveness_indicators()
-            
-            # Static assets tests
-            print("\n📄 STATIC ASSETS TESTS")
-            print("-" * 50)
-            await self.test_static_assets()
-            
-        finally:
-            await self.cleanup_session()
+        if backend_available:
+            self.test_backend_status_endpoints()
+        else:
+            self.log_test("Backend Status Tests", "SKIP", "Backend not available")
+        
+        # Frontend route accessibility tests
+        print("\n🌐 FRONTEND ROUTE ACCESSIBILITY TESTS")
+        print("-" * 50)
+        self.test_calculator_routes_accessibility()
+        
+        # Header and Footer specific tests
+        print("\n🎨 HEADER & FOOTER ENHANCEMENT TESTS")
+        print("-" * 50)
+        self.test_header_navigation_structure()
+        self.test_footer_enhancements()
+        
+        # Feature-specific backend support tests
+        print("\n🔍 FEATURE BACKEND SUPPORT TESTS")
+        print("-" * 50)
+        self.test_search_functionality_backend_support()
+        self.test_newsletter_backend_support()
+        
+        # Performance and responsiveness tests
+        print("\n⚡ PERFORMANCE & RESPONSIVENESS TESTS")
+        print("-" * 50)
+        self.test_frontend_performance()
+        self.test_mobile_responsiveness_indicators()
+        
+        # Static assets tests
+        print("\n📄 STATIC ASSETS TESTS")
+        print("-" * 50)
+        self.test_static_assets()
         
         # Generate summary
         self.generate_test_summary()
@@ -376,6 +421,7 @@ class HeaderFooterBackendTester:
         failed_tests = len([r for r in self.test_results if r["status"] == "FAIL"])
         warning_tests = len([r for r in self.test_results if r["status"] == "WARN"])
         info_tests = len([r for r in self.test_results if r["status"] == "INFO"])
+        skip_tests = len([r for r in self.test_results if r["status"] == "SKIP"])
         
         print(f"\n📈 OVERALL RESULTS:")
         print(f"   Total Tests: {total_tests}")
@@ -383,7 +429,9 @@ class HeaderFooterBackendTester:
         print(f"   ❌ Failed: {failed_tests}")
         print(f"   ⚠️  Warnings: {warning_tests}")
         print(f"   ℹ️  Info: {info_tests}")
-        print(f"   Success Rate: {(passed_tests/total_tests)*100:.1f}%")
+        print(f"   ⏭️  Skipped: {skip_tests}")
+        if total_tests > 0:
+            print(f"   Success Rate: {(passed_tests/total_tests)*100:.1f}%")
         
         if failed_tests > 0:
             print(f"\n❌ FAILED TESTS:")
@@ -422,6 +470,17 @@ class HeaderFooterBackendTester:
             else:
                 print(f"   ❌ Poor route accessibility: {accessible_routes}/{total_routes} ({route_success:.1f}%)")
         
+        # Analyze header/footer enhancements
+        enhancement_tests = [r for r in self.test_results if "Navigation Structure" in r["test"] or "Footer Enhancements" in r["test"]]
+        working_enhancements = len([r for r in enhancement_tests if r["status"] == "PASS"])
+        
+        if working_enhancements >= 2:
+            print("   ✅ Header and footer enhancements are properly implemented")
+        elif working_enhancements >= 1:
+            print("   ⚠️  Partial header/footer enhancements implemented")
+        else:
+            print("   ❌ Header/footer enhancements need attention")
+        
         # Analyze performance
         perf_tests = [r for r in self.test_results if "Performance" in r["test"]]
         good_performance = len([r for r in perf_tests if r["status"] == "PASS"])
@@ -434,14 +493,14 @@ class HeaderFooterBackendTester:
         print(f"\n🏁 TESTING COMPLETED")
         print("=" * 80)
 
-async def main():
+def main():
     """Main test execution function"""
     tester = HeaderFooterBackendTester()
-    await tester.run_all_tests()
+    tester.run_all_tests()
 
 if __name__ == "__main__":
     try:
-        asyncio.run(main())
+        main()
     except KeyboardInterrupt:
         print("\n\n⚠️  Testing interrupted by user")
         sys.exit(1)
