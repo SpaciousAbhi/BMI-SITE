@@ -117,52 +117,6 @@ export const articles = [
     },
     imageUrl: '/images/bmi-alternatives-comparison.jpg',
     tags: ['Body Composition', 'Health Metrics', 'Assessment Methods', 'Alternative Measures']
-  },
-  // Placeholder articles for future expansion
-  {
-    id: 6,
-    slug: 'complete-guide-calorie-counting-weight-management',
-    title: 'Complete Guide to Calorie Counting for Weight Management 2025',
-    description: 'Master calorie counting with scientific accuracy. Learn TDEE calculation, metabolic factors, portion control, and sustainable calorie management strategies.',
-    excerpt: 'Calorie counting remains one of the most effective tools for weight management when applied correctly. This guide covers everything from basic calculations to advanced metabolic considerations.',
-    contentPath: '/content/nutrition/complete-guide-calorie-counting.md',
-    author: 'Health Calculator Pro Medical Team',
-    date: '2025-01-24',
-    readTime: '12-14 minutes',
-    category: 'Nutrition & Diet Analysis',
-    featured: false,
-    medicalReview: true,
-    tags: ['Calories', 'Weight Management', 'TDEE', 'Nutrition Planning']
-  },
-  {
-    id: 7,
-    slug: 'body-fat-percentage-measurement-guide',
-    title: 'Body Fat Percentage: Complete Measurement & Analysis Guide 2025',
-    description: 'Comprehensive guide to measuring and interpreting body fat percentage using various methods including DEXA, BodPod, skinfold calipers, and bioelectrical impedance.',
-    excerpt: 'Body fat percentage provides more accurate health assessment than BMI alone. Learn all measurement methods, interpretation guidelines, and health implications.',
-    contentPath: '/content/body-composition/body-fat-percentage-guide.md',
-    author: 'Health Calculator Pro Medical Team',
-    date: '2025-01-24',
-    readTime: '14-16 minutes',
-    category: 'Body Composition & Weight Analysis',
-    featured: false,
-    medicalReview: true,
-    tags: ['Body Fat', 'Measurement Methods', 'Health Assessment', 'DEXA Scan']
-  },
-  {
-    id: 8,
-    slug: 'heart-rate-training-zones-complete-guide',
-    title: 'Heart Rate Training Zones: Complete Exercise Optimization Guide 2025',
-    description: 'Master heart rate zone training for optimal fitness results. Learn zone calculation, training benefits, and personalized workout programming.',
-    excerpt: 'Heart rate zone training maximizes workout efficiency and safety. This guide covers zone calculation, training applications, and performance optimization strategies.',
-    contentPath: '/content/fitness/heart-rate-training-zones-guide.md',
-    author: 'Health Calculator Pro Medical Team',
-    date: '2025-01-24',
-    readTime: '10-12 minutes',
-    category: 'Fitness & Performance Analysis',
-    featured: false,
-    medicalReview: true,
-    tags: ['Heart Rate', 'Training Zones', 'Exercise', 'Performance']
   }
 ];
 
