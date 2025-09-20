@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import { Toaster } from "./components/ui/toaster";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Breadcrumb from "./components/Breadcrumb";
 import ScrollToTop from "./components/ScrollToTop";
 import PageTransition from "./components/PageTransition";
 import Home from "./pages/Home";
