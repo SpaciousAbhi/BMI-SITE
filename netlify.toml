@@ -1,6 +1,6 @@
 [build]
   # Build command - use frozen lockfile for consistent builds
-  command = "cd frontend && yarn install --frozen-lockfile && yarn build"
+  command = "cd frontend && yarn install --frozen-lockfile && yarn build:prerender"
   
   # Directory to publish (relative to root of your repo)
   publish = "frontend/build"
