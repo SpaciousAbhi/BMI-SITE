@@ -73,7 +73,7 @@
     "include": [
       "/",
       "/body-fat-calculator",
-      "/army-body-fat-calculator", 
+      "/army-body-fat-calculator",
       "/lean-body-mass-calculator",
       "/ideal-weight-calculator",
       "/healthy-weight-calculator",
@@ -124,6 +124,7 @@
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-react": "7.37.4",
     "globals": "15.15.0",
+    "netlify-plugin-prerender-spa": "^1.0.2",
     "postcss": "^8.4.49",
     "react-snap": "^1.23.0",
     "tailwindcss": "^3.4.17"
