@@ -145,7 +145,7 @@ function SEOUpdater() {
       '/': 'BMI calculator, body mass index, calculate BMI, healthy weight, WHO BMI, BMI chart, weight calculator, health assessment',
       '/body-fat-calculator': 'body fat calculator, body fat percentage, skinfold measurement, body composition, health assessment, fitness tracker',
       '/army-body-fat-calculator': 'army body fat calculator, military body fat, AR 600-9, tape test, military fitness, body fat compliance',
-      '/health-guides': 'health guides, medical articles, health calculators, BMI guides, fitness articles, nutrition guides, medical resources',
+      '/blogs-articles': 'blogs articles, health calculator guides, medical content, BMI guides, nutrition articles, fitness guides, pregnancy articles, health resources',
     };
 
     let metaKeywords = document.querySelector('meta[name="keywords"]');
