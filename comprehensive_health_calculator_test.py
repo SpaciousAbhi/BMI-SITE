@@ -279,16 +279,25 @@ class ComprehensiveHealthCalculatorTester:
                 try:
                     data = json.loads(match.strip())
                     if isinstance(data, dict) and "@type" in data:
-                        schema_types.append(data["@type"])
+                        schema_type = data["@type"]
+                        if isinstance(schema_type, list):
+                            schema_types.extend(schema_type)
+                        else:
+                            schema_types.append(schema_type)
                     elif isinstance(data, list):
                         for item in data:
                             if isinstance(item, dict) and "@type" in item:
-                                schema_types.append(item["@type"])
+                                schema_type = item["@type"]
+                                if isinstance(schema_type, list):
+                                    schema_types.extend(schema_type)
+                                else:
+                                    schema_types.append(schema_type)
                 except json.JSONDecodeError:
                     continue
             
             if schema_types:
-                self.log_test(test_name, "PASS", f"Schema types found: {', '.join(set(schema_types))}")
+                unique_types = list(set(schema_types))
+                self.log_test(test_name, "PASS", f"Schema types found: {', '.join(unique_types)}")
             else:
                 self.log_test(test_name, "WARN", f"JSON-LD present but no valid schema types detected")
         else:
