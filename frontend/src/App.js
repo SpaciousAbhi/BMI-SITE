@@ -444,6 +444,22 @@ function AnimatedRoutes() {
             </PageTransition>
           } 
         />
+        <Route 
+          path="/bmi-resources" 
+          element={
+            <PageTransition key="bmi-resources">
+              <BMIResourcesPage />
+            </PageTransition>
+          } 
+        />
+        <Route 
+          path="/bmi-resources/:slug" 
+          element={
+            <PageTransition key="article">
+              <ArticlePage />
+            </PageTransition>
+          } 
+        />
       </Routes>
     </AnimatePresence>
   );
