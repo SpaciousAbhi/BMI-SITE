@@ -177,9 +177,9 @@ const PregnancyCalculatorPage = () => {
                   Can pregnancy calculator work if I have irregular periods?
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed mb-3">
-                  <strong>Yes, but with reduced accuracy.</strong> For irregular cycles (variation >7 days), our calculator 
+                  <strong>Yes, but with reduced accuracy.</strong> For irregular cycles (variation {'>'}7 days), our calculator 
                   estimates based on average cycle length but achieves 85-90% accuracy vs 99.2% for regular cycles. 
-                  Women with PCOS, recent birth control use, or cycles >35 days should use early ultrasound dating 
+                  Women with PCOS, recent birth control use, or cycles {'>'}35 days should use early ultrasound dating 
                   for optimal accuracy.
                 </p>
                 <div className="bg-blue-900/20 p-3 rounded-lg">
