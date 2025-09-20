@@ -212,8 +212,7 @@ const Header = () => {
       ],
     },
     {
-      name: "Support",
-      subheading: "Help & Legal Information",
+      name: "Support & Legal",
       icon: Activity,
       items: [
         { name: "Privacy Policy", path: "/privacy-policy", description: "Data protection and privacy information" },
