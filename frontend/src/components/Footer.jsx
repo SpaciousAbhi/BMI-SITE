@@ -407,70 +407,25 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-            <div className="text-center md:text-left space-y-3">
-              <p className="text-gray-300 text-sm leading-relaxed">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="text-center md:text-left">
+              <p className="text-gray-400 text-sm">
                 © 2025{" "}
-                <span className="bg-gradient-to-r from-blue-400 via-green-400 to-blue-400 bg-clip-text text-transparent font-bold">
-                  Advanced BMI Calculator
-                </span>
+                <span className="text-white font-medium">Advanced BMI Calculator</span>
                 {" "}by{" "}
-                <span className="text-blue-400 font-semibold hover:text-blue-300 transition-colors">
-                  Venom Stone Network
-                </span>
-                . All rights reserved.
+                <span className="text-blue-400">Venom Stone Network</span>
               </p>
-              
-              <div className="flex flex-wrap justify-center md:justify-start gap-4 text-xs">
-                <div className="flex items-center space-x-1 text-gray-400">
-                  <Award className="h-3 w-3 text-yellow-400" />
-                  <span>Professional Health Tools</span>
-                </div>
-                <div className="flex items-center space-x-1 text-gray-400">
-                  <CheckCircle className="h-3 w-3 text-green-400" />
-                  <span>Medical Grade Accuracy</span>
-                </div>
-                <div className="flex items-center space-x-1 text-gray-400">
-                  <Shield className="h-3 w-3 text-blue-400" />
-                  <span>Privacy Protected</span>
-                </div>
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2 text-xs text-gray-500">
+                <span>Medical accuracy</span>
+                <span>•</span>
+                <span>Privacy protected</span>
+                <span>•</span>
+                <span>1M+ users</span>
               </div>
-              
-              <p className="text-xs text-gray-500 italic">
-                Empowering healthier lives through accurate health assessment tools
-              </p>
             </div>
             
-            <div className="flex flex-col items-center md:items-end space-y-3">
-              <div className="flex items-center space-x-6 text-sm">
-                <div className="flex items-center space-x-2 text-gray-400 hover:text-red-300 transition-colors group">
-                  <Heart className="h-4 w-4 text-red-400 group-hover:text-red-300 group-hover:scale-110 transition-all" />
-                  <span className="font-medium">Crafted with care for your health</span>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-4 text-xs text-gray-500">
-                <div className="flex items-center space-x-1">
-                  <Users className="h-3 w-3 text-blue-400" />
-                  <span className="font-semibold text-blue-300">1M+ users worldwide</span>
-                </div>
-                <div className="hidden md:block">•</div>
-                <div className="flex items-center space-x-1">
-                  <Zap className="h-3 w-3 text-yellow-400" />
-                  <span>Instant, reliable results</span>
-                </div>
-                <div className="hidden md:block">•</div>
-                <div className="flex items-center space-x-1">
-                  <Globe className="h-3 w-3 text-green-400" />
-                  <span>Global accessibility</span>
-                </div>
-              </div>
-              
-              <div className="text-xs text-gray-600">
-                <span className="bg-gradient-to-r from-gray-600 to-gray-500 bg-clip-text text-transparent">
-                  Serving the global health community since 2024
-                </span>
-              </div>
+            <div className="text-xs text-gray-500">
+              <span>Professional health tools</span>
             </div>
           </div>
         </div>
