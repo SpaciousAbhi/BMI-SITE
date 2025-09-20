@@ -407,25 +407,40 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="pt-8 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-center md:text-left">
-              <p className="text-gray-400 text-sm">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            <div className="text-center md:text-left space-y-3">
+              <p className="text-gray-300 text-sm leading-relaxed">
                 © 2025{" "}
-                <span className="text-white font-medium">Advanced BMI Calculator</span>
+                <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-semibold">
+                  Advanced BMI Calculator
+                </span>
                 {" "}by{" "}
-                <span className="text-blue-400">Venom Stone Network</span>
+                <span className="text-blue-400 hover:text-blue-300 transition-colors cursor-pointer font-medium">
+                  Venom Stone Network
+                </span>
               </p>
-              <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2 text-xs text-gray-500">
-                <span>Medical accuracy</span>
-                <span>•</span>
-                <span>Privacy protected</span>
-                <span>•</span>
-                <span>1M+ users</span>
+              
+              <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 text-xs text-gray-400">
+                <div className="flex items-center space-x-1.5 hover:text-green-300 transition-colors group">
+                  <Award className="h-3.5 w-3.5 text-green-400 group-hover:text-green-300 group-hover:scale-110 transition-all" />
+                  <span>Medical accuracy</span>
+                </div>
+                <div className="w-1 h-1 bg-gray-600 rounded-full"></div>
+                <div className="flex items-center space-x-1.5 hover:text-blue-300 transition-colors group">
+                  <Shield className="h-3.5 w-3.5 text-blue-400 group-hover:text-blue-300 group-hover:scale-110 transition-all" />
+                  <span>Privacy protected</span>
+                </div>
+                <div className="w-1 h-1 bg-gray-600 rounded-full"></div>
+                <div className="flex items-center space-x-1.5 hover:text-purple-300 transition-colors group">
+                  <Users className="h-3.5 w-3.5 text-purple-400 group-hover:text-purple-300 group-hover:scale-110 transition-all" />
+                  <span className="font-medium">1M+ users</span>
+                </div>
               </div>
             </div>
             
-            <div className="text-xs text-gray-500">
-              <span>Professional health tools</span>
+            <div className="flex items-center space-x-2 text-sm text-gray-400 hover:text-gray-300 transition-colors group">
+              <Heart className="h-4 w-4 text-red-400 group-hover:text-red-300 group-hover:scale-110 transition-all animate-pulse" />
+              <span className="font-medium">Professional health tools</span>
             </div>
           </div>
         </div>
