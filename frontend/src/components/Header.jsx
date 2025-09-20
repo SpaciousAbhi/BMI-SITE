@@ -130,8 +130,7 @@ const Header = () => {
       ],
     },
     {
-      name: "Fitness & Performance",
-      subheading: "Athletic Training & Exercise Metrics",
+      name: "Fitness & Athletic Performance",
       icon: Dumbbell,
       items: [
         { 
