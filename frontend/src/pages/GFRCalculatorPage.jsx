@@ -267,7 +267,7 @@ const GFRCalculatorPage = () => {
                   </p>
                   <p className="leading-relaxed text-base">
                     Healthcare providers use eGFR trends to guide treatment intensity, specialist referrals, and intervention timing. 
-                    A 25% decline in eGFR warrants immediate medical attention, while sustained values <15 indicate kidney failure 
+                    A 25% decline in eGFR warrants immediate medical attention, while sustained values &lt;15 indicate kidney failure 
                     requiring renal replacement therapy consideration.
                   </p>
                 </div>
