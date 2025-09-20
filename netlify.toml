@@ -16,13 +16,6 @@
   # Enable Netlify's experimental prerendering
   NETLIFY_EXPERIMENTAL_BUILD_NODE_VERSION = "20"
 
-[build.environment]
-  # Node version - Updated to 20 for react-router-dom@7.9.1 compatibility
-  NODE_VERSION = "20"
-  
-  # Yarn version
-  YARN_VERSION = "1.22.22"
-
 # SPA routing configuration - MOST IMPORTANT FOR FIXING 404s
 [[redirects]]
   from = "/*"
