@@ -216,7 +216,7 @@ const Header = () => {
       name: "Resources & Support",
       icon: Activity,
       items: [
-        { name: "BMI Resources", path: "/bmi-resources", description: "Comprehensive BMI guides and articles", popular: true },
+        { name: "Health Guides & Articles", path: "/health-guides", description: "Comprehensive health calculator guides and medical articles", popular: true },
         { name: "Privacy Policy", path: "/privacy-policy", description: "Data protection and privacy information" },
         { name: "Terms & Conditions", path: "/terms-conditions", description: "Terms of service and usage guidelines" },
         { name: "Contact Us", path: "/contact-us", description: "Get support and send feedback" },
