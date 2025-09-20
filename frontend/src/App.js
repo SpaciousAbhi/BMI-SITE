@@ -78,7 +78,13 @@ function SEOUpdater() {
       '/conception-calculator': 'Medical-Grade Conception Calculator - IVF Support | 266-Day Precision Dating 2025',
       '/period-calculator': 'AI Period Calculator 2025 - PCOS Support | 89% Accuracy Menstrual Cycle Tracker',
       '/gfr-calculator': 'GFR Calculator - Kidney Function Assessment | CKD-EPI eGFR Calculator 2025',
-      '/bac-calculator': 'BAC Calculator - Blood Alcohol Content Estimator | Widmark Equation 2025'
+      '/bac-calculator': 'BAC Calculator - Blood Alcohol Content Estimator | Widmark Equation 2025',
+      '/bmi-resources': 'BMI Resources - Complete Guide to Body Mass Index | Medical Articles & Health Tips',
+      '/bmi-resources/ultimate-guide-bmi-calculator': 'Ultimate Guide to BMI Calculator: Formula, Chart & Health Categories 2025',
+      '/bmi-resources/is-bmi-accurate-athletes-seniors-ethnicities': 'Is BMI Accurate? Athletes, Seniors, Ethnicities Explained - Complete Analysis 2025',
+      '/bmi-resources/bmi-health-risks-what-your-number-means': 'BMI and Health Risks: What Your Number Really Means - Complete Medical Analysis 2025',
+      '/bmi-resources/how-to-change-bmi-safely-weight-loss-gain-strategies': 'How to Change Your BMI Safely: Weight Loss & Gain Strategies - Complete Guide 2025',
+      '/bmi-resources/bmi-alternatives-body-fat-waist-height-bmr': 'BMI Alternatives: Body Fat %, Waist-to-Height, BMR & More - Complete Guide 2025'
     };
 
     const descriptions = {
