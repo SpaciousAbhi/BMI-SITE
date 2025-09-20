@@ -40,7 +40,7 @@ import ConceptionCalculatorPage from "./pages/ConceptionCalculatorPage";
 import PeriodCalculatorPage from "./pages/PeriodCalculatorPage";
 import GFRCalculatorPage from "./pages/GFRCalculatorPage";
 import BACCalculatorPage from "./pages/BACCalculatorPage";
-import HealthGuidesPage from "./pages/BMIResourcesPage";
+import BlogsArticlesPage from "./pages/BlogsArticlesPage";
 import ArticlePage from "./pages/ArticlePage";
 
 // Enhanced SEO Component for dynamic page titles and meta optimization
