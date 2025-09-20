@@ -9,7 +9,7 @@ export const articles = [
     title: 'Ultimate Guide to BMI Calculator: Formula, Chart & Health Categories 2025',
     description: 'Complete BMI calculator guide covering WHO standards, metric & imperial formulas, health categories, and medical accuracy. Learn everything about Body Mass Index calculation, limitations, and when to use BMI vs other methods.',
     excerpt: 'Body Mass Index (BMI) remains one of the most widely used health screening tools worldwide, adopted by the World Health Organization (WHO) and healthcare systems globally. This comprehensive guide covers everything you need to know about BMI calculation, interpretation, and practical applications in 2025.',
-    content: ultimateGuideContent,
+    contentPath: '/content/bmi/ultimate-guide-bmi-calculator.md',
     author: 'BMI Calculator Pro Medical Team',
     date: '2025-01-24',
     lastUpdated: '2025-01-24',
