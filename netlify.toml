@@ -1,6 +1,6 @@
 [build]
   # Build command with React Snap prerendering
-  command = "cd frontend && yarn install && yarn build:prerender"
+  command = "cd frontend && yarn install && yarn build"
   
   # Directory to publish (relative to root of your repo)
   publish = "frontend/build"
