@@ -67,13 +67,13 @@ const BlogsArticlesPage = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <div className="flex items-center justify-center gap-3 mb-6">
-              <BookOpen className="w-12 h-12 text-blue-400" />
+              <FileText className="w-12 h-12 text-blue-400" />
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                Health Guides & Articles
+                Blogs & Articles
               </h1>
             </div>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Comprehensive, medically-reviewed guides covering all health calculators and wellness topics
+              Expert health insights & comprehensive guides for all your calculator needs
             </p>
             
             {/* Stats */}
