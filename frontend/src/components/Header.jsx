@@ -437,14 +437,24 @@ const Header = () => {
                 ) : (
                   <Link
                     to={item.path}
-                    className={`nav-link flex items-center space-x-2 text-gray-300 hover:text-white transition-all duration-300 ease-out px-4 py-2 rounded-lg group ${
+                    className={`nav-link flex items-center space-x-2 transition-all duration-300 ease-out px-4 py-2 rounded-lg group ${
+                      item.isMainHeading 
+                        ? "text-blue-400 hover:text-blue-300 font-semibold bg-gradient-to-r from-blue-500/10 to-green-500/10 hover:from-blue-500/20 hover:to-green-500/20 border border-blue-500/20 hover:border-blue-400/40" 
+                        : "text-gray-300 hover:text-white"
+                    } ${
                       location.pathname === item.path
                         ? "text-blue-400 bg-gray-800/50"
                         : ""
                     }`}
                   >
-                    <item.icon className="h-4 w-4 group-hover:text-blue-400 transition-colors" />
-                    <span>{item.name}</span>
+                    <item.icon className={`h-4 w-4 transition-colors ${
+                      item.isMainHeading 
+                        ? "text-blue-400 group-hover:text-blue-300" 
+                        : "group-hover:text-blue-400"
+                    }`} />
+                    <span className={item.isMainHeading ? "bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent font-bold" : ""}>
+                      {item.name}
+                    </span>
                   </Link>
                 )}
               </div>
