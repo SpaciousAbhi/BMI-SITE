@@ -305,7 +305,7 @@ const PregnancyCalculatorPage = () => {
                 <div className="bg-red-900/20 p-3 rounded-lg">
                   <p className="text-red-200 text-sm">
                     <strong>Labor Prediction Factors:</strong> First pregnancy (+1-2 days), Previous pregnancies (-1-3 days), 
-                    Maternal age >35 (+1-2 days), Multiple babies (earlier delivery likely)
+                    Maternal age {'>'}35 (+1-2 days), Multiple babies (earlier delivery likely)
                   </p>
                 </div>
               </div>
