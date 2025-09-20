@@ -22,7 +22,7 @@
 
 # Netlify Plugin for SPA Prerendering
 [[plugins]]
-  package = "@netlify/plugin-prerender-spa"
+  package = "netlify-plugin-prerender-spa"
   
   [plugins.inputs]
     # Routes to prerender
