@@ -406,12 +406,6 @@ const Header = () => {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="bg-gray-900/95 backdrop-blur border-gray-700 max-h-96 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 min-w-80 p-2 rounded-xl shadow-2xl">
-                      {item.subheading && (
-                        <div className="px-3 py-3 text-sm font-semibold text-blue-300 border-b border-gray-700 mb-2 border-l-2 border-blue-400 bg-gray-800/30 rounded-lg flex items-center">
-                          <item.icon className="h-4 w-4 mr-2" />
-                          {item.subheading}
-                        </div>
-                      )}
                       {item.items.map((subItem) => (
                         <DropdownMenuItem key={subItem.path} asChild className="p-0 m-1">
                           <Link
