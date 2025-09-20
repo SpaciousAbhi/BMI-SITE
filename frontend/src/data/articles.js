@@ -32,7 +32,7 @@ export const articles = [
     title: 'Is BMI Accurate? Athletes, Seniors, Ethnicities Explained - Complete Analysis 2025',
     description: 'Comprehensive analysis of BMI accuracy limitations for athletes, elderly, and different ethnic groups. Learn why BMI misclassifies muscular individuals, age-related considerations, and ethnic-specific BMI adjustments with real case studies.',
     excerpt: 'Body Mass Index (BMI) serves as a widely used health screening tool, but its accuracy varies dramatically across different populations. This comprehensive analysis examines BMI limitations for athletes, seniors, and various ethnic groups, providing evidence-based insights into when BMI works—and when it fails.',
-    content: accuracyContent,
+    contentPath: '/content/bmi/is-bmi-accurate-athletes-seniors-ethnicities.md',
     author: 'BMI Calculator Pro Medical Team',
     date: '2025-01-24',
     lastUpdated: '2025-01-24',
