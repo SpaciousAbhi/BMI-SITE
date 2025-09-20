@@ -628,6 +628,103 @@ const Home = () => {
         </div>
       </section>
 
+      {/* BMI Resources Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-900/20 to-teal-900/20 border-y border-gray-800/50">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full mb-6 text-sm text-blue-300">
+              <Calendar className="h-4 w-4" />
+              <span>2025 Medical Guides</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+              BMI Resources & Expert Guides
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+              Comprehensive, medically-reviewed articles covering everything about BMI calculation, interpretation, and health applications
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 mb-12">
+            {/* Featured Article 1 */}
+            <div className="bg-gray-900/50 rounded-xl p-6 border border-gray-800 hover:border-blue-500/50 transition-all duration-300 group">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-blue-500/10 group-hover:bg-blue-500/20 transition-colors">
+                  <Calculator className="h-5 w-5 text-blue-400" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex gap-2 mb-2">
+                    <span className="bg-blue-600 text-white px-2 py-1 rounded text-xs">BMI Guide</span>
+                    <span className="bg-green-600 text-white px-2 py-1 rounded text-xs">Featured</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                    Ultimate Guide to BMI Calculator
+                  </h3>
+                  <p className="text-gray-400 text-sm mb-4">
+                    Complete guide covering WHO standards, metric & imperial formulas, health categories, and medical accuracy.
+                  </p>
+                  <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+                    <span>12-15 min read</span>
+                    <span>Medical Review ✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Featured Article 2 */}
+            <div className="bg-gray-900/50 rounded-xl p-6 border border-gray-800 hover:border-teal-500/50 transition-all duration-300 group">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="p-2 rounded-lg bg-teal-500/10 group-hover:bg-teal-500/20 transition-colors">
+                  <Users className="h-5 w-5 text-teal-400" />
+                </div>
+                <div className="flex-1">
+                  <div className="flex gap-2 mb-2">
+                    <span className="bg-teal-600 text-white px-2 py-1 rounded text-xs">BMI Accuracy</span>
+                    <span className="bg-yellow-600 text-black px-2 py-1 rounded text-xs">Popular</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-teal-400 transition-colors">
+                    Is BMI Accurate? Athletes & Ethnicities
+                  </h3>
+                  <p className="text-gray-400 text-sm mb-4">
+                    Analysis of BMI limitations for athletes, elderly, and different ethnic groups with real case studies.
+                  </p>
+                  <div className="flex items-center gap-4 text-xs text-gray-500 mb-4">
+                    <span>10-12 min read</span>
+                    <span>Medical Review ✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats & CTA */}
+          <div className="text-center">
+            <div className="grid grid-cols-3 gap-4 max-w-md mx-auto mb-8">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-blue-400">5</div>
+                <div className="text-xs text-gray-400">Articles</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-400">5</div>
+                <div className="text-xs text-gray-400">Featured</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-purple-400">13m</div>
+                <div className="text-xs text-gray-400">Avg Read</div>
+              </div>
+            </div>
+            
+            <a
+              href="/bmi-resources"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold px-8 py-4 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
+            >
+              <Calendar className="h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
+              Explore All BMI Guides
+              <ChevronDown className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Health Benefits Section */}
       <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
         <div className="container mx-auto">
