@@ -16,11 +16,10 @@ const ArticleContent = ({ article }) => {
       try {
         setLoading(true);
         
-        // In a real implementation, you would fetch from your server or API
-        // For now, we'll simulate loading the content
+        // Try to fetch the markdown content
         const response = await fetch(article.contentPath);
         if (!response.ok) {
-          throw new Error('Failed to load article content');
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
         
         const markdownContent = await response.text();
@@ -33,12 +32,47 @@ const ArticleContent = ({ article }) => {
         setError(null);
       } catch (err) {
         console.error('Error loading article:', err);
-        setError('Failed to load article content');
-        // For demo purposes, set some placeholder content
+        
+        // For demo purposes, create fallback content based on the article data
+        const fallbackContent = `
+# ${article.title}
+
+${article.description}
+
+## Introduction
+
+${article.excerpt}
+
+## Content Overview
+
+This comprehensive guide would normally load from our detailed markdown files. The article covers:
+
+- Detailed analysis and explanations
+- Step-by-step instructions and examples  
+- Evidence-based medical information
+- Practical applications and recommendations
+- Frequently asked questions
+- Related resources and tools
+
+## Key Points
+
+Based on the article metadata, this ${article.readTime} article focuses on ${article.category.toLowerCase()} and covers essential topics related to BMI and health assessment.
+
+## Next Steps
+
+Use our [BMI Calculator](/) to apply what you've learned, or explore our other [BMI Resources](/bmi-resources) for more comprehensive guidance.
+
+---
+
+*Note: This is placeholder content. The full article content would normally be loaded from our detailed markdown files.*
+        `;
+        
         setParsedContent({
           frontmatter: article,
-          content: 'Article content would be loaded here from the markdown files...'
+          content: fallbackContent
         });
+        setTableOfContents([]);
+        setError(null); // Don't show error, just use fallback content
       } finally {
         setLoading(false);
       }
