@@ -101,7 +101,7 @@ export const articles = [
     title: 'BMI Alternatives: Body Fat %, Waist-to-Height, BMR & More - Complete Guide 2025',
     description: 'Comprehensive guide to BMI alternatives including body fat percentage, waist-to-height ratio, lean body mass, BMR, and TDEE. Learn the best health metrics for athletes, seniors, and women with detailed comparison charts and measurement methods.',
     excerpt: 'While BMI provides valuable population-level health insights, numerous alternative measurements offer more precise individual health assessment. This comprehensive guide explores evidence-based BMI alternatives, their applications, measurement methods, and optimal use cases for different populations.',
-    content: alternativesContent,
+    contentPath: '/content/bmi/bmi-alternatives-body-fat-waist-height-bmr.md',
     author: 'BMI Calculator Pro Medical Team',
     date: '2025-01-24',
     lastUpdated: '2025-01-24',
