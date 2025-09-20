@@ -45,7 +45,7 @@ const Header = () => {
     },
     {
       name: "Body Composition",
-      subheading: "Body Composition & Weight Analysis",
+      subheading: "Weight Analysis & Physical Assessment",
       icon: Scale,
       items: [
         { 
