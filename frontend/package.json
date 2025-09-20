@@ -61,6 +61,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:prerender": "react-scripts build && echo 'Build completed for Netlify prerender'",
     "test": "react-scripts test"
   },
   "browserslist": {
