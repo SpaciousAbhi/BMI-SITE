@@ -89,7 +89,7 @@ const Header = () => {
     },
     {
       name: "Nutrition & Diet",
-      subheading: "Nutrition & Dietary Planning",
+      subheading: "Dietary Planning & Nutritional Analysis",
       icon: Utensils,
       items: [
         { 
