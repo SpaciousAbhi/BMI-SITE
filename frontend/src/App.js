@@ -93,7 +93,7 @@ function SEOUpdater() {
       '/healthy-weight-calculator': 'Calculate healthy weight range using WHO and CDC guidelines. Personalized weight assessment based on BMI, age, and health factors with medical accuracy.',
       '/body-type-calculator': 'Determine your body type - ectomorph, mesomorph, or endomorph. Professional body type analysis for personalized fitness and nutrition planning.',
       '/body-surface-area-calculator': 'Medical Body Surface Area (BSA) calculator using Du Bois and Mosteller formulas. Professional tool for medical dosage calculations and treatments.',
-      '/health-guides': 'Comprehensive health guides and medical articles covering all health calculators. Expert-written, medically-reviewed content for optimal health and fitness management.',
+      '/blogs-articles': 'Expert health calculator guides and medical articles covering body composition, nutrition, fitness, pregnancy, and medical assessment tools. SEO-optimized content for optimal health management.',
     };
 
     const currentTitle = routeTitles[location.pathname] || 'BMI Calculator Pro - Professional Health Assessment Tools';
