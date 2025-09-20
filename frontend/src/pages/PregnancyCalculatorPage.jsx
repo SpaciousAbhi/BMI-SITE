@@ -395,7 +395,7 @@ const PregnancyCalculatorPage = () => {
                   <div className="space-y-3">
                     <div className="p-3 bg-red-900/20 rounded-lg">
                       <h5 className="text-red-300 font-semibold text-sm">Seek Immediate Help If:</h5>
-                      <p className="text-gray-300 text-xs">Persistent sadness >2 weeks, anxiety attacks, thoughts of self-harm, inability to bond with pregnancy</p>
+                      <p className="text-gray-300 text-xs">Persistent sadness {'>'}2 weeks, anxiety attacks, thoughts of self-harm, inability to bond with pregnancy</p>
                     </div>
                     <div className="p-3 bg-green-900/20 rounded-lg">
                       <h5 className="text-green-300 font-semibold text-sm">Professional Resources:</h5>
