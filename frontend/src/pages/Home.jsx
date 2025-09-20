@@ -714,11 +714,11 @@ const Home = () => {
             </div>
             
             <a
-              href="/bmi-resources"
+              href="/health-guides"
               className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white font-semibold px-8 py-4 rounded-xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group"
             >
               <Calendar className="h-5 w-5 group-hover:rotate-12 transition-transform duration-300" />
-              Explore All BMI Guides
+              Explore All Health Guides
               <ChevronDown className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
           </div>
