@@ -55,7 +55,7 @@ export const articles = [
     title: 'BMI and Health Risks: What Your Number Really Means - Complete Medical Analysis 2025',
     description: 'Comprehensive analysis of BMI health risks including heart disease, diabetes, cancer correlations, mortality data, pregnancy BMI guidance, and pediatric BMI percentile charts. Evidence-based medical research on what your BMI number means for your health.',
     excerpt: 'Understanding the relationship between Body Mass Index (BMI) and health risks is crucial for making informed decisions about weight management and healthcare. This comprehensive analysis examines evidence-based research on BMI correlations with chronic diseases, mortality rates, and health outcomes across different populations.',
-    content: healthRisksContent,
+    contentPath: '/content/bmi/bmi-health-risks-what-your-number-means.md',
     author: 'BMI Calculator Pro Medical Team',
     date: '2025-01-24',
     lastUpdated: '2025-01-24',
