@@ -262,7 +262,7 @@ const GFRCalculatorPage = () => {
                   <h3 className="text-2xl font-bold text-blue-400 mb-4">Clinical Significance & Medical Applications</h3>
                   <p className="leading-relaxed text-base mb-4">
                     eGFR serves multiple critical functions in modern medicine: early CKD detection, disease progression monitoring, 
-                    medication dosage adjustments, surgical risk assessment, and cardiovascular risk stratification. Values <60 
+                    medication dosage adjustments, surgical risk assessment, and cardiovascular risk stratification. Values &lt;60 
                     mL/min/1.73 m² significantly increase cardiovascular event risk, making eGFR a powerful predictor of overall health outcomes.
                   </p>
                   <p className="leading-relaxed text-base">
