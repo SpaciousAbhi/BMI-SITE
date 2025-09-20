@@ -524,11 +524,6 @@ const Header = () => {
                                 <item.icon className="h-5 w-5 mr-2 text-blue-400" />
                                 {item.name}
                               </h3>
-                              {item.subheading && (
-                                <div className="text-sm font-semibold text-blue-300 mb-3 border-l-2 border-blue-400 pl-3 bg-gray-800/30 py-2 rounded-r-lg">
-                                  {item.subheading}
-                                </div>
-                              )}
                               <div className="space-y-1 ml-4">
                                 {item.items.map((subItem) => (
                                   <Link
