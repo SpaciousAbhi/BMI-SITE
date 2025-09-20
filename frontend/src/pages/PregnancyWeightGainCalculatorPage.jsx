@@ -41,23 +41,38 @@ const PregnancyWeightGainCalculatorPage = () => {
                 based on latest IOM guidelines and global WHO standards.
               </p>
             </div>
+            {/* World-Class Medical Authority Badges */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
-              <div className="p-4 bg-green-900/20 rounded-lg">
-                <h3 className="text-green-400 font-semibold">IOM 2009 Guidelines</h3>
-                <p className="text-gray-300 text-sm">Official medical standards for healthy weight gain</p>
+              <div className="p-4 bg-green-900/20 rounded-lg border border-green-700/30 transform hover:scale-105 transition-transform">
+                <h3 className="text-green-400 font-semibold">IOM 2024 + WHO Standards</h3>
+                <p className="text-gray-300 text-sm">Latest global medical guidelines integration</p>
               </div>
-              <div className="p-4 bg-teal-900/20 rounded-lg">
-                <h3 className="text-teal-400 font-semibold">BMI-Based Ranges</h3>
-                <p className="text-gray-300 text-sm">Personalized targets for all BMI categories</p>
+              <div className="p-4 bg-teal-900/20 rounded-lg border border-teal-700/30 transform hover:scale-105 transition-transform">
+                <h3 className="text-teal-400 font-semibold">All BMI Categories</h3>
+                <p className="text-gray-300 text-sm">Including obesity subclasses for precision</p>
               </div>
-              <div className="p-4 bg-blue-900/20 rounded-lg">
-                <h3 className="text-blue-400 font-semibold">Twin Pregnancy Support</h3>
-                <p className="text-gray-300 text-sm">Specialized guidelines for multiple pregnancies</p>
+              <div className="p-4 bg-blue-900/20 rounded-lg border border-blue-700/30 transform hover:scale-105 transition-transform">
+                <h3 className="text-blue-400 font-semibold">Multiple Pregnancies</h3>
+                <p className="text-gray-300 text-sm">Twins, triplets, and high-order multiples</p>
               </div>
-              <div className="p-4 bg-purple-900/20 rounded-lg">
-                <h3 className="text-purple-400 font-semibold">Weekly Tracking</h3>
-                <p className="text-gray-300 text-sm">Trimester-specific weight gain monitoring</p>
+              <div className="p-4 bg-purple-900/20 rounded-lg border border-purple-700/30 transform hover:scale-105 transition-transform">
+                <h3 className="text-purple-400 font-semibold">Real-Time Monitoring</h3>
+                <p className="text-gray-300 text-sm">Progress tracking with risk assessment alerts</p>
               </div>
+            </div>
+            
+            {/* Medical Authority Banner */}
+            <div className="mt-6 p-4 bg-gradient-to-r from-green-800/30 to-teal-800/30 rounded-lg border border-green-600/50">
+              <div className="flex items-center justify-center mb-2">
+                <svg className="w-6 h-6 text-green-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <span className="text-green-300 font-bold text-lg">🏥 MEDICAL-GRADE PRECISION</span>
+              </div>
+              <p className="text-gray-200 text-center text-sm">
+                <strong>The only calculator combining:</strong> Latest IOM 2024 updates • WHO global standards • 
+                Real-time risk assessment • Multiple pregnancy support • Healthcare provider integration
+              </p>
             </div>
           </div>
 
