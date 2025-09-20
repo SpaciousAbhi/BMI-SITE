@@ -583,7 +583,7 @@ const GFRCalculatorPage = () => {
                   <div className="bg-red-900/20 rounded-lg p-4 border border-red-800">
                     <h4 className="text-red-400 font-bold mb-2">Warning Signs</h4>
                     <ul className="text-sm text-red-300 space-y-1">
-                      <li>• >25% eGFR decrease from baseline</li>
+                      <li>• &gt;25% eGFR decrease from baseline</li>
                       <li>• Rapid decline over weeks/months</li>
                       <li>• Symptoms (fatigue, swelling, nausea)</li>
                       <li>• Abnormal urinalysis findings</li>
