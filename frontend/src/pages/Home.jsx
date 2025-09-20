@@ -628,19 +628,19 @@ const Home = () => {
         </div>
       </section>
 
-      {/* BMI Resources Section */}
+      {/* Blogs & Articles Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-900/20 to-teal-900/20 border-y border-gray-800/50">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full mb-6 text-sm text-blue-300">
               <Calendar className="h-4 w-4" />
-              <span>2025 Medical Guides</span>
+              <span>Expert Health Content</span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
-              Health Guides & Expert Articles
+              Blogs & Articles
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Comprehensive, medically-reviewed guides covering all health calculators, fitness tools, and wellness topics
+              Expert health insights & comprehensive guides for all your calculator needs, organized by category
             </p>
           </div>
 
