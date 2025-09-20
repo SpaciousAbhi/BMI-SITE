@@ -78,7 +78,7 @@ export const articles = [
     title: 'How to Change Your BMI Safely: Weight Loss & Gain Strategies - Complete Guide 2025',
     description: 'Evidence-based guide to safely changing your BMI through healthy weight loss and weight gain strategies. Learn caloric balance, nutrition basics, safe weight loss rates, exercise recommendations, and why crash diets are dangerous.',
     excerpt: 'Changing your BMI safely requires understanding the science of energy balance, implementing sustainable lifestyle changes, and avoiding dangerous shortcuts. This comprehensive guide provides evidence-based strategies for healthy weight loss and weight gain while maintaining optimal health and preventing metabolic damage.',
-    content: changeBMIContent,
+    contentPath: '/content/bmi/how-to-change-bmi-safely-weight-loss-gain-strategies.md',
     author: 'BMI Calculator Pro Medical Team',
     date: '2025-01-24',
     lastUpdated: '2025-01-24',
