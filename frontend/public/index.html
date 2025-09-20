@@ -149,7 +149,151 @@
         <link rel="preload" href="/static/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     </head>
     <body>
-        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <noscript>
+            <style>
+                .nojs-wrapper {
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+                    max-width: 800px;
+                    margin: 0 auto;
+                    padding: 20px;
+                    background: #0f172a;
+                    color: #e2e8f0;
+                    min-height: 100vh;
+                }
+                .nojs-header {
+                    text-align: center;
+                    margin-bottom: 30px;
+                    padding: 20px;
+                    background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+                    border-radius: 12px;
+                }
+                .nojs-title {
+                    font-size: 28px;
+                    font-weight: bold;
+                    margin: 0 0 10px 0;
+                    color: white;
+                }
+                .nojs-subtitle {
+                    font-size: 16px;
+                    margin: 0;
+                    color: #e2e8f0;
+                }
+                .nojs-content {
+                    background: #1e293b;
+                    padding: 25px;
+                    border-radius: 12px;
+                    border: 1px solid #334155;
+                    margin-bottom: 20px;
+                }
+                .nojs-list {
+                    list-style: none;
+                    padding: 0;
+                }
+                .nojs-list li {
+                    padding: 8px 0;
+                    border-bottom: 1px solid #334155;
+                }
+                .nojs-list li:last-child {
+                    border-bottom: none;
+                }
+                .nojs-link {
+                    color: #60a5fa;
+                    text-decoration: none;
+                    font-weight: 500;
+                }
+                .nojs-link:hover {
+                    color: #93c5fd;
+                    text-decoration: underline;
+                }
+                .nojs-warning {
+                    background: #fbbf24;
+                    color: #92400e;
+                    padding: 15px;
+                    border-radius: 8px;
+                    margin-bottom: 20px;
+                    font-weight: 500;
+                }
+            </style>
+            <div class="nojs-wrapper">
+                <div class="nojs-header">
+                    <h1 class="nojs-title">🧮 Advanced BMI Calculator Pro</h1>
+                    <p class="nojs-subtitle">Professional Health Tools & Medical Calculators</p>
+                </div>
+                
+                <div class="nojs-warning">
+                    ⚠️ JavaScript is required for full calculator functionality. Please enable JavaScript for the best experience.
+                </div>
+                
+                <div class="nojs-content">
+                    <h2>🏥 Available Medical Calculators</h2>
+                    <p>Our comprehensive suite of medical-grade calculators includes:</p>
+                    
+                    <h3>📊 Body Composition & Weight Analysis</h3>
+                    <ul class="nojs-list">
+                        <li><a href="/body-fat-calculator" class="nojs-link">Body Fat Calculator (US Navy Method)</a></li>
+                        <li><a href="/army-body-fat-calculator" class="nojs-link">Army Body Fat Calculator (AR 600-9)</a></li>
+                        <li><a href="/lean-body-mass-calculator" class="nojs-link">Lean Body Mass Calculator</a></li>
+                        <li><a href="/ideal-weight-calculator" class="nojs-link">Ideal Weight Calculator</a></li>
+                        <li><a href="/healthy-weight-calculator" class="nojs-link">Healthy Weight Range Calculator</a></li>
+                        <li><a href="/body-type-calculator" class="nojs-link">Body Type Calculator (Somatotype)</a></li>
+                        <li><a href="/body-surface-area-calculator" class="nojs-link">Body Surface Area Calculator</a></li>
+                    </ul>
+                    
+                    <h3>🥗 Nutrition & Dietary Planning</h3>
+                    <ul class="nojs-list">
+                        <li><a href="/calorie-calculator" class="nojs-link">Daily Calorie Calculator</a></li>
+                        <li><a href="/tdee-calculator" class="nojs-link">TDEE Calculator</a></li>
+                        <li><a href="/bmr-calculator" class="nojs-link">BMR Calculator</a></li>
+                        <li><a href="/macro-calculator" class="nojs-link">Macronutrient Calculator</a></li>
+                        <li><a href="/protein-calculator" class="nojs-link">Protein Calculator</a></li>
+                        <li><a href="/carbohydrate-calculator" class="nojs-link">Carbohydrate Calculator</a></li>
+                        <li><a href="/fat-intake-calculator" class="nojs-link">Fat Intake Calculator</a></li>
+                    </ul>
+                    
+                    <h3>🏃 Fitness & Athletic Performance</h3>
+                    <ul class="nojs-list">
+                        <li><a href="/pace-calculator" class="nojs-link">Running Pace Calculator</a></li>
+                        <li><a href="/calories-burned-calculator" class="nojs-link">Calories Burned Calculator</a></li>
+                        <li><a href="/one-rep-max-calculator" class="nojs-link">One Rep Max Calculator</a></li>
+                        <li><a href="/target-heart-rate-calculator" class="nojs-link">Target Heart Rate Calculator</a></li>
+                    </ul>
+                    
+                    <h3>🤰 Pregnancy & Women's Health</h3>
+                    <ul class="nojs-list">
+                        <li><a href="/pregnancy-calculator" class="nojs-link">Pregnancy Calculator</a></li>
+                        <li><a href="/pregnancy-weight-gain-calculator" class="nojs-link">Pregnancy Weight Gain Calculator</a></li>
+                        <li><a href="/due-date-calculator" class="nojs-link">Due Date Calculator</a></li>
+                        <li><a href="/ovulation-calculator" class="nojs-link">AI-Powered Ovulation Calculator</a></li>
+                        <li><a href="/conception-calculator" class="nojs-link">Conception Calculator</a></li>
+                        <li><a href="/period-calculator" class="nojs-link">AI Period Calculator</a></li>
+                    </ul>
+                    
+                    <h3>🏥 Medical & Health Assessment</h3>
+                    <ul class="nojs-list">
+                        <li><a href="/gfr-calculator" class="nojs-link">GFR Calculator (Kidney Function)</a></li>
+                        <li><a href="/bac-calculator" class="nojs-link">BAC Calculator (Blood Alcohol)</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nojs-content">
+                    <h2>✨ Key Features</h2>
+                    <ul>
+                        <li>✅ Medical-grade accuracy with WHO & CDC compliance</li>
+                        <li>✅ Evidence-based formulas and clinical validation</li>
+                        <li>✅ Comprehensive health insights and recommendations</li>
+                        <li>✅ Professional results with detailed analysis</li>
+                        <li>✅ Privacy-focused with no data storage</li>
+                        <li>✅ Mobile-responsive design for all devices</li>
+                    </ul>
+                </div>
+                
+                <div class="nojs-content">
+                    <p><strong>For the complete interactive experience with advanced calculations, charts, and personalized recommendations, please enable JavaScript in your browser.</strong></p>
+                    
+                    <p>Contact us: <a href="mailto:support@bmipro.com" class="nojs-link">support@bmipro.com</a></p>
+                </div>
+            </div>
+        </noscript>
         <div id="root"></div>
         <!--
       This HTML file is a template.
