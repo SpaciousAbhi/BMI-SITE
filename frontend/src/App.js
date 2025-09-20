@@ -40,7 +40,7 @@ import ConceptionCalculatorPage from "./pages/ConceptionCalculatorPage";
 import PeriodCalculatorPage from "./pages/PeriodCalculatorPage";
 import GFRCalculatorPage from "./pages/GFRCalculatorPage";
 import BACCalculatorPage from "./pages/BACCalculatorPage";
-import BMIResourcesPage from "./pages/BMIResourcesPage";
+import HealthGuidesPage from "./pages/BMIResourcesPage";
 import ArticlePage from "./pages/ArticlePage";
 
 // Enhanced SEO Component for dynamic page titles and meta optimization
@@ -48,150 +48,110 @@ function SEOUpdater() {
   const location = useLocation();
 
   useEffect(() => {
-    const titles = {
+    // Enhanced dynamic title updates based on routes
+    const routeTitles = {
       '/': 'BMI Calculator - Free Body Mass Index Calculator | Healthy Weight Tool 2025',
-      '/privacy-policy': 'Privacy Policy - BMI Calculator Pro | Data Protection & GDPR Compliance',
-      '/terms-conditions': 'Terms & Conditions - BMI Calculator Pro | Legal Terms & Medical Disclaimers',
-      '/contact-us': 'Contact BMI Calculator Pro | Support & Feedback | Health Calculator Help',
-      '/body-fat-calculator': 'Body Fat Calculator 2025 - US Navy Method | Accurate Body Fat Percentage Calculator',
-      '/army-body-fat-calculator': 'Army Body Fat Calculator 2025 - AR 600-9 Standards | Military Tape Test Method',
-      '/lean-body-mass-calculator': 'Lean Body Mass Calculator 2025 - FFMI & LBM | Validated Medical Formulas',
-      '/ideal-weight-calculator': 'Ideal Weight Calculator - Devine Formula | Medical Weight Calculator 2025',
-      '/healthy-weight-calculator': 'Healthy Weight Calculator - Personalized Weight Range | BMI Assessment',
-      '/body-type-calculator': 'Body Type Calculator - Somatotype Analysis | Ectomorph Mesomorph Endomorph',
-      '/body-surface-area-calculator': 'Body Surface Area Calculator - BSA Medical Formula | Du Bois Mosteller',
-      '/calorie-calculator': 'Calorie Calculator - Daily Calorie Needs Calculator | Weight Loss & Gain 2025',
-      '/tdee-calculator': 'TDEE Calculator - Total Daily Energy Expenditure | Metabolic Rate Calculator',
-      '/bmr-calculator': 'BMR Calculator - Basal Metabolic Rate | Mifflin-St Jeor Formula 2025',
-      '/macro-calculator': 'Macro Calculator - Macronutrient Calculator | Protein Carbs Fat Distribution',
-      '/carbohydrate-calculator': 'Carbohydrate Calculator - Daily Carb Intake | Athletic Performance 2025',
-      '/protein-calculator': 'Protein Calculator - Daily Protein Needs | Muscle Building & Weight Loss',
-      '/fat-intake-calculator': 'Fat Intake Calculator - Healthy Fat Requirements | Heart Health 2025',
-      '/pace-calculator': 'Pace Calculator - Running Pace Calculator | Time Distance Speed Calculator 2025',
-      '/calories-burned-calculator': 'Calories Burned Calculator - Exercise Calorie Burn | MET Values 2025',
-      '/one-rep-max-calculator': 'One Rep Max Calculator - 1RM Calculator | Strength Training Formulas 2025',
-      '/target-heart-rate-calculator': 'Target Heart Rate Calculator - Training Zones | Karvonen Method 2025',
-      '/pregnancy-calculator': 'Pregnancy Calculator - Track Pregnancy Progress | Gestational Age Calculator 2025',
-      '/pregnancy-weight-gain-calculator': 'Pregnancy Weight Gain Calculator - IOM Guidelines | Healthy Weight Gain 2025',
-      '/due-date-calculator': 'Due Date Calculator - Pregnancy Due Date | LMP & Conception Date Calculator 2025',
-      '/ovulation-calculator': 'AI-Powered Ovulation Calculator 2025 - Medical Grade Fertility Tracker | PCOS Support',
-      '/conception-calculator': 'Medical-Grade Conception Calculator - IVF Support | 266-Day Precision Dating 2025',
-      '/period-calculator': 'AI Period Calculator 2025 - PCOS Support | 89% Accuracy Menstrual Cycle Tracker',
-      '/gfr-calculator': 'GFR Calculator - Kidney Function Assessment | CKD-EPI eGFR Calculator 2025',
-      '/bac-calculator': 'BAC Calculator - Blood Alcohol Content Estimator | Widmark Equation 2025',
-      '/bmi-resources': 'BMI Resources - Complete Guide to Body Mass Index | Medical Articles & Health Tips',
-      '/bmi-resources/ultimate-guide-bmi-calculator': 'Ultimate Guide to BMI Calculator: Formula, Chart & Health Categories 2025',
-      '/bmi-resources/is-bmi-accurate-athletes-seniors-ethnicities': 'Is BMI Accurate? Athletes, Seniors, Ethnicities Explained - Complete Analysis 2025',
-      '/bmi-resources/bmi-health-risks-what-your-number-means': 'BMI and Health Risks: What Your Number Really Means - Complete Medical Analysis 2025',
-      '/bmi-resources/how-to-change-bmi-safely-weight-loss-gain-strategies': 'How to Change Your BMI Safely: Weight Loss & Gain Strategies - Complete Guide 2025',
-      '/bmi-resources/bmi-alternatives-body-fat-waist-height-bmr': 'BMI Alternatives: Body Fat %, Waist-to-Height, BMR & More - Complete Guide 2025'
+      '/body-fat-calculator': 'Body Fat Calculator - Accurate Body Fat Percentage | Health Assessment Tool',
+      '/army-body-fat-calculator': 'Army Body Fat Calculator - Military Standard AR 600-9 | Official Tape Test',
+      '/lean-body-mass-calculator': 'Lean Body Mass Calculator - Muscle Mass Assessment | Body Composition Tool',
+      '/ideal-weight-calculator': 'Ideal Weight Calculator - Find Your Perfect Weight Range | Medical Formulas',
+      '/healthy-weight-calculator': 'Healthy Weight Calculator - WHO & CDC Guidelines | Weight Range Tool',
+      '/body-type-calculator': 'Body Type Calculator - Ectomorph Mesomorph Endomorph | Fitness Planning',
+      '/body-surface-area-calculator': 'Body Surface Area Calculator - Medical BSA Calculation | Dosage Tool',
+      '/calorie-calculator': 'Calorie Calculator - Daily Calorie Needs | Weight Management Tool 2025',
+      '/tdee-calculator': 'TDEE Calculator - Total Daily Energy Expenditure | Metabolism Calculator',
+      '/bmr-calculator': 'BMR Calculator - Basal Metabolic Rate | Resting Metabolism Tool',
+      '/macro-calculator': 'Macro Calculator - Macronutrient Distribution | Diet Planning Tool',
+      '/carbohydrate-calculator': 'Carbohydrate Calculator - Daily Carb Needs | Nutrition Planning Tool',
+      '/protein-calculator': 'Protein Calculator - Daily Protein Requirements | Muscle Building Tool',
+      '/fat-intake-calculator': 'Fat Intake Calculator - Healthy Fat Requirements | Nutrition Tool',
+      '/pace-calculator': 'Pace Calculator - Running Pace & Speed | Training Tool for Runners',
+      '/calories-burned-calculator': 'Calories Burned Calculator - Exercise Energy Expenditure | Fitness Tool',
+      '/one-rep-max-calculator': 'One Rep Max Calculator - 1RM Strength Calculator | Powerlifting Tool',
+      '/target-heart-rate-calculator': 'Target Heart Rate Calculator - Training Zones | Cardio Optimization',
+      '/pregnancy-calculator': 'Pregnancy Calculator - Gestational Age & Milestones | Prenatal Tool',
+      '/pregnancy-weight-gain-calculator': 'Pregnancy Weight Gain Calculator - IOM Guidelines | Prenatal Health',
+      '/due-date-calculator': 'Due Date Calculator - Pregnancy Due Date | Naegele Rule Calculator',
+      '/ovulation-calculator': 'Ovulation Calculator - Fertility Window | Conception Planning Tool',
+      '/conception-calculator': 'Conception Calculator - Conception Date Estimation | Pregnancy Planning',
+      '/period-calculator': 'Period Calculator - Menstrual Cycle Tracker | Women\'s Health Tool',
+      '/gfr-calculator': 'GFR Calculator - Kidney Function Assessment | eGFR Medical Tool',
+      '/bac-calculator': 'BAC Calculator - Blood Alcohol Content | Legal Limit Calculator',
+      '/health-guides': 'Health Guides & Articles - Medical Calculator Resources | Expert Health Content',
+      '/privacy-policy': 'Privacy Policy - Data Protection & DPDP Act Compliance | BMI Calculator Pro',
+      '/terms-conditions': 'Terms & Conditions - Usage Guidelines | BMI Calculator Pro Legal',
+      '/contact-us': 'Contact Us - Support & Feedback | BMI Calculator Pro Help Center'
     };
 
-    const descriptions = {
-      '/': 'Calculate your BMI instantly with our advanced Body Mass Index calculator. Get personalized health insights, ideal weight ranges, and professional recommendations. WHO & CDC approved BMI calculation tool.',
-      '/privacy-policy': 'Learn how BMI Calculator Pro protects your privacy and handles your personal health data. Comprehensive privacy policy with GDPR compliance and data protection information.',
-      '/terms-conditions': 'Read the terms and conditions for using BMI Calculator Pro. Medical disclaimers, usage guidelines, and legal terms for our health calculator tool.',
-      '/contact-us': 'Contact BMI Calculator Pro support team. Get help with BMI calculations, provide feedback, or ask questions about healthy weight and body mass index.',
-      '/body-fat-calculator': 'Calculate body fat percentage using the medically validated US Navy circumference method. Get accurate, age-adjusted results with personalized health insights, risk assessment, and professional recommendations based on WHO and CDC guidelines.',
-      '/army-body-fat-calculator': 'Official Army body fat calculator using AR 600-9 regulation standards. Calculate body fat percentage with the new Army tape test method for military fitness requirements and career progression.',
-      '/lean-body-mass-calculator': 'Calculate lean body mass using scientifically validated formulas including Boer, James, and Hume methods. Get comprehensive body composition analysis with Fat-Free Mass Index (FFMI) assessment for fitness and health optimization.',
-      '/ideal-weight-calculator': 'Calculate your ideal body weight using medical formulas including Devine, Robinson, Miller methods. Get personalized weight targets based on height and gender.',
-      '/healthy-weight-calculator': 'Calculate your personalized healthy weight range based on BMI, age, activity level, and body frame. Get customized weight management recommendations.',
-      '/body-type-calculator': 'Discover your body type using Heath-Carter somatotype analysis. Get personalized fitness and nutrition recommendations for ectomorph, mesomorph, or endomorph.',
-      '/body-surface-area-calculator': 'Calculate body surface area using medical formulas including Du Bois, Mosteller, Haycock methods. Essential for medical dosing and cardiac assessments.',
-      '/calorie-calculator': 'Calculate your daily calorie needs for weight loss, muscle gain, or maintenance. Advanced TDEE calculator with multiple BMR formulas and activity levels.',
-      '/tdee-calculator': 'Calculate Total Daily Energy Expenditure using advanced metabolic science. Get precise TDEE estimates with macronutrient targets and activity-specific calculations.',
-      '/bmr-calculator': 'Calculate Basal Metabolic Rate using Mifflin-St Jeor, Harris-Benedict, and Katch-McArdle formulas. Understand your metabolic rate and energy needs at rest.',
-      '/macro-calculator': 'Calculate optimal macronutrient distribution for protein, carbohydrates, and fats. Get personalized macro ratios based on goals, activity level, and dietary preferences.',
-      '/carbohydrate-calculator': 'Calculate daily carbohydrate intake for athletic performance, weight loss, or health goals. Get carb timing recommendations and source guidance.',
-      '/protein-calculator': 'Calculate daily protein requirements for muscle building, weight loss, and health. Get personalized protein targets with timing and source recommendations.',
-      '/fat-intake-calculator': 'Calculate optimal daily fat intake for health and performance. Get personalized fat type distribution and heart-healthy fat source recommendations.',
-      '/pace-calculator': 'Calculate running pace, time, or distance with precision. Get race predictions, splits, and VDOT analysis for serious runners and fitness training.',
-      '/calories-burned-calculator': 'Calculate precise calorie expenditure with advanced MET values, body composition factors, and personalized exercise recommendations.',
-      '/one-rep-max-calculator': 'Calculate your one-rep maximum using 7 proven formulas. Get training zones, rep ranges, and progressive overload recommendations for strength training.',
-      '/target-heart-rate-calculator': 'Calculate precise training zones using Karvonen method with resting heart rate. Get personalized heart rate zones and cardio training plans.',
-      '/pregnancy-calculator': 'Track your pregnancy journey with precise gestational age, due date, and developmental milestones using our advanced pregnancy calculator.',
-      '/pregnancy-weight-gain-calculator': 'Monitor healthy pregnancy weight gain based on IOM guidelines and your pre-pregnancy BMI for optimal maternal and fetal health.',
-      '/due-date-calculator': 'Calculate your pregnancy due date with medical precision using LMP or conception date. Track important milestones and birth window estimates.',
-      '/ovulation-calculator': 'World\'s most advanced AI-powered ovulation calculator with 91.7% accuracy, PCOS specialization, medical expert validation, and transparent AI predictions for optimal fertility tracking.',
-      '/conception-calculator': 'Medical-grade conception calculator with 266-day precision, IVF support, ultrasound dating integration, and 95% accuracy for assisted reproduction pregnancy dating.',
-      '/period-calculator': 'AI-powered period calculator with 89.2% accuracy, PCOS specialization, irregular cycle adaptation, privacy-first approach, and medical expert validation for menstrual health.',
-      '/gfr-calculator': 'Calculate your Glomerular Filtration Rate (GFR) using the CKD-EPI equation. Assess kidney function and chronic kidney disease risk with medical precision.',
-      '/bac-calculator': 'Calculate your Blood Alcohol Content (BAC) using the Widmark equation. Estimate alcohol impairment levels for safety and legal awareness.'
+    // Enhanced meta descriptions
+    const metaDescriptions = {
+      '/': 'Free BMI Calculator with WHO-approved formula. Calculate Body Mass Index instantly with personalized health insights, ideal weight recommendations, and comprehensive analysis. Medical-grade accuracy.',
+      '/body-fat-calculator': 'Calculate body fat percentage using US Navy method. Professional body composition analysis with skinfold measurements for accurate health assessment and fitness tracking.',
+      '/army-body-fat-calculator': 'Official US Army Body Fat Calculator using AR 600-9 standards. Military tape test calculator for body fat compliance verification and fitness assessments.',
+      '/lean-body-mass-calculator': 'Calculate lean body mass and muscle mass using validated Boer, James, and Hume formulas. Professional body composition assessment for fitness and health.',
+      '/ideal-weight-calculator': 'Find your ideal weight using medical formulas including Devine, Robinson, and Miller methods. Professional weight range calculation with health recommendations.',
+      '/healthy-weight-calculator': 'Calculate healthy weight range using WHO and CDC guidelines. Personalized weight assessment based on BMI, age, and health factors with medical accuracy.',
+      '/body-type-calculator': 'Determine your body type - ectomorph, mesomorph, or endomorph. Professional body type analysis for personalized fitness and nutrition planning.',
+      '/body-surface-area-calculator': 'Medical Body Surface Area (BSA) calculator using Du Bois and Mosteller formulas. Professional tool for medical dosage calculations and treatments.',
+      '/health-guides': 'Comprehensive health guides and medical articles covering all health calculators. Expert-written, medically-reviewed content for optimal health and fitness management.',
     };
 
-    const keywords = {
-      '/': 'BMI calculator, body mass index calculator, calculate BMI, healthy weight calculator, BMI chart, what is BMI, ideal weight calculator, weight loss calculator, BMI calculator adults, healthy BMI range',
-      '/privacy-policy': 'BMI calculator privacy policy, health data protection, GDPR compliance, medical data privacy, health calculator privacy',
-      '/terms-conditions': 'BMI calculator terms, medical disclaimer, health calculator legal terms, BMI tool conditions, weight calculator terms',
-      '/contact-us': 'BMI calculator support, health calculator help, BMI tool contact, weight calculator assistance, body mass index help',
-      '/body-fat-calculator': 'body fat calculator 2025, body fat percentage calculator, US Navy method body fat, circumference method calculator, body composition analyzer, fat mass calculator, lean mass calculator, age adjusted body fat, medical grade body fat, accurate body fat assessment',
-      '/army-body-fat-calculator': 'army body fat calculator 2025, military body fat calculator, AR 600-9 body fat, army tape test calculator, new army body fat standards, military fitness requirements, army body composition program, ABCP calculator, military tape test method',
-      '/lean-body-mass-calculator': 'lean body mass calculator 2025, LBM calculator, fat free mass calculator, FFMI calculator, muscle mass calculator, Boer formula calculator, James formula LBM, Hume formula lean mass, body composition analysis, validated LBM formulas',
-      '/ideal-weight-calculator': 'ideal weight calculator, Devine formula, Robinson formula, Miller formula, ideal body weight, medical weight calculator, target weight',
-      '/healthy-weight-calculator': 'healthy weight calculator, healthy weight range, BMI weight calculator, personalized weight, weight management, healthy BMI range',
-      '/body-type-calculator': 'body type calculator, somatotype calculator, ectomorph mesomorph endomorph, Heath Carter method, body type analysis, fitness body type',
-      '/body-surface-area-calculator': 'body surface area calculator, BSA calculator, Du Bois formula, Mosteller formula, medical BSA, cardiac index calculator',
-      '/calorie-calculator': 'calorie calculator, daily calorie needs, TDEE calculator, BMR calculator, weight loss calories, muscle gain calories, calorie requirements',
-      '/tdee-calculator': 'TDEE calculator, total daily energy expenditure, metabolic rate calculator, activity level calculator, calorie maintenance, energy expenditure',
-      '/bmr-calculator': 'BMR calculator, basal metabolic rate, Mifflin St Jeor, Harris Benedict, Katch McArdle, metabolism calculator, resting metabolic rate',
-      '/macro-calculator': 'macro calculator, macronutrient calculator, protein carbs fat calculator, macro distribution, IIFYM calculator, flexible dieting macros',
-      '/carbohydrate-calculator': 'carbohydrate calculator, daily carb intake, carb cycling calculator, athletic carbs, low carb calculator, carb timing',
-      '/protein-calculator': 'protein calculator, daily protein needs, protein requirements, muscle building protein, weight loss protein, protein intake',
-      '/fat-intake-calculator': 'fat intake calculator, healthy fat calculator, daily fat needs, omega 3 calculator, saturated fat calculator, heart healthy fats',
-      '/pace-calculator': 'pace calculator, running pace calculator, time distance calculator, VDOT calculator, race pace calculator, marathon pace calculator',
-      '/calories-burned-calculator': 'calories burned calculator, exercise calorie burn, MET calculator, activity calorie calculator, workout calories, fitness tracker',
-      '/one-rep-max-calculator': 'one rep max calculator, 1RM calculator, strength calculator, max lift calculator, powerlifting calculator, gym calculator',
-      '/target-heart-rate-calculator': 'target heart rate calculator, heart rate zones, cardio zones, Karvonen method, training heart rate, fitness zones',
-      '/pregnancy-calculator': 'pregnancy calculator, gestational age calculator, pregnancy tracker, due date calculator, pregnancy weeks, trimester calculator',
-      '/pregnancy-weight-gain-calculator': 'pregnancy weight gain calculator, IOM guidelines, healthy weight gain pregnancy, BMI pregnancy, maternal weight gain',
-      '/due-date-calculator': 'due date calculator, pregnancy due date, LMP calculator, conception date calculator, birth date predictor, pregnancy dating',
-      '/ovulation-calculator': 'AI ovulation calculator 2025, PCOS ovulation tracker, medical grade fertility calculator, transparent AI predictions, irregular cycle ovulation, fertility window optimization, conception timing calculator',
-      '/conception-calculator': 'medical grade conception calculator, IVF conception dating, 266 day calculation, ultrasound conception dating, pregnancy dating precision, assisted reproduction calculator, reverse due date calculator',
-      '/period-calculator': 'AI period calculator 2025, PCOS period tracker, irregular cycle prediction, medical accuracy period app, privacy first menstrual tracker, cycle pattern learning, gynecologist validated',
-      '/gfr-calculator': 'GFR calculator, glomerular filtration rate, kidney function test, CKD-EPI calculator, eGFR calculator, chronic kidney disease, renal function',
-      '/bac-calculator': 'BAC calculator, blood alcohol content, blood alcohol level, Widmark equation, alcohol calculator, DUI calculator, breathalyzer calculator'
-    };
+    const currentTitle = routeTitles[location.pathname] || 'BMI Calculator Pro - Professional Health Assessment Tools';
+    const currentDescription = metaDescriptions[location.pathname] || 'Professional health calculators and assessment tools with medical-grade accuracy. Calculate BMI, body fat, calories, and more with expert guidance.';
 
-    // Update title
-    document.title = titles[location.pathname] || titles['/'];
+    document.title = currentTitle;
     
     // Update meta description
-    const metaDescription = document.querySelector('meta[name="description"]');
+    let metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', descriptions[location.pathname] || descriptions['/']);
-    }
-
-    // Update keywords
-    const metaKeywords = document.querySelector('meta[name="keywords"]');
-    if (metaKeywords) {
-      metaKeywords.setAttribute('content', keywords[location.pathname] || keywords['/']);
-    }
-
-    // Update canonical URL
-    const canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (canonicalLink) {
-      canonicalLink.setAttribute('href', `https://bmipro.com${location.pathname}`);
+      metaDescription.setAttribute('content', currentDescription);
     }
 
     // Update Open Graph tags
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    const ogUrl = document.querySelector('meta[property="og:url"]');
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', currentTitle);
+    }
 
-    if (ogTitle) ogTitle.setAttribute('content', titles[location.pathname] || titles['/']);
-    if (ogDescription) ogDescription.setAttribute('content', descriptions[location.pathname] || descriptions['/']);
-    if (ogUrl) ogUrl.setAttribute('content', `https://bmipro.com${location.pathname}`);
+    let ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', currentDescription);
+    }
+
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) {
+      ogUrl.setAttribute('content', `https://bmipro.com${location.pathname}`);
+    }
 
     // Update Twitter Card tags
-    const twitterTitle = document.querySelector('meta[property="twitter:title"]');
-    const twitterDescription = document.querySelector('meta[property="twitter:description"]');
-    const twitterUrl = document.querySelector('meta[property="twitter:url"]');
+    let twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) {
+      twitterTitle.setAttribute('content', currentTitle);
+    }
 
-    if (twitterTitle) twitterTitle.setAttribute('content', titles[location.pathname] || titles['/']);
-    if (twitterDescription) twitterDescription.setAttribute('content', descriptions[location.pathname] || descriptions['/']);
-    if (twitterUrl) twitterUrl.setAttribute('content', `https://bmipro.com${location.pathname}`);
+    let twitterDescription = document.querySelector('meta[name="twitter:description"]');
+    if (twitterDescription) {
+      twitterDescription.setAttribute('content', currentDescription);
+    }
 
+    // Update canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute('href', `https://bmipro.com${location.pathname}`);
+    }
+
+    // Enhanced keyword optimization
+    const routeKeywords = {
+      '/': 'BMI calculator, body mass index, calculate BMI, healthy weight, WHO BMI, BMI chart, weight calculator, health assessment',
+      '/body-fat-calculator': 'body fat calculator, body fat percentage, skinfold measurement, body composition, health assessment, fitness tracker',
+      '/army-body-fat-calculator': 'army body fat calculator, military body fat, AR 600-9, tape test, military fitness, body fat compliance',
+      '/health-guides': 'health guides, medical articles, health calculators, BMI guides, fitness articles, nutrition guides, medical resources',
+    };
+
+    let metaKeywords = document.querySelector('meta[name="keywords"]');
+    if (metaKeywords && routeKeywords[location.pathname]) {
+      metaKeywords.setAttribute('content', routeKeywords[location.pathname]);
+    }
   }, [location]);
 
   return null;
@@ -445,15 +405,15 @@ function AnimatedRoutes() {
           } 
         />
         <Route 
-          path="/bmi-resources" 
+          path="/health-guides" 
           element={
-            <PageTransition key="bmi-resources">
-              <BMIResourcesPage />
+            <PageTransition key="health-guides">
+              <HealthGuidesPage />
             </PageTransition>
           } 
         />
         <Route 
-          path="/bmi-resources/:slug" 
+          path="/health-guides/:slug" 
           element={
             <PageTransition key="article">
               <ArticlePage />

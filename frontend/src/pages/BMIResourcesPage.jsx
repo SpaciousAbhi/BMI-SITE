@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Calendar, Clock, User, Star, BookOpen, TrendingUp } from 'lucide-react';
+import { Search, Calendar, Clock, User, Star, BookOpen, TrendingUp, Filter } from 'lucide-react';
 import { getAllArticles, getCategories, getTags, searchArticles, getArticleStats } from '../data/articles';
 import { formatDate, calculateReadingTime } from '../utils/markdown';
 
-const BMIResourcesPage = () => {
+const HealthGuidesPage = () => {
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -69,11 +69,11 @@ const BMIResourcesPage = () => {
             <div className="flex items-center justify-center gap-3 mb-6">
               <BookOpen className="w-12 h-12 text-blue-400" />
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">
-                BMI Resources
+                Health Guides & Articles
               </h1>
             </div>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Comprehensive, medically-reviewed guides to understanding and managing your Body Mass Index
+              Comprehensive, medically-reviewed guides covering all health calculators and wellness topics
             </p>
             
             {/* Stats */}
@@ -110,7 +110,7 @@ const BMIResourcesPage = () => {
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                   <input
                     type="text"
-                    placeholder="Search articles..."
+                    placeholder="Search health guides..."
                     value={searchQuery}
                     onChange={handleSearchChange}
                     className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none"
@@ -272,7 +272,7 @@ const BMIResourcesPage = () => {
                     )}
 
                     <Link
-                      to={`/bmi-resources/${article.slug}`}
+                      to={`/health-guides/${article.slug}`}
                       className="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-lg transition-colors font-medium"
                     >
                       Read Article
@@ -287,17 +287,17 @@ const BMIResourcesPage = () => {
         {/* CTA Section */}
         <div className="max-w-4xl mx-auto mt-16 bg-gradient-to-r from-blue-900 to-teal-900 rounded-lg p-8 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Ready to Calculate Your BMI?
+            Ready to Use Our Health Calculators?
           </h2>
           <p className="text-gray-300 mb-6 text-lg">
-            Use our advanced BMI calculator to get personalized health insights
+            Apply what you've learned with our comprehensive suite of health and fitness calculators
           </p>
           <Link
             to="/"
-            className="inline-flex items-center gap-2 bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+            className="inline-flex items-center gap-3 bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
             <TrendingUp className="w-5 h-5" />
-            Calculate Your BMI
+            Explore All Calculators
           </Link>
         </div>
       </div>
@@ -305,4 +305,4 @@ const BMIResourcesPage = () => {
   );
 };
 
-export default BMIResourcesPage;
+export default HealthGuidesPage;
