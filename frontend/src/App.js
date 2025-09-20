@@ -40,6 +40,8 @@ import ConceptionCalculatorPage from "./pages/ConceptionCalculatorPage";
 import PeriodCalculatorPage from "./pages/PeriodCalculatorPage";
 import GFRCalculatorPage from "./pages/GFRCalculatorPage";
 import BACCalculatorPage from "./pages/BACCalculatorPage";
+import BMIResourcesPage from "./pages/BMIResourcesPage";
+import ArticlePage from "./pages/ArticlePage";
 
 // Enhanced SEO Component for dynamic page titles and meta optimization
 function SEOUpdater() {
