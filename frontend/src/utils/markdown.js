@@ -45,8 +45,8 @@ export const parseMarkdown = (markdownContent) => {
 export const generateBreadcrumb = (article) => {
   return [
     { name: 'Home', href: '/' },
-    { name: 'BMI Resources', href: '/bmi-resources' },
-    { name: article.title, href: `/bmi-resources/${article.slug}` }
+    { name: 'Blogs & Articles', href: '/blogs-articles' },
+    { name: article.title, href: `/blogs-articles/${article.slug}` }
   ];
 };
 
