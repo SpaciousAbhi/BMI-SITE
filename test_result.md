@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-## user_problem_statement: "WORLD-CLASS PREGNANCY CALCULATOR OPTIMIZATION 2025: Make three key pregnancy calculators the BEST IN THE WORLD: (1) Pregnancy Calculator, (2) Pregnancy Weight Gain Calculator, (3) Due Date Calculator. Implement comprehensive SEO research at the highest level - advanced keyword research, competitor analysis, featured snippets optimization, voice search targeting. Transform these calculators into professional, reliable, medical-grade tools with world-class SEO optimization, responsive design across all devices, comprehensive educational content, advanced schema markup, and complete technical SEO setup. These calculators must become digital powerhouses that dominate search results and set the global benchmark for pregnancy calculator tools."
+## user_problem_statement: "See i have there 5 articles on my blog listing page. Make those articles very informative, seo optimization, seo research, keyword research, content creation, images, charts, tables, suitable for all screen sizes."
 
 ## backend:
   - task: "World-Class Pregnancy Calculator SEO Optimization - 2025"
