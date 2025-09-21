@@ -78,7 +78,7 @@ export const generateArticleSchema = (article) => {
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://bmipro.com/bmi-resources/${article.slug}`
+      "@id": `https://bmipro.com/blogs-articles/${article.slug}`
     },
     "keywords": article.keywords,
     "wordCount": article.content ? article.content.split(' ').length : 0,
