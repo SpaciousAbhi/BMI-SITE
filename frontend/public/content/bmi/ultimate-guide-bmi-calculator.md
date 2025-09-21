@@ -45,18 +45,23 @@ schema:
 9. [Frequently Asked Questions](#faq)
 10. [Medical Applications & Clinical Use](#clinical-applications)
 
-## What is BMI and Why It Matters {#what-is-bmi}
+## How to Calculate BMI: Step-by-Step Guide {#how-to-calculate-bmi}
 
-Body Mass Index (BMI) is a numerical value derived from a person's weight and height, providing a standardized method to categorize individuals into weight-related health categories. Developed in the 1830s by Belgian polymath Adolphe Quetelet, BMI serves as a population-level screening tool rather than a diagnostic instrument.
+**Body Mass Index (BMI)** is a numerical value calculated from your weight and height that helps assess whether you're in a healthy weight range. The BMI calculator uses a simple mathematical formula to provide instant health insights used by doctors worldwide.
 
-### Key BMI Applications:
-- **Population Health Screening**: Identifying obesity trends across demographics
-- **Clinical Risk Assessment**: Preliminary evaluation of weight-related health risks
-- **Research Standardization**: Consistent methodology across studies
-- **Public Health Policy**: Establishing intervention guidelines
-- **Individual Health Awareness**: Personal weight management tool
+### What is BMI?
+BMI measures body mass relative to height, created in the 1830s by Belgian statistician Adolphe Quetelet. Today, it's the **gold standard for weight assessment** endorsed by:
+- World Health Organization (WHO)
+- Centers for Disease Control (CDC)  
+- American Medical Association (AMA)
+- National Institutes of Health (NIH)
 
-The mathematical simplicity of BMI makes it universally accessible, requiring only basic measurements available in any healthcare setting or home environment.
+### Quick BMI Calculation Steps:
+1. **Measure your weight** (pounds or kilograms)
+2. **Measure your height** (feet/inches or meters)
+3. **Apply the BMI formula** (see below)
+4. **Compare result** to WHO health categories
+5. **Interpret your BMI** with medical context
 
 ## History of BMI and WHO Adoption {#history-of-bmi}
 
