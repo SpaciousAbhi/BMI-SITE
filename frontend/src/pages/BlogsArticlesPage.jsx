@@ -397,51 +397,43 @@ const BlogsArticlesPage = () => {
           </div>
         </div>
 
-        {/* Compact CTA Section */}
-        <div className="relative overflow-hidden py-12">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-purple-900/80 to-teal-900/80"></div>
+        {/* Streamlined CTA Section */}
+        <div className="relative overflow-hidden py-8">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/40 via-black/60 to-teal-900/40"></div>
           <div className="absolute inset-0">
-            <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-500/20 rounded-full filter blur-2xl animate-pulse"></div>
-            <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-500/20 rounded-full filter blur-2xl animate-pulse delay-1000"></div>
+            <div className="absolute top-0 left-1/4 w-48 h-48 bg-blue-500/10 rounded-full filter blur-2xl animate-pulse"></div>
+            <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-teal-500/10 rounded-full filter blur-2xl animate-pulse delay-1000"></div>
           </div>
           
           <div className="relative z-10 container mx-auto px-4">
-            <div className="max-w-5xl mx-auto text-center">
+            <div className="max-w-4xl mx-auto text-center">
               <div className="mb-6">
-                <div className="flex items-center justify-center gap-3 mb-4">
-                  <TrendingUp className="w-8 h-8 text-blue-400 animate-bounce" />
-                  <h2 className="text-3xl md:text-4xl font-bold text-white">
-                    Ready to Calculate?
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <Heart className="w-6 h-6 text-blue-400 animate-pulse" />
+                  <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 via-teal-400 to-green-400 bg-clip-text text-transparent">
+                    Try Our Calculators
                   </h2>
-                  <Sparkles className="w-8 h-8 text-purple-400 animate-pulse" />
+                  <Sparkles className="w-6 h-6 text-teal-400 animate-bounce" />
                 </div>
-                <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
-                  Apply what you've learned with our comprehensive suite of world-class health and fitness calculators
+                <p className="text-gray-300 mb-6 leading-relaxed max-w-2xl mx-auto">
+                  Apply what you've learned with our comprehensive suite of health calculators
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-2xl p-5 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25">
-                    <Scale className="w-8 h-8 text-blue-400 mx-auto mb-3 group-hover:animate-bounce" />
-                    <h3 className="text-lg font-bold text-white mb-2">Body Composition</h3>
-                    <p className="text-gray-300 text-sm">BMI, Body Fat, Lean Mass & More</p>
+                  <div className="bg-black/20 backdrop-blur-md rounded-lg p-4 border border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 hover:scale-105">
+                    <Scale className="w-6 h-6 text-blue-400 mx-auto mb-2 group-hover:animate-bounce" />
+                    <h3 className="font-bold text-white mb-1">BMI Calculator</h3>
+                    <p className="text-gray-400 text-sm">Body Mass Index & Weight Assessment</p>
                   </div>
                 </div>
                 
                 <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-2xl p-5 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25">
-                    <Baby className="w-8 h-8 text-purple-400 mx-auto mb-3 group-hover:animate-bounce" />
-                    <h3 className="text-lg font-bold text-white mb-2">Pregnancy Tools</h3>
-                    <p className="text-gray-300 text-sm">Due Date, Weight Gain, Ovulation</p>
-                  </div>
-                </div>
-                
-                <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-2xl p-5 border border-teal-500/30 hover:border-teal-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/25">
-                    <Dumbbell className="w-8 h-8 text-teal-400 mx-auto mb-3 group-hover:animate-bounce" />
-                    <h3 className="text-lg font-bold text-white mb-2">Fitness & Nutrition</h3>
-                    <p className="text-gray-300 text-sm">TDEE, Macros, Calories & More</p>
+                  <div className="bg-black/20 backdrop-blur-md rounded-lg p-4 border border-teal-500/20 hover:border-teal-400/40 transition-all duration-300 hover:scale-105">
+                    <TrendingUp className="w-6 h-6 text-teal-400 mx-auto mb-2 group-hover:animate-bounce" />
+                    <h3 className="font-bold text-white mb-1">All Calculators</h3>
+                    <p className="text-gray-400 text-sm">Comprehensive Health & Fitness Tools</p>
                   </div>
                 </div>
               </div>
@@ -450,20 +442,20 @@ const BlogsArticlesPage = () => {
                 to="/"
                 className="inline-block group"
               >
-                <button className="bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 hover:from-blue-700 hover:via-purple-700 hover:to-teal-700 text-white px-8 py-4 rounded-2xl transition-all duration-500 font-bold text-lg hover:scale-110 hover:shadow-xl hover:shadow-blue-500/30 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                  <div className="relative flex items-center gap-3">
-                    <BookOpen className="w-6 h-6 group-hover:animate-spin" />
-                    <span>Explore All Calculators</span>
-                    <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                <button className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white px-6 py-3 rounded-lg transition-all duration-300 font-semibold hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+                  <div className="relative flex items-center gap-2">
+                    <BookOpen className="w-5 h-5 group-hover:animate-spin" />
+                    <span>Explore Calculators</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform duration-300" />
                   </div>
                 </button>
               </Link>
               
-              <div className="mt-6 text-gray-400">
+              <div className="mt-4 text-gray-500">
                 <span className="inline-flex items-center gap-2 text-sm">
-                  <Star className="w-4 h-4 text-yellow-400" />
-                  World-class accuracy • Medical-grade precision • Instant results
+                  <Star className="w-3 h-3 text-yellow-400" />
+                  Medical-grade accuracy • Instant results • Evidence-based
                 </span>
               </div>
             </div>
