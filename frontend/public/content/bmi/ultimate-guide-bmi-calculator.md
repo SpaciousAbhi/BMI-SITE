@@ -400,7 +400,7 @@ BMI doesn't account for:
 - Testosterone influences
 - Occupational factors
 
-## Frequently Asked Questions (FAQs)
+## Frequently Asked Questions About BMI Calculator {#faq}
 
 ### 1. How accurate is BMI for determining health risks?
 BMI provides a reasonable population-level screening tool with 70-80% accuracy for identifying obesity-related health risks. However, individual accuracy varies significantly based on body composition, ethnicity, age, and fitness level. For precise health assessment, BMI should be combined with other measurements like waist circumference, body fat percentage, and metabolic markers.
