@@ -578,51 +578,51 @@ const BlogsArticlesPage = () => {
           </div>
         </div>
 
-        {/* World-Class CTA Section */}
-        <div className="relative overflow-hidden py-20">
+        {/* Compact CTA Section */}
+        <div className="relative overflow-hidden py-12">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 via-purple-900/80 to-teal-900/80"></div>
           <div className="absolute inset-0">
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full filter blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute top-0 left-1/4 w-64 h-64 bg-blue-500/20 rounded-full filter blur-2xl animate-pulse"></div>
+            <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-purple-500/20 rounded-full filter blur-2xl animate-pulse delay-1000"></div>
           </div>
           
           <div className="relative z-10 container mx-auto px-4">
-            <div className="max-w-6xl mx-auto text-center">
-              <div className="mb-8">
-                <div className="flex items-center justify-center gap-4 mb-6">
-                  <TrendingUp className="w-12 h-12 text-blue-400 animate-bounce" />
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+            <div className="max-w-5xl mx-auto text-center">
+              <div className="mb-6">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <TrendingUp className="w-8 h-8 text-blue-400 animate-bounce" />
+                  <h2 className="text-3xl md:text-4xl font-bold text-white">
                     Ready to Calculate?
                   </h2>
-                  <Sparkles className="w-12 h-12 text-purple-400 animate-pulse" />
+                  <Sparkles className="w-8 h-8 text-purple-400 animate-pulse" />
                 </div>
-                <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-4xl mx-auto">
+                <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
                   Apply what you've learned with our comprehensive suite of world-class health and fitness calculators
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-3xl p-8 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25">
-                    <Scale className="w-12 h-12 text-blue-400 mx-auto mb-4 group-hover:animate-bounce" />
-                    <h3 className="text-2xl font-bold text-white mb-3">Body Composition</h3>
-                    <p className="text-gray-300 text-lg">BMI, Body Fat, Lean Mass & More</p>
+                  <div className="bg-black/30 backdrop-blur-md rounded-2xl p-5 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25">
+                    <Scale className="w-8 h-8 text-blue-400 mx-auto mb-3 group-hover:animate-bounce" />
+                    <h3 className="text-lg font-bold text-white mb-2">Body Composition</h3>
+                    <p className="text-gray-300 text-sm">BMI, Body Fat, Lean Mass & More</p>
                   </div>
                 </div>
                 
                 <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-3xl p-8 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/25">
-                    <Baby className="w-12 h-12 text-purple-400 mx-auto mb-4 group-hover:animate-bounce" />
-                    <h3 className="text-2xl font-bold text-white mb-3">Pregnancy Tools</h3>
-                    <p className="text-gray-300 text-lg">Due Date, Weight Gain, Ovulation</p>
+                  <div className="bg-black/30 backdrop-blur-md rounded-2xl p-5 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25">
+                    <Baby className="w-8 h-8 text-purple-400 mx-auto mb-3 group-hover:animate-bounce" />
+                    <h3 className="text-lg font-bold text-white mb-2">Pregnancy Tools</h3>
+                    <p className="text-gray-300 text-sm">Due Date, Weight Gain, Ovulation</p>
                   </div>
                 </div>
                 
                 <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-3xl p-8 border border-teal-500/30 hover:border-teal-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-teal-500/25">
-                    <Dumbbell className="w-12 h-12 text-teal-400 mx-auto mb-4 group-hover:animate-bounce" />
-                    <h3 className="text-2xl font-bold text-white mb-3">Fitness & Nutrition</h3>
-                    <p className="text-gray-300 text-lg">TDEE, Macros, Calories & More</p>
+                  <div className="bg-black/30 backdrop-blur-md rounded-2xl p-5 border border-teal-500/30 hover:border-teal-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/25">
+                    <Dumbbell className="w-8 h-8 text-teal-400 mx-auto mb-3 group-hover:animate-bounce" />
+                    <h3 className="text-lg font-bold text-white mb-2">Fitness & Nutrition</h3>
+                    <p className="text-gray-300 text-sm">TDEE, Macros, Calories & More</p>
                   </div>
                 </div>
               </div>
@@ -631,19 +631,19 @@ const BlogsArticlesPage = () => {
                 to="/"
                 className="inline-block group"
               >
-                <button className="bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 hover:from-blue-700 hover:via-purple-700 hover:to-teal-700 text-white px-12 py-6 rounded-3xl transition-all duration-500 font-bold text-2xl hover:scale-110 hover:shadow-2xl hover:shadow-blue-500/30 relative overflow-hidden">
+                <button className="bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 hover:from-blue-700 hover:via-purple-700 hover:to-teal-700 text-white px-8 py-4 rounded-2xl transition-all duration-500 font-bold text-lg hover:scale-110 hover:shadow-xl hover:shadow-blue-500/30 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                  <div className="relative flex items-center gap-4">
-                    <BookOpen className="w-8 h-8 group-hover:animate-spin" />
+                  <div className="relative flex items-center gap-3">
+                    <BookOpen className="w-6 h-6 group-hover:animate-spin" />
                     <span>Explore All Calculators</span>
-                    <ArrowRight className="w-8 h-8 group-hover:translate-x-2 transition-transform duration-300" />
+                    <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
                 </button>
               </Link>
               
-              <div className="mt-8 text-gray-400 text-lg">
-                <span className="inline-flex items-center gap-2">
-                  <Star className="w-5 h-5 text-yellow-400" />
+              <div className="mt-6 text-gray-400">
+                <span className="inline-flex items-center gap-2 text-sm">
+                  <Star className="w-4 h-4 text-yellow-400" />
                   World-class accuracy • Medical-grade precision • Instant results
                 </span>
               </div>
