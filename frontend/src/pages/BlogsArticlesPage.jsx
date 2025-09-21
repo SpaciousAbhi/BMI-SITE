@@ -255,22 +255,21 @@ const BlogsArticlesPage = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="max-w-7xl mx-auto">
             {filteredArticles.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="relative mb-6">
-                  <div className="w-24 h-24 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <BookOpen className="w-12 h-12 text-gray-500 animate-pulse" />
+              <div className="text-center py-8">
+                <div className="relative mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-teal-500/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                    <BookOpen className="w-8 h-8 text-gray-500" />
                   </div>
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full animate-ping"></div>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-400 mb-3">No articles found</h3>
-                <p className="text-lg text-gray-500 mb-6 max-w-md mx-auto">
-                  Try adjusting your search terms or exploring different categories
+                <h3 className="text-xl font-bold text-gray-400 mb-2">No articles found</h3>
+                <p className="text-gray-500 mb-4 max-w-sm mx-auto text-sm">
+                  Try adjusting your search terms or clear filters to see all articles
                 </p>
                 <button
                   onClick={clearFilters}
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-6 py-3 rounded-xl transition-all duration-300 font-medium hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
+                  className="bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white px-4 py-2 rounded-lg transition-all duration-300 font-medium hover:scale-105 text-sm"
                 >
-                  Clear All Filters
+                  Clear Filters
                 </button>
               </div>
             ) : (
