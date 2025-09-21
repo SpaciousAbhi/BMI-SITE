@@ -208,19 +208,38 @@ The BMI calculator uses 703 as a conversion factor to maintain accuracy between 
 | 6'0" (183cm) | <137 lbs | 137-184 lbs | 185-221 lbs | >222 lbs |
 | 6'2" (188cm) | <144 lbs | 144-194 lbs | 195-233 lbs | >234 lbs |
 
-### Age-Adjusted Considerations:
+## Free BMI Calculator Tools {#free-bmi-tools}
+
+### Best Free BMI Calculator Options
+
+**Access instant BMI calculation** with these recommended free tools:
+
+🔢 **[Our Free BMI Calculator](/)** - Instant results, metric & imperial units, health categories  
+📱 **Mobile-Friendly Design** - Works on all devices, no app download required  
+🏥 **Medical-Grade Accuracy** - Uses official WHO formulas and standards  
+📊 **Visual Results** - Color-coded categories and health risk indicators  
+📋 **Printable Results** - Save or print your BMI report for medical appointments
+
+### BMI Calculator Features:
+✅ **Dual Unit Support** - Metric (kg/cm) and Imperial (lbs/ft-in)  
+✅ **Instant Calculation** - Real-time results as you type  
+✅ **Health Categories** - WHO standard classifications with explanations  
+✅ **Privacy Protected** - No data stored or shared  
+✅ **Medical Disclaimers** - Appropriate health guidance included
+
+### Age-Adjusted BMI Considerations:
 
 **Ages 65+**: BMI ranges may shift slightly higher due to:
-- Decreased muscle mass
-- Increased health risks of underweight
+- Decreased muscle mass (sarcopenia)
+- Increased health risks of being underweight
 - Protective effects of moderate overweight
 - Different mortality risk patterns
 
-**Recommended Adjustments for Seniors:**
-- Underweight: BMI < 21
-- Normal: BMI 21-27
-- Overweight: BMI 27-32
-- Obese: BMI > 32
+**Recommended BMI Adjustments for Seniors:**
+- Underweight: BMI < 21 (vs standard 18.5)
+- Normal: BMI 21-27 (vs standard 18.5-24.9)
+- Overweight: BMI 27-32 (vs standard 25-29.9)
+- Obese: BMI > 32 (vs standard 30+)
 
 ## Step-by-Step BMI Calculation Examples {#calculation-examples}
 
