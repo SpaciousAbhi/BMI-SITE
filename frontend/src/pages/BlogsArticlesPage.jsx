@@ -54,69 +54,60 @@ const BlogsArticlesPage = () => {
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
-      {/* Animated Background */}
+      {/* Animated Background - Black OLED Theme */}
       <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/30 to-teal-900/20"></div>
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-2000"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/10 via-black to-teal-900/10"></div>
+        <div className="absolute top-0 -left-4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
+        <div className="absolute top-0 -right-4 w-96 h-96 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse delay-1000"></div>
+        <div className="absolute -bottom-8 left-20 w-96 h-96 bg-green-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse delay-2000"></div>
       </div>
 
       {/* Compact Hero Section */}
-      <div className="relative z-10 bg-gradient-to-r from-blue-900/80 via-purple-900/80 to-teal-900/80 backdrop-blur-sm py-12">
+      <div className="relative z-10 bg-gradient-to-r from-blue-900/60 via-black/80 to-teal-900/60 backdrop-blur-sm py-8">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            {/* Compact Header Content */}
-            <div className="text-center mb-10">
-              <div className="flex items-center justify-center gap-3 mb-6">
+          <div className="max-w-5xl mx-auto">
+            {/* Streamlined Header Content */}
+            <div className="text-center mb-8">
+              <div className="flex items-center justify-center gap-3 mb-4">
                 <div className="relative">
-                  <FileText className="w-12 h-12 text-blue-400 animate-pulse" />
-                  <Sparkles className="w-4 h-4 text-yellow-400 absolute -top-1 -right-1 animate-bounce" />
+                  <Heart className="w-10 h-10 text-blue-400 animate-pulse" />
+                  <Sparkles className="w-3 h-3 text-teal-400 absolute -top-1 -right-1 animate-bounce" />
                 </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent animate-pulse">
-                  Blogs & Articles
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 via-teal-400 to-green-400 bg-clip-text text-transparent">
+                  Health Articles & Guides
                 </h1>
               </div>
-              <p className="text-xl md:text-2xl text-gray-300 mb-6 leading-relaxed max-w-4xl mx-auto">
-                World-class health insights & comprehensive guides for all your calculator needs
+              <p className="text-lg md:text-xl text-gray-300 mb-6 leading-relaxed max-w-3xl mx-auto">
+                Expert BMI insights & comprehensive health calculator guides
               </p>
               
               {/* Compact Stats Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+              <div className="grid grid-cols-3 gap-4 max-w-2xl mx-auto">
                 <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-xl p-4 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20">
-                    <div className="flex items-center gap-2 mb-1">
-                      <BookOpen className="w-5 h-5 text-blue-400 group-hover:animate-bounce" />
-                      <div className="text-2xl font-bold text-blue-400 group-hover:text-blue-300 transition-colors">{stats.totalArticles}</div>
+                  <div className="bg-black/40 backdrop-blur-md rounded-lg p-3 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300 hover:scale-105">
+                    <div className="flex items-center justify-center gap-2">
+                      <BookOpen className="w-4 h-4 text-blue-400 group-hover:animate-bounce" />
+                      <div className="text-xl font-bold text-blue-400">{stats.totalArticles}</div>
                     </div>
-                    <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">Expert Articles</div>
+                    <div className="text-xs text-gray-400 mt-1">Articles</div>
                   </div>
                 </div>
                 <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-xl p-4 border border-green-500/30 hover:border-green-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/20">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Star className="w-5 h-5 text-green-400 group-hover:animate-spin" />
-                      <div className="text-2xl font-bold text-green-400 group-hover:text-green-300 transition-colors">{stats.featuredArticles}</div>
+                  <div className="bg-black/40 backdrop-blur-md rounded-lg p-3 border border-teal-500/30 hover:border-teal-400/60 transition-all duration-300 hover:scale-105">
+                    <div className="flex items-center justify-center gap-2">
+                      <Star className="w-4 h-4 text-teal-400 group-hover:animate-spin" />
+                      <div className="text-xl font-bold text-teal-400">{stats.featuredArticles}</div>
                     </div>
-                    <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">Featured Content</div>
+                    <div className="text-xs text-gray-400 mt-1">Featured</div>
                   </div>
                 </div>
                 <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-xl p-4 border border-yellow-500/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-yellow-500/20">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Layers className="w-5 h-5 text-yellow-400 group-hover:animate-pulse" />
-                      <div className="text-2xl font-bold text-yellow-400 group-hover:text-yellow-300 transition-colors">{stats.categories}</div>
+                  <div className="bg-black/40 backdrop-blur-md rounded-lg p-3 border border-green-500/30 hover:border-green-400/60 transition-all duration-300 hover:scale-105">
+                    <div className="flex items-center justify-center gap-2">
+                      <Clock className="w-4 h-4 text-green-400 group-hover:animate-bounce" />
+                      <div className="text-xl font-bold text-green-400">{stats.averageReadTime}m</div>
                     </div>
-                    <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">Categories</div>
-                  </div>
-                </div>
-                <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-xl p-4 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Clock className="w-5 h-5 text-purple-400 group-hover:animate-bounce" />
-                      <div className="text-2xl font-bold text-purple-400 group-hover:text-purple-300 transition-colors">{stats.averageReadTime}m</div>
-                    </div>
-                    <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">Avg Read Time</div>
+                    <div className="text-xs text-gray-400 mt-1">Avg Read</div>
                   </div>
                 </div>
               </div>
