@@ -547,11 +547,14 @@ Ready to assess your health status? **[Use our free BMI calculator](/)** for ins
 
 **Medical Disclaimer**: This article is for informational purposes only and is not intended as medical advice. BMI calculations and interpretations should not replace professional medical consultation. Always consult with qualified healthcare providers for personalized health assessment and medical guidance. Individual health conditions, medications, and circumstances may affect the applicability of general BMI guidelines.
 
-**Schema Markup Suggestions**:
-- **MedicalArticle Schema**: Include medical accuracy, author credentials, review date
-- **HowTo Schema**: Step-by-step BMI calculation process
-- **FAQPage Schema**: Comprehensive FAQ section for featured snippets
-- **Table Schema**: BMI charts and category tables for rich results
+**Advanced SEO Schema Markup**:
+- **MedicalArticle Schema**: Medical accuracy, expert authorship, review dates
+- **MedicalRiskEstimator Schema**: BMI calculator tool functionality  
+- **HowTo Schema**: Step-by-step BMI calculation instructions
+- **FAQPage Schema**: Comprehensive FAQ section optimized for featured snippets
+- **Table Schema**: BMI charts and health category tables for rich results
+- **BreadcrumbList Schema**: Navigation hierarchy for calculator tools
+- **Organization Schema**: Medical authority and credibility indicators
 
 **Image/Infographic Suggestions**:
 1. **BMI Calculation Formula Infographic**: Visual representation of metric/imperial formulas
