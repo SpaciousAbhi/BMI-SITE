@@ -72,27 +72,27 @@ const BlogsArticlesPage = () => {
         <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-2000"></div>
       </div>
 
-      {/* Hero Section */}
-      <div className="relative z-10 bg-gradient-to-r from-blue-900/80 via-purple-900/80 to-teal-900/80 backdrop-blur-sm py-20">
+      {/* Compact Hero Section */}
+      <div className="relative z-10 bg-gradient-to-r from-blue-900/80 via-purple-900/80 to-teal-900/80 backdrop-blur-sm py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            {/* Header Content */}
-            <div className="text-center mb-16">
-              <div className="flex items-center justify-center gap-4 mb-8">
+            {/* Compact Header Content */}
+            <div className="text-center mb-10">
+              <div className="flex items-center justify-center gap-3 mb-6">
                 <div className="relative">
-                  <FileText className="w-16 h-16 text-blue-400 animate-pulse" />
-                  <Sparkles className="w-6 h-6 text-yellow-400 absolute -top-2 -right-2 animate-bounce" />
+                  <FileText className="w-12 h-12 text-blue-400 animate-pulse" />
+                  <Sparkles className="w-4 h-4 text-yellow-400 absolute -top-1 -right-1 animate-bounce" />
                 </div>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent animate-pulse">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text text-transparent animate-pulse">
                   Blogs & Articles
                 </h1>
               </div>
-              <p className="text-2xl md:text-3xl text-gray-300 mb-8 leading-relaxed max-w-4xl mx-auto">
+              <p className="text-xl md:text-2xl text-gray-300 mb-6 leading-relaxed max-w-4xl mx-auto">
                 World-class health insights & comprehensive guides for all your calculator needs
               </p>
               
-              {/* Enhanced Stats Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+              {/* Compact Stats Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
                 <div className="group">
                   <div className="bg-black/30 backdrop-blur-md rounded-2xl p-6 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20">
                     <div className="flex items-center gap-3 mb-2">
