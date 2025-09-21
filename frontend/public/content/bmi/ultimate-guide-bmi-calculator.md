@@ -80,18 +80,24 @@ images:
 - Adults over 65 with age-related changes
 - Individuals with specific ethnic backgrounds requiring adjusted thresholds
 
-## Table of Contents
+## 📚 Complete Guide Navigation
 
-1. [How to Calculate BMI: Step-by-Step Guide](#how-to-calculate-bmi)
-2. [BMI Formula: Metric and Imperial](#bmi-formula)
-3. [BMI Calculator Chart & Categories](#bmi-categories)
-4. [Free BMI Calculator Tools](#free-bmi-tools)
-5. [BMI Health Risks & What Your Number Means](#health-risks)
-6. [BMI Calculator for Different Ages](#age-considerations)
-7. [BMI Limitations & Accuracy](#limitations)
-8. [BMI vs Body Fat Calculator](#bmi-vs-others)
-9. [Frequently Asked Questions](#faq)
-10. [Medical Applications & Clinical Use](#clinical-applications)
+### 📋 Interactive Table of Contents
+
+| Section | Content Overview | Est. Time | Difficulty |
+|---------|-----------------|-----------|------------|
+| **1.** [Quick BMI Calculation](#how-to-calculate-bmi) | Step-by-step formula guide | 3 min | ⭐☆☆ |
+| **2.** [BMI Formulas & Conversion](#bmi-formula) | Metric vs Imperial with examples | 3 min | ⭐⭐☆ |
+| **3.** [WHO Health Categories](#bmi-categories) | Complete chart & risk analysis | 4 min | ⭐⭐☆ |
+| **4.** [Interactive Calculator Tools](#free-bmi-tools) | Embedded calculators & utilities | 2 min | ⭐☆☆ |
+| **5.** [Health Risks & Medical Evidence](#health-risks) | Disease correlations & studies | 5 min | ⭐⭐⭐ |
+| **6.** [Age-Specific Considerations](#age-considerations) | Children, adults, seniors | 3 min | ⭐⭐☆ |
+| **7.** [BMI Limitations & Accuracy](#limitations) | When BMI fails & alternatives | 4 min | ⭐⭐⭐ |
+| **8.** [Alternative Assessment Methods](#bmi-vs-others) | Body fat, waist ratio, DEXA | 3 min | ⭐⭐☆ |
+| **9.** [Frequently Asked Questions](#faq) | Voice search optimized answers | 6 min | ⭐☆☆ |
+| **10.** [Clinical Applications](#clinical-applications) | Professional medical use cases | 4 min | ⭐⭐⭐ |
+
+**Total Reading Time: 15-18 minutes** | **Bookmarks Available** | **Print-Friendly Version**
 
 ## How to Calculate BMI: Step-by-Step Guide {#how-to-calculate-bmi}
 
