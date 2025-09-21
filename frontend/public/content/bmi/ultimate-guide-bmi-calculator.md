@@ -534,14 +534,22 @@ Ready to assess your health status? **[Use our free BMI calculator](/)** for ins
 
 ---
 
-## Related Calculators
+## Related Free Health Calculators
 
-- [**BMI Calculator**](/): Calculate your Body Mass Index instantly
-- [**Body Fat Calculator**](/body-fat-calculator): Determine your body fat percentage
-- [**Ideal Weight Calculator**](/ideal-weight-calculator): Find your ideal weight range
-- [**Healthy Weight Calculator**](/healthy-weight-calculator): Personalized healthy weight assessment
-- [**Calorie Calculator**](/calorie-calculator): Daily calorie needs calculation
-- [**TDEE Calculator**](/tdee-calculator): Total daily energy expenditure
+**Enhance your health assessment** with these evidence-based calculator tools:
+
+🔢 [**Free BMI Calculator**](/): Calculate Body Mass Index with WHO standards  
+📊 [**Body Fat Calculator**](/body-fat-calculator): Determine body fat percentage accurately  
+⚖️ [**Ideal Weight Calculator**](/ideal-weight-calculator): Find your optimal weight range  
+💪 [**Lean Body Mass Calculator**](/lean-body-mass-calculator): Calculate muscle mass composition  
+🔥 [**Calorie Calculator**](/calorie-calculator): Daily calorie needs for weight goals  
+📈 [**TDEE Calculator**](/tdee-calculator): Total daily energy expenditure with activity  
+🏃 [**BMR Calculator**](/bmr-calculator): Basal metabolic rate calculation  
+
+### More Body Composition Tools:
+- [**Healthy Weight Calculator**](/healthy-weight-calculator) - Personalized weight assessment
+- [**Body Surface Area Calculator**](/body-surface-area-calculator) - Medical dosage calculations  
+- [**Army Body Fat Calculator**](/army-body-fat-calculator) - Military fitness standards
 
 ---
 
