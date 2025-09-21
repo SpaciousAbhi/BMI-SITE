@@ -411,8 +411,14 @@ A normal BMI range is 18.5 to 24.9 according to WHO standards. This range indica
 ### How accurate is BMI for determining health risks?
 BMI accuracy is approximately 70-80% for population health screening. Individual accuracy varies based on body composition, ethnicity, age, and fitness level. Athletes with high muscle mass may have elevated BMI despite low health risk. Combine BMI with waist circumference and body fat percentage for better assessment.
 
-### 2. Why do athletes often have high BMIs despite being healthy?
-Athletes, particularly those in strength-based sports, often have BMIs in the overweight or obese range due to high muscle mass. Muscle tissue is denser than fat tissue, leading to higher weight per unit height. BMI cannot distinguish between muscle and fat mass, making it inappropriate for athletic populations. Body fat percentage or DEXA scans provide better assessment for athletes.
+### Is BMI calculator free to use?
+Yes, BMI calculators are completely free. You only need your height and weight measurements to calculate BMI using the standard WHO formula. Our [BMI calculator tool](/) provides instant results at no cost, supporting both metric and imperial units with detailed health category explanations.
+
+### What BMI calculator formula is most accurate?
+The metric BMI formula (weight in kg ÷ height in meters²) is most accurate as it's the original WHO standard. The imperial formula uses a 703 conversion factor but yields identical results. Both formulas are equally valid - choose based on your preferred measurement units.
+
+### Why do athletes have high BMI despite being healthy?
+Athletes often have elevated BMI due to high muscle mass, not excess fat. Muscle tissue weighs more than fat, causing higher BMI readings. Since BMI cannot distinguish between muscle and fat, it may misclassify fit athletes as overweight or obese. Body fat percentage provides better assessment for athletic individuals.
 
 ### 3. Are BMI categories the same for all ages?
 Standard adult BMI categories apply to individuals aged 20-65. For seniors (65+), slightly higher BMI ranges may be healthier due to age-related muscle loss and different mortality risk patterns. Children and adolescents require age and sex-specific percentile charts rather than adult BMI categories, as normal body composition changes dramatically during development.
