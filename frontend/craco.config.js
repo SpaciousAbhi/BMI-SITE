@@ -12,6 +12,18 @@ module.exports = {
       '@': path.resolve(__dirname, 'src'),
     },
     configure: (webpackConfig) => {
+      // Add Buffer polyfill for browser compatibility with gray-matter
+      webpackConfig.resolve.fallback = {
+        ...webpackConfig.resolve.fallback,
+        "buffer": require.resolve("buffer")
+      };
+      
+      // Add Buffer global for gray-matter library
+      webpackConfig.plugins.push(
+        new (require('webpack')).ProvidePlugin({
+          Buffer: ['buffer', 'Buffer'],
+        })
+      );
       
       // Disable hot reload completely if environment variable is set
       if (config.disableHotReload) {
