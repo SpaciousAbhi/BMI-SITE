@@ -402,8 +402,14 @@ BMI doesn't account for:
 
 ## Frequently Asked Questions About BMI Calculator {#faq}
 
-### 1. How accurate is BMI for determining health risks?
-BMI provides a reasonable population-level screening tool with 70-80% accuracy for identifying obesity-related health risks. However, individual accuracy varies significantly based on body composition, ethnicity, age, and fitness level. For precise health assessment, BMI should be combined with other measurements like waist circumference, body fat percentage, and metabolic markers.
+### How do I calculate my BMI?
+To calculate BMI, divide your weight in kilograms by your height in meters squared (kg/m²). For imperial units, divide weight in pounds by height in inches squared, then multiply by 703. Example: A person weighing 70kg at 175cm height has BMI = 70 ÷ (1.75)² = 22.9. Use our [free BMI calculator](/) for instant results.
+
+### What is a normal BMI range?
+A normal BMI range is 18.5 to 24.9 according to WHO standards. This range indicates the lowest health risk for most adults. BMI below 18.5 is underweight, 25-29.9 is overweight, and 30+ indicates obesity. However, BMI accuracy varies by age, ethnicity, and muscle mass.
+
+### How accurate is BMI for determining health risks?
+BMI accuracy is approximately 70-80% for population health screening. Individual accuracy varies based on body composition, ethnicity, age, and fitness level. Athletes with high muscle mass may have elevated BMI despite low health risk. Combine BMI with waist circumference and body fat percentage for better assessment.
 
 ### 2. Why do athletes often have high BMIs despite being healthy?
 Athletes, particularly those in strength-based sports, often have BMIs in the overweight or obese range due to high muscle mass. Muscle tissue is denser than fat tissue, leading to higher weight per unit height. BMI cannot distinguish between muscle and fat mass, making it inappropriate for athletic populations. Body fat percentage or DEXA scans provide better assessment for athletes.
