@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Backend Testing Suite for BMI Calculator Article SEO Performance and Functionality
-Testing the enhanced BMI calculator article for SEO performance and functionality
+Backend Testing Suite for 5 Enhanced BMI Blog Articles - Comprehensive SEO & Content Testing
+Testing all 5 enhanced BMI blog articles for SEO optimization, content enhancement, and responsive design
 """
 
 import requests
@@ -12,7 +12,7 @@ from urllib.parse import urljoin
 import sys
 from typing import Dict, List, Tuple, Optional
 
-class BMIArticleBackendTester:
+class BMIArticlesBackendTester:
     def __init__(self):
         # Get backend URL from environment or use default
         self.backend_url = "http://localhost:8001"
@@ -24,12 +24,47 @@ class BMIArticleBackendTester:
         self.failed_tests = []
         self.passed_tests = []
         
-        print("🔍 BMI Calculator Article Backend Testing Suite")
-        print("=" * 60)
+        # 5 Enhanced BMI Blog Articles to test
+        self.articles_to_test = [
+            {
+                'slug': 'ultimate-guide-bmi-calculator',
+                'title': 'Ultimate Guide to BMI Calculator',
+                'url': f"{self.frontend_url}/blogs-articles/ultimate-guide-bmi-calculator",
+                'expected_content': ['BMI calculator', 'body mass index', 'WHO standards', 'health categories']
+            },
+            {
+                'slug': 'is-bmi-accurate-athletes-seniors-ethnicities',
+                'title': 'BMI Accuracy Analysis',
+                'url': f"{self.frontend_url}/blogs-articles/is-bmi-accurate-athletes-seniors-ethnicities",
+                'expected_content': ['BMI accuracy', 'athletes', 'seniors', 'ethnic groups']
+            },
+            {
+                'slug': 'bmi-health-risks-what-your-number-means',
+                'title': 'BMI Health Risks Guide',
+                'url': f"{self.frontend_url}/blogs-articles/bmi-health-risks-what-your-number-means",
+                'expected_content': ['health risks', 'diabetes', 'heart disease', 'mortality']
+            },
+            {
+                'slug': 'how-to-change-bmi-safely-weight-loss-gain-strategies',
+                'title': 'Safe Weight Management Strategies',
+                'url': f"{self.frontend_url}/blogs-articles/how-to-change-bmi-safely-weight-loss-gain-strategies",
+                'expected_content': ['weight loss', 'weight gain', 'safe strategies', 'nutrition']
+            },
+            {
+                'slug': 'bmi-alternatives-body-fat-waist-height-bmr',
+                'title': 'BMI Alternatives Guide',
+                'url': f"{self.frontend_url}/blogs-articles/bmi-alternatives-body-fat-waist-height-bmr",
+                'expected_content': ['body fat percentage', 'waist to height', 'BMR', 'alternatives']
+            }
+        ]
+        
+        print("🔍 5 ENHANCED BMI BLOG ARTICLES COMPREHENSIVE TESTING SUITE")
+        print("=" * 70)
         print(f"Backend URL: {self.backend_url}")
         print(f"Frontend URL: {self.frontend_url}")
         print(f"API Base: {self.api_base}")
-        print("=" * 60)
+        print(f"Articles to Test: {len(self.articles_to_test)}")
+        print("=" * 70)
 
     def log_test(self, test_name: str, status: str, details: str = "", response_time: float = 0):
         """Log test results"""
@@ -114,7 +149,7 @@ class BMIArticleBackendTester:
         # Test POST /api/status
         try:
             start_time = time.time()
-            test_data = {"client_name": "BMI_Article_Test_Client"}
+            test_data = {"client_name": "BMI_Articles_Test_Client"}
             response = requests.post(f"{self.api_base}/status", json=test_data, timeout=10)
             response_time = time.time() - start_time
             total_endpoints += 1
@@ -135,222 +170,274 @@ class BMIArticleBackendTester:
 
         return endpoints_passed == total_endpoints
 
-    def test_bmi_article_route_accessibility(self) -> bool:
-        """Test BMI calculator article route accessibility"""
-        article_url = f"{self.frontend_url}/blogs-articles/ultimate-guide-bmi-calculator"
+    def test_all_articles_route_accessibility(self) -> bool:
+        """Test all 5 BMI articles route accessibility"""
+        all_accessible = True
+        accessible_count = 0
         
-        try:
-            start_time = time.time()
-            response = requests.get(article_url, timeout=15)
-            response_time = time.time() - start_time
-            
-            if response.status_code == 200:
-                content = response.text
-                
-                # Check for key BMI article content
-                content_checks = {
-                    "BMI Calculator": "BMI calculator" in content.lower(),
-                    "Calculate BMI": "calculate bmi" in content.lower(),
-                    "BMI Chart": "bmi chart" in content.lower(),
-                    "Free BMI Calculator": "free bmi calculator" in content.lower(),
-                    "Body Mass Index": "body mass index" in content.lower()
-                }
-                
-                passed_checks = sum(content_checks.values())
-                total_checks = len(content_checks)
-                
-                if passed_checks >= 3:  # At least 3 out of 5 key terms
-                    self.log_test("BMI Article Route Accessibility", "PASS", 
-                                f"Route accessible (200 OK) with {passed_checks}/{total_checks} key terms - Time: {response_time:.3f}s", response_time)
-                    return True
-                else:
-                    self.log_test("BMI Article Route Accessibility", "FAIL", 
-                                f"Route accessible but missing key content ({passed_checks}/{total_checks} terms found)")
-                    return False
-            else:
-                self.log_test("BMI Article Route Accessibility", "FAIL", 
-                            f"Route returned {response.status_code} status")
-                return False
-                
-        except requests.exceptions.RequestException as e:
-            self.log_test("BMI Article Route Accessibility", "FAIL", 
-                        f"Connection error: {str(e)}")
-            return False
-
-    def test_seo_content_verification(self) -> bool:
-        """Test SEO content verification for BMI article"""
-        article_url = f"{self.frontend_url}/blogs-articles/ultimate-guide-bmi-calculator"
-        
-        try:
-            start_time = time.time()
-            response = requests.get(article_url, timeout=15)
-            response_time = time.time() - start_time
-            
-            if response.status_code != 200:
-                self.log_test("SEO Content Verification", "FAIL", 
-                            f"Article not accessible (Status: {response.status_code})")
-                return False
-            
-            content = response.text
-            
-            # SEO Elements to check
-            seo_checks = {
-                "Title Tag": bool(re.search(r'<title[^>]*>.*BMI.*Calculator.*</title>', content, re.IGNORECASE)),
-                "Meta Description": bool(re.search(r'<meta[^>]*name=["\']description["\'][^>]*content=["\'][^"\']*BMI[^"\']*["\']', content, re.IGNORECASE)),
-                "Meta Keywords": bool(re.search(r'<meta[^>]*name=["\']keywords["\'][^>]*content=["\'][^"\']*BMI[^"\']*["\']', content, re.IGNORECASE)),
-                "H1 Tag": bool(re.search(r'<h1[^>]*>.*BMI.*</h1>', content, re.IGNORECASE)),
-                "Canonical URL": bool(re.search(r'<link[^>]*rel=["\']canonical["\']', content, re.IGNORECASE)),
-                "Open Graph": bool(re.search(r'<meta[^>]*property=["\']og:', content, re.IGNORECASE)),
-                "JSON-LD Schema": bool(re.search(r'<script[^>]*type=["\']application/ld\+json["\']', content, re.IGNORECASE)),
-                "Viewport Meta": bool(re.search(r'<meta[^>]*name=["\']viewport["\']', content, re.IGNORECASE))
-            }
-            
-            passed_seo = sum(seo_checks.values())
-            total_seo = len(seo_checks)
-            
-            # Check for specific BMI keywords
-            keyword_checks = {
-                "BMI calculator": "bmi calculator" in content.lower(),
-                "calculate BMI": "calculate bmi" in content.lower(),
-                "BMI chart": "bmi chart" in content.lower(),
-                "free BMI calculator": "free bmi calculator" in content.lower()
-            }
-            
-            passed_keywords = sum(keyword_checks.values())
-            total_keywords = len(keyword_checks)
-            
-            if passed_seo >= 6 and passed_keywords >= 3:
-                self.log_test("SEO Content Verification", "PASS", 
-                            f"SEO elements: {passed_seo}/{total_seo}, Keywords: {passed_keywords}/{total_keywords} - Time: {response_time:.3f}s", response_time)
-                return True
-            else:
-                self.log_test("SEO Content Verification", "FAIL", 
-                            f"Insufficient SEO optimization - SEO: {passed_seo}/{total_seo}, Keywords: {passed_keywords}/{total_keywords}")
-                return False
-                
-        except Exception as e:
-            self.log_test("SEO Content Verification", "FAIL", f"Error: {str(e)}")
-            return False
-
-    def test_mobile_responsiveness(self) -> bool:
-        """Test mobile responsiveness indicators"""
-        article_url = f"{self.frontend_url}/blogs-articles/ultimate-guide-bmi-calculator"
-        
-        try:
-            start_time = time.time()
-            response = requests.get(article_url, timeout=15)
-            response_time = time.time() - start_time
-            
-            if response.status_code != 200:
-                self.log_test("Mobile Responsiveness", "FAIL", 
-                            f"Article not accessible (Status: {response.status_code})")
-                return False
-            
-            content = response.text
-            
-            # Mobile responsiveness indicators
-            mobile_checks = {
-                "Viewport Meta Tag": bool(re.search(r'<meta[^>]*name=["\']viewport["\'][^>]*width=device-width', content, re.IGNORECASE)),
-                "Responsive CSS Classes": bool(re.search(r'class=["\'][^"\']*(?:sm:|md:|lg:|xl:)', content)),
-                "Mobile-First Design": bool(re.search(r'class=["\'][^"\']*(?:flex|grid|responsive)', content, re.IGNORECASE)),
-                "Touch-Friendly Elements": bool(re.search(r'class=["\'][^"\']*(?:touch|tap|mobile)', content, re.IGNORECASE))
-            }
-            
-            passed_mobile = sum(mobile_checks.values())
-            total_mobile = len(mobile_checks)
-            
-            if passed_mobile >= 2:  # At least 2 mobile indicators
-                self.log_test("Mobile Responsiveness", "PASS", 
-                            f"Mobile indicators found: {passed_mobile}/{total_mobile} - Time: {response_time:.3f}s", response_time)
-                return True
-            else:
-                self.log_test("Mobile Responsiveness", "FAIL", 
-                            f"Insufficient mobile optimization: {passed_mobile}/{total_mobile}")
-                return False
-                
-        except Exception as e:
-            self.log_test("Mobile Responsiveness", "FAIL", f"Error: {str(e)}")
-            return False
-
-    def test_content_structure(self) -> bool:
-        """Test content structure for BMI article"""
-        article_url = f"{self.frontend_url}/blogs-articles/ultimate-guide-bmi-calculator"
-        
-        try:
-            start_time = time.time()
-            response = requests.get(article_url, timeout=15)
-            response_time = time.time() - start_time
-            
-            if response.status_code != 200:
-                self.log_test("Content Structure", "FAIL", 
-                            f"Article not accessible (Status: {response.status_code})")
-                return False
-            
-            content = response.text
-            
-            # Content structure checks
-            structure_checks = {
-                "H1 Heading": bool(re.search(r'<h1[^>]*>', content, re.IGNORECASE)),
-                "H2 Headings": bool(re.search(r'<h2[^>]*>', content, re.IGNORECASE)),
-                "FAQ Section": bool(re.search(r'(?:faq|frequently.*asked|questions)', content, re.IGNORECASE)),
-                "BMI Information": bool(re.search(r'(?:body mass index|bmi.*formula|bmi.*calculation)', content, re.IGNORECASE)),
-                "Health Categories": bool(re.search(r'(?:underweight|normal.*weight|overweight|obese)', content, re.IGNORECASE)),
-                "WHO Standards": bool(re.search(r'(?:who|world health organization)', content, re.IGNORECASE))
-            }
-            
-            passed_structure = sum(structure_checks.values())
-            total_structure = len(structure_checks)
-            
-            if passed_structure >= 4:  # At least 4 structure elements
-                self.log_test("Content Structure", "PASS", 
-                            f"Content structure elements: {passed_structure}/{total_structure} - Time: {response_time:.3f}s", response_time)
-                return True
-            else:
-                self.log_test("Content Structure", "FAIL", 
-                            f"Insufficient content structure: {passed_structure}/{total_structure}")
-                return False
-                
-        except Exception as e:
-            self.log_test("Content Structure", "FAIL", f"Error: {str(e)}")
-            return False
-
-    def test_performance(self) -> bool:
-        """Test page load performance"""
-        article_url = f"{self.frontend_url}/blogs-articles/ultimate-guide-bmi-calculator"
-        
-        try:
-            # Test multiple requests to get average
-            response_times = []
-            
-            for i in range(3):
+        for article in self.articles_to_test:
+            try:
                 start_time = time.time()
-                response = requests.get(article_url, timeout=15)
+                response = requests.get(article['url'], timeout=15)
                 response_time = time.time() - start_time
                 
                 if response.status_code == 200:
-                    response_times.append(response_time)
+                    content = response.text
+                    
+                    # Check for expected content
+                    content_found = 0
+                    for expected in article['expected_content']:
+                        if expected.lower() in content.lower():
+                            content_found += 1
+                    
+                    if content_found >= 2:  # At least 2 out of expected terms
+                        accessible_count += 1
+                        self.log_test(f"Route Accessibility - {article['title']}", "PASS", 
+                                    f"Accessible (200 OK) with {content_found}/{len(article['expected_content'])} expected terms - Time: {response_time:.3f}s", response_time)
+                    else:
+                        all_accessible = False
+                        self.log_test(f"Route Accessibility - {article['title']}", "FAIL", 
+                                    f"Missing expected content ({content_found}/{len(article['expected_content'])} terms found)")
                 else:
-                    self.log_test("Performance", "FAIL", 
-                                f"Request {i+1} failed with status {response.status_code}")
-                    return False
-            
-            avg_response_time = sum(response_times) / len(response_times)
-            
-            # Performance thresholds
-            if avg_response_time < 2.0:  # Under 2 seconds is good
-                performance_rating = "Excellent"
-            elif avg_response_time < 5.0:  # Under 5 seconds is acceptable
-                performance_rating = "Good"
-            else:
-                performance_rating = "Needs Improvement"
-            
-            self.log_test("Performance", "PASS", 
-                        f"Average load time: {avg_response_time:.3f}s ({performance_rating})", avg_response_time)
-            return True
+                    all_accessible = False
+                    self.log_test(f"Route Accessibility - {article['title']}", "FAIL", 
+                                f"Route returned {response.status_code} status")
+                    
+            except requests.exceptions.RequestException as e:
+                all_accessible = False
+                self.log_test(f"Route Accessibility - {article['title']}", "FAIL", 
+                            f"Connection error: {str(e)}")
+        
+        # Overall accessibility summary
+        if accessible_count == len(self.articles_to_test):
+            self.log_test("All Articles Route Accessibility", "PASS", 
+                        f"All {accessible_count}/{len(self.articles_to_test)} articles accessible")
+        else:
+            self.log_test("All Articles Route Accessibility", "FAIL", 
+                        f"Only {accessible_count}/{len(self.articles_to_test)} articles accessible")
+        
+        return all_accessible
+
+    def test_comprehensive_seo_optimization(self) -> bool:
+        """Test comprehensive SEO optimization across all articles"""
+        seo_passed = 0
+        total_articles = len(self.articles_to_test)
+        
+        for article in self.articles_to_test:
+            try:
+                start_time = time.time()
+                response = requests.get(article['url'], timeout=15)
+                response_time = time.time() - start_time
                 
-        except Exception as e:
-            self.log_test("Performance", "FAIL", f"Error: {str(e)}")
-            return False
+                if response.status_code != 200:
+                    self.log_test(f"SEO Optimization - {article['title']}", "FAIL", 
+                                f"Article not accessible (Status: {response.status_code})")
+                    continue
+                
+                content = response.text
+                
+                # Enhanced SEO Elements to check
+                seo_checks = {
+                    "Title Tag": bool(re.search(r'<title[^>]*>.*BMI.*</title>', content, re.IGNORECASE)),
+                    "Meta Description": bool(re.search(r'<meta[^>]*name=["\']description["\'][^>]*content=["\'][^"\']*BMI[^"\']*["\']', content, re.IGNORECASE)),
+                    "Meta Keywords": bool(re.search(r'<meta[^>]*name=["\']keywords["\'][^>]*content=["\'][^"\']*["\']', content, re.IGNORECASE)),
+                    "H1 Tag": bool(re.search(r'<h1[^>]*>.*</h1>', content, re.IGNORECASE)),
+                    "H2 Tags": bool(re.search(r'<h2[^>]*>.*</h2>', content, re.IGNORECASE)),
+                    "Canonical URL": bool(re.search(r'<link[^>]*rel=["\']canonical["\']', content, re.IGNORECASE)),
+                    "Open Graph": bool(re.search(r'<meta[^>]*property=["\']og:', content, re.IGNORECASE)),
+                    "JSON-LD Schema": bool(re.search(r'<script[^>]*type=["\']application/ld\+json["\']', content, re.IGNORECASE)),
+                    "Viewport Meta": bool(re.search(r'<meta[^>]*name=["\']viewport["\']', content, re.IGNORECASE)),
+                    "Medical Content": bool(re.search(r'(?:medical|health|WHO|evidence|research)', content, re.IGNORECASE)),
+                    "FAQ Section": bool(re.search(r'(?:faq|frequently.*asked|questions)', content, re.IGNORECASE))
+                }
+                
+                passed_seo = sum(seo_checks.values())
+                total_seo = len(seo_checks)
+                
+                if passed_seo >= 8:  # At least 8 out of 11 SEO elements
+                    seo_passed += 1
+                    self.log_test(f"SEO Optimization - {article['title']}", "PASS", 
+                                f"SEO elements: {passed_seo}/{total_seo} - Time: {response_time:.3f}s", response_time)
+                else:
+                    self.log_test(f"SEO Optimization - {article['title']}", "FAIL", 
+                                f"Insufficient SEO optimization - SEO: {passed_seo}/{total_seo}")
+                    
+            except Exception as e:
+                self.log_test(f"SEO Optimization - {article['title']}", "FAIL", f"Error: {str(e)}")
+        
+        # Overall SEO summary
+        if seo_passed == total_articles:
+            self.log_test("Comprehensive SEO Optimization", "PASS", 
+                        f"All {seo_passed}/{total_articles} articles have excellent SEO")
+        else:
+            self.log_test("Comprehensive SEO Optimization", "FAIL", 
+                        f"Only {seo_passed}/{total_articles} articles have adequate SEO")
+        
+        return seo_passed >= (total_articles * 0.8)  # 80% threshold
+
+    def test_mobile_responsiveness_all_articles(self) -> bool:
+        """Test mobile responsiveness across all articles"""
+        mobile_passed = 0
+        total_articles = len(self.articles_to_test)
+        
+        for article in self.articles_to_test:
+            try:
+                start_time = time.time()
+                response = requests.get(article['url'], timeout=15)
+                response_time = time.time() - start_time
+                
+                if response.status_code != 200:
+                    self.log_test(f"Mobile Responsiveness - {article['title']}", "FAIL", 
+                                f"Article not accessible (Status: {response.status_code})")
+                    continue
+                
+                content = response.text
+                
+                # Mobile responsiveness indicators
+                mobile_checks = {
+                    "Viewport Meta Tag": bool(re.search(r'<meta[^>]*name=["\']viewport["\'][^>]*width=device-width', content, re.IGNORECASE)),
+                    "Responsive CSS Classes": bool(re.search(r'class=["\'][^"\']*(?:sm:|md:|lg:|xl:)', content)),
+                    "Mobile-First Design": bool(re.search(r'class=["\'][^"\']*(?:flex|grid|responsive)', content, re.IGNORECASE)),
+                    "Touch-Friendly Elements": bool(re.search(r'class=["\'][^"\']*(?:touch|tap|mobile)', content, re.IGNORECASE)),
+                    "Responsive Tables": bool(re.search(r'(?:overflow-x-auto|table-responsive)', content, re.IGNORECASE))
+                }
+                
+                passed_mobile = sum(mobile_checks.values())
+                total_mobile = len(mobile_checks)
+                
+                if passed_mobile >= 3:  # At least 3 mobile indicators
+                    mobile_passed += 1
+                    self.log_test(f"Mobile Responsiveness - {article['title']}", "PASS", 
+                                f"Mobile indicators: {passed_mobile}/{total_mobile} - Time: {response_time:.3f}s", response_time)
+                else:
+                    self.log_test(f"Mobile Responsiveness - {article['title']}", "FAIL", 
+                                f"Insufficient mobile optimization: {passed_mobile}/{total_mobile}")
+                    
+            except Exception as e:
+                self.log_test(f"Mobile Responsiveness - {article['title']}", "FAIL", f"Error: {str(e)}")
+        
+        # Overall mobile responsiveness summary
+        if mobile_passed == total_articles:
+            self.log_test("Mobile Responsiveness All Articles", "PASS", 
+                        f"All {mobile_passed}/{total_articles} articles are mobile responsive")
+        else:
+            self.log_test("Mobile Responsiveness All Articles", "FAIL", 
+                        f"Only {mobile_passed}/{total_articles} articles are adequately mobile responsive")
+        
+        return mobile_passed >= (total_articles * 0.8)  # 80% threshold
+
+    def test_content_enhancement_verification(self) -> bool:
+        """Test content enhancement verification across all articles"""
+        enhanced_passed = 0
+        total_articles = len(self.articles_to_test)
+        
+        for article in self.articles_to_test:
+            try:
+                start_time = time.time()
+                response = requests.get(article['url'], timeout=15)
+                response_time = time.time() - start_time
+                
+                if response.status_code != 200:
+                    self.log_test(f"Content Enhancement - {article['title']}", "FAIL", 
+                                f"Article not accessible (Status: {response.status_code})")
+                    continue
+                
+                content = response.text
+                
+                # Content enhancement indicators
+                enhancement_checks = {
+                    "Comprehensive Content": len(content) > 10000,  # Substantial content
+                    "Medical References": bool(re.search(r'(?:WHO|medical|research|study|evidence|clinical)', content, re.IGNORECASE)),
+                    "Interactive Elements": bool(re.search(r'(?:table|chart|calculator|interactive)', content, re.IGNORECASE)),
+                    "Professional Images": bool(re.search(r'(?:images|img|medical.*image)', content, re.IGNORECASE)),
+                    "Structured Headings": bool(re.search(r'<h[1-6][^>]*>.*</h[1-6]>', content, re.IGNORECASE)),
+                    "FAQ Section": bool(re.search(r'(?:faq|frequently.*asked|questions)', content, re.IGNORECASE)),
+                    "Citations": bool(re.search(r'(?:reference|citation|source|study)', content, re.IGNORECASE)),
+                    "Reading Time": bool(re.search(r'(?:reading.*time|minutes.*read)', content, re.IGNORECASE)),
+                    "Table of Contents": bool(re.search(r'(?:table.*contents|contents|navigation)', content, re.IGNORECASE))
+                }
+                
+                passed_enhancement = sum(enhancement_checks.values())
+                total_enhancement = len(enhancement_checks)
+                
+                if passed_enhancement >= 6:  # At least 6 out of 9 enhancement indicators
+                    enhanced_passed += 1
+                    self.log_test(f"Content Enhancement - {article['title']}", "PASS", 
+                                f"Enhancement indicators: {passed_enhancement}/{total_enhancement} - Time: {response_time:.3f}s", response_time)
+                else:
+                    self.log_test(f"Content Enhancement - {article['title']}", "FAIL", 
+                                f"Insufficient content enhancement: {passed_enhancement}/{total_enhancement}")
+                    
+            except Exception as e:
+                self.log_test(f"Content Enhancement - {article['title']}", "FAIL", f"Error: {str(e)}")
+        
+        # Overall content enhancement summary
+        if enhanced_passed == total_articles:
+            self.log_test("Content Enhancement Verification", "PASS", 
+                        f"All {enhanced_passed}/{total_articles} articles have comprehensive enhancements")
+        else:
+            self.log_test("Content Enhancement Verification", "FAIL", 
+                        f"Only {enhanced_passed}/{total_articles} articles have adequate enhancements")
+        
+        return enhanced_passed >= (total_articles * 0.8)  # 80% threshold
+
+    def test_performance_all_articles(self) -> bool:
+        """Test performance across all articles"""
+        performance_passed = 0
+        total_articles = len(self.articles_to_test)
+        all_response_times = []
+        
+        for article in self.articles_to_test:
+            try:
+                # Test 2 requests per article for average
+                response_times = []
+                
+                for i in range(2):
+                    start_time = time.time()
+                    response = requests.get(article['url'], timeout=15)
+                    response_time = time.time() - start_time
+                    
+                    if response.status_code == 200:
+                        response_times.append(response_time)
+                        all_response_times.append(response_time)
+                    else:
+                        self.log_test(f"Performance - {article['title']}", "FAIL", 
+                                    f"Request {i+1} failed with status {response.status_code}")
+                        break
+                
+                if len(response_times) == 2:
+                    avg_response_time = sum(response_times) / len(response_times)
+                    
+                    # Performance thresholds
+                    if avg_response_time < 3.0:  # Under 3 seconds is good for enhanced content
+                        performance_rating = "Excellent"
+                        performance_passed += 1
+                        self.log_test(f"Performance - {article['title']}", "PASS", 
+                                    f"Average load time: {avg_response_time:.3f}s ({performance_rating})", avg_response_time)
+                    elif avg_response_time < 6.0:  # Under 6 seconds is acceptable
+                        performance_rating = "Good"
+                        performance_passed += 1
+                        self.log_test(f"Performance - {article['title']}", "PASS", 
+                                    f"Average load time: {avg_response_time:.3f}s ({performance_rating})", avg_response_time)
+                    else:
+                        performance_rating = "Needs Improvement"
+                        self.log_test(f"Performance - {article['title']}", "FAIL", 
+                                    f"Slow load time: {avg_response_time:.3f}s ({performance_rating})")
+                    
+            except Exception as e:
+                self.log_test(f"Performance - {article['title']}", "FAIL", f"Error: {str(e)}")
+        
+        # Overall performance summary
+        if all_response_times:
+            overall_avg = sum(all_response_times) / len(all_response_times)
+            if performance_passed == total_articles:
+                self.log_test("Performance All Articles", "PASS", 
+                            f"All {performance_passed}/{total_articles} articles have good performance - Overall avg: {overall_avg:.3f}s")
+            else:
+                self.log_test("Performance All Articles", "FAIL", 
+                            f"Only {performance_passed}/{total_articles} articles have adequate performance - Overall avg: {overall_avg:.3f}s")
+        
+        return performance_passed >= (total_articles * 0.8)  # 80% threshold
 
     def test_blogs_articles_main_page(self) -> bool:
         """Test the main blogs/articles page"""
@@ -364,24 +451,31 @@ class BMIArticleBackendTester:
             if response.status_code == 200:
                 content = response.text
                 
+                # Check for all 5 articles on the main page
+                articles_found = 0
+                for article in self.articles_to_test:
+                    if article['slug'] in content:
+                        articles_found += 1
+                
                 # Check for blog page elements
                 blog_checks = {
                     "Articles List": bool(re.search(r'(?:articles|blog|guides)', content, re.IGNORECASE)),
-                    "BMI Article Link": "ultimate-guide-bmi-calculator" in content,
+                    "All 5 Articles Present": articles_found == 5,
                     "Search Functionality": bool(re.search(r'(?:search|filter)', content, re.IGNORECASE)),
-                    "Navigation": bool(re.search(r'(?:nav|menu|header)', content, re.IGNORECASE))
+                    "Navigation": bool(re.search(r'(?:nav|menu|header)', content, re.IGNORECASE)),
+                    "BMI Content": bool(re.search(r'BMI', content, re.IGNORECASE))
                 }
                 
                 passed_blog = sum(blog_checks.values())
                 total_blog = len(blog_checks)
                 
-                if passed_blog >= 3:
+                if passed_blog >= 4:
                     self.log_test("Blogs Articles Main Page", "PASS", 
-                                f"Blog page elements: {passed_blog}/{total_blog} - Time: {response_time:.3f}s", response_time)
+                                f"Blog page elements: {passed_blog}/{total_blog}, Articles found: {articles_found}/5 - Time: {response_time:.3f}s", response_time)
                     return True
                 else:
                     self.log_test("Blogs Articles Main Page", "FAIL", 
-                                f"Missing blog elements: {passed_blog}/{total_blog}")
+                                f"Missing blog elements: {passed_blog}/{total_blog}, Articles found: {articles_found}/5")
                     return False
             else:
                 self.log_test("Blogs Articles Main Page", "FAIL", 
@@ -393,20 +487,20 @@ class BMIArticleBackendTester:
             return False
 
     def run_all_tests(self):
-        """Run all backend tests for BMI article"""
-        print("\n🚀 Starting BMI Calculator Article Backend Testing...")
-        print("=" * 60)
+        """Run all comprehensive tests for 5 BMI articles"""
+        print("\n🚀 Starting 5 Enhanced BMI Blog Articles Comprehensive Testing...")
+        print("=" * 70)
         
         # Test sequence
         tests = [
             ("Backend Connectivity", self.test_backend_connectivity),
             ("Backend API Endpoints", self.test_backend_api_endpoints),
             ("Blogs Articles Main Page", self.test_blogs_articles_main_page),
-            ("BMI Article Route Accessibility", self.test_bmi_article_route_accessibility),
-            ("SEO Content Verification", self.test_seo_content_verification),
-            ("Mobile Responsiveness", self.test_mobile_responsiveness),
-            ("Content Structure", self.test_content_structure),
-            ("Performance", self.test_performance)
+            ("All Articles Route Accessibility", self.test_all_articles_route_accessibility),
+            ("Comprehensive SEO Optimization", self.test_comprehensive_seo_optimization),
+            ("Mobile Responsiveness All Articles", self.test_mobile_responsiveness_all_articles),
+            ("Content Enhancement Verification", self.test_content_enhancement_verification),
+            ("Performance All Articles", self.test_performance_all_articles)
         ]
         
         for test_name, test_func in tests:
@@ -420,10 +514,10 @@ class BMIArticleBackendTester:
         self.print_summary()
 
     def print_summary(self):
-        """Print test summary"""
-        print("\n" + "=" * 60)
-        print("🏁 BMI CALCULATOR ARTICLE BACKEND TEST SUMMARY")
-        print("=" * 60)
+        """Print comprehensive test summary"""
+        print("\n" + "=" * 70)
+        print("🏁 5 ENHANCED BMI BLOG ARTICLES COMPREHENSIVE TEST SUMMARY")
+        print("=" * 70)
         
         total_tests = len(self.test_results)
         passed_count = len(self.passed_tests)
@@ -437,13 +531,13 @@ class BMIArticleBackendTester:
         
         if self.failed_tests:
             print(f"\n❌ FAILED TESTS ({len(self.failed_tests)}):")
-            print("-" * 40)
+            print("-" * 50)
             for test in self.failed_tests:
                 print(f"• {test['test']}: {test['details']}")
         
         if self.passed_tests:
             print(f"\n✅ PASSED TESTS ({len(self.passed_tests)}):")
-            print("-" * 40)
+            print("-" * 50)
             for test in self.passed_tests:
                 print(f"• {test['test']}: {test['details']}")
         
@@ -453,21 +547,21 @@ class BMIArticleBackendTester:
             avg_response_time = sum(response_times) / len(response_times)
             print(f"\n⚡ Average Response Time: {avg_response_time:.3f}s")
         
-        print("\n" + "=" * 60)
+        print("\n" + "=" * 70)
         
         # Return success status
         return success_rate >= 75  # 75% success rate threshold
 
 def main():
     """Main test execution"""
-    tester = BMIArticleBackendTester()
+    tester = BMIArticlesBackendTester()
     success = tester.run_all_tests()
     
     if success:
-        print("🎉 BMI Calculator Article Backend Testing COMPLETED SUCCESSFULLY!")
+        print("🎉 5 Enhanced BMI Blog Articles Testing COMPLETED SUCCESSFULLY!")
         sys.exit(0)
     else:
-        print("⚠️  BMI Calculator Article Backend Testing completed with issues.")
+        print("⚠️  5 Enhanced BMI Blog Articles Testing completed with issues.")
         sys.exit(1)
 
 if __name__ == "__main__":
