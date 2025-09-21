@@ -308,17 +308,17 @@ const BlogsArticlesPage = () => {
           </div>
         </div>
 
-        {/* Enhanced Search and Filters */}
-        <div className="container mx-auto px-4 py-12">
+        {/* Compact Search and Filters */}
+        <div className="container mx-auto px-4 py-6">
           <div className="max-w-6xl mx-auto">
-            <div className="bg-black/40 backdrop-blur-lg rounded-3xl p-8 border border-gray-700/50 shadow-2xl">
-              <div className="flex flex-col lg:flex-row gap-6">
-                {/* Enhanced Search */}
+            <div className="bg-black/40 backdrop-blur-lg rounded-2xl p-5 border border-gray-700/50 shadow-xl">
+              <div className="flex flex-col lg:flex-row gap-4">
+                {/* Compact Search */}
                 <div className="flex-1">
                   <div className="relative">
-                    <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl transition-all duration-300 ${isSearchFocused ? 'opacity-100 scale-105' : 'opacity-0 scale-100'}`}></div>
+                    <div className={`absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl transition-all duration-300 ${isSearchFocused ? 'opacity-100 scale-105' : 'opacity-0 scale-100'}`}></div>
                     <div className="relative">
-                      <Search className={`absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 transition-colors duration-300 ${isSearchFocused ? 'text-blue-400' : 'text-gray-400'}`} />
+                      <Search className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 transition-colors duration-300 ${isSearchFocused ? 'text-blue-400' : 'text-gray-400'}`} />
                       <input
                         type="text"
                         placeholder="Search articles, guides & health insights..."
@@ -326,28 +326,28 @@ const BlogsArticlesPage = () => {
                         onChange={handleSearchChange}
                         onFocus={() => setIsSearchFocused(true)}
                         onBlur={() => setIsSearchFocused(false)}
-                        className="w-full pl-14 pr-6 py-4 bg-gray-800/50 border border-gray-600/50 rounded-2xl text-white placeholder-gray-400 focus:border-blue-500/60 focus:bg-gray-800/80 focus:outline-none transition-all duration-300 text-lg"
+                        className="w-full pl-10 pr-5 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:border-blue-500/60 focus:bg-gray-800/80 focus:outline-none transition-all duration-300"
                       />
                       {searchQuery && (
                         <button
                           onClick={() => setSearchQuery('')}
-                          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white transition-colors"
                         >
-                          <X className="w-5 h-5" />
+                          <X className="w-4 h-4" />
                         </button>
                       )}
                     </div>
                   </div>
                 </div>
 
-                {/* Enhanced Filters */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                {/* Compact Filters */}
+                <div className="flex flex-col sm:flex-row gap-3">
                   {/* Category Filter */}
                   <div className="relative">
                     <select
                       value={selectedCategory}
                       onChange={(e) => setSelectedCategory(e.target.value)}
-                      className="appearance-none bg-gray-800/50 border border-gray-600/50 rounded-2xl text-white px-6 py-4 pr-12 focus:border-blue-500/60 focus:bg-gray-800/80 focus:outline-none transition-all duration-300 text-lg cursor-pointer hover:border-gray-500/60"
+                      className="appearance-none bg-gray-800/50 border border-gray-600/50 rounded-xl text-white px-4 py-3 pr-10 focus:border-blue-500/60 focus:bg-gray-800/80 focus:outline-none transition-all duration-300 cursor-pointer hover:border-gray-500/60"
                     >
                       <option value="all">All Categories</option>
                       {categories.map(category => (
@@ -356,7 +356,7 @@ const BlogsArticlesPage = () => {
                         </option>
                       ))}
                     </select>
-                    <Filter className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                    <Filter className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                   </div>
 
                   {/* Tag Filter */}
@@ -364,7 +364,7 @@ const BlogsArticlesPage = () => {
                     <select
                       value={selectedTag}
                       onChange={(e) => setSelectedTag(e.target.value)}
-                      className="appearance-none bg-gray-800/50 border border-gray-600/50 rounded-2xl text-white px-6 py-4 pr-12 focus:border-purple-500/60 focus:bg-gray-800/80 focus:outline-none transition-all duration-300 text-lg cursor-pointer hover:border-gray-500/60"
+                      className="appearance-none bg-gray-800/50 border border-gray-600/50 rounded-xl text-white px-4 py-3 pr-10 focus:border-purple-500/60 focus:bg-gray-800/80 focus:outline-none transition-all duration-300 cursor-pointer hover:border-gray-500/60"
                     >
                       <option value="all">All Tags</option>
                       {tags.map(tag => (
@@ -373,14 +373,14 @@ const BlogsArticlesPage = () => {
                         </option>
                       ))}
                     </select>
-                    <Tag className="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                    <Tag className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                   </div>
 
                   {/* Clear Filters */}
                   {(searchQuery || selectedCategory !== 'all' || selectedTag !== 'all') && (
                     <button
                       onClick={clearFilters}
-                      className="px-8 py-4 bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white rounded-2xl transition-all duration-300 font-medium text-lg hover:scale-105 hover:shadow-lg hover:shadow-red-500/25 whitespace-nowrap"
+                      className="px-6 py-3 bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white rounded-xl transition-all duration-300 font-medium hover:scale-105 hover:shadow-lg hover:shadow-red-500/25 whitespace-nowrap"
                     >
                       Clear All
                     </button>
@@ -390,22 +390,22 @@ const BlogsArticlesPage = () => {
 
               {/* Active Filters Display */}
               {(searchQuery || selectedCategory !== 'all' || selectedTag !== 'all') && (
-                <div className="mt-6 flex flex-wrap gap-3">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {searchQuery && (
-                    <div className="bg-gradient-to-r from-blue-500/20 to-blue-600/20 backdrop-blur-sm text-blue-300 px-4 py-2 rounded-full text-sm font-medium border border-blue-500/30">
-                      <Search className="w-4 h-4 inline mr-2" />
+                    <div className="bg-gradient-to-r from-blue-500/20 to-blue-600/20 backdrop-blur-sm text-blue-300 px-3 py-1 rounded-full text-xs font-medium border border-blue-500/30">
+                      <Search className="w-3 h-3 inline mr-1" />
                       Search: "{searchQuery}"
                     </div>
                   )}
                   {selectedCategory !== 'all' && (
-                    <div className="bg-gradient-to-r from-green-500/20 to-green-600/20 backdrop-blur-sm text-green-300 px-4 py-2 rounded-full text-sm font-medium border border-green-500/30">
-                      <Filter className="w-4 h-4 inline mr-2" />
+                    <div className="bg-gradient-to-r from-green-500/20 to-green-600/20 backdrop-blur-sm text-green-300 px-3 py-1 rounded-full text-xs font-medium border border-green-500/30">
+                      <Filter className="w-3 h-3 inline mr-1" />
                       Category: {selectedCategory}
                     </div>
                   )}
                   {selectedTag !== 'all' && (
-                    <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 backdrop-blur-sm text-purple-300 px-4 py-2 rounded-full text-sm font-medium border border-purple-500/30">
-                      <Tag className="w-4 h-4 inline mr-2" />
+                    <div className="bg-gradient-to-r from-purple-500/20 to-purple-600/20 backdrop-blur-sm text-purple-300 px-3 py-1 rounded-full text-xs font-medium border border-purple-500/30">
+                      <Tag className="w-3 h-3 inline mr-1" />
                       Tag: {selectedTag}
                     </div>
                   )}
