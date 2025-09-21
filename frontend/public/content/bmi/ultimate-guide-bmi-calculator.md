@@ -1,19 +1,21 @@
 ---
-title: "Ultimate Guide to BMI Calculator: Formula, Chart & Health Categories 2025"
-description: "Complete BMI calculator guide covering WHO standards, metric & imperial formulas, health categories, and medical accuracy. Learn everything about Body Mass Index calculation, limitations, and when to use BMI vs other methods."
-keywords: "BMI calculator, body mass index formula, BMI chart, WHO BMI categories, metric imperial BMI, calculate BMI, BMI health categories, underweight normal overweight obese BMI"
-author: "BMI Calculator Pro Medical Team"
+title: "BMI Calculator Guide 2025: Complete Formula, Chart & Health Categories | WHO Standards"
+description: "Free BMI calculator guide with WHO standards, metric & imperial formulas, comprehensive charts, health categories & medical accuracy. Calculate BMI instantly with expert medical insights & limitations explained."
+keywords: "BMI calculator, calculate BMI, body mass index calculator, BMI chart, WHO BMI categories, BMI formula metric imperial, BMI calculator adult, BMI health risks, BMI calculator children, free BMI calculator"
+author: "Health Calculator Pro Medical Team"
 date: "2025-01-24"
-readTime: "12-15 minutes"
-category: "BMI Guide"
+readTime: "10-12 minutes"
+category: "Body Composition & Weight Analysis"
 slug: "ultimate-guide-bmi-calculator"
 featured: true
 medicalReview: true
 lastUpdated: "2025-01-24"
 schema: 
   type: "MedicalArticle"
-  specialty: "General Medicine"
-  accuracy: "Medically Reviewed"
+  specialty: "General Medicine, Preventive Care, Nutrition"
+  accuracy: "Medically Reviewed & Evidence-Based"
+  medicalRiskEstimator: true
+  faqPage: true
 ---
 
 # Ultimate Guide to BMI Calculator: Formula, Chart & Health Categories 2025
