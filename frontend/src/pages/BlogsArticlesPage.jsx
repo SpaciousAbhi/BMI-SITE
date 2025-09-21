@@ -288,105 +288,88 @@ const BlogsArticlesPage = () => {
                   </p>
                 </div>
                 
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                   {filteredArticles.map((article, index) => (
                     <article
                       key={article.id}
-                      className={`group relative bg-gradient-to-br from-gray-900/80 via-gray-800/60 to-gray-900/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-gray-600/60 transition-all duration-500 hover:scale-105 hover:shadow-xl transform ${hoveredCard === index ? 'hover:-translate-y-3' : 'hover:-translate-y-1'}`}
+                      className={`group relative bg-gradient-to-br from-gray-900/60 via-black/80 to-gray-900/60 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700/30 hover:border-blue-500/40 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/10 transform hover:-translate-y-1`}
                       onMouseEnter={() => setHoveredCard(index)}
                       onMouseLeave={() => setHoveredCard(null)}
                       style={{
-                        animationDelay: `${index * 100}ms`
+                        animationDelay: `${index * 50}ms`
                       }}
                     >
                       {/* Compact Article Image */}
-                      <div className="h-40 relative overflow-hidden">
+                      <div className="h-32 relative overflow-hidden">
                         <div className={`absolute inset-0 bg-gradient-to-br ${
-                          article.category.includes('Body') ? 'from-blue-600 via-blue-500 to-teal-500' :
-                          article.category.includes('Nutrition') ? 'from-orange-600 via-orange-500 to-yellow-500' :
-                          article.category.includes('Fitness') ? 'from-purple-600 via-purple-500 to-pink-500' :
-                          article.category.includes('Pregnancy') ? 'from-pink-600 via-rose-500 to-red-500' :
-                          article.category.includes('Medical') ? 'from-red-600 via-red-500 to-pink-500' :
-                          'from-teal-600 via-cyan-500 to-blue-500'
-                        } opacity-90`}></div>
+                          article.category.includes('Body') ? 'from-blue-600 via-teal-500 to-blue-700' :
+                          article.category.includes('Nutrition') ? 'from-teal-600 via-green-500 to-teal-700' :
+                          article.category.includes('Medical') ? 'from-blue-600 via-blue-500 to-teal-600' :
+                          'from-blue-600 via-teal-500 to-green-600'
+                        } opacity-80`}></div>
                         
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                        
-                        {/* Animated overlay pattern */}
-                        <div className="absolute inset-0 opacity-20 group-hover:animate-pulse"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                         
                         {/* Top badges */}
-                        <div className="absolute top-3 left-3 flex flex-wrap gap-1">
+                        <div className="absolute top-2 left-2 flex flex-wrap gap-1">
                           {article.featured && (
-                            <span className="bg-gradient-to-r from-yellow-500 to-yellow-400 text-black px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
-                              <Star className="w-2 h-2 animate-spin" />
+                            <span className="bg-yellow-400/90 text-black px-2 py-0.5 rounded-full text-xs font-bold flex items-center gap-1">
+                              <Star className="w-2 h-2" />
                               Featured
                             </span>
                           )}
                           {article.medicalReview && (
-                            <span className="bg-gradient-to-r from-green-500 to-green-400 text-white px-2 py-1 rounded-full text-xs font-bold shadow-lg">
-                              <Zap className="w-2 h-2 mr-1" />
+                            <span className="bg-green-400/90 text-black px-2 py-0.5 rounded-full text-xs font-bold">
                               Medical
                             </span>
                           )}
                         </div>
                         
-                        {/* Category badge */}
-                        <div className="absolute bottom-3 left-3">
-                          <span className="bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium border border-white/20">
-                            {article.category}
-                          </span>
-                        </div>
-                        
-                        {/* Reading indicator */}
-                        <div className="absolute bottom-3 right-3">
-                          <div className="bg-black/60 backdrop-blur-md text-white px-2 py-1 rounded-full text-xs font-medium border border-white/20 flex items-center gap-1">
-                            <Eye className="w-2 h-2" />
-                            {article.readTime}
+                        {/* Reading time */}
+                        <div className="absolute bottom-2 right-2">
+                          <div className="bg-black/60 backdrop-blur-md text-white px-2 py-0.5 rounded text-xs font-medium flex items-center gap-1">
+                            <Clock className="w-2 h-2" />
+                            {article.readTime.split('-')[0]}min
                           </div>
                         </div>
                       </div>
 
                       {/* Compact Content Section */}
-                      <div className="p-5">
-                        <h2 className="text-lg font-bold text-white mb-3 line-clamp-2 leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
+                      <div className="p-4">
+                        <h2 className="text-base font-bold text-white mb-2 line-clamp-2 leading-snug group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-teal-400 group-hover:bg-clip-text transition-all duration-300">
                           {article.title}
                         </h2>
                         
-                        <p className="text-gray-400 group-hover:text-gray-300 mb-4 line-clamp-3 text-sm leading-relaxed transition-colors duration-300">
+                        <p className="text-gray-400 group-hover:text-gray-300 mb-3 line-clamp-2 text-sm leading-relaxed transition-colors duration-300">
                           {article.excerpt}
                         </p>
 
-                        {/* Compact Meta Information */}
-                        <div className="flex items-center gap-3 text-xs text-gray-500 group-hover:text-gray-400 transition-colors duration-300 mb-4">
+                        {/* Compact Meta */}
+                        <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
                           <div className="flex items-center gap-1">
-                            <Calendar className="w-3 h-3" />
+                            <Calendar className="w-2.5 h-2.5" />
                             <span>{formatDate(article.date)}</span>
                           </div>
                           <div className="flex items-center gap-1">
-                            <User className="w-3 h-3" />
-                            <span>Expert Review</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <TrendingUp className="w-3 h-3" />
-                            <span>Updated</span>
+                            <Eye className="w-2.5 h-2.5" />
+                            <span>Expert</span>
                           </div>
                         </div>
 
                         {/* Compact Tags */}
                         {article.tags && article.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-1 mb-4">
-                            {article.tags.slice(0, 3).map((tag, tagIndex) => (
+                          <div className="flex flex-wrap gap-1 mb-3">
+                            {article.tags.slice(0, 2).map((tag, tagIndex) => (
                               <span
                                 key={tagIndex}
-                                className="bg-gray-800/50 hover:bg-gray-700/60 text-gray-400 hover:text-gray-300 px-2 py-1 rounded-full text-xs transition-all duration-300 cursor-pointer border border-gray-700/50 hover:border-gray-600/50"
+                                className="bg-gray-800/40 text-gray-400 px-2 py-0.5 rounded text-xs transition-colors duration-300 border border-gray-700/30"
                               >
                                 {tag}
                               </span>
                             ))}
-                            {article.tags.length > 3 && (
-                              <span className="text-gray-500 text-xs py-1 px-1">
-                                +{article.tags.length - 3} more
+                            {article.tags.length > 2 && (
+                              <span className="text-gray-500 text-xs py-0.5 px-1">
+                                +{article.tags.length - 2}
                               </span>
                             )}
                           </div>
@@ -397,11 +380,11 @@ const BlogsArticlesPage = () => {
                           to={`/blogs-articles/${article.slug}`}
                           className="block w-full"
                         >
-                          <button className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 hover:from-blue-700 hover:via-purple-700 hover:to-teal-700 text-white py-3 rounded-xl transition-all duration-300 font-semibold group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-blue-500/25 relative overflow-hidden">
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                          <button className="w-full bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 text-white py-2.5 rounded-lg transition-all duration-300 font-medium text-sm hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20 relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                             <div className="relative flex items-center justify-center gap-2">
-                              <span>Read Full Article</span>
-                              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                              <span>Read Article</span>
+                              <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-300" />
                             </div>
                           </button>
                         </Link>
