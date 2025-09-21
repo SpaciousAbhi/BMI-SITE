@@ -34,16 +34,16 @@ schema:
 
 ## Table of Contents
 
-1. [What is BMI and Why It Matters](#what-is-bmi)
-2. [History of BMI and WHO Adoption](#history-of-bmi)
-3. [BMI Formula: Metric and Imperial](#bmi-formula)
-4. [BMI Categories and Health Classifications](#bmi-categories)
-5. [Comprehensive BMI Chart by Age and Gender](#bmi-chart)
-6. [Step-by-Step BMI Calculation Examples](#calculation-examples)
-7. [BMI Limitations and When Not to Use It](#limitations)
-8. [BMI vs Other Body Composition Methods](#bmi-vs-others)
-9. [Clinical Applications of BMI](#clinical-applications)
-10. [BMI in Special Populations](#special-populations)
+1. [How to Calculate BMI: Step-by-Step Guide](#how-to-calculate-bmi)
+2. [BMI Formula: Metric and Imperial](#bmi-formula)
+3. [BMI Calculator Chart & Categories](#bmi-categories)
+4. [Free BMI Calculator Tools](#free-bmi-tools)
+5. [BMI Health Risks & What Your Number Means](#health-risks)
+6. [BMI Calculator for Different Ages](#age-considerations)
+7. [BMI Limitations & Accuracy](#limitations)
+8. [BMI vs Body Fat Calculator](#bmi-vs-others)
+9. [Frequently Asked Questions](#faq)
+10. [Medical Applications & Clinical Use](#clinical-applications)
 
 ## What is BMI and Why It Matters {#what-is-bmi}
 
