@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Calendar, Clock, User, Star, BookOpen, TrendingUp, Filter, FileText, Layers, Scale, Utensils, Dumbbell, Baby, Stethoscope } from 'lucide-react';
+import { Search, Calendar, Clock, User, Star, BookOpen, TrendingUp, Filter, FileText, Layers, Scale, Utensils, Dumbbell, Baby, Stethoscope, Sparkles, Eye, Zap, Globe, ArrowRight, X } from 'lucide-react';
 import { getAllArticles, getCategories, getTags, searchArticles, getArticleStats } from '../data/articles';
 import { formatDate, calculateReadingTime } from '../utils/markdown';
 
@@ -13,6 +13,8 @@ const BlogsArticlesPage = () => {
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
   const [stats, setStats] = useState({});
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   useEffect(() => {
     const allArticles = getAllArticles();
