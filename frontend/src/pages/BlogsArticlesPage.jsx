@@ -94,39 +94,39 @@ const BlogsArticlesPage = () => {
               {/* Compact Stats Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
                 <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-2xl p-6 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/20">
-                    <div className="flex items-center gap-3 mb-2">
-                      <BookOpen className="w-6 h-6 text-blue-400 group-hover:animate-bounce" />
-                      <div className="text-3xl font-bold text-blue-400 group-hover:text-blue-300 transition-colors">{stats.totalArticles}</div>
+                  <div className="bg-black/30 backdrop-blur-md rounded-xl p-4 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/20">
+                    <div className="flex items-center gap-2 mb-1">
+                      <BookOpen className="w-5 h-5 text-blue-400 group-hover:animate-bounce" />
+                      <div className="text-2xl font-bold text-blue-400 group-hover:text-blue-300 transition-colors">{stats.totalArticles}</div>
                     </div>
-                    <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">Expert Articles</div>
+                    <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">Expert Articles</div>
                   </div>
                 </div>
                 <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-2xl p-6 border border-green-500/30 hover:border-green-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/20">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Star className="w-6 h-6 text-green-400 group-hover:animate-spin" />
-                      <div className="text-3xl font-bold text-green-400 group-hover:text-green-300 transition-colors">{stats.featuredArticles}</div>
+                  <div className="bg-black/30 backdrop-blur-md rounded-xl p-4 border border-green-500/30 hover:border-green-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/20">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Star className="w-5 h-5 text-green-400 group-hover:animate-spin" />
+                      <div className="text-2xl font-bold text-green-400 group-hover:text-green-300 transition-colors">{stats.featuredArticles}</div>
                     </div>
-                    <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">Featured Content</div>
+                    <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">Featured Content</div>
                   </div>
                 </div>
                 <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-2xl p-6 border border-yellow-500/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-yellow-500/20">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Layers className="w-6 h-6 text-yellow-400 group-hover:animate-pulse" />
-                      <div className="text-3xl font-bold text-yellow-400 group-hover:text-yellow-300 transition-colors">{stats.categories}</div>
+                  <div className="bg-black/30 backdrop-blur-md rounded-xl p-4 border border-yellow-500/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-yellow-500/20">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Layers className="w-5 h-5 text-yellow-400 group-hover:animate-pulse" />
+                      <div className="text-2xl font-bold text-yellow-400 group-hover:text-yellow-300 transition-colors">{stats.categories}</div>
                     </div>
-                    <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">Categories</div>
+                    <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">Categories</div>
                   </div>
                 </div>
                 <div className="group">
-                  <div className="bg-black/30 backdrop-blur-md rounded-2xl p-6 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Clock className="w-6 h-6 text-purple-400 group-hover:animate-bounce" />
-                      <div className="text-3xl font-bold text-purple-400 group-hover:text-purple-300 transition-colors">{stats.averageReadTime}m</div>
+                  <div className="bg-black/30 backdrop-blur-md rounded-xl p-4 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/20">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Clock className="w-5 h-5 text-purple-400 group-hover:animate-bounce" />
+                      <div className="text-2xl font-bold text-purple-400 group-hover:text-purple-300 transition-colors">{stats.averageReadTime}m</div>
                     </div>
-                    <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">Avg Read Time</div>
+                    <div className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">Avg Read Time</div>
                   </div>
                 </div>
               </div>
