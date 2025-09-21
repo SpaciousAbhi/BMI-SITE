@@ -142,7 +142,7 @@ const ArticlePage = () => {
             
             <div className="flex items-center gap-4">
               <Link
-                to="/bmi-resources"
+                to="/blogs-articles"
                 className="text-gray-400 hover:text-white transition-colors text-sm"
               >
                 All Articles
