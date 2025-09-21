@@ -1,11 +1,43 @@
-import matter from 'gray-matter';
-
-// Utility functions for processing markdown content
+// Browser-compatible markdown parser (without gray-matter)
 export const parseMarkdown = (markdownContent) => {
-  const { data, content } = matter(markdownContent);
+  // Simple frontmatter parser for browser compatibility
+  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+  const match = markdownContent.match(frontmatterRegex);
+  
+  if (match) {
+    const frontmatterText = match[1];
+    const content = match[2];
+    
+    // Parse YAML-like frontmatter manually
+    const frontmatter = {};
+    const lines = frontmatterText.split('\n');
+    
+    for (const line of lines) {
+      const colonIndex = line.indexOf(':');
+      if (colonIndex > 0) {
+        const key = line.substring(0, colonIndex).trim();
+        let value = line.substring(colonIndex + 1).trim();
+        
+        // Remove quotes if present
+        if ((value.startsWith('"') && value.endsWith('"')) || 
+            (value.startsWith("'") && value.endsWith("'"))) {
+          value = value.slice(1, -1);
+        }
+        
+        frontmatter[key] = value;
+      }
+    }
+    
+    return {
+      frontmatter,
+      content
+    };
+  }
+  
+  // No frontmatter found, return empty frontmatter and full content
   return {
-    frontmatter: data,
-    content
+    frontmatter: {},
+    content: markdownContent
   };
 };
 
