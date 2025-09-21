@@ -136,19 +136,19 @@ const BlogsArticlesPage = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Enhanced Categories Section */}
-        <div className="container mx-auto px-4 py-16">
+        {/* Compact Categories Section */}
+        <div className="container mx-auto px-4 py-8">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold mb-3">
                 Explore Articles by <span className="text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text">Calculator Category</span>
               </h2>
-              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              <p className="text-lg text-gray-400 max-w-3xl mx-auto">
                 Dive deep into specialized health content tailored to your interests and needs
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* Body Composition & Weight Analysis */}
               <div 
                 className="group relative bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-blue-700/20 backdrop-blur-sm rounded-3xl p-8 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 cursor-pointer transform hover:-translate-y-2"
