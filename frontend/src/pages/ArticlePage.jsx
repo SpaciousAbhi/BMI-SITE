@@ -175,7 +175,7 @@ const ArticlePage = () => {
                 {relatedArticles.map((relatedArticle) => (
                   <Link
                     key={relatedArticle.id}
-                    to={`/bmi-resources/${relatedArticle.slug}`}
+                    to={`/blogs-articles/${relatedArticle.slug}`}
                     className="group bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition-all duration-300 hover:transform hover:scale-105"
                   >
                     <div className="flex items-start gap-3 mb-3">
