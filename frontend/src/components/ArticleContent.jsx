@@ -60,7 +60,7 @@ Based on the article metadata, this ${article.readTime} article focuses on ${art
 
 ## Next Steps
 
-Use our [BMI Calculator](/) to apply what you've learned, or explore our other [BMI Resources](/bmi-resources) for more comprehensive guidance.
+Use our [BMI Calculator](/) to apply what you've learned, or explore our other [BMI Resources](/blogs-articles) for more comprehensive guidance.
 
 ---
 
