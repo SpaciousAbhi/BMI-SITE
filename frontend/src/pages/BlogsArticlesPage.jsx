@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Calendar, Clock, User, Star, BookOpen, TrendingUp, Filter, FileText, Layers, Scale, Utensils, Dumbbell, Baby, Stethoscope, Sparkles, Eye, Zap, Globe, ArrowRight, X, Tag } from 'lucide-react';
+import { Search, Calendar, Clock, User, Star, BookOpen, TrendingUp, Filter, FileText, Scale, Sparkles, Eye, Zap, ArrowRight, X, Tag, Heart, Brain, Shield } from 'lucide-react';
 import { getAllArticles, getCategories, getTags, searchArticles, getArticleStats } from '../data/articles';
 import { formatDate, calculateReadingTime } from '../utils/markdown';
 
@@ -8,9 +8,7 @@ const BlogsArticlesPage = () => {
   const [articles, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedTag, setSelectedTag] = useState('all');
-  const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
   const [stats, setStats] = useState({});
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -18,13 +16,11 @@ const BlogsArticlesPage = () => {
 
   useEffect(() => {
     const allArticles = getAllArticles();
-    const allCategories = getCategories();
     const allTags = getTags();
     const articleStats = getArticleStats();
 
     setArticles(allArticles);
     setFilteredArticles(allArticles);
-    setCategories(allCategories);
     setTags(allTags);
     setStats(articleStats);
   }, []);
@@ -37,11 +33,6 @@ const BlogsArticlesPage = () => {
       filtered = searchArticles(searchQuery);
     }
 
-    // Apply category filter
-    if (selectedCategory !== 'all') {
-      filtered = filtered.filter(article => article.category === selectedCategory);
-    }
-
     // Apply tag filter
     if (selectedTag !== 'all') {
       filtered = filtered.filter(article => 
@@ -50,7 +41,7 @@ const BlogsArticlesPage = () => {
     }
 
     setFilteredArticles(filtered);
-  }, [searchQuery, selectedCategory, selectedTag, articles]);
+  }, [searchQuery, selectedTag, articles]);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
@@ -58,7 +49,6 @@ const BlogsArticlesPage = () => {
 
   const clearFilters = () => {
     setSearchQuery('');
-    setSelectedCategory('all');
     setSelectedTag('all');
   };
 
