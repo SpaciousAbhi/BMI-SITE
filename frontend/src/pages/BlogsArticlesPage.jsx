@@ -415,56 +415,56 @@ const BlogsArticlesPage = () => {
           </div>
         </div>
 
-        {/* Enhanced Articles Grid */}
-        <div className="container mx-auto px-4 py-8">
+        {/* Compact Articles Grid */}
+        <div className="container mx-auto px-4 py-6">
           <div className="max-w-7xl mx-auto">
             {filteredArticles.length === 0 ? (
-              <div className="text-center py-20">
-                <div className="relative mb-8">
-                  <div className="w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <BookOpen className="w-16 h-16 text-gray-500 animate-pulse" />
+              <div className="text-center py-12">
+                <div className="relative mb-6">
+                  <div className="w-24 h-24 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <BookOpen className="w-12 h-12 text-gray-500 animate-pulse" />
                   </div>
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full animate-ping"></div>
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-24 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full animate-ping"></div>
                 </div>
-                <h3 className="text-3xl font-bold text-gray-400 mb-4">No articles found</h3>
-                <p className="text-xl text-gray-500 mb-8 max-w-md mx-auto">
+                <h3 className="text-2xl font-bold text-gray-400 mb-3">No articles found</h3>
+                <p className="text-lg text-gray-500 mb-6 max-w-md mx-auto">
                   Try adjusting your search terms or exploring different categories
                 </p>
                 <button
                   onClick={clearFilters}
-                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-4 rounded-2xl transition-all duration-300 font-medium text-lg hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
+                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-6 py-3 rounded-xl transition-all duration-300 font-medium hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25"
                 >
                   Clear All Filters
                 </button>
               </div>
             ) : (
               <>
-                <div className="text-center mb-12">
-                  <h2 className="text-3xl font-bold text-white mb-4">
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-bold text-white mb-2">
                     {filteredArticles.length === articles.length 
                       ? 'All Health Articles' 
                       : `${filteredArticles.length} Article${filteredArticles.length === 1 ? '' : 's'} Found`}
                   </h2>
-                  <p className="text-gray-400 text-lg">
+                  <p className="text-gray-400">
                     {selectedCategory !== 'all' 
                       ? `Exploring ${selectedCategory.toLowerCase()}` 
                       : 'Discover expert insights across all health topics'}
                   </p>
                 </div>
                 
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                   {filteredArticles.map((article, index) => (
                     <article
                       key={article.id}
-                      className={`group relative bg-gradient-to-br from-gray-900/80 via-gray-800/60 to-gray-900/80 backdrop-blur-sm rounded-3xl overflow-hidden border border-gray-700/50 hover:border-gray-600/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl transform ${hoveredCard === index ? 'hover:-translate-y-4' : 'hover:-translate-y-2'}`}
+                      className={`group relative bg-gradient-to-br from-gray-900/80 via-gray-800/60 to-gray-900/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-gray-600/60 transition-all duration-500 hover:scale-105 hover:shadow-xl transform ${hoveredCard === index ? 'hover:-translate-y-3' : 'hover:-translate-y-1'}`}
                       onMouseEnter={() => setHoveredCard(index)}
                       onMouseLeave={() => setHoveredCard(null)}
                       style={{
                         animationDelay: `${index * 100}ms`
                       }}
                     >
-                      {/* Enhanced Article Image with Dynamic Gradients */}
-                      <div className="h-56 relative overflow-hidden">
+                      {/* Compact Article Image */}
+                      <div className="h-40 relative overflow-hidden">
                         <div className={`absolute inset-0 bg-gradient-to-br ${
                           article.category.includes('Body') ? 'from-blue-600 via-blue-500 to-teal-500' :
                           article.category.includes('Nutrition') ? 'from-orange-600 via-orange-500 to-yellow-500' :
@@ -480,49 +480,49 @@ const BlogsArticlesPage = () => {
                         <div className="absolute inset-0 opacity-20 group-hover:animate-pulse"></div>
                         
                         {/* Top badges */}
-                        <div className="absolute top-6 left-6 flex flex-wrap gap-2">
+                        <div className="absolute top-3 left-3 flex flex-wrap gap-1">
                           {article.featured && (
-                            <span className="bg-gradient-to-r from-yellow-500 to-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
-                              <Star className="w-3 h-3 animate-spin" />
+                            <span className="bg-gradient-to-r from-yellow-500 to-yellow-400 text-black px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+                              <Star className="w-2 h-2 animate-spin" />
                               Featured
                             </span>
                           )}
                           {article.medicalReview && (
-                            <span className="bg-gradient-to-r from-green-500 to-green-400 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
-                              <Zap className="w-3 h-3 mr-1" />
+                            <span className="bg-gradient-to-r from-green-500 to-green-400 text-white px-2 py-1 rounded-full text-xs font-bold shadow-lg">
+                              <Zap className="w-2 h-2 mr-1" />
                               Medical
                             </span>
                           )}
                         </div>
                         
                         {/* Category badge */}
-                        <div className="absolute bottom-6 left-6">
-                          <span className="bg-black/60 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium border border-white/20">
+                        <div className="absolute bottom-3 left-3">
+                          <span className="bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-medium border border-white/20">
                             {article.category}
                           </span>
                         </div>
                         
                         {/* Reading indicator */}
-                        <div className="absolute bottom-6 right-6">
-                          <div className="bg-black/60 backdrop-blur-md text-white px-3 py-2 rounded-full text-xs font-medium border border-white/20 flex items-center gap-2">
-                            <Eye className="w-3 h-3" />
+                        <div className="absolute bottom-3 right-3">
+                          <div className="bg-black/60 backdrop-blur-md text-white px-2 py-1 rounded-full text-xs font-medium border border-white/20 flex items-center gap-1">
+                            <Eye className="w-2 h-2" />
                             {article.readTime}
                           </div>
                         </div>
                       </div>
 
-                      {/* Enhanced Content Section */}
-                      <div className="p-8">
-                        <h2 className="text-2xl font-bold text-white mb-4 line-clamp-2 leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
+                      {/* Compact Content Section */}
+                      <div className="p-5">
+                        <h2 className="text-lg font-bold text-white mb-3 line-clamp-2 leading-tight group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
                           {article.title}
                         </h2>
                         
-                        <p className="text-gray-400 group-hover:text-gray-300 mb-6 line-clamp-3 text-sm leading-relaxed transition-colors duration-300">
+                        <p className="text-gray-400 group-hover:text-gray-300 mb-4 line-clamp-3 text-sm leading-relaxed transition-colors duration-300">
                           {article.excerpt}
                         </p>
 
-                        {/* Enhanced Meta Information */}
-                        <div className="flex items-center gap-4 text-xs text-gray-500 group-hover:text-gray-400 transition-colors duration-300 mb-6">
+                        {/* Compact Meta Information */}
+                        <div className="flex items-center gap-3 text-xs text-gray-500 group-hover:text-gray-400 transition-colors duration-300 mb-4">
                           <div className="flex items-center gap-1">
                             <Calendar className="w-3 h-3" />
                             <span>{formatDate(article.date)}</span>
@@ -537,35 +537,35 @@ const BlogsArticlesPage = () => {
                           </div>
                         </div>
 
-                        {/* Enhanced Tags */}
+                        {/* Compact Tags */}
                         {article.tags && article.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-2 mb-6">
+                          <div className="flex flex-wrap gap-1 mb-4">
                             {article.tags.slice(0, 3).map((tag, tagIndex) => (
                               <span
                                 key={tagIndex}
-                                className="bg-gray-800/50 hover:bg-gray-700/60 text-gray-400 hover:text-gray-300 px-3 py-1 rounded-full text-xs transition-all duration-300 cursor-pointer border border-gray-700/50 hover:border-gray-600/50"
+                                className="bg-gray-800/50 hover:bg-gray-700/60 text-gray-400 hover:text-gray-300 px-2 py-1 rounded-full text-xs transition-all duration-300 cursor-pointer border border-gray-700/50 hover:border-gray-600/50"
                               >
                                 {tag}
                               </span>
                             ))}
                             {article.tags.length > 3 && (
-                              <span className="text-gray-500 text-xs py-1 px-2">
+                              <span className="text-gray-500 text-xs py-1 px-1">
                                 +{article.tags.length - 3} more
                               </span>
                             )}
                           </div>
                         )}
 
-                        {/* Enhanced Read Button */}
+                        {/* Compact Read Button */}
                         <Link
                           to={`/blogs-articles/${article.slug}`}
                           className="block w-full"
                         >
-                          <button className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 hover:from-blue-700 hover:via-purple-700 hover:to-teal-700 text-white py-4 rounded-2xl transition-all duration-300 font-semibold text-lg group-hover:scale-105 group-hover:shadow-xl group-hover:shadow-blue-500/25 relative overflow-hidden">
+                          <button className="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 hover:from-blue-700 hover:via-purple-700 hover:to-teal-700 text-white py-3 rounded-xl transition-all duration-300 font-semibold group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-blue-500/25 relative overflow-hidden">
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
                             <div className="relative flex items-center justify-center gap-2">
                               <span>Read Full Article</span>
-                              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                             </div>
                           </button>
                         </Link>
