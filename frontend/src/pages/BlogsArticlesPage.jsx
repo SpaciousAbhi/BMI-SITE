@@ -151,26 +151,26 @@ const BlogsArticlesPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {/* Body Composition & Weight Analysis */}
               <div 
-                className="group relative bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-blue-700/20 backdrop-blur-sm rounded-3xl p-8 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 cursor-pointer transform hover:-translate-y-2"
+                className="group relative bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-blue-700/20 backdrop-blur-sm rounded-2xl p-5 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25 cursor-pointer transform hover:-translate-y-1"
                 onClick={() => setSelectedCategory('Body Composition & Weight Analysis')}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
                 <div className="relative z-10">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-4 bg-blue-500/20 rounded-2xl group-hover:bg-blue-500/40 transition-all duration-300 group-hover:scale-110">
-                      <Scale className="w-10 h-10 text-blue-400 group-hover:animate-bounce" />
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 bg-blue-500/20 rounded-xl group-hover:bg-blue-500/40 transition-all duration-300 group-hover:scale-110">
+                      <Scale className="w-6 h-6 text-blue-400 group-hover:animate-bounce" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-white group-hover:text-blue-300 transition-colors">Body Composition</h3>
-                      <p className="text-blue-300 group-hover:text-blue-200 transition-colors">Weight Analysis</p>
+                      <h3 className="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">Body Composition</h3>
+                      <p className="text-blue-300 group-hover:text-blue-200 transition-colors text-sm">Weight Analysis</p>
                     </div>
                   </div>
-                  <p className="text-gray-300 group-hover:text-gray-200 transition-colors leading-relaxed mb-4">
+                  <p className="text-gray-300 group-hover:text-gray-200 transition-colors leading-relaxed mb-3 text-sm">
                     Comprehensive guides on BMI, body fat, lean mass, and weight assessment calculators with medical insights.
                   </p>
                   <div className="flex items-center text-blue-400 group-hover:text-blue-300 transition-colors">
-                    <span className="text-sm font-medium">Explore Articles</span>
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" />
+                    <span className="text-xs font-medium">Explore Articles</span>
+                    <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </div>
