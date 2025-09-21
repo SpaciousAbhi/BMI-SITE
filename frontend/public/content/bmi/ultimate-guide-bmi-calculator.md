@@ -83,28 +83,37 @@ The World Health Organization's adoption of BMI created the first universal stan
 - Unified public health interventions
 - Evidence-based policy development
 
-## BMI Formula: Metric and Imperial {#bmi-formula}
+## BMI Calculator Formula: Metric and Imperial {#bmi-formula}
 
-### Metric Formula (Preferred):
-```
-BMI = Weight (kg) ÷ Height² (m²)
-```
+### Free BMI Calculator Formulas
 
-### Imperial Formula:
+**Calculate BMI with these proven WHO-approved formulas:**
+
+#### Metric BMI Formula (Recommended):
+```
+BMI = Weight (kg) ÷ Height² (meters²)
+```
+*Example: 70kg ÷ (1.75m)² = 70 ÷ 3.06 = 22.9 BMI*
+
+#### Imperial BMI Formula:
 ```
 BMI = (Weight (lbs) ÷ Height² (inches²)) × 703
 ```
+*Example: 154 lbs ÷ (66 inches)² × 703 = 24.8 BMI*
 
-### Conversion Factors:
-- **Pounds to Kilograms**: Weight (lbs) ÷ 2.205
-- **Inches to Meters**: Height (inches) × 0.0254
-- **Feet to Meters**: Height (feet) × 0.3048
+### BMI Calculator Conversion Guide:
+- **Pounds to Kilograms**: Divide weight by 2.205
+- **Feet to Inches**: Multiply feet by 12, add remaining inches
+- **Inches to Meters**: Multiply inches by 0.0254
+- **Centimeters to Meters**: Divide centimeters by 100
 
-### Why 703 in Imperial Formula?
-The conversion factor 703 derives from the mathematical relationship between imperial and metric units:
-- 1 kg = 2.205 lbs
-- 1 meter = 39.37 inches
-- 703 = (39.37)² ÷ 2.205
+### Why 703 in BMI Calculator?
+The BMI calculator uses 703 as a conversion factor to maintain accuracy between imperial and metric systems:
+- Metric units naturally align (kg/m²)
+- Imperial needs adjustment: 703 = (39.37 inches/meter)² ÷ 2.205 lbs/kg
+- This ensures identical BMI results regardless of measurement units
+
+> **Use Our BMI Calculator**: Skip manual calculations with our [free BMI calculator tool](/) - supports both metric and imperial units with instant results.
 
 ## BMI Categories and Health Classifications {#bmi-categories}
 
