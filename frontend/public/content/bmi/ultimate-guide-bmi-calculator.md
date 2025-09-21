@@ -188,10 +188,32 @@ The BMI calculator uses 703 as a conversion factor to maintain accuracy between 
 #### Obesity Class III (BMI ≥ 40.0)
 **Extreme Health Risks:**
 - 200-300% increased mortality risk
-- Multiple comorbidity likelihood
+- Multiple comorbidity likelihood  
 - Surgical intervention consideration
 - Comprehensive medical management
 - Significant life expectancy reduction
+
+## BMI Health Risks & What Your Number Means {#health-risks}
+
+### BMI Calculator Health Risk Assessment
+
+**Understanding BMI health implications** helps you make informed decisions about weight management and medical care:
+
+#### Low BMI Health Risks (< 18.5):
+- **Nutritional Deficiencies** - Increased risk of vitamin/mineral deficits
+- **Immune System Weakness** - Higher infection susceptibility  
+- **Bone Health Issues** - Osteoporosis and fracture risk
+- **Fertility Problems** - Reproductive health complications
+- **Delayed Healing** - Slower wound recovery and tissue repair
+
+#### High BMI Health Risks (30+):
+- **Type 2 Diabetes** - 80% of diabetes cases linked to obesity
+- **Heart Disease** - #1 cause of death, 2-3x higher risk with obesity
+- **High Blood Pressure** - Hypertension in 65% of obese adults
+- **Sleep Apnea** - Breathing disorders affecting 70% of obese individuals
+- **Certain Cancers** - Increased risk for 13+ cancer types
+- **Stroke Risk** - 64% higher stroke likelihood with obesity
+- **Liver Disease** - Non-alcoholic fatty liver disease progression
 
 ## Comprehensive BMI Chart by Age and Gender {#bmi-chart}
 
