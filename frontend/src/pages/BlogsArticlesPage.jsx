@@ -117,173 +117,52 @@ const BlogsArticlesPage = () => {
       </div>
 
       <div className="relative z-10">
-        {/* Compact Categories Section */}
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold mb-3">
-                Explore Articles by <span className="text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-teal-400 bg-clip-text">Calculator Category</span>
-              </h2>
-              <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-                Dive deep into specialized health content tailored to your interests and needs
+        {/* Focused BMI Content Section */}
+        <div className="container mx-auto px-4 py-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center gap-3 mb-4 px-4 py-2 bg-black/40 backdrop-blur-md rounded-full border border-blue-500/30">
+                <Scale className="w-5 h-5 text-blue-400" />
+                <h2 className="text-xl md:text-2xl font-bold text-transparent bg-gradient-to-r from-blue-400 via-teal-400 to-green-400 bg-clip-text">
+                  BMI & Body Composition Guides
+                </h2>
+                <Heart className="w-5 h-5 text-teal-400 animate-pulse" />
+              </div>
+              <p className="text-gray-400 max-w-2xl mx-auto">
+                Comprehensive BMI calculator guides with expert medical insights and evidence-based health information
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {/* Body Composition & Weight Analysis */}
-              <div 
-                className="group relative bg-gradient-to-br from-blue-900/40 via-blue-800/30 to-blue-700/20 backdrop-blur-sm rounded-2xl p-5 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25 cursor-pointer transform hover:-translate-y-1"
-                onClick={() => setSelectedCategory('Body Composition & Weight Analysis')}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 bg-blue-500/20 rounded-xl group-hover:bg-blue-500/40 transition-all duration-300 group-hover:scale-110">
-                      <Scale className="w-6 h-6 text-blue-400 group-hover:animate-bounce" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">Body Composition</h3>
-                      <p className="text-blue-300 group-hover:text-blue-200 transition-colors text-sm">Weight Analysis</p>
-                    </div>
+            {/* Featured Topic Highlights */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div className="group bg-gradient-to-br from-blue-900/30 via-blue-800/20 to-black/40 backdrop-blur-sm rounded-xl p-4 border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 bg-blue-500/20 rounded-lg">
+                    <Brain className="w-4 h-4 text-blue-400" />
                   </div>
-                  <p className="text-gray-300 group-hover:text-gray-200 transition-colors leading-relaxed mb-3 text-sm">
-                    Comprehensive guides on BMI, body fat, lean mass, and weight assessment calculators with medical insights.
-                  </p>
-                  <div className="flex items-center text-blue-400 group-hover:text-blue-300 transition-colors">
-                    <span className="text-xs font-medium">Explore Articles</span>
-                    <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  <h3 className="font-semibold text-white">BMI Fundamentals</h3>
                 </div>
+                <p className="text-xs text-gray-400 leading-relaxed">WHO standards, calculation methods & health categories</p>
               </div>
-
-              {/* Nutrition & Diet Analysis */}
-              <div 
-                className="group relative bg-gradient-to-br from-orange-900/40 via-orange-800/30 to-orange-700/20 backdrop-blur-sm rounded-2xl p-5 border border-orange-500/30 hover:border-orange-400/60 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/25 cursor-pointer transform hover:-translate-y-1"
-                onClick={() => setSelectedCategory('Nutrition & Diet Analysis')}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 bg-orange-500/20 rounded-xl group-hover:bg-orange-500/40 transition-all duration-300 group-hover:scale-110">
-                      <Utensils className="w-6 h-6 text-orange-400 group-hover:animate-bounce" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-orange-300 transition-colors">Nutrition & Diet</h3>
-                      <p className="text-orange-300 group-hover:text-orange-200 transition-colors text-sm">Analysis</p>
-                    </div>
+              
+              <div className="group bg-gradient-to-br from-teal-900/30 via-teal-800/20 to-black/40 backdrop-blur-sm rounded-xl p-4 border border-teal-500/30 hover:border-teal-400/50 transition-all duration-300">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 bg-teal-500/20 rounded-lg">
+                    <Shield className="w-4 h-4 text-teal-400" />
                   </div>
-                  <p className="text-gray-300 group-hover:text-gray-200 transition-colors leading-relaxed mb-3 text-sm">
-                    Expert articles on calorie, macro, TDEE, and nutrition calculators for optimal diet planning and health.
-                  </p>
-                  <div className="flex items-center text-orange-400 group-hover:text-orange-300 transition-colors">
-                    <span className="text-xs font-medium">Explore Articles</span>
-                    <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  <h3 className="font-semibold text-white">Medical Accuracy</h3>
                 </div>
+                <p className="text-xs text-gray-400 leading-relaxed">Limitations, ethnic differences & clinical applications</p>
               </div>
-
-              {/* Fitness & Performance Analysis */}
-              <div 
-                className="group relative bg-gradient-to-br from-purple-900/40 via-purple-800/30 to-purple-700/20 backdrop-blur-sm rounded-2xl p-5 border border-purple-500/30 hover:border-purple-400/60 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/25 cursor-pointer transform hover:-translate-y-1"
-                onClick={() => setSelectedCategory('Fitness & Performance Analysis')}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 bg-purple-500/20 rounded-xl group-hover:bg-purple-500/40 transition-all duration-300 group-hover:scale-110">
-                      <Dumbbell className="w-6 h-6 text-purple-400 group-hover:animate-bounce" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">Fitness & Performance</h3>
-                      <p className="text-purple-300 group-hover:text-purple-200 transition-colors text-sm">Analysis</p>
-                    </div>
+              
+              <div className="group bg-gradient-to-br from-green-900/30 via-green-800/20 to-black/40 backdrop-blur-sm rounded-xl p-4 border border-green-500/30 hover:border-green-400/50 transition-all duration-300">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 bg-green-500/20 rounded-lg">
+                    <TrendingUp className="w-4 h-4 text-green-400" />
                   </div>
-                  <p className="text-gray-300 group-hover:text-gray-200 transition-colors leading-relaxed mb-3 text-sm">
-                    Performance guides covering pace, calories burned, heart rate, and strength training calculators.
-                  </p>
-                  <div className="flex items-center text-purple-400 group-hover:text-purple-300 transition-colors">
-                    <span className="text-xs font-medium">Explore Articles</span>
-                    <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  <h3 className="font-semibold text-white">Health Strategies</h3>
                 </div>
-              </div>
-
-              {/* Pregnancy & Women's Health */}
-              <div 
-                className="group relative bg-gradient-to-br from-pink-900/40 via-pink-800/30 to-pink-700/20 backdrop-blur-sm rounded-2xl p-5 border border-pink-500/30 hover:border-pink-400/60 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-pink-500/25 cursor-pointer transform hover:-translate-y-1"
-                onClick={() => setSelectedCategory('Pregnancy & Women\'s Health')}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 bg-pink-500/20 rounded-xl group-hover:bg-pink-500/40 transition-all duration-300 group-hover:scale-110">
-                      <Baby className="w-6 h-6 text-pink-400 group-hover:animate-bounce" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-pink-300 transition-colors">Pregnancy & Women's</h3>
-                      <p className="text-pink-300 group-hover:text-pink-200 transition-colors text-sm">Health</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-300 group-hover:text-gray-200 transition-colors leading-relaxed mb-3 text-sm">
-                    Specialized content on pregnancy, ovulation, due date, and women's health calculators with medical accuracy.
-                  </p>
-                  <div className="flex items-center text-pink-400 group-hover:text-pink-300 transition-colors">
-                    <span className="text-xs font-medium">Explore Articles</span>
-                    <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Medical & Health Assessment */}
-              <div 
-                className="group relative bg-gradient-to-br from-red-900/40 via-red-800/30 to-red-700/20 backdrop-blur-sm rounded-2xl p-5 border border-red-500/30 hover:border-red-400/60 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-red-500/25 cursor-pointer transform hover:-translate-y-1"
-                onClick={() => setSelectedCategory('Medical & Health Assessment')}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-red-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 bg-red-500/20 rounded-xl group-hover:bg-red-500/40 transition-all duration-300 group-hover:scale-110">
-                      <Stethoscope className="w-6 h-6 text-red-400 group-hover:animate-bounce" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-red-300 transition-colors">Medical & Health</h3>
-                      <p className="text-red-300 group-hover:text-red-200 transition-colors text-sm">Assessment</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-300 group-hover:text-gray-200 transition-colors leading-relaxed mb-3 text-sm">
-                    Clinical guides on GFR, BAC, and medical assessment calculators with professional healthcare insights.
-                  </p>
-                  <div className="flex items-center text-red-400 group-hover:text-red-300 transition-colors">
-                    <span className="text-xs font-medium">Explore Articles</span>
-                    <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </div>
-
-              {/* All Categories Overview */}
-              <div 
-                className="group relative bg-gradient-to-br from-teal-900/40 via-teal-800/30 to-teal-700/20 backdrop-blur-sm rounded-2xl p-5 border border-teal-500/30 hover:border-teal-400/60 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-teal-500/25 cursor-pointer transform hover:-translate-y-1"
-                onClick={() => setSelectedCategory('all')}
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-teal-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 bg-teal-500/20 rounded-xl group-hover:bg-teal-500/40 transition-all duration-300 group-hover:scale-110">
-                      <Globe className="w-6 h-6 text-teal-400 group-hover:animate-spin" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-white group-hover:text-teal-300 transition-colors">All Categories</h3>
-                      <p className="text-teal-300 group-hover:text-teal-200 transition-colors text-sm">Complete Collection</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-300 group-hover:text-gray-200 transition-colors leading-relaxed mb-3 text-sm">
-                    Browse our complete collection of health calculator articles across all categories and specialties.
-                  </p>
-                  <div className="flex items-center text-teal-400 group-hover:text-teal-300 transition-colors">
-                    <span className="text-xs font-medium">View All Articles</span>
-                    <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
+                <p className="text-xs text-gray-400 leading-relaxed">Safe weight management & alternative assessments</p>
               </div>
             </div>
           </div>
