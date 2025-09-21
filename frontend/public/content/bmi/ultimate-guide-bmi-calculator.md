@@ -115,18 +115,26 @@ The BMI calculator uses 703 as a conversion factor to maintain accuracy between 
 
 > **Use Our BMI Calculator**: Skip manual calculations with our [free BMI calculator tool](/) - supports both metric and imperial units with instant results.
 
-## BMI Categories and Health Classifications {#bmi-categories}
+## BMI Calculator Chart & Categories {#bmi-categories}
 
-### WHO Standard BMI Categories:
+### Official WHO BMI Calculator Categories
 
-| BMI Range | Category | Health Risk | Population Prevalence |
-|-----------|----------|-------------|---------------------|
-| < 18.5 | Underweight | Increased | 5-10% globally |
-| 18.5-24.9 | Normal Weight | Lowest | 35-45% globally |
-| 25.0-29.9 | Overweight | Moderate | 25-35% globally |
-| 30.0-34.9 | Obesity Class I | High | 10-15% globally |
-| 35.0-39.9 | Obesity Class II | Very High | 3-7% globally |
-| ≥ 40.0 | Obesity Class III | Extremely High | 1-3% globally |
+**Understand your BMI results** with these evidence-based health classifications used by medical professionals worldwide:
+
+| BMI Range | Weight Category | Health Risk Level | What It Means |
+|-----------|----------------|------------------|---------------|
+| **< 18.5** | Underweight | Increased Risk | May indicate malnutrition or underlying health issues |
+| **18.5-24.9** | Normal Weight | Lowest Risk | Optimal health range for most adults |
+| **25.0-29.9** | Overweight | Moderate Risk | Increased risk for chronic diseases |
+| **30.0-34.9** | Obesity Class I | High Risk | Significant health risks, intervention recommended |
+| **35.0-39.9** | Obesity Class II | Very High Risk | Severe obesity, medical treatment advised |
+| **≥ 40.0** | Obesity Class III | Extreme Risk | Morbid obesity, immediate medical care needed |
+
+### BMI Calculator Results by Population:
+- **Healthy BMI (18.5-24.9)**: ~40% of global adults
+- **Overweight BMI (25-29.9)**: ~35% of global adults  
+- **Obese BMI (30+)**: ~25% of global adults
+- **Underweight BMI (<18.5)**: ~8% of global adults
 
 ### Detailed Category Analysis:
 
