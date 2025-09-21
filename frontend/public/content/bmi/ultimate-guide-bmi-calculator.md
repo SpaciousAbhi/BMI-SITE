@@ -488,8 +488,17 @@ Research suggests BMI 20-25 associates with lowest mortality risk for most adult
 ### 11. Can medications affect BMI calculations?
 While medications don't affect BMI calculation itself, they can influence weight and body composition, impacting BMI interpretation. Medications causing weight gain (antidepressants, corticosteroids, diabetes medications) or weight loss (stimulants, cancer treatments) can alter BMI. Water-retaining medications may temporarily increase weight. Consider medication effects when interpreting BMI changes over time.
 
-### 12. How does BMI relate to waist circumference measurements?
-BMI and waist circumference provide complementary health information. BMI indicates overall weight status, while waist circumference specifically measures abdominal obesity, which carries higher health risks. Someone with normal BMI but large waist circumference (>35" women, >40" men) may have increased health risks. Combining both measurements provides more comprehensive health assessment than either alone.
+### Can I use BMI calculator for children?
+No, adult BMI calculators are not appropriate for children under 18. Children require age and sex-specific BMI percentile charts because body composition changes during growth. Use CDC BMI percentile calculators for children, which compare results to same-age peers rather than adult standards.
+
+### How often should I calculate my BMI?
+Calculate BMI monthly for general health monitoring or weekly during active weight management. Avoid daily BMI calculations due to normal weight fluctuations from hydration, food intake, and hormonal changes. Focus on trends rather than daily variations.
+
+### Does BMI calculator work for pregnancy?
+BMI calculations during pregnancy require special considerations. Pre-pregnancy BMI determines healthy weight gain ranges, but pregnancy BMI changes aren't comparable to standard categories. Consult healthcare providers for pregnancy-specific BMI guidance and weight gain recommendations.
+
+### How does BMI relate to waist circumference measurements?
+BMI and waist circumference provide complementary health information. BMI indicates overall weight status, while waist circumference measures abdominal obesity (>35" women, >40" men indicates increased risk). Someone with normal BMI but large waist circumference may still have elevated health risks. Use both measurements for comprehensive assessment.
 
 ---
 
