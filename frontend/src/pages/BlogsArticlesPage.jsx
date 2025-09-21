@@ -275,16 +275,16 @@ const BlogsArticlesPage = () => {
               </div>
             ) : (
               <>
-                <div className="text-center mb-8">
-                  <h2 className="text-2xl font-bold text-white mb-2">
+                <div className="text-center mb-6">
+                  <h2 className="text-xl font-bold text-white mb-2">
                     {filteredArticles.length === articles.length 
-                      ? 'All Health Articles' 
+                      ? 'Expert BMI & Health Articles' 
                       : `${filteredArticles.length} Article${filteredArticles.length === 1 ? '' : 's'} Found`}
                   </h2>
-                  <p className="text-gray-400">
-                    {selectedCategory !== 'all' 
-                      ? `Exploring ${selectedCategory.toLowerCase()}` 
-                      : 'Discover expert insights across all health topics'}
+                  <p className="text-gray-400 text-sm">
+                    {selectedTag !== 'all' 
+                      ? `Exploring ${selectedTag} topics` 
+                      : 'Comprehensive guides for body composition & weight assessment'}
                   </p>
                 </div>
                 
