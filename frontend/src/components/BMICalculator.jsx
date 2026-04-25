@@ -18,7 +18,7 @@ const BMICalculator = () => {
   const [feet, setFeet] = useState("");
   const [inches, setInches] = useState("");
   const [age, setAge] = useState("");
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("male");
   const [result, setResult] = useState(null);
   const [isExporting, setIsExporting] = useState(false);
   const { toast } = useToast();
@@ -65,7 +65,7 @@ const BMICalculator = () => {
     }
   };
 
-  const calculateBMI = useCallback(() => {
+  const calculateBMI = () => {
     if (!weight || (heightUnit === "ft" ? (feet === "" || inches === "") : !height) || !age || !gender) {
       toast({
         title: "Missing Information",
@@ -137,15 +137,17 @@ const BMICalculator = () => {
 
       // Scroll to result after a short delay to allow animation to start
       setTimeout(() => {
-        window.scrollTo({
-          top: window.scrollY + 300,
-          behavior: 'smooth'
-        });
-      }, 100);
+        const resultElement = document.getElementById('bmi-result-card');
+        if (resultElement) {
+          resultElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          window.scrollBy({ top: 400, behavior: 'smooth' });
+        }
+      }, 150);
     } catch (err) {
       console.error(err);
     }
-  }, [weight, weightUnit, height, heightUnit, feet, inches, age, gender]);
+  };
 
   // Reverted to manual calculation via button
 
@@ -155,7 +157,7 @@ const BMICalculator = () => {
     setFeet("");
     setInches("");
     setAge("");
-    setGender("");
+    setGender("male");
     setResult(null);
   };
 
@@ -442,6 +444,7 @@ const BMICalculator = () => {
           {result && (
             <motion.div
               key="result"
+              id="bmi-result-card"
               variants={resultVariants}
               initial="hidden"
               animate="visible"
