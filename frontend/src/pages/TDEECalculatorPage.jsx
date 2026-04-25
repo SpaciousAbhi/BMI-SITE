@@ -10,7 +10,7 @@ const TDEECalculatorPage = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
             TDEE Calculator
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl glass-text opacity-90 max-w-3xl mx-auto">
             Calculate your Total Daily Energy Expenditure using advanced metabolic science. Get precise estimates for all activity levels and personalized macronutrient targets.
           </p>
         </div>
@@ -24,13 +24,13 @@ const TDEECalculatorPage = () => {
       {/* Educational Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gray-900/50 rounded-xl border border-gray-800 p-8">
+          <div className="glass-panel glow-border rounded-xl border border-gray-800 p-8">
             <h2 className="text-3xl font-bold text-white mb-6">Understanding TDEE</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold text-blue-300 mb-4">Components of TDEE</h3>
-                <ul className="text-gray-300 space-y-3">
+                <ul className="glass-text opacity-90 space-y-3">
                   <li><strong>BMR (60-70%):</strong> Basal Metabolic Rate - energy for basic bodily functions</li>
                   <li><strong>TEA (15-30%):</strong> Thermic Effect of Activity - planned exercise and sports</li>
                   <li><strong>NEAT (10-15%):</strong> Non-Exercise Activity Thermogenesis - daily activities</li>
@@ -40,7 +40,7 @@ const TDEECalculatorPage = () => {
 
               <div>
                 <h3 className="text-xl font-semibold text-blue-300 mb-4">TDEE Applications</h3>
-                <ul className="text-gray-300 space-y-2">
+                <ul className="glass-text opacity-90 space-y-2">
                   <li><strong>Weight Management:</strong> Precise calorie targets for any goal</li>
                   <li><strong>Athletic Performance:</strong> Fuel requirements for training</li>
                   <li><strong>Nutrition Planning:</strong> Macronutrient distribution guidance</li>
@@ -51,7 +51,7 @@ const TDEECalculatorPage = () => {
 
             <div className="mt-8 p-6 bg-blue-900/20 rounded-lg border border-blue-800/50">
               <h3 className="text-lg font-semibold text-blue-300 mb-3">Activity Level Guidelines</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm glass-text opacity-90">
                 <div>
                   <h4 className="font-semibold text-white mb-2">Sedentary (1.2x)</h4>
                   <p>Desk job, minimal walking, no formal exercise. Most time spent sitting or lying down.</p>

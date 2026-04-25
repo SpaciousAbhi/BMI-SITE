@@ -391,299 +391,310 @@ const LeanBodyMassCalculator = () => {
       initial="hidden"
       animate="visible"
     >
-      <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
-        <CardHeader className="text-center pb-8">
-          <CardTitle className="text-3xl font-bold flex items-center justify-center gap-3 mb-4">
+      <Card className="glass-panel glow-border backdrop-blur-sm">
+        <CardHeader className="text-center pb-8 border-b border-white/5 bg-white/[0.02]">
+          <CardTitle className="text-4xl font-black mb-4 flex items-center justify-center gap-3">
             <motion.div
-              className="p-3 rounded-full bg-green-500/10"
-              whileHover={{ scale: 1.1, rotate: 180 }}
-              transition={{ duration: 0.3 }}
+              initial={{ rotate: -20, scale: 0.8 }}
+              animate={{ rotate: 0, scale: 1 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="p-3 rounded-2xl bg-green-500/10 border border-green-500/20"
             >
-              <Activity className="h-8 w-8 text-green-400" />
+              <Activity className="h-10 w-10 text-green-400 shadow-[0_0_20px_rgba(34,197,94,0.4)]" />
             </motion.div>
-            <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-              Lean Body Mass Calculator
+            <span className="bg-gradient-to-r from-green-400 via-blue-200 to-green-400 bg-clip-text text-transparent uppercase tracking-tight">
+              Musculo-Skeletal Oracle
             </span>
           </CardTitle>
-          <p className="text-gray-400 text-lg">
-            Calculate your lean body mass using validated medical formulas
+          <p className="text-slate-400 text-lg max-w-xl mx-auto font-medium">
+            Advanced partitioning of anatomical mass using high-fidelity musculoskeletal modeling.
           </p>
         </CardHeader>
 
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-            {/* Personal Information */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-lg font-semibold text-white mb-4">Personal Information</h3>
-              
-              <div className="space-y-2">
-                <Label htmlFor="gender" className="text-gray-300">Gender *</Label>
-                <Select value={gender} onValueChange={setGender}>
-                  <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white hover:border-green-500/50 focus:border-green-500 transition-all duration-300">
-                    <SelectValue placeholder="Select gender" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
-                    <SelectItem value="male">Male</SelectItem>
-                    <SelectItem value="female">Female</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+        <CardContent className="space-y-10 p-6 sm:p-10 lg:p-12">
+          <div className="space-y-6">
+            <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+              <Activity className="h-3 w-3" />
+              Biometric Configuration
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:p-6 lg:p-8">
+              <motion.div variants={itemVariants} className="space-y-6">
+                <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Primary Indicators</h4>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="gender" className="glass-text opacity-90 text-[10px] font-black uppercase">Gender *</Label>
+                  <Select value={gender} onValueChange={setGender}>
+                    <SelectTrigger className="glass-panel glow-border border-gray-700 text-white hover:border-green-500/50 focus:border-green-500 transition-all duration-300">
+                      <SelectValue placeholder="Select gender" />
+                    </SelectTrigger>
+                    <SelectContent className="glass-panel border-white/10 scale-in">
+                      <SelectItem value="male">Male</SelectItem>
+                      <SelectItem value="female">Female</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="age" className="text-gray-300">Age (optional)</Label>
-                <Input
-                  id="age"
-                  type="number"
-                  placeholder="Enter your age"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                  className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="weight" className="text-gray-300">Weight *</Label>
-                <div className="flex gap-2">
+                <div className="space-y-2">
+                  <Label htmlFor="age" className="glass-text opacity-90 text-[10px] font-black uppercase">Age (optional)</Label>
                   <Input
-                    id="weight"
+                    id="age"
                     type="number"
-                    placeholder="Enter weight"
-                    value={weight}
-                    onChange={(e) => setWeight(e.target.value)}
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300 flex-1"
+                    placeholder="Enter your age"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                    className="glass-panel glow-border border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
                   />
-                  <Select value={weightUnit} onValueChange={setWeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
-                      <SelectItem value="kg">kg</SelectItem>
-                      <SelectItem value="lbs">lbs</SelectItem>
-                    </SelectContent>
-                  </Select>
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="height" className="text-gray-300">Height *</Label>
-                <div className="flex gap-2">
-                  <Select value={heightUnit} onValueChange={setHeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
-                      <SelectItem value="cm">cm</SelectItem>
-                      <SelectItem value="ft">ft</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {heightUnit === "cm" ? (
+                <div className="space-y-2">
+                  <Label htmlFor="weight" className="glass-text opacity-90 text-[10px] font-black uppercase">Weight *</Label>
+                  <div className="flex gap-2">
                     <Input
+                      id="weight"
                       type="number"
-                      placeholder="Height in cm"
-                      value={height}
-                      onChange={(e) => setHeight(e.target.value)}
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300 flex-1"
+                      placeholder="Enter weight"
+                      value={weight}
+                      onChange={(e) => setWeight(e.target.value)}
+                      className="glass-panel glow-border border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300 flex-1"
                     />
-                  ) : (
-                    <div className="flex gap-2 flex-1">
-                      <Input
-                        type="number"
-                        placeholder="Feet"
-                        value={feet}
-                        onChange={(e) => setFeet(e.target.value)}
-                        className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Inches"
-                        value={inches}
-                        onChange={(e) => setInches(e.target.value)}
-                        className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
-                      />
-                    </div>
-                  )}
+                    <Select value={weightUnit} onValueChange={setWeightUnit}>
+                      <SelectTrigger className="glass-panel glow-border border-gray-700 text-white w-16 sm:w-20">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="glass-panel border-white/10 scale-in">
+                        <SelectItem value="kg">kg</SelectItem>
+                        <SelectItem value="lbs">lbs</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
 
-            {/* Calculation Options */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-lg font-semibold text-white mb-4">Calculation Method</h3>
-              
-              <div className="space-y-2">
-                <Label htmlFor="bodyFat" className="text-gray-300">Body Fat % (optional - for highest accuracy)</Label>
-                <Input
-                  id="bodyFat"
-                  type="number"
-                  step="0.1"
-                  placeholder="Enter body fat percentage"
-                  value={bodyFat}
-                  onChange={(e) => setBodyFat(e.target.value)}
-                  className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
-                />
-                <p className="text-xs text-gray-500">If known, this provides the most accurate calculation</p>
-              </div>
+                <div className="space-y-2">
+                  <Label htmlFor="height" className="glass-text opacity-90 text-[10px] font-black uppercase">Height *</Label>
+                  <div className="flex gap-2">
+                    <Select value={heightUnit} onValueChange={setHeightUnit}>
+                      <SelectTrigger className="glass-panel glow-border border-gray-700 text-white w-16 sm:w-20">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="glass-panel border-white/10 scale-in">
+                        <SelectItem value="cm">cm</SelectItem>
+                        <SelectItem value="ft">ft</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    {heightUnit === "cm" ? (
+                      <Input
+                        type="number"
+                        placeholder="Height in cm"
+                        value={height}
+                        onChange={(e) => setHeight(e.target.value)}
+                        className="glass-panel glow-border border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300 flex-1"
+                      />
+                    ) : (
+                      <div className="flex gap-2 flex-1">
+                        <Input
+                          type="number"
+                          placeholder="Feet"
+                          value={feet}
+                          onChange={(e) => setFeet(e.target.value)}
+                          className="glass-panel glow-border border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
+                        />
+                        <Input
+                          type="number"
+                          placeholder="Inches"
+                          value={inches}
+                          onChange={(e) => setInches(e.target.value)}
+                          className="glass-panel glow-border border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
 
-              <div className="space-y-2">
-                <Label htmlFor="method" className="text-gray-300">Formula (if body fat % not available)</Label>
-                <Select value={calculationMethod} onValueChange={setCalculationMethod}>
-                  <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white hover:border-green-500/50 focus:border-green-500 transition-all duration-300">
-                    <SelectValue placeholder="Select calculation method" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
-                    <SelectItem value="boer">Boer Formula (WHO/CDC Referenced)</SelectItem>
-                    <SelectItem value="james">James Formula (WHO/CDC Referenced)</SelectItem>
-                    <SelectItem value="hume">Hume Formula (WHO/CDC Referenced)</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+              <motion.div variants={itemVariants} className="space-y-6">
+                <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Partitioning Parameters</h4>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="bodyFat" className="glass-text opacity-90 text-[10px] font-black uppercase">Body Fat % (optional)</Label>
+                  <Input
+                    id="bodyFat"
+                    type="number"
+                    step="0.1"
+                    placeholder="Enter body fat percentage"
+                    value={bodyFat}
+                    onChange={(e) => setBodyFat(e.target.value)}
+                    className="glass-panel glow-border border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
+                  />
+                  <p className="text-[10px] text-slate-500 uppercase font-bold tracking-tighter mt-1">Direct measurement provides maximum fidelity</p>
+                </div>
 
-              <div className="mt-6 p-4 bg-green-900/20 rounded-lg border border-green-800/50">
-                <h4 className="text-sm font-semibold text-green-300 mb-2">About Lean Body Mass</h4>
-                <ul className="text-xs text-gray-400 space-y-1">
-                  <li>• Includes muscle, bone, organs, and water</li>
-                  <li>• Excludes body fat</li>
-                  <li>• Important for metabolic health</li>
-                  <li>• Used in fitness and medical assessments</li>
-                  <li>• FFMI: Fat-Free Mass Index normalizes for height</li>
-                </ul>
-              </div>
-            </motion.div>
+                <div className="space-y-2">
+                  <Label htmlFor="method" className="glass-text opacity-90 text-[10px] font-black uppercase">Algorithmic Base</Label>
+                  <Select value={calculationMethod} onValueChange={setCalculationMethod}>
+                    <SelectTrigger className="glass-panel glow-border border-gray-700 text-white hover:border-green-500/50 focus:border-green-500 transition-all duration-300">
+                      <SelectValue placeholder="Select calculation method" />
+                    </SelectTrigger>
+                    <SelectContent className="glass-panel border-white/10 scale-in">
+                      <SelectItem value="boer">Boer Formula (Standard)</SelectItem>
+                      <SelectItem value="james">James Formula (Standard)</SelectItem>
+                      <SelectItem value="hume">Hume Formula (Standard)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="mt-6 p-6 bg-green-500/5 rounded-[2rem] border border-green-500/10">
+                  <h4 className="text-[10px] font-black text-green-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                    <Activity className="h-3 w-3" />
+                    Composition Context
+                  </h4>
+                  <p className="text-[10px] text-slate-500 leading-relaxed font-medium uppercase tracking-tighter">
+                    Partitioning accounts for muscle, skeletal structure, vital organs, and cellular hydration. Lipid mass is excluded from the final resolution.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </div>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-6">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 pt-8">
             <Button
               onClick={calculateLeanBodyMass}
-              disabled={isCalculating}
-              className="flex-1 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold py-3 px-4 sm:px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/25"
+              className={`flex-1 btn-category-composition py-5 sm:py-8 rounded-[2rem] text-base sm:text-lg md:text-xl font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-[0.98] ${!weight || !(heightUnit === 'ft' ? (feet && inches) : height) || !gender ? 'opacity-70 grayscale-[0.5]' : ''}`}
             >
               {isCalculating ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Calculating...
+                  <Loader2 className="mr-3 h-7 w-7 animate-spin text-white" />
+                  Analyzing Bio-Data...
                 </>
               ) : (
                 <>
-                  <Activity className="mr-2 h-4 w-4" />
-                  Calculate Lean Body Mass
+                  <Activity className="mr-3 h-7 w-7" />
+                  Resolve Composition
                 </>
               )}
             </Button>
-
+            
             <Button
               onClick={resetCalculator}
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-300 px-4 sm:px-6 sm:flex-none"
+              className="w-full sm:w-auto border-white/10 bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white flex items-center gap-3 px-6 py-4 md:px-10 md:py-6 lg:px-12 lg:py-5 sm:py-8 rounded-[2rem] shadow-lg backdrop-blur-md transition-all font-black text-sm sm:text-base md:text-lg uppercase"
             >
-              <RotateCcw className="mr-2 h-4 w-4" />
+              <RotateCcw className="h-6 w-6" />
               Reset
             </Button>
           </motion.div>
+        </CardContent>
+      </Card>
 
-          <AnimatePresence>
+      <AnimatePresence>
             {result && (
               <motion.div
                 variants={resultVariants}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                className="mt-8 p-6 bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-xl border border-gray-700 backdrop-blur-sm"
+                className="mt-16 premium-result-card p-6 sm:p-12 md:p-16 lg:p-20 overflow-hidden relative"
               >
-                <div className="text-center mb-6">
-                  <motion.div
-                    className="text-6xl font-bold mb-2"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.5, type: "spring", bounce: 0.6 }}
-                  >
-                    <span className={result.color}>{result.leanBodyMass} kg</span>
-                  </motion.div>
-                  <h3 className={`text-2xl font-semibold mb-2 ${result.color}`}>{result.category}</h3>
-                  <p className="text-gray-400">FFMI: {result.ffmi}</p>
+                <div className="absolute top-0 right-0 p-6 sm:p-8 lg:p-10 font-black text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] lg:text-[12rem] text-green-500 opacity-[0.03] select-none pointer-events-none uppercase">
+                  ORACLE
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6">
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-white flex items-center">
-                      <Target className="h-5 w-5 mr-2 text-green-400" />
-                      Body Composition
-                    </h4>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Lean Mass:</span>
-                        <span className="text-white font-medium">{result.leanBodyMass} kg ({result.leanBodyMassPercent}%)</span>
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 sm:p-6 lg:p-8 mb-16 relative z-10">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-2xl bg-green-500/10 border border-green-500/20">
+                      <Activity className="h-8 w-8 text-green-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-3xl font-black text-white tracking-tight uppercase">Mass Integrity</h3>
+                      <p className="text-slate-500 text-sm font-bold tracking-widest uppercase">Synchronization complete</p>
+                    </div>
+                  </div>
+                  <Button
+                    onClick={exportToPDF}
+                    className="w-full md:w-auto bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl px-10 py-5 sm:py-8 font-black transition-all uppercase tracking-widest text-sm"
+                  >
+                    <Download className="h-5 w-5 mr-3" />
+                    Export Assessment
+                  </Button>
+                </div>
+
+                <div className="text-center mb-24 relative z-10">
+                  <motion.div
+                    className="text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] lg:text-[12rem] font-black result-value-glow bg-gradient-to-br from-white via-white/80 to-white/20 bg-clip-text text-transparent leading-none"
+                    initial={{ filter: "blur(20px)", y: 20 }}
+                    animate={{ filter: "blur(0px)", y: 0 }}
+                    transition={{ duration: 1 }}
+                  >
+                    {result.leanBodyMass}<span className="text-4xl text-green-400/60 font-black tracking-widest ml-4 uppercase">kg</span>
+                  </motion.div>
+                  <div className={`inline-flex items-center px-6 py-3 sm:px-10 sm:py-4 md:px-16 md:py-5 rounded-full text-2xl font-black uppercase tracking-[0.5em] ${result.color} bg-white/5 border border-white/20 mt-10 shadow-2xl`}>
+                    STRATUM: {result.category}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:p-8 lg:p-10 mb-16 relative z-10">
+                  <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 space-y-8">
+                    <div className="flex items-center gap-4 mb-2">
+                      <Target className="h-7 w-7 text-green-400" />
+                      <h4 className="text-xl font-black text-white uppercase tracking-widest">Anatomical Partition</h4>
+                    </div>
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-center p-6 rounded-[2.5rem] bg-green-500/10 border border-green-400/20">
+                        <span className="text-green-400 font-black text-sm uppercase">Lean Partition</span>
+                        <span className="text-white font-black text-2xl">{result.leanBodyMass} <span className="text-xs opacity-40 uppercase ml-1">kg</span></span>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Fat Mass:</span>
-                        <span className="text-white font-medium">{result.fatMass} kg ({result.fatMassPercent}%)</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Method:</span>
-                        <span className="text-white font-medium">{result.method}</span>
+                      <div className="flex justify-between items-center p-6 rounded-[2.5rem] bg-white/5 border border-white/5">
+                        <span className="text-late-400 font-black text-sm uppercase">Adipose Partition</span>
+                        <span className="text-white font-black text-2xl">{result.fatMass} <span className="text-xs opacity-40 uppercase ml-1">kg</span></span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-white flex items-center">
-                      <AlertCircle className="h-5 w-5 mr-2 text-yellow-400" />
-                      Assessment
-                    </h4>
-                    <p className="text-gray-300 text-sm leading-relaxed">{result.healthInsight}</p>
-                    <p className="text-gray-400 text-xs">Accuracy: {result.accuracy}</p>
+                  <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 flex flex-col justify-center gap-6 sm:p-8 lg:p-10">
+                    <div className="flex items-center gap-6">
+                      <div className="p-5 rounded-3xl bg-green-500/10 border border-green-500/20 shadow-inner">
+                        <Activity className="h-8 w-8 text-green-400" />
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">FFMI Analysis</div>
+                        <div className="text-xl font-black text-white tracking-widest uppercase mt-1">{result.ffmi} INDEX</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-6">
+                      <div className="p-5 rounded-3xl bg-blue-500/10 border border-blue-500/20 shadow-inner">
+                        <AlertCircle className="h-8 w-8 text-blue-400" />
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Assessment Rank</div>
+                        <div className="text-xl font-black text-white tracking-widest uppercase mt-1">{result.category} STATUS</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                    <CheckCircle className="h-5 w-5 mr-2 text-green-400" />
-                    Recommendations
-                  </h4>
-                  <ul className="space-y-2">
+                <div className="mb-16 p-6 sm:p-10 md:p-14 rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] bg-green-500/5 border border-green-500/10 backdrop-blur-3xl relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-30" />
+                  <div className="flex items-center gap-4 mb-10 relative z-10">
+                    <CheckCircle className="h-8 w-8 text-green-400 shadow-glow" />
+                    <h4 className="text-2xl font-black text-white uppercase tracking-widest">Optimization Strategy</h4>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
                     {result.recommendations.map((rec, index) => (
-                      <motion.li
+                      <motion.div
                         key={index}
-                        className="flex items-start text-gray-300 text-sm"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.8 + index * 0.1 }}
+                        className="flex items-center gap-4 p-6 rounded-[2.5rem] bg-white/5 border border-white/5 hover:bg-green-500/5 transition-all group"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 + index * 0.1 }}
                       >
-                        <span className="text-green-400 mr-2">•</span>
-                        {rec}
-                      </motion.li>
+                        <div className="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_15px_rgba(34,197,94,1)] group-hover:scale-150 transition-transform" />
+                        <span className="text-slate-400 font-bold text-[10px] uppercase tracking-wider leading-relaxed">{rec}</span>
+                      </motion.div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
-
-                <motion.div
-                  className="flex gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.2 }}
-                >
-                  <Button
-                    onClick={exportToPDF}
-                    disabled={isExporting}
-                    className="flex-1 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white transition-all duration-300"
-                  >
-                    {isExporting ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Generating PDF...
-                      </>
-                    ) : (
-                      <>
-                        <Download className="mr-2 h-4 w-4" />
-                        Export LBM Report
-                      </>
-                    )}
-                  </Button>
-                </motion.div>
               </motion.div>
             )}
           </AnimatePresence>
-        </CardContent>
-      </Card>
     </motion.div>
   );
 };

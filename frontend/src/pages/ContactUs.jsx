@@ -119,10 +119,10 @@ Source: BMI Calculator Contact Form
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
             Contact Us
           </h1>
-          <p className="text-xl text-gray-300 mb-2">
+          <p className="text-xl glass-text opacity-90 mb-2">
             Get in touch with Venom Stone Network for support, feedback, or collaboration
           </p>
-          <p className="text-gray-400">
+          <p className="text-slate-400">
             We're here to help with your BMI calculator questions and health information needs
           </p>
         </div>
@@ -130,13 +130,13 @@ Source: BMI Calculator Contact Form
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Contact Form */}
           <div className="lg:col-span-2">
-            <Card className="bg-gray-900/50 border-gray-800">
+            <Card className="glass-panel glow-border">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2 text-2xl text-white">
                   <Send className="h-6 w-6 text-blue-400" />
                   <span>Send us a Message</span>
                 </CardTitle>
-                <p className="text-gray-400 text-sm mt-2">
+                <p className="text-slate-400 text-sm mt-2">
                   Fill out the form below and we'll get back to you within 24 hours during business days.
                 </p>
               </CardHeader>
@@ -152,7 +152,7 @@ Source: BMI Calculator Contact Form
                         placeholder="Enter your full name"
                         value={formData.name}
                         onChange={(e) => handleInputChange("name", e.target.value)}
-                        className="bg-gray-800 border-gray-700 text-white focus:border-blue-400"
+                        className="glass-input focus:border-blue-400"
                         required
                       />
                     </div>
@@ -164,7 +164,7 @@ Source: BMI Calculator Contact Form
                         placeholder="your.email@example.com"
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
-                        className="bg-gray-800 border-gray-700 text-white focus:border-blue-400"
+                        className="glass-input focus:border-blue-400"
                         required
                       />
                     </div>
@@ -180,16 +180,16 @@ Source: BMI Calculator Contact Form
                         placeholder="Brief subject line"
                         value={formData.subject}
                         onChange={(e) => handleInputChange("subject", e.target.value)}
-                        className="bg-gray-800 border-gray-700 text-white focus:border-blue-400"
+                        className="glass-input focus:border-blue-400"
                       />
                     </div>
                     <div className="space-y-2">
                       <Label className="text-white">Inquiry Category</Label>
                       <Select value={formData.category} onValueChange={(value) => handleInputChange("category", value)}>
-                        <SelectTrigger className="bg-gray-800 border-gray-700 text-white focus:border-blue-400">
+                        <SelectTrigger className="glass-input focus:border-blue-400">
                           <SelectValue placeholder="Select category" />
                         </SelectTrigger>
-                        <SelectContent className="bg-gray-800 border-gray-700">
+                        <SelectContent className="glass-panel border-white/10 scale-in">
                           <SelectItem value="general">General Inquiry</SelectItem>
                           <SelectItem value="technical">Technical Support</SelectItem>
                           <SelectItem value="feedback">Feedback & Suggestions</SelectItem>
@@ -210,10 +210,10 @@ Source: BMI Calculator Contact Form
                       placeholder="Please describe your inquiry in detail. For technical issues, include your browser type and device information..."
                       value={formData.message}
                       onChange={(e) => handleInputChange("message", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white min-h-[150px] focus:border-blue-400"
+                      className="glass-input min-h-[150px] focus:border-blue-400"
                       required
                     />
-                    <p className="text-xs text-gray-400">
+                    <p className="text-xs text-slate-400">
                       Minimum 10 characters. For urgent health concerns, please consult a healthcare professional directly.
                     </p>
                   </div>
@@ -243,7 +243,7 @@ Source: BMI Calculator Contact Form
                     )}
                   </Button>
 
-                  <p className="text-sm text-gray-400 text-center">
+                  <p className="text-sm text-slate-400 text-center">
                     We typically respond within 24 hours during business days (Monday-Friday, IST).
                   </p>
                 </form>
@@ -254,7 +254,7 @@ Source: BMI Calculator Contact Form
           {/* Contact Information Sidebar */}
           <div className="space-y-6">
             {/* Primary Contact Details */}
-            <Card className="bg-gray-900/50 border-gray-800">
+            <Card className="glass-panel glow-border">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2 text-xl text-white">
                   <Mail className="h-5 w-5 text-blue-400" />
@@ -272,7 +272,7 @@ Source: BMI Calculator Contact Form
                     >
                       venomstonenetwork@gmail.com
                     </a>
-                    <p className="text-gray-400 text-xs mt-1">Primary contact for all inquiries</p>
+                    <p className="text-slate-400 text-xs mt-1">Primary contact for all inquiries</p>
                   </div>
                 </div>
                 
@@ -280,8 +280,8 @@ Source: BMI Calculator Contact Form
                   <Phone className="h-5 w-5 text-green-400 mt-1" />
                   <div>
                     <p className="text-white font-medium">Phone Support</p>
-                    <p className="text-gray-400 text-sm">Coming Soon</p>
-                    <p className="text-gray-400 text-xs">Phone support will be available in future updates</p>
+                    <p className="text-slate-400 text-sm">Coming Soon</p>
+                    <p className="text-slate-400 text-xs">Phone support will be available in future updates</p>
                   </div>
                 </div>
                 
@@ -289,15 +289,15 @@ Source: BMI Calculator Contact Form
                   <MapPin className="h-5 w-5 text-blue-400 mt-1" />
                   <div>
                     <p className="text-white font-medium">Location</p>
-                    <p className="text-gray-400 text-sm">India</p>
-                    <p className="text-gray-400 text-xs">Operating under Indian jurisdiction</p>
+                    <p className="text-slate-400 text-sm">India</p>
+                    <p className="text-slate-400 text-xs">Operating under Indian jurisdiction</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
             {/* Business Hours */}
-            <Card className="bg-gray-900/50 border-gray-800">
+            <Card className="glass-panel glow-border">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2 text-xl text-white">
                   <Clock className="h-5 w-5 text-green-400" />
@@ -307,19 +307,19 @@ Source: BMI Calculator Contact Form
               <CardContent className="space-y-3">
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-300 text-sm">General Inquiries</span>
+                    <span className="glass-text opacity-90 text-sm">General Inquiries</span>
                     <span className="text-white text-sm">24-48 hours</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-300 text-sm">Technical Support</span>
+                    <span className="glass-text opacity-90 text-sm">Technical Support</span>
                     <span className="text-white text-sm">12-24 hours</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-300 text-sm">Privacy Concerns</span>
+                    <span className="glass-text opacity-90 text-sm">Privacy Concerns</span>
                     <span className="text-white text-sm">24 hours</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-300 text-sm">Urgent Issues</span>
+                    <span className="glass-text opacity-90 text-sm">Urgent Issues</span>
                     <span className="text-green-300 text-sm">Same day</span>
                   </div>
                 </div>
@@ -333,7 +333,7 @@ Source: BMI Calculator Contact Form
             </Card>
 
             {/* Support Categories */}
-            <Card className="bg-gray-900/50 border-gray-800">
+            <Card className="glass-panel glow-border">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2 text-xl text-white">
                   <Headphones className="h-5 w-5 text-green-400" />
@@ -344,42 +344,42 @@ Source: BMI Calculator Contact Form
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                    <span className="text-gray-300 text-sm">BMI Calculator Technical Issues</span>
+                    <span className="glass-text opacity-90 text-sm">BMI Calculator Technical Issues</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    <span className="text-gray-300 text-sm">Health Information Questions</span>
+                    <span className="glass-text opacity-90 text-sm">Health Information Questions</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                    <span className="text-gray-300 text-sm">Privacy & Data Protection</span>
+                    <span className="glass-text opacity-90 text-sm">Privacy & Data Protection</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                    <span className="text-gray-300 text-sm">Accessibility Support</span>
+                    <span className="glass-text opacity-90 text-sm">Accessibility Support</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-red-400 rounded-full"></div>
-                    <span className="text-gray-300 text-sm">Website Performance</span>
+                    <span className="glass-text opacity-90 text-sm">Website Performance</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
             {/* FAQ Quick Access */}
-            <Card className="bg-gray-900/50 border-gray-800">
+            <Card className="glass-panel glow-border">
               <CardContent className="pt-6">
                 <div className="flex items-center space-x-2 mb-3">
                   <FileQuestion className="h-5 w-5 text-blue-400" />
                   <h4 className="text-white font-semibold">Quick Help</h4>
                 </div>
-                <p className="text-gray-400 text-sm mb-4">
+                <p className="text-slate-400 text-sm mb-4">
                   Looking for immediate answers? Check out our comprehensive FAQ section covering 
                   BMI calculations, health insights, and common technical questions.
                 </p>
                 <Button 
                   variant="outline" 
-                  className="w-full border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white"
+                  className="w-full border-gray-600 glass-text opacity-90 hover:bg-gray-800 hover:text-white"
                   onClick={() => {
                     // Scroll to FAQ section on home page
                     window.location.href = '/#faq';
@@ -392,17 +392,17 @@ Source: BMI Calculator Contact Form
             </Card>
 
             {/* Professional Credentials */}
-            <Card className="bg-gray-900/50 border-gray-800">
+            <Card className="glass-panel glow-border">
               <CardContent className="pt-6">
                 <div className="flex items-center space-x-2 mb-3">
                   <Users className="h-5 w-5 text-green-400" />
                   <h4 className="text-white font-semibold">About Our Team</h4>
                 </div>
-                <p className="text-gray-400 text-sm mb-3">
+                <p className="text-slate-400 text-sm mb-3">
                   Venom Stone Network is committed to providing accurate, reliable health calculation tools 
                   based on established medical guidelines and WHO standards.
                 </p>
-                <ul className="text-xs text-gray-400 space-y-1">
+                <ul className="text-xs text-slate-400 space-y-1">
                   <li>• Following WHO BMI guidelines</li>
                   <li>• DPDP Act 2023 compliant</li>
                   <li>• Regular health data updates</li>
@@ -415,31 +415,31 @@ Source: BMI Calculator Contact Form
 
         {/* Additional Information */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardContent className="pt-6 text-center">
               <Shield className="h-8 w-8 text-blue-400 mx-auto mb-3" />
               <h4 className="text-white font-semibold mb-2">Privacy Protected</h4>
-              <p className="text-gray-400 text-sm">
+              <p className="text-slate-400 text-sm">
                 All communications are confidential and processed according to our Privacy Policy and DPDP Act requirements.
               </p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardContent className="pt-6 text-center">
               <Clock className="h-8 w-8 text-green-400 mx-auto mb-3" />
               <h4 className="text-white font-semibold mb-2">Fast Responses</h4>
-              <p className="text-gray-400 text-sm">
+              <p className="text-slate-400 text-sm">
                 Our team prioritizes quick, helpful responses to ensure you get the support you need when you need it.
               </p>
             </CardContent>
           </Card>
 
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardContent className="pt-6 text-center">
               <Users className="h-8 w-8 text-purple-400 mx-auto mb-3" />
               <h4 className="text-white font-semibold mb-2">Expert Support</h4>
-              <p className="text-gray-400 text-sm">
+              <p className="text-slate-400 text-sm">
                 Get assistance from our knowledgeable team familiar with BMI calculations and health information systems.
               </p>
             </CardContent>

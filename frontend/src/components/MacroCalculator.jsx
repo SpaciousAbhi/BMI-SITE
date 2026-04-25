@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Target, Info, TrendingUp, PieChart, Utensils } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Target, Info, TrendingUp, PieChart, Utensils, RotateCcw, Zap, CheckCircle, AlertCircle, Download, Activity, FileText, Loader2, Wheat, Beef, Droplets, Apple } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -26,7 +27,6 @@ const MacroCalculator = () => {
     gender: "",
     activityLevel: "",
     goal: "",
-    // Advanced mode fields
     bodyFat: "",
     fitnessGoal: "",
     dietaryPreference: "",
@@ -34,72 +34,54 @@ const MacroCalculator = () => {
     bodyType: ""
   });
 
-  const macroPresets = [
-    {
-      value: "balanced",
-      label: "Balanced (General Health)",
-      protein: 25,
-      carbs: 45,
-      fat: 30,
-      description: "Well-rounded approach for general health and maintenance",
-      recommended: true
-    },
-    {
-      value: "highProtein",
-      label: "High Protein (Muscle Building)",
-      protein: 35,
-      carbs: 35,
-      fat: 30,
-      description: "Optimal for muscle building and strength training"
-    },
-    {
-      value: "lowCarb",
-      label: "Low Carb (Fat Loss)",
-      protein: 30,
-      carbs: 20,
-      fat: 50,
-      description: "Effective for fat loss and metabolic health"
-    },
-    {
-      value: "highCarb",
-      label: "High Carb (Endurance)",
-      protein: 20,
-      carbs: 60,
-      fat: 20,
-      description: "Ideal for endurance athletes and high-intensity training"
-    },
-    {
-      value: "keto",
-      label: "Ketogenic",
-      protein: 25,
-      carbs: 5,
-      fat: 70,
-      description: "Very low carb for ketosis and rapid fat loss"
-    },
-    {
-      value: "mediterranean",
-      label: "Mediterranean",
-      protein: 20,
-      carbs: 45,
-      fat: 35,
-      description: "Heart-healthy approach with moderate healthy fats"
+  const containerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, staggerChildren: 0.1 }
     }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const resultVariants = {
+    hidden: { opacity: 0, scale: 0.95, filter: "blur(10px)" },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      filter: "blur(0px)",
+      transition: { type: "spring", stiffness: 100, damping: 20 }
+    },
+    exit: { opacity: 0, scale: 0.95, filter: "blur(10px)" }
+  };
+
+  const macroPresets = [
+    { value: "balanced", label: "Equilibrium", protein: 25, carbs: 45, fat: 30, description: "Homeostasis focused" },
+    { value: "highProtein", label: "Anabolic", protein: 35, carbs: 35, fat: 30, description: "Muscle synthesis" },
+    { value: "lowCarb", label: "Ketogenic Lean", protein: 30, carbs: 20, fat: 50, description: "Lipid oxidation" },
+    { value: "highCarb", label: "Glyco-Load", protein: 20, carbs: 60, fat: 20, description: "Performance fuel" },
+    { value: "keto", label: "Strict Keto", protein: 25, carbs: 5, fat: 70, description: "Deep ketosis" },
+    { value: "mediterranean", label: "Longevity", protein: 20, carbs: 45, fat: 35, description: "Heart health" }
   ];
 
   const activityLevels = [
-    { value: "1.2", label: "Sedentary", description: "Little/no exercise" },
-    { value: "1.375", label: "Lightly Active", description: "Light exercise 1-3 days/week" },
-    { value: "1.55", label: "Moderately Active", description: "Moderate exercise 3-5 days/week" },
-    { value: "1.725", label: "Very Active", description: "Hard exercise 6-7 days/week" },
-    { value: "1.9", label: "Extremely Active", description: "Very hard exercise, physical job" }
+    { value: "1.2", label: "Sedentary", description: "Minimal Flux" },
+    { value: "1.375", label: "Light", description: "Base Activity" },
+    { value: "1.55", label: "Moderate", description: "Active State" },
+    { value: "1.725", label: "High", description: "Intense Outlay" },
+    { value: "1.9", label: "Extreme", description: "Pro Athlete" }
   ];
 
   const goals = [
-    { value: "maintain", label: "Maintain Weight", modifier: 0, description: "Keep current weight stable" },
-    { value: "lose0.5", label: "Lose 0.5 kg/week", modifier: -250, description: "Gradual weight loss" },
-    { value: "lose1", label: "Lose 1 kg/week", modifier: -500, description: "Moderate weight loss" },
-    { value: "gain0.5", label: "Gain 0.5 kg/week", modifier: 250, description: "Lean muscle building" },
-    { value: "gain1", label: "Gain 1 kg/week", modifier: 500, description: "Aggressive muscle building" }
+    { value: "maintain", label: "Maintenance", modifier: 0, description: "Stable weight" },
+    { value: "lose0.5", label: "Cut (0.5kg/wk)", modifier: -250, description: "Lean definition" },
+    { value: "lose1", label: "Cut (1kg/wk)", modifier: -500, description: "Rapid oxidation" },
+    { value: "gain0.5", label: "Bulk (0.5kg/wk)", modifier: 250, description: "Hypertrophy focus" },
+    { value: "gain1", label: "Bulk (1kg/wk)", modifier: 500, description: "Aggressive mass" }
   ];
 
   const handleInputChange = (field, value) => {
@@ -121,18 +103,13 @@ const MacroCalculator = () => {
   const handleCustomMacroChange = (macro, value) => {
     setCustomMacros(prev => {
       const newMacros = { ...prev, [macro]: value[0] };
-      // Ensure total equals 100%
-      const total = newMacros.protein + newMacros.carbs + newMacros.fat;
-      if (total !== 100) {
-        // Adjust other macros proportionally
-        const remaining = 100 - value[0];
-        const otherMacros = Object.keys(newMacros).filter(key => key !== macro);
-        const otherTotal = otherMacros.reduce((sum, key) => sum + prev[key], 0);
-        
-        otherMacros.forEach(key => {
-          newMacros[key] = Math.round((prev[key] / otherTotal) * remaining);
-        });
-      }
+      const remaining = 100 - value[0];
+      const otherMacros = Object.keys(newMacros).filter(key => key !== macro);
+      const otherTotal = otherMacros.reduce((sum, key) => sum + prev[key], 0);
+      
+      otherMacros.forEach(key => {
+        newMacros[key] = Math.round((prev[key] / (otherTotal || 1)) * remaining);
+      });
       return newMacros;
     });
     setMacroPreset("custom");
@@ -143,7 +120,6 @@ const MacroCalculator = () => {
     const heightInCm = formData.heightUnit === "ft" ? 
       (parseInt(formData.feet) * 30.48) + (parseInt(formData.inches) * 2.54) : height;
 
-    // Using Mifflin-St Jeor (most accurate)
     return gender === "male" 
       ? (10 * weightInKg) + (6.25 * heightInCm) - (5 * age) + 5
       : (10 * weightInKg) + (6.25 * heightInCm) - (5 * age) - 161;
@@ -159,16 +135,13 @@ const MacroCalculator = () => {
       const activityMultiplier = parseFloat(formData.activityLevel);
       const goalModifier = goals.find(g => g.value === formData.goal)?.modifier || 0;
 
-      // Calculate BMR and TDEE
       const bmr = calculateBMR(weight, height, age, formData.gender);
       const tdee = bmr * activityMultiplier;
       const targetCalories = tdee + goalModifier;
 
-      // Get macro ratios
       const macroRatios = macroPreset === "custom" ? customMacros : 
         macroPresets.find(p => p.value === macroPreset);
 
-      // Calculate macronutrients in grams
       const proteinCalories = Math.round(targetCalories * (macroRatios.protein / 100));
       const carbCalories = Math.round(targetCalories * (macroRatios.carbs / 100));
       const fatCalories = Math.round(targetCalories * (macroRatios.fat / 100));
@@ -177,40 +150,15 @@ const MacroCalculator = () => {
       const carbGrams = Math.round(carbCalories / 4);
       const fatGrams = Math.round(fatCalories / 9);
 
-      // Calculate protein per kg body weight
       const weightInKg = formData.weightUnit === "lbs" ? weight * 0.453592 : weight;
       const proteinPerKg = (proteinGrams / weightInKg).toFixed(1);
 
-      // Generate meal distribution
       const mealDistribution = {
-        breakfast: {
-          protein: Math.round(proteinGrams * 0.25),
-          carbs: Math.round(carbGrams * 0.25),
-          fat: Math.round(fatGrams * 0.25),
-          calories: Math.round(targetCalories * 0.25)
-        },
-        lunch: {
-          protein: Math.round(proteinGrams * 0.30),
-          carbs: Math.round(carbGrams * 0.35),
-          fat: Math.round(fatGrams * 0.30),
-          calories: Math.round(targetCalories * 0.30)
-        },
-        dinner: {
-          protein: Math.round(proteinGrams * 0.30),
-          carbs: Math.round(carbGrams * 0.25),
-          fat: Math.round(fatGrams * 0.30),
-          calories: Math.round(targetCalories * 0.30)
-        },
-        snacks: {
-          protein: Math.round(proteinGrams * 0.15),
-          carbs: Math.round(carbGrams * 0.15),
-          fat: Math.round(fatGrams * 0.15),
-          calories: Math.round(targetCalories * 0.15)
-        }
+        breakfast: { protein: Math.round(proteinGrams * 0.25), carbs: Math.round(carbGrams * 0.25), fat: Math.round(fatGrams * 0.25), calories: Math.round(targetCalories * 0.25) },
+        lunch: { protein: Math.round(proteinGrams * 0.35), carbs: Math.round(carbGrams * 0.35), fat: Math.round(fatGrams * 0.30), calories: Math.round(targetCalories * 0.35) },
+        dinner: { protein: Math.round(proteinGrams * 0.30), carbs: Math.round(carbGrams * 0.30), fat: Math.round(fatGrams * 0.30), calories: Math.round(targetCalories * 0.30) },
+        snacks: { protein: Math.round(proteinGrams * 0.10), carbs: Math.round(carbGrams * 0.10), fat: Math.round(fatGrams * 0.15), calories: Math.round(targetCalories * 0.10) }
       };
-
-      // Generate food recommendations
-      const foodRecommendations = generateFoodRecommendations(macroPreset, formData.dietaryPreference);
 
       setResult({
         targetCalories: Math.round(targetCalories),
@@ -222,75 +170,24 @@ const MacroCalculator = () => {
           fat: { grams: fatGrams, calories: fatCalories, percentage: macroRatios.fat }
         },
         proteinPerKg,
-        selectedPreset: macroPresets.find(p => p.value === macroPreset) || { label: "Custom", description: "Custom macro distribution" },
-        mealDistribution,
-        foodRecommendations
+        selectedPreset: macroPresets.find(p => p.value === macroPreset) || { label: "Sovereign (Custom)", description: "User defined allocation" },
+        mealDistribution
       });
       
       setIsCalculating(false);
     }, 1500);
   };
 
-  const generateFoodRecommendations = (preset, dietaryPreference) => {
-    const recommendations = {
-      protein: [],
-      carbs: [],
-      fat: []
-    };
-
-    // Protein sources
-    if (dietaryPreference === "vegetarian" || dietaryPreference === "vegan") {
-      recommendations.protein = ["Lentils", "Chickpeas", "Tofu", "Tempeh", "Quinoa", "Greek yogurt", "Eggs"];
-      if (dietaryPreference === "vegan") {
-        recommendations.protein = recommendations.protein.filter(item => !["Greek yogurt", "Eggs"].includes(item));
-        recommendations.protein.push("Nutritional yeast", "Hemp seeds", "Spirulina");
-      }
-    } else {
-      recommendations.protein = ["Chicken breast", "Salmon", "Lean beef", "Turkey", "Eggs", "Greek yogurt", "Cottage cheese", "Tuna"];
-    }
-
-    // Carbohydrate sources
-    if (preset === "keto" || preset === "lowCarb") {
-      recommendations.carbs = ["Leafy greens", "Broccoli", "Cauliflower", "Zucchini", "Bell peppers", "Asparagus"];
-    } else {
-      recommendations.carbs = ["Brown rice", "Quinoa", "Sweet potatoes", "Oats", "Whole wheat bread", "Fruits", "Vegetables"];
-    }
-
-    // Fat sources
-    if (preset === "keto") {
-      recommendations.fat = ["Avocado", "MCT oil", "Olive oil", "Nuts", "Seeds", "Fatty fish", "Coconut oil", "Butter"];
-    } else {
-      recommendations.fat = ["Avocado", "Olive oil", "Nuts", "Seeds", "Fatty fish", "Nut butters"];
-    }
-
-    return recommendations;
-  };
-
   const validateForm = () => {
     const requiredFields = ["weight", "age", "gender", "activityLevel", "goal"];
-    const heightValid = formData.heightUnit === "ft" ? 
-      (formData.feet && formData.inches) : formData.height;
-    
+    const heightValid = formData.heightUnit === "ft" ? (formData.feet && formData.inches) : formData.height;
     return requiredFields.every(field => formData[field]) && heightValid;
   };
 
   const resetForm = () => {
     setFormData({
-      weight: "",
-      weightUnit: "kg",
-      height: "",
-      heightUnit: "cm",
-      feet: "",
-      inches: "",
-      age: "",
-      gender: "",
-      activityLevel: "",
-      goal: "",
-      bodyFat: "",
-      fitnessGoal: "",
-      dietaryPreference: "",
-      workoutType: "",
-      bodyType: ""
+      weight: "", weightUnit: "kg", height: "", heightUnit: "cm", feet: "", inches: "", age: "", gender: "", activityLevel: "", goal: "",
+      bodyFat: "", fitnessGoal: "", dietaryPreference: "", workoutType: "", bodyType: ""
     });
     setResult(null);
     setMacroPreset("balanced");
@@ -298,312 +195,261 @@ const MacroCalculator = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6">
-      <Card className="bg-gray-900/50 border-gray-800">
-        <CardHeader className="text-center">
-          <div className="flex items-center justify-center mb-4">
-            <div className="p-3 rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 mr-4">
-              <PieChart className="h-8 w-8 text-green-400" />
-            </div>
-            <div>
-              <CardTitle className="text-3xl font-bold text-white">Macro Calculator</CardTitle>
-              <CardDescription className="text-gray-300 mt-2">
-                Calculate your optimal macronutrient distribution for your specific goals
-              </CardDescription>
-            </div>
-          </div>
+    <motion.div 
+      className="w-full max-w-4xl mx-auto p-4 sm:p-6"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <Card className="glass-panel glow-border border-white/10">
+        <CardHeader className="text-center pb-8 border-b border-white/5 bg-white/[0.02]">
+          <CardTitle className="text-4xl font-black mb-4 flex items-center justify-center gap-3">
+            <motion.div
+              initial={{ rotate: -20, scale: 0.8 }}
+              animate={{ rotate: 0, scale: 1 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="p-3 rounded-2xl bg-lime-500/10 border border-lime-500/20"
+            >
+              <PieChart className="h-10 w-10 text-lime-400 shadow-[0_0_20px_rgba(163,230,53,0.4)]" />
+            </motion.div>
+            <span className="bg-gradient-to-r from-lime-400 via-blue-200 to-lime-400 bg-clip-text text-transparent uppercase tracking-tight">
+              Macronutrient Architect
+            </span>
+          </CardTitle>
+          <p className="text-slate-400 text-lg max-w-xl mx-auto font-medium">
+            Systematic macronutrient allocation for physiological optimization and metabolic dominance.
+          </p>
           
-          <Tabs value={mode} onValueChange={setMode} className="mb-6">
-            <TabsList className="bg-gray-800 border-gray-700">
-              <TabsTrigger value="basic" className="text-gray-300">Basic Mode</TabsTrigger>
-              <TabsTrigger value="advanced" className="text-gray-300">Advanced Mode</TabsTrigger>
-            </TabsList>
-          </Tabs>
+          <div className="flex justify-center mt-8">
+            <Tabs value={mode} onValueChange={setMode} className="w-full max-w-sm">
+              <TabsList className="grid w-full grid-cols-2 bg-white/5 border border-white/10 p-1 rounded-xl">
+                <TabsTrigger value="basic" className="rounded-lg data-[state=active]:bg-white/10 data-[state=active]:text-lime-400 transition-all font-bold">Standard</TabsTrigger>
+                <TabsTrigger value="advanced" className="rounded-lg data-[state=active]:bg-white/10 data-[state=active]:text-emerald-400 transition-all font-bold">Elite</TabsTrigger>
+              </TabsList>
+            </Tabs>
+          </div>
         </CardHeader>
 
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Weight Input */}
-            <div className="space-y-2">
-              <Label htmlFor="weight" className="text-gray-200">Weight *</Label>
-              <div className="flex gap-2">
-                <Input
-                  id="weight"
-                  type="number"
-                  placeholder="Enter weight"
-                  value={formData.weight}
-                  onChange={(e) => handleInputChange("weight", e.target.value)}
-                  className="bg-gray-800 border-gray-700 text-white flex-1"
-                />
-                <Select value={formData.weightUnit} onValueChange={(value) => handleInputChange("weightUnit", value)}>
-                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-16 sm:w-20">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
-                    <SelectItem value="kg">kg</SelectItem>
-                    <SelectItem value="lbs">lbs</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            {/* Height Input */}
-            <div className="space-y-2">
-              <Label htmlFor="height" className="text-gray-200">Height *</Label>
-              <div className="flex gap-2">
-                {formData.heightUnit === "cm" ? (
+        <CardContent className="space-y-10 p-6 sm:p-10 lg:p-12">
+          <div className="space-y-6">
+            <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+              <Activity className="h-3 w-3" />
+              Nutritional Parameters
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:p-6 lg:p-8">
+              <motion.div variants={itemVariants} className="space-y-6">
+                <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Biological Mass</h4>
+                <div className="flex gap-2">
                   <Input
-                    id="height"
                     type="number"
-                    placeholder="Enter height"
-                    value={formData.height}
-                    onChange={(e) => handleInputChange("height", e.target.value)}
-                    className="bg-gray-800 border-gray-700 text-white flex-1"
+                    placeholder="0.0"
+                    value={formData.weight}
+                    onChange={(e) => handleInputChange("weight", e.target.value)}
+                    className="glass-input text-xl py-5 sm:py-7 flex-1 focus:ring-lime-500/50"
                   />
-                ) : (
-                  <div className="flex gap-1 flex-1">
-                    <Input
-                      type="number"
-                      placeholder="ft"
-                      value={formData.feet}
-                      onChange={(e) => handleInputChange("feet", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                    />
-                    <Input
-                      type="number"
-                      placeholder="in"
-                      value={formData.inches}
-                      onChange={(e) => handleInputChange("inches", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                    />
-                  </div>
-                )}
-                <Select value={formData.heightUnit} onValueChange={(value) => handleInputChange("heightUnit", value)}>
-                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-16 sm:w-20">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
-                    <SelectItem value="cm">cm</SelectItem>
-                    <SelectItem value="ft">ft</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
+                  <Select value={formData.weightUnit} onValueChange={(value) => handleInputChange("weightUnit", value)}>
+                    <SelectTrigger className="glass-input w-24 border-white/10 py-5 sm:py-7 text-slate-300 font-bold">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="glass-panel border-white/10">
+                      <SelectItem value="kg">kg</SelectItem>
+                      <SelectItem value="lbs">lbs</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
 
-            {/* Age Input */}
-            <div className="space-y-2">
-              <Label htmlFor="age" className="text-gray-200">Age *</Label>
-              <Input
-                id="age"
-                type="number"
-                placeholder="Enter age"
-                value={formData.age}
-                onChange={(e) => handleInputChange("age", e.target.value)}
-                className="bg-gray-800 border-gray-700 text-white"
-              />
-            </div>
-
-            {/* Gender Input */}
-            <div className="space-y-2">
-              <Label className="text-gray-200">Gender *</Label>
-              <Select value={formData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                  <SelectValue placeholder="Select gender" />
-                </SelectTrigger>
-                <SelectContent className="bg-gray-800 border-gray-700">
-                  <SelectItem value="male">Male</SelectItem>
-                  <SelectItem value="female">Female</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-
-          {/* Activity Level */}
-          <div className="space-y-2">
-            <Label className="text-gray-200">Activity Level *</Label>
-            <Select value={formData.activityLevel} onValueChange={(value) => handleInputChange("activityLevel", value)}>
-              <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                <SelectValue placeholder="Select activity level" />
-              </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-700">
-                {activityLevels.map((level) => (
-                  <SelectItem key={level.value} value={level.value} className="py-3">
-                    <div>
-                      <div className="font-medium">{level.label}</div>
-                      <div className="text-sm text-gray-400">{level.description}</div>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* Goal Selection */}
-          <div className="space-y-2">
-            <Label className="text-gray-200">Goal *</Label>
-            <Select value={formData.goal} onValueChange={(value) => handleInputChange("goal", value)}>
-              <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                <SelectValue placeholder="Select your goal" />
-              </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-700">
-                {goals.map((goal) => (
-                  <SelectItem key={goal.value} value={goal.value} className="py-3">
-                    <div>
-                      <div className="font-medium">{goal.label}</div>
-                      <div className="text-sm text-gray-400">{goal.description}</div>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* Macro Preset Selection */}
-          <div className="space-y-4 pt-4 border-t border-gray-700">
-            <Label className="text-gray-200">Macronutrient Distribution</Label>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-              {macroPresets.map((preset) => (
-                <div
-                  key={preset.value}
-                  className={`p-4 rounded-lg border cursor-pointer transition-all duration-300 ${
-                    macroPreset === preset.value
-                      ? "border-green-500 bg-green-900/20"
-                      : "border-gray-700 bg-gray-800/30 hover:border-gray-600"
-                  }`}
-                  onClick={() => handleMacroPresetChange(preset.value)}
-                >
-                  <div className="flex items-start justify-between mb-2">
-                    <h4 className="font-semibold text-white text-sm">{preset.label}</h4>
-                    {preset.recommended && (
-                      <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full">
-                        Recommended
-                      </span>
+                <div className="space-y-3">
+                  <Label className="text-slate-500 font-black uppercase tracking-[0.2em] text-[10px]">Vertical Scale</Label>
+                  <div className="flex gap-2">
+                    {formData.heightUnit === "cm" ? (
+                      <Input
+                        type="number"
+                        placeholder="Height"
+                        value={formData.height}
+                        onChange={(e) => handleInputChange("height", e.target.value)}
+                        className="glass-input text-xl py-5 sm:py-7 flex-1 focus:ring-lime-500/50"
+                      />
+                    ) : (
+                      <div className="flex gap-2 flex-1">
+                        <Input
+                          type="number"
+                          placeholder="ft"
+                          value={formData.feet}
+                          onChange={(e) => handleInputChange("feet", e.target.value)}
+                          className="glass-input text-xl py-5 sm:py-7 flex-1 focus:ring-lime-500/50"
+                        />
+                        <Input
+                          type="number"
+                          placeholder="in"
+                          value={formData.inches}
+                          onChange={(e) => handleInputChange("inches", e.target.value)}
+                          className="glass-input text-xl py-5 sm:py-7 flex-1 focus:ring-lime-500/50"
+                        />
+                      </div>
                     )}
-                  </div>
-                  <p className="text-xs text-gray-400 mb-3">{preset.description}</p>
-                  <div className="text-xs text-gray-300">
-                    P: {preset.protein}% | C: {preset.carbs}% | F: {preset.fat}%
+                    <Select value={formData.heightUnit} onValueChange={(value) => handleInputChange("heightUnit", value)}>
+                      <SelectTrigger className="glass-input w-24 border-white/10 py-5 sm:py-7 text-slate-300 font-bold">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="glass-panel border-white/10">
+                        <SelectItem value="cm">cm</SelectItem>
+                        <SelectItem value="ft">ft</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-3">
+                    <Label className="text-slate-500 font-black uppercase tracking-[0.15em] text-[10px]">Operational Age</Label>
+                    <Input
+                      type="number"
+                      placeholder="Age"
+                      value={formData.age}
+                      onChange={(e) => handleInputChange("age", e.target.value)}
+                      className="glass-input text-xl py-5 sm:py-7 focus:ring-lime-500/50"
+                    />
+                  </div>
+                  <div className="space-y-3">
+                    <Label className="text-slate-500 font-black uppercase tracking-[0.15em] text-[10px]">Physiological Sex</Label>
+                    <Select value={formData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
+                      <SelectTrigger className="glass-input text-xl border-white/10 py-5 sm:py-7 text-slate-200 font-bold">
+                        <SelectValue placeholder="Identify" />
+                      </SelectTrigger>
+                      <SelectContent className="glass-panel border-white/10">
+                        <SelectItem value="male">Male</SelectItem>
+                        <SelectItem value="female">Female</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="space-y-6">
+                <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Dietary Objectives</h4>
+                <div className="space-y-3">
+                  <Label className="text-slate-500 font-black uppercase tracking-[0.15em] text-[10px]">Energy Load (Activity)</Label>
+                  <Select value={formData.activityLevel} onValueChange={(value) => handleInputChange("activityLevel", value)}>
+                    <SelectTrigger className="glass-input border-white/10 py-5 sm:py-8 text-slate-200">
+                      <SelectValue placeholder="Current Velocity?" />
+                    </SelectTrigger>
+                    <SelectContent className="glass-panel border-white/10">
+                      {activityLevels.map((level) => (
+                        <SelectItem key={level.value} value={level.value} className="py-4">
+                          <div className="flex flex-col">
+                            <span className="font-bold text-white uppercase text-xs">{level.label}</span>
+                            <span className="text-[10px] text-slate-500 font-medium">{level.description}</span>
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-3">
+                  <Label className="text-slate-500 font-black uppercase tracking-[0.15em] text-[10px]">Strategic Target (Goal)</Label>
+                  <Select value={formData.goal} onValueChange={(value) => handleInputChange("goal", value)}>
+                    <SelectTrigger className="glass-input border-white/10 py-5 sm:py-8 text-slate-200">
+                      <SelectValue placeholder="Define Outcome" />
+                    </SelectTrigger>
+                    <SelectContent className="glass-panel border-white/10">
+                      {goals.map((goal) => (
+                        <SelectItem key={goal.value} value={goal.value} className="py-4">
+                          <div className="flex flex-col">
+                            <span className="font-bold text-white uppercase text-xs">{goal.label}</span>
+                            <span className="text-[10px] text-slate-500 font-medium">{goal.description}</span>
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="mt-6 p-6 bg-lime-500/5 rounded-[2rem] border border-lime-500/10 backdrop-blur-3xl">
+                  <h4 className="text-[10px] font-black text-lime-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                    <PieChart className="h-3 w-3" />
+                    Allocation Framework
+                  </h4>
+                  <p className="text-[10px] text-slate-500 font-medium uppercase tracking-tighter leading-relaxed">
+                    Macronutrient distribution is calibrated against TDEE variance and metabolic specificity.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          <div className="space-y-4 pt-6">
+            <Label className="text-lime-400 font-black uppercase tracking-[0.2em] text-[10px] ml-1">Macro Nutrient Protocol</Label>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+              {macroPresets.map((preset) => (
+                <motion.div
+                  key={preset.value}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleMacroPresetChange(preset.value)}
+                  className={`p-4 rounded-3xl border cursor-pointer transition-all ${
+                    macroPreset === preset.value
+                      ? "bg-lime-500/10 border-lime-500/30 ring-1 ring-lime-500/20"
+                      : "bg-white/5 border-white/5 hover:bg-white/10"
+                  }`}
+                >
+                  <div className="text-[10px] font-black text-white uppercase tracking-tighter text-center mb-1">{preset.label}</div>
+                  <div className="text-[8px] text-slate-500 font-black uppercase text-center">{preset.protein}/{preset.carbs}/{preset.fat}</div>
+                </motion.div>
               ))}
             </div>
           </div>
 
-          {/* Custom Macro Sliders */}
-          {macroPreset === "custom" && (
-            <div className="space-y-4 pt-4 border-t border-gray-700">
-              <h3 className="text-lg font-semibold text-green-300">Custom Macro Distribution</h3>
-              
-              <div className="space-y-6">
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <Label className="text-gray-200">Protein</Label>
-                    <span className="text-green-300 font-semibold">{customMacros.protein}%</span>
+          <div className="space-y-8 p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl lg:rounded-[3rem] bg-white/[0.03] border border-white/5 shadow-inner">
+            <h3 className="text-xs font-black text-slate-400 uppercase tracking-[0.3em] flex items-center gap-2">
+              <Activity className="h-4 w-4 text-lime-400" />
+              Dynamic Distribution Tuning
+            </h3>
+            
+            <div className="space-y-10 px-4">
+              {[
+                { id: "protein", label: "Proteins (Amino Profile)", color: "lime", value: customMacros.protein, icon: Beef },
+                { id: "carbs", label: "Carbohydrates (Glycogen)", color: "emerald", value: customMacros.carbs, icon: Wheat },
+                { id: "fat", label: "Lipids (Essential Fats)", color: "cyan", value: customMacros.fat, icon: Droplets }
+              ].map((macro) => (
+                <div key={macro.id} className="space-y-4">
+                  <div className="flex justify-between items-center text-xs font-black uppercase tracking-widest leading-none">
+                    <span className="text-slate-400 flex items-center gap-2">
+                      <macro.icon className="h-4 w-4" />
+                      {macro.label}
+                    </span>
+                    <span className={`text-${macro.color}-400 text-lg`}>{macro.value}%</span>
                   </div>
                   <Slider
-                    value={[customMacros.protein]}
-                    onValueChange={(value) => handleCustomMacroChange("protein", value)}
-                    max={60}
-                    min={10}
-                    step={5}
-                    className="w-full"
-                  />
-                </div>
-
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <Label className="text-gray-200">Carbohydrates</Label>
-                    <span className="text-orange-300 font-semibold">{customMacros.carbs}%</span>
-                  </div>
-                  <Slider
-                    value={[customMacros.carbs]}
-                    onValueChange={(value) => handleCustomMacroChange("carbs", value)}
-                    max={70}
+                    value={[macro.value]}
+                    onValueChange={(val) => handleCustomMacroChange(macro.id, val)}
+                    max={80}
                     min={5}
-                    step={5}
+                    step={1}
                     className="w-full"
                   />
                 </div>
-
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <Label className="text-gray-200">Fat</Label>
-                    <span className="text-yellow-300 font-semibold">{customMacros.fat}%</span>
-                  </div>
-                  <Slider
-                    value={[customMacros.fat]}
-                    onValueChange={(value) => handleCustomMacroChange("fat", value)}
-                    max={70}
-                    min={15}
-                    step={5}
-                    className="w-full"
-                  />
-                </div>
-
-                <div className="text-center text-sm text-gray-400">
-                  Total: {customMacros.protein + customMacros.carbs + customMacros.fat}%
-                </div>
-              </div>
+              ))}
             </div>
-          )}
-
-          {/* Advanced Mode Fields */}
-          {mode === "advanced" && (
-            <div className="space-y-4 pt-4 border-t border-gray-700">
-              <h3 className="text-lg font-semibold text-blue-300 mb-4">Advanced Nutrition Planning</h3>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className="text-gray-200">Dietary Preference</Label>
-                  <Select value={formData.dietaryPreference} onValueChange={(value) => handleInputChange("dietaryPreference", value)}>
-                    <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                      <SelectValue placeholder="Select preference" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
-                      <SelectItem value="omnivore">Omnivore</SelectItem>
-                      <SelectItem value="vegetarian">Vegetarian</SelectItem>
-                      <SelectItem value="vegan">Vegan</SelectItem>
-                      <SelectItem value="pescatarian">Pescatarian</SelectItem>
-                      <SelectItem value="paleo">Paleo</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label className="text-gray-200">Primary Workout Type</Label>
-                  <Select value={formData.workoutType} onValueChange={(value) => handleInputChange("workoutType", value)}>
-                    <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                      <SelectValue placeholder="Select workout type" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
-                      <SelectItem value="strength">Strength Training</SelectItem>
-                      <SelectItem value="cardio">Cardio/Endurance</SelectItem>
-                      <SelectItem value="mixed">Mixed Training</SelectItem>
-                      <SelectItem value="sports">Sports Specific</SelectItem>
-                      <SelectItem value="none">Minimal Exercise</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
+            <div className="text-center font-black text-[10px] text-slate-600 uppercase tracking-widest">
+              Aggregate Distribution: {customMacros.protein + customMacros.carbs + customMacros.fat}%
             </div>
-          )}
+          </div>
 
-          {/* Calculate Button */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-6">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 pt-8">
             <Button
               onClick={calculateMacros}
-              disabled={!validateForm() || isCalculating}
-              className="flex-1 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              className={`flex-1 btn-category-nutrition py-5 sm:py-8 rounded-[2rem] text-base sm:text-lg md:text-xl font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-[0.98] ${!validateForm() ? 'opacity-70 grayscale-[0.5]' : ''}`}
             >
               {isCalculating ? (
                 <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Calculating...
+                  <Loader2 className="mr-3 h-7 w-7 animate-spin text-white" />
+                  Synthesizing Plan...
                 </>
               ) : (
                 <>
-                  <PieChart className="h-5 w-5 mr-2" />
-                  Calculate Macros
+                  <Target className="mr-3 h-7 w-7" />
+                  Resolve Macro Map
                 </>
               )}
             </Button>
@@ -611,166 +457,117 @@ const MacroCalculator = () => {
             <Button
               onClick={resetForm}
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800"
+              className="w-full sm:w-auto border-white/10 bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white flex items-center gap-3 px-6 py-4 md:px-10 md:py-6 lg:px-12 lg:py-5 sm:py-8 rounded-[2rem] shadow-lg backdrop-blur-md transition-all font-black text-sm sm:text-base md:text-lg uppercase"
             >
-              Reset Form
+              <RotateCcw className="h-6 w-6" />
+              Reset
             </Button>
-          </div>
-
-          {!validateForm() && (
-            <Alert className="bg-yellow-900/20 border-yellow-800/50">
-              <Info className="h-4 w-4 text-yellow-400" />
-              <AlertTitle className="text-yellow-300">Missing Information</AlertTitle>
-              <AlertDescription className="text-yellow-200">
-                Please fill in all required fields marked with *.
-              </AlertDescription>
-            </Alert>
-          )}
+          </motion.div>
         </CardContent>
       </Card>
 
-      {/* Results Section */}
-      {result && (
-        <Card className="mt-8 bg-gray-900/50 border-gray-800">
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold text-white flex items-center">
-              <Target className="h-6 w-6 text-green-400 mr-2" />
-              Your Personalized Macro Plan
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            {/* Daily Targets */}
-            <div className="text-center bg-gradient-to-r from-green-900/20 to-emerald-900/20 p-8 rounded-xl border border-green-800/50">
-              <div className="text-5xl font-bold text-green-300 mb-2">{result.targetCalories}</div>
-              <div className="text-xl text-green-200 font-semibold mb-2">Daily Calories</div>
-              <div className="text-gray-400">
-                {result.selectedPreset.label} Distribution
-                {result.selectedPreset.recommended && (
-                  <span className="ml-2 text-green-400">• Recommended</span>
-                )}
+      <AnimatePresence>
+        {result && (
+          <motion.div
+            variants={resultVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="mt-16 premium-result-card p-6 sm:p-12 md:p-16 lg:p-20"
+          >
+            <div className="text-center mb-20 relative">
+              <motion.div
+                className="text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] lg:text-[12rem] font-black result-value-glow bg-gradient-to-br from-white via-white to-white/20 bg-clip-text text-transparent leading-none flex items-center justify-center gap-2"
+                initial={{ filter: "blur(20px)", y: 20 }}
+                animate={{ filter: "blur(0px)", y: 0 }}
+                transition={{ duration: 1 }}
+              >
+                {result.targetCalories} <span className="text-4xl text-lime-400/50 font-black tracking-widest ml-[-20px] uppercase">kcal</span>
+              </motion.div>
+              <div className="inline-flex items-center px-6 py-3 sm:px-10 sm:py-4 md:px-16 md:py-5 rounded-full text-3xl font-black uppercase tracking-[0.4em] text-lime-400 bg-lime-400/10 border border-lime-400/20 shadow-[0_0_80px_rgba(163,230,53,0.2)] mt-10 mb-6">
+                Architecture Standardized
               </div>
+              <p className="text-slate-500 font-black text-2xl tracking-tighter uppercase opacity-80">Selected Protocol: {result.selectedPreset.label}</p>
             </div>
 
-            {/* Macro Breakdown */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-green-900/20 p-6 rounded-xl border border-green-800/50 text-center">
-                <div className="text-3xl font-bold text-green-300 mb-2">{result.macros.protein.grams}g</div>
-                <div className="text-green-200 font-semibold mb-1">Protein</div>
-                <div className="text-sm text-gray-400">{result.macros.protein.calories} cal ({result.macros.protein.percentage}%)</div>
-                <div className="text-xs text-green-400 mt-2">{result.proteinPerKg}g per kg body weight</div>
-              </div>
-
-              <div className="bg-orange-900/20 p-6 rounded-xl border border-orange-800/50 text-center">
-                <div className="text-3xl font-bold text-orange-300 mb-2">{result.macros.carbs.grams}g</div>
-                <div className="text-orange-200 font-semibold mb-1">Carbohydrates</div>
-                <div className="text-sm text-gray-400">{result.macros.carbs.calories} cal ({result.macros.carbs.percentage}%)</div>
-                <div className="text-xs text-orange-400 mt-2">Primary energy source</div>
-              </div>
-
-              <div className="bg-yellow-900/20 p-6 rounded-xl border border-yellow-800/50 text-center">
-                <div className="text-3xl font-bold text-yellow-300 mb-2">{result.macros.fat.grams}g</div>
-                <div className="text-yellow-200 font-semibold mb-1">Fat</div>
-                <div className="text-sm text-gray-400">{result.macros.fat.calories} cal ({result.macros.fat.percentage}%)</div>
-                <div className="text-xs text-yellow-400 mt-2">Essential fatty acids</div>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:p-8 lg:p-10 mb-20">
+              {[
+                { label: "Proteins", data: result.macros.protein, color: "text-lime-400", bg: "bg-lime-500/10", border: "border-lime-500/20", icon: Beef, info: `${result.proteinPerKg}g/kg` },
+                { label: "Carbohydrates", data: result.macros.carbs, color: "text-emerald-400", bg: "bg-emerald-500/10", border: "border-emerald-500/20", icon: Wheat, info: "Glycogen Fuel" },
+                { label: "Lipids", data: result.macros.fat, color: "text-cyan-400", bg: "bg-cyan-500/10", border: "border-cyan-500/20", icon: Droplets, info: "Endocrine Support" }
+              ].map((macro, index) => (
+                <motion.div
+                  key={index}
+                  className={`p-6 sm:p-8 lg:p-10 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] ${macro.bg} ${macro.border} border text-center relative overflow-hidden group`}
+                  whileHover={{ y: -10 }}
+                >
+                  <macro.icon className={`h-8 w-8 ${macro.color} absolute top-5 sm:p-6 lg:p-8 right-8 opacity-20 group-hover:opacity-100 transition-opacity`} />
+                  <div className="text-[10px] font-black text-white/40 uppercase tracking-[0.4em] mb-6">{macro.label}</div>
+                  <div className={`text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl font-black ${macro.color} mb-4`}>{macro.data.grams}g</div>
+                  <div className="text-white font-black text-base opacity-40 uppercase tracking-widest">{macro.data.calories} kcal</div>
+                  <div className={`mt-8 inline-block px-4 py-1.5 rounded-full ${macro.color} bg-white/5 border border-white/5 text-[9px] font-black uppercase tracking-widest`}>
+                    {macro.info}
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
-            {/* Meal Distribution */}
-            <div className="bg-gray-800/50 p-6 rounded-xl">
-              <h3 className="text-lg font-semibold text-white mb-4">Daily Meal Distribution</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {Object.entries(result.mealDistribution).map(([meal, macros]) => (
-                  <div key={meal} className="bg-gray-700/30 p-4 rounded-lg border border-gray-600/30">
-                    <h4 className="font-semibold text-white mb-3 capitalize">{meal}</h4>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-gray-300">Calories:</span>
-                        <span className="text-white font-medium">{macros.calories}</span>
+            <div className="p-6 sm:p-10 md:p-14 rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] bg-white/[0.03] border border-white/5 shadow-inner mb-20">
+              <div className="flex items-center gap-4 mb-12">
+                <Utensils className="h-10 w-10 text-lime-400" />
+                <h4 className="text-4xl font-black text-white tracking-widest uppercase">Temporal Distribution</h4>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:p-6 lg:p-8">
+                {Object.entries(result.mealDistribution).map(([meal, data], index) => (
+                  <motion.div
+                    key={meal}
+                    className="p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl lg:rounded-[3rem] bg-white/5 border border-white/5 hover:bg-white/10 transition-all group"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1 + index * 0.1 }}
+                  >
+                    <div className="h-1 w-12 bg-lime-500/50 rounded-full mb-6 group-hover:w-24 transition-all" />
+                    <h5 className="font-black text-white text-xl uppercase tracking-tighter mb-8">{meal}</h5>
+                    <div className="space-y-5">
+                      <div className="flex justify-between text-xs font-black uppercase text-slate-500">
+                        <span>Energy</span>
+                        <span className="text-white">{data.calories} kcal</span>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-green-300">Protein:</span>
-                        <span className="text-green-200">{macros.protein}g</span>
+                      <div className="flex justify-between text-xs font-black uppercase text-lime-400/70 border-b border-white/5 pb-2">
+                        <span>Protein</span>
+                        <span className="text-lime-400">{data.protein}g</span>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-orange-300">Carbs:</span>
-                        <span className="text-orange-200">{macros.carbs}g</span>
+                      <div className="flex justify-between text-xs font-black uppercase text-emerald-400/70 border-b border-white/5 pb-2">
+                        <span>Carbs</span>
+                        <span className="text-emerald-400">{data.carbs}g</span>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-yellow-300">Fat:</span>
-                        <span className="text-yellow-200">{macros.fat}g</span>
+                      <div className="flex justify-between text-xs font-black uppercase text-cyan-400/70 pb-2">
+                        <span>Fat</span>
+                        <span className="text-cyan-400">{data.fat}g</span>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* Food Recommendations */}
-            <div className="bg-gray-800/50 p-6 rounded-xl">
-              <h3 className="text-lg font-semibold text-white mb-4">Recommended Food Sources</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                  <h4 className="font-semibold text-green-300 mb-3 flex items-center">
-                    <Utensils className="h-4 w-4 mr-2" />
-                    Protein Sources
-                  </h4>
-                  <div className="space-y-1">
-                    {result.foodRecommendations.protein.map((food, index) => (
-                      <div key={index} className="text-sm text-gray-300 bg-green-900/10 px-3 py-1 rounded">
-                        {food}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-orange-300 mb-3 flex items-center">
-                    <Utensils className="h-4 w-4 mr-2" />
-                    Carbohydrate Sources
-                  </h4>
-                  <div className="space-y-1">
-                    {result.foodRecommendations.carbs.map((food, index) => (
-                      <div key={index} className="text-sm text-gray-300 bg-orange-900/10 px-3 py-1 rounded">
-                        {food}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-yellow-300 mb-3 flex items-center">
-                    <Utensils className="h-4 w-4 mr-2" />
-                    Fat Sources
-                  </h4>
-                  <div className="space-y-1">
-                    {result.foodRecommendations.fat.map((food, index) => (
-                      <div key={index} className="text-sm text-gray-300 bg-yellow-900/10 px-3 py-1 rounded">
-                        {food}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Recommendations */}
-            <Alert className="bg-blue-900/20 border-blue-800/50">
-              <TrendingUp className="h-4 w-4 text-blue-400" />
-              <AlertTitle className="text-blue-300">Macro Tracking Tips</AlertTitle>
-              <AlertDescription className="text-blue-200">
-                <ul className="list-disc list-inside space-y-1 mt-2">
-                  <li>Use a food tracking app to monitor your daily macro intake</li>
-                  <li>Prioritize whole, unprocessed foods over supplements</li>
-                  <li>Adjust portions based on hunger, energy levels, and results</li>
-                  <li>Stay hydrated and include fiber-rich foods for optimal digestion</li>
-                  <li>Allow for 10-15% flexibility in your daily targets</li>
-                </ul>
-              </AlertDescription>
-            </Alert>
-          </CardContent>
-        </Card>
-      )}
-    </div>
+            <motion.div
+              className="flex flex-col sm:flex-row gap-5 sm:p-6 lg:p-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5 }}
+            >
+              <Button
+                className="flex-1 bg-white/10 hover:bg-white/20 text-white border border-white/10 py-10 rounded-2xl sm:rounded-3xl lg:rounded-[3rem] transition-all duration-300 font-black text-2xl group shadow-2xl"
+              >
+                <Download className="mr-4 h-8 w-8 group-hover:scale-125 transition-transform" />
+                Export Operational Protocol
+              </Button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 

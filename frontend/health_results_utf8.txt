@@ -1,0 +1,18 @@
+﻿Issues in ArmyBodyFatCalculator.jsx:
+  - Alert component used but not imported
+Issues in BMICalculator.jsx:
+  - Alert component used but not imported
+Issues in BMRCalculator.jsx:
+  - motion.div: 15 opened, 13 closed
+Issues in BodyFatCalculator.jsx:
+  - Alert component used but not imported
+Issues in BodySurfaceAreaCalculator.jsx:
+  - Alert component used but not imported
+Issues in HealthyWeightCalculator.jsx:
+  - Alert component used but not imported
+Issues in IdealWeightCalculator.jsx:
+  - Alert component used but not imported
+Issues in LeanBodyMassCalculator.jsx:
+  - Alert component used but not imported
+Issues in ProteinCalculator.jsx:
+  - Alert component used but not imported

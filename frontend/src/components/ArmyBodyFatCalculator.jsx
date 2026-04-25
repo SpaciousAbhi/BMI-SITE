@@ -1,13 +1,11 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { Calculator, RotateCcw, Shield, AlertCircle, CheckCircle, Target, Download, FileText, Loader2 } from "lucide-react";
-import { useToast } from "../hooks/use-toast";
-import jsPDF from 'jspdf';
+import { Calculator, RotateCcw, Shield, AlertCircle, CheckCircle, Target, Download, FileText, Loader2, Ruler, Activity, Info, Trophy, Gauge, Medal, Scale } from "lucide-react";
 
 const ArmyBodyFatCalculator = () => {
   const [age, setAge] = useState("");
@@ -22,670 +20,370 @@ const ArmyBodyFatCalculator = () => {
   const [waist, setWaist] = useState("");
   const [hip, setHip] = useState("");
   const [result, setResult] = useState(null);
-  const [isCalculating, setIsCalculating] = useState(false);
-  const [isExporting, setIsExporting] = useState(false);
-  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
 
-  // Animation variants
   const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.1
-      }
-    }
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, staggerChildren: 0.1 } }
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4 }
-    }
+    visible: { opacity: 1, y: 0 }
   };
 
   const resultVariants = {
-    hidden: { opacity: 0, scale: 0.8, rotateY: 90 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      rotateY: 0,
-      transition: {
-        duration: 0.8,
-        type: "spring",
-        bounce: 0.4
-      }
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.8,
-      rotateY: -90,
-      transition: { duration: 0.5 }
-    }
+    hidden: { opacity: 0, scale: 0.95, filter: "blur(10px)" },
+    visible: { opacity: 1, scale: 1, filter: "blur(0px)", transition: { type: "spring", stiffness: 100, damping: 20 } },
+    exit: { opacity: 0, scale: 0.95, filter: "blur(10px)" }
   };
 
-  const calculateArmyBodyFat = async () => {
-    // Validation
-    const heightValid = heightUnit === "ft" ? (feet && inches) : height;
-    const requiredFields = [weight, heightValid, age, gender, neck, waist];
-    const femaleRequiredHip = gender === "female" ? hip : true;
-    
-    if (!requiredFields.every(field => field) || !femaleRequiredHip) {
-      toast({
-        title: "Missing Information",
-        description: `Please fill in all required fields${gender === "female" ? " including hip measurement" : ""}.`,
-        variant: "destructive",
-      });
-      return;
-    }
+  const calculateArmyBodyFat = () => {
+    if (!isFormValid()) return;
+    setLoading(true);
+    setTimeout(() => {
+      try {
+        let hInInches;
+        if (heightUnit === "cm") hInInches = parseFloat(height) / 2.54;
+        else hInInches = parseFloat(feet) * 12 + parseFloat(inches);
 
-    setIsCalculating(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
+        const neckIn = parseFloat(neck);
+        const waistIn = parseFloat(waist);
+        const hipIn = gender === "female" ? parseFloat(hip) : 0;
 
-    // Convert measurements to inches (Army standard)
-    let heightInInches;
-    if (heightUnit === "cm") {
-      heightInInches = parseFloat(height) / 2.54;
-    } else if (heightUnit === "ft") {
-      heightInInches = parseFloat(feet) * 12 + parseFloat(inches);
-    }
+        let bf;
+        if (gender === "male") {
+          bf = 86.010 * Math.log10(waistIn - neckIn) - 70.041 * Math.log10(hInInches) + 36.76;
+        } else {
+          bf = 163.205 * Math.log10(waistIn + hipIn - neckIn) - 97.684 * Math.log10(hInInches) - 78.387;
+        }
 
-    let weightInLbs = parseFloat(weight);
-    if (weightUnit === "kg") {
-      weightInLbs = weightInLbs * 2.20462;
-    }
+        const ageNum = parseInt(age);
+        let maxAllowed;
+        if (gender === "male") {
+          if (ageNum <= 20) maxAllowed = 20;
+          else if (ageNum <= 27) maxAllowed = 22;
+          else if (ageNum <= 39) maxAllowed = 24;
+          else maxAllowed = 26;
+        } else {
+          if (ageNum <= 20) maxAllowed = 30;
+          else if (ageNum <= 27) maxAllowed = 32;
+          else if (ageNum <= 39) maxAllowed = 34;
+          else maxAllowed = 36;
+        }
 
-    const neckInches = parseFloat(neck);
-    const waistInches = parseFloat(waist);
-    const hipInches = gender === "female" ? parseFloat(hip) : 0;
+        const status = bf <= maxAllowed ? "PASS" : "FAIL";
+        const color = status === "PASS" ? "text-emerald-400" : "text-rose-400";
+        
+        const weightKg = weightUnit === "kg" ? parseFloat(weight) : parseFloat(weight) * 0.453592;
+        const fatMass = weightKg * (bf / 100);
+        const leanMass = weightKg - fatMass;
 
-    // Army Body Fat Calculation (AR 600-9)
-    let bodyFatPercentage;
-    if (gender === "male") {
-      bodyFatPercentage = 86.010 * Math.log10(waistInches - neckInches) - 70.041 * Math.log10(heightInInches) + 36.76;
-    } else {
-      bodyFatPercentage = 163.205 * Math.log10(waistInches + hipInches - neckInches) - 97.684 * Math.log10(heightInInches) - 78.387;
-    }
-
-    // Army Body Fat Standards (AR 600-9)
-    const ageNum = parseInt(age);
-    let maxAllowed, category, color, armyStatus, recommendations;
-
-    // Army Maximum Body Fat Standards
-    let maxBodyFat;
-    if (gender === "male") {
-      if (ageNum <= 20) maxBodyFat = 20;
-      else if (ageNum <= 27) maxBodyFat = 22;
-      else if (ageNum <= 39) maxBodyFat = 24;
-      else maxBodyFat = 26;
-    } else {
-      if (ageNum <= 20) maxBodyFat = 30;
-      else if (ageNum <= 27) maxBodyFat = 32;
-      else if (ageNum <= 39) maxBodyFat = 34;
-      else maxBodyFat = 36;
-    }
-
-    // Determine Army compliance status
-    if (bodyFatPercentage <= maxBodyFat * 0.7) {
-      category = "Excellent";
-      color = "text-green-400";
-      armyStatus = "PASS - Well within Army standards";
-      recommendations = ["Maintain current fitness level", "Continue regular PT", "Monitor body composition"];
-    } else if (bodyFatPercentage <= maxBodyFat * 0.85) {
-      category = "Good";
-      color = "text-blue-400";
-      armyStatus = "PASS - Within Army standards";
-      recommendations = ["Maintain current fitness routine", "Monitor body fat levels", "Consider additional cardio"];
-    } else if (bodyFatPercentage <= maxBodyFat) {
-      category = "Acceptable";
-      color = "text-yellow-400";
-      armyStatus = "PASS - At Army standard limit";
-      recommendations = ["Focus on body fat reduction", "Increase cardio training", "Monitor diet closely"];
-    } else if (bodyFatPercentage <= maxBodyFat * 1.1) {
-      category = "Over Standard";
-      color = "text-orange-400";
-      armyStatus = "FAIL - Exceeds Army standards";
-      recommendations = ["Immediate body composition program", "Consult with nutritionist", "Intensive fitness plan required"];
-    } else {
-      category = "Significantly Over";
-      color = "text-red-400";
-      armyStatus = "FAIL - Significantly exceeds standards";
-      recommendations = ["Urgent body composition program", "Medical evaluation recommended", "Risk of administrative action"];
-    }
-
-    // Calculate fat mass and lean mass
-    const weightInKg = weightUnit === "kg" ? parseFloat(weight) : weightInLbs / 2.20462;
-    const fatMass = weightInKg * (bodyFatPercentage / 100);
-    const leanMass = weightInKg - fatMass;
-
-    const resultData = {
-      bodyFatPercentage: bodyFatPercentage.toFixed(1),
-      maxAllowed: maxBodyFat,
-      category,
-      color,
-      armyStatus,
-      recommendations,
-      fatMass: fatMass.toFixed(1),
-      leanMass: leanMass.toFixed(1),
-      metrics: {
-        weight: weightInKg.toFixed(1),
-        height: heightUnit === "cm" ? height : `${feet}'${inches}"`,
-        age: ageNum,
-        gender,
-        neck: neckInches.toFixed(1),
-        waist: waistInches.toFixed(1),
-        hip: gender === "female" ? hipInches.toFixed(1) : "N/A"
-      },
-      method: "US Army AR 600-9 Tape Test",
-      calculatedOn: new Date().toLocaleDateString()
-    };
-
-    setResult(resultData);
-    setIsCalculating(false);
-
-    toast({
-      title: "Army Body Fat Calculated!",
-      description: `${bodyFatPercentage.toFixed(1)}% - ${armyStatus.includes('PASS') ? 'PASS' : 'FAIL'}`,
-      variant: armyStatus.includes('PASS') ? "default" : "destructive"
-    });
+        setResult({
+          bf: bf.toFixed(1),
+          maxAllowed,
+          status,
+          color,
+          fatMass: fatMass.toFixed(1),
+          leanMass: leanMass.toFixed(1),
+          unit: weightUnit,
+          metrics: { age, gender, hInInches: hInInches.toFixed(1) }
+        });
+      } catch (err) { console.error(err); }
+      setLoading(false);
+    }, 1500);
   };
 
-  const resetCalculator = () => {
-    setAge("");
-    setGender("");
-    setHeight("");
-    setFeet("");
-    setInches("");
-    setWeight("");
-    setNeck("");
-    setWaist("");
-    setHip("");
-    setResult(null);
+  const resetForm = () => {
+    setAge(""); setGender(""); setHeight(""); setFeet(""); setInches(""); setWeight(""); setNeck(""); setWaist(""); setHip(""); setResult(null);
   };
 
-  const exportToPDF = async () => {
-    if (!result) return;
-
-    setIsExporting(true);
-
-    try {
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const pageHeight = pdf.internal.pageSize.getHeight();
-      
-      // Header
-      pdf.setFontSize(20);
-      pdf.setTextColor(51, 51, 51);
-      const headerY = 25;
-      pdf.text('Army Body Fat Assessment Report', pageWidth / 2, headerY, { align: 'center' });
-      
-      pdf.setFontSize(12);
-      pdf.setTextColor(100, 100, 100);
-      pdf.text('US Army AR 600-9 Standards', pageWidth / 2, headerY + 8, { align: 'center' });
-      pdf.text(`Date: ${result.calculatedOn}`, pageWidth / 2, headerY + 15, { align: 'center' });
-      
-      // Divider
-      pdf.setDrawColor(200, 200, 200);
-      pdf.line(20, headerY + 25, pageWidth - 20, headerY + 25);
-      
-      let currentY = headerY + 40;
-      
-      // Personal Information
-      pdf.setFontSize(16);
-      pdf.setTextColor(51, 51, 51);
-      pdf.text('Personal Information', 20, currentY);
-      currentY += 10;
-      
-      pdf.setFontSize(12);
-      pdf.setTextColor(80, 80, 80);
-      pdf.text(`Age: ${result.metrics.age} years`, 25, currentY);
-      pdf.text(`Gender: ${result.metrics.gender.charAt(0).toUpperCase() + result.metrics.gender.slice(1)}`, 25, currentY + 8);
-      pdf.text(`Weight: ${result.metrics.weight} kg`, 25, currentY + 16);
-      pdf.text(`Height: ${result.metrics.height}`, 25, currentY + 24);
-      currentY += 40;
-      
-      // Army Assessment Results
-      pdf.setFontSize(16);
-      pdf.setTextColor(51, 51, 51);
-      pdf.text('Army Body Fat Assessment', 20, currentY);
-      currentY += 15;
-      
-      pdf.setFontSize(36);
-      const statusColor = result.armyStatus.includes('PASS') ? [34, 197, 94] : [239, 68, 68];
-      pdf.setTextColor(...statusColor);
-      pdf.text(`${result.bodyFatPercentage}%`, pageWidth / 2, currentY, { align: 'center' });
-      
-      pdf.setFontSize(18);
-      pdf.text(result.category, pageWidth / 2, currentY + 12, { align: 'center' });
-      
-      pdf.setFontSize(14);
-      pdf.setTextColor(51, 51, 51);
-      pdf.text(`Maximum Allowed: ${result.maxAllowed}%`, pageWidth / 2, currentY + 24, { align: 'center' });
-      currentY += 40;
-      
-      // Army Status
-      pdf.setFontSize(16);
-      pdf.setTextColor(51, 51, 51);
-      pdf.text('Army Compliance Status', 20, currentY);
-      currentY += 10;
-      
-      pdf.setFontSize(14);
-      pdf.setTextColor(...statusColor);
-      pdf.text(result.armyStatus, 25, currentY);
-      currentY += 20;
-      
-      // Body Measurements
-      pdf.setFontSize(16);
-      pdf.setTextColor(51, 51, 51);
-      pdf.text('Tape Test Measurements', 20, currentY);
-      currentY += 10;
-      
-      pdf.setFontSize(12);
-      pdf.setTextColor(80, 80, 80);
-      pdf.text(`Neck: ${result.metrics.neck} inches`, 25, currentY);
-      pdf.text(`Waist: ${result.metrics.waist} inches`, 25, currentY + 8);
-      if (result.metrics.hip !== "N/A") {
-        pdf.text(`Hip: ${result.metrics.hip} inches`, 25, currentY + 16);
-        currentY += 8;
-      }
-      pdf.text(`Method: ${result.method}`, 25, currentY + 16);
-      currentY += 30;
-      
-      // Recommendations
-      pdf.setFontSize(16);
-      pdf.setTextColor(51, 51, 51);
-      pdf.text('Recommendations', 20, currentY);
-      currentY += 10;
-      
-      pdf.setFontSize(12);
-      pdf.setTextColor(80, 80, 80);
-      result.recommendations.forEach((rec, index) => {
-        const recLines = pdf.splitTextToSize(`• ${rec}`, pageWidth - 40);
-        pdf.text(recLines, 25, currentY);
-        currentY += recLines.length * 6 + 3;
-      });
-      
-      // Disclaimer
-      currentY += 15;
-      pdf.setFontSize(10);
-      pdf.setTextColor(120, 120, 120);
-      const disclaimer = "Disclaimer: This calculation is based on AR 600-9 standards and is for informational purposes only. Official Army body composition assessments must be conducted by qualified personnel using proper procedures.";
-      const disclaimerLines = pdf.splitTextToSize(disclaimer, pageWidth - 40);
-      pdf.text(disclaimerLines, 20, currentY);
-      
-      // Footer
-      pdf.setFontSize(10);
-      pdf.setTextColor(150, 150, 150);
-      pdf.text('Army Body Fat Calculator - AR 600-9 Standards', pageWidth / 2, pageHeight - 15, { align: 'center' });
-      
-      pdf.save(`Army-Body-Fat-Report-${result.calculatedOn.replace(/\//g, '-')}.pdf`);
-      
-      toast({
-        title: "PDF Export Successful!",
-        description: "Your Army body fat assessment report has been downloaded.",
-      });
-      
-    } catch (error) {
-      console.error('PDF Export Error:', error);
-      toast({
-        title: "Export Failed",
-        description: "There was an error generating your PDF report.",
-        variant: "destructive",
-      });
-    }
-
-    setIsExporting(false);
-  };
+  const isFormValid = () => age && gender && weight && (height || (feet && inches)) && neck && waist && (gender === 'male' || hip);
 
   return (
-    <motion.div
+    <motion.div 
       className="w-full max-w-4xl mx-auto p-4 sm:p-6"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
-        <CardHeader className="text-center pb-8">
-          <CardTitle className="text-3xl font-bold flex items-center justify-center gap-3 mb-4">
+      <Card className="glass-panel glow-border border-white/10">
+        <CardHeader className="text-center pb-8 border-b border-white/5 bg-white/[0.02]">
+          <CardTitle className="text-4xl font-black mb-4 flex items-center justify-center gap-3">
             <motion.div
-              className="p-3 rounded-full bg-green-500/10"
-              whileHover={{ scale: 1.1, rotate: 180 }}
-              transition={{ duration: 0.3 }}
+              initial={{ rotate: -20, scale: 0.8 }}
+              animate={{ rotate: 0, scale: 1 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20"
             >
-              <Shield className="h-8 w-8 text-green-400" />
+              <Medal className="h-10 w-10 text-emerald-400 shadow-[0_0_20px_rgba(16,185,129,0.4)]" />
             </motion.div>
-            <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-              Army Body Fat Calculator
+            <span className="bg-gradient-to-r from-emerald-400 via-emerald-200 to-emerald-400 bg-clip-text text-transparent uppercase tracking-tight">
+              Tactical Adipose Analyst
             </span>
           </CardTitle>
-          <p className="text-gray-400 text-lg">
-            Calculate body fat percentage using US Army AR 600-9 standards
+          <p className="text-slate-400 text-lg max-w-xl mx-auto font-medium">
+            Official AR 600-9 compliance assessment algorithmic modeling for operational readiness.
           </p>
         </CardHeader>
 
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-            {/* Personal Information */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-lg font-semibold text-white mb-4">Personal Information</h3>
-              
-              <div className="space-y-2">
-                <Label htmlFor="age" className="text-gray-300">Age (years)</Label>
-                <Input
-                  id="age"
-                  type="number"
-                  placeholder="Enter your age"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                  className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
-                />
-              </div>
+        <CardContent className="space-y-10 p-6 sm:p-10 lg:p-12">
+          <div className="space-y-6">
+            <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+              <Medal className="h-3 w-3" />
+              Service Member Data
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:p-6 lg:p-8">
+              <div className="space-y-6">
+                <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Biological Indicators</h4>
+                
+                <div className="space-y-3">
+                  <Label className="text-[10px] font-black uppercase text-slate-500 ml-1">Rank/Age Tier *</Label>
+                  <Input type="number" placeholder="Years" value={age} onChange={(e) => setAge(e.target.value)} className="glass-input text-xl py-5 sm:py-7" />
+                </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="gender" className="text-gray-300">Gender</Label>
-                <Select value={gender} onValueChange={setGender}>
-                  <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white hover:border-green-500/50 focus:border-green-500 transition-all duration-300">
-                    <SelectValue placeholder="Select gender" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
-                    <SelectItem value="male">Male</SelectItem>
-                    <SelectItem value="female">Female</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="weight" className="text-gray-300">Weight</Label>
-                <div className="flex gap-2">
-                  <Input
-                    id="weight"
-                    type="number"
-                    placeholder="Enter weight"
-                    value={weight}
-                    onChange={(e) => setWeight(e.target.value)}
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300 flex-1"
-                  />
-                  <Select value={weightUnit} onValueChange={setWeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
-                      <SelectValue />
+                <div className="space-y-3">
+                  <Label className="text-[10px] font-black uppercase text-slate-500 ml-1">Biological Category *</Label>
+                  <Select value={gender} onValueChange={setGender}>
+                    <SelectTrigger className="glass-input text-xl py-5 sm:py-7 font-bold text-slate-200">
+                      <SelectValue placeholder="Identify" />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
-                      <SelectItem value="kg">kg</SelectItem>
-                      <SelectItem value="lbs">lbs</SelectItem>
+                    <SelectContent className="glass-panel border-white/10">
+                      <SelectItem value="male">Male</SelectItem>
+                      <SelectItem value="female">Female</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="height" className="text-gray-300">Height</Label>
-                <div className="flex gap-2">
-                  <Select value={heightUnit} onValueChange={setHeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
-                      <SelectItem value="cm">cm</SelectItem>
-                      <SelectItem value="ft">ft</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {heightUnit === "cm" ? (
-                    <Input
-                      type="number"
-                      placeholder="Height in cm"
-                      value={height}
-                      onChange={(e) => setHeight(e.target.value)}
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300 flex-1"
-                    />
-                  ) : (
-                    <div className="flex gap-2 flex-1">
-                      <Input
-                        type="number"
-                        placeholder="Feet"
-                        value={feet}
-                        onChange={(e) => setFeet(e.target.value)}
-                        className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Inches"
-                        value={inches}
-                        onChange={(e) => setInches(e.target.value)}
-                        className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
-                      />
-                    </div>
-                  )}
+                <div className="space-y-3">
+                  <Label className="text-[10px] font-black uppercase text-slate-500 ml-1">Assigned Load (Weight) *</Label>
+                  <div className="flex gap-2">
+                    <Input type="number" placeholder="Weight" value={weight} onChange={(e) => setWeight(e.target.value)} className="glass-input text-xl py-5 sm:py-7 flex-1" />
+                    <Select value={weightUnit} onValueChange={setWeightUnit}>
+                      <SelectTrigger className="glass-input w-24 py-5 sm:py-7 font-bold">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="glass-panel border-white/10 text-slate-300">
+                        <SelectItem value="kg">kg</SelectItem>
+                        <SelectItem value="lbs">lbs</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
 
-            {/* Army Tape Test Measurements */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-lg font-semibold text-white mb-4">Army Tape Test Measurements (inches)</h3>
-              
-              <div className="space-y-2">
-                <Label htmlFor="neck" className="text-gray-300">Neck Circumference</Label>
-                <Input
-                  id="neck"
-                  type="number"
-                  step="0.1"
-                  placeholder="Neck measurement (inches)"
-                  value={neck}
-                  onChange={(e) => setNeck(e.target.value)}
-                  className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
-                />
-                <p className="text-xs text-gray-500">Measure around the neck, just below the Adam's apple</p>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="waist" className="text-gray-300">Waist Circumference</Label>
-                <Input
-                  id="waist"
-                  type="number"
-                  step="0.1"
-                  placeholder="Waist measurement (inches)"
-                  value={waist}
-                  onChange={(e) => setWaist(e.target.value)}
-                  className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
-                />
-                <p className="text-xs text-gray-500">Measure at the navel level, horizontally around the abdomen</p>
-              </div>
-
-              {gender === "female" && (
-                <div className="space-y-2">
-                  <Label htmlFor="hip" className="text-gray-300">Hip Circumference</Label>
-                  <Input
-                    id="hip"
-                    type="number"
-                    step="0.1"
-                    placeholder="Hip measurement (inches)"
-                    value={hip}
-                    onChange={(e) => setHip(e.target.value)}
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
-                  />
-                  <p className="text-xs text-gray-500">Measure at the widest point of the hips</p>
-                </div>
-              )}
-
-              <div className="mt-6 p-4 bg-green-900/20 rounded-lg border border-green-800/50">
-                <h4 className="text-sm font-semibold text-green-300 mb-2">Army AR 600-9 Standards</h4>
-                <div className="text-xs text-gray-400 space-y-1">
-                  <p className="font-medium">Maximum Body Fat by Age:</p>
-                  <div className="grid grid-cols-2 gap-2 mt-2">
-                    <div>
-                      <p className="text-green-300">Male:</p>
-                      <p>17-20: 20%</p>
-                      <p>21-27: 22%</p>
-                      <p>28-39: 24%</p>
-                      <p>40+: 26%</p>
-                    </div>
-                    <div>
-                      <p className="text-green-300">Female:</p>
-                      <p>17-20: 30%</p>
-                      <p>21-27: 32%</p>
-                      <p>28-39: 34%</p>
-                      <p>40+: 36%</p>
-                    </div>
+                <div className="space-y-3">
+                  <Label className="text-[10px] font-black uppercase text-slate-500 ml-1">Vertical Stature *</Label>
+                  <div className="flex gap-2">
+                    {heightUnit === "cm" ? (
+                      <Input type="number" placeholder="cm" value={height} onChange={(e) => setHeight(e.target.value)} className="glass-input text-xl py-5 sm:py-7 flex-1" />
+                    ) : (
+                      <div className="flex gap-2 flex-1">
+                        <Input type="number" placeholder="ft" value={feet} onChange={(e) => setFeet(e.target.value)} className="glass-input text-xl py-5 sm:py-7 flex-1" />
+                        <Input type="number" placeholder="in" value={inches} onChange={(e) => setInches(e.target.value)} className="glass-input text-xl py-5 sm:py-7 flex-1" />
+                      </div>
+                    )}
+                    <Select value={heightUnit} onValueChange={setHeightUnit}>
+                      <SelectTrigger className="glass-input w-24 py-5 sm:py-7 font-bold">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="glass-panel border-white/10 text-slate-300">
+                        <SelectItem value="cm">cm</SelectItem>
+                        <SelectItem value="ft">ft</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
               </div>
-            </motion.div>
+
+              <div className="space-y-6">
+                <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Metric Intelligence</h4>
+                <div className="space-y-4">
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black uppercase text-slate-500 ml-1">Neck Circumference *</Label>
+                    <Input type="number" step="0.1" placeholder="Inches" value={neck} onChange={(e) => setNeck(e.target.value)} className="glass-input text-xl py-5 sm:py-7" />
+                  </div>
+
+                  <div className="space-y-3">
+                    <Label className="text-[10px] font-black uppercase text-slate-500 ml-1">Abdominal Scope (Waist) *</Label>
+                    <Input type="number" step="0.1" placeholder="Inches" value={waist} onChange={(e) => setWaist(e.target.value)} className="glass-input text-xl py-5 sm:py-7" />
+                  </div>
+                </div>
+
+                <AnimatePresence>
+                  {gender === "female" && (
+                    <motion.div 
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="space-y-3 mt-4 overflow-hidden"
+                    >
+                      <Label className="text-[10px] font-black uppercase text-slate-500 ml-1">Hip Circumference *</Label>
+                      <Input type="number" step="0.1" placeholder="Inches" value={hip} onChange={(e) => setHip(e.target.value)} className="glass-input text-xl py-5 sm:py-7" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <div className="p-6 rounded-[2rem] bg-emerald-500/5 border border-emerald-500/10 mt-8">
+                  <h4 className="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                    <Shield className="h-3 w-3" />
+                    Army Protocol Notice
+                  </h4>
+                  <p className="text-[10px] text-slate-500 leading-relaxed font-medium uppercase tracking-tighter">
+                    AR 600-9 requires height accuracy to 0.25 inch. Tape must be parallel to ground. Neck: below larynx. Waist: at belly button.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-6">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 pt-8">
             <Button
               onClick={calculateArmyBodyFat}
-              disabled={isCalculating}
-              className="flex-1 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold py-3 px-4 sm:px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/25"
+              className={`flex-1 btn-category-composition py-5 sm:py-8 rounded-[2rem] text-base sm:text-lg md:text-xl font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-[0.98] ${!isFormValid() ? 'opacity-70 grayscale-[0.5]' : ''}`}
             >
-              {isCalculating ? (
+              {loading ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Calculating...
+                  <Loader2 className="mr-3 h-7 w-7 animate-spin text-white" />
+                  Conducting Assessment...
                 </>
               ) : (
                 <>
-                  <Shield className="mr-2 h-4 w-4" />
-                  Calculate Army Body Fat
+                  <Activity className="mr-3 h-7 w-7" />
+                  Run Tactical Audit
                 </>
               )}
             </Button>
-
+            
             <Button
-              onClick={resetCalculator}
+              onClick={resetForm}
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-300 px-4 sm:px-6 sm:flex-none"
+              className="w-full sm:w-auto border-white/10 bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white flex items-center gap-3 px-6 py-4 md:px-10 md:py-6 lg:px-12 lg:py-5 sm:py-8 rounded-[2rem] shadow-lg backdrop-blur-md transition-all font-black text-sm sm:text-base md:text-lg uppercase"
             >
-              <RotateCcw className="mr-2 h-4 w-4" />
+              <RotateCcw className="h-6 w-6" />
               Reset
             </Button>
           </motion.div>
-
-          <AnimatePresence>
-            {result && (
-              <motion.div
-                variants={resultVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="mt-8 p-6 bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-xl border border-gray-700 backdrop-blur-sm"
-              >
-                <div className="text-center mb-6">
-                  <motion.div
-                    className="text-6xl font-bold mb-2"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.5, type: "spring", bounce: 0.6 }}
-                  >
-                    <span className={result.color}>{result.bodyFatPercentage}%</span>
-                  </motion.div>
-                  <h3 className={`text-2xl font-semibold mb-2 ${result.color}`}>{result.category}</h3>
-                  <p className="text-gray-400">Maximum Allowed: {result.maxAllowed}%</p>
-                  <div className={`text-lg font-semibold mt-2 px-4 py-2 rounded-lg inline-block ${result.armyStatus.includes('PASS') ? 'bg-green-900/50 text-green-300' : 'bg-red-900/50 text-red-300'}`}>
-                    {result.armyStatus}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6">
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-white flex items-center">
-                      <Target className="h-5 w-5 mr-2 text-green-400" />
-                      Body Composition
-                    </h4>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Fat Mass:</span>
-                        <span className="text-white font-medium">{result.fatMass} kg</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Lean Mass:</span>
-                        <span className="text-white font-medium">{result.leanMass} kg</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Method:</span>
-                        <span className="text-white font-medium">{result.method}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-white flex items-center">
-                      <AlertCircle className="h-5 w-5 mr-2 text-yellow-400" />
-                      Army Assessment
-                    </h4>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Age Group:</span>
-                        <span className="text-white font-medium">{result.metrics.age} years</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Standard:</span>
-                        <span className="text-white font-medium">≤ {result.maxAllowed}%</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Status:</span>
-                        <span className={`font-medium ${result.armyStatus.includes('PASS') ? 'text-green-400' : 'text-red-400'}`}>
-                          {result.armyStatus.includes('PASS') ? 'PASS' : 'FAIL'}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                    <CheckCircle className="h-5 w-5 mr-2 text-green-400" />
-                    Recommendations
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.recommendations.map((rec, index) => (
-                      <motion.li
-                        key={index}
-                        className="flex items-start text-gray-300 text-sm"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.8 + index * 0.1 }}
-                      >
-                        <span className="text-green-400 mr-2">•</span>
-                        {rec}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-
-                <motion.div
-                  className="flex gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.2 }}
-                >
-                  <Button
-                    onClick={exportToPDF}
-                    disabled={isExporting}
-                    className="flex-1 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white transition-all duration-300"
-                  >
-                    {isExporting ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Generating PDF...
-                      </>
-                    ) : (
-                      <>
-                        <Download className="mr-2 h-4 w-4" />
-                        Export Army Report
-                      </>
-                    )}
-                  </Button>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
         </CardContent>
       </Card>
+
+      <AnimatePresence>
+        {result && (
+          <motion.div
+            variants={resultVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="mt-16 premium-result-card p-6 sm:p-12 md:p-16 lg:p-20 overflow-hidden relative"
+          >
+            <div className={`absolute top-0 right-0 p-6 sm:p-8 lg:p-10 font-black text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] lg:text-[12rem] opacity-[0.03] select-none pointer-events-none uppercase ${result.status === 'PASS' ? 'text-emerald-500' : 'text-rose-400'}`}>
+              {result.status}
+            </div>
+
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 sm:p-6 lg:p-8 mb-16 relative z-10">
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-500/20">
+                  <Medal className="h-8 w-8 text-emerald-400" />
+                </div>
+                <div>
+                  <h3 className="text-3xl font-black text-white tracking-tight uppercase">Readiness Calibration</h3>
+                  <p className="text-slate-500 text-sm font-bold tracking-widest uppercase">AR 600-9 COMPLIANCE RESOLVED</p>
+                </div>
+              </div>
+              <Button
+                className="w-full md:w-auto bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl px-10 py-5 sm:py-8 font-black transition-all uppercase tracking-widest text-sm"
+              >
+                <Download className="h-5 w-5 mr-3" />
+                Export Assessment
+              </Button>
+            </div>
+
+            <div className="text-center mb-24 relative z-10">
+              <motion.div
+                className="text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] lg:text-[12rem] font-black result-value-glow bg-gradient-to-br from-white via-white/80 to-white/20 bg-clip-text text-transparent leading-none flex items-center justify-center gap-2"
+                initial={{ filter: "blur(20px)", y: 20 }}
+                animate={{ filter: "blur(0px)", y: 0 }}
+                transition={{ duration: 1 }}
+              >
+                {result.bf} <span className="text-4xl text-emerald-400 font-black tracking-widest ml-[-20px] uppercase">%</span>
+              </motion.div>
+              <div className={`inline-flex items-center px-6 py-3 sm:px-10 sm:py-4 md:px-16 md:py-5 rounded-full text-4xl font-black uppercase tracking-[0.5em] mt-10 shadow-2xl ${result.status === 'PASS' ? 'text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 shadow-emerald-500/20' : 'text-rose-400 bg-rose-400/10 border border-rose-400/20 shadow-rose-500/20'}`}>
+                {result.status} STATUS
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:p-8 lg:p-10">
+              <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 space-y-8">
+                <h4 className="text-xl font-black text-white uppercase tracking-widest flex items-center gap-3">
+                  <Target className="h-6 w-6 text-emerald-400" />
+                  Tactical Composition
+                </h4>
+                <div className="space-y-6">
+                  <div className="p-6 rounded-[2rem] bg-white/5 border border-white/5 flex justify-between items-center group hover:bg-white/10 transition-all shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
+                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Lipid Mass</span>
+                    <span className="text-2xl font-black text-white tracking-tighter">{result.fatMass} {result.unit}</span>
+                  </div>
+                  <div className="p-6 rounded-[2rem] bg-white/5 border border-white/5 flex justify-between items-center group hover:bg-white/10 transition-all shadow-[inset_0_0_20px_rgba(255,255,255,0.02)]">
+                    <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Combat/Lean Mass</span>
+                    <span className="text-2xl font-black text-white tracking-tighter">{result.leanMass} {result.unit}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 flex flex-col justify-center gap-6 sm:p-8 lg:p-10">
+                <div className="flex items-center gap-6">
+                  <div className="p-5 rounded-3xl bg-emerald-500/10 border border-emerald-500/20 shadow-inner">
+                    <Medal className="h-8 w-8 text-emerald-400" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">AR 600-9 Limit</div>
+                    <div className="text-xl font-black text-white tracking-widest uppercase mt-1">MAX {result.maxAllowed}% ALLOWED</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-6">
+                  <div className="p-5 rounded-3xl bg-blue-500/10 border border-blue-500/20 shadow-inner">
+                    <Scale className="h-8 w-8 text-blue-400" />
+                  </div>
+                  <div>
+                    <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Differential</div>
+                    <div className="text-xl font-black text-white tracking-widest uppercase mt-1">{(result.maxAllowed - result.bf).toFixed(1)}% FROM LIMIT</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-20 p-6 sm:p-10 md:p-14 rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] bg-emerald-500/5 border border-emerald-500/10 backdrop-blur-3xl relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-30" />
+              <h4 className="text-2xl font-black text-white uppercase tracking-widest mb-10 flex items-center gap-4 relative z-10">
+                <Shield className="h-8 w-8 text-emerald-400 shadow-glow" />
+                Operational Readiness Protocol
+              </h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
+                {[
+                  "Maintain hydration discipline.",
+                  "Optimize macro-nutrient timing.",
+                  "Focus on compound power movements.",
+                  "Integrate active recovery cycles."
+                ].map((rec, i) => (
+                  <div key={i} className="flex items-center gap-4 p-5 rounded-[2rem] bg-white/5 border border-white/5 hover:bg-emerald-500/5 transition-all">
+                    <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,1)]" />
+                    <span className="text-slate-400 font-bold text-[10px] uppercase tracking-wider leading-none">{rec}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-24 text-center">
+              <div className="bg-red-500/5 border border-white/5 p-6 sm:p-8 lg:p-10 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] max-w-2xl mx-auto backdrop-blur-sm">
+                <AlertCircle className="h-10 w-10 text-red-500 mb-6 mx-auto" />
+                <h5 className="text-2xl font-black text-white uppercase tracking-[0.2em] mb-4">Tactical Disclaimer</h5>
+                <p className="text-slate-500 font-medium text-lg leading-relaxed lowercase tracking-tight">
+                  "AR 600-9 tape tests are proxy estimations. personnel facing administrative action should request professional medical validation."
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

@@ -10,7 +10,7 @@ const BMRCalculatorPage = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-red-400 to-pink-400 bg-clip-text text-transparent">
             BMR Calculator
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl glass-text opacity-90 max-w-3xl mx-auto">
             Calculate your Basal Metabolic Rate using scientifically validated formulas. Understand your body's energy needs at rest and optimize your metabolism.
           </p>
         </div>
@@ -24,18 +24,18 @@ const BMRCalculatorPage = () => {
       {/* Educational Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gray-900/50 rounded-xl border border-gray-800 p-8">
+          <div className="glass-panel glow-border rounded-xl border border-gray-800 p-8">
             <h2 className="text-3xl font-bold text-white mb-6">Understanding BMR</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold text-red-300 mb-4">What is BMR?</h3>
-                <p className="text-gray-300 mb-4">
+                <p className="glass-text opacity-90 mb-4">
                   Basal Metabolic Rate (BMR) is the number of calories your body needs to maintain basic physiological 
                   functions while at complete rest. This includes breathing, circulation, cell production, nutrient 
                   processing, and protein synthesis.
                 </p>
-                <p className="text-gray-300">
+                <p className="glass-text opacity-90">
                   BMR typically accounts for 60-70% of your total daily energy expenditure and forms the foundation 
                   for calculating your complete caloric needs.
                 </p>
@@ -43,7 +43,7 @@ const BMRCalculatorPage = () => {
 
               <div>
                 <h3 className="text-xl font-semibold text-red-300 mb-4">BMR Formula Comparison</h3>
-                <ul className="text-gray-300 space-y-3">
+                <ul className="glass-text opacity-90 space-y-3">
                   <li><strong>Mifflin-St Jeor (Recommended):</strong> Most accurate for general population</li>
                   <li><strong>Harris-Benedict:</strong> Classic formula, tends to overestimate by 5%</li>
                   <li><strong>Katch-McArdle:</strong> Most accurate for lean individuals with known body fat%</li>
@@ -53,7 +53,7 @@ const BMRCalculatorPage = () => {
 
             <div className="mt-8 p-6 bg-red-900/20 rounded-lg border border-red-800/50">
               <h3 className="text-lg font-semibold text-red-300 mb-3">Factors Affecting BMR</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-300">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm glass-text opacity-90">
                 <div>
                   <strong>Body Composition:</strong> Muscle tissue requires more energy than fat tissue. Higher muscle mass = higher BMR.
                 </div>
@@ -75,9 +75,9 @@ const BMRCalculatorPage = () => {
               </div>
             </div>
 
-            <div className="mt-6 p-6 bg-gray-800/50 rounded-lg">
+            <div className="mt-6 p-6 glass-panel glow-border rounded-lg">
               <h3 className="text-lg font-semibold text-white mb-3">Boosting Your BMR Naturally</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-300">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 glass-text opacity-90">
                 <ul className="space-y-2">
                   <li>• <strong>Strength Training:</strong> Build lean muscle mass</li>
                   <li>• <strong>Protein Intake:</strong> Higher thermic effect than carbs/fats</li>

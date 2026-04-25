@@ -1,217 +1,109 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Heart, Shield, FileText, MessageCircle } from "lucide-react";
+import { Heart } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900/50 border-t border-gray-800 py-12">
+    <footer className="relative border-t border-white/[0.06] py-14">
+      {/* Top gradient line */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent"></div>
+      
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6 sm:p-8 lg:p-10 mb-10">
           {/* Brand Section */}
-          <div className="space-y-4">
+          <div className="space-y-4 lg:col-span-1">
             <div className="flex items-center space-x-2">
-              <Heart className="h-6 w-6 text-green-400" />
-              <span className="text-lg font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-                Advanced BMI Calculator
+              <div className="p-1.5 rounded-lg bg-gradient-to-br from-emerald-400/20 to-cyan-500/20 border border-white/10">
+                <Heart className="h-5 w-5 text-emerald-400" />
+              </div>
+              <span className="text-lg font-bold bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                BMI Pro
               </span>
             </div>
-            <p className="text-gray-400 leading-relaxed text-sm">
+            <p className="text-slate-400 leading-relaxed text-sm">
               Professional BMI calculator providing accurate health insights and personalized recommendations 
-              based on WHO and CDC guidelines. Your trusted partner in health assessment.
+              based on WHO and CDC guidelines.
             </p>
           </div>
 
           {/* Home Page | BMI Calculator Section */}
           <div>
-            <h3 className="text-white font-bold mb-4 text-base">
-              Home Page | BMI Calculator
+            <h3 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">
+              Home
             </h3>
             <div className="space-y-2">
               <Link
                 to="/"
-                className="nav-link block text-gray-400 hover:text-green-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
+                className="block text-slate-400 hover:text-cyan-400 transition-colors duration-200 text-sm py-1"
               >
                 BMI Calculator
               </Link>
             </div>
           </div>
 
-          {/* Additional Calculators Section */}
+          {/* Body Composition Section */}
           <div>
-            <h3 className="text-white font-bold mb-3 text-base">
-              Additional Calculators
+            <h3 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">
+              Body Composition
             </h3>
-            <div className="text-sm font-semibold text-blue-300 mb-4 border-l-2 border-blue-400 pl-3">
-              Body Composition & Weight
-            </div>
-            <div className="space-y-2 max-h-52 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 pr-2">
-              <Link
-                to="/body-fat-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Body Fat Calculator
-              </Link>
-              <Link
-                to="/army-body-fat-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Army Body Fat Calculator
-              </Link>
-              <Link
-                to="/lean-body-mass-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Lean Body Mass Calculator
-              </Link>
-              <Link
-                to="/ideal-weight-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Ideal Weight Calculator
-              </Link>
-              <Link
-                to="/healthy-weight-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Healthy Weight Calculator
-              </Link>
-              <Link
-                to="/body-type-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Body Type Calculator
-              </Link>
-              <Link
-                to="/body-surface-area-calculator"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Body Surface Area (BSA) Calculator
-              </Link>
+            <div className="space-y-2 max-h-52 overflow-y-auto scrollbar-thin pr-1">
+              <Link to="/body-fat-calculator" className="block text-slate-400 hover:text-cyan-400 transition-colors duration-200 text-sm py-1">Body Fat Calculator</Link>
+              <Link to="/army-body-fat-calculator" className="block text-slate-400 hover:text-cyan-400 transition-colors duration-200 text-sm py-1">Army Body Fat</Link>
+              <Link to="/lean-body-mass-calculator" className="block text-slate-400 hover:text-cyan-400 transition-colors duration-200 text-sm py-1">Lean Body Mass</Link>
+              <Link to="/ideal-weight-calculator" className="block text-slate-400 hover:text-cyan-400 transition-colors duration-200 text-sm py-1">Ideal Weight</Link>
+              <Link to="/healthy-weight-calculator" className="block text-slate-400 hover:text-cyan-400 transition-colors duration-200 text-sm py-1">Healthy Weight</Link>
+              <Link to="/body-type-calculator" className="block text-slate-400 hover:text-cyan-400 transition-colors duration-200 text-sm py-1">Body Type</Link>
+              <Link to="/body-surface-area-calculator" className="block text-slate-400 hover:text-cyan-400 transition-colors duration-200 text-sm py-1">Body Surface Area</Link>
             </div>
           </div>
 
-          {/* Nutrition & Diet Calculators Section */}
+          {/* Nutrition & Diet Section */}
           <div>
-            <h3 className="text-white font-bold mb-3 text-base">
-              Nutrition & Diet Calculators
-            </h3>
-            <div className="text-sm font-semibold text-orange-300 mb-4 border-l-2 border-orange-400 pl-3">
+            <h3 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">
               Nutrition & Diet
-            </div>
-            <div className="space-y-2 max-h-52 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 pr-2">
-              <Link
-                to="/calorie-calculator"
-                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Calorie Calculator
-              </Link>
-              <Link
-                to="/tdee-calculator"
-                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                TDEE Calculator
-              </Link>
-              <Link
-                to="/bmr-calculator"
-                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                BMR Calculator
-              </Link>
-              <Link
-                to="/macro-calculator"
-                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Macro Calculator
-              </Link>
-              <Link
-                to="/carbohydrate-calculator"
-                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Carbohydrate Calculator
-              </Link>
-              <Link
-                to="/protein-calculator"
-                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Protein Calculator
-              </Link>
-              <Link
-                to="/fat-intake-calculator"
-                className="nav-link block text-gray-400 hover:text-orange-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Fat Intake Calculator
-              </Link>
+            </h3>
+            <div className="space-y-2 max-h-52 overflow-y-auto scrollbar-thin pr-1">
+              <Link to="/calorie-calculator" className="block text-slate-400 hover:text-emerald-400 transition-colors duration-200 text-sm py-1">Calorie Calculator</Link>
+              <Link to="/tdee-calculator" className="block text-slate-400 hover:text-emerald-400 transition-colors duration-200 text-sm py-1">TDEE Calculator</Link>
+              <Link to="/bmr-calculator" className="block text-slate-400 hover:text-emerald-400 transition-colors duration-200 text-sm py-1">BMR Calculator</Link>
+              <Link to="/macro-calculator" className="block text-slate-400 hover:text-emerald-400 transition-colors duration-200 text-sm py-1">Macro Calculator</Link>
+              <Link to="/carbohydrate-calculator" className="block text-slate-400 hover:text-emerald-400 transition-colors duration-200 text-sm py-1">Carbohydrate Calculator</Link>
+              <Link to="/protein-calculator" className="block text-slate-400 hover:text-emerald-400 transition-colors duration-200 text-sm py-1">Protein Calculator</Link>
+              <Link to="/fat-intake-calculator" className="block text-slate-400 hover:text-emerald-400 transition-colors duration-200 text-sm py-1">Fat Intake Calculator</Link>
             </div>
           </div>
 
-          {/* Fitness & Performance Calculators Section */}
+          {/* Fitness & Performance Section */}
           <div>
-            <h3 className="text-white font-bold mb-3 text-base">
-              Fitness & Performance Calculators
+            <h3 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">
+              Fitness
             </h3>
-            <div className="text-sm font-semibold text-purple-300 mb-4 border-l-2 border-purple-400 pl-3">
-              Fitness & Performance
-            </div>
-            <div className="space-y-2 max-h-52 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 pr-2">
-              <Link
-                to="/pace-calculator"
-                className="nav-link block text-gray-400 hover:text-purple-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Pace Calculator
-              </Link>
-              <Link
-                to="/calories-burned-calculator"
-                className="nav-link block text-gray-400 hover:text-purple-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Calories Burned Calculator
-              </Link>
-              <Link
-                to="/one-rep-max-calculator"
-                className="nav-link block text-gray-400 hover:text-purple-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                One Rep Max Calculator
-              </Link>
-              <Link
-                to="/target-heart-rate-calculator"
-                className="nav-link block text-gray-400 hover:text-purple-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Target Heart Rate Calculator
-              </Link>
+            <div className="space-y-2">
+              <Link to="/pace-calculator" className="block text-slate-400 hover:text-purple-400 transition-colors duration-200 text-sm py-1">Pace Calculator</Link>
+              <Link to="/calories-burned-calculator" className="block text-slate-400 hover:text-purple-400 transition-colors duration-200 text-sm py-1">Calories Burned</Link>
+              <Link to="/one-rep-max-calculator" className="block text-slate-400 hover:text-purple-400 transition-colors duration-200 text-sm py-1">One Rep Max</Link>
+              <Link to="/target-heart-rate-calculator" className="block text-slate-400 hover:text-purple-400 transition-colors duration-200 text-sm py-1">Target Heart Rate</Link>
             </div>
           </div>
 
           {/* Legal & Privacy Section */}
           <div>
-            <h3 className="text-white font-bold mb-4 text-base">
-              Legal & Privacy
+            <h3 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">
+              Legal
             </h3>
             <div className="space-y-2">
-              <Link
-                to="/privacy-policy"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                to="/terms-conditions"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Terms & Conditions
-              </Link>
-              <Link
-                to="/contact-us"
-                className="nav-link block text-gray-400 hover:text-blue-400 transition-all duration-300 ease-out text-sm pl-2 py-1 rounded hover:bg-gray-800/50"
-              >
-                Contact Us
-              </Link>
+              <Link to="/privacy-policy" className="block text-slate-400 hover:text-white transition-colors duration-200 text-sm py-1">Privacy Policy</Link>
+              <Link to="/terms-conditions" className="block text-slate-400 hover:text-white transition-colors duration-200 text-sm py-1">Terms & Conditions</Link>
+              <Link to="/contact-us" className="block text-slate-400 hover:text-white transition-colors duration-200 text-sm py-1">Contact Us</Link>
             </div>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="pt-8 border-t border-gray-800 text-center">
-          <p className="text-gray-400 text-sm">
-            © 2025 Advanced BMI Calculator. All rights reserved. Your health, our priority.
+        <div className="relative pt-8">
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+          <p className="text-slate-500 text-sm text-center">
+            © {new Date().getFullYear()} BMI Pro. All rights reserved. Your health, our priority.
           </p>
         </div>
       </div>

@@ -128,7 +128,7 @@ function SEOUpdater() {
     // Update canonical URL
     const canonicalLink = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
-      canonicalLink.setAttribute('href', `https://bmipro.com${location.pathname}`);
+      canonicalLink.setAttribute('href', `https://toxictools.in${location.pathname}`);
     }
 
     // Update Open Graph tags
@@ -138,7 +138,7 @@ function SEOUpdater() {
 
     if (ogTitle) ogTitle.setAttribute('content', titles[location.pathname] || titles['/']);
     if (ogDescription) ogDescription.setAttribute('content', descriptions[location.pathname] || descriptions['/']);
-    if (ogUrl) ogUrl.setAttribute('content', `https://bmipro.com${location.pathname}`);
+    if (ogUrl) ogUrl.setAttribute('content', `https://toxictools.in${location.pathname}`);
 
     // Update Twitter Card tags
     const twitterTitle = document.querySelector('meta[property="twitter:title"]');
@@ -147,7 +147,7 @@ function SEOUpdater() {
 
     if (twitterTitle) twitterTitle.setAttribute('content', titles[location.pathname] || titles['/']);
     if (twitterDescription) twitterDescription.setAttribute('content', descriptions[location.pathname] || descriptions['/']);
-    if (twitterUrl) twitterUrl.setAttribute('content', `https://bmipro.com${location.pathname}`);
+    if (twitterUrl) twitterUrl.setAttribute('content', `https://toxictools.in${location.pathname}`);
 
   }, [location]);
 
@@ -161,190 +161,50 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route 
-          path="/" 
-          element={
-            <PageTransition key="home">
-              <Home />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/privacy-policy" 
-          element={
-            <PageTransition key="privacy">
-              <PrivacyPolicy />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/terms-conditions" 
-          element={
-            <PageTransition key="terms">
-              <TermsConditions />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/contact-us" 
-          element={
-            <PageTransition key="contact">
-              <ContactUs />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/body-fat-calculator" 
-          element={
-            <PageTransition key="body-fat">
-              <BodyFatCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/army-body-fat-calculator" 
-          element={
-            <PageTransition key="army-body-fat">
-              <ArmyBodyFatCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/lean-body-mass-calculator" 
-          element={
-            <PageTransition key="lean-body-mass">
-              <LeanBodyMassCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/ideal-weight-calculator" 
-          element={
-            <PageTransition key="ideal-weight">
-              <IdealWeightCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/healthy-weight-calculator" 
-          element={
-            <PageTransition key="healthy-weight">
-              <HealthyWeightCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/body-type-calculator" 
-          element={
-            <PageTransition key="body-type">
-              <BodyTypeCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/body-surface-area-calculator" 
-          element={
-            <PageTransition key="body-surface-area">
-              <BodySurfaceAreaCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/calorie-calculator" 
-          element={
-            <PageTransition key="calorie">
-              <CalorieCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/tdee-calculator" 
-          element={
-            <PageTransition key="tdee">
-              <TDEECalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/bmr-calculator" 
-          element={
-            <PageTransition key="bmr">
-              <BMRCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/macro-calculator" 
-          element={
-            <PageTransition key="macro">
-              <MacroCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/carbohydrate-calculator" 
-          element={
-            <PageTransition key="carbohydrate">
-              <CarbohydrateCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/protein-calculator" 
-          element={
-            <PageTransition key="protein">
-              <ProteinCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/fat-intake-calculator" 
-          element={
-            <PageTransition key="fat-intake">
-              <FatIntakeCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/pace-calculator" 
-          element={
-            <PageTransition key="pace">
-              <PaceCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/calories-burned-calculator" 
-          element={
-            <PageTransition key="calories-burned">
-              <CaloriesBurnedCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/one-rep-max-calculator" 
-          element={
-            <PageTransition key="one-rep-max">
-              <OneRepMaxCalculatorPage />
-            </PageTransition>
-          } 
-        />
-        <Route 
-          path="/target-heart-rate-calculator" 
-          element={
-            <PageTransition key="target-heart-rate">
-              <TargetHeartRateCalculatorPage />
-            </PageTransition>
-          } 
-        />
+        <Route path="/" element={<PageTransition key="home"><Home /></PageTransition>} />
+        <Route path="/privacy-policy" element={<PageTransition key="privacy"><PrivacyPolicy /></PageTransition>} />
+        <Route path="/terms-conditions" element={<PageTransition key="terms"><TermsConditions /></PageTransition>} />
+        <Route path="/contact-us" element={<PageTransition key="contact"><ContactUs /></PageTransition>} />
+        <Route path="/body-fat-calculator" element={<PageTransition key="body-fat"><BodyFatCalculatorPage /></PageTransition>} />
+        <Route path="/army-body-fat-calculator" element={<PageTransition key="army-body-fat"><ArmyBodyFatCalculatorPage /></PageTransition>} />
+        <Route path="/lean-body-mass-calculator" element={<PageTransition key="lean-body-mass"><LeanBodyMassCalculatorPage /></PageTransition>} />
+        <Route path="/ideal-weight-calculator" element={<PageTransition key="ideal-weight"><IdealWeightCalculatorPage /></PageTransition>} />
+        <Route path="/healthy-weight-calculator" element={<PageTransition key="healthy-weight"><HealthyWeightCalculatorPage /></PageTransition>} />
+        <Route path="/body-type-calculator" element={<PageTransition key="body-type"><BodyTypeCalculatorPage /></PageTransition>} />
+        <Route path="/body-surface-area-calculator" element={<PageTransition key="body-surface-area"><BodySurfaceAreaCalculatorPage /></PageTransition>} />
+        <Route path="/calorie-calculator" element={<PageTransition key="calorie"><CalorieCalculatorPage /></PageTransition>} />
+        <Route path="/tdee-calculator" element={<PageTransition key="tdee"><TDEECalculatorPage /></PageTransition>} />
+        <Route path="/bmr-calculator" element={<PageTransition key="bmr"><BMRCalculatorPage /></PageTransition>} />
+        <Route path="/macro-calculator" element={<PageTransition key="macro"><MacroCalculatorPage /></PageTransition>} />
+        <Route path="/carbohydrate-calculator" element={<PageTransition key="carbohydrate"><CarbohydrateCalculatorPage /></PageTransition>} />
+        <Route path="/protein-calculator" element={<PageTransition key="protein"><ProteinCalculatorPage /></PageTransition>} />
+        <Route path="/fat-intake-calculator" element={<PageTransition key="fat-intake"><FatIntakeCalculatorPage /></PageTransition>} />
+        <Route path="/pace-calculator" element={<PageTransition key="pace"><PaceCalculatorPage /></PageTransition>} />
+        <Route path="/calories-burned-calculator" element={<PageTransition key="calories-burned"><CaloriesBurnedCalculatorPage /></PageTransition>} />
+        <Route path="/one-rep-max-calculator" element={<PageTransition key="one-rep-max"><OneRepMaxCalculatorPage /></PageTransition>} />
+        <Route path="/target-heart-rate-calculator" element={<PageTransition key="target-heart-rate"><TargetHeartRateCalculatorPage /></PageTransition>} />
       </Routes>
     </AnimatePresence>
   );
 }
 
+// Background glowing orbs – richer & deeper
+const BackgroundGlow = () => (
+  <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10 bg-gray-950">
+    {/* Ambient orbs */}
+    <div className="absolute top-[-10%] left-[-10%] w-[45%] h-[45%] rounded-full bg-cyan-900/25 blur-[140px] animate-blob"></div>
+    <div className="absolute top-[15%] right-[-10%] w-[50%] h-[50%] rounded-full bg-emerald-900/20 blur-[140px] animate-blob" style={{ animationDelay: '2s' }}></div>
+    <div className="absolute bottom-[-15%] left-[15%] w-[55%] h-[55%] rounded-full bg-indigo-900/25 blur-[140px] animate-blob" style={{ animationDelay: '4s' }}></div>
+    <div className="absolute top-[50%] right-[20%] w-[35%] h-[35%] rounded-full bg-purple-900/15 blur-[120px] animate-blob" style={{ animationDelay: '6s' }}></div>
+    {/* Subtle radial vignette */}
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(3,7,18,0.4)_70%,rgba(3,7,18,0.8)_100%)]"></div>
+  </div>
+);
+
 function App() {
   return (
-    <div className="App min-h-screen bg-black text-white">
+    <div className="App min-h-screen text-white relative">
+      <BackgroundGlow />
       <BrowserRouter>
         <SEOUpdater />
         <ScrollToTop />

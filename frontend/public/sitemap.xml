@@ -9,12 +9,12 @@
 
   <!-- Homepage - Primary BMI Calculator -->
   <url>
-    <loc>https://bmipro.com/</loc>
+    <loc>https://toxictools.in/</loc>
     <lastmod>2025-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://bmipro.com/bmi-calculator-screenshot.jpg</image:loc>
+      <image:loc>https://toxictools.in/bmi-calculator-screenshot.jpg</image:loc>
       <image:title>BMI Calculator - Body Mass Index Tool</image:title>
       <image:caption>Free online BMI calculator for calculating body mass index with health insights</image:caption>
     </image:image>
@@ -22,7 +22,7 @@
 
   <!-- Privacy Policy Page -->
   <url>
-    <loc>https://bmipro.com/privacy-policy</loc>
+    <loc>https://toxictools.in/privacy-policy</loc>
     <lastmod>2025-01-17</lastmod>
     <changefreq>quarterly</changefreq>
     <priority>0.7</priority>
@@ -30,7 +30,7 @@
 
   <!-- Terms and Conditions Page -->
   <url>
-    <loc>https://bmipro.com/terms-conditions</loc>
+    <loc>https://toxictools.in/terms-conditions</loc>
     <lastmod>2025-01-17</lastmod>
     <changefreq>quarterly</changefreq>
     <priority>0.7</priority>
@@ -38,7 +38,7 @@
 
   <!-- Contact Us Page -->
   <url>
-    <loc>https://bmipro.com/contact-us</loc>
+    <loc>https://toxictools.in/contact-us</loc>
     <lastmod>2025-01-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

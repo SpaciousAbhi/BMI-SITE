@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Heart, Info, TrendingUp, Target, Flame } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Heart, Info, TrendingUp, Target, Flame, RotateCcw, CheckCircle, AlertCircle, Zap, Download, Activity, FileText, Loader2, Gauge, Microscope } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -22,34 +23,62 @@ const BMRCalculator = () => {
     inches: "",
     age: "",
     gender: "",
-    // Advanced mode fields
     bodyFat: "",
     activityLevel: "",
     fitnessGoal: "",
     medicalConditions: ""
   });
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const resultVariants = {
+    hidden: { opacity: 0, scale: 0.95, y: 30 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      y: 0,
+      transition: { type: "spring", stiffness: 100, damping: 20 }
+    },
+    exit: { opacity: 0, scale: 0.95, y: 30 }
+  };
+
   const bmrFormulas = [
     { 
       value: "mifflin", 
       label: "Mifflin-St Jeor", 
       recommended: true,
-      description: "Most accurate for general population (1990)",
-      accuracy: "±10% for 95% of population"
+      description: "Modern gold standard for accuracy",
+      accuracy: "High Sensitivity"
     },
     { 
       value: "harris", 
-      label: "Harris-Benedict (Revised)", 
+      label: "Harris-Benedict", 
       recommended: false,
-      description: "Classic formula, revised in 1984",
-      accuracy: "±15% for general population"
+      description: "Classic physiological benchmark",
+      accuracy: "General Metric"
     },
     { 
       value: "katch", 
       label: "Katch-McArdle", 
       recommended: false,
-      description: "Most accurate for lean individuals with known body fat%",
-      accuracy: "±5% when body fat is accurately measured"
+      description: "Optimized for lean mass calibration",
+      accuracy: "Ultra Precise"
     }
   ];
 
@@ -67,19 +96,14 @@ const BMRCalculator = () => {
         return gender === "male" 
           ? (10 * weightInKg) + (6.25 * heightInCm) - (5 * age) + 5
           : (10 * weightInKg) + (6.25 * heightInCm) - (5 * age) - 161;
-      
       case "harris":
         return gender === "male"
           ? 88.362 + (13.397 * weightInKg) + (4.799 * heightInCm) - (5.677 * age)
           : 447.593 + (9.247 * weightInKg) + (3.098 * heightInCm) - (4.330 * age);
-      
       case "katch":
-        if (!formData.bodyFat || formData.bodyFat <= 0) {
-          return null;
-        }
+        if (!formData.bodyFat || formData.bodyFat <= 0) return null;
         const leanMass = weightInKg * (1 - formData.bodyFat / 100);
         return 370 + (21.6 * leanMass);
-      
       default:
         return null;
     }
@@ -93,23 +117,20 @@ const BMRCalculator = () => {
       const height = parseFloat(formData.height);
       const age = parseInt(formData.age);
 
-      // Calculate BMR using all methods
       const results = {};
       bmrFormulas.forEach(formula => {
         const bmr = calculateBMR(weight, height, age, formData.gender, formula.value);
         results[formula.value] = bmr ? Math.round(bmr) : null;
       });
 
-      // Get the selected formula result as primary
       const primaryBMR = results[selectedFormula];
 
-      // Calculate TDEE estimates for different activity levels
       const activityMultipliers = [
-        { label: "Sedentary", multiplier: 1.2, description: "Little/no exercise" },
-        { label: "Light Activity", multiplier: 1.375, description: "Light exercise 1-3 days/week" },
-        { label: "Moderate Activity", multiplier: 1.55, description: "Moderate exercise 3-5 days/week" },
-        { label: "High Activity", multiplier: 1.725, description: "Hard exercise 6-7 days/week" },
-        { label: "Extreme Activity", multiplier: 1.9, description: "Very hard exercise, physical job" }
+        { label: "Sedentary", multiplier: 1.2, description: "Minimal Flux" },
+        { label: "Light", multiplier: 1.375, description: "Base Activity" },
+        { label: "Moderate", multiplier: 1.55, description: "Active State" },
+        { label: "High", multiplier: 1.725, description: "High Intensity" },
+        { label: "Peak", multiplier: 1.9, description: "Athletic Threshold" }
       ];
 
       const tdeeEstimates = activityMultipliers.map(activity => ({
@@ -117,11 +138,10 @@ const BMRCalculator = () => {
         calories: primaryBMR ? Math.round(primaryBMR * activity.multiplier) : null
       }));
 
-      // Calculate metabolic rate breakdown
       const metabolicBreakdown = primaryBMR ? {
-        organs: Math.round(primaryBMR * 0.6), // 60% organs (liver, brain, kidneys)
-        muscle: Math.round(primaryBMR * 0.25), // 25% muscle tissue
-        other: Math.round(primaryBMR * 0.15)   // 15% other tissues
+        organs: Math.round(primaryBMR * 0.6),
+        muscle: Math.round(primaryBMR * 0.25),
+        other: Math.round(primaryBMR * 0.15)
       } : null;
 
       setResult({
@@ -129,42 +149,11 @@ const BMRCalculator = () => {
         primaryBMR,
         selectedFormula: bmrFormulas.find(f => f.value === selectedFormula),
         tdeeEstimates,
-        metabolicBreakdown,
-        recommendations: generateRecommendations(primaryBMR, formData.gender, age)
+        metabolicBreakdown
       });
       
       setIsCalculating(false);
     }, 1500);
-  };
-
-  const generateRecommendations = (bmr, gender, age) => {
-    const recommendations = [];
-    
-    if (bmr) {
-      if (bmr < 1200) {
-        recommendations.push({
-          type: "warning",
-          title: "Low BMR Detected",
-          message: "Your BMR is quite low. Consider consulting a healthcare professional to rule out metabolic issues."
-        });
-      }
-      
-      if (age > 50) {
-        recommendations.push({
-          type: "info",
-          title: "Age-Related Considerations",
-          message: "BMR naturally decreases with age. Focus on maintaining muscle mass through resistance training."
-        });
-      }
-      
-      recommendations.push({
-        type: "success",
-        title: "Metabolic Health Tips",
-        message: "To maintain healthy BMR: Stay hydrated, get adequate sleep, include protein in every meal, and engage in regular strength training."
-      });
-    }
-    
-    return recommendations;
   };
 
   const validateForm = () => {
@@ -172,10 +161,7 @@ const BMRCalculator = () => {
     const heightValid = formData.heightUnit === "ft" ? 
       (formData.feet && formData.inches) : formData.height;
     
-    // For Katch-McArdle, body fat is required
-    if (selectedFormula === "katch" && !formData.bodyFat) {
-      return false;
-    }
+    if (selectedFormula === "katch" && !formData.bodyFat) return false;
     
     return requiredFields.every(field => formData[field]) && heightValid;
   };
@@ -200,234 +186,216 @@ const BMRCalculator = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6">
-      <Card className="bg-gray-900/50 border-gray-800">
-        <CardHeader className="text-center">
-          <div className="flex items-center justify-center mb-4">
-            <div className="p-3 rounded-full bg-gradient-to-r from-red-500/20 to-pink-500/20 mr-4">
-              <Heart className="h-8 w-8 text-red-400" />
-            </div>
-            <div>
-              <CardTitle className="text-3xl font-bold text-white">BMR Calculator</CardTitle>
-              <CardDescription className="text-gray-300 mt-2">
-                Calculate your Basal Metabolic Rate using scientifically validated formulas
-              </CardDescription>
-            </div>
-          </div>
+    <motion.div 
+      className="w-full max-w-4xl mx-auto p-4 sm:p-6"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <Card className="glass-panel glow-border border-white/10 overflow-hidden">
+        <CardHeader className="text-center pb-8 border-b border-white/5 bg-white/[0.02]">
+          <CardTitle className="text-4xl font-black mb-4 flex items-center justify-center gap-3">
+            <motion.div
+              initial={{ rotate: -15, scale: 0.8 }}
+              animate={{ rotate: 0, scale: 1 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="p-3 rounded-2xl bg-rose-500/10 border border-rose-500/20"
+            >
+              <Microscope className="h-10 w-10 text-rose-400 shadow-[0_0_20px_rgba(244,63,94,0.4)]" />
+            </motion.div>
+            <span className="bg-gradient-to-r from-rose-400 via-orange-200 to-rose-400 bg-clip-text text-transparent uppercase tracking-tight">
+              BMR Prophet
+            </span>
+          </CardTitle>
+          <p className="text-slate-400 text-lg max-w-xl mx-auto font-medium">
+            Clinical precision mapping of your biological baseline energy expenditure.
+          </p>
           
-          <Tabs value={mode} onValueChange={setMode} className="mb-6">
-            <TabsList className="bg-gray-800 border-gray-700">
-              <TabsTrigger value="basic" className="text-gray-300">Basic Mode</TabsTrigger>
-              <TabsTrigger value="advanced" className="text-gray-300">Advanced Mode</TabsTrigger>
-            </TabsList>
-          </Tabs>
+          <div className="flex justify-center mt-8">
+            <Tabs value={mode} onValueChange={setMode} className="w-full max-w-xs">
+              <TabsList className="grid w-full grid-cols-2 bg-white/5 border border-white/10 p-1 rounded-xl">
+                <TabsTrigger value="basic" className="rounded-lg data-[state=active]:bg-white/10 data-[state=active]:text-rose-400 transition-all font-bold">Standard</TabsTrigger>
+                <TabsTrigger value="advanced" className="rounded-lg data-[state=active]:bg-white/10 data-[state=active]:text-orange-400 transition-all font-bold">Scientific</TabsTrigger>
+              </TabsList>
+            </Tabs>
+          </div>
         </CardHeader>
 
-        <CardContent className="space-y-6">
-          {/* Formula Selection */}
-          <div className="space-y-3">
-            <Label className="text-gray-200">BMR Formula *</Label>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <CardContent className="space-y-10 p-6 sm:p-10 lg:p-12">
+          <div className="space-y-6">
+            <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+              <Zap className="h-3 w-3" />
+              Metabolic Protocols
+            </h3>
+            <Label className="text-slate-400 font-black uppercase tracking-[0.2em] text-[10px] ml-1">Algorithmic Protocol</Label>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {bmrFormulas.map((formula) => (
-                <div
+                <motion.div
                   key={formula.value}
-                  className={`p-4 rounded-lg border cursor-pointer transition-all duration-300 ${
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`p-5 rounded-3xl border cursor-pointer transition-all duration-300 relative overflow-hidden group ${
                     selectedFormula === formula.value
-                      ? "border-blue-500 bg-blue-900/20"
-                      : "border-gray-700 bg-gray-800/30 hover:border-gray-600"
+                      ? "border-rose-500/50 bg-rose-500/10 shadow-[0_0_30px_rgba(244,63,94,0.1)]"
+                      : "border-white/10 bg-white/5 hover:border-white/20"
                   }`}
                   onClick={() => setSelectedFormula(formula.value)}
                 >
-                  <div className="flex items-start justify-between mb-2">
-                    <h4 className="font-semibold text-white">{formula.label}</h4>
-                    {formula.recommended && (
-                      <span className="text-xs bg-green-500/20 text-green-300 px-2 py-1 rounded-full">
-                        Recommended
-                      </span>
-                    )}
+                  <div className="flex flex-col h-full relative z-10">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className={`font-black uppercase tracking-wider text-xs ${selectedFormula === formula.value ? 'text-rose-400' : 'text-slate-300'}`}>
+                        {formula.label}
+                      </h4>
+                      {formula.recommended && (
+                        <div className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                      )}
+                    </div>
+                    <p className="text-[10px] text-slate-500 font-bold uppercase leading-tight">{formula.description}</p>
+                    <div className="mt-4 flex items-center gap-2">
+                      <Gauge className={`h-3 w-3 ${selectedFormula === formula.value ? 'text-rose-400' : 'text-slate-600'}`} />
+                      <span className="text-[9px] font-black tracking-widest text-slate-400 uppercase">{formula.accuracy}</span>
+                    </div>
                   </div>
-                  <p className="text-sm text-gray-400 mb-2">{formula.description}</p>
-                  <p className="text-xs text-gray-500">{formula.accuracy}</p>
-                </div>
+                  {selectedFormula === formula.value && (
+                    <motion.div 
+                      layoutId="activeGlow"
+                      className="absolute inset-0 bg-gradient-to-br from-rose-500/5 to-transparent"
+                    />
+                  )}
+                </motion.div>
               ))}
-            </div>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Weight Input */}
-            <div className="space-y-2">
-              <Label htmlFor="weight" className="text-gray-200">Weight *</Label>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:p-6 lg:p-8 sm:gap-6 sm:p-8 md:p-12 pt-4">
+            <motion.div variants={itemVariants} className="space-y-6">
+              <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                <Target className="h-3 w-3" />
+                Biometric Baseline
+              </h3>
+              <Label className="text-slate-500 font-black uppercase tracking-wider text-[10px]">Biometric Mass</Label>
               <div className="flex gap-2">
                 <Input
-                  id="weight"
                   type="number"
-                  placeholder="Enter weight"
+                  placeholder="0.0"
                   value={formData.weight}
                   onChange={(e) => handleInputChange("weight", e.target.value)}
-                  className="bg-gray-800 border-gray-700 text-white flex-1"
+                  className="glass-input text-xl py-5 sm:py-7 flex-1 focus:ring-rose-500/50"
                 />
                 <Select value={formData.weightUnit} onValueChange={(value) => handleInputChange("weightUnit", value)}>
-                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-16 sm:w-20">
+                  <SelectTrigger className="glass-input w-24 border-white/10 py-5 sm:py-7 text-slate-300 font-bold">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
+                  <SelectContent className="glass-panel border-white/10">
                     <SelectItem value="kg">kg</SelectItem>
                     <SelectItem value="lbs">lbs</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Height Input */}
-            <div className="space-y-2">
-              <Label htmlFor="height" className="text-gray-200">Height *</Label>
+            <motion.div variants={itemVariants} className="space-y-3">
+              <Label className="text-slate-500 font-black uppercase tracking-wider text-[10px]">Stature Architecture</Label>
               <div className="flex gap-2">
                 {formData.heightUnit === "cm" ? (
                   <Input
-                    id="height"
                     type="number"
-                    placeholder="Enter height"
+                    placeholder="Height"
                     value={formData.height}
                     onChange={(e) => handleInputChange("height", e.target.value)}
-                    className="bg-gray-800 border-gray-700 text-white flex-1"
+                    className="glass-input text-xl py-5 sm:py-7 flex-1 focus:ring-rose-500/50"
                   />
                 ) : (
-                  <div className="flex gap-1 flex-1">
+                  <div className="flex gap-2 flex-1">
                     <Input
                       type="number"
                       placeholder="ft"
                       value={formData.feet}
                       onChange={(e) => handleInputChange("feet", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
+                      className="glass-input text-xl py-5 sm:py-7 flex-1 focus:ring-rose-500/50"
                     />
                     <Input
                       type="number"
                       placeholder="in"
                       value={formData.inches}
                       onChange={(e) => handleInputChange("inches", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
+                      className="glass-input text-xl py-5 sm:py-7 flex-1 focus:ring-rose-500/50"
                     />
                   </div>
                 )}
                 <Select value={formData.heightUnit} onValueChange={(value) => handleInputChange("heightUnit", value)}>
-                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-16 sm:w-20">
+                  <SelectTrigger className="glass-input w-24 border-white/10 py-5 sm:py-7 text-slate-300 font-bold">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
+                  <SelectContent className="glass-panel border-white/10">
                     <SelectItem value="cm">cm</SelectItem>
                     <SelectItem value="ft">ft</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Age Input */}
-            <div className="space-y-2">
-              <Label htmlFor="age" className="text-gray-200">Age *</Label>
+            <motion.div variants={itemVariants} className="space-y-3">
+              <Label className="text-slate-500 font-black uppercase tracking-wider text-[10px]">Chronological Age</Label>
               <Input
-                id="age"
                 type="number"
-                placeholder="Enter age"
+                placeholder="Age"
                 value={formData.age}
                 onChange={(e) => handleInputChange("age", e.target.value)}
-                className="bg-gray-800 border-gray-700 text-white"
+                className="glass-input text-xl py-5 sm:py-7 focus:ring-rose-500/50"
               />
-            </div>
+            </motion.div>
 
-            {/* Gender Input */}
-            <div className="space-y-2">
-              <Label className="text-gray-200">Gender *</Label>
+            <motion.div variants={itemVariants} className="space-y-3">
+              <Label className="text-slate-500 font-black uppercase tracking-wider text-[10px]">Endocrine Gender</Label>
               <Select value={formData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                  <SelectValue placeholder="Select gender" />
+                <SelectTrigger className="glass-input text-xl border-white/10 py-5 sm:py-7 text-slate-200 font-bold">
+                  <SelectValue placeholder="Identify" />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-800 border-gray-700">
+                <SelectContent className="glass-panel border-white/10">
                   <SelectItem value="male">Male</SelectItem>
                   <SelectItem value="female">Female</SelectItem>
                 </SelectContent>
               </Select>
-            </div>
+            </motion.div>
           </div>
 
-          {/* Body Fat Input (required for Katch-McArdle) */}
           {(selectedFormula === "katch" || mode === "advanced") && (
-            <div className="space-y-2">
-              <Label htmlFor="bodyFat" className="text-gray-200">
-                Body Fat Percentage {selectedFormula === "katch" ? "*" : ""}
-              </Label>
-              <Input
-                id="bodyFat"
-                type="number"
-                placeholder="Enter body fat percentage"
-                value={formData.bodyFat}
-                onChange={(e) => handleInputChange("bodyFat", e.target.value)}
-                className="bg-gray-800 border-gray-700 text-white"
-              />
-              {selectedFormula === "katch" && (
-                <p className="text-sm text-blue-300">
-                  Body fat percentage is required for Katch-McArdle formula
-                </p>
-              )}
-            </div>
-          )}
-
-          {/* Advanced Mode Fields */}
-          {mode === "advanced" && (
-            <div className="space-y-4 pt-4 border-t border-gray-700">
-              <h3 className="text-lg font-semibold text-blue-300 mb-4">Advanced Analysis</h3>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className="text-gray-200">Primary Activity Level</Label>
-                  <Select value={formData.activityLevel} onValueChange={(value) => handleInputChange("activityLevel", value)}>
-                    <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                      <SelectValue placeholder="Select activity level" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
-                      <SelectItem value="sedentary">Sedentary</SelectItem>
-                      <SelectItem value="light">Light Activity</SelectItem>
-                      <SelectItem value="moderate">Moderate Activity</SelectItem>
-                      <SelectItem value="high">High Activity</SelectItem>
-                      <SelectItem value="extreme">Extreme Activity</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label className="text-gray-200">Fitness Goal</Label>
-                  <Select value={formData.fitnessGoal} onValueChange={(value) => handleInputChange("fitnessGoal", value)}>
-                    <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                      <SelectValue placeholder="Select goal" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
-                      <SelectItem value="maintenance">Weight Maintenance</SelectItem>
-                      <SelectItem value="loss">Weight Loss</SelectItem>
-                      <SelectItem value="gain">Weight Gain</SelectItem>
-                      <SelectItem value="muscle">Muscle Building</SelectItem>
-                      <SelectItem value="performance">Athletic Performance</SelectItem>
-                    </SelectContent>
-                  </Select>
+            <motion.div 
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              className="space-y-4 pt-4 border-t border-white/5"
+            >
+              <Label className="text-rose-400 font-black uppercase tracking-[0.2em] text-[10px]">Bio-Composition (%)</Label>
+              <div className="flex gap-4">
+                <Input
+                  type="number"
+                  placeholder="Body Fat %"
+                  value={formData.bodyFat}
+                  onChange={(e) => handleInputChange("bodyFat", e.target.value)}
+                  className="glass-input text-xl py-5 sm:py-7 flex-1 border-rose-500/20 focus:ring-rose-500/50"
+                />
+                <div className="flex items-center text-xs text-slate-500 font-bold uppercase italic max-w-[200px]">
+                  * Essential for Katch-McArdle precision
                 </div>
               </div>
-            </div>
+            </motion.div>
           )}
 
-          {/* Calculate Button */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-6">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 pt-8">
             <Button
               onClick={calculateAllBMR}
-              disabled={!validateForm() || isCalculating}
-              className="flex-1 bg-gradient-to-r from-red-500 to-pink-600 hover:from-red-600 hover:to-pink-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              className={`flex-1 btn-category-nutrition py-5 sm:py-8 rounded-[2rem] text-base sm:text-lg md:text-xl font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-[0.98] ${!validateForm() ? 'opacity-70 grayscale-[0.5]' : ''}`}
             >
               {isCalculating ? (
                 <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Calculating...
+                  <Loader2 className="mr-3 h-7 w-7 animate-spin text-white" />
+                  Analyzing Metabolic Depth...
                 </>
               ) : (
                 <>
-                  <Heart className="h-5 w-5 mr-2" />
-                  Calculate BMR
+                  <Zap className="mr-3 h-7 w-7" />
+                  Analyze BMR
                 </>
               )}
             </Button>
@@ -435,165 +403,170 @@ const BMRCalculator = () => {
             <Button
               onClick={resetForm}
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800"
+              className="w-full sm:w-auto border-white/10 bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white flex items-center gap-3 px-10 py-5 sm:py-8 rounded-2xl shadow-lg backdrop-blur-md transition-all duration-300 font-bold"
             >
-              Reset Form
+              <RotateCcw className="h-6 w-6" />
+              Reset
             </Button>
-          </div>
+          </motion.div>
 
           {!validateForm() && (
-            <Alert className="bg-yellow-900/20 border-yellow-800/50">
-              <Info className="h-4 w-4 text-yellow-400" />
-              <AlertTitle className="text-yellow-300">Missing Information</AlertTitle>
-              <AlertDescription className="text-yellow-200">
-                {selectedFormula === "katch" ? (
-                  "Please fill in all required fields including body fat percentage for Katch-McArdle formula."
-                ) : (
-                  "Please fill in all required fields marked with *."
-                )}
-              </AlertDescription>
-            </Alert>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              <Alert className="bg-rose-500/5 border-rose-500/10 rounded-2xl p-5">
+                <AlertCircle className="h-5 w-5 text-rose-400" />
+                <AlertTitle className="text-rose-400 text-[10px] font-black uppercase tracking-[0.2em] mb-1">Telemetry Interrupted</AlertTitle>
+                <AlertDescription className="text-slate-400 text-xs font-semibold">
+                  Required biometric fields are incomplete. {selectedFormula === "katch" ? "Adipose ratio (%) is mandatory for this algorithm." : "Weight, age, and height parameters required."}
+                </AlertDescription>
+              </Alert>
+            </motion.div>
           )}
         </CardContent>
       </Card>
 
-      {/* Results Section */}
-      {result && (
-        <Card className="mt-8 bg-gray-900/50 border-gray-800">
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold text-white flex items-center">
-              <Flame className="h-6 w-6 text-red-400 mr-2" />
-              Your Basal Metabolic Rate Results
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            {/* Primary BMR Result */}
-            <div className="text-center bg-gradient-to-r from-red-900/20 to-pink-900/20 p-8 rounded-xl border border-red-800/50">
-              <div className="text-5xl font-bold text-red-300 mb-2">{result.primaryBMR}</div>
-              <div className="text-xl text-red-200 font-semibold mb-2">Calories per Day</div>
-              <div className="text-gray-400">
-                Using {result.selectedFormula.label} formula
-                {result.selectedFormula.recommended && (
-                  <span className="ml-2 text-green-400">• Recommended</span>
-                )}
-              </div>
+      <AnimatePresence>
+        {result && (
+          <motion.div
+            variants={resultVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="mt-16 premium-result-card p-6 sm:p-12 md:p-16 lg:p-20 overflow-hidden relative"
+          >
+            <div className="absolute top-0 right-0 p-6 sm:p-8 lg:p-10 font-black text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] lg:text-[12rem] text-rose-400 opacity-[0.03] select-none pointer-events-none uppercase">
+              PROPHET
             </div>
 
-            {/* All BMR Results Comparison */}
-            <div className="bg-gray-800/50 p-6 rounded-xl">
-              <h3 className="text-lg font-semibold text-white mb-4">BMR Formula Comparison</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {bmrFormulas.map((formula) => (
-                  <div
-                    key={formula.value}
-                    className={`text-center p-4 rounded-lg border ${
-                      formula.value === selectedFormula
-                        ? "border-red-500 bg-red-900/20"
-                        : "border-gray-600 bg-gray-700/20"
-                    }`}
-                  >
-                    <div className="text-2xl font-bold text-red-300 mb-1">
-                      {result.bmrResults[formula.value] || "N/A"}
-                    </div>
-                    <div className="text-red-200 font-medium mb-1">{formula.label}</div>
-                    <div className="text-xs text-gray-400">
-                      {formula.recommended && "✓ Most Accurate"}
-                      {formula.value === "katch" && !result.bmrResults[formula.value] && "Requires body fat %"}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Metabolic Breakdown */}
-            {result.metabolicBreakdown && (
-              <div className="bg-gray-800/50 p-6 rounded-xl">
-                <h3 className="text-lg font-semibold text-white mb-4">BMR Energy Distribution</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="text-center p-4 bg-blue-900/20 rounded-lg border border-blue-800/30">
-                    <div className="text-2xl font-bold text-blue-300">{result.metabolicBreakdown.organs}</div>
-                    <div className="text-blue-200 font-medium">Organs (60%)</div>
-                    <div className="text-xs text-gray-400">Brain, liver, kidneys, heart</div>
-                  </div>
-                  <div className="text-center p-4 bg-green-900/20 rounded-lg border border-green-800/30">
-                    <div className="text-2xl font-bold text-green-300">{result.metabolicBreakdown.muscle}</div>
-                    <div className="text-green-200 font-medium">Muscle (25%)</div>
-                    <div className="text-xs text-gray-400">Skeletal muscle tissue</div>
-                  </div>
-                  <div className="text-center p-4 bg-purple-900/20 rounded-lg border border-purple-800/30">
-                    <div className="text-2xl font-bold text-purple-300">{result.metabolicBreakdown.other}</div>
-                    <div className="text-purple-200 font-medium">Other (15%)</div>
-                    <div className="text-xs text-gray-400">Fat tissue, bones, organs</div>
-                  </div>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 sm:p-6 lg:p-8 mb-16 relative z-10">
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-2xl bg-rose-500/10 border border-rose-500/20">
+                  <Microscope className="h-8 w-8 text-rose-400" />
+                </div>
+                <div>
+                  <h3 className="text-3xl font-black text-white tracking-tight uppercase">Metabolic Core</h3>
+                  <p className="text-slate-500 text-sm font-bold tracking-widest uppercase">Verified biological Baseline</p>
                 </div>
               </div>
-            )}
+              <Button
+                className="w-full md:w-auto bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl px-10 py-5 sm:py-8 font-black transition-all uppercase tracking-widest text-sm"
+              >
+                <Download className="h-5 w-5 mr-3" />
+                Export Genetic Blueprint
+              </Button>
+            </div>
 
-            {/* TDEE Estimates */}
-            <div className="bg-gray-800/50 p-6 rounded-xl">
-              <h3 className="text-lg font-semibold text-white mb-4">Total Daily Energy Expenditure (TDEE) Estimates</h3>
-              <div className="space-y-3">
-                {result.tdeeEstimates.map((estimate, index) => (
-                  <div key={index} className="flex justify-between items-center p-3 rounded-lg bg-gray-700/30 border border-gray-600/30">
-                    <div>
-                      <div className="text-white font-medium">{estimate.label}</div>
-                      <div className="text-sm text-gray-400">{estimate.description}</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-lg font-bold text-blue-300">
-                        {estimate.calories} <span className="text-sm text-gray-400">cal/day</span>
+            <div className="text-center mb-24 relative z-10">
+              <motion.div
+                className="text-[11rem] font-black result-value-glow bg-gradient-to-br from-white via-white/80 to-white/20 bg-clip-text text-transparent leading-none"
+                initial={{ filter: "blur(20px)", y: 20 }}
+                animate={{ filter: "blur(0px)", y: 0 }}
+                transition={{ duration: 1 }}
+              >
+                {result.primaryBMR}<span className="text-4xl text-rose-500/60 font-black tracking-widest ml-4 uppercase">kcal</span>
+              </motion.div>
+              <div className="inline-flex items-center px-6 py-3 sm:px-10 sm:py-4 md:px-16 md:py-5 rounded-full text-2xl font-black uppercase tracking-[0.5em] text-rose-400 bg-white/5 border border-rose-400/20 mt-10 shadow-2xl">
+                BMR Resolved
+              </div>
+              <p className="text-slate-500 font-bold uppercase tracking-widest mt-6 opacity-60">Protocol: {result.selectedFormula.label}</p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:p-8 lg:p-10 mb-16">
+              <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 space-y-8">
+                <div className="flex items-center gap-4 mb-2">
+                  <Microscope className="h-7 w-7 text-rose-400" />
+                  <h4 className="text-xl font-black text-white uppercase tracking-widest">Formula Matrix</h4>
+                </div>
+                <div className="space-y-5">
+                  {bmrFormulas.map((formula) => (
+                    <div 
+                      key={formula.value}
+                      className={`flex justify-between items-center p-6 rounded-[2.5rem] border transition-all ${formula.value === selectedFormula ? 'bg-rose-500/10 border-rose-500/20' : 'bg-white/5 border-white/5'}`}
+                    >
+                      <div className="flex flex-col">
+                        <span className="text-white font-black text-sm uppercase tracking-wider">{formula.label}</span>
+                        <span className="text-[10px] text-slate-500 font-bold uppercase mt-1">{formula.accuracy}</span>
                       </div>
+                      <span className={`text-2xl font-black ${formula.value === selectedFormula ? 'text-rose-400' : 'text-slate-400'}`}>
+                        {result.bmrResults[formula.value] || "N/A"}
+                      </span>
                     </div>
-                  </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 space-y-8">
+                <div className="flex items-center gap-4 mb-2">
+                  <Flame className="h-7 w-7 text-orange-400" />
+                  <h4 className="text-xl font-black text-white uppercase tracking-widest">Biological Outlay</h4>
+                </div>
+                <div className="space-y-8">
+                  {[
+                    { label: "Organ Function", value: result.metabolicBreakdown.organs, color: "text-blue-400", sub: "CNS, Liver, Renal" },
+                    { label: "Muscle Tissue", value: result.metabolicBreakdown.muscle, color: "text-emerald-400", sub: "Skeletal Maintenance" },
+                    { label: "Systemic Other", value: result.metabolicBreakdown.other, color: "text-rose-400", sub: "Bones, Adipose, Surface" }
+                  ].map((item, index) => (
+                    <div key={index} className="space-y-3">
+                      <div className="flex justify-between text-[11px] font-black uppercase tracking-widest">
+                        <span className="text-slate-400">{item.label}</span>
+                        <span className={item.color}>{item.value} kcal</span>
+                      </div>
+                      <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          animate={{ width: `${(item.value / result.primaryBMR) * 100}%` }}
+                          transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
+                          className={`h-full bg-gradient-to-r ${item.color.replace('text', 'from')}-400 to-transparent`}
+                        />
+                      </div>
+                      <p className="text-[9px] text-slate-600 font-bold uppercase">{item.sub}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-16 p-6 sm:p-10 md:p-14 rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] bg-white/[0.03] border border-white/10 backdrop-blur-3xl relative overflow-hidden">
+              <div className="flex items-center gap-4 mb-10">
+                <Activity className="h-8 w-8 text-rose-400" />
+                <h4 className="text-2xl font-black text-white uppercase tracking-widest">Expenditure Matrix (TDEE)</h4>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+                {result.tdeeEstimates.map((estimate, index) => (
+                  <motion.div
+                    key={index}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    className="p-5 sm:p-6 lg:p-8 rounded-[2.5rem] bg-white/5 border border-white/5 text-center transition-all hover:bg-rose-500/5 group"
+                  >
+                    <div className="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-4 group-hover:text-rose-400 transition-colors">{estimate.label}</div>
+                    <div className="text-3xl font-black text-white mb-2 tracking-tighter">{estimate.calories}</div>
+                    <div className="text-[8px] font-black text-slate-600 uppercase group-hover:text-slate-400 transition-colors">{estimate.description}</div>
+                  </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* Recommendations */}
-            <div className="space-y-4">
-              {result.recommendations.map((rec, index) => (
-                <Alert
-                  key={index}
-                  className={`${
-                    rec.type === "warning"
-                      ? "bg-yellow-900/20 border-yellow-800/50"
-                      : rec.type === "success"
-                      ? "bg-green-900/20 border-green-800/50"
-                      : "bg-blue-900/20 border-blue-800/50"
-                  }`}
-                >
-                  <TrendingUp className={`h-4 w-4 ${
-                    rec.type === "warning"
-                      ? "text-yellow-400"
-                      : rec.type === "success"
-                      ? "text-green-400"
-                      : "text-blue-400"
-                  }`} />
-                  <AlertTitle className={`${
-                    rec.type === "warning"
-                      ? "text-yellow-300"
-                      : rec.type === "success"
-                      ? "text-green-300"
-                      : "text-blue-300"
-                  }`}>
-                    {rec.title}
-                  </AlertTitle>
-                  <AlertDescription className={`${
-                    rec.type === "warning"
-                      ? "text-yellow-200"
-                      : rec.type === "success"
-                      ? "text-green-200"
-                      : "text-blue-200"
-                  }`}>
-                    {rec.message}
-                  </AlertDescription>
-                </Alert>
-              ))}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-12 border-t border-white/5">
+              <div className="text-center">
+                <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Mass</div>
+                <div className="text-sm font-black text-white">{formData.weight} {formData.weightUnit}</div>
+              </div>
+              <div className="text-center">
+                <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Stature</div>
+                <div className="text-sm font-black text-white uppercase">{formData.height || `${formData.feet}'${formData.inches}"`}</div>
+              </div>
+              <div className="text-center">
+                <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Age</div>
+                <div className="text-sm font-black text-white">{formData.age}</div>
+              </div>
+              <div className="text-center">
+                <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Protocol</div>
+                <div className="text-sm font-black text-white uppercase">{selectedFormula}</div>
+              </div>
             </div>
-          </CardContent>
-        </Card>
-      )}
-    </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 

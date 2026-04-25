@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         
@@ -13,23 +13,23 @@
         <meta name="keywords" content="BMI calculator, body mass index calculator, calculate BMI, healthy weight calculator, BMI chart, what is BMI, ideal weight calculator, weight loss calculator, BMI calculator adults, healthy BMI range, obesity calculator, underweight calculator" />
         <meta name="author" content="Advanced BMI Calculator" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <link rel="canonical" href="https://bmipro.com" />
+        <link rel="canonical" href="https://toxictools.in" />
         
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bmipro.com" />
+        <meta property="og:url" content="https://toxictools.in" />
         <meta property="og:title" content="BMI Calculator - Free Body Mass Index Calculator | Healthy Weight Tool" />
         <meta property="og:description" content="Calculate your BMI instantly with our advanced Body Mass Index calculator. Get personalized health insights and professional recommendations." />
-        <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+        <meta property="og:image" content="/og-image.jpg" />
         <meta property="og:site_name" content="Advanced BMI Calculator" />
         <meta property="og:locale" content="en_US" />
         
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://bmipro.com" />
+        <meta property="twitter:url" content="https://toxictools.in" />
         <meta property="twitter:title" content="BMI Calculator - Free Body Mass Index Calculator" />
         <meta property="twitter:description" content="Calculate your BMI instantly with our advanced Body Mass Index calculator. Get personalized health insights and professional recommendations." />
-        <meta property="twitter:image" content="%PUBLIC_URL%/twitter-image.jpg" />
+        <meta property="twitter:image" content="/twitter-image.jpg" />
         
         <!-- Additional SEO Tags -->
         <meta name="language" content="English" />
@@ -49,7 +49,7 @@
           "name": "BMI Calculator Pro",
           "alternateName": "Body Mass Index Calculator",
           "description": "Advanced BMI calculator providing comprehensive health insights and personalized recommendations based on WHO and CDC guidelines",
-          "url": "https://bmipro.com",
+          "url": "https://toxictools.in",
           "applicationCategory": "HealthApplication",
           "operatingSystem": "Web Browser",
           "browserRequirements": "Requires JavaScript",
@@ -67,10 +67,10 @@
           "provider": {
             "@type": "Organization",
             "name": "Advanced BMI Calculator",
-            "url": "https://bmipro.com",
+            "url": "https://toxictools.in",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://bmipro.com/logo.png"
+              "url": "https://toxictools.in/logo.png"
             }
           },
           "about": {
@@ -93,7 +93,7 @@
             "Age and Gender Considerations"
           ],
           "applicationSubCategory": "Health Calculator",
-          "screenshot": "https://bmipro.com/screenshot.jpg",
+          "screenshot": "https://toxictools.in/screenshot.jpg",
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
@@ -138,19 +138,25 @@
         }
         </script>
         
-        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-        
         <!-- Preconnect for Performance -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         
-        <!-- Critical CSS hint -->
-        <link rel="preload" href="/static/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     </head>
     <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                    for(let registration of registrations) {
+                        registration.unregister();
+                        console.log('ServiceWorker unregistered');
+                    }
+                });
+            }
+        </script>
+        <script type="module" src="/src/index.jsx"></script>
         <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

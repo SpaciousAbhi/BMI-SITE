@@ -14,7 +14,7 @@ Disallow: /manifest.json
 Disallow: /service-worker.js
 
 # Sitemap location
-Sitemap: https://bmipro.com/sitemap.xml
+Sitemap: https://toxictools.in/sitemap.xml
 
 # Crawl delay for better server performance
 Crawl-delay: 1

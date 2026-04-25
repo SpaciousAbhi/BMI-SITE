@@ -10,7 +10,7 @@ const ProteinCalculatorPage = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-red-400 to-rose-400 bg-clip-text text-transparent">
             Protein Calculator
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl glass-text opacity-90 max-w-3xl mx-auto">
             Calculate your optimal daily protein intake for muscle building, weight loss, and health. Get personalized recommendations with timing and source guidance.
           </p>
         </div>
@@ -24,13 +24,13 @@ const ProteinCalculatorPage = () => {
       {/* Educational Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gray-900/50 rounded-xl border border-gray-800 p-8">
+          <div className="glass-panel glow-border rounded-xl border border-gray-800 p-8">
             <h2 className="text-3xl font-bold text-white mb-6">Understanding Protein Requirements</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
                 <h3 className="text-xl font-semibold text-red-300 mb-4">Protein Functions</h3>
-                <ul className="text-gray-300 space-y-3">
+                <ul className="glass-text opacity-90 space-y-3">
                   <li><strong>Muscle Building:</strong> Provides amino acids for protein synthesis</li>
                   <li><strong>Repair & Recovery:</strong> Heals damaged tissues from exercise</li>
                   <li><strong>Immune Support:</strong> Produces antibodies and immune cells</li>
@@ -45,13 +45,13 @@ const ProteinCalculatorPage = () => {
                 <div className="space-y-4">
                   <div className="bg-green-900/20 p-4 rounded-lg border border-green-800/30">
                     <h4 className="font-semibold text-green-300 mb-2">Complete Proteins</h4>
-                    <p className="text-gray-300 text-sm">
+                    <p className="glass-text opacity-90 text-sm">
                       Contain all 9 essential amino acids. Examples: meat, fish, eggs, dairy, quinoa, soy.
                     </p>
                   </div>
                   <div className="bg-orange-900/20 p-4 rounded-lg border border-orange-800/30">
                     <h4 className="font-semibold text-orange-300 mb-2">Incomplete Proteins</h4>
-                    <p className="text-gray-300 text-sm">
+                    <p className="glass-text opacity-90 text-sm">
                       Missing one or more essential amino acids. Examples: beans, nuts, grains. Combine for completeness.
                     </p>
                   </div>
@@ -61,7 +61,7 @@ const ProteinCalculatorPage = () => {
 
             <div className="mt-8 p-6 bg-red-900/20 rounded-lg border border-red-800/50">
               <h3 className="text-lg font-semibold text-red-300 mb-3">Protein Requirements by Population</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm glass-text opacity-90">
                 <div>
                   <h4 className="font-semibold text-white mb-2">Sedentary Adults</h4>
                   <p className="mb-3">0.8g per kg body weight (RDA minimum)</p>
@@ -85,12 +85,12 @@ const ProteinCalculatorPage = () => {
               </div>
             </div>
 
-            <div className="mt-6 p-6 bg-gray-800/50 rounded-lg">
+            <div className="mt-6 p-6 glass-panel glow-border rounded-lg">
               <h3 className="text-lg font-semibold text-white mb-3">Protein Timing & Distribution</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
                   <h4 className="font-semibold text-red-300 mb-2">Daily Distribution</h4>
-                  <ul className="text-gray-300 text-sm space-y-1">
+                  <ul className="glass-text opacity-90 text-sm space-y-1">
                     <li>• Breakfast: 25-30g</li>
                     <li>• Lunch: 25-30g</li>
                     <li>• Dinner: 25-30g</li>
@@ -99,7 +99,7 @@ const ProteinCalculatorPage = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-red-300 mb-2">Pre-Workout</h4>
-                  <ul className="text-gray-300 text-sm space-y-1">
+                  <ul className="glass-text opacity-90 text-sm space-y-1">
                     <li>• 15-25g protein</li>
                     <li>• 1-2 hours before</li>
                     <li>• Easy to digest</li>
@@ -108,7 +108,7 @@ const ProteinCalculatorPage = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-red-300 mb-2">Post-Workout</h4>
-                  <ul className="text-gray-300 text-sm space-y-1">
+                  <ul className="glass-text opacity-90 text-sm space-y-1">
                     <li>• 20-40g protein</li>
                     <li>• Within 2 hours</li>
                     <li>• High leucine content</li>
@@ -118,12 +118,12 @@ const ProteinCalculatorPage = () => {
               </div>
             </div>
 
-            <div className="mt-6 p-6 bg-gray-700/30 rounded-lg">
+            <div className="mt-6 p-6 bg-white/5 rounded-lg">
               <h3 className="text-lg font-semibold text-white mb-3">High-Quality Protein Sources</h3>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
                   <h4 className="font-semibold text-red-300 mb-2">Animal Sources</h4>
-                  <ul className="text-gray-300 text-sm space-y-1">
+                  <ul className="glass-text opacity-90 text-sm space-y-1">
                     <li>• Chicken breast (31g/100g)</li>
                     <li>• Salmon (25g/100g)</li>
                     <li>• Eggs (6g per egg)</li>
@@ -132,7 +132,7 @@ const ProteinCalculatorPage = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-green-300 mb-2">Plant Sources</h4>
-                  <ul className="text-gray-300 text-sm space-y-1">
+                  <ul className="glass-text opacity-90 text-sm space-y-1">
                     <li>• Lentils (18g/cup)</li>
                     <li>• Tofu (20g/100g)</li>
                     <li>• Quinoa (8g/cup)</li>
@@ -141,7 +141,7 @@ const ProteinCalculatorPage = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-blue-300 mb-2">Supplements</h4>
-                  <ul className="text-gray-300 text-sm space-y-1">
+                  <ul className="glass-text opacity-90 text-sm space-y-1">
                     <li>• Whey protein (25g/scoop)</li>
                     <li>• Casein protein (24g/scoop)</li>
                     <li>• Plant blend (20g/scoop)</li>
@@ -150,7 +150,7 @@ const ProteinCalculatorPage = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-purple-300 mb-2">Quick Options</h4>
-                  <ul className="text-gray-300 text-sm space-y-1">
+                  <ul className="glass-text opacity-90 text-sm space-y-1">
                     <li>• Protein bars (15-25g)</li>
                     <li>• Cottage cheese (14g/100g)</li>
                     <li>• String cheese (8g/stick)</li>

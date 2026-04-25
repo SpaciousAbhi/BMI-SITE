@@ -472,64 +472,66 @@ const HealthyWeightCalculator = () => {
       initial="hidden"
       animate="visible"
     >
-      <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
-        <CardHeader className="text-center pb-8">
-          <CardTitle className="text-3xl font-bold flex items-center justify-center gap-3 mb-4">
+      <Card className="glass-panel glow-border backdrop-blur-sm">
+        <CardHeader className="text-center pb-8 border-b border-white/5 bg-white/[0.02]">
+          <CardTitle className="text-4xl font-black mb-4 flex items-center justify-center gap-3">
             <motion.div
-              className="p-3 rounded-full bg-green-500/10"
-              whileHover={{ scale: 1.1, rotate: 180 }}
-              transition={{ duration: 0.3 }}
+              className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20"
+              whileHover={{ scale: 1.1, rotate: 10 }}
             >
-              <Heart className="h-8 w-8 text-green-400" />
+              <Heart className="h-10 w-10 text-cyan-400" />
             </motion.div>
-            <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-              Healthy Weight Calculator
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-200 to-cyan-400 bg-clip-text text-transparent uppercase tracking-tight">
+              Healthy Weight Oracle
             </span>
           </CardTitle>
-          <p className="text-gray-400 text-lg">
-            Calculate your personalized healthy weight range based on multiple factors
+          <p className="text-slate-400 text-lg max-w-xl mx-auto font-medium">
+            Personalized clinical weight range assessment based on metabolic and physiological factors.
           </p>
         </CardHeader>
 
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <CardContent className="space-y-10 p-6 sm:p-10 lg:p-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:p-6 lg:p-8 sm:gap-6 sm:p-8 md:p-12">
             {/* Personal Information */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-lg font-semibold text-white mb-4">Personal Information</h3>
+            <motion.div variants={itemVariants} className="space-y-6">
+              <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                <Target className="h-3 w-3" />
+                Biological Parameters
+              </h3>
               
-              <div className="space-y-2">
-                <Label htmlFor="gender" className="text-gray-300">Gender *</Label>
+              <div className="space-y-3">
+                <Label htmlFor="gender" className="text-[10px] font-black uppercase text-slate-500 ml-1">Biological Gender *</Label>
                 <Select value={gender} onValueChange={setGender}>
-                  <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white hover:border-green-500/50 focus:border-green-500 transition-all duration-300">
-                    <SelectValue placeholder="Select gender" />
+                  <SelectTrigger className="glass-input text-xl py-5 sm:py-7 font-bold text-slate-200">
+                    <SelectValue placeholder="Identify" />
                   </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
+                  <SelectContent className="glass-panel border-white/10 scale-in">
                     <SelectItem value="male">Male</SelectItem>
                     <SelectItem value="female">Female</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="age" className="text-gray-300">Age *</Label>
+              <div className="space-y-3">
+                <Label htmlFor="age" className="text-[10px] font-black uppercase text-slate-500 ml-1">Chronological Age *</Label>
                 <Input
                   id="age"
                   type="number"
-                  placeholder="Enter your age"
+                  placeholder="Years"
                   value={age}
                   onChange={(e) => setAge(e.target.value)}
-                  className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
+                  className="glass-input text-xl py-5 sm:py-7"
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="height" className="text-gray-300">Height *</Label>
+              <div className="space-y-3">
+                <Label htmlFor="height" className="text-[10px] font-black uppercase text-slate-500 ml-1">Stature (Height) *</Label>
                 <div className="flex gap-2">
                   <Select value={heightUnit} onValueChange={setHeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
+                    <SelectTrigger className="glass-input w-24 py-5 sm:py-7 font-bold">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
+                    <SelectContent className="glass-panel border-white/10 scale-in">
                       <SelectItem value="cm">cm</SelectItem>
                       <SelectItem value="ft">ft</SelectItem>
                     </SelectContent>
@@ -537,119 +539,119 @@ const HealthyWeightCalculator = () => {
                   {heightUnit === "cm" ? (
                     <Input
                       type="number"
-                      placeholder="Height in cm"
+                      placeholder="CM"
                       value={height}
                       onChange={(e) => setHeight(e.target.value)}
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300 flex-1"
+                      className="glass-input text-xl py-5 sm:py-7 flex-1"
                     />
                   ) : (
                     <div className="flex gap-2 flex-1">
                       <Input
                         type="number"
-                        placeholder="Feet"
+                        placeholder="FT"
                         value={feet}
                         onChange={(e) => setFeet(e.target.value)}
-                        className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
+                        className="glass-input text-xl py-5 sm:py-7 flex-1"
                       />
                       <Input
                         type="number"
-                        placeholder="Inches"
+                        placeholder="IN"
                         value={inches}
                         onChange={(e) => setInches(e.target.value)}
-                        className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300"
+                        className="glass-input text-xl py-5 sm:py-7 flex-1"
                       />
                     </div>
                   )}
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="currentWeight" className="text-gray-300">Current Weight (optional)</Label>
+              <div className="space-y-3">
+                <Label htmlFor="currentWeight" className="text-[10px] font-black uppercase text-slate-500 ml-1">Current Weight (Optional)</Label>
                 <div className="flex gap-2">
                   <Input
                     id="currentWeight"
                     type="number"
-                    placeholder="Current weight"
+                    placeholder="Weight"
                     value={currentWeight}
                     onChange={(e) => setCurrentWeight(e.target.value)}
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-green-500/50 focus:border-green-500 transition-all duration-300 flex-1"
+                    className="glass-input text-xl py-5 sm:py-7 flex-1"
                   />
                   <Select value={weightUnit} onValueChange={setWeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
+                    <SelectTrigger className="glass-input w-24 py-5 sm:py-7 font-bold">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
+                    <SelectContent className="glass-panel border-white/10 scale-in">
                       <SelectItem value="kg">kg</SelectItem>
                       <SelectItem value="lbs">lbs</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-                <p className="text-xs text-gray-500">For personalized assessment and recommendations</p>
               </div>
             </motion.div>
 
             {/* Additional Factors */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-lg font-semibold text-white mb-4">Personal Factors</h3>
+            <motion.div variants={itemVariants} className="space-y-6">
+              <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                <TrendingUp className="h-3 w-3" />
+                Lifestyle Matrix
+              </h3>
               
-              <div className="space-y-2">
-                <Label htmlFor="activityLevel" className="text-gray-300">Activity Level</Label>
+              <div className="space-y-3">
+                <Label htmlFor="activityLevel" className="text-[10px] font-black uppercase text-slate-500 ml-1">Activity Index</Label>
                 <Select value={activityLevel} onValueChange={setActivityLevel}>
-                  <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white hover:border-green-500/50 focus:border-green-500 transition-all duration-300">
-                    <SelectValue placeholder="Select activity level" />
+                  <SelectTrigger className="glass-input text-xl py-5 sm:py-7 font-bold text-slate-200">
+                    <SelectValue placeholder="Select Index" />
                   </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
+                  <SelectContent className="glass-panel border-white/10 scale-in">
                     <SelectItem value="low">Low (Sedentary)</SelectItem>
-                    <SelectItem value="moderate">Moderate (Regular Exercise)</SelectItem>
-                    <SelectItem value="high">High (Athletic/Very Active)</SelectItem>
+                    <SelectItem value="moderate">Moderate (Active)</SelectItem>
+                    <SelectItem value="high">High (Athletic)</SelectItem>
                   </SelectContent>
                 </Select>
-                <p className="text-xs text-gray-500">Affects weight range recommendations</p>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="bodyFrame" className="text-gray-300">Body Frame</Label>
+              <div className="space-y-3">
+                <Label htmlFor="bodyFrame" className="text-[10px] font-black uppercase text-slate-500 ml-1">Structural Frame</Label>
                 <Select value={bodyFrame} onValueChange={setBodyFrame}>
-                  <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white hover:border-green-500/50 focus:border-green-500 transition-all duration-300">
-                    <SelectValue placeholder="Select body frame" />
+                  <SelectTrigger className="glass-input text-xl py-5 sm:py-7 font-bold text-slate-200">
+                    <SelectValue placeholder="Select Frame" />
                   </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
-                    <SelectItem value="small">Small Frame</SelectItem>
-                    <SelectItem value="medium">Medium Frame</SelectItem>
-                    <SelectItem value="large">Large Frame</SelectItem>
+                  <SelectContent className="glass-panel border-white/10 scale-in">
+                    <SelectItem value="small">Small Structure</SelectItem>
+                    <SelectItem value="medium">Medium Structure</SelectItem>
+                    <SelectItem value="large">Large Structure</SelectItem>
                   </SelectContent>
                 </Select>
-                <p className="text-xs text-gray-500">Based on wrist/elbow measurements and bone structure</p>
               </div>
 
-              <div className="mt-6 p-4 bg-green-900/20 rounded-lg border border-green-800/50">
-                <h4 className="text-sm font-semibold text-green-300 mb-2">Personalized Assessment</h4>
-                <ul className="text-xs text-gray-400 space-y-1">
-                  <li>• Age-adjusted BMI ranges</li>
-                  <li>• Activity level considerations</li>
-                  <li>• Body frame adjustments</li>
-                  <li>• Multiple weight targets</li>
-                  <li>• Health-focused recommendations</li>
+              <div className="mt-8 p-6 bg-cyan-500/5 rounded-[2rem] border border-cyan-500/10 backdrop-blur-md">
+                <h4 className="text-xs font-black text-cyan-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <CheckCircle className="h-3 w-3" />
+                  Audit Engine Specs
+                </h4>
+                <ul className="text-xs text-slate-500 space-y-2 font-medium">
+                  <li className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full w-fit">Age-adjusted BMI ranges</li>
+                  <li className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full w-fit">Metabolic Activity considerations</li>
+                  <li className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full w-fit">Bone Structure adjustment</li>
                 </ul>
               </div>
             </motion.div>
           </div>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-6">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 pt-8">
             <Button
               onClick={calculateHealthyWeight}
-              disabled={isCalculating}
-              className="flex-1 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white font-semibold py-3 px-4 sm:px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/25"
+              className={`flex-1 btn-category-composition py-5 sm:py-8 rounded-[2rem] text-base sm:text-lg md:text-xl font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-[0.98] ${(!age || !gender || !(heightUnit === "ft" ? (feet && inches) : height)) ? 'opacity-70 grayscale-[0.5]' : ''}`}
             >
               {isCalculating ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Calculating...
+                  <Loader2 className="mr-3 h-7 w-7 animate-spin text-white" />
+                  Synthesizing Range...
                 </>
               ) : (
                 <>
-                  <Heart className="mr-2 h-4 w-4" />
-                  Calculate Healthy Weight Range
+                  <Target className="mr-3 h-7 w-7" />
+                  Audit Healthy Range
                 </>
               )}
             </Button>
@@ -657,9 +659,9 @@ const HealthyWeightCalculator = () => {
             <Button
               onClick={resetCalculator}
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-300 px-4 sm:px-6 sm:flex-none"
+              className="w-full sm:w-auto border-white/10 bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white flex items-center gap-3 px-6 py-4 md:px-10 md:py-6 lg:px-12 lg:py-5 sm:py-8 rounded-[2rem] shadow-lg backdrop-blur-md transition-all font-black text-sm sm:text-base md:text-lg uppercase"
             >
-              <RotateCcw className="mr-2 h-4 w-4" />
+              <RotateCcw className="h-6 w-6" />
               Reset
             </Button>
           </motion.div>
@@ -671,132 +673,143 @@ const HealthyWeightCalculator = () => {
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                className="mt-8 p-6 bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-xl border border-gray-700 backdrop-blur-sm"
+                className="mt-16 premium-result-card p-6 sm:p-12 md:p-16 lg:p-20 overflow-hidden relative"
               >
-                <div className="text-center mb-6">
-                  <motion.div
-                    className="text-5xl font-bold mb-2"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.5, type: "spring", bounce: 0.6 }}
-                  >
-                    <span className="text-green-400">{result.minHealthyWeight} - {result.maxHealthyWeight} kg</span>
-                  </motion.div>
-                  <h3 className={`text-2xl font-semibold mb-2 ${result.color}`}>{result.currentStatus}</h3>
-                  <p className="text-gray-400">BMI Range: {result.minBMI} - {result.maxBMI}</p>
-                  {result.currentBMI && (
-                    <p className="text-gray-300 mt-2">Current BMI: {result.currentBMI}</p>
-                  )}
+                <div className="absolute top-0 right-0 p-6 sm:p-8 lg:p-10 font-black text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] lg:text-[12rem] text-cyan-400 opacity-[0.03] select-none pointer-events-none uppercase">
+                  Healthy
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6">
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-white flex items-center">
-                      <Target className="h-5 w-5 mr-2 text-green-400" />
-                      Weight Targets
-                    </h4>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Weight Loss:</span>
-                        <span className="text-white font-medium">{result.weightLossTarget} kg</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Maintenance:</span>
-                        <span className="text-white font-medium">{result.maintenanceTarget} kg</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Muscle Gain:</span>
-                        <span className="text-white font-medium">{result.muscleGainTarget} kg</span>
-                      </div>
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 sm:p-6 lg:p-8 mb-16 relative z-10">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20">
+                      <Target className="h-8 w-8 text-cyan-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-3xl font-black text-white tracking-tight uppercase">Range Architecture</h3>
+                      <p className="text-slate-500 text-sm font-bold tracking-widest uppercase">Personalized clinical Assessment</p>
                     </div>
                   </div>
-
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-white flex items-center">
-                      <TrendingUp className="h-5 w-5 mr-2 text-blue-400" />
-                      Personalizations
-                    </h4>
-                    <div className="space-y-1 text-xs text-gray-400">
-                      {Object.entries(result.adjustments).map(([key, value]) => 
-                        value && (
-                          <p key={key}>• {value}</p>
-                        )
-                      )}
-                      {Object.values(result.adjustments).every(v => !v) && (
-                        <p>• Standard BMI ranges applied</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {result.healthInsights.length > 0 && (
-                  <div className="mb-6">
-                    <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                      <AlertCircle className="h-5 w-5 mr-2 text-yellow-400" />
-                      Health Insights
-                    </h4>
-                    <ul className="space-y-2">
-                      {result.healthInsights.map((insight, index) => (
-                        <motion.li
-                          key={index}
-                          className="flex items-start text-gray-300 text-sm"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.6 + index * 0.1 }}
-                        >
-                          <span className="text-yellow-400 mr-2">•</span>
-                          {insight}
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                    <CheckCircle className="h-5 w-5 mr-2 text-green-400" />
-                    Recommendations
-                  </h4>
-                  <ul className="space-y-2">
-                    {result.recommendations.map((rec, index) => (
-                      <motion.li
-                        key={index}
-                        className="flex items-start text-gray-300 text-sm"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.8 + index * 0.1 }}
-                      >
-                        <span className="text-green-400 mr-2">•</span>
-                        {rec}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </div>
-
-                <motion.div
-                  className="flex gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.2 }}
-                >
                   <Button
                     onClick={exportToPDF}
                     disabled={isExporting}
-                    className="flex-1 bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white transition-all duration-300"
+                    className="w-full md:w-auto bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl px-10 py-5 sm:py-8 font-black transition-all uppercase tracking-widest text-sm"
                   >
-                    {isExporting ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Generating PDF...
-                      </>
-                    ) : (
-                      <>
-                        <Download className="mr-2 h-4 w-4" />
-                        Export Healthy Weight Report
-                      </>
-                    )}
+                    {isExporting ? <Loader2 className="h-5 w-5 animate-spin mr-3" /> : <Download className="h-5 w-5 mr-3" />}
+                    {isExporting ? "Architecting PDF..." : "Export clinical Report"}
                   </Button>
-                </motion.div>
+                </div>
+
+                <div className="text-center mb-24 relative z-10">
+                  <motion.div
+                    className="text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] font-black result-value-glow bg-gradient-to-br from-white via-white/80 to-white/20 bg-clip-text text-transparent leading-none"
+                    initial={{ filter: "blur(20px)", y: 20 }}
+                    animate={{ filter: "blur(0px)", y: 0 }}
+                    transition={{ duration: 1 }}
+                  >
+                    {result.minHealthyWeight}<span className="text-3xl sm:text-4xl md:text-5xl mx-4 opacity-40 select-none">-</span>{result.maxHealthyWeight}
+                  </motion.div>
+                  <div className={`inline-flex items-center px-6 py-3 sm:px-10 sm:py-4 md:px-16 md:py-5 rounded-full text-2xl font-black uppercase tracking-[0.5em] ${result.color} bg-white/5 border border-white/10 mt-10 shadow-2xl`}>
+                    {result.currentStatus}
+                  </div>
+                  <p className="text-slate-500 font-bold uppercase tracking-widest mt-6 opacity-60">Personalized BMI Threshold: {result.minBMI} - {result.maxBMI}</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:p-8 lg:p-10 mb-16">
+                  <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 space-y-8">
+                    <div className="flex items-center gap-4 mb-2">
+                    <TrendingUp className="h-7 w-7 text-emerald-400" />
+                    <h4 className="text-xl font-black text-white uppercase tracking-widest">Metabolic Targets</h4>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center py-4 border-b border-white/5">
+                        <span className="text-slate-400 font-bold uppercase text-xs tracking-wider">Maintenance</span>
+                        <span className="text-white font-black text-xl">{result.maintenanceTarget} <span className="text-xs text-slate-500 uppercase">KG</span></span>
+                      </div>
+                      <div className="flex justify-between items-center py-4 border-b border-white/5">
+                        <span className="text-slate-400 font-bold uppercase text-xs tracking-wider">Weight Loss</span>
+                        <span className="text-amber-400 font-black text-xl">{result.weightLossTarget} <span className="text-xs text-slate-500 uppercase">KG</span></span>
+                      </div>
+                      <div className="flex justify-between items-center py-4">
+                        <span className="text-slate-400 font-bold uppercase text-xs tracking-wider">Muscle Gain</span>
+                        <span className="text-cyan-400 font-black text-xl">{result.muscleGainTarget} <span className="text-xs text-slate-500 uppercase">KG</span></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 space-y-8">
+                    <div className="flex items-center gap-4 mb-2">
+                    <AlertCircle className="h-7 w-7 text-blue-400" />
+                    <h4 className="text-xl font-black text-white uppercase tracking-widest">Logic Profile</h4>
+                    </div>
+                    <div className="grid grid-cols-1 gap-3">
+                      {Object.entries(result.adjustments).map(([key, value]) => 
+                        value && (
+                          <div key={key} className="flex items-center gap-4 p-5 rounded-[2rem] bg-white/5 border border-white/5">
+                            <CheckCircle className="h-4 w-4 text-emerald-500" />
+                            <span className="text-xs text-slate-400 font-black uppercase tracking-wider">{value}</span>
+                          </div>
+                        )
+                      )}
+                      {Object.values(result.adjustments).every(v => !v) && (
+                        <p className="text-xs text-slate-500 font-bold italic uppercase px-4">• Standard clinical baseline applied</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mb-16 p-6 sm:p-10 md:p-14 rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] bg-blue-500/5 border border-blue-500/10 backdrop-blur-3xl relative overflow-hidden">
+                  <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent" />
+                  <div className="flex items-center gap-4 mb-10">
+                    <AlertCircle className="h-8 w-8 text-blue-400 shadow-glow" />
+                    <h4 className="text-2xl font-black text-white uppercase tracking-widest">Physicality Insights</h4>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
+                    {result.healthInsights.map((insight, index) => (
+                      <motion.div
+                        key={index}
+                        className="p-5 sm:p-6 lg:p-8 rounded-[2rem] bg-white/5 border border-white/5 hover:bg-blue-500/5 transition-all text-slate-400 font-bold text-sm uppercase tracking-wider leading-loose"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.5 + index * 0.1 }}
+                      >
+                        {insight}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mb-16 p-6 sm:p-10 md:p-14 rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] bg-emerald-500/5 border border-emerald-500/10 backdrop-blur-3xl relative overflow-hidden">
+                  <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-emerald-500 to-transparent" />
+                  <div className="flex items-center gap-4 mb-10">
+                    <CheckCircle className="h-8 w-8 text-emerald-400 shadow-glow" />
+                    <h4 className="text-2xl font-black text-white uppercase tracking-widest">Evolutionary Recommendations</h4>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
+                    {result.recommendations.map((rec, index) => (
+                      <motion.div
+                        key={index}
+                        className="flex items-center gap-5 p-6 rounded-[2rem] bg-white/5 border border-white/5 hover:bg-emerald-500/5 transition-all group"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7 + index * 0.1 }}
+                      >
+                        <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,1)]" />
+                        <span className="text-slate-400 font-bold text-sm uppercase tracking-wider">{rec}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-5 sm:p-6 lg:p-8 pt-12 border-t border-white/5">
+                  <div className="text-center p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl lg:rounded-[3rem] bg-white/[0.02] border border-white/5">
+                    <div className="text-[10px] text-slate-500 font-black uppercase tracking-[0.3em] mb-3">Audited Stature</div>
+                    <div className="text-xl font-black text-white tracking-tighter">{result.metrics.height}</div>
+                  </div>
+                  <div className="text-center p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl lg:rounded-[3rem] bg-white/[0.02] border border-white/5">
+                    <div className="text-[10px] text-slate-500 font-black uppercase tracking-[0.3em] mb-3">Audited Structural frame</div>
+                    <div className="text-xl font-black text-white tracking-tighter uppercase">{result.metrics.bodyFrame}</div>
+                  </div>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

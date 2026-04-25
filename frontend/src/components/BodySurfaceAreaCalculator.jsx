@@ -478,196 +478,201 @@ const BodySurfaceAreaCalculator = () => {
       initial="hidden"
       animate="visible"
     >
-      <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
+      <Card className="glass-panel glow-border backdrop-blur-sm">
         <CardHeader className="text-center pb-8">
           <CardTitle className="text-3xl font-bold flex items-center justify-center gap-3 mb-4">
             <motion.div
-              className="p-3 rounded-full bg-cyan-500/10"
-              whileHover={{ scale: 1.1, rotate: 180 }}
-              transition={{ duration: 0.3 }}
+              initial={{ rotate: -20, scale: 0.8 }}
+              animate={{ rotate: 0, scale: 1 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20"
             >
-              <Zap className="h-8 w-8 text-cyan-400" />
+              <Zap className="h-10 w-10 text-cyan-400 shadow-[0_0_20px_rgba(34,211,238,0.4)]" />
             </motion.div>
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              Body Surface Area Calculator
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-200 to-cyan-400 bg-clip-text text-transparent uppercase tracking-tight">
+              Surface Area Strategist
             </span>
           </CardTitle>
-          <p className="text-gray-400 text-lg">
-            Calculate BSA using validated medical formulas for clinical applications
+          <p className="text-slate-400 text-lg max-w-xl mx-auto font-medium">
+            Advanced geometric modeling of physiological surface area for high-precision clinical calibrations.
           </p>
         </CardHeader>
-
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-            {/* Basic Information */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-lg font-semibold text-white mb-4">Basic Information</h3>
-              
-              <div className="space-y-2">
-                <Label htmlFor="weight" className="text-gray-300">Weight *</Label>
-                <div className="flex gap-2">
-                  <Input
-                    id="weight"
-                    type="number"
-                    placeholder="Enter weight"
-                    value={weight}
-                    onChange={(e) => setWeight(e.target.value)}
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300 flex-1"
-                  />
-                  <Select value={weightUnit} onValueChange={setWeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
-                      <SelectItem value="kg">kg</SelectItem>
-                      <SelectItem value="lbs">lbs</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="height" className="text-gray-300">Height *</Label>
-                <div className="flex gap-2">
-                  <Select value={heightUnit} onValueChange={setHeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
-                      <SelectItem value="cm">cm</SelectItem>
-                      <SelectItem value="ft">ft</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {heightUnit === "cm" ? (
+        <CardContent className="space-y-10 p-6 sm:p-10 lg:p-12">
+          <div className="space-y-6">
+            <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+              <Activity className="h-3 w-3" />
+              Biometric Configuration
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:p-6 lg:p-8">
+              <motion.div variants={itemVariants} className="space-y-6">
+                <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Primary Indicators</h4>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="weight" className="glass-text opacity-90 text-[10px] font-black uppercase tracking-widest">Weight *</Label>
+                  <div className="flex gap-2">
                     <Input
+                      id="weight"
                       type="number"
-                      placeholder="Height in cm"
-                      value={height}
-                      onChange={(e) => setHeight(e.target.value)}
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300 flex-1"
+                      placeholder="Enter weight"
+                      value={weight}
+                      onChange={(e) => setWeight(e.target.value)}
+                      className="glass-panel glow-border border-gray-700 text-white placeholder-gray-500 hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300 flex-1"
                     />
-                  ) : (
-                    <div className="flex gap-2 flex-1">
-                      <Input
-                        type="number"
-                        placeholder="Feet"
-                        value={feet}
-                        onChange={(e) => setFeet(e.target.value)}
-                        className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300"
-                      />
-                      <Input
-                        type="number"
-                        placeholder="Inches"
-                        value={inches}
-                        onChange={(e) => setInches(e.target.value)}
-                        className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300"
-                      />
-                    </div>
-                  )}
+                    <Select value={weightUnit} onValueChange={setWeightUnit}>
+                      <SelectTrigger className="glass-panel glow-border border-gray-700 text-white w-16 sm:w-20">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="glass-panel border-white/10 scale-in">
+                        <SelectItem value="kg">kg</SelectItem>
+                        <SelectItem value="lbs">lbs</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="age" className="text-gray-300">Age (optional)</Label>
-                <Input
-                  id="age"
-                  type="number"
-                  placeholder="Enter your age"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                  className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300"
-                />
-              </div>
+                <div className="space-y-2">
+                  <Label htmlFor="height" className="glass-text opacity-90 text-[10px] font-black uppercase tracking-widest">Height *</Label>
+                  <div className="flex gap-2">
+                    <Select value={heightUnit} onValueChange={setHeightUnit}>
+                      <SelectTrigger className="glass-panel glow-border border-gray-700 text-white w-16 sm:w-20">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent className="glass-panel border-white/10 scale-in">
+                        <SelectItem value="cm">cm</SelectItem>
+                        <SelectItem value="ft">ft</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    {heightUnit === "cm" ? (
+                      <Input
+                        type="number"
+                        placeholder="Height in cm"
+                        value={height}
+                        onChange={(e) => setHeight(e.target.value)}
+                        className="glass-panel glow-border border-gray-700 text-white placeholder-gray-500 hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300 flex-1"
+                      />
+                    ) : (
+                      <div className="flex gap-2 flex-1">
+                        <Input
+                          type="number"
+                          placeholder="Feet"
+                          value={feet}
+                          onChange={(e) => setFeet(e.target.value)}
+                          className="glass-panel glow-border border-gray-700 text-white placeholder-gray-500 hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300"
+                        />
+                        <Input
+                          type="number"
+                          placeholder="Inches"
+                          value={inches}
+                          onChange={(e) => setInches(e.target.value)}
+                          className="glass-panel glow-border border-gray-700 text-white placeholder-gray-500 hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300"
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="gender" className="text-gray-300">Gender (optional)</Label>
-                <Select value={gender} onValueChange={setGender}>
-                  <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300">
-                    <SelectValue placeholder="Select gender" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
-                    <SelectItem value="male">Male</SelectItem>
-                    <SelectItem value="female">Female</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </motion.div>
+                <div className="space-y-2">
+                  <Label htmlFor="age" className="glass-text opacity-90 text-[10px] font-black uppercase tracking-widest">Age (optional)</Label>
+                  <Input
+                    id="age"
+                    type="number"
+                    placeholder="Enter your age"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                    className="glass-panel glow-border border-gray-700 text-white placeholder-gray-500 hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300"
+                  />
+                </div>
 
-            {/* Calculation Options */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-lg font-semibold text-white mb-4">Calculation Options</h3>
-              
-              <div className="space-y-2">
-                <Label htmlFor="formula" className="text-gray-300">BSA Formula</Label>
-                <Select value={formula} onValueChange={setFormula}>
-                  <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300">
-                    <SelectValue placeholder="Select BSA formula" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
-                    <SelectItem value="dubois">Du Bois & Du Bois (Gold Standard)</SelectItem>
-                    <SelectItem value="mosteller">Mosteller (Simple & Accurate)</SelectItem>
-                    <SelectItem value="haycock">Haycock (Pediatric Focused)</SelectItem>
-                    <SelectItem value="gehan">Gehan & George (General Use)</SelectItem>
-                    <SelectItem value="boyd">Boyd (Complex)</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+                <div className="space-y-2">
+                  <Label htmlFor="gender" className="glass-text opacity-90 text-[10px] font-black uppercase tracking-widest">Gender (optional)</Label>
+                  <Select value={gender} onValueChange={setGender}>
+                    <SelectTrigger className="glass-panel glow-border border-gray-700 text-white hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300">
+                      <SelectValue placeholder="Select gender" />
+                    </SelectTrigger>
+                    <SelectContent className="glass-panel border-white/10 scale-in">
+                      <SelectItem value="male">Male</SelectItem>
+                      <SelectItem value="female">Female</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </motion.div>
 
-              <div className="space-y-2">
-                <Label htmlFor="purpose" className="text-gray-300">Primary Purpose</Label>
-                <Select value={purpose} onValueChange={setPurpose}>
-                  <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300">
-                    <SelectValue placeholder="Select calculation purpose" />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
-                    <SelectItem value="medication">Medication Dosing</SelectItem>
-                    <SelectItem value="cardiac">Cardiac Assessment</SelectItem>
-                    <SelectItem value="metabolic">Metabolic Calculations</SelectItem>
-                    <SelectItem value="research">Research/Academic</SelectItem>
-                    <SelectItem value="general">General Information</SelectItem>
-                  </SelectContent>
-                </Select>
-                <p className="text-xs text-gray-500">Helps provide relevant recommendations</p>
-              </div>
+              <motion.div variants={itemVariants} className="space-y-6">
+                <h4 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-2">Algorithmic Geometry</h4>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="formula" className="glass-text opacity-90 text-[10px] font-black uppercase tracking-widest">BSA Formula</Label>
+                  <Select value={formula} onValueChange={setFormula}>
+                    <SelectTrigger className="glass-panel glow-border border-gray-700 text-white hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300">
+                      <SelectValue placeholder="Select BSA formula" />
+                    </SelectTrigger>
+                    <SelectContent className="glass-panel border-white/10 scale-in">
+                      <SelectItem value="dubois">Du Bois & Du Bois (Gold Standard)</SelectItem>
+                      <SelectItem value="mosteller">Mosteller (Simple & Accurate)</SelectItem>
+                      <SelectItem value="haycock">Haycock (Pediatric Focused)</SelectItem>
+                      <SelectItem value="gehan">Gehan & George (General Use)</SelectItem>
+                      <SelectItem value="boyd">Boyd (Complex)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
 
-              <div className="mt-6 p-4 bg-cyan-900/20 rounded-lg border border-cyan-800/50">
-                <h4 className="text-sm font-semibold text-cyan-300 mb-2">BSA Applications</h4>
-                <ul className="text-xs text-gray-400 space-y-1">
-                  <li>• Chemotherapy & medication dosing</li>
-                  <li>• Cardiac index calculations</li>
-                  <li>• Metabolic rate assessments</li>
-                  <li>• Medical research studies</li>
-                  <li>• Physiological normalizations</li>
-                </ul>
-              </div>
-            </motion.div>
+                <div className="space-y-2">
+                  <Label htmlFor="purpose" className="glass-text opacity-90 text-[10px] font-black uppercase tracking-widest">Primary Purpose</Label>
+                  <Select value={purpose} onValueChange={setPurpose}>
+                    <SelectTrigger className="glass-panel glow-border border-gray-700 text-white hover:border-cyan-500/50 focus:border-cyan-500 transition-all duration-300">
+                      <SelectValue placeholder="Select calculation purpose" />
+                    </SelectTrigger>
+                    <SelectContent className="glass-panel border-white/10 scale-in">
+                      <SelectItem value="medication">Medication Dosing</SelectItem>
+                      <SelectItem value="cardiac">Cardiac Assessment</SelectItem>
+                      <SelectItem value="metabolic">Metabolic Calculations</SelectItem>
+                      <SelectItem value="research">Research/Academic</SelectItem>
+                      <SelectItem value="general">General Information</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="mt-6 p-6 bg-cyan-500/5 rounded-[2rem] border border-cyan-500/10 backdrop-blur-3xl">
+                  <h4 className="text-[10px] font-black text-cyan-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                    <Zap className="h-3 w-3" />
+                    BSA Applications
+                  </h4>
+                  <ul className="text-[10px] text-slate-500 font-medium uppercase tracking-tighter space-y-1">
+                    <li>• Chemotherapy & medication dosing</li>
+                    <li>• Cardiac index calculations</li>
+                    <li>• Metabolic rate assessments</li>
+                    <li>• Medical research studies</li>
+                    <li>• Physiological normalizations</li>
+                  </ul>
+                </div>
+              </motion.div>
+            </div>
           </div>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-6">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 pt-8">
             <Button
               onClick={calculateBSA}
-              disabled={isCalculating}
-              className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold py-3 px-4 sm:px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25"
+              className={`flex-1 btn-category-composition py-5 sm:py-8 rounded-[2rem] text-base sm:text-lg md:text-xl font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-[0.98] ${!weight || !(heightUnit === 'ft' ? (feet && inches) : height) ? 'opacity-70 grayscale-[0.5]' : ''}`}
             >
               {isCalculating ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Calculating...
+                  <Loader2 className="mr-3 h-7 w-7 animate-spin text-white" />
+                  Analyzing Geometry...
                 </>
               ) : (
                 <>
-                  <Zap className="mr-2 h-4 w-4" />
-                  Calculate BSA
+                  <Zap className="mr-3 h-7 w-7" />
+                  Resolve Surface Area
                 </>
               )}
             </Button>
-
+            
             <Button
               onClick={resetCalculator}
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-300 px-4 sm:px-6 sm:flex-none"
+              className="w-full sm:w-auto border-white/10 bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white flex items-center gap-3 px-6 py-4 md:px-10 md:py-6 lg:px-12 lg:py-5 sm:py-8 rounded-[2rem] shadow-lg backdrop-blur-md transition-all font-black text-sm sm:text-base md:text-lg uppercase"
             >
-              <RotateCcw className="mr-2 h-4 w-4" />
+              <RotateCcw className="h-6 w-6" />
               Reset
             </Button>
           </motion.div>
@@ -679,128 +684,150 @@ const BodySurfaceAreaCalculator = () => {
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                className="mt-8 p-6 bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-xl border border-gray-700 backdrop-blur-sm"
+                className="mt-16 premium-result-card p-6 sm:p-12 md:p-16 lg:p-20 overflow-hidden relative"
               >
-                <div className="text-center mb-6">
-                  <motion.div
-                    className="text-6xl font-bold mb-2"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.5, type: "spring", bounce: 0.6 }}
-                  >
-                    <span className={result.color}>{result.bsa} m²</span>
-                  </motion.div>
-                  <h3 className={`text-2xl font-semibold mb-2 ${result.color}`}>{result.category}</h3>
-                  <p className="text-gray-400">{result.method}</p>
-                  <p className="text-gray-500 text-sm mt-1">{result.accuracy}</p>
+                <div className="absolute top-0 right-0 p-6 sm:p-8 lg:p-10 font-black text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] lg:text-[12rem] text-cyan-500 opacity-[0.03] select-none pointer-events-none uppercase">
+                  STRATEGIST
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6">
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-white flex items-center">
-                      <Target className="h-5 w-5 mr-2 text-cyan-400" />
-                      Additional Metrics
-                    </h4>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">BMI:</span>
-                        <span className="text-white font-medium">{result.additionalMetrics.bmi}</span>
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 sm:p-6 lg:p-8 mb-16 relative z-10">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20">
+                      <Zap className="h-8 w-8 text-cyan-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-3xl font-black text-white tracking-tight uppercase">Surface Integrity</h3>
+                      <p className="text-slate-500 text-sm font-bold tracking-widest uppercase">Resolution synchronized</p>
+                    </div>
+                  </div>
+                  <Button
+                    onClick={exportToPDF}
+                    className="w-full md:w-auto bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl px-10 py-5 sm:py-8 font-black transition-all uppercase tracking-widest text-sm"
+                  >
+                    <Download className="h-5 w-5 mr-3" />
+                    Export Protocol
+                  </Button>
+                </div>
+
+                <div className="text-center mb-24 relative z-10">
+                  <motion.div
+                    className="text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] lg:text-[12rem] font-black result-value-glow bg-gradient-to-br from-white via-white/80 to-white/20 bg-clip-text text-transparent leading-none"
+                    initial={{ filter: "blur(20px)", y: 20 }}
+                    animate={{ filter: "blur(0px)", y: 0 }}
+                    transition={{ duration: 1 }}
+                  >
+                    {result.bsa}<span className="text-4xl text-cyan-400/60 font-black tracking-widest ml-4 uppercase">m²</span>
+                  </motion.div>
+                  <div className={`inline-flex items-center px-6 py-3 sm:px-10 sm:py-4 md:px-16 md:py-5 rounded-full text-2xl font-black uppercase tracking-[0.5em] ${result.color} bg-white/5 border border-white/20 mt-10 shadow-2xl`}>
+                    SCOPE: {result.category}
+                  </div>
+                  <p className="text-slate-500 text-[10px] font-black tracking-[0.3em] mt-10 uppercase opacity-60">
+                    Source Protocol: {result.method} / {result.accuracy}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:p-8 lg:p-10 mb-16 relative z-10">
+                  <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 space-y-8">
+                    <div className="flex items-center gap-4 mb-2">
+                      <Target className="h-7 w-7 text-cyan-400" />
+                      <h4 className="text-xl font-black text-white uppercase tracking-widest">Geometric Ratios</h4>
+                    </div>
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-center p-6 rounded-[2.5rem] bg-cyan-500/10 border border-cyan-400/20">
+                        <span className="text-cyan-400 font-black text-sm uppercase">Mass/Surface Ratio</span>
+                        <span className="text-white font-black text-2xl">{result.additionalMetrics.weightBSARatio} <span className="text-[10px] opacity-40 uppercase ml-1">kg/m²</span></span>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Weight/BSA:</span>
-                        <span className="text-white font-medium">{result.additionalMetrics.weightBSARatio} kg/m²</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Height/BSA:</span>
-                        <span className="text-white font-medium">{result.additionalMetrics.heightBSARatio} m/m²</span>
+                      <div className="flex justify-between items-center p-6 rounded-[2.5rem] bg-white/5 border border-white/5">
+                        <span className="text-slate-500 font-black text-sm uppercase">Height Correlation</span>
+                        <span className="text-white font-black text-2xl">{result.additionalMetrics.heightBSARatio} <span className="text-[10px] opacity-40 uppercase ml-1">m/m²</span></span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-white flex items-center">
-                      <Activity className="h-5 w-5 mr-2 text-blue-400" />
-                      Clinical Applications
-                    </h4>
-                    <ul className="space-y-1">
-                      {result.applications.slice(0, 4).map((app, index) => (
-                        <motion.li
-                          key={index}
-                          className="flex items-start text-gray-300 text-sm"
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.6 + index * 0.1 }}
-                        >
-                          <span className="text-blue-400 mr-2">•</span>
-                          {app}
-                        </motion.li>
-                      ))}
-                    </ul>
+                  <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 flex flex-col justify-center gap-6 sm:p-8 lg:p-10">
+                    <div className="flex items-center gap-6">
+                      <div className="p-5 rounded-3xl bg-cyan-500/10 border border-cyan-500/20 shadow-inner">
+                        <Activity className="h-8 w-8 text-cyan-400" />
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest tracking-[0.2em]">Clinical Target</div>
+                        <div className="text-xl font-black text-white tracking-widest uppercase mt-1">{result.metrics.purpose}</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-6">
+                      <div className="p-5 rounded-3xl bg-blue-500/10 border border-blue-500/20 shadow-inner">
+                        <AlertCircle className="h-8 w-8 text-blue-400" />
+                      </div>
+                      <div>
+                        <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest tracking-[0.2em]">Stratum Level</div>
+                        <div className="text-xl font-black text-white tracking-widest uppercase mt-1">{result.category}</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                    <AlertCircle className="h-5 w-5 mr-2 text-yellow-400" />
-                    Health Insights
-                  </h4>
-                  <ul className="space-y-2">
+                <div className="mb-8 p-6 rounded-3xl bg-amber-500/5 border border-amber-500/10">
+                  <div className="flex items-center gap-2 mb-5">
+                    <AlertCircle className="h-5 w-5 text-amber-400" />
+                    <h4 className="text-xl font-bold text-white">Critical Insights</h4>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {result.healthInsights.map((insight, index) => (
-                      <motion.li
+                      <motion.div
                         key={index}
-                        className="flex items-start text-gray-300 text-sm"
-                        initial={{ opacity: 0, x: -20 }}
+                        className="p-4 rounded-2xl bg-white/5 border border-white/5 group"
+                        initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.8 + index * 0.1 }}
+                        transition={{ delay: 0.5 + index * 0.1 }}
                       >
-                        <span className="text-yellow-400 mr-2">•</span>
-                        {insight}
-                      </motion.li>
+                        <span className="text-slate-300 text-sm font-medium leading-relaxed">{insight}</span>
+                      </motion.div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
 
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                    <CheckCircle className="h-5 w-5 mr-2 text-green-400" />
-                    Recommendations
-                  </h4>
-                  <ul className="space-y-2">
+                <div className="mb-16 p-6 sm:p-10 md:p-14 rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] bg-cyan-500/5 border border-cyan-500/10 backdrop-blur-3xl relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-30" />
+                  <div className="flex items-center gap-4 mb-10 relative z-10">
+                    <CheckCircle className="h-8 w-8 text-cyan-400 shadow-glow" />
+                    <h4 className="text-2xl font-black text-white uppercase tracking-widest">Medical Protocol</h4>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
                     {result.recommendations.map((rec, index) => (
-                      <motion.li
+                      <motion.div
                         key={index}
-                        className="flex items-start text-gray-300 text-sm"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 1.0 + index * 0.1 }}
+                        className="flex items-center gap-4 p-6 rounded-[2.5rem] bg-white/5 border border-white/5 hover:bg-cyan-500/5 transition-all group"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7 + index * 0.1 }}
                       >
-                        <span className="text-green-400 mr-2">•</span>
-                        {rec}
-                      </motion.li>
+                        <div className="h-2 w-2 rounded-full bg-cyan-500 shadow-[0_0_15px_rgba(34,211,238,1)] group-hover:scale-150 transition-transform" />
+                        <span className="text-slate-400 font-bold text-[10px] uppercase tracking-wider leading-relaxed">{rec}</span>
+                      </motion.div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
 
                 <motion.div
-                  className="flex gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.4 }}
+                  className="flex flex-col sm:flex-row gap-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1 }}
                 >
                   <Button
                     onClick={exportToPDF}
                     disabled={isExporting}
-                    className="flex-1 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white transition-all duration-300"
+                    className="flex-1 bg-white/10 hover:bg-white/20 text-white border border-white/10 py-6 rounded-xl transition-all duration-300 font-bold text-lg"
                   >
                     {isExporting ? (
                       <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Generating PDF...
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        Generating Report...
                       </>
                     ) : (
                       <>
-                        <Download className="mr-2 h-4 w-4" />
-                        Export BSA Report
+                        <Download className="mr-2 h-5 w-5" />
+                        Export BSA Medical Report
                       </>
                     )}
                   </Button>

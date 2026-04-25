@@ -402,52 +402,54 @@ const IdealWeightCalculator = () => {
       initial="hidden"
       animate="visible"
     >
-      <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
-        <CardHeader className="text-center pb-8">
-          <CardTitle className="text-3xl font-bold flex items-center justify-center gap-3 mb-4">
+      <Card className="glass-panel glow-border backdrop-blur-sm">
+        <CardHeader className="text-center pb-8 border-b border-white/5 bg-white/[0.02]">
+          <CardTitle className="text-4xl font-black mb-4 flex items-center justify-center gap-3">
             <motion.div
-              className="p-3 rounded-full bg-blue-500/10"
-              whileHover={{ scale: 1.1, rotate: 180 }}
-              transition={{ duration: 0.3 }}
+              className="p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20"
+              whileHover={{ scale: 1.1, rotate: -10 }}
             >
-              <Scale className="h-8 w-8 text-blue-400" />
+              <Scale className="h-10 w-10 text-blue-400" />
             </motion.div>
-            <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-              Ideal Weight Calculator
+            <span className="bg-gradient-to-r from-blue-400 via-cyan-200 to-blue-400 bg-clip-text text-transparent uppercase tracking-tight">
+              Ideal Weight Architect
             </span>
           </CardTitle>
-          <p className="text-gray-400 text-lg">
-            Calculate your ideal weight using validated medical formulas
+          <p className="text-slate-400 text-lg max-w-xl mx-auto font-medium">
+            Clinical precision modeling using globally validated medical weight formulas.
           </p>
         </CardHeader>
 
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <CardContent className="space-y-10 p-6 sm:p-10 lg:p-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:p-6 lg:p-8 sm:gap-6 sm:p-8 md:p-12">
             {/* Personal Information */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-lg font-semibold text-white mb-4">Personal Information</h3>
+            <motion.div variants={itemVariants} className="space-y-6">
+              <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                <Target className="h-3 w-3" />
+                Biological Parameters
+              </h3>
               
-              <div className="space-y-2">
-                <Label htmlFor="gender" className="text-gray-300">Gender *</Label>
+              <div className="space-y-3">
+                <Label htmlFor="gender" className="text-[10px] font-black uppercase text-slate-500 ml-1">Biological Gender *</Label>
                 <Select value={gender} onValueChange={setGender}>
-                  <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white hover:border-blue-500/50 focus:border-blue-500 transition-all duration-300">
-                    <SelectValue placeholder="Select gender" />
+                  <SelectTrigger className="glass-input text-xl py-5 sm:py-7 font-bold text-slate-200">
+                    <SelectValue placeholder="Identify" />
                   </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
+                  <SelectContent className="glass-panel border-white/10 scale-in">
                     <SelectItem value="male">Male</SelectItem>
                     <SelectItem value="female">Female</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="height" className="text-gray-300">Height *</Label>
+              <div className="space-y-3">
+                <Label htmlFor="height" className="text-[10px] font-black uppercase text-slate-500 ml-1">Stature (Height) *</Label>
                 <div className="flex gap-2">
                   <Select value={heightUnit} onValueChange={setHeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
+                    <SelectTrigger className="glass-input w-24 py-5 sm:py-7 font-bold">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
+                    <SelectContent className="glass-panel border-white/10 scale-in">
                       <SelectItem value="cm">cm</SelectItem>
                       <SelectItem value="ft">ft</SelectItem>
                     </SelectContent>
@@ -455,80 +457,82 @@ const IdealWeightCalculator = () => {
                   {heightUnit === "cm" ? (
                     <Input
                       type="number"
-                      placeholder="Height in cm"
+                      placeholder="CM"
                       value={height}
                       onChange={(e) => setHeight(e.target.value)}
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-blue-500/50 focus:border-blue-500 transition-all duration-300 flex-1"
+                      className="glass-input text-xl py-5 sm:py-7 flex-1"
                     />
                   ) : (
                     <div className="flex gap-2 flex-1">
                       <Input
                         type="number"
-                        placeholder="Feet"
+                        placeholder="FT"
                         value={feet}
                         onChange={(e) => setFeet(e.target.value)}
-                        className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-blue-500/50 focus:border-blue-500 transition-all duration-300"
+                        className="glass-input text-xl py-5 sm:py-7 flex-1"
                       />
                       <Input
                         type="number"
-                        placeholder="Inches"
+                        placeholder="IN"
                         value={inches}
                         onChange={(e) => setInches(e.target.value)}
-                        className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-blue-500/50 focus:border-blue-500 transition-all duration-300"
+                        className="glass-input text-xl py-5 sm:py-7 flex-1"
                       />
                     </div>
                   )}
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="age" className="text-gray-300">Age (optional)</Label>
+              <div className="space-y-3">
+                <Label htmlFor="age" className="text-[10px] font-black uppercase text-slate-500 ml-1">Chronological Age (Optional)</Label>
                 <Input
                   id="age"
                   type="number"
-                  placeholder="Enter your age"
+                  placeholder="Years"
                   value={age}
                   onChange={(e) => setAge(e.target.value)}
-                  className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-blue-500/50 focus:border-blue-500 transition-all duration-300"
+                  className="glass-input text-xl py-5 sm:py-7"
                 />
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="currentWeight" className="text-gray-300">Current Weight (optional)</Label>
+              <div className="space-y-3">
+                <Label htmlFor="currentWeight" className="text-[10px] font-black uppercase text-slate-500 ml-1">Current Mass (Optional)</Label>
                 <div className="flex gap-2">
                   <Input
                     id="currentWeight"
                     type="number"
-                    placeholder="Current weight"
+                    placeholder="Weight"
                     value={currentWeight}
                     onChange={(e) => setCurrentWeight(e.target.value)}
-                    className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-500 hover:border-blue-500/50 focus:border-blue-500 transition-all duration-300 flex-1"
+                    className="glass-input text-xl py-5 sm:py-7 flex-1"
                   />
                   <Select value={weightUnit} onValueChange={setWeightUnit}>
-                    <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white w-16 sm:w-20">
+                    <SelectTrigger className="glass-input w-24 py-5 sm:py-7 font-bold">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
+                    <SelectContent className="glass-panel border-white/10 scale-in">
                       <SelectItem value="kg">kg</SelectItem>
                       <SelectItem value="lbs">lbs</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-                <p className="text-xs text-gray-500">For weight comparison and recommendations</p>
               </div>
             </motion.div>
 
             {/* Calculation Options */}
-            <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-lg font-semibold text-white mb-4">Calculation Method</h3>
+            <motion.div variants={itemVariants} className="space-y-6">
+              <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+                <Calculator className="h-3 w-3" />
+                Formula Matrix
+              </h3>
               
-              <div className="space-y-2">
-                <Label htmlFor="formula" className="text-gray-300">Formula</Label>
+              <div className="space-y-3">
+                <Label htmlFor="formula" className="text-[10px] font-black uppercase text-slate-500 ml-1">Assessment Logic</Label>
                 <Select value={formula} onValueChange={setFormula}>
-                  <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white hover:border-blue-500/50 focus:border-blue-500 transition-all duration-300">
-                    <SelectValue placeholder="Select calculation formula" />
+                  <SelectTrigger className="glass-input text-xl py-5 sm:py-7 font-bold text-slate-200">
+                    <SelectValue placeholder="Select Logic" />
                   </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
+                  <SelectContent className="glass-panel border-white/10 scale-in">
                     <SelectItem value="devine">Devine Formula (Gold Standard)</SelectItem>
                     <SelectItem value="robinson">Robinson Formula</SelectItem>
                     <SelectItem value="miller">Miller Formula</SelectItem>
@@ -539,77 +543,37 @@ const IdealWeightCalculator = () => {
                 </Select>
               </div>
 
-              <div className="mt-6 p-4 bg-blue-900/20 rounded-lg border border-blue-800/50">
-                <h4 className="text-sm font-semibold text-blue-300 mb-2">Formula Information</h4>
-                <div className="text-xs text-gray-400 space-y-1">
-                  {formula === "devine" && (
-                    <div>
-                      <p className="font-medium text-blue-300">Devine Formula:</p>
-                      <p>• Medical gold standard</p>
-                      <p>• Most widely used in clinical practice</p>
-                      <p>• Recommended by healthcare professionals</p>
-                    </div>
-                  )}
-                  {formula === "robinson" && (
-                    <div>
-                      <p className="font-medium text-blue-300">Robinson Formula:</p>
-                      <p>• Modified version of Devine</p>
-                      <p>• Slightly different constants</p>
-                      <p>• Alternative medical standard</p>
-                    </div>
-                  )}
-                  {formula === "miller" && (
-                    <div>
-                      <p className="font-medium text-blue-300">Miller Formula:</p>
-                      <p>• Another Devine variation</p>
-                      <p>• Used in medical dosing</p>
-                      <p>• Different weight coefficients</p>
-                    </div>
-                  )}
-                  {formula === "hamwi" && (
-                    <div>
-                      <p className="font-medium text-blue-300">Hamwi Formula:</p>
-                      <p>• Clinical standard</p>
-                      <p>• Used in dietetics</p>
-                      <p>• Quick estimation method</p>
-                    </div>
-                  )}
-                  {formula === "broca" && (
-                    <div>
-                      <p className="font-medium text-blue-300">Broca Formula:</p>
-                      <p>• Traditional European method</p>
-                      <p>• Height-based calculation</p>
-                      <p>• Simple but less precise</p>
-                    </div>
-                  )}
-                  {formula === "bmi" && (
-                    <div>
-                      <p className="font-medium text-blue-300">BMI-Based:</p>
-                      <p>• Uses BMI of 22 (optimal)</p>
-                      <p>• WHO recommended</p>
-                      <p>• Gender-neutral approach</p>
-                    </div>
-                  )}
+              <div className="mt-8 p-6 bg-blue-500/5 rounded-[2rem] border border-blue-500/10 backdrop-blur-md">
+                <h4 className="text-xs font-black text-blue-300 uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <CheckCircle className="h-3 w-3" />
+                  Logic metadata
+                </h4>
+                <div className="text-xs text-slate-500 space-y-2 font-medium">
+                  {formula === "devine" && <p>• Globally recognized clinical gold standard</p>}
+                  {formula === "robinson" && <p>• Enhanced precision for specific demographics</p>}
+                  {formula === "miller" && <p>• Alternative medical dosing standard</p>}
+                  {formula === "hamwi" && <p>• Rapid clinical estimation used in dietetics</p>}
+                  {formula === "broca" && <p>• Traditional height-centric European model</p>}
+                  {formula === "bmi" && <p>• WHO optimized morphological approach</p>}
                 </div>
               </div>
             </motion.div>
           </div>
 
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-6">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 pt-8">
             <Button
               onClick={calculateIdealWeight}
-              disabled={isCalculating}
-              className="flex-1 bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white font-semibold py-3 px-4 sm:px-6 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25"
+              className={`flex-1 btn-category-composition py-5 sm:py-8 rounded-[2rem] text-base sm:text-lg md:text-xl font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-[0.98] ${(!gender || !(heightUnit === "ft" ? (feet && inches) : height)) ? 'opacity-70 grayscale-[0.5]' : ''}`}
             >
               {isCalculating ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Calculating...
+                  <Loader2 className="mr-3 h-7 w-7 animate-spin text-white" />
+                  Architecting...
                 </>
               ) : (
                 <>
-                  <Scale className="mr-2 h-4 w-4" />
-                  Calculate Ideal Weight
+                  <Scale className="mr-3 h-7 w-7" />
+                  Calculate Ideal mass
                 </>
               )}
             </Button>
@@ -617,9 +581,9 @@ const IdealWeightCalculator = () => {
             <Button
               onClick={resetCalculator}
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800 hover:text-white transition-all duration-300 px-4 sm:px-6 sm:flex-none"
+              className="w-full sm:w-auto border-white/10 bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white flex items-center gap-3 px-6 py-4 md:px-10 md:py-6 lg:px-12 lg:py-5 sm:py-8 rounded-[2rem] shadow-lg backdrop-blur-md transition-all font-black text-sm sm:text-base md:text-lg uppercase"
             >
-              <RotateCcw className="mr-2 h-4 w-4" />
+              <RotateCcw className="h-6 w-6" />
               Reset
             </Button>
           </motion.div>
@@ -631,97 +595,123 @@ const IdealWeightCalculator = () => {
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                className="mt-8 p-6 bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-xl border border-gray-700 backdrop-blur-sm"
+                className="mt-16 premium-result-card p-6 sm:p-12 md:p-16 lg:p-20 overflow-hidden relative"
               >
-                <div className="text-center mb-6">
-                  <motion.div
-                    className="text-6xl font-bold mb-2"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.5, type: "spring", bounce: 0.6 }}
-                  >
-                    <span className={result.color}>{result.idealWeight} kg</span>
-                  </motion.div>
-                  <h3 className={`text-2xl font-semibold mb-2 ${result.color}`}>{result.weightStatus}</h3>
-                  <p className="text-gray-400">{result.method}</p>
+                <div className="absolute top-0 right-0 p-6 sm:p-8 lg:p-10 font-black text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] lg:text-[12rem] text-blue-400 opacity-[0.03] select-none pointer-events-none uppercase tracking-tighter">
+                  Ideal
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-6">
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-white flex items-center">
-                      <Target className="h-5 w-5 mr-2 text-blue-400" />
-                      Weight Analysis
-                    </h4>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Ideal Weight:</span>
-                        <span className="text-white font-medium">{result.idealWeight} kg</span>
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 sm:p-6 lg:p-8 mb-16 relative z-10">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20">
+                      <Scale className="h-8 w-8 text-blue-400" />
+                    </div>
+                    <div>
+                      <h3 className="text-3xl font-black text-white tracking-tight uppercase">Target Architecture</h3>
+                      <p className="text-slate-500 text-sm font-bold tracking-widest uppercase">Formula: {result.method}</p>
+                    </div>
+                  </div>
+                  <Button
+                    onClick={exportToPDF}
+                    disabled={isExporting}
+                    className="w-full md:w-auto bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl px-10 py-5 sm:py-8 font-black transition-all uppercase tracking-widest text-sm"
+                  >
+                    {isExporting ? <Loader2 className="h-5 w-5 animate-spin mr-3" /> : <Download className="h-5 w-5 mr-3" />}
+                    {isExporting ? "Architecting PDF..." : "Export report"}
+                  </Button>
+                </div>
+
+                <div className="text-center mb-24 relative z-10">
+                  <motion.div
+                    className="text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] font-black result-value-glow bg-gradient-to-br from-white via-white/80 to-white/20 bg-clip-text text-transparent leading-none"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 100 }}
+                  >
+                    {result.idealWeight}<span className="text-3xl sm:text-4xl md:text-5xl ml-[-10px] opacity-40">kg</span>
+                  </motion.div>
+                  <div className={`inline-flex items-center px-6 py-3 sm:px-10 sm:py-4 md:px-16 md:py-5 rounded-full text-2xl font-black uppercase tracking-[0.5em] ${result.color} bg-white/5 border border-white/10 mt-10 shadow-2xl`}>
+                    {result.weightStatus}
+                  </div>
+                  <p className="text-slate-500 font-bold uppercase tracking-widest mt-6 opacity-60 italic">{result.weightComparison}</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:p-8 lg:p-10 mb-16">
+                  <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 space-y-8">
+                    <div className="flex items-center gap-4 mb-2">
+                    <Target className="h-7 w-7 text-cyan-400" />
+                    <h4 className="text-xl font-black text-white uppercase tracking-widest">Morphometry Stats</h4>
+                    </div>
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center py-4 border-b border-white/5">
+                        <span className="text-slate-400 font-bold uppercase text-xs tracking-wider">Formula Target</span>
+                        <span className="text-white font-black text-xl">{result.idealWeight} <span className="text-xs text-slate-500 uppercase">KG</span></span>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Healthy Range:</span>
-                        <span className="text-white font-medium">{result.minHealthyWeight} - {result.maxHealthyWeight} kg</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-400">Formula Type:</span>
-                        <span className="text-white font-medium">{result.formula_name}</span>
+                      <div className="flex justify-between items-center py-4">
+                        <span className="text-slate-400 font-bold uppercase text-xs tracking-wider">Healthy Range</span>
+                        <span className="text-emerald-400 font-black text-xl">{result.minHealthyWeight}-{result.maxHealthyWeight} <span className="text-xs text-slate-500 uppercase">KG</span></span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-3">
-                    <h4 className="text-lg font-semibold text-white flex items-center">
-                      <AlertCircle className="h-5 w-5 mr-2 text-yellow-400" />
-                      Assessment
-                    </h4>
-                    <p className="text-gray-300 text-sm leading-relaxed">{result.weightComparison}</p>
+                  <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 space-y-8">
+                    <div className="flex items-center gap-4 mb-2">
+                    <AlertCircle className="h-7 w-7 text-amber-400" />
+                    <h4 className="text-xl font-black text-white uppercase tracking-widest">Audit Logic</h4>
+                    </div>
+                    <div className="flex flex-col gap-3">
+                      <div className="p-5 rounded-[2rem] bg-white/5 border border-white/5 flex items-center gap-4">
+                        <div className="h-2 w-2 rounded-full bg-cyan-400" />
+                        <span className="text-xs text-slate-400 font-black uppercase tracking-wider">{result.method} Applied</span>
+                      </div>
+                      <div className="p-5 rounded-[2rem] bg-white/5 border border-white/5 flex items-center gap-4">
+                        <div className="h-2 w-2 rounded-full bg-blue-400" />
+                        <span className="text-xs text-slate-400 font-black uppercase tracking-wider">Type: {result.formula_name}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <h4 className="text-lg font-semibold text-white mb-3 flex items-center">
-                    <CheckCircle className="h-5 w-5 mr-2 text-green-400" />
-                    Recommendations
-                  </h4>
-                  <ul className="space-y-2">
+                <div className="mb-16 p-6 sm:p-10 md:p-14 rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] bg-cyan-500/5 border border-cyan-500/10 backdrop-blur-3xl relative overflow-hidden">
+                  <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
+                  <div className="flex items-center gap-4 mb-10">
+                    <CheckCircle className="h-8 w-8 text-emerald-400 shadow-glow" />
+                    <h4 className="text-2xl font-black text-white uppercase tracking-widest">Strategic Roadmap</h4>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
                     {result.recommendations.map((rec, index) => (
-                      <motion.li
+                      <motion.div
                         key={index}
-                        className="flex items-start text-gray-300 text-sm"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.8 + index * 0.1 }}
+                        className="flex items-center gap-5 p-6 rounded-[2rem] bg-white/5 border border-white/5 hover:bg-cyan-500/5 transition-all group"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 + index * 0.1 }}
                       >
-                        <span className="text-green-400 mr-2">•</span>
-                        {rec}
-                      </motion.li>
+                        <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,1)]" />
+                        <span className="text-slate-400 font-bold text-sm uppercase tracking-wider">{rec}</span>
+                      </motion.div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
 
-                <motion.div
-                  className="flex gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.2 }}
-                >
-                  <Button
-                    onClick={exportToPDF}
-                    disabled={isExporting}
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-white transition-all duration-300"
-                  >
-                    {isExporting ? (
-                      <>
-                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Generating PDF...
-                      </>
-                    ) : (
-                      <>
-                        <Download className="mr-2 h-4 w-4" />
-                        Export Weight Report
-                      </>
-                    )}
-                  </Button>
-                </motion.div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-12 border-t border-white/5">
+                  <div className="text-center">
+                    <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Stature</div>
+                    <div className="text-sm font-black text-white">{result.metrics.height}</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Gender</div>
+                    <div className="text-sm font-black text-white uppercase">{result.metrics.gender}</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Age</div>
+                    <div className="text-sm font-black text-white">{result.metrics.age}</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Mass</div>
+                    <div className="text-sm font-black text-white">{result.metrics.currentWeight}</div>
+                  </div>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

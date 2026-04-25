@@ -16,10 +16,10 @@ const TermsConditions = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
             Terms & Conditions
           </h1>
-          <p className="text-xl text-gray-300 mb-2">
+          <p className="text-xl glass-text opacity-90 mb-2">
             Legal terms governing your use of our BMI calculator and health information service
           </p>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-slate-400">
             Last updated: January 15, 2025 | Effective Date: January 15, 2025
           </p>
         </div>
@@ -27,14 +27,14 @@ const TermsConditions = () => {
         {/* Content */}
         <div className="space-y-8">
           {/* Acceptance of Terms */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <UserCheck className="h-5 w-5 text-blue-400" />
                 <span>Acceptance of Terms</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <p>
                 Welcome to the BMI Calculator service operated by <strong className="text-white">Venom Stone Network</strong> 
                 ("we," "our," or "us"). These Terms and Conditions ("Terms") govern your use of our BMI calculator website, 
@@ -56,14 +56,14 @@ const TermsConditions = () => {
           </Card>
 
           {/* Medical Disclaimer */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <AlertTriangle className="h-5 w-5 text-yellow-400" />
                 <span>Important Medical Disclaimer</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div className="bg-yellow-900/20 p-4 rounded-lg border border-yellow-800/50">
                 <p className="text-yellow-300 font-semibold text-lg mb-2">
                   CRITICAL HEALTH INFORMATION DISCLAIMER
@@ -104,14 +104,14 @@ const TermsConditions = () => {
           </Card>
 
           {/* Service Description */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <Scale className="h-5 w-5 text-green-400" />
                 <span>Service Description & Features</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">What We Provide</h4>
                 <ul className="list-disc list-inside ml-4 space-y-1">
@@ -138,14 +138,14 @@ const TermsConditions = () => {
           </Card>
 
           {/* User License & Permitted Uses */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <Shield className="h-5 w-5 text-green-400" />
                 <span>User License & Permitted Uses</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">Granted Permissions</h4>
                 <p className="mb-2">Subject to these Terms, we grant you a limited, non-exclusive, non-transferable license to:</p>
@@ -181,11 +181,11 @@ const TermsConditions = () => {
           </Card>
 
           {/* User Responsibilities */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="text-xl text-white">User Responsibilities & Conduct</CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">Your Obligations</h4>
                 <ul className="list-disc list-inside ml-4 space-y-2">
@@ -210,14 +210,14 @@ const TermsConditions = () => {
           </Card>
 
           {/* Prohibited Activities */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <Ban className="h-5 w-5 text-red-400" />
                 <span>Prohibited Activities</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">Strictly Forbidden Uses</h4>
                 <ul className="list-disc list-inside ml-4 space-y-2">
@@ -242,11 +242,11 @@ const TermsConditions = () => {
           </Card>
 
           {/* Intellectual Property */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="text-xl text-white">Intellectual Property Rights</CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">Our Proprietary Rights</h4>
                 <p className="mb-2">The Service and all related content are owned by Venom Stone Network and protected by:</p>
@@ -267,7 +267,7 @@ const TermsConditions = () => {
                   <li>Third-party libraries, fonts, and technical components</li>
                   <li>Analytics and performance monitoring tools</li>
                 </ul>
-                <p className="text-sm text-gray-400 mt-2">
+                <p className="text-sm text-slate-400 mt-2">
                   All third-party content remains the property of their respective owners.
                 </p>
               </div>
@@ -275,14 +275,14 @@ const TermsConditions = () => {
           </Card>
 
           {/* Limitation of Liability */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <Gavel className="h-5 w-5 text-blue-400" />
                 <span>Limitation of Liability & Disclaimers</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">Service Disclaimers</h4>
                 <p className="mb-2">The Service is provided "AS IS" and "AS AVAILABLE" without warranties of any kind:</p>
@@ -317,11 +317,11 @@ const TermsConditions = () => {
           </Card>
 
           {/* Data Accuracy & Updates */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="text-xl text-white">Data Accuracy & Content Updates</CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">Information Accuracy</h4>
                 <p className="mb-2">While we strive for accuracy, please note:</p>
@@ -346,14 +346,14 @@ const TermsConditions = () => {
           </Card>
 
           {/* Termination */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <Clock className="h-5 w-5 text-red-400" />
                 <span>Service Termination</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">Termination Rights</h4>
                 <ul className="list-disc list-inside ml-4 space-y-1">
@@ -377,11 +377,11 @@ const TermsConditions = () => {
           </Card>
 
           {/* Governing Law & Dispute Resolution */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="text-xl text-white">Governing Law & Dispute Resolution</CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">Applicable Law</h4>
                 <ul className="list-disc list-inside ml-4 space-y-1">
@@ -405,11 +405,11 @@ const TermsConditions = () => {
           </Card>
 
           {/* Terms Modifications */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="text-xl text-white">Terms Modifications & Updates</CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <p>
                 Venom Stone Network reserves the right to modify these Terms at any time to reflect changes in our 
                 services, legal requirements, or business practices. Updates will be effective immediately upon posting 
@@ -426,28 +426,28 @@ const TermsConditions = () => {
                 </ul>
               </div>
               
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-slate-400">
                 We recommend reviewing these Terms periodically to stay informed of any changes.
               </p>
             </CardContent>
           </Card>
 
           {/* Contact Information */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <Mail className="h-5 w-5 text-green-400" />
                 <span>Questions & Legal Contact</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">For Terms-Related Inquiries</h4>
-                <div className="bg-gray-800/50 p-4 rounded-lg">
+                <div className="glass-panel glow-border p-4 rounded-lg">
                   <p><strong className="text-white">Business Name:</strong> Venom Stone Network</p>
                   <p><strong className="text-white">Email:</strong> <a href="mailto:venomstonenetwork@gmail.com" className="text-blue-400 hover:text-blue-300">venomstonenetwork@gmail.com</a></p>
                   <p><strong className="text-white">Jurisdiction:</strong> India</p>
-                  <p className="text-sm text-gray-400 mt-2">For questions about these Terms, licensing, or legal compliance matters</p>
+                  <p className="text-sm text-slate-400 mt-2">For questions about these Terms, licensing, or legal compliance matters</p>
                 </div>
               </div>
 

@@ -1,541 +1,287 @@
 import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { motion, AnimatePresence } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { Heart, Activity, Target, TrendingUp, Zap, AlertCircle } from "lucide-react";
+import { Heart, TrendingUp, Target, Zap, Activity, RotateCcw, Award, Info, Scale, ShieldCheck, Loader2 } from "lucide-react";
 
 const TargetHeartRateCalculator = () => {
   const [age, setAge] = useState('');
   const [restingHR, setRestingHR] = useState('');
-  const [fitnessLevel, setFitnessLevel] = useState('average');
-  const [gender, setGender] = useState('');
-  const [method, setMethod] = useState('karvonen');
+  const [intensity, setIntensity] = useState('60'); // Default 60%
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Heart rate zone definitions with enhanced descriptions
-  const heartRateZones = [
-    {
-      zone: 1,
-      name: 'Active Recovery',
-      percentage: { min: 50, max: 60 },
-      description: 'Very light activity, promotes recovery',
-      benefits: 'Aids recovery, increases blood flow, reduces stress',
-      activities: 'Easy walking, gentle yoga, light stretching',
-      color: 'blue',
-      duration: '20-60 minutes'
-    },
-    {
-      zone: 2,
-      name: 'Base/Aerobic',
-      percentage: { min: 60, max: 70 },
-      description: 'Comfortable pace, builds aerobic base',
-      benefits: 'Improves general fitness, burns fat, builds endurance',
-      activities: 'Brisk walking, easy cycling, light jogging',
-      color: 'green',
-      duration: '30-90 minutes'
-    },
-    {
-      zone: 3,
-      name: 'Aerobic Threshold',
-      percentage: { min: 70, max: 80 },
-      description: 'Moderate intensity, still comfortable',
-      benefits: 'Improves cardiovascular efficiency, fat burning',
-      activities: 'Moderate cycling, steady jogging, dancing',
-      color: 'yellow',
-      duration: '20-60 minutes'
-    },
-    {
-      zone: 4,
-      name: 'Lactate Threshold',
-      percentage: { min: 80, max: 90 },
-      description: 'Hard effort, comfortably hard breathing',
-      benefits: 'Improves lactate threshold, race pace training',
-      activities: 'Tempo runs, cycling intervals, competitive sports',
-      color: 'orange',
-      duration: '10-40 minutes'
-    },
-    {
-      zone: 5,
-      name: 'VO2 Max/Anaerobic',
-      percentage: { min: 90, max: 100 },
-      description: 'Very hard effort, maximum sustainable pace',
-      benefits: 'Improves VO2 max, anaerobic power, speed',
-      activities: 'High-intensity intervals, sprints, max efforts',
-      color: 'red',
-      duration: '5-15 minutes (intervals)'
-    }
-  ];
-
-  // Fitness level adjustments for max HR calculation
-  const fitnessAdjustments = {
-    poor: -5,
-    belowAverage: -2,
-    average: 0,
-    aboveAverage: 2,
-    excellent: 5,
-    athlete: 8
+  const containerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, staggerChildren: 0.1 } }
   };
 
-  const calculateHeartRate = () => {
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const resultVariants = {
+    hidden: { opacity: 0, scale: 0.95, filter: "blur(10px)" },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      filter: "blur(0px)", 
+      transition: { type: "spring", stiffness: 100, damping: 20 } 
+    },
+    exit: { opacity: 0, scale: 0.95, filter: "blur(10px)" }
+  };
+
+  const calculateTHR = () => {
+    if (!isFormValid()) return;
     setLoading(true);
     setTimeout(() => {
       try {
         const ageNum = parseInt(age);
-        const restingHRNum = parseInt(restingHR) || 70; // Default RHR if not provided
+        const rhrNum = parseInt(restingHR) || 70; // Fallback to 70 if empty
         
-        // Calculate Maximum Heart Rate using multiple methods
-        const maxHRMethods = {
-          traditional: 220 - ageNum,
-          tanaka: 208 - (0.7 * ageNum),
-          gulati: 206 - (0.88 * ageNum), // For women
-          nes: 211 - (0.64 * ageNum), // For athletic populations
-          fairbarn: gender === 'male' ? 202 - (0.55 * ageNum) : 216 - (1.09 * ageNum)
-        };
-
-        // Apply fitness level adjustment
-        const fitnessAdjustment = fitnessAdjustments[fitnessLevel] || 0;
-        const selectedMaxHR = method === 'traditional' ? maxHRMethods.traditional : 
-                             method === 'tanaka' ? maxHRMethods.tanaka :
-                             gender === 'female' ? maxHRMethods.gulati : maxHRMethods.fairbarn;
+        // Formulas
+        const maxHR = 220 - ageNum;
+        const hrReserve = maxHR - rhrNum;
         
-        const adjustedMaxHR = selectedMaxHR + fitnessAdjustment;
+        // Karvonen Training Zones
+        const zones = [
+          { name: 'Recovery Flux', range: '50-60%', description: 'Metabolic waste clearance and active restoration.', color: 'emerald' },
+          { name: 'Aerobic Base', range: '60-70%', description: 'Lipid oxidation and endurance stabilization.', color: 'sky' },
+          { name: 'Threshold Core', range: '70-80%', description: 'Glycogen utilization and VO2 enhancement.', color: 'violet' },
+          { name: 'Anaerobic Peak', range: '80-90%', description: 'Lactate threshold escalation.', color: 'orange' },
+          { name: 'Maximum Effort', range: '90-100%', description: 'Neuromuscular peak capacity.', color: 'rose' }
+        ];
 
-        // Calculate Heart Rate Reserve (HRR)
-        const heartRateReserve = adjustedMaxHR - restingHRNum;
-
-        // Calculate zones using both percentage methods
-        const zones = heartRateZones.map(zone => {
-          let minHR, maxHR;
-          
-          if (method === 'karvonen' && restingHR) {
-            // Karvonen method (more accurate with resting HR)
-            minHR = Math.round((heartRateReserve * (zone.percentage.min / 100)) + restingHRNum);
-            maxHR = Math.round((heartRateReserve * (zone.percentage.max / 100)) + restingHRNum);
-          } else {
-            // Simple percentage method
-            minHR = Math.round(adjustedMaxHR * (zone.percentage.min / 100));
-            maxHR = Math.round(adjustedMaxHR * (zone.percentage.max / 100));
-          }
-
-          return {
-            ...zone,
-            minHR,
-            maxHR,
-            targetHR: Math.round((minHR + maxHR) / 2)
-          };
+        const zoneValues = zones.map(zone => {
+          const [min, max] = zone.range.replace('%', '').split('-').map(Number);
+          const minTHR = Math.round((hrReserve * (min / 100)) + rhrNum);
+          const maxTHR = Math.round((hrReserve * (max / 100)) + rhrNum);
+          return { ...zone, val: `${minTHR}-${maxTHR} BPM` };
         });
 
-        // Generate training recommendations
-        const recommendations = generateTrainingRecommendations(zones, fitnessLevel, ageNum);
-
-        // Calculate fat burning zone (typically zone 2-3)
-        const fatBurningZone = {
-          min: zones[1].minHR,
-          max: zones[2].maxHR,
-          target: Math.round((zones[1].minHR + zones[2].maxHR) / 2)
-        };
-
-        // Generate weekly training plan
-        const weeklyPlan = generateWeeklyPlan(zones, fitnessLevel);
+        const targetPaceHR = Math.round((hrReserve * (parseInt(intensity) / 100)) + rhrNum);
 
         setResult({
-          maxHeartRate: Math.round(adjustedMaxHR),
-          restingHeartRate: restingHRNum,
-          heartRateReserve: heartRateReserve,
-          zones: zones,
-          fatBurningZone: fatBurningZone,
-          recommendations: recommendations,
-          weeklyPlan: weeklyPlan,
-          method: method,
-          fitnessLevel: fitnessLevel,
-          maxHRMethods: maxHRMethods
+          maxHR,
+          hrReserve,
+          targetTHR: targetPaceHR,
+          zones: zoneValues,
+          intensity: intensity
         });
-      } catch (error) {
-        console.error('Calculation error:', error);
-      }
+      } catch (error) { console.error(error); }
       setLoading(false);
-    }, 800);
-  };
-
-  const generateTrainingRecommendations = (zones, fitness, age) => {
-    const recommendations = [];
-
-    // Age-based recommendations
-    if (age < 30) {
-      recommendations.push({
-        category: 'Age-Specific',
-        title: 'Youth Advantage',
-        message: 'Your young age allows for higher intensity training. Focus on building aerobic base with some high-intensity work.',
-        icon: '🏃'
-      });
-    } else if (age > 50) {
-      recommendations.push({
-        category: 'Age-Specific',
-        title: 'Mature Training',
-        message: 'Prioritize longer duration in zones 1-3. Allow more recovery time between intense sessions.',
-        icon: '🧘'
-      });
-    }
-
-    // Fitness level recommendations
-    const fitnessRecs = {
-      poor: {
-        title: 'Building Foundation',
-        message: 'Start with 80% of training in zones 1-2. Add zone 3 gradually after 4-6 weeks.',
-        icon: '🌱'
-      },
-      average: {
-        title: 'Balanced Approach',
-        message: '70% zones 1-2, 20% zone 3, 10% zones 4-5. Build base before adding intensity.',
-        icon: '⚖️'
-      },
-      excellent: {
-        title: 'Performance Focus',
-        message: 'Can handle more zone 4-5 work. Use periodization for peak performance.',
-        icon: '🏆'
-      }
-    };
-
-    if (fitnessRecs[fitness]) {
-      recommendations.push({
-        category: 'Fitness Level',
-        ...fitnessRecs[fitness]
-      });
-    }
-
-    // Fat burning recommendation
-    recommendations.push({
-      category: 'Fat Burning',
-      title: 'Optimal Fat Burn',
-      message: `Target ${zones[1].minHR}-${zones[2].maxHR} BPM (zones 2-3) for maximum fat oxidation.`,
-      icon: '🔥'
-    });
-
-    // Recovery recommendation
-    recommendations.push({
-      category: 'Recovery',
-      title: 'Active Recovery',
-      message: `Use zone 1 (${zones[0].minHR}-${zones[0].maxHR} BPM) for recovery days and warm-ups.`,
-      icon: '🌿'
-    });
-
-    return recommendations;
-  };
-
-  const generateWeeklyPlan = (zones, fitness) => {
-    const plans = {
-      poor: [
-        { day: 'Monday', zone: '1-2', duration: '20-30 min', activity: 'Easy walk/bike' },
-        { day: 'Tuesday', zone: 'Rest', duration: '-', activity: 'Rest or gentle stretching' },
-        { day: 'Wednesday', zone: '1-2', duration: '25-35 min', activity: 'Easy walk/bike' },
-        { day: 'Thursday', zone: 'Rest', duration: '-', activity: 'Rest or gentle yoga' },
-        { day: 'Friday', zone: '1-2', duration: '20-30 min', activity: 'Easy walk/bike' },
-        { day: 'Saturday', zone: '2', duration: '30-40 min', activity: 'Brisk walk/light jog' },
-        { day: 'Sunday', zone: 'Rest', duration: '-', activity: 'Rest or gentle activity' }
-      ],
-      average: [
-        { day: 'Monday', zone: '2', duration: '30-45 min', activity: 'Base training' },
-        { day: 'Tuesday', zone: '1', duration: '20-30 min', activity: 'Recovery' },
-        { day: 'Wednesday', zone: '3', duration: '20-30 min', activity: 'Moderate intensity' },
-        { day: 'Thursday', zone: '1-2', duration: '30-40 min', activity: 'Easy training' },
-        { day: 'Friday', zone: 'Rest', duration: '-', activity: 'Rest day' },
-        { day: 'Saturday', zone: '4', duration: '15-25 min', activity: 'Tempo/threshold' },
-        { day: 'Sunday', zone: '2', duration: '45-60 min', activity: 'Long base training' }
-      ],
-      excellent: [
-        { day: 'Monday', zone: '2', duration: '45-60 min', activity: 'Aerobic base' },
-        { day: 'Tuesday', zone: '4-5', duration: '20-30 min', activity: 'Intervals' },
-        { day: 'Wednesday', zone: '1', duration: '30-40 min', activity: 'Recovery' },
-        { day: 'Thursday', zone: '3', duration: '30-45 min', activity: 'Tempo' },
-        { day: 'Friday', zone: '1', duration: '20-30 min', activity: 'Easy recovery' },
-        { day: 'Saturday', zone: '4', duration: '25-35 min', activity: 'Threshold' },
-        { day: 'Sunday', zone: '2', duration: '60-90 min', activity: 'Long aerobic' }
-      ]
-    };
-
-    return plans[fitness] || plans.average;
+    }, 1500);
   };
 
   const resetForm = () => {
-    setAge('');
-    setRestingHR('');
-    setGender('');
-    setResult(null);
+    setAge(''); setRestingHR(''); setIntensity('60'); setResult(null);
   };
 
-  const isFormValid = () => {
-    return age && parseInt(age) >= 15 && parseInt(age) <= 100;
-  };
-
-  const getZoneColor = (color) => {
-    const colorMap = {
-      blue: 'bg-blue-900/20 border-blue-800/30 text-blue-300',
-      green: 'bg-green-900/20 border-green-800/30 text-green-300',
-      yellow: 'bg-yellow-900/20 border-yellow-800/30 text-yellow-300',
-      orange: 'bg-orange-900/20 border-orange-800/30 text-orange-300',
-      red: 'bg-red-900/20 border-red-800/30 text-red-300'
-    };
-    return colorMap[color] || 'bg-gray-900/20 border-gray-800/30 text-gray-300';
-  };
+  const isFormValid = () => age && parseInt(age) > 0 && parseInt(age) < 120;
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-3 sm:p-4 md:p-6">
-      <Card className="bg-gray-900/50 border-gray-800">
-        <CardHeader className="text-center pb-6 sm:pb-8">
-          <div className="flex items-center justify-center mb-4">
-            <div className="p-3 rounded-full bg-red-500/10 mr-4">
-              <Heart className="h-6 w-6 sm:h-8 sm:w-8 text-red-400" />
-            </div>
-            <CardTitle className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-red-400 to-pink-400 bg-clip-text text-transparent">
-              Advanced Target Heart Rate Calculator
-            </CardTitle>
-          </div>
-          <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto px-2">
-            Calculate precise training zones using Karvonen method with resting heart rate. Get personalized training plans and zone-specific recommendations.
-          </p>
+    <motion.div 
+      className="w-full max-w-4xl mx-auto p-4 sm:p-6"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <Card className="glass-panel glow-border border-white/10">
+        <CardHeader className="text-center pb-8 border-b border-white/5 bg-white/[0.02]">
+          <CardTitle className="text-4xl font-black mb-4 flex items-center justify-center gap-4">
+            <motion.div
+              initial={{ rotate: -15, scale: 0.8 }}
+              animate={{ rotate: 0, scale: 1 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="p-3 rounded-2xl bg-rose-500/10 border border-rose-500/20"
+            >
+              <Heart className="h-10 w-10 text-rose-400 shadow-[0_0_20px_rgba(244,63,94,0.4)]" />
+            </motion.div>
+            <span className="bg-gradient-to-r from-rose-400 via-purple-200 to-rose-400 bg-clip-text text-transparent uppercase tracking-tight">
+              Cardiovascular Auditor
+            </span>
+          </CardTitle>
+          <CardDescription className="text-slate-400 text-lg max-w-xl mx-auto font-medium">
+            Algorithmic quantification of myocardial output and metabolic training zones.
+          </CardDescription>
         </CardHeader>
 
-        <CardContent className="space-y-6 sm:space-y-8">
-          {/* Input Form - Enhanced responsive layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-            <div className="space-y-3 sm:space-y-4">
-              <Label className="text-white font-semibold text-sm sm:text-base">Age *</Label>
-              <Input
-                type="number"
-                placeholder="Enter your age"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-                className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10"
-                min="15"
-                max="100"
-              />
-            </div>
+        <CardContent className="space-y-12 p-6 sm:p-10 lg:p-12">
+          <div className="space-y-8">
+            <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+              <Scale className="h-3 w-3" />
+              Biometric Calibration
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:p-8 lg:p-10">
+              <motion.div variants={itemVariants} className="space-y-4">
+                <Label className="text-slate-500 font-black uppercase tracking-[0.2em] text-[10px]">Biological Age</Label>
+                <Input
+                  type="number"
+                  placeholder="Years"
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
+                  className="glass-input text-xl py-5 sm:py-7 focus:ring-rose-500/50"
+                  max="120"
+                />
+              </motion.div>
 
-            <div className="space-y-3 sm:space-y-4">
-              <Label className="text-white font-semibold text-sm sm:text-base">Resting Heart Rate (Optional)</Label>
-              <Input
-                type="number"
-                placeholder="Enter resting HR (e.g., 60)"
-                value={restingHR}
-                onChange={(e) => setRestingHR(e.target.value)}
-                className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10"
-                min="40"
-                max="100"
-              />
-              <p className="text-xs text-gray-400">
-                Measure first thing in the morning for accuracy. Leave blank to use average (70 BPM).
-              </p>
+              <motion.div variants={itemVariants} className="space-y-4">
+                <Label className="text-slate-500 font-black uppercase tracking-[0.2em] text-[10px]">Resting Pulse (Optional)</Label>
+                <div className="relative">
+                  <Input
+                    type="number"
+                    placeholder="BPM"
+                    value={restingHR}
+                    onChange={(e) => setRestingHR(e.target.value)}
+                    className="glass-input text-xl py-5 sm:py-7 focus:ring-rose-500/50"
+                  />
+                  <div className="absolute right-6 top-1/2 -translate-y-1/2 text-[10px] font-black text-slate-600 uppercase">Avg. 70</div>
+                </div>
+              </motion.div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-            <div className="space-y-3 sm:space-y-4">
-              <Label className="text-white font-semibold text-sm sm:text-base">Fitness Level</Label>
-              <Select value={fitnessLevel} onValueChange={setFitnessLevel}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
+          <div className="space-y-8">
+            <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+              <TrendingUp className="h-3 w-3" />
+              Operational Intensity
+            </h3>
+            <motion.div variants={itemVariants} className="space-y-4">
+              <Label className="text-slate-500 font-black uppercase tracking-[0.2em] text-[10px]">Target HR Threshold</Label>
+              <Select value={intensity} onValueChange={setIntensity}>
+                <SelectTrigger className="glass-input text-xl border-white/10 py-5 sm:py-7 text-slate-200 font-bold">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-800 border-gray-700">
-                  <SelectItem value="poor">Poor (Sedentary)</SelectItem>
-                  <SelectItem value="belowAverage">Below Average</SelectItem>
-                  <SelectItem value="average">Average</SelectItem>
-                  <SelectItem value="aboveAverage">Above Average</SelectItem>
-                  <SelectItem value="excellent">Excellent</SelectItem>
-                  <SelectItem value="athlete">Athlete</SelectItem>
+                <SelectContent className="glass-panel border-white/10">
+                  <SelectItem value="50">50% — Light Activity</SelectItem>
+                  <SelectItem value="60">60% — Aerobic Base</SelectItem>
+                  <SelectItem value="70">70% — Steady State</SelectItem>
+                  <SelectItem value="80">80% — Anaerobic Threshold</SelectItem>
+                  <SelectItem value="90">90% — V02 Max Peak</SelectItem>
                 </SelectContent>
               </Select>
-            </div>
-
-            <div className="space-y-3 sm:space-y-4">
-              <Label className="text-white font-semibold text-sm sm:text-base">Gender (Optional)</Label>
-              <Select value={gender} onValueChange={setGender}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
-                  <SelectValue placeholder="Select gender for better accuracy" />
-                </SelectTrigger>
-                <SelectContent className="bg-gray-800 border-gray-700">
-                  <SelectItem value="male">Male</SelectItem>
-                  <SelectItem value="female">Female</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+            </motion.div>
           </div>
 
-          <div className="space-y-3 sm:space-y-4">
-            <Label className="text-white font-semibold text-sm sm:text-base">Calculation Method</Label>
-            <Select value={method} onValueChange={setMethod}>
-              <SelectTrigger className="bg-gray-800 border-gray-700 text-white h-11 sm:h-10">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-700">
-                <SelectItem value="karvonen">Karvonen Method (Recommended with RHR)</SelectItem>
-                <SelectItem value="traditional">Simple Percentage Method</SelectItem>
-                <SelectItem value="tanaka">Tanaka Formula (Age-Adjusted)</SelectItem>
-              </SelectContent>
-            </Select>
-            <p className="text-xs text-gray-400">
-              Karvonen method uses resting heart rate for more accurate zones.
-            </p>
-          </div>
-
-          {/* Action Buttons - Enhanced mobile design */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 sm:pt-6">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 pt-4">
             <Button
-              onClick={calculateHeartRate}
-              disabled={!isFormValid() || loading}
-              className="flex-1 bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-semibold py-3 h-12 sm:h-auto rounded-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              onClick={calculateTHR}
+              className={`flex-1 btn-category-fitness py-5 sm:py-8 rounded-[2rem] text-base sm:text-lg md:text-xl font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-[0.98] ${!isFormValid() ? 'opacity-70 grayscale-[0.5]' : ''}`}
             >
               {loading ? (
-                <div className="flex items-center justify-center space-x-2">
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                  <span>Calculating...</span>
-                </div>
+                <>
+                  <Loader2 className="mr-3 h-7 w-7 animate-spin text-white" />
+                  Calibrating Heart Lock...
+                </>
               ) : (
-                <div className="flex items-center justify-center space-x-2">
-                  <Heart className="h-5 w-5" />
-                  <span>Calculate Heart Rate Zones</span>
-                </div>
+                <>
+                  <Zap className="mr-3 h-7 w-7" />
+                  Resolve Cardiovascular Profile
+                </>
               )}
             </Button>
+            
             <Button
               onClick={resetForm}
               variant="outline"
-              className="px-6 border-gray-600 text-gray-300 hover:bg-gray-800 h-12 sm:h-auto sm:px-8"
+              className="w-full sm:w-auto border-white/10 bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white flex items-center gap-3 px-6 py-4 md:px-10 md:py-6 lg:px-12 lg:py-5 sm:py-8 rounded-[2rem] shadow-lg backdrop-blur-md transition-all font-black text-sm sm:text-base md:text-lg uppercase"
             >
+              <RotateCcw className="h-6 w-6" />
               Reset
             </Button>
-          </div>
-
-          {/* Results - Enhanced mobile responsiveness */}
-          {result && (
-            <div className="mt-6 sm:mt-8 p-4 sm:p-6 bg-gradient-to-r from-red-900/20 to-pink-900/20 rounded-xl border border-red-800/30">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center">
-                <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 mr-2 text-red-400" />
-                Your Heart Rate Training Zones
-              </h3>
-
-              {/* Key Metrics - Responsive grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-4 sm:mb-6">
-                <div className="text-center p-3 sm:p-4 bg-red-900/20 rounded-lg border border-red-800/30">
-                  <div className="text-2xl sm:text-3xl font-bold text-red-300">{result.maxHeartRate}</div>
-                  <div className="text-xs sm:text-sm text-red-200 font-medium">Max HR</div>
-                  <div className="text-xs text-gray-400">BPM</div>
-                </div>
-                <div className="text-center p-3 sm:p-4 bg-blue-900/20 rounded-lg border border-blue-800/30">
-                  <div className="text-2xl sm:text-3xl font-bold text-blue-300">{result.restingHeartRate}</div>
-                  <div className="text-xs sm:text-sm text-blue-200 font-medium">Resting HR</div>
-                  <div className="text-xs text-gray-400">BPM</div>
-                </div>
-                <div className="text-center p-3 sm:p-4 bg-green-900/20 rounded-lg border border-green-800/30">
-                  <div className="text-2xl sm:text-3xl font-bold text-green-300">{result.heartRateReserve}</div>
-                  <div className="text-xs sm:text-sm text-green-200 font-medium">HR Reserve</div>
-                  <div className="text-xs text-gray-400">BPM</div>
-                </div>
-                <div className="text-center p-3 sm:p-4 bg-yellow-900/20 rounded-lg border border-yellow-800/30">
-                  <div className="text-lg sm:text-2xl font-bold text-yellow-300">{result.fatBurningZone.min}-{result.fatBurningZone.max}</div>
-                  <div className="text-xs sm:text-sm text-yellow-200 font-medium">Fat Burn Zone</div>
-                  <div className="text-xs text-gray-400">BPM</div>
-                </div>
-              </div>
-
-              {/* Training Zones - Mobile optimized */}
-              <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg mb-4 sm:mb-6">
-                <h4 className="text-base sm:text-lg font-semibold text-white mb-3 sm:mb-4 flex items-center">
-                  <Target className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                  Training Zones Breakdown
-                </h4>
-                <div className="space-y-2 sm:space-y-3">
-                  {result.zones.map((zone, idx) => (
-                    <div key={idx} className={`p-3 sm:p-4 rounded-lg border ${getZoneColor(zone.color)}`}>
-                      <div className="grid grid-cols-1 sm:grid-cols-4 gap-2 sm:gap-4 items-start">
-                        <div>
-                          <div className="font-bold text-sm sm:text-lg">Zone {zone.zone}: {zone.name}</div>
-                          <div className="text-xs sm:text-sm opacity-80">{zone.percentage.min}-{zone.percentage.max}%</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-lg sm:text-2xl font-bold">{zone.minHR}-{zone.maxHR}</div>
-                          <div className="text-xs">BPM Range</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-sm sm:text-lg font-semibold">{zone.duration}</div>
-                          <div className="text-xs">Duration</div>
-                        </div>
-                        <div className="text-xs sm:text-sm">
-                          <div className="font-medium mb-1">{zone.description}</div>
-                          <div className="opacity-70">{zone.activities}</div>
-                        </div>
-                      </div>
-                      <div className="mt-2 text-xs sm:text-sm opacity-80">
-                        <strong>Benefits:</strong> {zone.benefits}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Weekly Training Plan - Mobile optimized */}
-              <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg mb-4 sm:mb-6">
-                <h4 className="text-base sm:text-lg font-semibold text-white mb-3 flex items-center">
-                  <Activity className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                  Suggested Weekly Training Plan
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-7 gap-2">
-                  {result.weeklyPlan.map((day, idx) => (
-                    <div key={idx} className="text-center p-2 sm:p-3 bg-gray-700/30 rounded-lg">
-                      <div className="font-semibold text-white text-xs sm:text-sm">{day.day}</div>
-                      <div className="text-xs text-blue-300 font-medium">{day.zone}</div>
-                      <div className="text-xs text-gray-400">{day.duration}</div>
-                      <div className="text-xs text-gray-400 mt-1">{day.activity}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Recommendations - Mobile optimized */}
-              <div className="bg-gray-800/50 p-3 sm:p-4 rounded-lg">
-                <h4 className="text-base sm:text-lg font-semibold text-white mb-3 flex items-center">
-                  <Zap className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
-                  Personalized Recommendations
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
-                  {result.recommendations.map((rec, idx) => (
-                    <div key={idx} className="p-2 sm:p-3 bg-gray-700/30 rounded-lg">
-                      <div className="flex items-start space-x-3">
-                        <div className="text-lg sm:text-2xl">{rec.icon}</div>
-                        <div>
-                          <div className="font-semibold text-white text-sm sm:text-base">{rec.title}</div>
-                          <div className="text-xs text-blue-300 mb-1">{rec.category}</div>
-                          <div className="text-xs sm:text-sm text-gray-300">{rec.message}</div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Important Notes - Mobile optimized */}
-              <div className="bg-yellow-900/10 border border-yellow-800/30 p-3 sm:p-4 rounded-lg mt-4 sm:mt-6">
-                <div className="flex items-start space-x-3">
-                  <AlertCircle className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-400 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h5 className="font-semibold text-yellow-300 mb-2 text-sm sm:text-base">Important Notes:</h5>
-                    <ul className="text-xs sm:text-sm text-gray-300 space-y-1">
-                      <li>• These are general guidelines. Individual responses may vary.</li>
-                      <li>• Consult a healthcare provider before starting intense exercise programs.</li>
-                      <li>• Monitor how you feel during exercise - ratings of perceived exertion matter too.</li>
-                      <li>• Heart rate monitors provide more accurate readings than manual pulse checks.</li>
-                      <li>• Allow adequate recovery between high-intensity sessions.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          </motion.div>
         </CardContent>
       </Card>
-    </div>
+
+      <AnimatePresence>
+        {result && (
+          <motion.div
+            variants={resultVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="mt-16 premium-result-card p-6 sm:p-12 md:p-16 lg:p-20"
+          >
+            <div className="text-center mb-24 relative">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-rose-500/10 rounded-full blur-[100px] -z-10" />
+              <motion.div
+                className="text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] lg:text-[12rem] font-black result-value-glow bg-gradient-to-br from-white via-white/80 to-white/20 bg-clip-text text-transparent leading-none flex items-center justify-center gap-2"
+                initial={{ filter: "blur(20px)", y: 20 }}
+                animate={{ filter: "blur(0px)", y: 0 }}
+                transition={{ duration: 1 }}
+              >
+                {result.targetTHR} <span className="text-4xl text-rose-400 font-black tracking-widest ml-[-20px] uppercase">bpm</span>
+              </motion.div>
+              <div className="inline-flex items-center px-6 py-3 sm:px-10 sm:py-4 md:px-16 md:py-5 rounded-full text-3xl font-black uppercase tracking-[0.4em] text-rose-400 bg-rose-400/10 border border-rose-400/20 mt-10">
+                Target Intensity Locked
+              </div>
+              <p className="text-slate-500 font-black text-2xl tracking-[0.2em] uppercase opacity-60 mt-8">
+                {result.intensity}% Metabolic Threshold
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:p-8 lg:p-10">
+                <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 text-center group relative overflow-hidden">
+                    <Activity className="h-10 w-10 text-rose-400 absolute top-6 sm:p-8 lg:p-10 right-10 opacity-20 group-hover:opacity-100 transition-opacity" />
+                    <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">Theoretical Maximum (MHR)</div>
+                    <div className="text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl font-black text-white mb-4 lowercase tracking-tight">{result.maxHR} <span className="text-base text-slate-600 uppercase">bpm</span></div>
+                    <p className="text-slate-500 font-bold text-sm leading-relaxed lowercase">
+                        Derived from age-calibrated biological thresholds.
+                    </p>
+                </div>
+
+                <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 text-center group relative overflow-hidden">
+                    <ShieldCheck className="h-10 w-10 text-emerald-400 absolute top-6 sm:p-8 lg:p-10 right-10 opacity-20 group-hover:opacity-100 transition-opacity" />
+                    <div className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">Heart Rate Reserve (HRR)</div>
+                    <div className="text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl font-black text-white mb-4 lowercase tracking-tight">{result.hrReserve} <span className="text-base text-slate-600 uppercase">bpm</span></div>
+                    <p className="text-slate-500 font-bold text-sm leading-relaxed lowercase">
+                        The physiological window between rest and exertion peak.
+                    </p>
+                </div>
+            </div>
+
+            <div className="mt-16 space-y-8">
+                <h4 className="text-2xl font-black text-white uppercase tracking-[0.3em] mb-10 flex items-center justify-center gap-4">
+                    <Target className="h-7 w-7 text-rose-400" />
+                    Karvonen Training Matrix
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+                    {result.zones.map((zone, i) => (
+                        <motion.div
+                            key={i}
+                            className="p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl lg:rounded-[3rem] bg-white/[0.03] border border-white/5 flex flex-col items-center group relative cursor-help"
+                            whileHover={{ y: -8 }}
+                        >
+                            <div className={`absolute top-0 left-0 w-full h-1 bg-${zone.color}-500/30 group-hover:bg-${zone.color}-500 transition-all`} />
+                            {/* Force tailwind to include these colors */}
+                            <div className="hidden bg-emerald-500 bg-sky-500 bg-violet-500 bg-orange-500 bg-rose-500" />
+                            <div className="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-4 opacity-100">{zone.range}</div>
+                            <div className="text-2xl font-black text-white mb-2">{zone.val}</div>
+                            <div className="text-[10px] font-black text-slate-400 uppercase tracking-tighter text-center leading-tight">{zone.name}</div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="mt-20 p-6 sm:p-10 md:p-14 rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] bg-rose-500/5 border border-rose-500/10 backdrop-blur-3xl flex flex-col md:flex-row items-center gap-6 sm:p-8 lg:p-10">
+                <div className="p-5 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl lg:rounded-[3rem] bg-rose-500/10 border border-rose-500/20 shadow-inner">
+                    <Info className="h-12 w-12 text-rose-400" />
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                    <h4 className="text-3xl font-black text-white uppercase tracking-widest mb-4">Physiological Insight</h4>
+                    <p className="text-slate-400 font-medium text-xl leading-relaxed lowercase">
+                        The <span className="text-rose-400 font-black uppercase">{result.targetTHR} BPM</span> threshold represents your quantified target. Transitioning through these zones optimizes myocardial efficiency and prevents central nervous system overreach.
+                    </p>
+                </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 

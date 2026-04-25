@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import BMICalculator from "../components/BMICalculator";
-import { Stethoscope, Brain, Users, Shield, Award, TrendingUp, ChevronDown, ChevronUp, Calculator, Heart, Target } from "lucide-react";
+import { 
+  Stethoscope, Brain, Users, Shield, Award, TrendingUp, 
+  ChevronDown, ChevronUp, Calculator, Heart, Target, Activity, CheckCircle2, ArrowDown
+} from "lucide-react";
 
 const faqData = [
   {
@@ -29,6 +35,17 @@ const faqData = [
   }
 ];
 
+// Reusable animation variants
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
+};
+
 const Home = () => {
   const [openFaq, setOpenFaq] = useState(null);
 
@@ -36,614 +53,467 @@ const Home = () => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  const scrollToCalculator = () => {
+    const calcSection = document.getElementById('main-calculator');
+    if (calcSection) {
+      calcSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  // SEO-friendly JSON-LD for FAQ Schema
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer.replace(/<[^>]+>/g, '') 
+      }
+    }))
+  };
+
   return (
-    <div className="min-h-screen">
-      {/* Hero Section - SEO Optimized */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-blue-400 via-green-400 to-blue-500 bg-clip-text text-transparent">
-              Free BMI Calculator
+    <div className="min-h-screen bg-[#030712] relative selection:bg-cyan-500/30 selection:text-cyan-100">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
+      {/* Hero Section */}
+      <header className="relative min-h-[90vh] flex flex-col items-center justify-center py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        
+        {/* Subtle Tech Grid Background */}
+        <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03]" aria-hidden="true" style={{ backgroundImage: 'radial-gradient(circle at center, transparent 0%, #030712 70%), url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
+
+        {/* Dynamic Glow Orbs */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          <motion.div 
+            animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }} 
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-cyan-500/20 blur-[130px]" 
+          />
+          <motion.div 
+            animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }} 
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-[20%] right-[-10%] w-[30%] h-[50%] rounded-full bg-blue-600/20 blur-[130px]" 
+          />
+          <motion.div 
+            animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.5, 0.2] }} 
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-[-20%] left-[20%] w-[50%] h-[50%] rounded-full bg-emerald-500/15 blur-[150px]" 
+          />
+        </div>
+
+        <motion.div 
+          className="container mx-auto text-center relative z-20 max-w-5xl mt-10"
+          initial="hidden" animate="visible" variants={staggerContainer}
+        >
+          <motion.div variants={fadeUp} className="flex justify-center mb-8">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-md text-sm font-semibold text-cyan-300 shadow-[0_0_30px_rgba(34,211,238,0.2)]">
+              <span className="relative flex h-2.5 w-2.5" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
+              </span>
+              Medical-Grade Precision Engine
             </span>
-          </h1>
-          <h2 className="text-2xl md:text-3xl text-gray-200 mb-4 font-semibold">
-            Calculate Your Body Mass Index & Get Healthy Weight Insights
-          </h2>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
-            Calculate your BMI instantly with our advanced Body Mass Index calculator. Get personalized health insights, 
-            ideal weight ranges, and professional recommendations based on WHO & CDC guidelines.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 mb-6 text-sm text-gray-400">
-            <span className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full">
-              <Calculator className="h-4 w-4 text-blue-400" />
-              WHO Approved Formula
+          </motion.div>
+
+          <motion.h1 
+            variants={fadeUp}
+            className="text-6xl sm:text-7xl lg:text-8xl font-black mb-8 tracking-tighter drop-shadow-2xl leading-[1.1]"
+          >
+            <span className="bg-gradient-to-br from-white via-slate-200 to-slate-400 bg-clip-text text-transparent block">
+              Determine Your
             </span>
-            <span className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full">
-              <Heart className="h-4 w-4 text-green-400" />
-              Health Risk Assessment
+            <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-emerald-400 bg-clip-text text-transparent block mt-1 filter drop-shadow-[0_0_40px_rgba(59,130,246,0.3)]">
+              Perfect Weight
             </span>
-            <span className="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-full">
-              <Target className="h-4 w-4 text-blue-400" />
-              Ideal Weight Range
-            </span>
+          </motion.h1>
+
+          <motion.h2 
+            variants={fadeUp}
+            className="text-xl md:text-2xl text-slate-300/90 mb-12 max-w-3xl mx-auto font-light leading-relaxed backdrop-blur-sm"
+          >
+            Instantly calculate your Body Mass Index using entirely private, clinical-grade algorithms validated by WHO & CDC guidelines.
+          </motion.h2>
+
+          <motion.div variants={fadeUp} className="flex flex-wrap justify-center gap-4 text-sm font-semibold tracking-wide mb-16">
+            <div className="flex items-center gap-2.5 bg-slate-900/50 border border-white/10 px-6 py-3.5 rounded-full shadow-2xl backdrop-blur-xl text-slate-200">
+              <Calculator className="h-5 w-5 text-blue-400" aria-hidden="true" /> Externally Validated
+            </div>
+            <div className="flex items-center gap-2.5 bg-slate-900/50 border border-white/10 px-6 py-3.5 rounded-full shadow-2xl backdrop-blur-xl text-slate-200">
+              <Shield className="h-5 w-5 text-emerald-400" aria-hidden="true" /> 100% Local Privacy
+            </div>
+            <div className="flex items-center gap-2.5 bg-slate-900/50 border border-white/10 px-6 py-3.5 rounded-full shadow-2xl backdrop-blur-xl text-slate-200">
+              <Target className="h-5 w-5 text-cyan-400" aria-hidden="true" /> Instant Analysis
+            </div>
+          </motion.div>
+
+          {/* Scroll down indicator */}
+          <Button 
+            variant="ghost"
+            size="lg"
+            onClick={scrollToCalculator}
+            className="mx-auto flex flex-col items-center justify-center gap-2 text-slate-400 hover:text-cyan-400 transition-all duration-300 h-auto py-4 group hover:bg-white/5 rounded-2xl"
+          >
+            <span className="text-xs font-bold uppercase tracking-widest">Start Calculation</span>
+            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
+              <ArrowDown className="h-5 w-5" />
+            </motion.div>
+          </Button>
+        </motion.div>
+      </header>
+
+      {/* Main BMI Calculator Interface */}
+      <motion.section 
+        id="main-calculator"
+        aria-label="Main BMI Calculator Interface" 
+        className="py-12 px-4 sm:px-6 lg:px-8 relative z-20"
+        initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}
+      >
+        <div className="container mx-auto max-w-7xl">
+          {/* We wrap the calculator in a subtle glowing halo to draw the eye totally to it */}
+          <div className="relative">
+            <div className="absolute -inset-1 bg-gradient-to-b from-cyan-500/20 via-blue-500/10 to-transparent blur-2xl rounded-[3rem] pointer-events-none -z-10" />
+            <BMICalculator />
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* BMI Calculator Section */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8">
+      {/* Value Proposition Section */}
+      <motion.section 
+        aria-labelledby="why-choose-title" 
+        className="py-24 px-4 sm:px-6 lg:px-8 bg-transparent relative z-10"
+        initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}
+      >
         <div className="container mx-auto">
-          <BMICalculator />
-        </div>
-      </section>
-
-      {/* Additional Calculators Section */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900/20">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-              Additional Body Composition Calculators
+          <motion.header variants={fadeUp} className="text-center mb-20">
+            <h2 id="why-choose-title" className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent drop-shadow-sm">
+              Why Choose Our Advanced Calculator?
             </h2>
-            <p className="text-xl text-gray-300 max-w-4xl mx-auto">
-              Explore our comprehensive suite of medical-grade body composition calculators for complete health assessment
+            <p className="text-xl text-slate-300 opacity-90 max-w-3xl mx-auto font-light leading-relaxed">
+              Professional-grade bodily calculations trusted by millions globally for clinical and personal health tracking.
             </p>
-          </div>
-
-          {/* Category: Body Composition & Weight */}
-          <div className="mb-8">
-            <h3 className="text-2xl font-semibold text-white mb-6 text-center">
-              Body Composition & Weight Analysis
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-3">
-              {/* Body Fat Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-blue-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-blue-500/10 w-fit mb-2 group-hover:bg-blue-500/20 transition-colors">
-                  <Calculator className="h-4 w-4 text-blue-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Body Fat Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate body fat percentage using the US Navy circumference method for accurate body composition analysis.
-                </p>
-                <a
-                  href="/body-fat-calculator"
-                  className="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-300"
-                >
-                  Calculate Body Fat →
-                </a>
+          </motion.header>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            <motion.article variants={fadeUp} className="flex flex-col items-center p-10 rounded-[2rem] glass-panel glow-border hover:-translate-y-3 hover:shadow-[0_30px_60px_rgba(59,130,246,0.15)] transition-all duration-500 group">
+              <div className="p-6 rounded-3xl bg-blue-500/10 mb-8 border border-blue-500/20 group-hover:bg-blue-500/20 group-hover:scale-110 transition-all duration-300 relative">
+                <div className="absolute inset-0 bg-blue-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Stethoscope className="h-10 w-10 text-blue-400 relative z-10" aria-hidden="true" />
               </div>
-
-              {/* Army Body Fat Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-green-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-green-500/10 w-fit mb-2 group-hover:bg-green-500/20 transition-colors">
-                  <Shield className="h-4 w-4 text-green-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Army Body Fat Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Official US Army AR 600-9 body fat calculation using military tape test standards for compliance verification.
-                </p>
-                <a
-                  href="/army-body-fat-calculator"
-                  className="inline-block bg-gradient-to-r from-green-500 to-green-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-green-600 hover:to-green-700 transition-all duration-300"
-                >
-                  Military Standard →
-                </a>
+              <h3 className="text-2xl font-bold mb-4 text-white text-center">Medical Accuracy</h3>
+              <p className="text-slate-400 text-center leading-relaxed">
+                Precise metrics adhering strictly to World Health Organization standards and methodologies validated by physicians.
+              </p>
+            </motion.article>
+            
+            <motion.article variants={fadeUp} className="flex flex-col items-center p-10 rounded-[2rem] glass-panel glow-border hover:-translate-y-3 hover:shadow-[0_30px_60px_rgba(52,211,153,0.15)] transition-all duration-500 group">
+              <div className="p-6 rounded-3xl bg-green-500/10 mb-8 border border-green-500/20 group-hover:bg-green-500/20 group-hover:scale-110 transition-all duration-300 relative">
+                <div className="absolute inset-0 bg-green-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Brain className="h-10 w-10 text-green-400 relative z-10" aria-hidden="true" />
               </div>
-
-              {/* Lean Body Mass Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-purple-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-purple-500/10 w-fit mb-2 group-hover:bg-purple-500/20 transition-colors">
-                  <TrendingUp className="h-4 w-4 text-purple-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Lean Body Mass Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate lean body mass using validated Boer, James, and Hume formulas for accurate muscle mass assessment.
-                </p>
-                <a
-                  href="/lean-body-mass-calculator"
-                  className="inline-block bg-gradient-to-r from-purple-500 to-purple-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-purple-600 hover:to-purple-700 transition-all duration-300"
-                >
-                  Calculate LBM →
-                </a>
+              <h3 className="text-2xl font-bold mb-4 text-white text-center">AI Insights</h3>
+              <p className="text-slate-400 text-center leading-relaxed">
+                Receive beautifully rendered reports, instant visual classifications, and personalized recommendations modeled from deep analytics.
+              </p>
+            </motion.article>
+            
+            <motion.article variants={fadeUp} className="flex flex-col items-center p-10 rounded-[2rem] glass-panel glow-border hover:-translate-y-3 hover:shadow-[0_30px_60px_rgba(34,211,238,0.15)] transition-all duration-500 group">
+              <div className="p-6 rounded-3xl bg-cyan-500/10 mb-8 border border-cyan-500/20 group-hover:bg-cyan-500/20 group-hover:scale-110 transition-all duration-300 relative">
+                <div className="absolute inset-0 bg-cyan-400/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Shield className="h-10 w-10 text-cyan-400 relative z-10" aria-hidden="true" />
               </div>
-
-              {/* Ideal Weight Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-yellow-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-yellow-500/10 w-fit mb-2 group-hover:bg-yellow-500/20 transition-colors">
-                  <Target className="h-4 w-4 text-yellow-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Ideal Weight Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate ideal body weight using medical formulas including Devine, Robinson, and Miller methods.
-                </p>
-                <a
-                  href="/ideal-weight-calculator"
-                  className="inline-block bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300"
-                >
-                  Find Ideal Weight →
-                </a>
-              </div>
-
-              {/* Healthy Weight Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-teal-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-teal-500/10 w-fit mb-2 group-hover:bg-teal-500/20 transition-colors">
-                  <Heart className="h-4 w-4 text-teal-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Healthy Weight Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Get personalized healthy weight range based on BMI, age, activity level, and body frame analysis.
-                </p>
-                <a
-                  href="/healthy-weight-calculator"
-                  className="inline-block bg-gradient-to-r from-teal-500 to-teal-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-teal-600 hover:to-teal-700 transition-all duration-300"
-                >
-                  Healthy Range →
-                </a>
-              </div>
-
-              {/* Body Type Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-rose-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-rose-500/10 w-fit mb-2 group-hover:bg-rose-500/20 transition-colors">
-                  <Users className="h-4 w-4 text-rose-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Body Type Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Discover your somatotype using Heath-Carter analysis for personalized fitness and nutrition recommendations.
-                </p>
-                <a
-                  href="/body-type-calculator"
-                  className="inline-block bg-gradient-to-r from-rose-500 to-rose-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-rose-600 hover:to-rose-700 transition-all duration-300"
-                >
-                  Analyze Body Type →
-                </a>
-              </div>
-
-              {/* Body Surface Area Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-orange-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-orange-500/10 w-fit mb-2 group-hover:bg-orange-500/20 transition-colors">
-                  <Stethoscope className="h-4 w-4 text-orange-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Body Surface Area Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate BSA using medical formulas including Du Bois, Mosteller, and Haycock methods for medical applications.
-                </p>
-                <a
-                  href="/body-surface-area-calculator"
-                  className="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-orange-600 hover:to-orange-700 transition-all duration-300"
-                >
-                  Calculate BSA →
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Category: Nutrition & Diet */}
-          <div className="mb-8">
-            <h3 className="text-2xl font-semibold text-white mb-6 text-center">
-              Nutrition & Diet Analysis
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-3">
-              {/* Calorie Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-orange-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-orange-500/10 w-fit mb-2 group-hover:bg-orange-500/20 transition-colors">
-                  <Calculator className="h-4 w-4 text-orange-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Calorie Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate your daily calorie needs for weight loss, muscle gain, or maintenance goals.
-                </p>
-                <a
-                  href="/calorie-calculator"
-                  className="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-orange-600 hover:to-orange-700 transition-all duration-300"
-                >
-                  Calculate Calories →
-                </a>
-              </div>
-
-              {/* TDEE Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-cyan-500/10 w-fit mb-2 group-hover:bg-cyan-500/20 transition-colors">
-                  <TrendingUp className="h-4 w-4 text-cyan-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">TDEE Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate Total Daily Energy Expenditure using advanced metabolic science and activity levels.
-                </p>
-                <a
-                  href="/tdee-calculator"
-                  className="inline-block bg-gradient-to-r from-cyan-500 to-cyan-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-cyan-600 hover:to-cyan-700 transition-all duration-300"
-                >
-                  Calculate TDEE →
-                </a>
-              </div>
-
-              {/* BMR Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-red-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-red-500/10 w-fit mb-2 group-hover:bg-red-500/20 transition-colors">
-                  <Heart className="h-4 w-4 text-red-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">BMR Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate Basal Metabolic Rate using scientifically validated formulas for metabolic assessment.
-                </p>
-                <a
-                  href="/bmr-calculator"
-                  className="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-red-600 hover:to-red-700 transition-all duration-300"
-                >
-                  Calculate BMR →
-                </a>
-              </div>
-
-              {/* Macro Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-green-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-green-500/10 w-fit mb-2 group-hover:bg-green-500/20 transition-colors">
-                  <Target className="h-4 w-4 text-green-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Macro Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate optimal macronutrient distribution for protein, carbohydrates, and fats based on goals.
-                </p>
-                <a
-                  href="/macro-calculator"
-                  className="inline-block bg-gradient-to-r from-green-500 to-green-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-green-600 hover:to-green-700 transition-all duration-300"
-                >
-                  Calculate Macros →
-                </a>
-              </div>
-
-              {/* Carbohydrate Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-amber-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-amber-500/10 w-fit mb-2 group-hover:bg-amber-500/20 transition-colors">
-                  <TrendingUp className="h-4 w-4 text-amber-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Carbohydrate Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate daily carbohydrate intake for athletic performance, weight goals, and metabolic health.
-                </p>
-                <a
-                  href="/carbohydrate-calculator"
-                  className="inline-block bg-gradient-to-r from-amber-500 to-amber-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-amber-600 hover:to-amber-700 transition-all duration-300"
-                >
-                  Calculate Carbs →
-                </a>
-              </div>
-
-              {/* Protein Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-rose-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-rose-500/10 w-fit mb-2 group-hover:bg-rose-500/20 transition-colors">
-                  <Users className="h-4 w-4 text-rose-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Protein Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate daily protein requirements for muscle building, weight loss, and optimal health.
-                </p>
-                <a
-                  href="/protein-calculator"
-                  className="inline-block bg-gradient-to-r from-rose-500 to-rose-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-rose-600 hover:to-rose-700 transition-all duration-300"
-                >
-                  Calculate Protein →
-                </a>
-              </div>
-
-              {/* Fat Intake Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-yellow-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-yellow-500/10 w-fit mb-2 group-hover:bg-yellow-500/20 transition-colors">
-                  <Heart className="h-4 w-4 text-yellow-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Fat Intake Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate optimal daily fat intake for health, performance, and heart-healthy nutrition goals.
-                </p>
-                <a
-                  href="/fat-intake-calculator"
-                  className="inline-block bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300"
-                >
-                  Calculate Fat Intake →
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Category: Fitness & Performance */}
-          <div className="mb-8">
-            <h3 className="text-2xl font-semibold text-white mb-6 text-center">
-              Fitness & Performance Analysis
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-3">
-              {/* Pace Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-blue-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-blue-500/10 w-fit mb-2 group-hover:bg-blue-500/20 transition-colors">
-                  <Calculator className="h-4 w-4 text-blue-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Pace Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate running pace, time, or distance with precision. Get race predictions and VDOT analysis.
-                </p>
-                <a
-                  href="/pace-calculator"
-                  className="inline-block bg-gradient-to-r from-blue-500 to-blue-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-blue-600 hover:to-blue-700 transition-all duration-300"
-                >
-                  Calculate Pace →
-                </a>
-              </div>
-
-              {/* Calories Burned Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-orange-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-orange-500/10 w-fit mb-2 group-hover:bg-orange-500/20 transition-colors">
-                  <TrendingUp className="h-4 w-4 text-orange-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Calories Burned Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate precise calorie expenditure with advanced MET values and body composition factors.
-                </p>
-                <a
-                  href="/calories-burned-calculator"
-                  className="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-orange-600 hover:to-orange-700 transition-all duration-300"
-                >
-                  Calculate Calories →
-                </a>
-              </div>
-
-              {/* One Rep Max Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-purple-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-purple-500/10 w-fit mb-2 group-hover:bg-purple-500/20 transition-colors">
-                  <Target className="h-4 w-4 text-purple-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">One Rep Max Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate your one-rep maximum using 7 proven formulas. Get training zones and rep ranges.
-                </p>
-                <a
-                  href="/one-rep-max-calculator"
-                  className="inline-block bg-gradient-to-r from-purple-500 to-purple-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-purple-600 hover:to-purple-700 transition-all duration-300"
-                >
-                  Calculate 1RM →
-                </a>
-              </div>
-
-              {/* Target Heart Rate Calculator */}
-              <div className="bg-gray-900/50 p-3 rounded-lg border border-gray-800 hover:border-red-500/50 transition-all duration-300 group">
-                <div className="p-1.5 rounded-full bg-red-500/10 w-fit mb-2 group-hover:bg-red-500/20 transition-colors">
-                  <Heart className="h-4 w-4 text-red-400" />
-                </div>
-                <h4 className="text-sm font-semibold mb-1.5 text-white">Target Heart Rate Calculator</h4>
-                <p className="text-gray-400 mb-2 text-xs leading-tight">
-                  Calculate precise training zones using Karvonen method with personalized heart rate analysis.
-                </p>
-                <a
-                  href="/target-heart-rate-calculator"
-                  className="inline-block bg-gradient-to-r from-red-500 to-red-600 text-white px-2 py-1 rounded text-xs font-medium hover:from-red-600 hover:to-red-700 transition-all duration-300"
-                >
-                  Calculate HR Zones →
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Health Benefits Section */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-              Why Choose Advanced BMI Calculator?
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Professional-grade BMI calculation with advanced health insights trusted by thousands worldwide
-            </p>
+              <h3 className="text-2xl font-bold mb-4 text-white text-center">100% Private</h3>
+              <p className="text-slate-400 text-center leading-relaxed">
+                Your health data is computed entirely within your local browser session. Zero tracking, zero storage, absolute privacy.
+              </p>
+            </motion.article>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <div className="flex flex-col items-center p-8 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-blue-500/50 transition-all duration-300 group">
-              <div className="p-4 rounded-full bg-blue-500/10 mb-6 group-hover:bg-blue-500/20 transition-colors">
-                <Stethoscope className="h-12 w-12 text-blue-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-white">Medical-Grade Accuracy</h3>
-              <p className="text-gray-400 text-center leading-relaxed">Precise BMI calculations using WHO standards and advanced algorithms validated by healthcare professionals</p>
-            </div>
-            
-            <div className="flex flex-col items-center p-8 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-green-500/50 transition-all duration-300 group">
-              <div className="p-4 rounded-full bg-green-500/10 mb-6 group-hover:bg-green-500/20 transition-colors">
-                <Brain className="h-12 w-12 text-green-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-white">AI-Powered Insights</h3>
-              <p className="text-gray-400 text-center leading-relaxed">Comprehensive health analysis with personalized recommendations based on your unique profile</p>
-            </div>
-            
-            <div className="flex flex-col items-center p-8 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-blue-500/50 transition-all duration-300 group">
-              <div className="p-4 rounded-full bg-blue-500/10 mb-6 group-hover:bg-blue-500/20 transition-colors">
-                <Shield className="h-12 w-12 text-blue-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-3 text-white">Privacy Protected</h3>
-              <p className="text-gray-400 text-center leading-relaxed">Your health data is processed locally and never stored on our servers for complete privacy</p>
-            </div>
-          </div>
-          
-          {/* Trust Indicators - Professional Horizontal Layout */}
-          <div className="bg-gray-900/50 rounded-xl border border-gray-800 p-4">
-            <div className="flex flex-row justify-center items-center gap-4 sm:gap-6 md:gap-12">
-              <div className="flex items-center gap-2">
-                <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-green-500/10">
-                  <Users className="h-5 w-5 sm:h-6 sm:w-6 text-green-400" />
+          {/* Trust Indicators */}
+          <motion.section variants={fadeUp} aria-label="Trust Indicators" className="max-w-4xl mx-auto glass-panel glow-border rounded-3xl border border-white/10 p-8 shadow-2xl backdrop-blur-xl bg-gradient-to-b from-white/[0.02] to-transparent">
+            <div className="flex flex-col md:flex-row justify-around items-center gap-8 md:gap-4">
+              <div className="flex flex-col items-center text-center group">
+                <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/5 group-hover:scale-110 transition-transform">
+                  <Users className="h-8 w-8 text-green-400" aria-hidden="true" />
                 </div>
-                <div>
-                  <div className="text-lg sm:text-2xl font-bold text-white">1M+</div>
-                  <div className="text-gray-400 text-xs sm:text-sm">Users</div>
-                </div>
+                <div className="text-4xl font-black text-white tracking-tight mb-1">1M+</div>
+                <div className="text-slate-400 font-medium tracking-wide uppercase text-sm">Global Users</div>
               </div>
               
-              <div className="h-8 sm:h-12 w-px bg-gray-700"></div>
+              <div className="h-px w-full md:h-24 md:w-px bg-white/10"></div>
               
-              <div className="flex items-center gap-2">
-                <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-500/10">
-                  <Award className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400" />
+              <div className="flex flex-col items-center text-center group">
+                <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/5 group-hover:scale-110 transition-transform">
+                  <Award className="h-8 w-8 text-blue-400" aria-hidden="true" />
                 </div>
-                <div>
-                  <div className="text-lg sm:text-2xl font-bold text-white">99.9%</div>
-                  <div className="text-gray-400 text-xs sm:text-sm">Accuracy</div>
-                </div>
+                <div className="text-4xl font-black text-white tracking-tight mb-1">99.9%</div>
+                <div className="text-slate-400 font-medium tracking-wide uppercase text-sm">Accuracy Rate</div>
               </div>
               
-              <div className="h-8 sm:h-12 w-px bg-gray-700"></div>
+              <div className="h-px w-full md:h-24 md:w-px bg-white/10"></div>
               
-              <div className="flex items-center gap-2">
-                <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-green-500/10">
-                  <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-green-400" />
+              <div className="flex flex-col items-center text-center group">
+                <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-teal-500/5 group-hover:scale-110 transition-transform">
+                  <TrendingUp className="h-8 w-8 text-cyan-400" aria-hidden="true" />
                 </div>
-                <div>
-                  <div className="text-lg sm:text-2xl font-bold text-white">24/7</div>
-                  <div className="text-gray-400 text-xs sm:text-sm">Available</div>
-                </div>
+                <div className="text-4xl font-black text-white tracking-tight mb-1">24/7</div>
+                <div className="text-slate-400 font-medium tracking-wide uppercase text-sm">System Uptime</div>
               </div>
             </div>
+          </motion.section>
+        </div>
+      </motion.section>
+
+      {/* Comprehensive Body Composition Tools */}
+      <motion.section 
+        aria-labelledby="additional-calculators-title" 
+        className="py-20 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#050B14]/50"
+        initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}
+      >
+        <div className="container mx-auto max-w-7xl">
+          <motion.div variants={fadeUp} className="text-center mb-16">
+            <h2 id="additional-calculators-title" className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+              Complete Assessment Suite
+            </h2>
+            <p className="text-xl text-slate-300 opacity-90 max-w-4xl mx-auto font-light leading-relaxed">
+              Dive deeper than BMI. Explore our comprehensive suite of targeted medical calculators to fully understand your body composition.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.article variants={fadeUp} className="glass-panel p-6 rounded-3xl glow-border hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(59,130,246,0.15)] transition-all duration-300 flex flex-col h-full bg-gradient-to-br from-blue-900/10 to-transparent border-blue-500/10">
+              <div className="p-3 rounded-2xl bg-blue-500/10 w-fit mb-5">
+                <Calculator className="h-6 w-6 text-blue-400 flex-shrink-0" />
+              </div>
+              <h4 className="text-xl font-bold mb-3 text-white">Body Fat Percentage</h4>
+              <p className="text-slate-400 mb-6 leading-relaxed flex-grow font-light">
+                Utilize the validated U.S. Navy circumference multi-point method to determine your exact lean vs fat ratio.
+              </p>
+              <Link to="/body-fat-calculator" className="w-full text-center bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 border border-blue-500/20 px-4 py-3 rounded-xl font-semibold transition-colors">
+                Calculate Body Fat
+              </Link>
+            </motion.article>
+
+            <motion.article variants={fadeUp} className="glass-panel p-6 rounded-3xl glow-border hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(168,85,247,0.15)] transition-all duration-300 flex flex-col h-full bg-gradient-to-br from-purple-900/10 to-transparent border-purple-500/10">
+              <div className="p-3 rounded-2xl bg-purple-500/10 w-fit mb-5">
+                <TrendingUp className="h-6 w-6 text-purple-400 flex-shrink-0" />
+              </div>
+              <h4 className="text-xl font-bold mb-3 text-white">Lean Body Mass</h4>
+              <p className="text-slate-400 mb-6 leading-relaxed flex-grow font-light">
+                Discover your pure skeletal muscle mass using advanced multi-formula consensus (Boer, James & Hume).
+              </p>
+              <Link to="/lean-body-mass-calculator" className="w-full text-center bg-purple-500/10 hover:bg-purple-500/20 text-purple-400 border border-purple-500/20 px-4 py-3 rounded-xl font-semibold transition-colors">
+                Calculate LBM
+              </Link>
+            </motion.article>
+
+            <motion.article variants={fadeUp} className="glass-panel p-6 rounded-3xl glow-border hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(16,185,129,0.15)] transition-all duration-300 flex flex-col h-full bg-gradient-to-br from-emerald-900/10 to-transparent border-emerald-500/10">
+              <div className="p-3 rounded-2xl bg-emerald-500/10 w-fit mb-5">
+                <Activity className="h-6 w-6 text-emerald-400 flex-shrink-0" />
+              </div>
+              <h4 className="text-xl font-bold mb-3 text-white">TDEE & Metabolism</h4>
+              <p className="text-slate-400 mb-6 leading-relaxed flex-grow font-light">
+                Calculate Total Daily Energy Expenditure. Know exactly how many calories your body burns in 24 hours.
+              </p>
+              <Link to="/tdee-calculator" className="w-full text-center bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/20 px-4 py-3 rounded-xl font-semibold transition-colors">
+                Calculate TDEE
+              </Link>
+            </motion.article>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* About BMI Section - Enhanced for SEO */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
+      {/* About Section */}
+      <motion.section 
+        aria-labelledby="understanding-bmi-title" 
+        className="py-24 px-4 sm:px-6 lg:px-8"
+        initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}
+      >
         <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-              Understanding Your Body Mass Index (BMI)
-            </h2>
+          <div className="max-w-6xl mx-auto">
+            <motion.header variants={fadeUp} className="text-center mb-20">
+              <h2 id="understanding-bmi-title" className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                The Science of Body Mass
+              </h2>
+            </motion.header>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h3 className="text-2xl font-semibold mb-4 text-white">What is BMI and How is it Calculated?</h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  Body Mass Index (BMI) is a widely used health screening tool that measures body fat based on height and weight. 
-                  BMI is calculated using the formula: <strong>weight (kg) ÷ height (m)²</strong>. Our BMI calculator makes this 
-                  calculation instant and accurate.
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <motion.article variants={fadeUp}>
+                <h3 className="text-3xl font-bold mb-6 text-white tracking-wide">What exactly does BMI measure?</h3>
+                <p className="text-slate-300 text-lg mb-6 leading-relaxed font-light">
+                  Body Mass Index (BMI) functions as a definitive screening mechanism utilized by clinical professionals globally. Rather than directly measuring body fat, it establishes a ratio between your mass and vertical stature.
                 </p>
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  While BMI is an excellent indicator for most adults, it has limitations. It doesn't distinguish between muscle 
-                  and fat mass, so athletes or very muscular individuals may have elevated BMI despite being healthy.
+                <p className="text-slate-300 text-lg mb-10 leading-relaxed font-light">
+                  Calculated globally as <strong className="text-cyan-300 font-medium tracking-wide">kg/m²</strong>, it is the primary triage protocol employed to instantly gauge if an individual falls within standard metabolic parameters or holds potential health risks.
                 </p>
                 
-                <div className="mt-8 p-6 bg-blue-900/20 rounded-xl border border-blue-800/50">
-                  <h4 className="text-lg font-semibold mb-3 text-blue-300">WHO & CDC Approved</h4>
-                  <p className="text-gray-300 text-sm">
-                    Our BMI calculator follows World Health Organization (WHO) and Centers for Disease Control (CDC) 
-                    guidelines for accurate health assessment and weight classification.
+                <div className="p-8 bg-gradient-to-br from-blue-900/30 to-slate-900/50 rounded-3xl border border-blue-500/20 shadow-2xl backdrop-blur-sm relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <h4 className="text-xl font-bold mb-4 text-blue-300 flex items-center gap-3 relative z-10">
+                    <Award className="h-6 w-6" /> Evidence-Based Limits
+                  </h4>
+                  <p className="text-slate-300 leading-relaxed font-light relative z-10">
+                    Our computational architecture entirely adopts the strict threshold directives instituted by the World Health Organization (WHO). We do not augment these boundaries, guaranteeing clinically authentic results.
                   </p>
                 </div>
-              </div>
+              </motion.article>
               
-              <div className="bg-gray-900/50 p-8 rounded-xl border border-gray-800">
-                <h4 className="text-xl font-semibold mb-6 text-blue-400 flex items-center">
-                  <Stethoscope className="h-6 w-6 mr-2" />
-                  BMI Chart & Categories
-                </h4>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center p-3 rounded-lg bg-blue-900/20 border border-blue-800/30">
+              <motion.aside variants={fadeUp} className="glass-panel p-8 sm:p-10 rounded-[2.5rem] border border-white/10 shadow-2xl relative overflow-hidden backdrop-blur-3xl bg-gradient-to-b from-white/[0.03] to-transparent">
+                {/* Background glow for chart */}
+                <div className="absolute -top-32 -right-32 w-64 h-64 bg-cyan-500/15 blur-[80px] rounded-full pointer-events-none" />
+                <div className="absolute -bottom-32 -left-32 w-64 h-64 bg-blue-600/15 blur-[80px] rounded-full pointer-events-none" />
+                
+                <h3 className="text-2xl font-bold mb-8 text-white flex items-center gap-3 relative z-10">
+                  <Activity className="h-7 w-7 text-cyan-400 drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]" aria-hidden="true" />
+                  Clinical Classifications
+                </h3>
+                <div className="space-y-3 relative z-10" role="list">
+                  <div role="listitem" className="group flex justify-between items-center p-5 rounded-2xl bg-blue-950/30 border border-blue-500/10 hover:bg-blue-900/40 hover:border-blue-500/30 transition-all duration-300">
                     <span className="text-blue-300 font-medium">Underweight</span>
-                    <span className="text-white font-semibold">Below 18.5</span>
+                    <span className="text-white font-bold bg-blue-500/20 px-4 py-1.5 rounded-lg group-hover:bg-blue-500/30 transition-colors">&lt; 18.5</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 rounded-lg bg-green-900/20 border border-green-800/30">
-                    <span className="text-green-300 font-medium">Healthy Weight</span>
-                    <span className="text-white font-semibold">18.5 - 24.9</span>
+                  <div role="listitem" className="group flex justify-between items-center p-5 rounded-2xl bg-green-950/30 border border-green-500/20 hover:bg-green-900/40 hover:border-green-500/40 transition-all duration-300 shadow-[0_0_20px_rgba(34,197,94,0.05)]">
+                    <span className="text-green-400 font-bold flex items-center gap-2">
+                      <CheckCircle2 className="h-5 w-5 drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]"/> Healthy Range
+                    </span>
+                    <span className="text-white font-bold bg-green-500/20 px-4 py-1.5 rounded-lg group-hover:bg-green-500/30 transition-colors">18.5 - 24.9</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 rounded-lg bg-yellow-900/20 border border-yellow-800/30">
+                  <div role="listitem" className="group flex justify-between items-center p-5 rounded-2xl bg-yellow-950/30 border border-yellow-500/10 hover:bg-yellow-900/40 hover:border-yellow-500/30 transition-all duration-300">
                     <span className="text-yellow-300 font-medium">Overweight</span>
-                    <span className="text-white font-semibold">25.0 - 29.9</span>
+                    <span className="text-white font-bold bg-yellow-500/20 px-4 py-1.5 rounded-lg group-hover:bg-yellow-500/30 transition-colors">25.0 - 29.9</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 rounded-lg bg-orange-900/20 border border-orange-800/30">
-                    <span className="text-orange-300 font-medium">Obese Class I</span>
-                    <span className="text-white font-semibold">30.0 - 34.9</span>
+                  <div role="listitem" className="group flex justify-between items-center p-5 rounded-2xl bg-orange-950/30 border border-orange-500/10 hover:bg-orange-900/40 hover:border-orange-500/30 transition-all duration-300">
+                    <span className="text-orange-300 font-medium">Obese (Class I)</span>
+                    <span className="text-white font-bold bg-orange-500/20 px-4 py-1.5 rounded-lg group-hover:bg-orange-500/30 transition-colors">30.0 - 34.9</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 rounded-lg bg-red-900/20 border border-red-800/30">
-                    <span className="text-red-300 font-medium">Obese Class II</span>
-                    <span className="text-white font-semibold">35.0 - 39.9</span>
+                  <div role="listitem" className="group flex justify-between items-center p-5 rounded-2xl bg-red-950/30 border border-red-500/10 hover:bg-red-900/40 hover:border-red-500/30 transition-all duration-300">
+                    <span className="text-red-400 font-medium">Obese (Class II)</span>
+                    <span className="text-white font-bold bg-red-500/20 px-4 py-1.5 rounded-lg group-hover:bg-red-500/30 transition-colors">35.0 - 39.9</span>
                   </div>
-                  <div className="flex justify-between items-center p-3 rounded-lg bg-red-900/30 border border-red-700/30">
-                    <span className="text-red-200 font-medium">Obese Class III</span>
-                    <span className="text-white font-semibold">40.0+</span>
+                  <div role="listitem" className="group flex justify-between items-center p-5 rounded-2xl bg-rose-950/40 border border-rose-500/20 hover:bg-rose-900/50 hover:border-rose-500/40 transition-all duration-300">
+                    <span className="text-rose-400 font-bold">Obese (Class III)</span>
+                    <span className="text-white font-bold bg-rose-500/30 px-4 py-1.5 rounded-lg group-hover:bg-rose-500/40 transition-colors">&gt; 40.0</span>
                   </div>
                 </div>
-              </div>
+              </motion.aside>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* SEO-Optimized FAQ Section for Featured Snippets */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900/30">
+      {/* Structured FAQ Section */}
+      <motion.section 
+        aria-labelledby="faq-title" 
+        className="py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 bg-[#02040A]"
+        initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}
+      >
         <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-            Frequently Asked Questions About BMI Calculator
-          </h2>
+          <motion.header variants={fadeUp} className="text-center mb-16">
+            <h2 id="faq-title" className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-slate-400 text-xl font-light">Clear, authoritative parameters surrounding BMI analytics.</p>
+          </motion.header>
           
-          <div className="space-y-4">
+          <div className="space-y-4" role="tablist">
             {faqData.map((faq, index) => (
-              <div key={index} className="bg-gray-900/50 rounded-xl border border-gray-800 overflow-hidden">
+              <motion.article 
+                variants={fadeUp}
+                key={index} 
+                className="glass-panel glow-border rounded-2xl border border-white/5 overflow-hidden transition-all duration-300 bg-slate-900/30 hover:bg-slate-900/50"
+              >
                 <button
-                  className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                  id={`faq-button-${index}`}
+                  role="tab"
+                  className="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-colors"
                   onClick={() => toggleFaq(index)}
                   aria-expanded={openFaq === index}
+                  aria-controls={`faq-answer-${index}`}
                 >
-                  <h3 className="text-lg font-semibold text-white pr-4">{faq.question}</h3>
-                  {openFaq === index ? (
-                    <ChevronUp className="h-5 w-5 text-blue-400 flex-shrink-0" />
-                  ) : (
-                    <ChevronDown className="h-5 w-5 text-blue-400 flex-shrink-0" />
-                  )}
+                  <h3 className="text-lg md:text-xl font-semibold text-slate-100 pr-4">{faq.question}</h3>
+                  <motion.div
+                    animate={{ rotate: openFaq === index ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="flex-shrink-0 bg-blue-500/10 p-2 rounded-full border border-blue-500/20"
+                  >
+                    <ChevronDown className="h-5 w-5 text-cyan-400" aria-hidden="true" />
+                  </motion.div>
                 </button>
                 
-                {openFaq === index && (
-                  <div className="px-6 pb-4">
-                    <p className="text-gray-300 leading-relaxed" dangerouslySetInnerHTML={{ __html: faq.answer }} />
-                  </div>
-                )}
-              </div>
+                <AnimatePresence>
+                  {openFaq === index && (
+                    <motion.div
+                      id={`faq-answer-${index}`}
+                      role="tabpanel"
+                      aria-labelledby={`faq-button-${index}`}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+                    >
+                      <div className="px-8 pb-8 pt-2">
+                        <div className="h-px w-full bg-gradient-to-r from-blue-500/30 via-cyan-500/10 to-transparent mb-6"></div>
+                        <p className="text-slate-300 text-lg leading-relaxed font-light" dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.article>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Health Tips Section */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-            Healthy Weight Management Tips
-          </h2>
+      {/* Semantic Footer Snippet */}
+      <motion.section 
+        aria-labelledby="health-tips-title" 
+        className="py-24 px-4 sm:px-6 lg:px-8 border-t border-white/5 relative overflow-hidden"
+        initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-emerald-950/10 pointer-events-none" />
+        
+        <div className="container mx-auto max-w-7xl relative z-10">
+          <motion.header variants={fadeUp} className="text-center mb-20">
+            <h2 id="health-tips-title" className="text-4xl md:text-5xl font-bold mb-6 text-white drop-shadow-md">
+              Sustain a <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Healthy</span> Trajectory
+            </h2>
+            <p className="text-xl text-slate-400 font-light max-w-2xl mx-auto">Foundational habits to perpetually maintain optimal body composition parameters.</p>
+          </motion.header>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <div className="p-3 rounded-full bg-green-500/10 w-fit mb-4">
-                <Heart className="h-8 w-8 text-green-400" />
+            <motion.article variants={fadeUp} className="glass-panel p-10 rounded-[2rem] border border-white/5 hover:border-emerald-500/30 transition-all duration-500 group bg-slate-900/40 hover:bg-slate-900/60 hover:-translate-y-2">
+              <div className="p-4 rounded-2xl bg-emerald-500/10 w-fit mb-8 shadow-[0_0_20px_rgba(52,211,153,0.1)] border border-emerald-500/20 group-hover:scale-110 transition-transform">
+                <Heart className="h-8 w-8 text-emerald-400" aria-hidden="true" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-white">Maintain Healthy Diet</h3>
-              <p className="text-gray-400">
-                Focus on balanced nutrition with plenty of fruits, vegetables, lean proteins, and whole grains. 
-                Limit processed foods and added sugars for optimal BMI maintenance.
+              <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-emerald-300 transition-colors">Cardiovascular Nutrition</h3>
+              <p className="text-slate-400 font-light leading-relaxed text-lg">
+                Prioritize complex hydrocarbons and lean peptides over synthetic lipid structures to optimize your biochemical profile and metabolic equilibrium daily.
               </p>
-            </div>
+            </motion.article>
             
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <div className="p-3 rounded-full bg-blue-500/10 w-fit mb-4">
-                <TrendingUp className="h-8 w-8 text-blue-400" />
+            <motion.article variants={fadeUp} className="glass-panel p-10 rounded-[2rem] border border-white/5 hover:border-blue-500/30 transition-all duration-500 group bg-slate-900/40 hover:bg-slate-900/60 hover:-translate-y-2">
+              <div className="p-4 rounded-2xl bg-blue-500/10 w-fit mb-8 shadow-[0_0_20px_rgba(59,130,246,0.1)] border border-blue-500/20 group-hover:scale-110 transition-transform">
+                <TrendingUp className="h-8 w-8 text-blue-400" aria-hidden="true" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-white">Regular Exercise</h3>
-              <p className="text-gray-400">
-                Aim for at least 150 minutes of moderate aerobic activity weekly. Combine cardio with 
-                strength training for effective weight management and improved BMI.
+              <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-blue-300 transition-colors">Kinetic Activity Base</h3>
+              <p className="text-slate-400 font-light leading-relaxed text-lg">
+                Ascertain 150+ minutes of sustained elevated-BPM activity weekly. Iterative progressive overload dramatically improves your basal caloric burn rate.
               </p>
-            </div>
+            </motion.article>
             
-            <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800">
-              <div className="p-3 rounded-full bg-blue-500/10 w-fit mb-4">
-                <Target className="h-8 w-8 text-blue-400" />
+            <motion.article variants={fadeUp} className="glass-panel p-10 rounded-[2rem] border border-white/5 hover:border-cyan-500/30 transition-all duration-500 group bg-slate-900/40 hover:bg-slate-900/60 hover:-translate-y-2">
+              <div className="p-4 rounded-2xl bg-cyan-500/10 w-fit mb-8 shadow-[0_0_20px_rgba(34,211,238,0.1)] border border-cyan-500/20 group-hover:scale-110 transition-transform">
+                <Target className="h-8 w-8 text-cyan-400" aria-hidden="true" />
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-white">Monitor Progress</h3>
-              <p className="text-gray-400">
-                Regular BMI calculations help track your progress. Use our BMI calculator weekly to 
-                monitor changes and adjust your health goals accordingly.
+              <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-cyan-300 transition-colors">Empirical Tracking</h3>
+              <p className="text-slate-400 font-light leading-relaxed text-lg">
+                Leverage our advanced parametric tools routinely to establish a verified baseline of data, effectively mitigating confirmation biases in health goals.
               </p>
-            </div>
+            </motion.article>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };

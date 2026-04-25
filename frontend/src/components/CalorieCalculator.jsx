@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Calculator, Info, TrendingUp, Target } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calculator, Info, TrendingUp, Target, RotateCcw, CheckCircle, AlertCircle, Zap, Download, Activity, FileText, Loader2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -30,20 +31,49 @@ const CalorieCalculator = () => {
     metabolicRate: ""
   });
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const resultVariants = {
+    hidden: { opacity: 0, scale: 0.95, y: 20 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      y: 0,
+      transition: { type: "spring", stiffness: 100, damping: 15 }
+    },
+    exit: { opacity: 0, scale: 0.95, y: 20 }
+  };
+
   const activityLevels = [
-    { value: "1.2", label: "Sedentary (little/no exercise)", description: "Desk job, minimal physical activity" },
-    { value: "1.375", label: "Lightly Active (light exercise 1-3 days/week)", description: "Light exercise or sports" },
-    { value: "1.55", label: "Moderately Active (moderate exercise 3-5 days/week)", description: "Regular exercise routine" },
-    { value: "1.725", label: "Very Active (hard exercise 6-7 days/week)", description: "Intensive exercise program" },
-    { value: "1.9", label: "Extremely Active (very hard exercise, physical job)", description: "Professional athlete level" }
+    { value: "1.2", label: "Sedentary", description: "Minimal physical activity" },
+    { value: "1.375", label: "Lightly Active", description: "Light exercise 1-3 days/week" },
+    { value: "1.55", label: "Moderately Active", description: "Regular exercise 3-5 days/week" },
+    { value: "1.725", label: "Very Active", description: "Hard exercise 6-7 days/week" },
+    { value: "1.9", label: "Extremely Active", description: "Physical job or pro athlete" }
   ];
 
   const goals = [
-    { value: "maintain", label: "Maintain Weight", modifier: 0, description: "Keep current weight stable" },
-    { value: "lose0.5", label: "Lose 0.5 kg/week", modifier: -250, description: "Gradual, sustainable weight loss" },
-    { value: "lose1", label: "Lose 1 kg/week", modifier: -500, description: "Moderate weight loss pace" },
-    { value: "gain0.5", label: "Gain 0.5 kg/week", modifier: 250, description: "Lean muscle building" },
-    { value: "gain1", label: "Gain 1 kg/week", modifier: 500, description: "Aggressive muscle building" }
+    { value: "maintain", label: "Maintain Weight", modifier: 0, description: "Keep stable" },
+    { value: "lose0.5", label: "Lose 0.5 kg/week", modifier: -250, description: "Sustainable loss" },
+    { value: "lose1", label: "Lose 1 kg/week", modifier: -500, description: "Moderate pace" },
+    { value: "gain0.5", label: "Gain 0.5 kg/week", modifier: 250, description: "Lean muscle" },
+    { value: "gain1", label: "Gain 1 kg/week", modifier: 500, description: "Aggressive build" }
   ];
 
   const handleInputChange = (field, value) => {
@@ -83,12 +113,10 @@ const CalorieCalculator = () => {
       const activityMultiplier = parseFloat(formData.activityLevel);
       const goalModifier = goals.find(g => g.value === formData.goal)?.modifier || 0;
 
-      // Calculate BMR using different methods
       const bmrMifflin = calculateBMR(weight, height, age, formData.gender, "mifflin");
       const bmrHarris = calculateBMR(weight, height, age, formData.gender, "harris");
       const bmrKatch = formData.bodyFat ? calculateBMR(weight, height, age, formData.gender, "katch") : null;
 
-      // Use Mifflin-St Jeor as primary (most accurate)
       const primaryBMR = bmrMifflin;
       const tdee = primaryBMR * activityMultiplier;
       const targetCalories = tdee + goalModifier;
@@ -144,218 +172,241 @@ const CalorieCalculator = () => {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6">
-      <Card className="bg-gray-900/50 border-gray-800">
-        <CardHeader className="text-center">
-          <div className="flex items-center justify-center mb-4">
-            <div className="p-3 rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 mr-4">
-              <Calculator className="h-8 w-8 text-orange-400" />
-            </div>
-            <div>
-              <CardTitle className="text-3xl font-bold text-white">Daily Calorie Calculator</CardTitle>
-              <CardDescription className="text-gray-300 mt-2">
-                Calculate your daily caloric needs with precision using advanced metabolic formulas
-              </CardDescription>
-            </div>
-          </div>
+    <motion.div 
+      className="w-full max-w-4xl mx-auto p-4 sm:p-6"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <Card className="glass-panel glow-border border-white/10 overflow-hidden">
+        <CardHeader className="text-center pb-8 border-b border-white/5 bg-white/[0.02]">
+          <CardTitle className="text-4xl font-black mb-4 flex items-center justify-center gap-3">
+            <motion.div
+              initial={{ rotate: -20, scale: 0.8 }}
+              animate={{ rotate: 0, scale: 1 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20"
+            >
+              <Zap className="h-10 w-10 text-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.4)]" />
+            </motion.div>
+            <span className="bg-gradient-to-r from-amber-400 via-orange-200 to-amber-400 bg-clip-text text-transparent uppercase tracking-tight">
+              Calorie Architect
+            </span>
+          </CardTitle>
+          <p className="text-slate-400 text-lg max-w-xl mx-auto font-medium">
+            Strategic modeling of your metabolic requirements and thermodynamic energy balance.
+          </p>
           
-          <Tabs value={mode} onValueChange={setMode} className="mb-6">
-            <TabsList className="bg-gray-800 border-gray-700">
-              <TabsTrigger value="basic" className="text-gray-300">Basic Mode</TabsTrigger>
-              <TabsTrigger value="advanced" className="text-gray-300">Advanced Mode</TabsTrigger>
-            </TabsList>
-          </Tabs>
+          <div className="flex justify-center mt-8">
+            <Tabs value={mode} onValueChange={setMode} className="w-full max-w-xs">
+              <TabsList className="grid w-full grid-cols-2 bg-white/5 border border-white/10 p-1 rounded-xl">
+                <TabsTrigger value="basic" className="rounded-lg data-[state=active]:bg-white/10 data-[state=active]:text-lime-400 transition-all font-bold">Protocol</TabsTrigger>
+                <TabsTrigger value="advanced" className="rounded-lg data-[state=active]:bg-white/10 data-[state=active]:text-emerald-400 transition-all font-bold">Deep Scan</TabsTrigger>
+              </TabsList>
+            </Tabs>
+          </div>
         </CardHeader>
 
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Weight Input */}
-            <div className="space-y-2">
-              <Label htmlFor="weight" className="text-gray-200">Weight *</Label>
-              <div className="flex gap-2">
-                <Input
-                  id="weight"
-                  type="number"
-                  placeholder="Enter weight"
-                  value={formData.weight}
-                  onChange={(e) => handleInputChange("weight", e.target.value)}
-                  className="bg-gray-800 border-gray-700 text-white flex-1"
-                />
-                <Select value={formData.weightUnit} onValueChange={(value) => handleInputChange("weightUnit", value)}>
-                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-16 sm:w-20">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
-                    <SelectItem value="kg">kg</SelectItem>
-                    <SelectItem value="lbs">lbs</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            {/* Height Input */}
-            <div className="space-y-2">
-              <Label htmlFor="height" className="text-gray-200">Height *</Label>
-              <div className="flex gap-2">
-                {formData.heightUnit === "cm" ? (
+        <CardContent className="space-y-10 p-6 sm:p-10 lg:p-12">
+          <div className="space-y-6">
+            <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+              <Activity className="h-3 w-3" />
+              Biometric Configuration
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:p-6 lg:p-8">
+              <motion.div variants={itemVariants} className="space-y-3">
+                <Label className="text-slate-300 font-bold uppercase tracking-wider text-xs">Body Mass</Label>
+                <div className="flex gap-2">
                   <Input
-                    id="height"
                     type="number"
-                    placeholder="Enter height"
-                    value={formData.height}
-                    onChange={(e) => handleInputChange("height", e.target.value)}
-                    className="bg-gray-800 border-gray-700 text-white flex-1"
+                    placeholder="0.0"
+                    value={formData.weight}
+                    onChange={(e) => handleInputChange("weight", e.target.value)}
+                    className="glass-input text-xl py-6 flex-1 focus:ring-lime-500/50"
                   />
-                ) : (
-                  <div className="flex gap-1 flex-1">
-                    <Input
-                      type="number"
-                      placeholder="ft"
-                      value={formData.feet}
-                      onChange={(e) => handleInputChange("feet", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                    />
-                    <Input
-                      type="number"
-                      placeholder="in"
-                      value={formData.inches}
-                      onChange={(e) => handleInputChange("inches", e.target.value)}
-                      className="bg-gray-800 border-gray-700 text-white"
-                    />
-                  </div>
-                )}
-                <Select value={formData.heightUnit} onValueChange={(value) => handleInputChange("heightUnit", value)}>
-                  <SelectTrigger className="bg-gray-800 border-gray-700 text-white w-16 sm:w-20">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-gray-800 border-gray-700">
-                    <SelectItem value="cm">cm</SelectItem>
-                    <SelectItem value="ft">ft</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            {/* Age Input */}
-            <div className="space-y-2">
-              <Label htmlFor="age" className="text-gray-200">Age *</Label>
-              <Input
-                id="age"
-                type="number"
-                placeholder="Enter age"
-                value={formData.age}
-                onChange={(e) => handleInputChange("age", e.target.value)}
-                className="bg-gray-800 border-gray-700 text-white"
-              />
-            </div>
-
-            {/* Gender Input */}
-            <div className="space-y-2">
-              <Label className="text-gray-200">Gender *</Label>
-              <Select value={formData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
-                <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                  <SelectValue placeholder="Select gender" />
-                </SelectTrigger>
-                <SelectContent className="bg-gray-800 border-gray-700">
-                  <SelectItem value="male">Male</SelectItem>
-                  <SelectItem value="female">Female</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-
-          {/* Activity Level */}
-          <div className="space-y-2">
-            <Label className="text-gray-200">Activity Level *</Label>
-            <Select value={formData.activityLevel} onValueChange={(value) => handleInputChange("activityLevel", value)}>
-              <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                <SelectValue placeholder="Select activity level" />
-              </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-700">
-                {activityLevels.map((level) => (
-                  <SelectItem key={level.value} value={level.value} className="py-3">
-                    <div>
-                      <div className="font-medium">{level.label}</div>
-                      <div className="text-sm text-gray-400">{level.description}</div>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* Goal Selection */}
-          <div className="space-y-2">
-            <Label className="text-gray-200">Goal *</Label>
-            <Select value={formData.goal} onValueChange={(value) => handleInputChange("goal", value)}>
-              <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                <SelectValue placeholder="Select your goal" />
-              </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-700">
-                {goals.map((goal) => (
-                  <SelectItem key={goal.value} value={goal.value} className="py-3">
-                    <div>
-                      <div className="font-medium">{goal.label}</div>
-                      <div className="text-sm text-gray-400">{goal.description}</div>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          {/* Advanced Mode Fields */}
-          {mode === "advanced" && (
-            <div className="space-y-4 pt-4 border-t border-gray-700">
-              <h3 className="text-lg font-semibold text-blue-300 mb-4">Advanced Options</h3>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="bodyFat" className="text-gray-200">Body Fat % (for Katch-McArdle)</Label>
-                  <Input
-                    id="bodyFat"
-                    type="number"
-                    placeholder="Enter body fat %"
-                    value={formData.bodyFat}
-                    onChange={(e) => handleInputChange("bodyFat", e.target.value)}
-                    className="bg-gray-800 border-gray-700 text-white"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label className="text-gray-200">Fitness Goal</Label>
-                  <Select value={formData.fitnessGoal} onValueChange={(value) => handleInputChange("fitnessGoal", value)}>
-                    <SelectTrigger className="bg-gray-800 border-gray-700 text-white">
-                      <SelectValue placeholder="Select fitness goal" />
+                  <Select value={formData.weightUnit} onValueChange={(value) => handleInputChange("weightUnit", value)}>
+                    <SelectTrigger className="glass-input w-24 border-white/10 py-6 text-slate-300">
+                      <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-700">
-                      <SelectItem value="general">General Health</SelectItem>
-                      <SelectItem value="muscle">Muscle Building</SelectItem>
-                      <SelectItem value="endurance">Endurance Training</SelectItem>
-                      <SelectItem value="strength">Strength Training</SelectItem>
+                    <SelectContent className="glass-panel border-white/10">
+                      <SelectItem value="kg">kg</SelectItem>
+                      <SelectItem value="lbs">lbs</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-              </div>
-            </div>
-          )}
+              </motion.div>
 
-          {/* Calculate Button */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <motion.div variants={itemVariants} className="space-y-3">
+                <Label className="text-slate-300 font-bold uppercase tracking-wider text-xs">Vertical Axis</Label>
+                <div className="flex gap-2">
+                  {formData.heightUnit === "cm" ? (
+                    <Input
+                      type="number"
+                      placeholder="0.0"
+                      value={formData.height}
+                      onChange={(e) => handleInputChange("height", e.target.value)}
+                      className="glass-input text-xl py-6 flex-1 focus:ring-lime-500/50"
+                    />
+                  ) : (
+                    <div className="flex gap-2 flex-1">
+                      <Input
+                        type="number"
+                        placeholder="ft"
+                        value={formData.feet}
+                        onChange={(e) => handleInputChange("feet", e.target.value)}
+                        className="glass-input text-xl py-6 flex-1 focus:ring-lime-500/50"
+                      />
+                      <Input
+                        type="number"
+                        placeholder="in"
+                        value={formData.inches}
+                        onChange={(e) => handleInputChange("inches", e.target.value)}
+                        className="glass-input text-xl py-6 flex-1 focus:ring-lime-500/50"
+                      />
+                    </div>
+                  )}
+                  <Select value={formData.heightUnit} onValueChange={(value) => handleInputChange("heightUnit", value)}>
+                    <SelectTrigger className="glass-input w-24 border-white/10 py-6 text-slate-300">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="glass-panel border-white/10">
+                      <SelectItem value="cm">cm</SelectItem>
+                      <SelectItem value="ft">ft</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="space-y-3">
+                <Label className="text-slate-300 font-bold uppercase tracking-wider text-xs">Biological Chronology</Label>
+                <Input
+                  type="number"
+                  placeholder="Age"
+                  value={formData.age}
+                  onChange={(e) => handleInputChange("age", e.target.value)}
+                  className="glass-input text-xl py-6 focus:ring-lime-500/50"
+                />
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="space-y-3">
+                <Label className="text-slate-300 font-bold uppercase tracking-wider text-xs">Biological Phenotype</Label>
+                <Select value={formData.gender} onValueChange={(value) => handleInputChange("gender", value)}>
+                  <SelectTrigger className="glass-input text-xl border-white/10 py-6 text-slate-300">
+                    <SelectValue placeholder="Select Identity" />
+                  </SelectTrigger>
+                  <SelectContent className="glass-panel border-white/10">
+                    <SelectItem value="male">Male</SelectItem>
+                    <SelectItem value="female">Female</SelectItem>
+                  </SelectContent>
+                </Select>
+              </motion.div>
+            </div>
+          </div>
+
+          <div className="space-y-6 pt-4">
+            <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+              <Zap className="h-3 w-3" />
+              Activity Matrix
+            </h3>
+            <Label className="text-slate-300 font-bold uppercase tracking-wider text-xs">Anabolic Velocity (Activity)</Label>
+            <Select value={formData.activityLevel} onValueChange={(value) => handleInputChange("activityLevel", value)}>
+              <SelectTrigger className="glass-input border-white/10 py-10 text-slate-200">
+                <SelectValue placeholder="Operational Level?" />
+              </SelectTrigger>
+              <SelectContent className="glass-panel border-white/10">
+                {activityLevels.map((level) => (
+                  <SelectItem key={level.value} value={level.value} className="py-5 hover:bg-white/5 transition-colors">
+                    <div className="flex flex-col">
+                      <span className="font-black text-white text-base">{level.label} <span className="text-amber-400 ml-2 opacity-60">[{level.value}x]</span></span>
+                      <span className="text-xs text-slate-500 font-medium mt-0.5">{level.description}</span>
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="space-y-6 pt-4">
+            <h3 className="text-[10px] font-black text-slate-500 uppercase tracking-[0.3em] mb-4 flex items-center gap-2">
+              <Target className="h-3 w-3" />
+              Strategic Objective
+            </h3>
+            <Label className="text-slate-300 font-bold uppercase tracking-wider text-xs">Primary Outcome (Goal)</Label>
+            <Select value={formData.goal} onValueChange={(value) => handleInputChange("goal", value)}>
+              <SelectTrigger className="glass-input border-white/10 py-10 text-slate-200">
+                <SelectValue placeholder="Define Outcome" />
+              </SelectTrigger>
+              <SelectContent className="glass-panel border-white/10">
+                {goals.map((goal) => (
+                  <SelectItem key={goal.value} value={goal.value} className="py-4 hover:bg-white/5 transition-colors">
+                    <div className="flex flex-col">
+                      <span className="font-black text-white">{goal.label}</span>
+                      <span className="text-xs text-slate-500 font-medium">{goal.description}</span>
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <AnimatePresence>
+            {mode === "advanced" && (
+              <motion.div 
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                className="overflow-hidden"
+              >
+                <div className="space-y-6 pt-6 mt-2 border-t border-white/5">
+                  <div className="flex items-center gap-2 mb-2">
+                    <TrendingUp className="h-4 w-4 text-emerald-400" />
+                    <h4 className="text-sm font-black text-emerald-400 uppercase tracking-widest">Precision Calibration</h4>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-3">
+                      <Label className="text-slate-400 font-bold uppercase tracking-wider text-[10px]">Body Fat Composition (%)</Label>
+                      <Input
+                        type="number"
+                        placeholder="e.g. 15"
+                        value={formData.bodyFat}
+                        onChange={(e) => handleInputChange("bodyFat", e.target.value)}
+                        className="glass-input border-emerald-500/20 py-6"
+                      />
+                    </div>
+                    <div className="space-y-3">
+                      <Label className="text-slate-400 font-bold uppercase tracking-wider text-[10px]">Training Specialization</Label>
+                      <Select value={formData.fitnessGoal} onValueChange={(value) => handleInputChange("fitnessGoal", value)}>
+                        <SelectTrigger className="glass-input border-emerald-500/20 py-6 text-slate-300">
+                          <SelectValue placeholder="Focus?" />
+                        </SelectTrigger>
+                        <SelectContent className="glass-panel border-white/10">
+                          <SelectItem value="general">Physiological Maintenance</SelectItem>
+                          <SelectItem value="muscle">Hypertrophy (Muscle)</SelectItem>
+                          <SelectItem value="endurance">Mitochondrial Density</SelectItem>
+                          <SelectItem value="strength">Neuromuscular Force</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 pt-8">
             <Button
               onClick={calculateCalories}
-              disabled={!validateForm() || isCalculating}
-              className="flex-1 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              className={`flex-1 btn-category-nutrition py-5 sm:py-8 rounded-[2rem] text-base sm:text-lg md:text-xl font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-[0.98] ${!validateForm() ? 'opacity-70 grayscale-[0.5]' : ''}`}
             >
               {isCalculating ? (
                 <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Calculating...
+                  <Loader2 className="mr-3 h-7 w-7 animate-spin text-white" />
+                  Calibrating Metabolism...
                 </>
               ) : (
                 <>
-                  <Calculator className="h-5 w-5 mr-2" />
-                  Calculate Daily Calories
+                  <Zap className="mr-3 h-7 w-7" />
+                  Execute Analysis
                 </>
               )}
             </Button>
@@ -363,125 +414,163 @@ const CalorieCalculator = () => {
             <Button
               onClick={resetForm}
               variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-800"
+              className="w-full sm:w-auto border-white/10 bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white flex items-center gap-2 px-8 py-5 sm:py-7 rounded-2xl shadow-lg backdrop-blur-md transition-all duration-300"
             >
-              Reset Form
+              <RotateCcw className="h-5 w-5" />
+              Flush System
             </Button>
-          </div>
+          </motion.div>
 
           {!validateForm() && (
-            <Alert className="bg-yellow-900/20 border-yellow-800/50">
-              <Info className="h-4 w-4 text-yellow-400" />
-              <AlertTitle className="text-yellow-300">Missing Information</AlertTitle>
-              <AlertDescription className="text-yellow-200">
-                Please fill in all required fields marked with *.
-              </AlertDescription>
-            </Alert>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+              <Alert className="bg-amber-500/5 border-amber-500/10 rounded-2xl p-4">
+                <Info className="h-4 w-4 text-amber-400" />
+                <AlertTitle className="text-amber-400 text-xs font-black uppercase tracking-widest mb-1">Incomplete Telemetry</AlertTitle>
+                <AlertDescription className="text-slate-400 text-xs font-medium italic">
+                  Critical biometric fields are missing. Please provide all data points to proceed.
+                </AlertDescription>
+              </Alert>
+            </motion.div>
           )}
         </CardContent>
       </Card>
 
-      {/* Results Section */}
-      {result && (
-        <Card className="mt-8 bg-gray-900/50 border-gray-800">
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold text-white flex items-center">
-              <Target className="h-6 w-6 text-orange-400 mr-2" />
-              Your Daily Calorie Requirements
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            {/* Main Results */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-blue-900/20 p-6 rounded-xl border border-blue-800/50 text-center">
-                <div className="text-3xl font-bold text-blue-300 mb-2">{result.bmr.mifflin}</div>
-                <div className="text-blue-200 font-semibold mb-1">Basal Metabolic Rate</div>
-                <div className="text-sm text-gray-400">Calories at rest (Recommended: Mifflin-St Jeor)</div>
+      <AnimatePresence>
+        {result && (
+          <motion.div
+            variants={resultVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="mt-16 premium-result-card p-6 sm:p-12 md:p-16 lg:p-20 overflow-hidden relative"
+          >
+            <div className="absolute top-0 right-0 p-6 sm:p-8 lg:p-10 font-black text-3xl sm:text-4xl md:text-5xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl lg:text-7xl sm:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-3xl sm:text-4xl md:text-5xl sm:text-7xl lg:text-8xl md:text-4xl sm:text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:text-8xl lg:text-9xl lg:text-[10rem] lg:text-[12rem] text-amber-500 opacity-[0.03] select-none pointer-events-none uppercase">
+              ARCHITECT
+            </div>
+
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 sm:p-6 lg:p-8 mb-16 relative z-10">
+              <div className="flex items-center gap-4">
+                <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20">
+                  <Zap className="h-8 w-8 text-amber-400" />
+                </div>
+                <div>
+                  <h3 className="text-3xl font-black text-white tracking-tight uppercase">Caloric Resolution</h3>
+                  <p className="text-slate-500 text-sm font-bold tracking-widest uppercase">Thermodynamic Target Density</p>
+                </div>
+              </div>
+              <Button
+                className="w-full md:w-auto bg-white/5 hover:bg-white/10 text-white border border-white/10 rounded-2xl px-10 py-5 sm:py-8 font-black transition-all uppercase tracking-widest text-sm"
+              >
+                <Download className="h-5 w-5 mr-3" />
+                Export Protocol Dossier
+              </Button>
+            </div>
+
+            <div className="text-center mb-24 relative z-10">
+              <motion.div
+                className="text-[11rem] font-black result-value-glow bg-gradient-to-br from-white via-white/80 to-white/20 bg-clip-text text-transparent leading-none"
+                initial={{ filter: "blur(20px)", y: 20 }}
+                animate={{ filter: "blur(0px)", y: 0 }}
+                transition={{ duration: 1 }}
+              >
+                {result.targetCalories}<span className="text-4xl text-amber-500/60 font-black tracking-widest ml-4 uppercase">kcal</span>
+              </motion.div>
+              <div className="inline-flex items-center px-6 py-3 sm:px-10 sm:py-4 md:px-16 md:py-5 rounded-full text-2xl font-black uppercase tracking-[0.5em] text-amber-400 bg-white/5 border border-amber-400/20 mt-10 shadow-2xl">
+                Target Objective Achieved
+              </div>
+              <p className="text-slate-500 font-bold uppercase tracking-widest mt-6 opacity-60">Strategy: {result.goal.label}</p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:p-8 lg:p-10 mb-16">
+              <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 space-y-8">
+                <div className="flex items-center gap-4 mb-2">
+                  <Activity className="h-7 w-7 text-blue-400" />
+                  <h4 className="text-xl font-black text-white uppercase tracking-widest">Metabolic Profile</h4>
+                </div>
+                <div className="space-y-6">
+                  <div className="flex justify-between items-center p-6 rounded-[2.5rem] bg-white/5 border border-white/5">
+                    <span className="text-slate-400 font-black text-sm uppercase">Basal Met. Rate</span>
+                    <span className="text-white font-black text-2xl">{result.bmr.mifflin} <span className="text-xs opacity-40 uppercase ml-1">kcal</span></span>
+                  </div>
+                  <div className="flex justify-between items-center p-6 rounded-[2.5rem] bg-emerald-500/10 border border-emerald-400/20">
+                    <span className="text-emerald-400 font-black text-sm uppercase">Maintenance</span>
+                    <span className="text-white font-black text-2xl">{result.tdee} <span className="text-xs opacity-40 uppercase ml-1">kcal</span></span>
+                  </div>
+                  <div className="flex justify-between items-center p-6 rounded-[2.5rem] bg-blue-500/10 border border-blue-500/20">
+                    <span className="text-blue-400 font-black text-sm uppercase tracking-widest">Active Flux</span>
+                    <span className="text-white font-black text-2xl">+{result.tdee - result.bmr.mifflin} <span className="text-xs opacity-40 uppercase ml-1">kcal</span></span>
+                  </div>
+                </div>
               </div>
 
-              <div className="bg-green-900/20 p-6 rounded-xl border border-green-800/50 text-center">
-                <div className="text-3xl font-bold text-green-300 mb-2">{result.tdee}</div>
-                <div className="text-green-200 font-semibold mb-1">Maintenance Calories</div>
-                <div className="text-sm text-gray-400">Total Daily Energy Expenditure</div>
-              </div>
-
-              <div className="bg-orange-900/20 p-6 rounded-xl border border-orange-800/50 text-center">
-                <div className="text-3xl font-bold text-orange-300 mb-2">{result.targetCalories}</div>
-                <div className="text-orange-200 font-semibold mb-1">Target Calories</div>
-                <div className="text-sm text-gray-400">For {result.goal.label.toLowerCase()}</div>
+              <div className="p-6 sm:p-8 md:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-white/[0.03] border border-white/5 space-y-8">
+                <div className="flex items-center gap-4 mb-2">
+                  <TrendingUp className="h-7 w-7 text-amber-400" />
+                  <h4 className="text-xl font-black text-white uppercase tracking-widest">Formula Matrix</h4>
+                </div>
+                <div className="space-y-5">
+                  <div className="flex items-center justify-between p-6 rounded-[2.5rem] bg-amber-500/10 border border-amber-400/30">
+                    <span className="text-amber-400 font-black text-sm uppercase tracking-widest">Mifflin-St Jeor</span>
+                    <span className="text-white font-black text-2xl">{result.bmr.mifflin}</span>
+                  </div>
+                  <div className="flex items-center justify-between p-6 rounded-[2.5rem] bg-white/5 border border-white/5 opacity-50">
+                    <span className="text-slate-400 font-bold text-sm uppercase">Harris-Benedict</span>
+                    <span className="text-white font-black text-xl">{result.bmr.harris}</span>
+                  </div>
+                  {result.bmr.katch && (
+                    <div className="flex items-center justify-between p-6 rounded-[2.5rem] bg-emerald-500/10 border border-emerald-500/20">
+                      <span className="text-emerald-400 font-black text-sm uppercase tracking-widest">Katch-McArdle</span>
+                      <span className="text-white font-black text-2xl">{result.bmr.katch}</span>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 
-            {/* BMR Comparison */}
-            <div className="bg-gray-800/50 p-6 rounded-xl">
-              <h3 className="text-lg font-semibold text-white mb-4">BMR Formula Comparison</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="text-center">
-                  <div className="text-xl font-bold text-blue-300">{result.bmr.mifflin}</div>
-                  <div className="text-blue-200 font-medium">Mifflin-St Jeor</div>
-                  <div className="text-xs text-green-400 mt-1">✓ Recommended</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl font-bold text-gray-300">{result.bmr.harris}</div>
-                  <div className="text-gray-200 font-medium">Harris-Benedict</div>
-                  <div className="text-xs text-gray-400 mt-1">Classic formula</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl font-bold text-purple-300">
-                    {result.bmr.katch || "N/A"}
-                  </div>
-                  <div className="text-purple-200 font-medium">Katch-McArdle</div>
-                  <div className="text-xs text-gray-400 mt-1">
-                    {result.bmr.katch ? "Body fat based" : "Requires body fat %"}
-                  </div>
-                </div>
+            <div className="mb-16 p-6 sm:p-10 md:p-14 rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] bg-white/[0.03] border border-white/10 backdrop-blur-3xl relative overflow-hidden">
+              <div className="flex items-center gap-4 mb-10">
+                <Target className="h-8 w-8 text-amber-400" />
+                <h4 className="text-3xl font-black text-white tracking-widest uppercase">Strategic Implementation</h4>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:p-6 lg:p-8 relative z-10">
+                {[
+                  "Maintain high satiety protein intake (1.6-2.2g/kg)",
+                  "Prioritize micronutrient-dense physiological refueling",
+                  "Synchronize caloric intake with circadian rhythms",
+                  "Monitor systemic weight fluctuations over 7-day average"
+                ].map((rec, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex items-center gap-6 p-6 rounded-[2rem] bg-white/5 border border-white/5 hover:bg-white/10 transition-all group"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
+                  >
+                    <div className="h-4 w-4 rounded-full bg-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.5)] group-hover:scale-125 transition-transform" />
+                    <span className="text-slate-300 font-bold text-base leading-relaxed">{rec}</span>
+                  </motion.div>
+                ))}
               </div>
             </div>
 
-            {/* Goal Information */}
-            <div className="bg-gray-800/50 p-6 rounded-xl">
-              <h3 className="text-lg font-semibold text-white mb-4">Goal Breakdown</h3>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-300">Maintenance Calories:</span>
-                  <span className="text-white font-semibold">{result.breakdown.maintenance} cal/day</span>
-                </div>
-                {result.breakdown.deficit > 0 && (
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">Daily Deficit:</span>
-                    <span className="text-red-300 font-semibold">-{result.breakdown.deficit} cal/day</span>
-                  </div>
-                )}
-                {result.breakdown.surplus > 0 && (
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">Daily Surplus:</span>
-                    <span className="text-green-300 font-semibold">+{result.breakdown.surplus} cal/day</span>
-                  </div>
-                )}
-                <div className="flex justify-between items-center border-t border-gray-700 pt-3">
-                  <span className="text-gray-200 font-medium">Target Calories:</span>
-                  <span className="text-orange-300 font-bold text-lg">{result.targetCalories} cal/day</span>
-                </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-12 border-t border-white/5">
+              <div className="text-center">
+                <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Mass</div>
+                <div className="text-sm font-black text-white">{formData.weight} {formData.weightUnit}</div>
+              </div>
+              <div className="text-center">
+                <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Age</div>
+                <div className="text-sm font-black text-white">{formData.age}</div>
+              </div>
+              <div className="text-center">
+                <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Activity</div>
+                <div className="text-sm font-black text-white uppercase">{formData.activityLevel}x</div>
               </div>
             </div>
-
-            {/* Recommendations */}
-            <Alert className="bg-blue-900/20 border-blue-800/50">
-              <TrendingUp className="h-4 w-4 text-blue-400" />
-              <AlertTitle className="text-blue-300">Professional Recommendations</AlertTitle>
-              <AlertDescription className="text-blue-200">
-                <ul className="list-disc list-inside space-y-1 mt-2">
-                  <li>Monitor your progress weekly and adjust calories as needed</li>
-                  <li>Combine proper nutrition with regular exercise for best results</li>
-                  <li>Consult a healthcare professional for personalized advice</li>
-                  <li>Stay hydrated and prioritize whole, nutrient-dense foods</li>
-                </ul>
-              </AlertDescription>
-            </Alert>
-          </CardContent>
-        </Card>
-      )}
-    </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 

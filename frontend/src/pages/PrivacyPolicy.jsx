@@ -16,10 +16,10 @@ const PrivacyPolicy = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
             Privacy Policy
           </h1>
-          <p className="text-xl text-gray-300 mb-2">
+          <p className="text-xl glass-text opacity-90 mb-2">
             Your privacy and data security are fundamental to our BMI calculator service
           </p>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-slate-400">
             Last updated: January 15, 2025 | Effective Date: January 15, 2025
           </p>
         </div>
@@ -27,7 +27,7 @@ const PrivacyPolicy = () => {
         {/* Content */}
         <div className="space-y-8">
           {/* Introduction */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-3 text-xl text-white">
                 <div className="p-2 rounded-full bg-green-500/10">
@@ -36,7 +36,7 @@ const PrivacyPolicy = () => {
                 <span>Introduction</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <p>
                 Welcome to the BMI Calculator service operated by <strong className="text-white">Venom Stone Network</strong>. 
                 This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our 
@@ -57,7 +57,7 @@ const PrivacyPolicy = () => {
           </Card>
 
           {/* Information We Collect */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-3 text-xl text-white">
                 <div className="p-2 rounded-full bg-blue-500/10">
@@ -66,7 +66,7 @@ const PrivacyPolicy = () => {
                 <span>Information We Collect</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">1. Personal Health Information</h4>
                 <p className="mb-2">When you use our BMI calculator, we may collect the following health-related data:</p>
@@ -123,14 +123,14 @@ const PrivacyPolicy = () => {
           </Card>
 
           {/* How We Use Information */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <Users className="h-5 w-5 text-green-400" />
                 <span>How We Use Your Information</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">Primary Uses</h4>
                 <ul className="list-disc list-inside ml-4 space-y-2">
@@ -163,14 +163,14 @@ const PrivacyPolicy = () => {
           </Card>
 
           {/* Data Protection & Security */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <Lock className="h-5 w-5 text-green-400" />
                 <span>Data Protection & Security Measures</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">Technical Safeguards</h4>
                 <ul className="list-disc list-inside ml-4 space-y-1">
@@ -206,14 +206,14 @@ const PrivacyPolicy = () => {
           </Card>
 
           {/* Third-Party Services */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <Globe className="h-5 w-5 text-blue-400" />
                 <span>Third-Party Services & Data Sharing</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">Service Providers We Use</h4>
                 <div className="space-y-3">
@@ -221,7 +221,7 @@ const PrivacyPolicy = () => {
                     <Server className="h-5 w-5 text-green-400 mt-1" />
                     <div>
                       <p className="text-white font-medium">Netlify (Hosting Provider)</p>
-                      <p className="text-sm text-gray-400">
+                      <p className="text-sm text-slate-400">
                         Provides website hosting, CDN services, and performance optimization. 
                         <a href="https://www.netlify.com/privacy/" className="text-blue-400 hover:text-blue-300 ml-1">View Privacy Policy</a>
                       </p>
@@ -231,7 +231,7 @@ const PrivacyPolicy = () => {
                     <Eye className="h-5 w-5 text-blue-400 mt-1" />
                     <div>
                       <p className="text-white font-medium">Google Analytics</p>
-                      <p className="text-sm text-gray-400">
+                      <p className="text-sm text-slate-400">
                         Provides website analytics and user behavior insights using anonymized data. 
                         <a href="https://policies.google.com/privacy" className="text-blue-400 hover:text-blue-300 ml-1">View Privacy Policy</a>
                       </p>
@@ -261,14 +261,14 @@ const PrivacyPolicy = () => {
           </Card>
 
           {/* Your Rights Under DPDP Act */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <Scale className="h-5 w-5 text-green-400" />
                 <span>Your Rights Under DPDP Act 2023</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <p className="text-white">
                 As a data principal under India's Digital Personal Data Protection Act, 2023, you have the following rights:
               </p>
@@ -322,14 +322,14 @@ const PrivacyPolicy = () => {
           </Card>
 
           {/* Cookies and Tracking */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <FileText className="h-5 w-5 text-blue-400" />
                 <span>Cookies and Tracking Technologies</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">Types of Cookies We Use</h4>
                 <div className="space-y-3">
@@ -362,21 +362,21 @@ const PrivacyPolicy = () => {
           </Card>
 
           {/* Contact Information */}
-          <Card className="bg-gray-900/50 border-gray-800">
+          <Card className="glass-panel glow-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2 text-xl text-white">
                 <Mail className="h-5 w-5 text-green-400" />
                 <span>Contact Information & Data Protection Officer</span>
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300 space-y-4">
+            <CardContent className="glass-text opacity-90 space-y-4">
               <div>
                 <h4 className="font-semibold text-white mb-3">For Privacy-Related Inquiries</h4>
-                <div className="bg-gray-800/50 p-4 rounded-lg">
+                <div className="glass-panel glow-border p-4 rounded-lg">
                   <p><strong className="text-white">Business Name:</strong> Venom Stone Network</p>
                   <p><strong className="text-white">Email:</strong> <a href="mailto:venomstonenetwork@gmail.com" className="text-blue-400 hover:text-blue-300">venomstonenetwork@gmail.com</a></p>
                   <p><strong className="text-white">Jurisdiction:</strong> India</p>
-                  <p className="text-sm text-gray-400 mt-2">For privacy policy questions, data requests, or DPDP Act compliance matters</p>
+                  <p className="text-sm text-slate-400 mt-2">For privacy policy questions, data requests, or DPDP Act compliance matters</p>
                 </div>
               </div>
 
