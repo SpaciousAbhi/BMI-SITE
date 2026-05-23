@@ -117,8 +117,13 @@ const BMICalculator = () => {
         recommendations = ["Consult healthcare provider immediately", "Consider professional weight management", "Focus on lifestyle changes with medical supervision"];
       }
 
-      const idealWeightMin = 18.5 * (heightInM * heightInM);
-      const idealWeightMax = 24.9 * (heightInM * heightInM);
+      let idealWeightMin = 18.5 * (heightInM * heightInM);
+      let idealWeightMax = 24.9 * (heightInM * heightInM);
+
+      if (weightUnit === "lbs") {
+        idealWeightMin = idealWeightMin / 0.453592;
+        idealWeightMax = idealWeightMax / 0.453592;
+      }
 
       setResult({
         bmi: bmi.toFixed(1),
