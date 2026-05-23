@@ -83,7 +83,10 @@ const ProteinCalculator = () => {
     setWeight(""); setHeight(""); setFeet(""); setInches(""); setAge(""); setGender(""); setActivityLevel(""); setGoal(""); setResult(null);
   };
 
-  const isFormValid = () => weight && (height || (feet && inches)) && age && gender && activityLevel && goal;
+  const isFormValid = () => {
+    const heightValid = heightUnit === "ft" ? feet : height;
+    return weight && heightValid && age && gender && activityLevel && goal;
+  };
 
   return (
     <motion.div 

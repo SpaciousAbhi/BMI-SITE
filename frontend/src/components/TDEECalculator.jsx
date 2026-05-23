@@ -95,7 +95,7 @@ const TDEECalculator = () => {
   const calculateBMR = (weight, height, age, gender, method = "mifflin") => {
     const weightInKg = formData.weightUnit === "lbs" ? weight * 0.453592 : weight;
     const heightInCm = formData.heightUnit === "ft" ? 
-      (parseInt(formData.feet) * 30.48) + (parseInt(formData.inches) * 2.54) : height;
+      ((parseInt(formData.feet) || 0) * 30.48) + ((parseInt(formData.inches) || 0) * 2.54) : height;
 
     switch (method) {
       case "mifflin":
@@ -181,7 +181,7 @@ const TDEECalculator = () => {
   const validateForm = () => {
     const requiredFields = ["weight", "age", "gender", "activityLevel"];
     const heightValid = formData.heightUnit === "ft" ? 
-      (formData.feet && formData.inches) : formData.height;
+      formData.feet : formData.height;
     
     return requiredFields.every(field => formData[field]) && heightValid;
   };

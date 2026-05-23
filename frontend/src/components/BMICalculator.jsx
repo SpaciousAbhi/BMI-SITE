@@ -6,7 +6,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Calculator, RotateCcw, Heart, AlertCircle, CheckCircle, Target, Download, FileText, Loader2, Info } from "lucide-react";
-import { useToast } from "../hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import jsPDF from 'jspdf';
 import BMIGauge from "./BMIGauge";
 
@@ -66,7 +66,8 @@ const BMICalculator = () => {
   };
 
   const calculateBMI = () => {
-    if (!weight || (heightUnit === "ft" ? (feet === "" || inches === "") : !height) || !age || !gender) {
+    const isHeightValid = heightUnit === "ft" ? feet !== "" : height !== "";
+    if (!weight || !isHeightValid || !age || !gender) {
       toast({
         title: "Missing Information",
         description: "Please fill in all fields (Age, Gender, Weight, and Height) to calculate your BMI.",
@@ -82,7 +83,11 @@ const BMICalculator = () => {
 
       let heightInM;
       if (heightUnit === "cm") heightInM = parseFloat(height) / 100;
-      else if (heightUnit === "ft") heightInM = (parseFloat(feet) * 30.48 + parseFloat(inches) * 2.54) / 100;
+      else if (heightUnit === "ft") {
+        const ftVal = parseFloat(feet) || 0;
+        const inVal = parseFloat(inches) || 0;
+        heightInM = (ftVal * 30.48 + inVal * 2.54) / 100;
+      }
       else heightInM = parseFloat(height) * 0.0254;
 
       if (!heightInM || heightInM === 0) return;

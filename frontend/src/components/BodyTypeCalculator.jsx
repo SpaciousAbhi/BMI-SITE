@@ -6,7 +6,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Calculator, RotateCcw, Users, AlertCircle, CheckCircle, Target, Download, FileText, Loader2, Activity } from "lucide-react";
-import { useToast } from "../hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import jsPDF from 'jspdf';
 
 const BodyTypeCalculator = () => {

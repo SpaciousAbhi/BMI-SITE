@@ -6,7 +6,7 @@ import { Textarea } from "../components/ui/textarea";
 import { Label } from "../components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
 import { Mail, MessageCircle, Phone, MapPin, Send, Clock, Shield, Users, Headphones, FileQuestion } from "lucide-react";
-import { useToast } from "../hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({

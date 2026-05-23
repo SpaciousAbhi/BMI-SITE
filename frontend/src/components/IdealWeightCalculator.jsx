@@ -6,7 +6,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Calculator, RotateCcw, Target, AlertCircle, CheckCircle, Scale, Download, FileText, Loader2 } from "lucide-react";
-import { useToast } from "../hooks/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import jsPDF from 'jspdf';
 
 const IdealWeightCalculator = () => {
@@ -68,7 +68,7 @@ const IdealWeightCalculator = () => {
 
   const calculateIdealWeight = async () => {
     // Validation
-    const heightValid = heightUnit === "ft" ? (feet && inches) : height;
+    const heightValid = heightUnit === "ft" ? feet : height;
     if (!heightValid || !gender) {
       toast({
         title: "Missing Information",
@@ -86,7 +86,9 @@ const IdealWeightCalculator = () => {
     if (heightUnit === "cm") {
       heightInInches = parseFloat(height) / 2.54;
     } else if (heightUnit === "ft") {
-      heightInInches = parseFloat(feet) * 12 + parseFloat(inches);
+      const ftVal = parseFloat(feet) || 0;
+      const inVal = parseFloat(inches) || 0;
+      heightInInches = ftVal * 12 + inVal;
     }
 
     const heightInCm = heightInInches * 2.54;
@@ -563,7 +565,7 @@ const IdealWeightCalculator = () => {
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-5 pt-8">
             <Button
               onClick={calculateIdealWeight}
-              className={`flex-1 btn-category-composition py-5 sm:py-8 rounded-[2rem] text-base sm:text-lg md:text-xl font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-[0.98] ${(!gender || !(heightUnit === "ft" ? (feet && inches) : height)) ? 'opacity-70 grayscale-[0.5]' : ''}`}
+              className={`flex-1 btn-category-composition py-5 sm:py-8 rounded-[2rem] text-base sm:text-lg md:text-xl font-black shadow-2xl transition-all hover:scale-[1.02] active:scale-[0.98] ${(!gender || !(heightUnit === "ft" ? feet : height)) ? 'opacity-70 grayscale-[0.5]' : ''}`}
             >
               {isCalculating ? (
                 <>

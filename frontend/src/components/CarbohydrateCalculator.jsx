@@ -45,8 +45,13 @@ const CarbohydrateCalculator = () => {
       try {
         const wKg = weightUnit === "kg" ? parseFloat(weight) : parseFloat(weight) * 0.453592;
         let hCm;
-        if (heightUnit === "cm") hCm = parseFloat(height);
-        else hCm = (parseFloat(feet) * 30.48) + (parseFloat(inches) * 2.54);
+        if (heightUnit === "cm") {
+          hCm = parseFloat(height);
+        } else {
+          const ftVal = parseFloat(feet) || 0;
+          const inVal = parseFloat(inches) || 0;
+          hCm = (ftVal * 30.48) + (inVal * 2.54);
+        }
 
         // Mifflin-St Jeor
         let bmr = (10 * wKg) + (6.25 * hCm) - (5 * parseInt(age));
@@ -84,7 +89,10 @@ const CarbohydrateCalculator = () => {
     setWeight(""); setHeight(""); setFeet(""); setInches(""); setAge(""); setGender(""); setActivityLevel(""); setGoal(""); setResult(null);
   };
 
-  const isFormValid = () => weight && (height || (feet && inches)) && age && gender && activityLevel && goal;
+  const isFormValid = () => {
+    const heightValid = heightUnit === "ft" ? feet : height;
+    return weight && heightValid && age && gender && activityLevel && goal;
+  };
 
   return (
     <motion.div 

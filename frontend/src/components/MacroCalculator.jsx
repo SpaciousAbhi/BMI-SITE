@@ -118,7 +118,7 @@ const MacroCalculator = () => {
   const calculateBMR = (weight, height, age, gender) => {
     const weightInKg = formData.weightUnit === "lbs" ? weight * 0.453592 : weight;
     const heightInCm = formData.heightUnit === "ft" ? 
-      (parseInt(formData.feet) * 30.48) + (parseInt(formData.inches) * 2.54) : height;
+      ((parseInt(formData.feet) || 0) * 30.48) + ((parseInt(formData.inches) || 0) * 2.54) : height;
 
     return gender === "male" 
       ? (10 * weightInKg) + (6.25 * heightInCm) - (5 * age) + 5
@@ -180,7 +180,7 @@ const MacroCalculator = () => {
 
   const validateForm = () => {
     const requiredFields = ["weight", "age", "gender", "activityLevel", "goal"];
-    const heightValid = formData.heightUnit === "ft" ? (formData.feet && formData.inches) : formData.height;
+    const heightValid = formData.heightUnit === "ft" ? formData.feet : formData.height;
     return requiredFields.every(field => formData[field]) && heightValid;
   };
 
