@@ -6,8 +6,10 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Calculator, RotateCcw, Heart, AlertCircle, CheckCircle, Target, Download, FileText, Loader2, Ruler, Activity, Info, Trophy, Gauge } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const BodyFatCalculator = () => {
+  const { toast } = useToast();
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [height, setHeight] = useState("");
@@ -39,13 +41,25 @@ const BodyFatCalculator = () => {
   };
 
   const calculateBodyFat = () => {
-    if (!isFormValid()) return;
+    if (!isFormValid()) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields to calculate your body fat.",
+        variant: "destructive",
+      });
+      return;
+    }
     setLoading(true);
     setTimeout(() => {
       try {
         let hInInches;
-        if (heightUnit === "cm") hInInches = parseFloat(height) / 2.54;
-        else hInInches = parseFloat(feet) * 12 + parseFloat(inches);
+        if (heightUnit === "cm") {
+          hInInches = parseFloat(height) / 2.54;
+        } else {
+          const ftVal = parseFloat(feet) || 0;
+          const inVal = parseFloat(inches) || 0;
+          hInInches = ftVal * 12 + inVal;
+        }
 
         const neckIn = parseFloat(neck);
         const waistIn = parseFloat(waist);
@@ -96,7 +110,10 @@ const BodyFatCalculator = () => {
     setAge(""); setGender(""); setHeight(""); setFeet(""); setInches(""); setWeight(""); setNeck(""); setWaist(""); setHip(""); setResult(null);
   };
 
-  const isFormValid = () => age && gender && weight && (height || (feet && inches)) && neck && waist && (gender === 'male' || hip);
+  const isFormValid = () => {
+    const heightValid = heightUnit === "ft" ? feet : height;
+    return age && gender && weight && heightValid && neck && waist && (gender === 'male' || hip);
+  };
 
   return (
     <motion.div 

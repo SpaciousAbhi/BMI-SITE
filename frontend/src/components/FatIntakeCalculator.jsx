@@ -6,8 +6,10 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Droplets, Calculator, RotateCcw, Heart, AlertCircle, CheckCircle, Target, Download, FileText, Loader2, Info, Activity, Zap, TrendingUp, Sparkles, Utensils, ShieldCheck, Flame } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const FatIntakeCalculator = () => {
+  const { toast } = useToast();
   const [weight, setWeight] = useState("");
   const [weightUnit, setWeightUnit] = useState("kg");
   const [height, setHeight] = useState("");
@@ -39,7 +41,11 @@ const FatIntakeCalculator = () => {
 
   const calculateFat = () => {
     if (!isFormValid()) {
-      // Small vibration or shake effect could be added here
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields to calculate your fat requirements.",
+        variant: "destructive",
+      });
       return;
     }
     setLoading(true);

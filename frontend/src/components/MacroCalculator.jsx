@@ -9,8 +9,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { Slider } from "./ui/slider";
+import { useToast } from "@/hooks/use-toast";
 
 const MacroCalculator = () => {
+  const { toast } = useToast();
   const [mode, setMode] = useState("basic");
   const [isCalculating, setIsCalculating] = useState(false);
   const [result, setResult] = useState(null);
@@ -126,6 +128,14 @@ const MacroCalculator = () => {
   };
 
   const calculateMacros = () => {
+    if (!validateForm()) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields to calculate your macros.",
+        variant: "destructive",
+      });
+      return;
+    }
     setIsCalculating(true);
     
     setTimeout(() => {

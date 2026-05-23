@@ -8,8 +8,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { useToast } from "@/hooks/use-toast";
 
 const TDEECalculator = () => {
+  const { toast } = useToast();
   const [mode, setMode] = useState("basic");
   const [isCalculating, setIsCalculating] = useState(false);
   const [result, setResult] = useState(null);
@@ -132,6 +134,14 @@ const TDEECalculator = () => {
   };
 
   const calculateTDEE = () => {
+    if (!validateForm()) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields to calculate your TDEE.",
+        variant: "destructive",
+      });
+      return;
+    }
     setIsCalculating(true);
     
     setTimeout(() => {

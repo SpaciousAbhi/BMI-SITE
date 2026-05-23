@@ -6,8 +6,10 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Heart, TrendingUp, Target, Zap, Activity, RotateCcw, Award, Info, Scale, ShieldCheck, Loader2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const TargetHeartRateCalculator = () => {
+  const { toast } = useToast();
   const [age, setAge] = useState('');
   const [restingHR, setRestingHR] = useState('');
   const [intensity, setIntensity] = useState('60'); // Default 60%
@@ -36,7 +38,14 @@ const TargetHeartRateCalculator = () => {
   };
 
   const calculateTHR = () => {
-    if (!isFormValid()) return;
+    if (!isFormValid()) {
+      toast({
+        title: "Missing Information",
+        description: "Please enter a valid biological age (between 1 and 120) to calculate target heart rate.",
+        variant: "destructive",
+      });
+      return;
+    }
     setLoading(true);
     setTimeout(() => {
       try {

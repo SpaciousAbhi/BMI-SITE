@@ -6,8 +6,10 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Flame, Activity, Clock, Zap, TrendingUp, User, RotateCcw, Loader2, Target, Heart, Scale, Footprints, Dumbbell, Gauge, Droplets } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const CaloriesBurnedCalculator = () => {
+  const { toast } = useToast();
   const [weight, setWeight] = useState('');
   const [weightUnit, setWeightUnit] = useState('kg');
   const [activity, setActivity] = useState('');
@@ -51,7 +53,14 @@ const CaloriesBurnedCalculator = () => {
   };
 
   const calculateCalories = () => {
-    if (!isFormValid()) return;
+    if (!isFormValid()) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in Weight, Activity, and Duration to calculate calories burned.",
+        variant: "destructive",
+      });
+      return;
+    }
     setLoading(true);
     setTimeout(() => {
       try {

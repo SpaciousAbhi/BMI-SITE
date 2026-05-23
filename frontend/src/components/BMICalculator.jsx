@@ -67,10 +67,10 @@ const BMICalculator = () => {
 
   const calculateBMI = () => {
     const isHeightValid = heightUnit === "ft" ? feet !== "" : height !== "";
-    if (!weight || !isHeightValid || !age || !gender) {
+    if (!weight || !isHeightValid) {
       toast({
         title: "Missing Information",
-        description: "Please fill in all fields (Age, Gender, Weight, and Height) to calculate your BMI.",
+        description: "Please fill in Weight and Height to calculate your BMI.",
         variant: "destructive",
       });
       setResult(null);
@@ -79,18 +79,66 @@ const BMICalculator = () => {
 
     try {
       let weightInKg = parseFloat(weight);
+      if (isNaN(weightInKg) || weightInKg <= 0) {
+        toast({
+          title: "Invalid Weight",
+          description: "Please enter a valid positive weight value.",
+          variant: "destructive",
+        });
+        setResult(null);
+        return;
+      }
       if (weightUnit === "lbs") weightInKg = weightInKg * 0.453592;
 
       let heightInM;
-      if (heightUnit === "cm") heightInM = parseFloat(height) / 100;
-      else if (heightUnit === "ft") {
+      if (heightUnit === "cm") {
+        const hVal = parseFloat(height);
+        if (isNaN(hVal) || hVal <= 0) {
+          toast({
+            title: "Invalid Height",
+            description: "Please enter a valid positive height value.",
+            variant: "destructive",
+          });
+          setResult(null);
+          return;
+        }
+        heightInM = hVal / 100;
+      } else if (heightUnit === "ft") {
         const ftVal = parseFloat(feet) || 0;
         const inVal = parseFloat(inches) || 0;
+        if (ftVal <= 0 && inVal <= 0) {
+          toast({
+            title: "Invalid Height",
+            description: "Please enter a valid positive height (feet/inches) value.",
+            variant: "destructive",
+          });
+          setResult(null);
+          return;
+        }
         heightInM = (ftVal * 30.48 + inVal * 2.54) / 100;
+      } else {
+        const hVal = parseFloat(height);
+        if (isNaN(hVal) || hVal <= 0) {
+          toast({
+            title: "Invalid Height",
+            description: "Please enter a valid positive height value.",
+            variant: "destructive",
+          });
+          setResult(null);
+          return;
+        }
+        heightInM = hVal * 0.0254;
       }
-      else heightInM = parseFloat(height) * 0.0254;
 
-      if (!heightInM || heightInM === 0) return;
+      if (!heightInM || heightInM === 0) {
+        toast({
+          title: "Invalid Height",
+          description: "Height cannot be zero.",
+          variant: "destructive",
+        });
+        setResult(null);
+        return;
+      }
 
       const bmi = weightInKg / (heightInM * heightInM);
       
@@ -139,8 +187,8 @@ const BMICalculator = () => {
         metrics: {
           weight: weightInKg.toFixed(1),
           height: (heightInM * 100).toFixed(1),
-          age: parseInt(age),
-          gender
+          age: age ? parseInt(age) : null,
+          gender: gender || null
         },
         calculatedOn: new Date().toLocaleDateString()
       });
@@ -209,8 +257,10 @@ const BMICalculator = () => {
       
       pdf.setFontSize(12);
       pdf.setTextColor(80, 80, 80);
-      pdf.text(`Age: ${result.metrics.age} years`, 25, currentY);
-      pdf.text(`Gender: ${result.metrics.gender.charAt(0).toUpperCase() + result.metrics.gender.slice(1)}`, 25, currentY + 8);
+      const ageText = result.metrics.age ? `${result.metrics.age} years` : "N/A";
+      const genderText = result.metrics.gender ? (result.metrics.gender.charAt(0).toUpperCase() + result.metrics.gender.slice(1)) : "N/A";
+      pdf.text(`Age: ${ageText}`, 25, currentY);
+      pdf.text(`Gender: ${genderText}`, 25, currentY + 8);
       pdf.text(`Weight: ${result.metrics.weight} kg`, 25, currentY + 16);
       pdf.text(`Height: ${result.metrics.height} cm`, 25, currentY + 24);
       currentY += 40;

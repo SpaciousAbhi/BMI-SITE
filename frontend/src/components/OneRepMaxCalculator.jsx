@@ -7,8 +7,10 @@ import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Alert, AlertTitle, AlertDescription } from "./ui/alert";
 import { TrendingUp, Target, Award, Zap, BarChart3, RotateCcw, Loader2, Info, Activity, Scale, Percent, Dumbbell } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const OneRepMaxCalculator = () => {
+  const { toast } = useToast();
   const [weight, setWeight] = useState('');
   const [unit, setUnit] = useState('kg');
   const [reps, setReps] = useState('');
@@ -42,7 +44,14 @@ const OneRepMaxCalculator = () => {
   };
 
   const calculateOneRepMax = () => {
-    if (!isFormValid()) return;
+    if (!isFormValid()) {
+      toast({
+        title: "Missing Information",
+        description: "Please enter valid values for active load (weight) and repetitions.",
+        variant: "destructive",
+      });
+      return;
+    }
     setLoading(true);
     setTimeout(() => {
       try {

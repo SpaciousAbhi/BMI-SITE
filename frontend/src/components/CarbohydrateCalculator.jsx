@@ -6,8 +6,10 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Wheat, Calculator, RotateCcw, Heart, AlertCircle, CheckCircle, Target, Download, FileText, Loader2, Info, Activity, Zap, TrendingUp, Sparkles, Utensils } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const CarbohydrateCalculator = () => {
+  const { toast } = useToast();
   const [mode, setMode] = useState("basic");
   const [weight, setWeight] = useState("");
   const [weightUnit, setWeightUnit] = useState("kg");
@@ -39,7 +41,14 @@ const CarbohydrateCalculator = () => {
   };
 
   const calculateCarbs = () => {
-    if (!isFormValid()) return;
+    if (!isFormValid()) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields to calculate your carbohydrate requirements.",
+        variant: "destructive",
+      });
+      return;
+    }
     setLoading(true);
     setTimeout(() => {
       try {

@@ -8,8 +8,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { useToast } from "@/hooks/use-toast";
 
 const BMRCalculator = () => {
+  const { toast } = useToast();
   const [mode, setMode] = useState("basic");
   const [isCalculating, setIsCalculating] = useState(false);
   const [result, setResult] = useState(null);
@@ -89,7 +91,7 @@ const BMRCalculator = () => {
   const calculateBMR = (weight, height, age, gender, formula) => {
     const weightInKg = formData.weightUnit === "lbs" ? weight * 0.453592 : weight;
     const heightInCm = formData.heightUnit === "ft" ? 
-      (parseInt(formData.feet) * 30.48) + (parseInt(formData.inches) * 2.54) : height;
+      ((parseInt(formData.feet) || 0) * 30.48) + ((parseInt(formData.inches) || 0) * 2.54) : height;
 
     switch (formula) {
       case "mifflin":
@@ -110,6 +112,14 @@ const BMRCalculator = () => {
   };
 
   const calculateAllBMR = () => {
+    if (!validateForm()) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields (Weight, Age, Gender, and Height) to calculate BMR.",
+        variant: "destructive",
+      });
+      return;
+    }
     setIsCalculating(true);
     
     setTimeout(() => {
@@ -159,7 +169,7 @@ const BMRCalculator = () => {
   const validateForm = () => {
     const requiredFields = ["weight", "age", "gender"];
     const heightValid = formData.heightUnit === "ft" ? 
-      (formData.feet && formData.inches) : formData.height;
+      formData.feet : formData.height;
     
     if (selectedFormula === "katch" && !formData.bodyFat) return false;
     

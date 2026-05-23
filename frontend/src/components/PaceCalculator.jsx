@@ -6,8 +6,10 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Timer, TrendingUp, Target, Zap, Clock, RotateCcw, Activity, Award, MapPin, Gauge, Loader2 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const PaceCalculator = () => {
+  const { toast } = useToast();
   const [mode, setMode] = useState('pace'); // 'pace', 'time', 'distance'
   const [distance, setDistance] = useState('');
   const [distanceUnit, setDistanceUnit] = useState('km');
@@ -38,7 +40,14 @@ const PaceCalculator = () => {
   };
 
   const calculatePaceResult = () => {
-    if (!isFormValid()) return;
+    if (!isFormValid()) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields for the selected calculation mode.",
+        variant: "destructive",
+      });
+      return;
+    }
     setLoading(true);
     setTimeout(() => {
       try {
